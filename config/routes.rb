@@ -1,14 +1,13 @@
 Festor::Application.routes.draw do
-  root "pages#home"    
+
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
+  
+  root "events#index"    
   get "home", to: "pages#home", as: "home"
   get "inside", to: "pages#inside", as: "inside"
   
-    
+  resources :events, only: [:show, :index]
   devise_for :users
-  
-  namespace :admin do
-    root "base#index"
-    resources :users
-  end
   
 end

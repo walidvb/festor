@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "",
+  "sourceRoot": "",
+  "sources": [
+    "/assets/source_maps/bundler/bundler/gems/activeadmin-d775bb9edfc9/app/assets/javascripts/active_admin/ext/jquery-ui.coffee"
+  ],
+  "names": [],
+  "mappings": "AAIA;AAAA,EAAA,CAAC,CAAC,EAAE,CAAC,MAAM,CAAC,SAAS,CAAC,cAAtB,GAAuC,SAAA,GAAA;WACrC,IAAC,CAAA,QAAQ,CAAC,KAAV,CAAA,EADqC;EAAA,CAAvC,CAAA;AAAA"
+}
