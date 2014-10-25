@@ -15,6 +15,7 @@ gem 'bootstrap-sass', '3.2.0.2'
 #gem 'kaminari', '0.16.1'
 gem 'font-awesome-sass', '4.2.0'
 gem 'friendly_id', '5.0.4'
+gem "paperclip", '~> 4.1'
 
 gem 'compass-rails', '2.0.0'
 gem 'rails_autolink'
