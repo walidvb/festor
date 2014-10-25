@@ -5,7 +5,8 @@
 #   gem 'sqlite3'
 development:
   adapter: postgresql
-  database: localhost
+  host: localhost
+  database: festor
   pool: 5
   timeout: 5000
   username: walid
@@ -15,7 +16,8 @@ development:
 # Do not set this db to the same as development or production.
 test: &test
   adapter: postgresql
-  database: localhost
+  host: localhost
+  database: festor_test
   pool: 5
   timeout: 5000
   username: walid

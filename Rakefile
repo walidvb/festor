@@ -3,4 +3,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Fetor::Application.load_tasks
+Festor::Application.load_tasks
