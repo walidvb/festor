@@ -22,4 +22,4 @@ def secure_token
   end
 end
 
-Application::Application.config.secret_key_base = secure_token
+Festor::Application.config.secret_key_base = secure_token
