@@ -1,3 +1,7 @@
-%p#notice= notice
-= @event.title
-= link_to 'Back', events_path
+%h1= @event.title
+%ul
+	- @artists.each do |artist|
+		%li
+			%h2
+				= artist.name
+			= image_tag artist.profile_picture.url(:large)

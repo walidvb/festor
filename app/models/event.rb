@@ -5,6 +5,10 @@ class Event < ActiveRecord::Base
 
 	validates :slug, uniqueness: true, presence: true
 
+  # add a delete_<asset_name> method: 
+  attr_accessor :delete_profile_picture
+  before_validation { self.profile_picture.clear if self.delete_profile_picture == '1' }
+
 	def add_artist artist
 		Booking.create! event: self, artist: artist
 	end

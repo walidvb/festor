@@ -16,6 +16,9 @@ module Festor
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
     # config.time_zone = 'Central Time (US & Canada)'
 
+    # Add custom modules from /lib - walid
+    config.autoload_paths += %W(#{config.root}/lib)
+
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
@@ -28,13 +31,13 @@ module Festor
       g.helper_specs false
     end
 
-    config.assets.precompile += ['application.css']
+    config.assets.precompile += ['application.css, application.js']
 
     config.paperclip_defaults = {
       :storage => :fog,
       :fog_credentials => {:provider => "Local", :local_root => "#{Rails.root}/public"},
       :fog_directory => "",
-      :fog_host => "localhost"
+      :fog_host => ''
     }
 
   end
