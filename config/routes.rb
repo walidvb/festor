@@ -1,9 +1,7 @@
 Festor::Application.routes.draw do
 
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :artists
-
-  devise_for :admin_users, ActiveAdmin::Devise.config
-  ActiveAdmin.routes(self)
   
   root "events#index"    
   get "home", to: "pages#home", as: "home"

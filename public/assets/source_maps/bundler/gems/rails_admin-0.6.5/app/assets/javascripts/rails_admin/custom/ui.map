@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "",
+  "sourceRoot": "",
+  "sources": [
+    "/assets/source_maps/bundler/gems/rails_admin-0.6.5/app/assets/javascripts/rails_admin/custom/ui.coffee"
+  ],
+  "names": [],
+  "mappings": "AAAA;AAAA;AAAA"
+}

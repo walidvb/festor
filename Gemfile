@@ -26,8 +26,8 @@ gem 'chosen-rails'
 gem "autoprefixer-rails"
 gem 'colorbox-rails'
 
-gem 'activeadmin', github: 'activeadmin'
-#gem "rails_admin"
+#gem 'activeadmin', github: 'activeadmin'
+gem "rails_admin"
 
 # development gems
 group :development do
