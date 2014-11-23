@@ -1,0 +1,2 @@
+Fabricator(:booking) do
+end

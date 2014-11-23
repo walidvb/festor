@@ -3,6 +3,7 @@ class CreateEvents < ActiveRecord::Migration
     create_table :events do |t|
     	t.string		:title
     	t.string		:description
+    	t.string 		:slug, index: true
     	t.timestamp	:schedule
       t.timestamps
     end

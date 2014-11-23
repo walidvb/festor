@@ -22,7 +22,11 @@ u.save!
   u.save!
 
   puts "#{i} test users created..." if (i % 5 == 0)
-
 end
+
+
+a = Fabricate :artist
+e = Fabricate :event
+a.book_for e
   
 
