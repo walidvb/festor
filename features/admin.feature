@@ -7,5 +7,4 @@ Feature: Administration
 
 	Scenario: I create an event
 		When I create an event
-		And I visit the event
-		Then I should see the event
+		Then there should be an event
