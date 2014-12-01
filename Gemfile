@@ -27,6 +27,9 @@ gem 'chosen-rails'
 gem "autoprefixer-rails"
 gem 'colorbox-rails'
 
+#### I18
+gem 'acts_as_translatable'
+
 #gem 'activeadmin', github: 'activeadmin'
 gem "rails_admin"
 
