@@ -7,5 +7,6 @@ class EventsController < ApplicationController
 	def show
 		@event = Event.includes(:artists).find(params[:id])
 		@artists = @event.artists
+		binding.pry
 	end
 end

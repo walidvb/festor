@@ -1,6 +1,6 @@
 %h1 Listing events
 %ul
   - @events.each do |event|
-    %li= link_to event.title, event_path(event)
+    %li= link_to(event.title, show_path(:event, event))
 %br/
 = link_to 'New Event', new_path(model_name: :event)

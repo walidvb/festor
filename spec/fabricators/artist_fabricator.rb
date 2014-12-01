@@ -1,3 +1,4 @@
 Fabricator(:artist) do
-	name  "Fabulous"
+	name_en  "Fabulous"
+	name_fr  "Fabuleux"
 end

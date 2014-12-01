@@ -24,6 +24,9 @@ Festor::Application.configure do
   # number of complex assets.
   config.assets.debug = true
   
+  # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
+  config.force_ssl = false
+  
   # Mailer
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }

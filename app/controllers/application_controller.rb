@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
@@ -28,27 +29,15 @@ class ApplicationController < ActionController::Base
     root_path
   end
   
-  # Auto-sign out locked users
-  def reject_locked!
-    if current_user && current_user.locked?
-      sign_out current_user
-      user_session = nil
-      current_user = nil
-      flash[:alert] = "Your account is locked."
-      flash[:notice] = nil
-      redirect_to root_url
-    end
-  end
-  helper_method :reject_locked!
-  
   # Only permits admin users
   def require_admin!
     authenticate_user!
-    
     if current_user && !current_user.admin?
       redirect_to root_path
     end
   end
-  helper_method :require_admin!
   
+  private
+
+
 end

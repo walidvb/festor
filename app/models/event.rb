@@ -1,4 +1,6 @@
 class Event < ActiveRecord::Base
+	translates :title, :description
+	
 	has_many :bookings, dependent: :delete_all
 	has_many :artists, through: :bookings
 	accepts_nested_attributes_for :artists, :allow_destroy => true

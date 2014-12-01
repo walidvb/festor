@@ -28,7 +28,6 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
-    acts_as_translatable (0.3.5)
     addressable (2.3.6)
     anticipate (0.1.1)
     arel (5.0.1.20140414130214)
@@ -168,7 +167,7 @@ GEM
     fog-sakuracloud (0.1.1)
       fog-core
       fog-json
-    fog-softlayer (0.3.24)
+    fog-softlayer (0.3.25)
       fog-core
       fog-json
     fog-terremark (0.0.3)
@@ -434,6 +433,8 @@ GEM
     timecop (0.7.1)
     timers (4.0.1)
       hitimes
+    traco (3.1.5)
+      activerecord (>= 3.0)
     trollop (2.0)
     turbolinks (2.3.0)
       coffee-rails
@@ -454,7 +455,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  acts_as_translatable
   anticipate
   autoprefixer-rails
   awesome_print
@@ -511,5 +511,6 @@ DEPENDENCIES
   show_me_the_cookies
   terminal-notifier-guard
   timecop
+  traco
   turbolinks (= 2.3.0)
   uglifier (= 2.5.3)
