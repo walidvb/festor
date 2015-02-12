@@ -11,14 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150212140702) do
+ActiveRecord::Schema.define(version: 20141123131311) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "artists", force: true do |t|
-    t.string   "name_en"
-    t.string   "name_fr"
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "profile_picture_file_name"
@@ -43,12 +42,9 @@ ActiveRecord::Schema.define(version: 20150212140702) do
     t.string   "description_en"
     t.string   "description_fr"
     t.string   "slug"
-    t.datetime "schedule"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "exhibitions", force: true do |t|
+    t.datetime "schedule_start"
+    t.datetime "schedule_end"
+    t.string   "type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

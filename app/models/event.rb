@@ -16,6 +16,11 @@ class Event < ActiveRecord::Base
 	end
 
 
+	def self.event_types
+		%w(Clubbing Performance Exhibition Workshop)
+	end
+	self.inheritance_column = :fake_column
+
 	attr_accessor :artist_ids
 	def artist_ids=(ids)
 		unless (ids = ids.map(&:to_i).select{|i|i>0}) == (current_ids = bookings.map(&:artist_id))

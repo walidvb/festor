@@ -6,3 +6,9 @@ Feature: Agenda
 		Given there is an event
 		When I visit the event
 		Then I can see its title
+
+	@wip
+	Scenario: I see all workshops
+		Given there are 2 workshop
+		When I visit the workshops index
+		Then I can see 2 workshop

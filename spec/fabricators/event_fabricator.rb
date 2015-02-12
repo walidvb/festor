@@ -4,5 +4,5 @@ Fabricator(:event) do
 	slug 	{sequence(:slug) {|i| "party_#{i}"}}
 	description_en	"The description"
 	description_fr	"La description"
-	schedule				DateTime.now
+	schedule_start	DateTime.now
 end
