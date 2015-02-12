@@ -28,7 +28,8 @@ gem "autoprefixer-rails"
 gem 'colorbox-rails'
 
 #### I18
-gem 'traco'
+gem 'globalize', '~> 4.0.3'
+#gem 'rails_admin_globalize_field'
 
 #gem 'activeadmin', github: 'activeadmin'
 gem "rails_admin"

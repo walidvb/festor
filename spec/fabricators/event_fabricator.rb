@@ -1,8 +1,6 @@
 Fabricator(:event) do 
-	title_en {|attrs| "The #{attrs[:type]}"}
-	title_fr {|attrs| "Le #{attrs[:type]}"}
+	title {|attrs| "The #{attrs[:type]}"}
 	slug 	{sequence(:slug) {|i| "party_#{i}"}}
-	description_en	"The description"
-	description_fr	"La description"
+	description	"The description"
 	schedule_start	DateTime.now
 end

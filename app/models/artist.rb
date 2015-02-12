@@ -1,4 +1,5 @@
 class Artist < ActiveRecord::Base
+  translates :biography
 
 	has_many :bookings, dependent: :delete_all
 	has_many :events, through: :bookings

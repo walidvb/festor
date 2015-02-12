@@ -16,6 +16,17 @@ ActiveRecord::Schema.define(version: 20141123131311) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "artist_translations", force: true do |t|
+    t.integer  "artist_id",  null: false
+    t.string   "locale",     null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "biography"
+  end
+
+  add_index "artist_translations", ["artist_id"], name: "index_artist_translations_on_artist_id", using: :btree
+  add_index "artist_translations", ["locale"], name: "index_artist_translations_on_locale", using: :btree
+
   create_table "artists", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -36,15 +47,23 @@ ActiveRecord::Schema.define(version: 20141123131311) do
   add_index "bookings", ["artist_id"], name: "index_bookings_on_artist_id", using: :btree
   add_index "bookings", ["event_id"], name: "index_bookings_on_event_id", using: :btree
 
+  create_table "event_translations", force: true do |t|
+    t.integer  "event_id",    null: false
+    t.string   "locale",      null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "title"
+    t.text     "description"
+  end
+
+  add_index "event_translations", ["event_id"], name: "index_event_translations_on_event_id", using: :btree
+  add_index "event_translations", ["locale"], name: "index_event_translations_on_locale", using: :btree
+
   create_table "events", force: true do |t|
-    t.string   "title_en"
-    t.string   "title_fr"
-    t.string   "description_en"
-    t.string   "description_fr"
     t.string   "slug"
+    t.string   "type"
     t.datetime "schedule_start"
     t.datetime "schedule_end"
-    t.string   "type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
