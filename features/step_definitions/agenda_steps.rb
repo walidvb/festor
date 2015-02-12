@@ -21,5 +21,5 @@ When(/^I visit the (\w+) index$/) do |event_type|
 end
 
 Then(/^I can see (\d+) (\w+)$/) do |count, event_type|
-  expect(all(".events .#{event_type}").count).to eq(count.to_i)
+  expect(all(".events .event").count).to eq(count.to_i)
 end

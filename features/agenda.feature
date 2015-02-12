@@ -10,5 +10,6 @@ Feature: Agenda
 	@wip
 	Scenario: I see all workshops
 		Given there are 2 workshop
+		And there are 2 exhibitions
 		When I visit the workshops index
 		Then I can see 2 workshop
