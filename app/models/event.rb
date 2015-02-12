@@ -16,10 +16,10 @@ class Event < ActiveRecord::Base
 	end
 
 
-	def self.event_types
+	def self.type_enum
 		[:clubbing, :performance, :exhibition, :workshop]
 	end
-	self.event_types.each do |type|
+	self.type_enum.each do |type|
 		scope type, -> {where(type: type)}
 	end
 
