@@ -2,18 +2,19 @@ Festor::Application.routes.draw do
 
 	root "events#index"    
 	devise_for :users
-	resources :events, only: [:show, :index]
-	get "workshops" => "events#index", as: :workshops
-	get "workshops/(:slug)" => "events#show", as: :workshop
+	get "events/:type/:id" => "events#show"
 
-	get "exhibitions" => "events#index", as: :exhibitions
-	get "exhibitions/(:slug)" => "events#show", as: :exhibition
+	get "events/workshop" => "events#index", as: :workshops
+	get "events/workshop/(:slug)" => "events#show", as: :workshop
 
-	get "performances" => "events#index", as: :performances
-	get "performances/(:slug)" => "events#show", as: :performance
+	get "events/exhibition" => "events#index", as: :exhibitions
+	get "events/exhibition/(:slug)" => "events#show", as: :exhibition
 
-	get "clubbings" => "events#index", as: :clubbings
-	get "clubbings/(:slug)" => "events#show", as: :clubbing
+	get "events/performance" => "events#index", as: :performances
+	get "events/performance/(:slug)" => "events#show", as: :performance
+
+	get "events/clubbing" => "events#index", as: :clubbings
+	get "events/clubbing/(:slug)" => "events#show", as: :clubbing
 
 	resources :artists, only: [:index, :show]
   # scope "(:locale)", locale: /en|fr/, defaults: {locale: 'en'} do

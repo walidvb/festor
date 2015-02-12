@@ -1,18 +1,18 @@
-Given(/^there is an event$/) do
-  @event = Fabricate(:event)
+Given(/^there is an workshop$/) do
+  @workshop = Fabricate(:event, )
 end
 
-When(/^I visit the event$/) do
-  visit event_path(@event)
+When(/^I visit the workshop$/) do
+  visit workshops_path(@workshop)
 end
 
 Then(/^I can see its title$/) do
   expect(page).to have_content(@event.title)
 end
 
-Given(/^there are (\d+) (\w+)$/) do |count, event_type|
+Given(/^there are (\d+) (\w+) events$/) do |count, event_type|
 	count.to_i.times do 
-		Fabricate(:event, type: event_type)
+		Fabricate(:event, type: event_type.to_sym)
 	end
 end
 

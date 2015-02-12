@@ -6,7 +6,6 @@ class CreateEvents < ActiveRecord::Migration
     	t.string 		:slug, index: true
     	t.timestamp	:schedule_start
     	t.timestamp	:schedule_end
-    	t.string		:type
       t.timestamps
     end
   end

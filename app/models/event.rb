@@ -17,8 +17,12 @@ class Event < ActiveRecord::Base
 
 
 	def self.event_types
-		%w(Clubbing Performance Exhibition Workshop)
+		[:clubbing, :performance, :exhibition, :workshop]
 	end
+	self.event_types.each do |type|
+		scope type, -> {where(type: type)}
+	end
+
 	self.inheritance_column = :fake_column
 
 	attr_accessor :artist_ids
