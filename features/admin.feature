@@ -7,4 +7,4 @@ Feature: Administration
 
 	Scenario: I create an event
 		When I create an event
-		Then there should be an event
+		Then there should be an event 

@@ -13,7 +13,8 @@ class EventsController < ApplicationController
 	private
 
 	def get_type
-		@type = request.path.split('/')[2]
+		route_params = request.path.split('/')
+		@type = route_params[1]
 		!@type ||= :all
 	end
 end

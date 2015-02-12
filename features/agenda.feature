@@ -7,7 +7,6 @@ Feature: Agenda
 		When I visit the event
 		Then I can see its title
 
-	@wip
 	Scenario: I see all workshops
 		Given there are 2 workshop events
 		And there are 2 exhibition events

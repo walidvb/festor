@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
   
   # Redirects on successful sign in
   def after_sign_in_path_for(resource)
-    admin_path
+    rails_admin_path
   end
   
   # Only permits admin users

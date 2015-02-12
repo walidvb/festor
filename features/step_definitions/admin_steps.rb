@@ -8,7 +8,7 @@ When(/^I create an event$/) do
 	 find('.new_collection_link a').click
 	end
 	@event_attrs = {
-		"title"       => "the title",
+		"title_en"       => "the title",
 		"description" => "The Description",
 		"slug"        => "the_slug"
 	}
