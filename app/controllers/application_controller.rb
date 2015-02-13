@@ -27,6 +27,7 @@ class ApplicationController < ActionController::Base
   
   # Redirects on successful sign in
   def after_sign_in_path_for(resource)
+    cookies.permanent[:beta] = "sign"
     rails_admin_path
   end
   
@@ -45,7 +46,7 @@ class ApplicationController < ActionController::Base
   end
 
   def beta_only
-    redirect_to beta_path unless cookies[:beta].present?
+    redirect_to beta_path if !cookies[:beta].present? && /sessions|confirmation/.match(params[:controller]).nil?
   end
 
 end
