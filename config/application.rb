@@ -23,6 +23,8 @@ module Festor
     config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     config.i18n.default_locale = :en
     config.i18n.available_locales = [:en, :fr]
+    config.i18n.fallbacks = true
+    
     # don't generate RSpec tests for views and helpers
     config.generators do |g|
       g.test_framework :rspec, fixture: true
@@ -35,7 +37,7 @@ module Festor
 
     config.paperclip_defaults = {
       :storage => :fog,
-      :fog_credentials => {:provider => "Local", :local_root => "#{Rails.root}/public"},
+      :fog_credentials => {:provider => "Local", :local_root => "#{Rails.root}/public/assets"},
       :fog_directory => "",
       :fog_host => ''
     }

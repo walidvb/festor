@@ -3,7 +3,9 @@ class Event < ActiveRecord::Base
 	
 	has_many :bookings, dependent: :delete_all
 	has_many :artists, through: :bookings
-	accepts_nested_attributes_for :artists, :allow_destroy => true
+
+	accepts_nested_attributes_for :artists, allow_destroy: true
+	accepts_nested_attributes_for :translations, allow_destroy: true
 
 	validates :slug, uniqueness: true, presence: true
 
@@ -14,7 +16,6 @@ class Event < ActiveRecord::Base
 	def add_artist artist
 		Booking.create! event: self, artist: artist
 	end
-
 
 	def self.type_enum
 		[:clubbing, :performance, :exhibition, :workshop]
@@ -37,12 +38,6 @@ class Event < ActiveRecord::Base
 					booking.build({:block_id => id, :position => (index+1)})
 				end
 			end.map(&:artist)
-		end
-	end
-
-	rails_admin do 
-		configure :bookings do 
-			visible false
 		end
 	end
 end

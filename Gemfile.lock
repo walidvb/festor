@@ -190,7 +190,7 @@ GEM
     fog-storm_on_demand (0.1.0)
       fog-core
       fog-json
-    fog-terremark (0.0.3)
+    fog-terremark (0.0.4)
       fog-core
       fog-xml
     fog-vmfusion (0.0.1)
@@ -386,6 +386,10 @@ GEM
       remotipart (~> 1.0)
       safe_yaml (~> 1.0)
       sass-rails (>= 4.0, < 6)
+    rails_admin_globalize_field (0.3.2)
+      globalize (>= 4.0)
+      rails (>= 4.0)
+      rails_admin (>= 0.6.2)
     rails_autolink (1.1.6)
       rails (> 3.1)
     rails_layout (1.0.21)
@@ -506,7 +510,7 @@ DEPENDENCIES
   fog
   font-awesome-sass (= 4.2.0)
   friendly_id (= 5.0.4)
-  globalize (~> 4.0.3)
+  globalize
   guard-bundler
   guard-cucumber
   guard-rails
@@ -528,6 +532,7 @@ DEPENDENCIES
   rails (= 4.0.4)
   rails_12factor
   rails_admin
+  rails_admin_globalize_field
   rails_autolink
   rails_layout (= 1.0.21)
   rb-fchange

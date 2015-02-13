@@ -2,6 +2,7 @@ RailsAdmin.config do |config|
 
   ### Popular gems integration
   I18n.default_locale = :en
+  I18n.available_locales = [:en, :fr]
   ## == Devise ==
   config.authenticate_with do
     warden.authenticate! scope: :user
@@ -30,5 +31,41 @@ RailsAdmin.config do |config|
     ## With an audit adapter, you can add:
     # history_index
     # history_show
+  end
+
+  ## == Globalize ==
+  config.included_models = ['Artist', 'Artist::Translation', 'Event', 'Event::Translation']
+  
+  config.model 'Artist' do
+    configure :translations, :globalize_tabs
+    configure :bookings do 
+      visible false
+    end
+    configure :events do 
+      visible false
+    end
+  end
+
+  config.model 'Artist::Translation' do
+    visible false
+    configure :locale, :hidden do
+      help ''
+    end
+    include_fields :locale, *Artist.translated_attribute_names
+  end
+
+  config.model 'Event' do
+    configure :translations, :globalize_tabs
+    configure :bookings do 
+      visible false
+    end
+  end
+
+  config.model 'Event::Translation' do
+    visible false
+    configure :locale, :hidden do
+      help ''
+    end
+    include_fields :locale, *Event.translated_attribute_names
   end
 end

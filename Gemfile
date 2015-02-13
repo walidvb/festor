@@ -27,12 +27,13 @@ gem 'chosen-rails'
 gem "autoprefixer-rails"
 gem 'colorbox-rails'
 
+gem "rails_admin"
+
 #### I18
-gem 'globalize', '~> 4.0.3'
-#gem 'rails_admin_globalize_field'
+gem 'globalize'
+gem 'rails_admin_globalize_field'
 
 #gem 'activeadmin', github: 'activeadmin'
-gem "rails_admin"
 
 # development gems
 group :development do

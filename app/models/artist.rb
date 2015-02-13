@@ -1,8 +1,9 @@
 class Artist < ActiveRecord::Base
   translates :biography
+  accepts_nested_attributes_for :translations, allow_destroy: true
 
-	has_many :bookings, dependent: :delete_all
-	has_many :events, through: :bookings
+	# has_many :bookings, dependent: :delete_all
+	# has_many :events, through: :bookings
 
 	has_attached_file :profile_picture,
 		:styles => {
@@ -12,6 +13,7 @@ class Artist < ActiveRecord::Base
 			:large => "500x800>"
 			},
 			:default_url => "/images/missing.jpg"
+  
 	validates_attachment_content_type :profile_picture, :content_type => /\Aimage\/.*\Z/
   # add a delete_<asset_name> method: 
   attr_accessor :delete_profile_picture
@@ -22,12 +24,4 @@ class Artist < ActiveRecord::Base
   	Booking.create! event: event, artist: self
   end
 
-  rails_admin do 
-  	configure :bookings do 
-  		visible false
-  	end
-  	configure :events do 
-  		visible false
-  	end
-  end
 end
