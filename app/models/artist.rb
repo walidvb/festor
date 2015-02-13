@@ -2,8 +2,10 @@ class Artist < ActiveRecord::Base
   translates :biography
   accepts_nested_attributes_for :translations, allow_destroy: true
 
-	# has_many :bookings, dependent: :delete_all
-	# has_many :events, through: :bookings
+
+	has_many :bookings, dependent: :delete_all
+  has_many :events, through: :bookings
+  has_many :locations, through: :bookings
 
 	has_attached_file :profile_picture,
 		:styles => {

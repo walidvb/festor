@@ -1,7 +1,15 @@
 %h1= @event.title
+.schedule
+	Start: #{@event.schedule_start}
+	- if @event.schedule_end
+		End: #{@event.schedule_end}
+%h2 Artists
 %ul
 	- @artists.each do |artist|
 		%li
 			%h2
 				= artist.name
 			= image_tag artist.profile_picture.url(:large)
+%h2 Location
+.location
+	= @location.name

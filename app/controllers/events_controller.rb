@@ -6,8 +6,9 @@ class EventsController < ApplicationController
 	end
 
 	def show
-		@event = Event.includes(:artists).find(params[:id])
+		@event = Event.includes(:artists, :location).find(params[:id])
 		@artists = @event.artists
+		@location = @event.location
 	end
 
 	private

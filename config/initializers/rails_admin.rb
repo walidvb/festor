@@ -1,5 +1,7 @@
 RailsAdmin.config do |config|
 
+  config.main_app_name = ["Mapping 2015"]
+
   ### Popular gems integration
   I18n.default_locale = :en
   I18n.available_locales = [:en, :fr]
@@ -34,7 +36,7 @@ RailsAdmin.config do |config|
   end
 
   ## == Globalize ==
-  config.included_models = ['Artist', 'Artist::Translation', 'Event', 'Event::Translation']
+  config.included_models = ['Artist', 'Artist::Translation', 'Event', 'Event::Translation', 'Location', 'Booking']
   
   config.model 'Artist' do
     configure :translations, :globalize_tabs
@@ -42,6 +44,9 @@ RailsAdmin.config do |config|
       visible false
     end
     configure :events do 
+      visible false
+    end
+    configure :locations do 
       visible false
     end
   end
@@ -67,5 +72,14 @@ RailsAdmin.config do |config|
       help ''
     end
     include_fields :locale, *Event.translated_attribute_names
+  end
+
+  config.model 'Location' do
+    configure :events do 
+      visible false
+    end
+    configure :artists do 
+      visible false
+    end
   end
 end
