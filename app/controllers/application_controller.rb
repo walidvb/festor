@@ -47,4 +47,5 @@ class ApplicationController < ActionController::Base
   def beta_only
     redirect_to beta_path unless cookies[:beta].present?
   end
+
 end
