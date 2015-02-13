@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   #before_filter :set_locale
+  before_filter :beta_only
 
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
@@ -43,5 +44,7 @@ class ApplicationController < ActionController::Base
     Rails.application.routes.default_url_options[:locale] = I18n.locale
   end
 
-
+  def beta_only
+    redirect_to beta_path unless cookies[:beta].present?
+  end
 end
