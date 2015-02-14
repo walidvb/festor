@@ -4,7 +4,7 @@ Festor::Application.routes.draw do
   post "beta" => "beta#create"
 	root "events#index"    
 	devise_for :users
-	get "events/:id" => "events#show"
+	get "events/:id" => "events#show", as: :event
 
 	get "/workshop" => "events#index", as: :workshops
 

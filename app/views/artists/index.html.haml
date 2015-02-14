@@ -8,7 +8,9 @@
 
   - @artists.each do |artist|
     %tr
-      %td= link_to artist.name, artist_path(artist)
+      %a{href: artist_path(artist)}
+        %h3= artist.name
+        = image_tag artist.profile_picture.url(:medium)
 
 %br
 

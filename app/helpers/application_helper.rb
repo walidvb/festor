@@ -6,4 +6,8 @@ module ApplicationHelper
       @title = "#{value} | Application"      
     end
   end
+
+  def long_date
+  	"%e %B - %H:%M"
+  end
 end

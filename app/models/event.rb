@@ -9,11 +9,7 @@ class Event < ActiveRecord::Base
 	accepts_nested_attributes_for :artists, allow_destroy: true
 	accepts_nested_attributes_for :translations, allow_destroy: true
 
-	validates :slug, uniqueness: true, presence: true
-
-  # add a delete_<asset_name> method: 
-  attr_accessor :delete_profile_picture
-  before_validation { self.profile_picture.clear if self.delete_profile_picture == '1' }
+	validates :location, presence: true
 
 	def add_artist artist
 		Booking.create! event: self, artist: artist
