@@ -37,7 +37,7 @@ module Festor
       g.view_specs false
       g.helper_specs false
     end
-
+    config.assets.paths << Rails.root.join('vendor', 'assets', 'components')
     config.assets.precompile += ['application.css, application.js']
 
     config.paperclip_defaults = {
