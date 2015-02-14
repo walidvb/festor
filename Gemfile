@@ -59,7 +59,7 @@ end
 group :production do
   gem 'rails_12factor'
 end
-
+gem 'fabrication'
 group :development, :test do
   gem 'rails_layout', '1.0.21'
   gem 'fabrication'
