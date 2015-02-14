@@ -91,4 +91,15 @@ Festor::Application.configure do
     user_name: ENV["MANDRILL_USERNAME"],
     password: ENV["MANDRILL_PASSWORD"]
   }
+
+  config.paperclip_defaults = {
+    :storage => :ftp,
+    :path => "/public_html/mapping/assets/:attachment/:id/:style/:filename",
+    :url => "#{ENV['ASSET_HOST']}/mapping/assets/:attachment/:id/:style/:filename",
+    :ftp_servers => [{
+      :host     => ENV['FTP_SERVER'],
+      :user     => ENV['FTP_USERNAME'],
+      :password => ENV['FTP_PASSWORD']
+    }]
+  }
 end
