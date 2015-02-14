@@ -38,4 +38,22 @@ class Event < ActiveRecord::Base
 			end.map(&:artist)
 		end
 	end
+
+	rails_admin do
+    configure :translations, :globalize_tabs
+    configure :bookings do 
+      visible false
+    end
+    list do 
+      field :title do
+      	# pretty_value do 
+      	#  bindings[:view].link_to(bindings[:object].title, edit_path(model_name: bindings[:object].class)) << value
+      	# end
+      end
+      field :schedule_start do
+      	strftime_format("%e %B")
+      end
+      field :artists
+    end
+  end
 end
