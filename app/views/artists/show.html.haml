@@ -4,7 +4,8 @@
 %h3 Playing at:
 %ul
 - @bookings.each do |b|
-	%li
-		.date= b.event.schedule_start.strftime("%A %e %b")
+	%li.location
 		%h5= link_to b.event.title, event_path(b.event)
-= link_to 'Back to all artists', artists_path
+		.name= "#{b.event.schedule_start.strftime("%A %e %b")} – #{b.location.name}"
+
+%div= link_to 'Back to all artists', artists_path
