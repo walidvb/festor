@@ -39,6 +39,7 @@ module Festor
     end
     config.assets.paths << Rails.root.join('vendor', 'assets', 'components')
     config.assets.precompile += ['application.css, application.js']
+    config.assets.precompile += ['rails_admin/rails_admin.css', 'rails_admin/rails_admin.js']
 
     config.paperclip_defaults = {
       :storage => :fog,
