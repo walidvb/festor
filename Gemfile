@@ -37,8 +37,6 @@ gem 'rails-i18n', '~> 4.0.0'
 gem 'globalize'
 gem 'rails_admin_globalize_field'
 
-#gem 'activeadmin', github: 'activeadmin'
-
 # development gems
 group :development do
 	gem 'better_errors'
