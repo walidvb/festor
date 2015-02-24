@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/walidvb/paperclip-sftp.git
+  revision: 0a54776deb3477dc01d298a73837740b62824202
+  specs:
+    paperclip-sftp (1.0.3)
+      net-sftp (>= 2.0.5)
+      paperclip (>= 3.2.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -316,6 +324,8 @@ GEM
     nested_form (0.3.2)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
+    net-sftp (2.1.2)
+      net-ssh (>= 2.6.5)
     net-ssh (2.9.2)
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
@@ -328,8 +338,6 @@ GEM
       activesupport (>= 3.0.0)
       cocaine (~> 0.5.3)
       mime-types
-    paperclip-storage-ftp (1.2.3)
-      paperclip
     pg (0.18.1)
     polyglot (0.3.5)
     posix-spawn (0.3.10)
@@ -530,7 +538,7 @@ DEPENDENCIES
   launchy
   letter_opener
   paperclip (~> 4.1)
-  paperclip-storage-ftp
+  paperclip-sftp (~> 1.0.0)!
   pg
   pry-rails
   pry-rescue

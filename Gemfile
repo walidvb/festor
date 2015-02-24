@@ -18,7 +18,8 @@ gem 'font-awesome-sass', '4.2.0'
 gem 'friendly_id', '5.0.4'
 gem 'fog'
 gem "paperclip", '~> 4.1'
-gem "paperclip-storage-ftp"
+gem 'paperclip-sftp', '~> 1.0.0', github: 'walidvb/paperclip-sftp'
+#gem "paperclip-storage-ftp"
 
 gem 'compass-rails', '2.0.0'
 gem 'rails_autolink'
