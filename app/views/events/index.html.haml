@@ -1,6 +1,0 @@
-%h1 Listing events
-%ul.events
-  - @events.each do |event|
-    %li.event{class: event.type}= link_to(event.title, event_path(event))
-%br/
-= link_to 'New Event', new_path(model_name: :event)

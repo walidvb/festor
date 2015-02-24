@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
 	before_filter :get_type, only: [:index]
+
 	def index
 		@events = Event.send(@type.to_sym)
 	end

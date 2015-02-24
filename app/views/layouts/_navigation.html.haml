@@ -1,0 +1,20 @@
+%nav.navbar.navbar-inverse
+  .container
+    .navbar-header
+      %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", :type => "button"}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      = link_to t('home'), root_path, class: 'navbar-brand'
+    .collapse.navbar-collapse
+      %ul.nav.navbar-nav= render 'layouts/navigation_links'
+    %ul
+      %li
+        = link_to 'events', workshops_path
+      %li
+        = link_to 'exhibitions', exhibitions_path
+      %li
+        = link_to 'workshop', workshops_path
+      %li
+        = link_to 'artists', artists_path

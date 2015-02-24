@@ -1,6 +1,7 @@
 class Event < ActiveRecord::Base
 	translates :title, :description
 	
+	scope :featured, -> {where(featured: true)}
 	has_many :bookings, dependent: :delete_all
 	has_many :artists, through: :bookings
 
@@ -10,6 +11,17 @@ class Event < ActiveRecord::Base
 	accepts_nested_attributes_for :translations, allow_destroy: true
 
 	validates :location, presence: true
+	validates :main_image, presence: true
+	has_attached_file :main_image,
+		:styles => {
+			:thumb => "100x100#",
+			:medium => "350x200#",
+			:large => "500x800>"
+		},
+		:default_url => "/images/missing.jpg"
+  
+	validates_attachment_content_type :main_image, :content_type => /\Aimage\/.*\Z/
+
 
 	def add_artist artist
 		Booking.create! event: self, artist: artist

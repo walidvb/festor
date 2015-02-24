@@ -1,22 +1,19 @@
 Festor::Application.routes.draw do
-	scope(path: "/2015") do 
-	  get "beta" => "beta#new"
-	  post "beta" => "beta#create"
-		root "events#index"    
-		devise_for :users
-		get "events/:id" => "events#show", as: :event
+  get "beta" => "beta#new"
+  post "beta" => "beta#create"
+	root "home#index"
 
-		get "/workshop" => "events#index", as: :workshops
+	devise_for :users
+	get "events/:id" => "events#show", as: :event
 
-		get "/exhibition" => "events#index", as: :exhibitions
+	get "/workshop" => "events#index", as: :workshops
 
-		get "/performance" => "events#index", as: :performances
+	get "/exhibition" => "events#index", as: :exhibitions
 
-		get "/clubbing" => "events#index", as: :clubbing
+	get "/performance" => "events#index", as: :events
 
-		resources :artists, only: [:index, :show]
-	  # scope "(:locale)", locale: /en|fr/, defaults: {locale: 'en'} do
-	  # end
-		mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-	end
+	resources :artists, only: [:index, :show]
+  # scope "(:locale)", locale: /en|fr/, defaults: {locale: 'en'} do
+  # end
+	mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 end
