@@ -5,9 +5,6 @@ Festor::Application.routes.draw do
 	devise_for :users
 	get "events/:id" => "events#show", as: :event
 
-	devise_for :users
-	get "events/:id" => "events#show", as: :event
-
 	get "/workshop" => "events#index", as: :workshops
 
 	get "/exhibition" => "events#index", as: :exhibitions

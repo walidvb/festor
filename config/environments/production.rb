@@ -95,7 +95,7 @@ Festor::Application.configure do
   config.paperclip_defaults = {
     :storage => :sftp,
     :path => "/assets/:attachment/:id/:style/:filename",
-    :url => "#{ENV['ASSET_HOST']}/2015/assets/:attachment/:id/:style/:filename",
+    :url => "#{ENV['ASSET_HOST']}/assets/:attachment/:id/:style/:filename",
     :ftp_servers => [{
       :host     => ENV['SFTP_SERVER'],
       :user     => ENV['SFTP_USERNAME'],
