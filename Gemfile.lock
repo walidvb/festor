@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/walidvb/paperclip-sftp.git
-  revision: 0a54776deb3477dc01d298a73837740b62824202
+  revision: 4e7c08b857d380ab0a632c36779a6544b6368b01
   specs:
     paperclip-sftp (1.0.3)
       net-sftp (>= 2.0.5)
@@ -126,7 +126,7 @@ GEM
       launchy (~> 2.1)
       mail (~> 2.2)
     erubis (2.7.0)
-    excon (0.44.2)
+    excon (0.44.3)
     execjs (2.3.0)
     fabrication (2.12.2)
     ffi (1.9.6)

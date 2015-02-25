@@ -96,10 +96,11 @@ Festor::Application.configure do
     :storage => :sftp,
     :path => "/assets/:attachment/:id/:style/:filename",
     :url => "#{ENV['ASSET_HOST']}/assets/:attachment/:id/:style/:filename",
-    :ftp_servers => [{
+    :sftp_options => {
       :host     => ENV['SFTP_SERVER'],
       :user     => ENV['SFTP_USERNAME'],
-      :password => ENV['SFTP_PASSWORD']
-    }]
+      :password => ENV['SFTP_PASSWORD'],
+      :port     => ENV['SFTP_PORT']
+    }
   }
 end

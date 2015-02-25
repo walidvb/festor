@@ -23,10 +23,12 @@ test: &test
   username: walid
 
 production:
-  adapter: sqlite3
-  database: db/production.sqlite3
+  adapter: postgresql
+  host: localhost
+  database: festor
   pool: 5
   timeout: 5000
+  username: walid
 
 cucumber:
   <<: *test
