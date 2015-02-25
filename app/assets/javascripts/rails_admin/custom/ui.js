@@ -6,7 +6,7 @@ $(document).on('rails_admin.dom_ready', function(){
 		plainPaste: true,
 		paragraphy: false,
 		placeholder: "Edit Me!",
-		buttons: ['undo', 'redo' , 'sep', 'bold', 'italic', 'underline', 'sep', 'link', 'sep', 'html']
+		buttons: ['undo', 'redo' , 'sep', 'bold', 'italic', 'underline', 'sep', 'link', 'sep', 'formatBlock', 'sep', 'html']
 	})
 });
 

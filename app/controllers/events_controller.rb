@@ -9,6 +9,7 @@ class EventsController < ApplicationController
 		@event = Event.includes(:artists, :location).find(params[:id])
 		@artists = @event.artists
 		@location = @event.location
+		@links = @event.links
 	end
 
 	private

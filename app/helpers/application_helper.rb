@@ -7,6 +7,10 @@ module ApplicationHelper
     end
   end
 
+  def print_link link
+    link_to link.text_to_show, link.url, target: "_blank"
+  end
+
   def long_date
   	"%e %B - %H:%M"
   end

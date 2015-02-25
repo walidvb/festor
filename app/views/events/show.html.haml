@@ -8,6 +8,9 @@
 			= schedule_for(@event)
 			= @location.name
 			= @location.address.html_safe
+.links
+	- @links.each do |l|
+		= print_link(l)
 .prev-next-navigation
 	- if previous_event = @event.previous
 		.prev= link_to 'previous', event_path(previous_event)

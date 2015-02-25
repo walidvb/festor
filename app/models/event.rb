@@ -1,6 +1,6 @@
 class Event < ActiveRecord::Base
 	translates :title, :description
-	
+	has_many :links, dependent: :destroy	
 	
 	scope :featured, -> {where(featured: true)}
 	has_many :bookings, dependent: :delete_all
@@ -17,7 +17,7 @@ class Event < ActiveRecord::Base
 		:styles => {
 			:thumb => "100x100#",
 			:medium => "350x200#",
-			:large => "500x800>"
+			:large => "1000x800>"
 		},
 		:default_url => "/images/missing.jpg"
   
