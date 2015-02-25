@@ -29,10 +29,10 @@ class Event < ActiveRecord::Base
 	end
 
 	def next 
-		Event.where('schedule_start > ?', self.schedule_start).first
+		Event.where('schedule_start > ? AND type = ?', self.schedule_start, self.type).first
 	end
 	def previous
-		Event.where('schedule_start < ?', self.schedule_start).last
+		Event.where('schedule_start < ? AND type = ?', self.schedule_start, self.type).last
 	end
 
 	def self.type_enum
