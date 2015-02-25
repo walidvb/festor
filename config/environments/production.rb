@@ -93,13 +93,13 @@ Festor::Application.configure do
   }
 
   config.paperclip_defaults = {
-    :storage => :ftp,
-    :path => "/public_html/mapping/assets/:attachment/:id/:style/:filename",
-    :url => "#{ENV['ASSET_HOST']}/mapping/assets/:attachment/:id/:style/:filename",
+    :storage => :sftp,
+    :path => "/assets/:attachment/:id/:style/:filename",
+    :url => "#{ENV['ASSET_HOST']}/2015/assets/:attachment/:id/:style/:filename",
     :ftp_servers => [{
-      :host     => ENV['FTP_SERVER'],
-      :user     => ENV['FTP_USERNAME'],
-      :password => ENV['FTP_PASSWORD']
+      :host     => ENV['SFTP_SERVER'],
+      :user     => ENV['SFTP_USERNAME'],
+      :password => ENV['SFTP_PASSWORD']
     }]
   }
 end
