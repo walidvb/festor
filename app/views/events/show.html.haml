@@ -1,18 +1,16 @@
-%h1= @event.title
+.tile
+	= image_tag @event.main_image.url(:large)
+	.info
+		.type
+			= @event.type
+		%h1= @event.title
+		.location
+			= schedule_for(@event)
+			= @location.name
+			= @location.address.html_safe
+.prev-next-navigation
+	- if previous_event = @event.previous
+		.prev= link_to 'previous', event_path(previous_event)
+	- if next_event = @event.next
+		.next= link_to 'next', event_path(next_event)
 = @event.description.html_safe
-.schedule
-	%p 
-		#{@event.schedule_start.strftime(long_date)}
-		- if @event.schedule_end
-			= "&nbsp;- #{@event.schedule_end.strftime(long_date)}".html_safe
-- if !@artists.empty?
-	%h2 Artists
-	%ul
-		- @artists.each do |artist|
-			%li
-				%h2
-					= artist.name
-				= image_tag artist.profile_picture.url(:large)
-%h2 Location
-.location
-	= @location.name

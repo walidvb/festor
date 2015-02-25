@@ -1,6 +1,7 @@
 class Event < ActiveRecord::Base
 	translates :title, :description
 	
+	
 	scope :featured, -> {where(featured: true)}
 	has_many :bookings, dependent: :delete_all
 	has_many :artists, through: :bookings
@@ -25,6 +26,13 @@ class Event < ActiveRecord::Base
 
 	def add_artist artist
 		Booking.create! event: self, artist: artist
+	end
+
+	def next 
+		Event.where('schedule_start > ?', self.schedule_start).first
+	end
+	def previous
+		Event.where('schedule_start < ?', self.schedule_start).last
 	end
 
 	def self.type_enum

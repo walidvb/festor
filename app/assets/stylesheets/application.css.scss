@@ -5,4 +5,33 @@
  *= require rails_admin/ra.globalize_tabs
  */
 @import "framework_and_overrides";
+@import "variables";
+@import "ui_components";
+@import "artists";
+@import "events";
+@import "home";
 
+
+
+
+
+
+// RESETS
+
+ul{
+	li{
+		list-style: none;
+	}
+}
+
+main{
+	a{
+		background-color: $brand-color;
+		color: $black;
+	}
+}
+
+.footer-logo{
+	max-width: 50%;
+	margin: auto;
+}

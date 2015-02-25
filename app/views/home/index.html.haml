@@ -1,14 +1,17 @@
-
 %ul.events
 	%li
-		= image_tag @exhibition.main_image.url
-		= link_to t("Exhibitions"), exhibitions_path
+		= link_to exhibitions_path do
+			= image_tag @exhibition.main_image.url
+			%h2.section-title Exhibitions
 	%li
-		= image_tag @workshop.main_image.url
-		= link_to t("Workshops"), workshops_path
+		= link_to workshops_path do
+			= image_tag @workshop.main_image.url
+			%h2.section-title Workshops
 	%li
-		= image_tag @artist.profile_picture.url
-		= link_to t("Artists"), artists_path
+		= link_to artists_path do
+			= image_tag @artist.profile_picture.url
+			%h2.section-title Artists
 	%li
-		= image_tag @event.main_image.url
-		= link_to t("Event"), events_path
+		= link_to events_path do
+			= image_tag @event.main_image.url
+			%h2.section-title Events

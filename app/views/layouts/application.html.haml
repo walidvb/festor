@@ -8,13 +8,13 @@
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
   %body
-    #wrap
-      %header= render 'layouts/navigation'
+    %header= render 'layouts/navigation'
+    %main
       .container
         .row
           .col-sm-6.col-sm-offset-3.text-center
             = render 'layouts/messages'
-        .row
-          .col-sm-12
-            = yield
+          .row
+            .col-sm-12
+              = yield
     = render 'layouts/footer'

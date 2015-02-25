@@ -1,0 +1,5 @@
+%ul
+	- @events.each do |event|
+		%li
+			= link_to event_path(event) do 
+				= image_tag event.main_image.url

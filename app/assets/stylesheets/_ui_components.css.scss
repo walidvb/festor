@@ -1,0 +1,8 @@
+.link{
+	background-color: $brand-color;
+	color: $black;
+	&:hover{
+		color: lighten($black, 30%);
+	}
+}
+
