@@ -13,7 +13,8 @@ class Artist < ActiveRecord::Base
 			:medium => "350x200#",
 			:large => "500x800>"
 		},
-		:default_url => "/images/missing.jpg"
+		:default_url => "/images/missing.jpg",
+		:use_timestamp => false
   
 	validates_attachment_content_type :profile_picture, :content_type => /\Aimage\/.*\Z/
 

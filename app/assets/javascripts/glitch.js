@@ -7,6 +7,7 @@ $(document).ready(function(){
       currentGlitch.onload = function(){
         var originalImg = new Image();
         originalImg.src = this.src;
+        originalImg.crossOrigin = "*"
         console.log("originalImg.src:", originalImg.src);
         var canvas = document.createElement('canvas');
         var width = originalImg.width;

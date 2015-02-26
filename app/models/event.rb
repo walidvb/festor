@@ -19,7 +19,8 @@ class Event < ActiveRecord::Base
 			:medium => "350x200#",
 			:large => "1000x800>"
 		},
-		:default_url => "/images/missing.jpg"
+		:default_url => "/images/missing.jpg",
+		:use_timestamp => false
   
 	validates_attachment_content_type :main_image, :content_type => /\Aimage\/.*\Z/
 
