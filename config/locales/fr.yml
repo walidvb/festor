@@ -1,2 +1,7 @@
 fr:
-  home: "Accueil"
+  menu:
+    home: "Acceuil"
+    events: "Soirées"
+    artists: "Artistes"
+    workshops: "Workshops"
+    exhibitions: "Expos"

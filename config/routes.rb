@@ -1,6 +1,7 @@
 Festor::Application.routes.draw do
-	root "home#index"
   get "beta" => "beta#new"
+  scope "(:locale)", locale: /en|fr/, defaults: {locale: 'en'} do
+	root "home#index"
   post "beta" => "beta#create"
 	devise_for :users
 	get "events/:id" => "events#show", as: :event
@@ -12,7 +13,6 @@ Festor::Application.routes.draw do
 	get "/performance" => "events#index", as: :events
 
 	resources :artists, only: [:index, :show]
-  # scope "(:locale)", locale: /en|fr/, defaults: {locale: 'en'} do
-  # end
+  end
 	mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 end

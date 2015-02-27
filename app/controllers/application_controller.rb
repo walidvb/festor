@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  #before_filter :set_locale
+  before_filter :set_locale
   before_filter :beta_only
 
   # Prevent CSRF attacks by raising an exception.
