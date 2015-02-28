@@ -1,12 +1,10 @@
 %nav.navbar.navbar-inverse
   .container
     .navbar-header
-      %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", :type => "button"}
-        %span.sr-only Toggle navigation
-        %span.icon-bar
-        %span.icon-bar
-        %span.icon-bar
+      
       = link_to t('home'), root_path, class: 'navbar-brand'
-    .collapse.navbar-collapse
-        = render 'layouts/nav_static_pages.html.haml'
       = render 'layouts/navigation_links'
+      %a{"data-target" => ".nav-more", "data-toggle" => "collapse", :type => "button", href: "#"}
+        More
+      .collapse.nav-more
+        = render 'layouts/nav_static_pages.html.haml'
