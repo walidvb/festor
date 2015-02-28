@@ -22,4 +22,17 @@ class Artist < ActiveRecord::Base
   	Booking.create! event: event, artist: self
   end
 
+	rails_admin do
+    configure :translations, :globalize_tabs
+    configure :bookings do 
+      visible false
+    end
+    configure :events do 
+      visible false
+    end
+    configure :locations do 
+      visible false
+    end
+  end
+
 end
