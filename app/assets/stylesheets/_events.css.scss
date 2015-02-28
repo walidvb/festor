@@ -2,6 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
 // INDEX
 #single-events-list{
 	.mix{
@@ -12,4 +13,30 @@
 // SHOW
 .events-list{
 	@include n-cols($children: ".event");
+}
+
+.tile{
+	display: block;
+	background-color: white;
+	text-align: center;
+	.tile-header{
+		width: 100%;
+	}
+	.info{
+		width: 100%;
+		.event-type{
+			@extend .tile-type;
+		}
+		&:before{
+			@extend .triangle-up;
+		}
+	}
+}
+
+.tile-type{
+	text-decoration: underline;
+	font-weight: bold;
+}
+.tile-title{
+	margin-top: 0;
 }
