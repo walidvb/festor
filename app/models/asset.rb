@@ -1,6 +1,5 @@
 class Asset < ActiveRecord::Base
-	skip_before_filter :beta_only
-	
+
 	has_attached_file :image,
 		:styles => {
 			:large => "960>"
