@@ -18,6 +18,12 @@
 
 // RESETS
 
+body{
+	background-color: $background;
+}
+img, canvas{
+	max-width: 100%;
+}
 ul{
 	li{
 		list-style: none;
