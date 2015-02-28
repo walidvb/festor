@@ -1,9 +1,8 @@
 class Asset < ActiveRecord::Base
-
+	skip_before_filter :beta_only
+	
 	has_attached_file :image,
 		:styles => {
-			:thumb => "100x100#",
-			:medium => "350x200#",
 			:large => "960>"
 		},
 		:default_url => "/images/missing.jpg",

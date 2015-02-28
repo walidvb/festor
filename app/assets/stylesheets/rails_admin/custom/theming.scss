@@ -14,3 +14,8 @@
 *= require_tree ../../../../../vendor/assets/components/froala/css/
 */
 
+
+// reomve the unlicenced warning from froala
+[href="http://editor.froala.com"] {
+	display: none!important;
+}
