@@ -10,4 +10,7 @@
   Test me: (actual color should be the one defined in variables.css.scss if you did)
 
   body{ background-color: $linkColor; }
+  
+*= require froala/js/froala_editor.min.js
 */
+

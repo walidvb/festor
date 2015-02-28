@@ -15,4 +15,3 @@
 //= require turbolinks
 //= require bootstrap
 //= require_tree .
-//= require medium-editor/dist/js/medium-editor.min.js
