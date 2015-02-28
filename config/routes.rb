@@ -1,5 +1,6 @@
 Festor::Application.routes.draw do
 
+
   get "beta" => "beta#new"
   match "/upload" => "assets#upload", via: :post
   scope "(:locale)", locale: /en|fr/, defaults: {locale: 'en'} do
@@ -15,6 +16,8 @@ Festor::Application.routes.draw do
 		get "/performance" => "events#index", as: :events
 
 		resources :artists, only: [:index, :show]
+	  resources :static_pages, only: [:show]
+	  
 		mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   end
 end

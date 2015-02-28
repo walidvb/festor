@@ -1,0 +1,4 @@
+%ul#nav-static-pages
+- @static_pages.each do |sp|
+	%li 
+		= link_to(t(sp.slug), static_page_path(sp))
