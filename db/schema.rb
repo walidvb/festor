@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150228194535) do
+ActiveRecord::Schema.define(version: 20150301020835) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,10 +38,10 @@ ActiveRecord::Schema.define(version: 20150228194535) do
   end
 
   create_table "assets", force: true do |t|
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.integer  "image_file_size"
-    t.datetime "image_updated_at"
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -81,6 +81,7 @@ ActiveRecord::Schema.define(version: 20150228194535) do
     t.integer  "main_image_file_size"
     t.datetime "main_image_updated_at"
     t.string   "buy_link"
+    t.string   "category"
   end
 
   add_index "events", ["location_id"], name: "index_events_on_location_id", using: :btree

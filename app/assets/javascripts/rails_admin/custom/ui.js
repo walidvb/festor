@@ -1,22 +1,46 @@
 //= require froala/js/froala_editor.min.js
 //= require froala/js/plugins/file_upload.min.js
 //= require froala/js/plugins/video.min.js
+//= require froala/js/plugins/lists.min.js
 //= require froala/js/plugins/urls.min.js
 
 $(document).on('rails_admin.dom_ready', function(){
 	var csrf_token = $('meta[name="csrf-token"]').attr('content');
+	var isSinglePage = $('#edit_static_page').length > 0
+	var buttons;
+	if(isSinglePage)
+	{
+		buttons = ['undo', 'redo' , 'sep', 'bold', 'italic', 'underline', 'sep', 'link', 'sep', 'formatBlock','sep', 'insertUnorderedList', 'sep', 'insertImage', 'insertVideo', 'uploadFile', 'sep', 'html']
+	}
+	else
+	{
+		buttons = ['undo', 'redo' , 'sep', 'bold', 'italic', 'underline', 'sep', 'link', 'sep', 'formatBlock','sep', 'insertImage', 'insertVideo', 'uploadFile', 'sep', 'html'];
+	}
 	$('textarea').editable({
 		inlineMode: false,
 		plainPaste: true,
+		blockTags: {
+			normal: "p",
+			h1: "h1",
+			h2: "h2", 
+			h3: "h3", 
+			h4: "h4"
+		},
+		alwaysBlank: true,
 		paragraphy: false,
 		placeholder: "Edit Me!",
 		imageUploadURL: "/upload",
-		imageUploadParams: {
-			authentication_token: csrf_token
-		},
+		fileUploadURL: "/upload",
+		spellcheck: true,
+		pasteImage:true ,
+		imageLink: true,
+		imageMove: true,
+		paragraphy: true,
+		defaultImageTitle: "Mapping Festival 2015",
 		headers: {
 			'X-CSRF-Token': csrf_token
 		},
-		buttons: ['undo', 'redo' , 'sep', 'bold', 'italic', 'underline', 'sep', 'link', 'sep', 'formatBlock','sep', 'insertImage', 'insertVideo', 'uploadFile', 'sep', 'html']
+		buttons: buttons,
+		height: 300,
 	})
 });

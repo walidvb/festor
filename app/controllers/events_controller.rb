@@ -3,6 +3,11 @@ class EventsController < ApplicationController
 
 	def index
 		@events = Event.send(@type.to_sym)
+		if @type == :single_event
+			render 'index_single_events'
+		else
+			render 'index'
+		end
 	end
 
 	def show
@@ -16,7 +21,6 @@ class EventsController < ApplicationController
 
 	def get_type
 		route_params = request.path.split('/')
-		@type = route_params[1]
-		!@type ||= :all
+		@type = params[:type] || :all
 	end
 end

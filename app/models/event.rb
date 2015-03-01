@@ -37,8 +37,13 @@ class Event < ActiveRecord::Base
 	end
 
 	def self.type_enum
-		[:clubbing, :performance, :exhibition, :workshop]
+		[:single_event, :exhibition, :workshop, :single_event]
 	end
+
+	def self.category_enum
+		[:clubbing, :perfos, :film, :round_table]
+	end
+
 	self.type_enum.each do |type|
 		scope type, -> {where(type: type)}
 	end
@@ -74,6 +79,7 @@ class Event < ActiveRecord::Base
       field :schedule_start do
       	strftime_format("%e %B")
       end
+      field :category
       field :artists
     end
   end
