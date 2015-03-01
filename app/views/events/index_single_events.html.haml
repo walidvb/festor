@@ -2,7 +2,9 @@
 	Filters:
 	- Event.category_enum.each do |cat|
 		.filter{data: {filter: cat}} #{cat}
-#single-events-list
-	Events
-	- @events.each do |e|
-		.event{class: "#{e.category}", data: {position: e.id}}= e.title
+#single-events-list.events-list
+	%div Events
+	- @events.each do |event|
+		.mix.event{class: "#{event.category}", data: {position: event.id}}
+			= link_to event_path(event) do 
+				= render 'event_tile', event: event, location: event.location, image_size: :tile

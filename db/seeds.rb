@@ -48,7 +48,7 @@ Fabricate :event, type: :exhibition, title: "The Exhibition", schedule_start: 2.
 Fabricate :event, type: :performance, title: "Performance", main_image: pic, location: location, schedule_start: 2.days.from_now
 
 Event.category_enum.each do |cat|
-	Fabricate.times(3, :event, type: :single_event, category: cat, location: location)
+	Fabricate.times(3, :event, type: :single_event, category: cat, location: location, main_image: pic)
 end
 
 static_pages = %w(infos about partners gallery previous_editions)

@@ -1,4 +1,18 @@
+
+
+// colors
 $brand-color: #FFEE00;
 $black: #111111;
 
+// typography
 $section-size: 16px;
+
+// media queries
+$mobile                 : "(max-width: 767px)";
+$portrait               : "(orientation: portrait)";
+$landscape              : "(orientation: landscape)";
+$xs                     : $mobile;
+$tablet                 : "(min-width: 767px)";
+$sm                     : $tablet;
+$md                     : "(min-width: 991px)";
+$lg                     : "(min-width: 1200px)";

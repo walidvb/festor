@@ -7,7 +7,7 @@
     = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
-  %body
+  %body{class: "#{controller.controller_name}-page #{controller.action_name}-page #{yield(:body_class)} #{'debug' if Rails.env.development?}"}
     - if @home_page
       .date
         7 – 17 #{l(Date.parse("7 may"), format: "%b")}

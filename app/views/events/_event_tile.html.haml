@@ -1,0 +1,10 @@
+.tile
+	= image_tag event.main_image.url(image_size), class: 'glitch'
+	.info
+		.type
+			= event.type
+		%h1= event.title
+		.location
+			= schedule_for(event)
+			= location.name
+			= location.address.html_safe
