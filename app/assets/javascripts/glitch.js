@@ -13,13 +13,11 @@ $(document).ready(function(){
         foo.glitchOnHover();
       }
     }
-    else if(currentGlitch.nodeName == 'A')
-    {
-      var elem = currentGlitch;
-      var html = elem.outerHTML;
-      rasterizeHTML.drawHTML( html );
-    }
   }
+  setInterval(function(){
+    var thisGlitch = getRandomVisibleCanvas(glitchables);
+    thisGlitch.glitchItFor(500);
+  }, 200);
   function Glitchable(img){
     this.originalImg = img;
   }
@@ -57,6 +55,27 @@ $(document).ready(function(){
     }
   };
   
+  Glitchable.prototype.reset = function(){
+    this.ctx.putImageData(this.originalImgData, 0, 0);
+  };
+
+  Glitchable.prototype.glitchItFor = function(millis){
+    var that = this;
+    var startingTime = new Date().getTime();
+    function glitchInterval(){
+      console.log("glitching:");
+      that.glitchIt();
+      if(new Date().getTime() - startingTime < millis)
+      {
+        setTimeout(glitchInterval, Math.random()*200+20);
+      }
+      else{
+        // that.reset();
+      }
+    };
+    setTimeout(glitchInterval, Math.random()*200+20);
+  };
+
   Glitchable.prototype.glitchIt = function(parameters){
     var parameters = parameters || {
       amount: Math.random()*100,
@@ -74,11 +93,17 @@ $(document).ready(function(){
 
   
   function getRandomVisibleCanvas(glitchables){
+    var visibles = [];
     for(var i = 0; i < glitchables.length; i++){
       var $canvas = $(glitchables[i].canvas);
       var top = $canvas.offset().top;
-      return top + $canvas.height() < window.scrollTop() ||top > window.scrollTop() + window.innerHeight
+      if($(window).scrollTop() < top + $canvas.height() && top < $(window).height() + $(window).scrollTop())
+      {
+        visibles.push(glitchables[i]);
+      }
     }
+    var i = randomInt(0, visibles.length - 1);
+    return visibles[i];
   }
   // Utils
   function randomInt(min, max) {
