@@ -2,6 +2,14 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+// SHARED
+
+.info{
+	.event-title{
+		margin: 0 0 10px;
+		font-size: large;
+	}
+}
 
 // INDEX
 #single-events-list{
@@ -30,6 +38,8 @@
 		}
 		&:before{
 			@extend .triangle-up;
+			transform: translateY(-25px) translateX(-25px);
+			position: absolute;
 		}
 	}
 }

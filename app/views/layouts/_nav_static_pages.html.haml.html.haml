@@ -1,4 +1,4 @@
 %ul#nav-static-pages.nav.navbar-nav.pull-right
 	- @static_pages.each do |sp|
 		%li 
-			= link_to(t(sp.slug), static_page_path(sp))
+			= link_to(t(sp.title), static_page_path(sp))

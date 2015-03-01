@@ -1,8 +1,8 @@
 class StaticPage < ActiveRecord::Base
 	translates :body, :title, :slug
-	before_save
 	accepts_nested_attributes_for :translations, allow_destroy: true
 
+	validates :body, presence: true
 	scope :static, ->{where(news: false).order(:position)}
 	scope :news, ->{where(news: true).order(:created_at)}
 

@@ -1,6 +1,6 @@
 $(document).ready(function(){
   // assuming there's a loaded img and a canvas element in the DOM.
-  var myGlitches = document.getElementsByTagName('img');
+  var myGlitches = document.getElementsByClassName('glitch');
   for(var i = 0; i < myGlitches.length; i++){
     var currentGlitch = myGlitches[i];
     if(currentGlitch.nodeName == "IMG"){
@@ -34,7 +34,7 @@ $(document).ready(function(){
   }
 
   function glitchOnHover(originalImg, canvas, ctx){
-    var my_img_data = ctx.getImageData(0, 0, canvas.clientWidth, canvas.clientHeight);
+    var my_img_data = ctx.getImageData(0, 0, canvas.width, canvas.height);
     var glitchInterval = null;
     function drawOriginalImage() {
       clearInterval(glitchInterval);
