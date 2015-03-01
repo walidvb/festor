@@ -54,6 +54,7 @@ group :development do
   gem 'pry-rails'
   gem 'letter_opener'
   gem 'coffee-rails-source-maps'
+  gem 'bullet'
 end
 
 # production gems for heroku

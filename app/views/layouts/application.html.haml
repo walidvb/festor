@@ -8,6 +8,12 @@
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
   %body
+    - if @home_page
+      .date
+        7 – 17 #{l(Date.parse("7 may"), format: "%b")}
+        = t("shared.geneva")
+      .motto
+        = t("shared.motto")
     %header= render 'layouts/navigation'
     %main
       .container

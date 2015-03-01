@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150301020835) do
+ActiveRecord::Schema.define(version: 20150301131607) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -112,6 +112,7 @@ ActiveRecord::Schema.define(version: 20150301020835) do
     t.datetime "updated_at"
     t.string   "slug"
     t.text     "body"
+    t.string   "title"
   end
 
   add_index "static_page_translations", ["locale"], name: "index_static_page_translations_on_locale", using: :btree
@@ -121,6 +122,7 @@ ActiveRecord::Schema.define(version: 20150301020835) do
     t.integer  "position"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "news",       default: true
   end
 
   create_table "users", force: true do |t|

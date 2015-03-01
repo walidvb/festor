@@ -1,4 +1,6 @@
 fr:
+  shared:
+    geneva: "genève"
   menu:
     home: "Acceuil"
     events: "Soirées"

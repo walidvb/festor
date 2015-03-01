@@ -50,6 +50,6 @@ class ApplicationController < ActionController::Base
   end
 
   def get_static_pages
-    @static_pages = StaticPage.all.order(:position)
+    @static_pages = StaticPage.static
   end
 end

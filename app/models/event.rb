@@ -37,7 +37,7 @@ class Event < ActiveRecord::Base
 	end
 
 	def self.type_enum
-		[:single_event, :exhibition, :workshop, :single_event]
+		[:single_event, :exhibition, :workshop]
 	end
 
 	def self.category_enum
@@ -71,6 +71,7 @@ class Event < ActiveRecord::Base
       visible false
     end
     list do 
+    	scopes Event.type_enum
       field :title do
       	# pretty_value do 
       	#  bindings[:view].link_to(bindings[:object].title, edit_path(model_name: bindings[:object].class)) << value

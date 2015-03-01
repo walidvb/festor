@@ -20,7 +20,6 @@ class EventsController < ApplicationController
 	private
 
 	def get_type
-		route_params = request.path.split('/')
 		@type = params[:type] || :all
 	end
 end

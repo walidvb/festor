@@ -1,4 +1,7 @@
-fr:
+en:
+  shared:
+    geneva: "geneva"
+    motto: "visual audio & deviant electronics"
   menu:
     home: "Home"
     events: "Events"

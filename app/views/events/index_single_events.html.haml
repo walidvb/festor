@@ -1,0 +1,8 @@
+#singe-events-filters
+	Filters:
+	- Event.category_enum.each do |cat|
+		.filter{data: {filter: cat}} #{cat}
+#single-events-list
+	Events
+	- @events.each do |e|
+		.event{class: "#{e.category}", data: {position: e.id}}= e.title
