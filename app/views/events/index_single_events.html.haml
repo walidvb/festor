@@ -1,10 +1,17 @@
-#singe-events-filters
+.filters
 	Filters:
 	- Event.category_enum.each do |cat|
 		.filter{data: {filter: ".#{cat}"}} #{cat}
-	.filter{data: {filter: ".event"}} All
 #single-events-list.events-list
 	- @events.each do |event|
 		.mix.event{class: "#{event.category}", data: {position: event.id}}
 			= link_to event_path(event) do 
-				= render 'event_tile', event: event, location: event.location, image_size: :tile
+				.tile
+					= image_tag event.main_image.url(:tile), class: 'glitch'
+					.info
+						.type
+							= event.category
+						%h1= event.title
+						.location
+							= schedule_for(event)
+							= event.location.name
