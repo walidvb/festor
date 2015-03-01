@@ -2,7 +2,14 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+// INDEX
+#single-events-list{
+	.mix{
+		display: none;		
+	}
+}
+
+// SHOW
 .events-list{
 	@include n-cols($children: ".event");
-
 }

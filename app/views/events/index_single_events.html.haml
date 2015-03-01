@@ -1,9 +1,8 @@
 #singe-events-filters
 	Filters:
 	- Event.category_enum.each do |cat|
-		.filter{data: {filter: cat}} #{cat}
+		.filter{data: {filter: ".#{cat}"}} #{cat}
 #single-events-list.events-list
-	%div Events
 	- @events.each do |event|
 		.mix.event{class: "#{event.category}", data: {position: event.id}}
 			= link_to event_path(event) do 
