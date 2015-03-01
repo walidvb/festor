@@ -53,5 +53,5 @@ end
 
 static_pages = %w(infos about partners gallery previous_editions)
 static_pages.each do |slug|
-	Fabricate(:static_page, title: slug)
+	Fabricate(:static_page, title: slug, news: false)
 end

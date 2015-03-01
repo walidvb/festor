@@ -2,6 +2,7 @@
 	Filters:
 	- Event.category_enum.each do |cat|
 		.filter{data: {filter: ".#{cat}"}} #{cat}
+	.filter{data: {filter: ".event"}} All
 #single-events-list.events-list
 	- @events.each do |event|
 		.mix.event{class: "#{event.category}", data: {position: event.id}}
