@@ -2,7 +2,14 @@
   <div class="container">
     
     <div class="row footer-first-row">
-      
+      <ul>
+      	<li>
+      		<%= link_to("fr", url_for(locale: :fr)) %>
+      	</li>
+      	<li>
+      		<%= link_to("en", url_for(locale: :en)) %>
+      	</li>
+      </ul>
       <div class="col-xs-12 text-center">
           <%= image_tag 'logo.svg', class: "footer-logo"%>
       </div>

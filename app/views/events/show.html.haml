@@ -1,13 +1,4 @@
-.tile
-	= image_tag @event.main_image.url(:large), class: 'glitch'
-	.info
-		.type
-			= @event.type
-		%h1= @event.title
-		.location
-			= schedule_for(@event)
-			= @location.name
-			= @location.address.html_safe
+= render 'event_tile', event: @event, location: @location, image_size: :large
 .links
 	- @links.each do |l|
 		= print_link(l)

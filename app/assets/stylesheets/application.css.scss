@@ -6,7 +6,9 @@
  */
 @import "framework_and_overrides";
 @import "variables";
+@import "mixins";
 @import "ui_components";
+@import "header";
 @import "artists";
 @import "events";
 @import "home";
@@ -15,6 +17,15 @@
 
 // RESETS
 
+body{
+	background-color: $background;
+}
+img, canvas{
+	max-width: 100%;
+}
+canvas{
+	width: 100%;
+}
 ul{
 	li{
 		list-style: none;

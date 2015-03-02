@@ -1,2 +1,9 @@
 fr:
-  home: "Accueil"
+  shared:
+    geneva: "genève"
+  menu:
+    home: "Acceuil"
+    events: "Soirées"
+    artists: "Artistes"
+    workshops: "Workshops"
+    exhibitions: "Expos"

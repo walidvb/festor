@@ -6,3 +6,36 @@
 	}
 }
 
+.filters{
+	display: flex;
+	justify-content: flex-start;
+	.filter{
+		cursor: pointer;
+		flex: 0 0 auto;
+		margin: 0 10px;
+		&:before{
+			content: '';
+			display: inline-block;
+			height: 15px;
+			width: 15px;
+			border: solid 2px $brand-color;
+			margin-right: 5px;
+		}
+		&:hover:before{
+			background-color: $brand-color;
+		}
+		&.active:before{
+			border-color: $brand-color;
+			background-color: $brand-color;
+		}
+	}
+}
+
+.triangle-up{
+	content: '';
+	display: inline-block;
+	border-left: 25px solid transparent;
+	border-right: 25px solid transparent;
+	border-bottom: 25px solid white;
+	transform: translateY(-25px);
+}

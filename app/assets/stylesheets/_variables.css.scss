@@ -1,8 +1,27 @@
+// colors
 $brand-color: #FFEE00;
 $black: #111111;
+<<<<<<< HEAD
 $dark-grey: #666666;
 $light-grey: #CCCCCC;
 
 $section-size: 16px;
 
 $container-max-width: 960px;
+=======
+$background: #C6C6C6;
+
+// typography
+$section-size: 16px;
+
+// media queries
+$mobile                 : "(max-width: 767px)";
+$portrait               : "(orientation: portrait)";
+$landscape              : "(orientation: landscape)";
+$xs                     : $mobile;
+$tablet                 : "(min-width: 767px)";
+$sm                     : $tablet;
+$md                     : "(min-width: 991px)";
+$lg                     : "(min-width: 1200px)";
+
+>>>>>>> 95582b6ff1402a35ed58a47e4989bac8607c126d

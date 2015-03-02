@@ -16,10 +16,11 @@ class Event < ActiveRecord::Base
 	has_attached_file :main_image,
 		:styles => {
 			:thumb => "100x100#",
-			:medium => "350x200#",
+			:tile => "500x240#",
 			:large => "1000x800>"
 		},
-		:default_url => "/images/missing.jpg"
+		:default_url => "/images/missing.jpg",
+		:use_timestamp => false
   
 	validates_attachment_content_type :main_image, :content_type => /\Aimage\/.*\Z/
 
@@ -36,8 +37,13 @@ class Event < ActiveRecord::Base
 	end
 
 	def self.type_enum
-		[:clubbing, :performance, :exhibition, :workshop]
+		[:single_event, :exhibition, :workshop]
 	end
+
+	def self.category_enum
+		[:clubbing, :perfos, :film, :round_table]
+	end
+
 	self.type_enum.each do |type|
 		scope type, -> {where(type: type)}
 	end
@@ -65,6 +71,7 @@ class Event < ActiveRecord::Base
       visible false
     end
     list do 
+    	scopes Event.type_enum
       field :title do
       	# pretty_value do 
       	#  bindings[:view].link_to(bindings[:object].title, edit_path(model_name: bindings[:object].class)) << value
@@ -73,6 +80,7 @@ class Event < ActiveRecord::Base
       field :schedule_start do
       	strftime_format("%e %B")
       end
+      field :category
       field :artists
     end
   end

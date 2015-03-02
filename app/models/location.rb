@@ -9,7 +9,8 @@ class Location < ActiveRecord::Base
 		:small => "400x300#",
 		:large => "800x600#"
 	},
-	:default_url => "/images/missing.jpg"
+	:default_url => "/images/missing.jpg",
+	:use_timestamp => false
 	validates_attachment_content_type :picture, :content_type => /\Aimage\/.*\Z/
 
 end

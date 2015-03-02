@@ -2,12 +2,18 @@
 %html
   %head
     %meta{:content => "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no", :name => "viewport"}/
-    %title= @title || "Application"
+    %title= @title || "Mapping Festival 2015"
     = favicon_link_tag 'favicon.ico'
     = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
-  %body
+  %body{class: "#{controller.controller_name}-page #{controller.action_name}-page #{yield(:body_class)} #{'debug' if Rails.env.development?}"}
+    - if @home_page
+      .date
+        7 – 17 #{l(Date.parse("7 may"), format: "%b")}
+        = t("shared.geneva")
+      .motto
+        = t("shared.motto")
     %header= render 'layouts/navigation'
     %main
       .container

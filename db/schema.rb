@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150225185229) do
+ActiveRecord::Schema.define(version: 20150301131607) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,15 @@ ActiveRecord::Schema.define(version: 20150225185229) do
     t.string   "profile_picture_content_type"
     t.integer  "profile_picture_file_size"
     t.datetime "profile_picture_updated_at"
+  end
+
+  create_table "assets", force: true do |t|
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "bookings", force: true do |t|
@@ -72,6 +81,7 @@ ActiveRecord::Schema.define(version: 20150225185229) do
     t.integer  "main_image_file_size"
     t.datetime "main_image_updated_at"
     t.string   "buy_link"
+    t.string   "category"
   end
 
   add_index "events", ["location_id"], name: "index_events_on_location_id", using: :btree
@@ -93,6 +103,26 @@ ActiveRecord::Schema.define(version: 20150225185229) do
     t.string   "picture_content_type"
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
+  end
+
+  create_table "static_page_translations", force: true do |t|
+    t.integer  "static_page_id", null: false
+    t.string   "locale",         null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "slug"
+    t.text     "body"
+    t.string   "title"
+  end
+
+  add_index "static_page_translations", ["locale"], name: "index_static_page_translations_on_locale", using: :btree
+  add_index "static_page_translations", ["static_page_id"], name: "index_static_page_translations_on_static_page_id", using: :btree
+
+  create_table "static_pages", force: true do |t|
+    t.integer  "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "news",       default: true
   end
 
   create_table "users", force: true do |t|

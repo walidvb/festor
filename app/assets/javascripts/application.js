@@ -14,5 +14,6 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap
+//= require mixitup/build/jquery.mixitup.min.js
 //= require_tree .
-//= require medium-editor/dist/js/medium-editor.min.js
+//= stub_tree rails_admin

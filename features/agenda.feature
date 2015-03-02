@@ -7,8 +7,8 @@ Feature: Agenda
 		When I visit the event
 		Then I can see its title
 
-	Scenario: I see all workshops
-		Given there are 2 workshop events
-		And there are 2 exhibition events
-		When I visit the workshops index
-		Then I can see 2 workshop
+	Scenario: I can filter out events
+		Given there is a list of events
+		And I visit the events
+		When I choose to filter perfos
+		Then I should see the perfos only
