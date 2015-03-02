@@ -32,6 +32,11 @@ ul{
 	}
 }
 
+h1, h2{
+	font-family: $title-font;
+	font-size: $large;
+}
+
 .navbar{
 	.container{
 		max-width: $container-max-width;
@@ -40,6 +45,8 @@ ul{
 
 main{
 	background-color: $light-grey;
+	font-family: $body-font;
+	font-size: $body-size;
 
 	.container{
 		max-width: $container-max-width;
