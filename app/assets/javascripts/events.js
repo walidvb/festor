@@ -1,9 +1,9 @@
-
-$(document).ready(function(){
+$(document).on('ready page:load', function(){
 	var initialFilters = [];
 	$('.filters .filter').each(function(){
 		initialFilters.push($(this).attr('data-filter'));
 	});
+	console.log("$('#single-events-list'):", $('#single-events-list'));
 	$('#single-events-list').mixItUp({
 		selectors: {
 			target: '.event'
@@ -14,8 +14,6 @@ $(document).ready(function(){
     controls: {
       toggleFilterButtons: true
     },
-    callbacks: {
-		},
 		animation: {
 	    duration: 400,
 			easing: 'ease-out',

@@ -1,7 +1,10 @@
-$(document).ready(function(){
+$(document).on('ready page:load', function(){
   // assuming there's a loaded img and a canvas element in the DOM.
   var myGlitches = document.getElementsByClassName('glitch');
   var glitchables = [];
+  var minInterval, maxInterval;
+  var stoppedGlitchCount = 0;
+
   window.glitchables = glitchables;
   for(var i = 0; i < myGlitches.length; i++){
     var currentGlitch = myGlitches[i];
@@ -10,14 +13,24 @@ $(document).ready(function(){
         var foo = new Glitchable(this);
         foo.init();
         glitchables.push(foo);
-        foo.glitchOnHover();
       }
     }
   }
-  setInterval(function(){
+  minInterval = 1000;
+  maxInterval = 2500;
+  if(getVisibleCanvas().length < 6)
+  {
+    minInterval = 3000;
+    maxInterval = 4500;
+  }
+  setTimeout(startRandomGlitching, 1000);
+  function startRandomGlitching(){
     var thisGlitch = getRandomVisibleCanvas(glitchables);
-    thisGlitch.glitchItFor(500);
-  }, 200);
+    thisGlitch.glitchItFor(randomInt(300, 1500));
+    setTimeout(startRandomGlitching, randomInt(minInterval, maxInterval));
+  }
+
+  /* Glitchable declaration */
   function Glitchable(img){
     this.originalImg = img;
   }
@@ -26,7 +39,6 @@ $(document).ready(function(){
     var originalImgClone = new Image();
     originalImgClone.src = this.originalImg.src;
     originalImgClone.crossOrigin = "*"
-    console.log("originalImg.src:", this.originalImg.src);
     var canvas = document.createElement('canvas');
     var width = originalImgClone.width;
     var height = originalImgClone.height;
@@ -39,41 +51,61 @@ $(document).ready(function(){
     this.originalImgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
     this.canvas = canvas;
     this.ctx = ctx;
-    this.glitchOnHover();
+    this.bindEvents();
   };
 
-  Glitchable.prototype.glitchOnHover = function(){
-    var glitchInterval = null;
+  Glitchable.prototype.bindEvents = function(){
     var that = this;
-    this.canvas.onmouseover = function(){
-      console.log("mouovering:", that);
-      glitchInterval = setInterval(that.glitchIt.bind(that), 200);
-    };
-    this.canvas.onmouseout = function() {
-      clearInterval(glitchInterval);
-      that.ctx.putImageData(that.originalImgData, 0, 0);
+    this.canvas.onmouseover = function() {
+      if(that.isGlitching)
+      {
+        stoppedGlitchCount++;
+        if(stoppedGlitchCount > 5)
+        {
+          alert('Oh, you want to play this game? Let\'s go faster, shall we?');
+          stoppedGlitchCount = 0;
+          minInterval *= 0.5;
+          maxInterval *= 0.5;
+        }
+      }
+      that.reset();
+    }
+    this.canvas.onmousedown = function() {
+      that.glitchItFor(1000);
     }
   };
   
   Glitchable.prototype.reset = function(){
-    this.ctx.putImageData(this.originalImgData, 0, 0);
+    var that = this;
+    clearTimeout(that.glitchTimer);
+    that.isGlitching = false;
+    setTimeout(function(){
+      that.ctx.putImageData(that.originalImgData, 0, 0);
+    }, 50);
   };
 
   Glitchable.prototype.glitchItFor = function(millis){
     var that = this;
     var startingTime = new Date().getTime();
     function glitchInterval(){
-      console.log("glitching:");
       that.glitchIt();
       if(new Date().getTime() - startingTime < millis)
       {
-        setTimeout(glitchInterval, Math.random()*200+20);
+        that.glitchTimer = setTimeout(glitchInterval, Math.random()*200+20);
       }
       else{
-        // that.reset();
+        that.reset();
       }
     };
-    setTimeout(glitchInterval, Math.random()*200+20);
+    that.glitchTimer = setTimeout(glitchInterval, Math.random()*200+20);
+
+    // Glitch another one
+    var visibleCanvas = getVisibleCanvas();
+    if((Math.random() > 0.2 && visibleCanvas.length > 4) || Math.random > 0.8 ){
+      setTimeout(function(){
+        getRandomVisibleCanvas(visibleCanvas).glitchItFor(randomInt(500, 1500));
+      }, randomInt(20, 1000));
+    }
   };
 
   Glitchable.prototype.glitchIt = function(parameters){
@@ -84,27 +116,38 @@ $(document).ready(function(){
       quality: Math.random()*100
     };
     var that = this;
+    that.isGlitching = true;
     glitch(this.originalImgData, parameters, function(img_data) {
       var rdm = Math.random() > 0.4;
       grayscaleImg = rdm ? img_data : grayscale(img_data);
       that.ctx.putImageData(grayscaleImg, 0, 0);
     });
   };
-
+  /* /Glitchable declaration */
   
-  function getRandomVisibleCanvas(glitchables){
+  function getVisibleCanvas(){
     var visibles = [];
     for(var i = 0; i < glitchables.length; i++){
       var $canvas = $(glitchables[i].canvas);
       var top = $canvas.offset().top;
-      if($(window).scrollTop() < top + $canvas.height() && top < $(window).height() + $(window).scrollTop())
+      var canvasHeight = $canvas.height();
+      if(!$canvas.is(':hover') && 
+        !glitchables[i].isGlitching && $(window).scrollTop() < top + canvasHeight - 50 && 
+        top + 50 < $(window).height() + $(window).scrollTop())
       {
         visibles.push(glitchables[i]);
       }
     }
+    return visibles;
+  }
+
+  function getRandomVisibleCanvas(_glitchables){
+    var _glitchables = _glitchables || glitchables;
+    var visibles = getVisibleCanvas(_glitchables);
     var i = randomInt(0, visibles.length - 1);
     return visibles[i];
   }
+
   // Utils
   function randomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
