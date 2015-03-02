@@ -1,5 +1,13 @@
 %ul
 	- @events.each do |event|
-		%li
-			= link_to event_path(event) do 
-				= image_tag event.main_image.url(:large, false), class: "glitch"
+		%li.mix.event{data: {position: event.id}}
+			= link_to workshop_path(event) do 
+				.tile
+					= image_tag event.main_image.url(:tile), class: 'glitch'
+					.info
+						.type
+							= event.category
+						%h2.event-title= event.title
+						.location
+							= schedule_for(event)
+							= event.location.name
