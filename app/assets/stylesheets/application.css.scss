@@ -13,9 +13,6 @@
 
 
 
-
-
-
 // RESETS
 
 ul{
@@ -24,7 +21,18 @@ ul{
 	}
 }
 
+.navbar{
+	.container{
+		max-width: $container-max-width;
+	}
+}
+
 main{
+	background-color: $light-grey;
+
+	.container{
+		max-width: $container-max-width;
+	}
 	a{
 		background-color: $brand-color;
 		color: $black;
