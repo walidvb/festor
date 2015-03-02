@@ -8,8 +8,8 @@ $container-max-width: 960px;
 $background: #C6C6C6;
 
 // typography
-$body-font		:	Avenir-Regular, Helvetica, Sans-Serif;
-$title-font		:	Avenir-Bold, Helvetica, Sans-Serif;
+$body-font		:	Avenir, Helvetica, Sans-Serif;
+$title-font		:	Avenir, Helvetica, Sans-Serif;
 $info-font		:	Baskerville, Garamond, Serif;
 
 $body-size 		:	1em;
@@ -19,14 +19,15 @@ $larger 		: 	$body-size*3.5;
 $section-size	: 	16px;
 
 @font-face {
-	font-family : 'Avenir-Regular';
+	font-family : 'Avenir';
 	font-weight: normal;
-    src: local('AvenirNextLTPro-Regular'), url('AvenirNextLTPro-Regular.otf');
+  src: local('AvenirNextLTPro-Regular'), url('AvenirNextLTPro-Regular.otf');
  }
 
  @font-face {
-	font-family : 'Avenir-Bold';
-    src: local('AvenirNextLTPro-Bold'), url('AvenirNextLTPro-Regular.otf');
+	font-family : 'Avenir';
+	font-weight: bold;
+  src: local('AvenirNextLTPro-Bold'), url('AvenirNextLTPro-Regular.otf');
  }
 
  @font-face {

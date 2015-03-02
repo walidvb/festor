@@ -1,9 +1,9 @@
 .tile
 	= image_tag event.main_image.url(image_size), class: 'glitch'
-	.info
+	.info.mf-row
 		.type
 			= event.type
-		%h1= event.title
-		.location
+		%h1.mf-2-cols= event.title
+		.location.mf-2-cols
 			= schedule_for(event)
 			= location.name
