@@ -7,4 +7,5 @@
 		.prev= link_to 'previous', event_path(previous_event)
 	- if next_event = @event.next
 		.next= link_to 'next', event_path(next_event)
-= @event.description.html_safe
+.event-desc
+	= @event.description.html_safe

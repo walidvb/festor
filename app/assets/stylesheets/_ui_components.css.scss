@@ -32,10 +32,10 @@
 }
 
 .triangle-up{
-	content: '';
-	display: inline-block;
-	border-left: 25px solid transparent;
-	border-right: 25px solid transparent;
 	border-bottom: 25px solid white;
-	transform: translateY(-25px);
+    border-right: 25px solid transparent;
+    border-left: 25px solid transparent;
+    content: '';
+    position: absolute;
+    left: 50%;
 }

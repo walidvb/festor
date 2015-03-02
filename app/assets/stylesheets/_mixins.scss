@@ -4,7 +4,12 @@
 	&{
 		@extend .mf-row;
 		#{$children}{
-			@extend .mf-3-cols;
+			@if $max-column == 3{
+				@extend .mf-3-cols;
+			}
+			@if $max-column == 2{
+				@extend .mf-2-cols;
+			}
 		}
 	}
 }
@@ -21,10 +26,19 @@
 	flex-basis: 100%;
 	@media #{$tablet}
 	{
-	  flex-basis: calc(50% - 5px);
+		flex-basis: calc(50% - 5px);
 	}
 	@media #{$md}
 	{
-	  flex-basis:  calc(33.3% - 10px);
+		flex-basis:  calc(33.3% - 10px);
+	}
+}
+
+.mf-2-cols{
+	flex-grow: 0;
+	flex-basis: 100%;
+	@media #{$tablet}
+	{
+		flex-basis: calc(50% - 5px);
 	}
 }
