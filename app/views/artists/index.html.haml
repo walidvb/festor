@@ -1,16 +1,14 @@
-%h1 Listing artists
-
-%table
-  %tr
-    %th
-    %th
-    %th
-
-  - @artists.each do |artist|
-    %tr
-      %a{href: artist_path(artist)}
-        %h3= artist.name
-        = image_tag artist.profile_picture.url(:medium)
-
-%br
-
+%ul.grid-3-col
+	- @artists.each do |artist|
+		%li.mix.artist{data: {position: artist.id}}
+			- path = artist_path(artist)
+			= link_to path do
+				.tile
+					= image_tag artist.profile_picture.url(:tile), class: 'glitch'
+					.info
+						= artist.bookings
+						%h3.artist-name= artist.name
+						.location
+							//= schedule_for(artist)
+							//= artist.event.location.name
+						//%h3= artist.label
