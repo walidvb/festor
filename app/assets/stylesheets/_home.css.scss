@@ -2,11 +2,9 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .events{
-	padding: 0px 15px 0px 15px;
 	@include n-cols("li", $max-column : 2);
 	& li {
 		position: relative;
-		max-height: 240px;
 		overflow: hidden;
 		margin-bottom: 20px;
 		@media screen and #{$tablet}{

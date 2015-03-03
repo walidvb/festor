@@ -8,19 +8,31 @@
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
   %body{class: "#{controller.controller_name}-page #{controller.action_name}-page #{yield(:body_class)} #{'debug' if Rails.env.development?}"}
-    - if @home_page
-      .date
-        7 – 17 #{l(Date.parse("7 may"), format: "%b")}
-        = t("shared.geneva")
-      .motto
-        = t("shared.motto")
-    %header= render 'layouts/navigation'
+
+    .body-header
+      .container
+        - if @home_page
+          .festival-date
+            7 – 17 #{l(Date.parse("7 may"), format: "%b")}
+            %br/
+            2015
+            %br/
+            = t("shared.geneva")
+          .header-logo
+            = link_to(image_tag( 'logo.svg', class: "header-logo"), root_path)
+          .motto
+            = t("shared.motto").html_safe
+        - else
+          .header-logo
+            = link_to(image_tag( 'logo.svg', class: "header-logo"), root_path)
+    %header
+      = render 'layouts/navigation'
     %main
       .container
         .row
           .col-sm-6.col-sm-offset-3.text-center
             = render 'layouts/messages'
-          .row
-            .col-sm-12
-              = yield
+        .row
+          .col-sm-12
+            = yield
     = render 'layouts/footer'

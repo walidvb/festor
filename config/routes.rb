@@ -18,7 +18,7 @@ Festor::Application.routes.draw do
 
 		resources :artists, only: [:index, :show]
 	  resources :static_pages, only: [:show]
-	  resources :news, controller: 'static_controller', only: [:index, :show]
+	  resources :news, controller: 'static_pages', only: [:index, :show]
 	  
 		mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   end

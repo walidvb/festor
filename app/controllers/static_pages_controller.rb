@@ -1,6 +1,6 @@
 class StaticPagesController < ApplicationController
 	def index
-		@news = StaticPages.news
+		@news = StaticPage.news
 	end
 
 	def show

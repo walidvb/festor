@@ -1,0 +1,53 @@
+.body-header{
+	background-image: image-url('header_img.jpg');
+	background-size: cover;
+	background-position: center 90%;
+	padding: 40px 0;
+	.container{
+		display: flex;
+		justify-content: space-around;
+		@media #{$tablet}
+		{
+			min-height: 350px;
+			.festival-date, .motto{
+				flex: 0 0 50%;
+				padding: 0 5px;
+			}
+			.festival-date{
+				color: white;
+				font-size: xx-large;
+				font-family: $info-font;
+			}
+			.motto{
+				align-self: flex-end;
+				text-align: right;
+				color: $brand-color;
+				text-decoration: underline;
+			}
+		}
+		.header-logo{
+			max-width: 300px;
+		}
+	}
+}
+
+
+.navbar-nav{
+	margin-top: -25px;
+	margin-bottom: 5px;
+	background: $black;
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+ > li{
+		flex: 1 1 auto;
+		text-align: center;
+		a{
+			color: $light-grey;
+			&:hover, &.active{
+				color: $brand-color;
+				background: $black;
+			}
+		}
+	}
+}

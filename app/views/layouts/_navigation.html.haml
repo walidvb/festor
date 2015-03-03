@@ -1,9 +1,14 @@
-%nav.navbar.navbar-inverse
+%nav
   .container
-    .navbar-header
-      = link_to t('home'), root_path, class: 'navbar-brand'
-      = render 'layouts/navigation_links'
-      %a{"data-target" => ".nav-more", "data-toggle" => "collapse", :type => "button", href: "#"}
-        More
-      .collapse.nav-more
-        = render 'layouts/nav_static_pages.html.haml'
+    %ul.nav.navbar-nav
+      %li= active_link_to t("menu.workshops"), workshops_path
+      %li= active_link_to t("menu.exhibitions"), exhibitions_path
+      %li= active_link_to t("menu.events"), events_path
+      %li= active_link_to t("menu.artists"), artists_path
+      %li.dropdown{:role => "presentation"}
+        %a.dropdown-toggle{"aria-expanded" => "false", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+          More
+          %span.caret
+        %ul.dropdown-menu{:role => "menu"}
+          = render 'layouts/nav_static_pages.html.haml'
+

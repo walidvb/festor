@@ -14,4 +14,10 @@ module ApplicationHelper
   def long_date
   	"%e %B - %H:%M"
   end
+
+  def active_link_to txt, url
+    path_1 = url.split('/')[1]
+    active = !request.fullpath.match(path_1).nil?
+    link_to txt, url, class: active ? "active" : nil
+  end
 end
