@@ -11,20 +11,16 @@
 
     .body-header
       .container
-        - if @home_page
-          .festival-date
-            7 – 17 #{l(Date.parse("7 may"), format: "%b")}
-            %br/
-            2015
-            %br/
-            = t("shared.geneva")
-          .header-logo
-            = link_to(image_tag( 'logo.svg', class: "header-logo"), root_path)
-          .motto
-            = t("shared.motto").html_safe
-        - else
-          .header-logo
-            = link_to(image_tag( 'logo.svg', class: "header-logo"), root_path)
+        .festival-date
+          7 – 17 #{l(Date.parse("7 may"), format: "%b")}
+          %br/
+          2015
+          %br/
+          = t("shared.geneva")
+        .header-logo
+          = link_to(image_tag( 'logo.svg', class: "header-logo"), root_path)
+        .motto
+          = t("shared.motto").html_safe
     %header
       = render 'layouts/navigation'
     %main

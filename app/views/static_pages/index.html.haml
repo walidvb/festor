@@ -1,0 +1,6 @@
+%ul
+- @news.each do |news|
+	%li.news
+		= l(news.created_at, format: "%e %b")
+		%h2= news.title
+		= news.body.html_safe

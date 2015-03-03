@@ -2,39 +2,61 @@
 	background-image: image-url('header_img.jpg');
 	background-size: cover;
 	background-position: center 90%;
-	padding: 40px 0;
+	padding: 5px 0 30px;
+	@media #{$tablet}
+	{
+		padding: 40px 0;
+	}
 	.container{
 		display: flex;
 		justify-content: space-around;
+		min-height: 250px;
+		.festival-date, .motto{
+			flex: 0 0 50%;
+			padding: 0 5px;
+		}
+		.festival-date{
+			color: white;
+			font-size: x-large;
+			font-family: $info-font;
+		}
+		.motto{
+			align-self: flex-end;
+			text-align: right;
+			color: $brand-color;
+			text-decoration: underline;
+		}
 		@media #{$tablet}
 		{
-			min-height: 350px;
-			.festival-date, .motto{
-				flex: 0 0 50%;
-				padding: 0 5px;
-			}
+				min-height: 350px;
 			.festival-date{
-				color: white;
 				font-size: xx-large;
-				font-family: $info-font;
-			}
-			.motto{
-				align-self: flex-end;
-				text-align: right;
-				color: $brand-color;
-				text-decoration: underline;
 			}
 		}
+
+		// very weird stuff i had to do here. Need to explore the effects of flex on images...
+		position: relative;
 		.header-logo{
-			max-width: 300px;
+			position: absolute;
+			height: 150px;
+			width: 150px;
+			@media #{$tablet}
+			{
+			  height: 250px;
+			  width: 250px;
+			}
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			margin: auto;
 		}
 	}
 }
 
 
-.navbar-nav{
-	margin-top: -25px;
-	margin-bottom: 5px;
+body .navbar-nav{
+	margin: -25px auto 5px;
 	background: $black;
 	display: flex;
 	justify-content: space-between;
@@ -44,6 +66,7 @@
 		text-align: center;
 		a{
 			color: $light-grey;
+			text-transform: lowercase;
 			&:hover, &.active{
 				color: $brand-color;
 				background: $black;
