@@ -21,19 +21,19 @@ $section-size	: 	16px;
 @font-face {
 	font-family : 'Avenir';
 	font-weight: normal;
-  src: local('AvenirNextLTPro-Regular'), url('AvenirNextLTPro-Regular.otf');
+  src: local('/assets/AvenirNextLTPro-Regular'), url('/assets/AvenirNextLTPro-Regular.otf');
  }
 
  @font-face {
 	font-family : 'Avenir';
 	font-weight: bold;
-  src: local('AvenirNextLTPro-Bold'), url('AvenirNextLTPro-Regular.otf');
+  src: local('/assets/AvenirNextLTPro-Bold'), url('/assets/AvenirNextLTPro-Regular.otf');
  }
 
  @font-face {
 	font-family : Baskerville;
 	font-weight: normal;
-    src: local('Baskerville'), url('Baskerville');
+    src: local('/assets/Baskerville'), url('/assets/Baskerville');
  }
 
 
