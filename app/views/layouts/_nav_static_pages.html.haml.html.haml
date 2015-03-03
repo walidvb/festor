@@ -1,4 +1,6 @@
 %ul#nav-static-pages
+	%li
+		= link_to t(:news), news_index_path
 	- @static_pages.each do |sp|
 		%li 
 			= link_to(t(sp.title), static_page_path(sp))

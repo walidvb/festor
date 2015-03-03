@@ -54,8 +54,20 @@
 	}
 }
 
-
-body .navbar-nav{
+.nav-fixed{
+	main{
+		margin-top: 25px;
+	}
+	header .container{
+		position: fixed;
+		margin: 25px auto 0;
+		top: 0;
+		left: 0;
+		right: 0;
+		z-index: 100;
+	}
+}
+header .navbar-nav{
 	margin: -25px auto 5px;
 	background: $black;
 	display: flex;

@@ -16,17 +16,17 @@ $(document).on('ready page:load', function(){
       }
     }
   }
-  minInterval = 1000;
-  maxInterval = 2500;
+  minInterval = 500;
+  maxInterval = 1500;
   if(getVisibleCanvas().length < 6)
   {
-    minInterval = 3000;
+    minInterval = 2000;
     maxInterval = 4500;
   }
   setTimeout(startRandomGlitching, 1000);
   function startRandomGlitching(){
     var thisGlitch = getRandomVisibleCanvas(glitchables);
-    thisGlitch.glitchItFor(randomInt(300, 1500));
+    thisGlitch.glitchItFor(randomInt(300, 2000));
     setTimeout(startRandomGlitching, randomInt(minInterval, maxInterval));
   }
 
@@ -117,9 +117,9 @@ $(document).on('ready page:load', function(){
     };
     var that = this;
     that.isGlitching = true;
-    glitch(this.originalImgData, parameters, function(img_data) {
+    glitch(that.originalImgData, parameters, function(img_data) {
       var rdm = Math.random() > 0.4;
-      grayscaleImg = rdm ? img_data : grayscale(img_data);
+      var grayscaleImg = rdm ? img_data : grayscale(img_data);
       that.ctx.putImageData(grayscaleImg, 0, 0);
     });
   };
@@ -132,8 +132,8 @@ $(document).on('ready page:load', function(){
       var top = $canvas.offset().top;
       var canvasHeight = $canvas.height();
       if(!$canvas.is(':hover') && 
-        !glitchables[i].isGlitching && $(window).scrollTop() < top + canvasHeight - 50 && 
-        top + 50 < $(window).height() + $(window).scrollTop())
+        !glitchables[i].isGlitching && $(window).scrollTop() < top + canvasHeight - 10 && 
+        top + 10 < $(window).height() + $(window).scrollTop())
       {
         visibles.push(glitchables[i]);
       }
@@ -148,6 +148,32 @@ $(document).on('ready page:load', function(){
     return visibles[i];
   }
 
+  function glitchAll(_glitchables){
+    for(var i = 0; i < _glitchables.length; i++)
+    {
+      _glitchables[i].glitchIt();
+    }
+  }
+
+  $(document).keypress(function(e){
+    if(e.keyCode == 32)
+    {
+      setTimeout(function(){
+        glitchAll(glitchables);
+      }, randomInt(10, 300))
+      e.preventDefault();
+    }
+  });
+  $(document).keyup(function(e){
+    if(e.keyCode == 32)
+    {
+      for(var i = 0; i < glitchables.length; i++)
+      {
+        glitchables[i].isGlitching = false;
+      }
+    }
+
+  })
   // Utils
   function randomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
