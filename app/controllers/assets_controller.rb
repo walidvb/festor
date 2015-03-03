@@ -2,9 +2,15 @@ class AssetsController < ApplicationController
 	skip_before_filter :beta_only
 	
 	def upload
-		asset = Asset.create!(file: params[:file])
-		render json: {
-			link: asset.file.url(:large)
-		}
+		begin
+			asset = Asset.create!(file: params[:file])
+			render json: {
+				link: asset.file.url(:large)
+			}
+		rescue => e
+			render json: {
+				error: e.inspect
+			}
+		end
 	end
 end

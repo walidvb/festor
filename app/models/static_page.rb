@@ -10,16 +10,14 @@ class StaticPage < ActiveRecord::Base
 	rails_admin do
     configure :translations, :globalize_tabs
     edit do 
+    	field :public
     	field :translations
-    	field :position
     end
 		list do
 			scopes [:news, :static]
-			field :position do 
-				sortable true
-			end
 			field :title
 			field :updated_at
+			field :public
 		end
 	end
 end

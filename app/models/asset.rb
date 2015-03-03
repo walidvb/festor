@@ -2,7 +2,7 @@ class Asset < ActiveRecord::Base
 
 	has_attached_file :file,
 		:styles => {
-			:large => "960>"
+			:large => "1200>"
 		},
 		:default_url => "/images/missing.jpg",
 		:use_timestamp => false
