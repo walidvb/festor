@@ -64,13 +64,33 @@ body .navbar-nav{
  > li{
 		flex: 1 1 auto;
 		text-align: center;
-		a{
+		a, &.open > a{
 			color: $light-grey;
+			font-size: large;
+			font-weight: bold;
 			text-transform: lowercase;
 			&:hover, &.active{
 				color: $brand-color;
-				background: $black;
 			}
+		}
+		> a:hover, a.active{
+			color: $brand-color;
+			background: $black;
+		}
+		&.dropdown{
+			.dropdown-menu{
+				text-align: right;
+				border-radius: 0;
+				border: 0;
+				width: 100%;
+				background: black;
+				a{
+					display: inline-block;
+					padding: 5px 5px;
+					width: 100%;
+				}
+			}
+
 		}
 	}
 }

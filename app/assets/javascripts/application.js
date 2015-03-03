@@ -17,3 +17,9 @@
 //= require mixitup/build/jquery.mixitup.min.js
 //= require_tree .
 //= stub_tree rails_admin
+
+
+// to be removed when i get what's failing
+$(document).on('ready page:load', function(){
+	$('.dropdown').click(function(){$(this).addClass('open')})
+})
