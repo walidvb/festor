@@ -59,12 +59,6 @@
 		}
 		&:before{
 			@extend .triangle-up;
-			transform: translateY(-25px) translateX(-25px);
-			position: absolute;
-		}
-		.location{
-
-
 		}
 	}
 }

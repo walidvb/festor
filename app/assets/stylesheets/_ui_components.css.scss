@@ -33,9 +33,11 @@
 
 .triangle-up{
 	border-bottom: 25px solid white;
-    border-right: 25px solid transparent;
-    border-left: 25px solid transparent;
-    content: '';
-    position: absolute;
-    left: 50%;
+  border-right: 25px solid transparent;
+  border-left: 25px solid transparent;
+  content: '';
+	margin: -30px auto 0;
+	display: block;
+	width: 0;
+	position: relative;
 }
