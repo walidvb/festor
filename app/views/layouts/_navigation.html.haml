@@ -7,7 +7,7 @@
       %li= active_link_to t("menu.artists"), artists_path
       %li.dropdown{:role => "presentation"}
         %a.dropdown-toggle{"aria-expanded" => "false", "data-toggle" => "dropdown", :href => "#", :role => "button"}
-          More
+          = t(:more)
           %span.caret
         %ul.dropdown-menu{:role => "menu"}
           = render 'layouts/nav_static_pages.html.haml'

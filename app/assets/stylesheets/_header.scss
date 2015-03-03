@@ -81,13 +81,14 @@ header .navbar-nav{
 			font-size: large;
 			font-weight: bold;
 			text-transform: lowercase;
+			background-color: $black;
 			&:hover, &.active{
 				color: $brand-color;
+				background-color: $black;
 			}
 		}
 		> a:hover, a.active{
 			color: $brand-color;
-			background: $black;
 		}
 		&.dropdown{
 			.dropdown-menu{
