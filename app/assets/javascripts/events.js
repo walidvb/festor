@@ -3,7 +3,6 @@ $(document).on('ready page:load', function(){
 	$('.filters .filter').each(function(){
 		initialFilters.push($(this).attr('data-filter'));
 	});
-	console.log("$('#single-events-list'):", $('#single-events-list'));
 	$('#single-events-list').mixItUp({
 		selectors: {
 			target: '.event'

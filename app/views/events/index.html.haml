@@ -1,4 +1,4 @@
-%ul
+%ul.grid-3-col
 	- @events.each do |event|
 		%li.mix.event{data: {position: event.id}}
 			- path = event.type == 'workshop' ? workshop_path(event) : exhibition_path(event)
