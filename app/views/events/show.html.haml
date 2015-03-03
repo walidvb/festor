@@ -3,9 +3,11 @@
 	- @links.each do |l|
 		= print_link(l)
 .prev-next-navigation
-	- if previous_event = @event.previous
-		.prev= link_to 'previous', event_path(previous_event)
-	- if next_event = @event.next
-		.next= link_to 'next', event_path(next_event)
+	.prev
+		- if previous_event = @event.previous
+			= link_to 'previous', event_path(previous_event)
+	.next
+		- if next_event = @event.next
+			= link_to 'next', event_path(next_event)
 .event-desc
 	= @event.description.html_safe

@@ -36,20 +36,18 @@
 		width: 100%;
 	}
 	.info{
-		width: 100%;
+		display: flex;
+		
 		h1{
 			margin-top: 0px;
 		}
-		@media screen and #{$tablet}{
+		.type{
+			flex-basis: 100%;
+		}
+		@media #{$tablet}{
 			text-align: left;
 			padding-left: 15px;
-			h1{
-				width: 45%;
-				display: inline-block;
-			}
 			.location{
-				width: 45%;
-				display: inline-block;
 				font-size: $large;
 			}
 		}
@@ -65,41 +63,37 @@
 
 .event-desc{
 	padding: 0px 5px 0px 5px;
-	@media screen and #{$tablet}{
+	@media #{$tablet}{
 		padding: 0px 0px 0px 0px;
 	}
 }
 
 .prev-next-navigation{
 	display: none;
-	@media screen and #{$tablet}{
-		display: block;
-		width: 100%;
-		min-height: 20px;
+	@media #{$tablet}{
+		display: flex;
+		justify-content: space-between;
+		padding: 0 10px;
 		background-color: $dark-grey;
 		font-family: $title-font;
-
-		.next{
-			padding-right: 10px;
-			float: right;
-			& a:after{
-				width: 20px;
-				height: 20px;
-				display: inline-block;
-				content:image-url('next-prev-arrow.svg');
-				padding-left: 5px;
+		font-weight: bold;
+		
+		.next, .prev{
+			& a{
+				padding: 0 5px;
+				display: block;
+				&:before{
+					content: image-url('next-prev-arrow.svg');
+					width: 20px;
+					height: 20px;
+					display: inline-block;
+					padding: 0 5px;
+				}
 			}
 		}
-
 		.prev{
-			float: left;
 			& a:before{
-				content:image-url('next-prev-arrow.svg');
 				transform: (rotate(180deg));
-				width: 20px;
-				height: 20px;
-				display: inline-block;
-				padding-right: 5px;
 			}
 		}
 	}
@@ -108,6 +102,7 @@
 .type{
 	text-decoration: underline;
 	font-family: $title-font;
+	font-weight: bold;
 	font-size: $large;
 }
 .tile-title{
