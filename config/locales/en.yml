@@ -1,11 +1,17 @@
 en:
   shared:
     geneva: "geneva"
-    motto: "visual audio & <br>deviant electronics"
+    motto:  "visual audio & <br>deviant electronics"
   menu:
-    home: "Home"
-    events: "Events"
-    artists: "Artists"
-    workshops: "Workshops"
+    home:        "Home"
+    events:      "Events"
+    artists:     "Artists"
+    workshops:   "Workshops"
     exhibitions: "Exhibitions"
-    more: "More"
+    more:        "More"
+  events:
+    categories:
+      performance: "Performance"
+      conference:  "Conference"
+      clubbing:    "Clubbing"
+      screening:   "Screening"
