@@ -9,7 +9,7 @@ $background: #C6C6C6;
 
 // typography
 $body-font		:	Avenir, Helvetica, Sans-Serif;
-$title-font		:	Avenir, Helvetica, Sans-Serif;
+$title-font		:	Avenir-Bold, Helvetica, Sans-Serif;
 $info-font		:	Baskerville, Garamond, Serif;
 
 $body-size 		:	1em;
@@ -20,20 +20,18 @@ $section-size	: 	16px;
 
 @font-face {
 	font-family : 'Avenir';
-	font-weight: normal;
-  src: local('/assets/avenir/AvenirNextLTPro-Regular'), url('/assets/avenir/AvenirNextLTPro-Regular.otf');
+	src: local('AvenirNextLTPro-Regular'), url('/assets/avenir/AvenirNextLTPro-Regular.otf');
  }
 
  @font-face {
-	font-family : 'Avenir';
-	font-weight: bold;
-  src: local('/assets/avenir/AvenirNextLTPro-Bold'), url('/assets/avenir/AvenirNextLTPro-Regular.otf');
+	font-family : 'Avenir-Bold';
+	src: local('AvenirNextLTPro-Bold'), url('/assets/avenir/AvenirNextLTPro-Regular.otf');
  }
 
  @font-face {
 	font-family : Baskerville;
 	font-weight: normal;
-    src: local('/assets/Baskerville'), url('/assets/Baskerville');
+    src: local('Baskerville'), url('http://fonts.googleapis.com/css?family=Libre+Baskerville');
  }
 
 

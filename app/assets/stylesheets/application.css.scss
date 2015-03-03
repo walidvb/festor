@@ -17,7 +17,6 @@
 
 
 // RESETS
-
 body{
 	background-color: $background;
 }
@@ -56,9 +55,19 @@ main{
 	}
 }
 
+#footer{
+	height: auto;
+	position:absolute;
+	bottom:0;
+	width: 100%;
+}
 .footer-logo{
-	max-width: 50%;
 	margin: auto;
+	max-width:50%;
+	padding-bottom: 20px;
+	@media #{$tablet}{
+		max-width: 15%;
+	}
 }
 
 
