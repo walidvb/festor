@@ -1,7 +1,8 @@
 class Artist < ActiveRecord::Base
   translates :biography
   accepts_nested_attributes_for :translations, allow_destroy: true
-
+  validates :name, presence: true
+  validates :biography, presence: true
 
 	has_many :bookings, dependent: :delete_all
   has_many :events, through: :bookings
@@ -25,9 +26,6 @@ class Artist < ActiveRecord::Base
 	rails_admin do
     configure :translations, :globalize_tabs
     configure :bookings do 
-      visible false
-    end
-    configure :events do 
       visible false
     end
     configure :locations do 
