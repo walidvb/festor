@@ -19,8 +19,13 @@
 
 // PREVIEW TILES
 .mix {
-	li{
-		background-color: blue;
+	& a{
+		color: black;
+		text-decoration: none;
+		@include transition (color .25s .25s);
+		&:hover{
+			color: $brand-color;
+		}
 	}
 	canvas {
 		max-height: 150px;

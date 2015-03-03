@@ -26,6 +26,7 @@ img, canvas{
 canvas{
 	width: 100%;
 }
+
 ul{
 	li{
 		list-style: none;
@@ -45,7 +46,6 @@ h1, h2{
 main{
 	font-family: $body-font;
 	font-size: $body-size;
-
 	a{
 		background-color: $brand-color;
 		color: $black;
