@@ -6,8 +6,9 @@
 
 .info{
 	.event-title{
-		margin: 0 0 10px;
+		margin: 0 0 0px;
 		font-size: large;
+		line-height: $large;
 	}
 	.location{
 		font-family: $info-font;
@@ -36,33 +37,27 @@
 		width: 100%;
 	}
 	.info{
-		display: flex;
-		
+		@include n-cols($children: ".type, .location", $max-column: 2);
+		align-items: center;
+		position: relative;
 		h1{
 			margin-top: 0px;
 		}
 		.type{
-			flex-basis: 100%;
+			flex: 1 0 100%;
 		}
 		@media #{$tablet}{
 			text-align: left;
 			padding-left: 15px;
 			.location{
 				font-size: $large;
+				line-height: $large;
 			}
-		}
-		.event-type{
-			@extend .tile-type;
-			width: 50%;
 		}
 		&:before{
 			@extend .triangle-up;
 			transform: translateY(-25px) translateX(-25px);
 			position: absolute;
-		}
-		.location{
-
-
 		}
 	}
 }
