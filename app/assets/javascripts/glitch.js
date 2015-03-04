@@ -1,3 +1,6 @@
+function Glitchable(img){
+  this.originalImg = img;
+}
 $(document).on('ready page:load', function(){
   // assuming there's a loaded img and a canvas element in the DOM.
   var myGlitches = document.getElementsByClassName('glitch');
@@ -31,9 +34,6 @@ $(document).on('ready page:load', function(){
   }
 
   /* Glitchable declaration */
-  function Glitchable(img){
-    this.originalImg = img;
-  }
 
   Glitchable.prototype.init = function(){
     var originalImgClone = new Image();
