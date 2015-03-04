@@ -1,6 +1,6 @@
 function Glitchousel(options){
 	this.params = {
-		speed: 1000,
+		speed: 5000,
 	}
 	this.timer = null;
 	this.container = options.container
@@ -51,26 +51,33 @@ Glitchousel.prototype.init = function(){
 			var tmpImgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
 			that.imgDatas.push(tmpImgData);
 		}
+		ctx.putImageData(that.imgDatas[0], 0, 0);
 	  // draw the img on the canvas 
-	  this.canvas = canvas;
-	  this.ctx = ctx;
+	  that.canvas = canvas;
+	  that.ctx = ctx;
 	}
   return this;
 };
 
 Glitchousel.prototype.goTo = function(index){
-	
-	currentImg.src = this.imgs[index];
-	var originalImgClone = new Image();
-  this.originalImgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-  ctx.drawImage(originalImgClone, 0, 0);
-	this.currentIndex = index;	
-};
-Glitchousel.prototype.next = function(){
-	console.log("currentIndex", this.currentIndex++);
+	console.log("drawing", index);
+	var currentImgData = this.imgDatas[index];
+  //this.originalImgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+  this.transition(this.imgDatas[this.currentIndex], this.imgDatas[index]);
+	this.currentIndex = index;
 };
 
-Glitchousel.prototype.glitchUp = function(){
+Glitchousel.prototype.next = function(){
+	var nextIndex = this.currentIndex + 1;
+	if(nextIndex >= this.imgDatas.length)
+	{
+		nextIndex = 0;
+	}
+	this.goTo(nextIndex);
+};
+
+Glitchousel.prototype.transition = function(imgSrc, imgTrg){
+	var that = this;
 	var tweenable = new Tweenable();
 	var paramsFrom = {
 		amount: 0,
@@ -84,18 +91,45 @@ Glitchousel.prototype.glitchUp = function(){
 		iterations: 70,
 		quality: 100
 	};
-
-	tweenable.tween({
-		from: paramsFrom,
-		to:   paramsTo,
-		duration: 1000,
-		easing: 'easeOutQuad',
-		start: function () {  },
-		step: function(state){ 
-			console.log(state);
-		},
-		finish: function () {}
-	});
+	glitchTo(1, imgSrc);
+	var finishedTransition = false;
+	function glitchTo(direction, imgData){
+		var from, to; 
+		if(direction > 0)
+		{
+			from = paramsFrom;
+			to = paramsTo;
+		}
+		else{
+			from = paramsTo;
+			to = paramsFrom;
+		}
+		tweenable.tween({
+			from: from,
+			to:   to,
+			duration: 1000,
+			easing: 'easeOutQuad',
+			start: function () {  },
+			step: function(state){ 
+				console.log("state:", state);
+				glitch(imgData, state, function(img_data) {
+		      var rdm = Math.random() > 0.4;
+		      var grayscaleImg = rdm ? img_data : Glitchable.prototype.grayscale(img_data);
+		      that.ctx.putImageData(grayscaleImg, 0, 0);
+		    });
+			},
+			finish: function () {
+				if(!finishedTransition)
+				{
+					glitchTo(-1, imgTrg);
+				}
+				else{
+					that.ctx.putImageData(imgTrg, 0, 0);
+				}
+				finishedTransition = true;
+			}
+		});
+	};
 };
 
 
