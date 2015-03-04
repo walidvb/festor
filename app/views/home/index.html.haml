@@ -19,6 +19,5 @@
 			%h2.section-title Events
 			.glitchousel
 				- @events.each do |event|
-					= event.title
 					= image_tag(event.main_image.url(:tile))
 			

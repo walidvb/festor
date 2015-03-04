@@ -19,8 +19,8 @@ $(document).on('ready page:load', function(){
       }
     }
   }
-  minInterval = 500;
-  maxInterval = 1500;
+  minInterval = 300;
+  maxInterval = 1000;
   if(getVisibleCanvas().length < 6)
   {
     minInterval = 2000;
@@ -65,8 +65,8 @@ $(document).on('ready page:load', function(){
         {
           alert('Oh, you want to play this game? Let\'s go faster, shall we?');
           stoppedGlitchCount = 0;
-          minInterval *= 0.5;
-          maxInterval *= 0.5;
+          minInterval *= 0.3;
+          maxInterval *= 0.3;
         }
       }
       that.reset();
@@ -110,6 +110,7 @@ $(document).on('ready page:load', function(){
   };
 
   Glitchable.prototype.glitchIt = function(parameters){
+    var that = this;
     var parameters = parameters || {
       amount: Math.random()*100,
       seed: Math.random()*100,
@@ -120,7 +121,7 @@ $(document).on('ready page:load', function(){
     that.isGlitching = true;
     glitch(that.originalImgData, parameters, function(img_data) {
       var rdm = Math.random() > 0.4;
-      var grayscaleImg = rdm ? img_data : grayscale(img_data);
+      var grayscaleImg = rdm ? img_data : that.grayscale(img_data);
       that.ctx.putImageData(grayscaleImg, 0, 0);
     });
   };
@@ -179,7 +180,7 @@ $(document).on('ready page:load', function(){
   function randomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
-  function grayscale(pixels, args) {
+  Glitchable.prototype.grayscale = function(pixels, args) {
     var d = pixels.data;
     for (var i=0; i<d.length; i+=4) 
     {
