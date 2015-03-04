@@ -22,20 +22,13 @@ $body-font		:	Avenir, Helvetica, Sans-Serif;
 $title-font		:	Avenir-Bold, Helvetica, Sans-Serif;
 $info-font		:	Baskerville, Garamond, Serif;
 
-$body-size 		: 	14px;
-$small			:	$body-size*0.75;
-$large			: 	$body-size*1.2;
-$larger 		: 	$body-size*1.8;
-$section-size	: 	16px;
 
+$body-size 			: 	16px;
+$small				:	0.75em;
+$large				: 	1.6em;
+$larger 			: 	2.2em;
+$tile-title-size 	:	0.8em;
 
-@media #{$tablet}{
-	$body-size		:	16px;
-	$small			:	$body-size*0.75;
-	$large			: 	$body-size*1.2;
-	$larger 		: 	$body-size*3;
-	$section-size	: 	12px;
-}
 
 @font-face {
 	font-family : 'Avenir';

@@ -19,6 +19,10 @@
 // RESETS
 body{
 	background-color: $background;
+	font-size : 14px;
+	@media #{$tablet}{
+		font-size : 16px;
+	}
 }
 img, canvas{
 	max-width: 100%;

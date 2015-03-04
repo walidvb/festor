@@ -6,9 +6,9 @@
 				.tile
 					= image_tag artist.profile_picture.url(:tile), class: 'glitch'
 					.info
-						= artist.bookings
+						= artist.events.first.title
 						%h3.artist-name= artist.name
 						.location
-							//= schedule_for(artist)
-							//= artist.event.location.name
-						//%h3= artist.label
+							= schedule_for(artist.events.first)
+							= artist.events.first.location.name
+						-#%h3= artist.label

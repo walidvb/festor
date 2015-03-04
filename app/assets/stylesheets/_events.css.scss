@@ -32,7 +32,7 @@
 	}
 }
 .mix .tile .info{
-	font-size: smaller !important;
+	font-size: $tile-title-size;
 	.type, .event-title, .location{
 		display: inline-block;
 		min-width: 100%;

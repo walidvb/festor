@@ -16,8 +16,8 @@ class Event < ActiveRecord::Base
 	has_attached_file :main_image,
 		:styles => {
 			:thumb => "100x100#",
-			:tile => "500x240#",
-			:large => "1200x800>"
+			:tile => "400x180#",
+			:large => "1200x535#"
 		},
 		:default_url => "/images/missing.jpg",
 		:use_timestamp => false
