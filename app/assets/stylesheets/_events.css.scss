@@ -87,6 +87,9 @@
 
 .event-desc{
 	padding: 0px 5px 0px 5px;
+	strong{
+		font-family: $title-font;
+	}
 	@media #{$tablet}{
 		padding: 0px 0px 0px 0px;
 	}

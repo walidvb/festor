@@ -17,7 +17,7 @@
 		}
 		.festival-date{
 			color: white;
-			font-size: x-large;
+			font-size: $larger;
 			font-family: $info-font;
 		}
 		.motto{
@@ -30,7 +30,7 @@
 		{
 				min-height: 350px;
 			.festival-date{
-				font-size: xx-large;
+				font-size: $larger;
 			}
 		}
 
@@ -78,7 +78,7 @@ header .navbar-nav{
 		text-align: center;
 		a, &.open > a{
 			color: $light-grey;
-			font-size: large;
+			font-size: $large;
 			font-weight: bold;
 			text-transform: lowercase;
 			background-color: $black!important;
