@@ -1,4 +1,4 @@
-function Glitchable(img){
+function Glitchable(img, otherGlitchables){
   this.originalImg = img;
 }
 $(document).on('ready page:load', function(){
