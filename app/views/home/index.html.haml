@@ -17,5 +17,8 @@
 	%li
 		= link_to events_path do
 			%h2.section-title Events
-			= image_tag @event.main_image.url, class: "glitch"
+			.glitchousel
+				- @events.each do |event|
+					= event.title
+					= image_tag(event.main_image.url(:tile))
 			
