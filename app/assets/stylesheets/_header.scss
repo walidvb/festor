@@ -81,10 +81,10 @@ header .navbar-nav{
 			font-size: large;
 			font-weight: bold;
 			text-transform: lowercase;
-			background-color: $black;
+			background-color: $black!important;
 			&:hover, &.active{
 				color: $brand-color;
-				background-color: $black;
+				background-color: $black!important;
 			}
 		}
 		> a:hover, a.active{
@@ -96,11 +96,16 @@ header .navbar-nav{
 				border-radius: 0;
 				border: 0;
 				width: 100%;
-				background: black;
+				background: $black;
+				box-sizing: content-box;
+				border-right: 1px solid $black; 
 				a{
 					display: inline-block;
 					padding: 5px 5px;
 					width: 100%;
+					&:hover{
+						text-decoration: none;
+					}
 				}
 			}
 
