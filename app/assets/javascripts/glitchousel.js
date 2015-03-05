@@ -1,6 +1,7 @@
 function Glitchousel(options){
 	this.params = {
-		speed: 5000,
+		speed: 500,
+		timeout: 4000,
 	}
 	this.timer = null;
 	this.container = options.container
@@ -11,7 +12,7 @@ Glitchousel.prototype.start = function(){
 	play();
 	function play(){
 		that.next();
-		that.timer = setTimeout(play, that.params.speed);
+		that.timer = setTimeout(play, that.params.timeout);
 	}
 };
 
@@ -60,7 +61,6 @@ Glitchousel.prototype.init = function(){
 };
 
 Glitchousel.prototype.goTo = function(index){
-	console.log("drawing", index);
 	var currentImgData = this.imgDatas[index];
   //this.originalImgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
   this.transition(this.imgDatas[this.currentIndex], this.imgDatas[index]);
@@ -81,15 +81,15 @@ Glitchousel.prototype.transition = function(imgSrc, imgTrg){
 	var tweenable = new Tweenable();
 	var paramsFrom = {
 		amount: 0,
-		seed: 0,
-		iterations: 0,
-		quality: 0
+		seed: 70,
+		iterations: 5,
+		quality: 100
 	};
 	var paramsTo = {
 		amount: 100,
-		seed: 100,
-		iterations: 70,
-		quality: 100
+		seed: 70,
+		iterations: 80,
+		quality: 0
 	};
 	glitchTo(1, imgSrc);
 	var finishedTransition = false;
@@ -104,14 +104,14 @@ Glitchousel.prototype.transition = function(imgSrc, imgTrg){
 			from = paramsTo;
 			to = paramsFrom;
 		}
+
 		tweenable.tween({
 			from: from,
 			to:   to,
-			duration: 1000,
-			easing: 'easeOutQuad',
+			duration: that.params.speed,
+			easing: 'linear',
 			start: function () {  },
 			step: function(state){ 
-				console.log("state:", state);
 				glitch(imgData, state, function(img_data) {
 		      var rdm = Math.random() > 0.4;
 		      var grayscaleImg = rdm ? img_data : Glitchable.prototype.grayscale(img_data);
@@ -124,7 +124,7 @@ Glitchousel.prototype.transition = function(imgSrc, imgTrg){
 					glitchTo(-1, imgTrg);
 				}
 				else{
-					that.ctx.putImageData(imgTrg, 0, 0);
+					setTimeout(function(){that.ctx.putImageData(imgTrg, 0, 0);});
 				}
 				finishedTransition = true;
 			}

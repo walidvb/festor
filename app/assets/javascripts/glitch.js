@@ -112,9 +112,9 @@ $(document).on('ready page:load', function(){
   Glitchable.prototype.glitchIt = function(parameters){
     var that = this;
     var parameters = parameters || {
-      amount: Math.random()*100,
+      amount: Math.random()*50,
       seed: Math.random()*100,
-      iterations: randomInt(0, 70),
+      iterations: randomInt(0, 20),
       quality: Math.random()*100
     };
     var that = this;
