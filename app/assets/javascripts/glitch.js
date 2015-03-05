@@ -153,7 +153,8 @@ $(document).on('ready page:load', function(){
   function glitchAll(_glitchables){
     for(var i = 0; i < _glitchables.length; i++)
     {
-      _glitchables[i].glitchIt();
+      var currGlitchable = _glitchables[i];
+      currGlitchable.glitchIt.call(currGlitchable);
     }
   }
 

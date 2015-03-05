@@ -5,12 +5,12 @@ function Glitchousel(options){
 		pauseOnHover: true,
 	}
 	this.timer = null;
+	this.transitionTimer = null;
 	this.container = options.container
 }
 
 Glitchousel.prototype.start = function(){
 	var that = this;
-	console.log('starting');
 	play();
 	function play(){
 		that.next();
@@ -20,9 +20,9 @@ Glitchousel.prototype.start = function(){
 
 Glitchousel.prototype.stop = function(){
 	var that = this;
-	console.log('pausing');
 	clearTimeout(that.timer);
-	that.ctx.putImageData(that.imgDatas[that.currentIndex], 0, 0);
+	clearTimeout(that.transitionTimer);
+	setTimeout(function(){that.ctx.putImageData(that.imgDatas[that.currentIndex], 0, 0)},20);
 };
 
 Glitchousel.prototype.bindEvents = function(){
@@ -40,7 +40,7 @@ Glitchousel.prototype.init = function(){
 	this.currentIndex = 0;
 	var canvas = document.createElement('canvas');
 	var ctx;
-	this.container.append($(canvas));
+	this.container.prepend($(canvas));
 	var tmpImg = new Image();
 	var imgsLoadedCount = 0;
 	for(var i = 0; i < $imgs.length; i++)
@@ -81,8 +81,7 @@ Glitchousel.prototype.init = function(){
 
 Glitchousel.prototype.goTo = function(index){
 	var currentImgData = this.imgDatas[index];
-  this.transition(this.imgDatas[this.currentIndex], this.imgDatas[index]);
-  this.currentIndex = index;
+  this.transition(this.imgDatas[this.currentIndex], this.imgDatas[index], index);
 };
 
 Glitchousel.prototype.next = function(){
@@ -103,11 +102,10 @@ Glitchousel.prototype.prev = function(){
 	this.goTo(nextIndex);
 };
 
-Glitchousel.prototype.transition = function(imgSrc, imgTrg){
+Glitchousel.prototype.transition = function(imgSrc, imgTrg, index){
 	var that = this;
 	var finishedTransition = false;
 	var direction = 1;
-	var timer;
 	var currParams = {
 		amount: 2,
 		seed: 70,
@@ -145,15 +143,16 @@ Glitchousel.prototype.transition = function(imgSrc, imgTrg){
 				currParams[key] = Math.floor(currParams[key]);
 			}
 		}
-		timer = setTimeout(glitchTo, Math.random()*20+200);
+		that.transitionTimer = setTimeout(glitchTo, Math.random()*20+200);
 		if(currParams.amount >= 100)
 		{
 			direction = -1;
 			currParams.amount = 100;
 			currentImgData = imgTrg;
+			that.currentIndex = index;
 		}
 		if(currParams.amount <= 0){
-			clearTimeout(timer);
+			clearTimeout(that.transitionTimer);
 			setTimeout(function(){that.ctx.putImageData(imgTrg, 0, 0);}, 10);
 		}
 		glitch(currentImgData, currParams, function(img_data) {
