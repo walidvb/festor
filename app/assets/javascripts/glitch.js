@@ -44,7 +44,8 @@ $(document).on('ready page:load', function(){
     var height = originalImgClone.height;
     canvas.width = width;
     canvas.height = height;
-    $(this.originalImg).replaceWith(canvas);
+    //debugger;
+    $(canvas).insertAfter($(this.originalImg).hide());
     ctx = canvas.getContext('2d');
     // draw the img on the canvas 
     ctx.drawImage(originalImgClone, 0, 0);
