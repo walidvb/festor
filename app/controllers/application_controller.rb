@@ -50,6 +50,6 @@ class ApplicationController < ActionController::Base
   end
 
   def get_static_pages
-    @static_pages = StaticPage.static
+    @static_pages = StaticPage.static.public
   end
 end

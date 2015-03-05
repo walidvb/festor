@@ -4,6 +4,7 @@ class StaticPage < ActiveRecord::Base
 
 	validates :body, presence: true
 	scope :static, ->{where(news: false).order(:position)}
+	scope :public, ->{where(public: true)}
 	scope :news, ->{where(news: true).order(:created_at)}
 
 	### rails_admin
