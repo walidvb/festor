@@ -1,11 +1,13 @@
-%h1= @artist.name
-= image_tag @artist.profile_picture.url(:large)
+= image_tag @artist.profile_picture.url(:large), class: 'glitch'
+.info.mf-row
+	%h1= @artist.name
 
-%h3 Playing at:
-%ul
-- @bookings.each do |b|
-	%li.location
-		%h5= link_to b.event.title, event_path(b.event)
-		.name= "#{b.event.schedule_start.strftime("%A %e %b")} – #{b.location.name}"
-
+	%h3 Playing at:
+	%ul
+	- @bookings.each do |b|
+		%li.location
+			%h5= link_to b.event.title, event_path(b.event)
+			.name= "#{b.event.schedule_start.strftime("%A %e %b")} – #{b.location.name}"
+.event-desc
+	= @artist.biography
 %div= link_to 'Back to all artists', artists_path

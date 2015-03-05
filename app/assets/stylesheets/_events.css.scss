@@ -5,13 +5,37 @@
 // SHARED
 
 .info{
+	.type{
+		font-family: $title-font;
+	}
 	.event-title{
 		margin: 0 0 0px;
-		font-size: large;
 		line-height: $large;
 	}
 	.location{
 		font-family: $info-font;
+	}
+}
+
+// PREVIEW TILES
+.mix {
+	& a{
+		color: black;
+		text-decoration: none;
+		@include transition (color .25s .25s);
+		&:hover{
+			color: $brand-color;
+		}
+	}
+	canvas {
+		max-height: 150px;
+	}
+}
+.mix .tile .info{
+	font-size: $tile-title-size;
+	.type, .event-title, .location{
+		display: inline-block;
+		min-width: 100%;
 	}
 }
 
@@ -63,6 +87,9 @@
 
 .event-desc{
 	padding: 0px 5px 0px 5px;
+	strong{
+		font-family: $title-font;
+	}
 	@media #{$tablet}{
 		padding: 0px 0px 0px 0px;
 	}

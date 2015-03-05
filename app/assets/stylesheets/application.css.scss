@@ -17,9 +17,12 @@
 
 
 // RESETS
-
 body{
 	background-color: $background;
+	font-size : 14px;
+	@media #{$tablet}{
+		font-size : 16px;
+	}
 }
 img, canvas{
 	max-width: 100%;
@@ -27,6 +30,7 @@ img, canvas{
 canvas{
 	width: 100%;
 }
+
 ul{
 	li{
 		list-style: none;
@@ -46,7 +50,6 @@ h1, h2{
 main{
 	font-family: $body-font;
 	font-size: $body-size;
-
 	a{
 		background-color: $brand-color;
 		color: $black;
@@ -56,9 +59,18 @@ main{
 	}
 }
 
+#footer{
+	height: auto;
+	bottom:0;
+	width: 100%;
+}
 .footer-logo{
-	max-width: 50%;
 	margin: auto;
+	max-width:50%;
+	padding-bottom: 20px;
+	@media #{$tablet}{
+		max-width: 15%;
+	}
 }
 
 
