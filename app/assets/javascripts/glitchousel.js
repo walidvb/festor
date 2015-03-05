@@ -24,9 +24,9 @@ Glitchousel.prototype.init = function(){
 	var canvas = document.createElement('canvas');
 	var ctx;
 	this.container.append($(canvas));
-  var tmpImg = new Image();
-  var imgsLoadedCount = 0;
-  for(var i = 0; i < $imgs.length; i++)
+	var tmpImg = new Image();
+	var imgsLoadedCount = 0;
+	for(var i = 0; i < $imgs.length; i++)
 	{
 		$imgs[i].onload = function(){
 			imgsLoadedCount++;
@@ -38,16 +38,16 @@ Glitchousel.prototype.init = function(){
 		}
 	}
 
-  function processImgs(){
+	function processImgs(){
 		for(var i = 0; i < $imgs.length; i++)
 		{
 			var width = $imgs[i].width;
-		  var height = $imgs[i].height;
+			var height = $imgs[i].height;
 			$imgs[i].style.display = 'none';
-		  canvas.width = width;
-		  canvas.height = height;
+			canvas.width = width;
+			canvas.height = height;
 			tmpImg.src = $imgs[i].src;
-  		ctx = canvas.getContext('2d');
+			ctx = canvas.getContext('2d');
 			ctx.drawImage(tmpImg, 0, 0);
 			var tmpImgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
 			that.imgDatas.push(tmpImgData);
@@ -57,14 +57,14 @@ Glitchousel.prototype.init = function(){
 	  that.canvas = canvas;
 	  that.ctx = ctx;
 	}
-  return this;
+	return this;
 };
 
 Glitchousel.prototype.goTo = function(index){
 	var currentImgData = this.imgDatas[index];
   //this.originalImgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
   this.transition(this.imgDatas[this.currentIndex], this.imgDatas[index]);
-	this.currentIndex = index;
+  this.currentIndex = index;
 };
 
 Glitchousel.prototype.next = function(){
@@ -78,56 +78,52 @@ Glitchousel.prototype.next = function(){
 
 Glitchousel.prototype.transition = function(imgSrc, imgTrg){
 	var that = this;
-	var tweenable = new Tweenable();
-	var paramsFrom = {
-		amount: 0,
+	var finishedTransition = false;
+	var direction = 1;
+	var timer;
+	var currParams = {
+		amount: 2,
 		seed: 70,
-		iterations: 5,
+		iterations: 1,
 		quality: 100
 	};
-	var paramsTo = {
-		amount: 100,
-		seed: 70,
-		iterations: 80,
-		quality: 0
-	};
-	glitchTo(1, imgSrc);
-	var finishedTransition = false;
-	function glitchTo(direction, imgData){
+	var currentImgData = imgSrc;
+	console.log("currParams start:", currParams);
+	glitchTo();
+	function glitchTo(){
 		var from, to; 
 		if(direction > 0)
 		{
-			from = paramsFrom;
-			to = paramsTo;
+			currParams.amount += 10+Math.random()*20;
+			currParams.seed += 10+Math.random()*20;
+			currParams.iterations += 10+Math.random()*20;
+			currParams.quality -= 1.5;
+			//console.log("currParams increase:", currParams);
 		}
 		else{
-			from = paramsTo;
-			to = paramsFrom;
+			currParams.amount -= 10+Math.random()*20;
+			currParams.seed -= 10+Math.random()*20;
+			currParams.iterations -= 10+Math.random()*20;
+			currParams.quality += 10+Math.random()*20;
+			//console.log("currParams decrease:", currParams);
 		}
 
-		tweenable.tween({
-			from: from,
-			to:   to,
-			duration: that.params.speed,
-			easing: 'linear',
-			start: function () {  },
-			step: function(state){ 
-				glitch(imgData, state, function(img_data) {
-		      var rdm = Math.random() > 0.4;
-		      var grayscaleImg = rdm ? img_data : Glitchable.prototype.grayscale(img_data);
-		      that.ctx.putImageData(grayscaleImg, 0, 0);
-		    });
-			},
-			finish: function () {
-				if(!finishedTransition)
-				{
-					glitchTo(-1, imgTrg);
-				}
-				else{
-					setTimeout(function(){that.ctx.putImageData(imgTrg, 0, 0);});
-				}
-				finishedTransition = true;
-			}
+		console.log("currParams.amount:", currParams.amount);
+		timer = setTimeout(glitchTo, Math.random()*200+20);
+		if(currParams.amount >= 100)
+		{
+			direction = -1;
+			currParams.amount = 100;
+			currentImgData = imgTrg;
+		}
+		if(currParams.amount <= 1){
+			clearTimeout(timer);
+			setTimeout(function(){that.ctx.putImageData(imgTrg, 0, 0);}, 20);
+		}
+		glitch(currentImgData, currParams, function(img_data) {
+			var rdm = Math.random() > 0.25;
+			var grayscaleImg = rdm ? img_data : Glitchable.prototype.grayscale(img_data);
+			that.ctx.putImageData(grayscaleImg, 0, 0);
 		});
 	};
 };

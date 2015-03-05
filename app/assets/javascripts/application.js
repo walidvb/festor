@@ -17,7 +17,6 @@
 //= require home.js
 //= require mixitup/build/jquery.mixitup.min.js
 //= require mixitup/build/jquery.mixitup.min.js
-//= require shifty/dist/shifty.min.js
 //= require_tree .
 //= stub_tree rails_admin
 
