@@ -1,18 +1,18 @@
 %ul.events
-	/ %li
-	/ 	= link_to exhibitions_path do
-	/ 		%h2.section-title Exhibitions
-	/ 		= image_tag @exhibition.main_image.url, class: "glitch"
+	%li
+		= link_to exhibitions_path do
+			%h2.section-title Exhibitions
+			= image_tag @exhibition.main_image.url, class: "glitch"
 			
-	/ %li
-	/ 	= link_to workshops_path do
-	/ 		%h2.section-title Workshops
-	/ 		= image_tag @workshop.main_image.url, class: "glitch"
+	%li
+		= link_to workshops_path do
+			%h2.section-title Workshops
+			= image_tag @workshop.main_image.url, class: "glitch"
 			
-	/ %li
-	/ 	= link_to artists_path do
-	/ 		%h2.section-title Artists
-	/ 		= image_tag @artist.profile_picture.url, class: "glitch"
+	%li
+		= link_to artists_path do
+			%h2.section-title Artists
+			= image_tag @artist.profile_picture.url, class: "glitch"
 			
 	%li
 		= link_to events_path do

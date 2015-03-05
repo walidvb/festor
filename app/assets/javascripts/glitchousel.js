@@ -1,7 +1,7 @@
 function Glitchousel(options){
 	this.params = {
-		speed: 500,
-		timeout: 4000,
+		speed: 800,
+		timeout: 5000,
 	}
 	this.timer = null;
 	this.container = options.container
@@ -88,28 +88,38 @@ Glitchousel.prototype.transition = function(imgSrc, imgTrg){
 		quality: 100
 	};
 	var currentImgData = imgSrc;
-	console.log("currParams start:", currParams);
+	var increment = (100 - currParams.amount) / (that.params.speed / 200);
 	glitchTo();
 	function glitchTo(){
 		var from, to; 
+		console.log("currParams:", currParams);
 		if(direction > 0)
 		{
-			currParams.amount += 10+Math.random()*20;
-			currParams.seed += 10+Math.random()*20;
-			currParams.iterations += 10+Math.random()*20;
+			currParams.amount += 10+Math.random()*increment+2;
+			currParams.seed += 10+Math.random()*increment+2;
+			currParams.iterations += 10+Math.random()*increment+2;
 			currParams.quality -= 1.5;
-			//console.log("currParams increase:", currParams);
 		}
 		else{
-			currParams.amount -= 10+Math.random()*20;
-			currParams.seed -= 10+Math.random()*20;
-			currParams.iterations -= 10+Math.random()*20;
-			currParams.quality += 10+Math.random()*20;
-			//console.log("currParams decrease:", currParams);
+			currParams.amount -= 10+Math.random()*increment+2;
+			currParams.seed -= 10+Math.random()*increment+2;
+			currParams.iterations -= 10+Math.random()*increment+2;
+			currParams.quality += 10+Math.random()*increment+2;
 		}
 
-		console.log("currParams.amount:", currParams.amount);
-		timer = setTimeout(glitchTo, Math.random()*200+20);
+		for(key in currParams){
+			if(currParams[key] >= 100){
+				currParams[key] = 100;
+			}
+			else if(currParams[key] <= 0)
+			{
+				currParams[key] = 0;
+			}
+			else{
+				currParams[key] = Math.floor(currParams[key]);
+			}
+		}
+		timer = setTimeout(glitchTo, Math.random()*20+200);
 		if(currParams.amount >= 100)
 		{
 			direction = -1;
@@ -118,7 +128,7 @@ Glitchousel.prototype.transition = function(imgSrc, imgTrg){
 		}
 		if(currParams.amount <= 1){
 			clearTimeout(timer);
-			setTimeout(function(){that.ctx.putImageData(imgTrg, 0, 0);}, 20);
+			setTimeout(function(){that.ctx.putImageData(imgTrg, 0, 0);}, 10);
 		}
 		glitch(currentImgData, currParams, function(img_data) {
 			var rdm = Math.random() > 0.25;
