@@ -1,6 +1,6 @@
 function Glitchousel(options){
 	this.params = {
-		speed: 800,
+		speed: 600,
 		timeout: 5000,
 	}
 	this.timer = null;
@@ -9,12 +9,25 @@ function Glitchousel(options){
 
 Glitchousel.prototype.start = function(){
 	var that = this;
+	console.log('starting');
 	play();
 	function play(){
 		that.next();
-		that.timer = setTimeout(play, that.params.timeout);
+		that.timer = setTimeout(play, that.params.timeout+ that.params.speed);
 	}
 };
+
+Glitchousel.prototype.pause = function(){
+	var that = this;
+	console.log('pausing');
+	clearTimeout(that.timer);
+	that.ctx.putImageData(this.imgDatas[this.currentIndex], 0, 0);
+};
+
+Glitchousel.prototype.bindEvents = function(){
+	var that = this;
+	this.container.on('hover', that.pause, that.play);
+}
 
 Glitchousel.prototype.init = function(){
 	var that = this;
@@ -33,6 +46,8 @@ Glitchousel.prototype.init = function(){
 			if(imgsLoadedCount == $imgs.length)
 			{
 				processImgs();
+				that.bindEvents();
+				console.log("that:", that);
 				that.start();
 			}
 		}
@@ -84,7 +99,7 @@ Glitchousel.prototype.transition = function(imgSrc, imgTrg){
 	var currParams = {
 		amount: 2,
 		seed: 70,
-		iterations: 1,
+		iterations: 5,
 		quality: 100
 	};
 	var currentImgData = imgSrc;
@@ -92,18 +107,17 @@ Glitchousel.prototype.transition = function(imgSrc, imgTrg){
 	glitchTo();
 	function glitchTo(){
 		var from, to; 
-		console.log("currParams:", currParams);
 		if(direction > 0)
 		{
 			currParams.amount += 10+Math.random()*increment+2;
 			currParams.seed += 10+Math.random()*increment+2;
-			currParams.iterations += 10+Math.random()*increment+2;
+			currParams.iterations *= Math.random()+1;
 			currParams.quality -= 1.5;
 		}
 		else{
 			currParams.amount -= 10+Math.random()*increment+2;
 			currParams.seed -= 10+Math.random()*increment+2;
-			currParams.iterations -= 10+Math.random()*increment+2;
+			currParams.iterations /= Math.random()+1;
 			currParams.quality += 10+Math.random()*increment+2;
 		}
 
@@ -126,7 +140,7 @@ Glitchousel.prototype.transition = function(imgSrc, imgTrg){
 			currParams.amount = 100;
 			currentImgData = imgTrg;
 		}
-		if(currParams.amount <= 1){
+		if(currParams.amount <= 0){
 			clearTimeout(timer);
 			setTimeout(function(){that.ctx.putImageData(imgTrg, 0, 0);}, 10);
 		}
