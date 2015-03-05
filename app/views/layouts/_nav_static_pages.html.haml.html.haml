@@ -3,4 +3,4 @@
 		= link_to t(:news), news_index_path
 	- @static_pages.each do |sp|
 		%li 
-			= link_to(t(sp.title), static_page_path(sp))
+			= link_to(sp.title, static_page_path(sp))
