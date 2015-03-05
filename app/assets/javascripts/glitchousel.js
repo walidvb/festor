@@ -2,6 +2,7 @@ function Glitchousel(options){
 	this.params = {
 		speed: 600,
 		timeout: 5000,
+		pauseOnHover: true,
 	}
 	this.timer = null;
 	this.container = options.container
@@ -17,16 +18,19 @@ Glitchousel.prototype.start = function(){
 	}
 };
 
-Glitchousel.prototype.pause = function(){
+Glitchousel.prototype.stop = function(){
 	var that = this;
 	console.log('pausing');
 	clearTimeout(that.timer);
-	that.ctx.putImageData(this.imgDatas[this.currentIndex], 0, 0);
+	that.ctx.putImageData(that.imgDatas[that.currentIndex], 0, 0);
 };
 
 Glitchousel.prototype.bindEvents = function(){
 	var that = this;
-	this.container.on('hover', that.pause, that.play);
+	if(that.params.pauseOnHover)
+	{
+		this.container.hover(that.stop.bind(that), that.start.bind(that));
+	}
 }
 
 Glitchousel.prototype.init = function(){
@@ -47,7 +51,6 @@ Glitchousel.prototype.init = function(){
 			{
 				processImgs();
 				that.bindEvents();
-				console.log("that:", that);
 				that.start();
 			}
 		}
@@ -58,9 +61,10 @@ Glitchousel.prototype.init = function(){
 		{
 			var width = $imgs[i].width;
 			var height = $imgs[i].height;
+			console.log("height:", height);
 			$imgs[i].style.display = 'none';
-			canvas.width = width;
-			canvas.height = height;
+			canvas.width = Math.max(width, canvas.width);
+			canvas.height = Math.max(height, canvas.height);
 			tmpImg.src = $imgs[i].src;
 			ctx = canvas.getContext('2d');
 			ctx.drawImage(tmpImg, 0, 0);
@@ -77,7 +81,6 @@ Glitchousel.prototype.init = function(){
 
 Glitchousel.prototype.goTo = function(index){
 	var currentImgData = this.imgDatas[index];
-  //this.originalImgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
   this.transition(this.imgDatas[this.currentIndex], this.imgDatas[index]);
   this.currentIndex = index;
 };
@@ -87,6 +90,15 @@ Glitchousel.prototype.next = function(){
 	if(nextIndex >= this.imgDatas.length)
 	{
 		nextIndex = 0;
+	}
+	this.goTo(nextIndex);
+};
+
+Glitchousel.prototype.prev = function(){
+	var nextIndex = this.currentIndex - 0;
+	if(nextIndex < 0)
+	{
+		nextIndex = this.imgDatas.length - 1;
 	}
 	this.goTo(nextIndex);
 };

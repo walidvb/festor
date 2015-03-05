@@ -4,6 +4,7 @@ Festor::Application.routes.draw do
   get "beta" => "beta#new"
   match "/upload" => "assets#upload", via: :post
   scope "(:locale)", locale: /en|fr/, defaults: {locale: 'en'} do
+  	
 	#	root "events#index", type: :workshop
 		root "home#index"
 	  post "beta" => "beta#create"
