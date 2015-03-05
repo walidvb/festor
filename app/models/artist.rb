@@ -7,6 +7,7 @@ class Artist < ActiveRecord::Base
 	has_many :bookings, dependent: :delete_all
   has_many :events, through: :bookings
   has_many :locations, through: :bookings
+  has_many :links
 
 	has_attached_file :profile_picture,
 		:styles => {

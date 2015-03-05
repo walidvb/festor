@@ -10,12 +10,18 @@
 	}
 	.event-title{
 		margin: 0 0 0px;
-		line-height: $large;
+		font-family: $title-font;
 	}
 	.location{
-		font-family: $info-font;
+	font-family: $info-font;
+	}
+
+	&:before{
+		@extend .triangle-up;
 	}
 }
+
+
 
 // PREVIEW TILES
 .mix {
@@ -31,11 +37,22 @@
 		max-height: 150px;
 	}
 }
-.mix .tile .info{
+
+.info{
 	font-size: $tile-title-size;
+	@include n-cols($children: ".type, .location", $max-column: 2);
+	align-items: center;
+	position: relative;
 	.type, .event-title, .location{
 		display: inline-block;
 		min-width: 100%;
+	}
+	h1, h2{
+		margin-top: 0px;
+		margin-bottom: 0px;
+	}
+	.type, .artist-event, .artist-name{
+		flex: 1 0 100%;
 	}
 }
 
@@ -52,7 +69,7 @@
 	@include n-cols($children: ".event");
 }
 
-.tile{
+.single-tile, .tile{
 	display: block;
 	background-color: white;
 	text-align: center;
@@ -61,37 +78,40 @@
 	.tile-header{
 		width: 100%;
 	}
-	.info{
-		@include n-cols($children: ".type, .location", $max-column: 2);
-		align-items: center;
-		position: relative;
-		h1{
-			margin-top: 0px;
-		}
-		.type{
-			flex: 1 0 100%;
-		}
-		@media #{$tablet}{
-			text-align: left;
-			padding-left: 15px;
-			.location{
-				font-size: $large;
-				line-height: $large;
-			}
-		}
-		&:before{
-			@extend .triangle-up;
+}
+
+// SINGLE PAGE
+
+.single-tile .info{
+	@media #{$tablet}{
+		text-align: left;
+		padding-left: 15px;
+		.location{
+			font-size: $large;
 		}
 	}
 }
 
-.event-desc{
+.artist-desc{
+	display: flex;
+	flex-wrap: wrap;
 	padding: 0px 5px 0px 5px;
 	strong{
 		font-family: $title-font;
 	}
 	@media #{$tablet}{
+		flex-wrap: nowrap;
 		padding: 0px 0px 0px 0px;
+	}
+	.links{
+		flex: 1 0 calc(20% - 7.5px);
+		background-color: $dark-grey;
+		margin-right: 2%;
+		padding-left: 15px;
+		font-family: $title-font;
+	}
+	.bio{
+		flex: 3 0 calc(80% - 7.5px);
 	}
 }
 
