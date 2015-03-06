@@ -6,7 +6,6 @@
 	- Event.category_enum.each do |cat|
 		%input.cat-filter{:type => "checkbox", value: cat, id: "category-#{cat}", checked: true} 
 			%label{:for => "category-#{cat}"}#{cat}
-	= I18n.locale
 #single-events-list.events-list
 	- @events.each do |event|
 		.mix.event{class: "#{event.category} #{event.schedule_start.strftime("%d-%m-%y")}", data: {position: event.id}}
