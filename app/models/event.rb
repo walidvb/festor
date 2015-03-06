@@ -1,6 +1,6 @@
 class Event < ActiveRecord::Base
 	translates :title, :description
-	has_many :links, dependent: :destroy	
+	has_many :links, as: :linkable, dependent: :destroy	
 	
 	scope :featured, -> {where(featured: true)}
 	has_many :bookings, dependent: :delete_all
