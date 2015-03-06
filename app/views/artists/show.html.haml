@@ -12,9 +12,9 @@
 					= schedule_for(event)
 .artist-desc.mf-row
 	.bio
-		= @artist.biography
-	%ul.links
-		%li= link_to 'link 1', artists_path
-		%li= link_to 'link 2', artists_path
-		%li= link_to 'link 2', artists_path
+		= @artist.biography.html_safe
+	- if !@links.empty?
+		%ul.links
+			- @links.each do |l|
+				= link_to l.text_to_show, l.url, target: "_blank"
 %div.back_to_all= link_to 'Back to all artists', artists_path

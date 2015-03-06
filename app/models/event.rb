@@ -1,6 +1,6 @@
 class Event < ActiveRecord::Base
 	translates :title, :description
-	has_many :links, as: :linkable, dependent: :destroy	
+	has_many :links, as: :linkable, dependent: :destroy
 	
 	scope :featured, -> {where(featured: true)}
 	has_many :bookings, dependent: :delete_all
@@ -9,6 +9,7 @@ class Event < ActiveRecord::Base
 	belongs_to :location
 
 	accepts_nested_attributes_for :artists, allow_destroy: true
+	accepts_nested_attributes_for :links, allow_destroy: true
 	accepts_nested_attributes_for :translations, allow_destroy: true
 
 	validates :location, presence: true
@@ -50,6 +51,7 @@ class Event < ActiveRecord::Base
 
 	self.inheritance_column = :fake_column
 
+	attr_accessor :link_ids
 	attr_accessor :artist_ids
 	def artist_ids=(ids)
 		unless (ids = ids.map(&:to_i).select{|i|i>0}) == (current_ids = bookings.map(&:artist_id))
@@ -65,10 +67,15 @@ class Event < ActiveRecord::Base
 		end
 	end
 
+
+
 	rails_admin do
     configure :translations, :globalize_tabs
     configure :bookings do 
       visible false
+    end
+    configure :links do 
+      visible true
     end
     list do 
     	scopes Event.type_enum
