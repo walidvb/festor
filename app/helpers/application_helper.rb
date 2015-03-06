@@ -20,4 +20,14 @@ module ApplicationHelper
     active = !request.fullpath.match(path_1).nil?
     link_to txt, url, class: active ? "active" : nil
   end
+
+  def mf_auto_html html
+    auto_html(html){
+      html_escape;
+      youtube(:width => 400, :height => 250)
+      simple_format; 
+      link(:target => 'blank')
+      image
+    }.html_safe unless html.blank?
+  end
 end

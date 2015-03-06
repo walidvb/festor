@@ -1,5 +1,5 @@
 class Event < ActiveRecord::Base
-	translates :title, :description
+	translates :title, :description, :sidebar_media
 	has_many :links, as: :linkable, dependent: :destroy
 	
 	scope :featured, -> {where(featured: true)}

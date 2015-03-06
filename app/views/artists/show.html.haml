@@ -13,8 +13,10 @@
 .artist-desc.mf-row
 	.bio
 		= @artist.biography.html_safe
-	- if !@links.empty?
-		%ul.links
-			- @links.each do |l|
-				= link_to l.text_to_show, l.url, target: "_blank"
+	.sidebar
+		- if !@links.empty?
+			%ul.links
+				- @links.each do |l|
+					= link_to l.text_to_show, l.url, target: "_blank"
+		= mf_auto_html(@artist.sidebar_media)
 %div.back_to_all= link_to 'Back to all artists', artists_path

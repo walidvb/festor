@@ -17,11 +17,12 @@ ActiveRecord::Schema.define(version: 20150306131006) do
   enable_extension "plpgsql"
 
   create_table "artist_translations", force: true do |t|
-    t.integer  "artist_id",  null: false
-    t.string   "locale",     null: false
+    t.integer  "artist_id",     null: false
+    t.string   "locale",        null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "biography"
+    t.text     "sidebar_media"
   end
 
   add_index "artist_translations", ["artist_id"], name: "index_artist_translations_on_artist_id", using: :btree
@@ -57,12 +58,13 @@ ActiveRecord::Schema.define(version: 20150306131006) do
   add_index "bookings", ["event_id"], name: "index_bookings_on_event_id", using: :btree
 
   create_table "event_translations", force: true do |t|
-    t.integer  "event_id",    null: false
-    t.string   "locale",      null: false
+    t.integer  "event_id",      null: false
+    t.string   "locale",        null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "title"
     t.text     "description"
+    t.text     "sidebar_media"
   end
 
   add_index "event_translations", ["event_id"], name: "index_event_translations_on_event_id", using: :btree

@@ -1,5 +1,13 @@
 class Artist < ActiveRecord::Base
-  translates :biography
+  translates :biography, :sidebar_media
+  auto_html_for :sidebar_media do
+    html_escape
+    image
+    youtube(:width => 400, :height => 250)
+    link :target => "_blank", :rel => "nofollow"
+    simple_format
+  end
+
   validates :name, presence: true
   validates :biography, presence: true
 
