@@ -16,6 +16,7 @@
 //= require bootstrap
 //= require home.js
 //= require mixitup/build/jquery.mixitup.min.js
+//= require chosen-jquery
 //= require_tree .
 //= stub_tree rails_admin
 
@@ -24,9 +25,9 @@
 $(document).on('ready page:load', function(){
 	$('.dropdown a').click(function(){
 		setTimeout(function(){$(this).parent('.dropdown').addClass('open')}, 0);
-		console.log('asd');
 	});
 
+	// fix menu
 	var nav = $('.navbar-nav');
 	var navOffsetTop = nav.offset().top;
 	$(window).on('scroll', function(e){
@@ -39,5 +40,11 @@ $(document).on('ready page:load', function(){
 		{
 			$('body').removeClass('nav-fixed');
 		}
-	}).on('resize', function(){navOffsetTop = nav.offset().top;})
+	}).on('resize', function(){navOffsetTop = nav.offset().top;});
+
+	$('select').chosen({
+		allow_single_deselect: true,
+		disable_search_threshold: 10,
+		width: '200px',
+	});
 })

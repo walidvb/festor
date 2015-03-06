@@ -1,10 +1,10 @@
-
-%select#date-filter
-	- @dates.each do |d|
-		%option{:value => d.strftime("%d-%m-%y")}= l(d, format: "%a %e")
-.filters
+#filters
+	%select#date-filter{"data-placeholder" => "date"}
+		%option{:value => "empty"}
+		- @dates.each do |d|
+			%option{:value => d.strftime("%d-%m-%y")}= l(d, format: "%a %e")
 	- Event.category_enum.each do |cat|
-		.filter{data: {filter: ".#{cat}"}} #{cat}
+		%input.cat-filter{:type => "checkbox", value: cat, name: "category", checked: true} #{cat}
 #single-events-list.events-list
 	- @events.each do |event|
 		.mix.event{class: "#{event.category} #{event.schedule_start.strftime("%d-%m-%y")}", data: {position: event.id}}

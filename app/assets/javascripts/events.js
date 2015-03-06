@@ -1,15 +1,11 @@
 $(document).on('ready page:load', function(){
-	var initialFilters = [];
-	$('.filters .filter').each(function(){
-		initialFilters.push($(this).attr('data-filter'));
-	});
 
 	var events = $('#single-events-list').mixItUp({
 		selectors: {
 			target: '.event'
 		},
 		load: {
-      filter: initialFilters.join(',')
+      filter: getFilters()
     },
     controls: {
       toggleFilterButtons: true
@@ -24,8 +20,40 @@ $(document).on('ready page:load', function(){
 		}
 	});
 
-	$('#date-filter').change(function(){
-		var date = $(this).val();
-		events.mixItUp('filter', "."+date)
+	$('.cat-filter').change(function(){
+		updateFilters();
 	});
+
+	$('#date-filter').change(function(){
+		updateFilters();
+	});
+
+	function updateFilters(filterGroups){
+		console.log("getFilters():", getFilters());
+		$('#single-events-list').mixItUp('multiMix', {
+			filter: getFilters()
+		});
+	};
+
+	function getFilters(){
+		var filters = [];
+		var dateFilter = null;
+		$('#filters select').each(function(){
+			if($(this).val() != 'empty')
+			{
+				dateFilter = $(this).val();
+			}	
+		});
+
+		filters = $('#filters .cat-filter:checked').map(function(i,obj){
+			var val = $(obj).val();
+			if(dateFilter)
+			{
+				return "."+dateFilter+"."+val;
+			}
+			return '.'+val;
+		}).toArray().concat(filters)
+
+		return filters.join(', ');
+	}
 }); 
