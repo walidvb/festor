@@ -16,7 +16,7 @@ module ApplicationHelper
   end
 
   def active_link_to txt, url
-    path_1 = url.split('/')[1]
+    path_1 = /\/?\w{0,2}?\/((\w*-?_?)+)/.match(url)[1]
     active = !request.fullpath.match(path_1).nil?
     link_to txt, url, class: active ? "active" : nil, locale: I18n.locale
   end

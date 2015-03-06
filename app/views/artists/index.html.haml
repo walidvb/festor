@@ -1,7 +1,7 @@
 %ul.grid-3-col
 	- @artists.each do |artist|
 		%li.mix.artist{data: {position: artist.id}}
-			- path = artist_path(artist)
+			- path = artist_path(artist, locale: I18n.locale)
 			= link_to path do
 				.tile
 					= image_tag artist.profile_picture.url(:tile), class: 'glitch'

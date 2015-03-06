@@ -16,7 +16,6 @@ gem 'devise', '3.3.0'
 gem 'bootstrap-sass', '3.2.0.2'
 #gem 'kaminari', '0.16.1'
 gem 'font-awesome-sass', '4.2.0'
-gem 'friendly_id', '5.0.4'
 gem 'fog'
 gem "paperclip", '~> 4.1'
 gem 'paperclip-sftp', '~> 1.0.0'
@@ -37,6 +36,8 @@ gem "auto_html"
 gem 'rails-i18n', '~> 4.0.0'
 gem 'globalize'
 gem 'rails_admin_globalize_field'
+gem 'friendly_id', '5.0.4'
+#gem 'friendly_id-globalize'
 
 # development gems
 group :development do

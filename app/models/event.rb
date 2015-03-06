@@ -1,5 +1,8 @@
 class Event < ActiveRecord::Base
 	translates :title, :description, :sidebar_media
+	extend FriendlyId
+  friendly_id :title, :use => :globalize
+
 	has_many :links, as: :linkable, dependent: :destroy
 	
 	scope :featured, -> {where(featured: true)}
@@ -67,7 +70,7 @@ class Event < ActiveRecord::Base
 		end
 	end
 
-
+	private
 
 	rails_admin do
     configure :translations, :globalize_tabs
