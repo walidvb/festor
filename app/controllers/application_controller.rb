@@ -40,9 +40,14 @@ class ApplicationController < ActionController::Base
   end
 
   private
+  def default_url_options(options = {})
+    options[:locale] = I18n.locale
+    options
+  end
+
   def set_locale
     I18n.locale = params[:locale] || I18n.default_locale
-    Rails.application.routes.default_url_options[:locale] = I18n.locale
+    Rails.application.routes.default_url_options[:locale] = params[:locale]
   end
 
   def beta_only

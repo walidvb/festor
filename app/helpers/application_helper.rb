@@ -18,7 +18,7 @@ module ApplicationHelper
   def active_link_to txt, url
     path_1 = url.split('/')[1]
     active = !request.fullpath.match(path_1).nil?
-    link_to txt, url, class: active ? "active" : nil
+    link_to txt, url, class: active ? "active" : nil, locale: I18n.locale
   end
 
   def mf_auto_html html

@@ -1,3 +1,4 @@
+$form-font-size: 16px;
 .link{
 	background-color: $brand-color;
 	color: $black;
@@ -6,10 +7,14 @@
 	}
 }
 
-.filters{
+#filters{
 	display: flex;
 	justify-content: flex-start;
-	.filter{
+	font-size: $form-font-size;
+	input[type="checkbox"]{
+		display: none;
+	}
+	input[type="checkbox"] + label{
 		cursor: pointer;
 		flex: 0 0 auto;
 		margin: 0 10px;
@@ -21,13 +26,10 @@
 			border: solid 2px $brand-color;
 			margin-right: 5px;
 		}
-		&:hover:before{
-			background-color: $brand-color;
-		}
-		&.active:before{
-			border-color: $brand-color;
-			background-color: $brand-color;
-		}
+	}
+	input[type="checkbox"] + label:hover:before, input[type="checkbox"]:checked + label:before{
+		border-color: $brand-color;
+		background-color: $brand-color;
 	}
 }
 
@@ -40,4 +42,33 @@
 	display: block;
 	width: 0;
 	position: relative;
+}
+
+.chosen-container.chosen-container, .chosen-container.chosen-container.chosen-with-drop{
+	font-size: $form-font-size;
+	font-family: $title-font;
+	color: $black;
+	text-transform: lowercase;
+	.chosen-default, .chosen-single{
+		color: black;
+		border-radius: 0;
+		background: $brand-color;
+		font-weight: bold;
+	}
+	.chosen-drop{
+		border-radius: 0;
+		.chosen-results{
+			background: $brand-color;
+			margin: 0;
+			padding: 0;
+			li{
+				font-weight: bold;
+				padding: 5px 10px;
+				&.highlighted{
+					color: $brand-color;
+					background: $black;
+				}
+			}
+		}
+	}
 }

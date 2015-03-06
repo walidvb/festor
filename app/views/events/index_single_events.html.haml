@@ -2,13 +2,15 @@
 	%select#date-filter{"data-placeholder" => "date"}
 		%option{:value => "empty"}
 		- @dates.each do |d|
-			%option{:value => d.strftime("%d-%m-%y")}= l(d, format: "%a %e")
+			%option{:value => d.strftime("%d-%m-%y")}= l(d, format: "%A %e")
 	- Event.category_enum.each do |cat|
-		%input.cat-filter{:type => "checkbox", value: cat, name: "category", checked: true} #{cat}
+		%input.cat-filter{:type => "checkbox", value: cat, id: "category-#{cat}", checked: true} 
+			%label{:for => "category-#{cat}"}#{cat}
+	= I18n.locale
 #single-events-list.events-list
 	- @events.each do |event|
 		.mix.event{class: "#{event.category} #{event.schedule_start.strftime("%d-%m-%y")}", data: {position: event.id}}
-			= link_to event_path(event) do 
+			= link_to event_path(event, locale: I18n.locale) do 
 				.tile
 					= image_tag event.main_image.url(:tile), class: 'glitch'
 					.info
