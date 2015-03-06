@@ -7,9 +7,12 @@
 					= image_tag artist.profile_picture.url(:tile), class: 'glitch'
 					- event = artist.events.first
 					.info
-						= event.title unless event.blank?
-						%h3.artist-name= artist.name
-						.location
-							= schedule_for(event) unless event.blank?
-							= event.location.name unless event.blank?
+						%h2.type= artist.events.first.type
+						%h1.artist-name
+							= artist.name
+						.event-info
+							%h2.event-title= event.title unless event.blank?	
+							.location
+								= schedule_for(event) unless event.blank?
+								= event.location.name unless event.blank?
 						-#%h3= artist.label

@@ -1,4 +1,4 @@
 Fabricator(:artist) do
 	name  "Fabuleux"
-	biography "the Biography"
+	biography "After the fall of the Wall, Berlin is full of disused spaces and abandoned buildings, just waiting to be filled with new life. It is unclear who owns any of this, which allows the techno scene to take over these new empty spaces in both halves of the city. Clubs, galleries, ateliers and studios spring up - only to disappear again a few weeks later. Soon Berlin has become the epicentre of a new culture, attracting enthusiastic followers from all over the world to clubs like the Tresor and the E-Werk. Wearing gasmasks and welding goggles they dance the night away to the jackhammer sound of previously obscure Detroit DJs. Among them are writers, artists, photographers, designers, DJs, club-owners, music producers, bouncers and scenesters, people from the centre of the movement and from its peripheries - in Der Klang der Familie they all get to have their say and paint a vibrant picture of a time when it felt like everything was possible."
 end

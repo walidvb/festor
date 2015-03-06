@@ -1,4 +1,5 @@
-= render 'event_tile', event: @event, location: @location, image_size: :large
+.single-tile
+	= render 'event_tile', event: @event, location: @location, image_size: :large
 .links
 	- @links.each do |l|
 		= print_link(l)

@@ -1,13 +1,19 @@
-= image_tag @artist.profile_picture.url(:large), class: 'glitch'
-.info.mf-row
-	%h1= @artist.name
-
-	%h3 Playing at:
-	%ul
-	- @bookings.each do |b|
-		%li.location
-			%h5= link_to b.event.title, event_path(b.event)
-			.name= "#{b.event.schedule_start.strftime("%A %e %b")} – #{b.location.name}"
-.event-desc
-	= @artist.biography
-%div= link_to 'Back to all artists', artists_path
+.single-tile
+	.tile
+		= image_tag @artist.profile_picture.url(:large), class: 'glitch'
+		.info.mf-row
+			%h1.artist-name= @artist.name
+			.artist-event
+				Playing at:
+				%h1.artist-event= @artist.events.first.title
+				.location
+					= link_to @artist.events.first.location.name 
+					= schedule_for(@artist.events.first)
+.artist-desc.mf-row
+	.bio
+		= @artist.biography
+	%ul.links
+		%li= link_to 'link 1', artists_path
+		%li= link_to 'link 2', artists_path
+		%li= link_to 'link 2', artists_path
+%div.back_to_all= link_to 'Back to all artists', artists_path
