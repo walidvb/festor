@@ -3,7 +3,8 @@ $(document).on('ready page:load', function(){
 	$('.filters .filter').each(function(){
 		initialFilters.push($(this).attr('data-filter'));
 	});
-	$('#single-events-list').mixItUp({
+
+	var events = $('#single-events-list').mixItUp({
 		selectors: {
 			target: '.event'
 		},
@@ -21,5 +22,10 @@ $(document).on('ready page:load', function(){
 				return (2*i) - (5*((i/3) - ((1/3) * (i%3))));
 			}
 		}
+	});
+
+	$('#date-filter').change(function(){
+		var date = $(this).val();
+		events.mixItUp('filter', "."+date)
 	});
 }); 

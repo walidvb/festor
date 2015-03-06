@@ -50,8 +50,9 @@ Fabricate(:event, title: "The future workshop", type: :workshop, schedule_start:
 
 Fabricate :event, type: :exhibition, title: "The Exhibition", schedule_start: 2.days.from_now, schedule_end: 4.days.from_now, main_image: pic, location: location
 Fabricate :event, type: :performance, title: "Performance", main_image: pic, location: location, schedule_start: 2.days.from_now
-Event.category_enum.each do |cat|
-	Fabricate.times(3, :event, type: :single_event, category: cat, location: location, main_image: pic)
+
+Event.category_enum.each_with_index do |cat, index|
+	Fabricate.times(3, :event, type: :single_event, category: cat, location: location, main_image: File.open("#{Rails.root}/app/assets/images/graze.jpg"), featured: true, schedule_start: index.days.from_now)
 end
 
 static_pages = %w(infos about partners gallery previous_editions)

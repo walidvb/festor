@@ -1,10 +1,13 @@
+
+%select#date-filter
+	- @dates.each do |d|
+		%option{:value => d.strftime("%d-%m-%y")}= l(d, format: "%a %e")
 .filters
-	Filters:
 	- Event.category_enum.each do |cat|
 		.filter{data: {filter: ".#{cat}"}} #{cat}
 #single-events-list.events-list
 	- @events.each do |event|
-		.mix.event{class: "#{event.category}", data: {position: event.id}}
+		.mix.event{class: "#{event.category} #{event.schedule_start.strftime("%d-%m-%y")}", data: {position: event.id}}
 			= link_to event_path(event) do 
 				.tile
 					= image_tag event.main_image.url(:tile), class: 'glitch'
