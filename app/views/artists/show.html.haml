@@ -5,10 +5,11 @@
 			%h1.artist-name= @artist.name
 			.artist-event
 				Playing at:
-				%h1.artist-event= @artist.events.first.title
+				- event = @artist.events.first
+				%h1.artist-event= event.title
 				.location
-					= link_to @artist.events.first.location.name 
-					= schedule_for(@artist.events.first)
+					= link_to event.location.name, static_page_path(1)
+					= schedule_for(event)
 .artist-desc.mf-row
 	.bio
 		= @artist.biography
