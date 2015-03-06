@@ -1,4 +1,7 @@
 class Artist < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :name, :use => :slugged
+
   translates :biography, :sidebar_media
   auto_html_for :sidebar_media do
     html_escape
