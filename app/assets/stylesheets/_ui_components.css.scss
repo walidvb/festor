@@ -46,7 +46,7 @@ $form-font-size: 16px;
 
 .chosen-container.chosen-container, .chosen-container.chosen-container.chosen-with-drop{
 	font-size: $form-font-size;
-	font-family: $title-font;
+	font-weight: bold;
 	color: $black;
 	text-transform: lowercase;
 	.chosen-default, .chosen-single{
