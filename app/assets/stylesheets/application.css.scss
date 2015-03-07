@@ -4,6 +4,7 @@
  *= require_self
  *= require chosen
  *= require rails_admin/ra.globalize_tabs
+ *= require froala/css/froala_style.min.css 
  */
 @import "framework_and_overrides";
 @import "variables";
