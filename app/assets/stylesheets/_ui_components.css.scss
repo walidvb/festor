@@ -17,7 +17,6 @@ $form-font-size: 16px;
 	input[type="checkbox"] + label{
 		cursor: pointer;
 		flex: 0 0 auto;
-		margin: 0 10px;
 		&:before{
 			content: '';
 			display: inline-block;
@@ -25,6 +24,7 @@ $form-font-size: 16px;
 			width: 15px;
 			border: solid 2px $brand-color;
 			margin-right: 5px;
+			transform: translateY(3px);
 		}
 	}
 	input[type="checkbox"] + label:hover:before, input[type="checkbox"]:checked + label:before{
@@ -54,9 +54,11 @@ $form-font-size: 16px;
 		border-radius: 0;
 		background: $brand-color;
 		font-weight: bold;
+		box-shadow: none;
 	}
 	.chosen-drop{
 		border-radius: 0;
+		border: none;
 		.chosen-results{
 			background: $brand-color;
 			margin: 0;

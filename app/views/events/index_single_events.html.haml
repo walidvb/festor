@@ -3,9 +3,10 @@
 		%option{:value => "empty"}
 		- @dates.each do |d|
 			%option{:value => d.strftime("%d-%m-%y")}= l(d, format: "%A %e")
-	- Event.category_enum.each do |cat|
-		%input.cat-filter{:type => "checkbox", value: cat, id: "category-#{cat}", checked: true} 
-			%label{:for => "category-#{cat}"}#{cat}
+	.cat-filters
+		- Event.category_enum.each do |cat|
+			%input.cat-filter{:type => "checkbox", value: cat, id: "category-#{cat}", checked: true} 
+				%label{:for => "category-#{cat}"}#{cat}
 #single-events-list.events-list
 	- @events.each do |event|
 		.mix.event{class: "#{event.category} #{event.schedule_start.strftime("%d-%m-%y")}", data: {position: event.id}}

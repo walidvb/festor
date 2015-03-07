@@ -1,3 +1,6 @@
+$header-height-sm: 250px;
+$header-padding-vert: 40px;
+
 .body-header{
 	background-image: image-url('header_img.jpg');
 	background-size: cover;
@@ -5,7 +8,7 @@
 	padding: 5px 0 30px;
 	@media #{$tablet}
 	{
-		padding: 40px 0;
+		padding: $header-padding-vert 0;
 	}
 	.container{
 		display: flex;
@@ -28,7 +31,6 @@
 		}
 		@media #{$tablet}
 		{
-				min-height: 350px;
 			.festival-date{
 				font-size: $larger;
 			}

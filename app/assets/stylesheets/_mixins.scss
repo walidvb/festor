@@ -27,10 +27,12 @@
 	@media #{$tablet}
 	{
 		flex-basis: calc(50% - 5px);
+		margin-bottom: 5px;
 	}
 	@media #{$md}
 	{
 		flex-basis:  calc(33.3% - 10px);
+		margin-bottom: 10px;
 	}
 }
 
