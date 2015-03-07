@@ -36,8 +36,9 @@ $tile-title-size 	:	0.8em;
 }
 
 @font-face {
-	font-family : 'Avenir-Bold';
+	font-family : 'Avenir';
 	src: local('AvenirNextLTPro-Bold'), url('/assets/avenir/AvenirNextLTPro-Regular.otf');
+	font-weight: bold;
 }
 
 @font-face {
