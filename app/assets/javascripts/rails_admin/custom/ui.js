@@ -25,8 +25,9 @@ $(document).on('rails_admin.dom_ready', function(){
 			h1: "h1",
 			h2: "h2", 
 			h3: "h3", 
-			h4: "h4"
+			h4: "h4",
 		},
+		useFrTag: true,
 		alwaysBlank: true,
 		paragraphy: false,
 		placeholder: "Edit Me!",
