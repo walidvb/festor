@@ -6,10 +6,10 @@
 .prev-next-navigation
 	.prev
 		- if previous_event = @event.previous
-			= link_to 'previous', event_path(previous_event, locale: I18n.locale)
+			= link_to t('nav.previous'), event_path(previous_event, locale: I18n.locale)
 	.next
 		- if next_event = @event.next
-			= link_to 'next', event_path(next_event, locale: I18n.locale)
+			= link_to t('nav.next'), event_path(next_event, locale: I18n.locale)
 .event-desc
 	= @event.description.html_safe
 	.sidebar
