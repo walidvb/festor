@@ -24,7 +24,11 @@ module ApplicationHelper
   def mf_auto_html html
     auto_html(html){
       html_escape;
-      youtube(:width => 400, :height => 250)
+      youtube(:width => 600, :height => 375)
+      vimeo(:width => 600, :height => 375)
+      dailymotion(:width => 600, :height => 375)
+      soundcloud
+      flickr
       simple_format; 
       link(:target => 'blank')
       image

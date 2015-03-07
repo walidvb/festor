@@ -10,9 +10,8 @@
 						%h2.type= event.type unless event.blank?	
 						%h1.artist-name
 							= artist.name
-						.event-info
-							%h2.event-title= event.title unless event.blank?	
-							.location
-								= schedule_for(event) unless event.blank?
-								= event.location.name unless event.blank?
+						%h2.event-title= event.title unless event.blank?	
+						.location
+							= schedule_for(event) unless event.blank?
+							= event.location.name unless event.blank?
 						-#%h3= artist.label

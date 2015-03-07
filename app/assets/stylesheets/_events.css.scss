@@ -139,11 +139,11 @@
 		flex: 0 0 100%;
 		@media #{$tablet}
 		{
-			flex: 0 0 calc(20% - 7.5px);
+			flex: 0 0 calc(30% - 7.5px);
 		}
 		@media #{$lg}
 		{
-		  flex: 0 0 calc(30% - 7.5px);
+		  flex: 0 0 calc(40% - 7.5px);
 		}
 	}
 	.links{
@@ -155,11 +155,11 @@
 		flex: 0 0 100%;
 		@media #{$tablet}
 		{
-		  flex: 0 0 calc(80% - 7.5px);
+		  flex: 0 0 calc(70% - 7.5px);
 		}
 		@media #{$lg}
 		{
-		  flex: 0 0 calc(70% - 7.5px);
+		  flex: 0 0 calc(60% - 7.5px);
 		}
 	}
 }
