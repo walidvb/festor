@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150307165250) do
+ActiveRecord::Schema.define(version: 20150308230650) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 20150307165250) do
     t.string   "slug"
     t.string   "label"
     t.string   "origin"
+    t.boolean  "vj"
   end
 
   create_table "assets", force: true do |t|
