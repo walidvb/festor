@@ -39,6 +39,10 @@ class Artist < ActiveRecord::Base
   end
 
 	rails_admin do
+    list do 
+      field :name
+      field :profile_picture
+    end
     configure :translations, :globalize_tabs
     configure :links do 
       visible true

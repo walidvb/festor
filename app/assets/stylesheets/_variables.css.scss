@@ -29,16 +29,30 @@ $large				: 	1.6em;
 $larger 			: 	2.2em;
 $tile-title-size 	:	0.8em;
 
-
 @font-face {
-	font-family : 'Avenir';
-	src: local('AvenirNextLTPro-Regular'), url('/assets/avenir/AvenirNextLTPro-Regular.otf');
+	font-family:'Avenir';
+	src: url('/assets/avenir/AvenirNextLTPro-Bold_gdi.eot');
+	src: url('/assets/avenir/AvenirNextLTPro-Bold_gdi.eot?#iefix') format('embedded-opentype'),
+		url('/assets/avenir/AvenirNextLTPro-Bold_gdi.woff') format('woff'),
+		url('/assets/avenir/AvenirNextLTPro-Bold_gdi.ttf') format('truetype'),
+		url('/assets/avenir/AvenirNextLTPro-Bold_gdi.svg#AvenirNextLTPro-Bold') format('svg');
+	font-weight: 700;
+	font-style: normal;
+	font-stretch: normal;
+	unicode-range: U+0-10FFFF;
 }
 
 @font-face {
-	font-family : 'Avenir';
-	src: local('AvenirNextLTPro-Bold'), url('/assets/avenir/AvenirNextLTPro-Regular.otf');
-	font-weight: bold;
+	font-family:'Avenir';
+	src: url('/assets/avenir/AvenirNextLTPro-Regular_gdi.eot');
+	src: url('/assets/avenir/AvenirNextLTPro-Regular_gdi.eot?#iefix') format('embedded-opentype'),
+		url('/assets/avenir/AvenirNextLTPro-Regular_gdi.woff') format('woff'),
+		url('/assets/avenir/AvenirNextLTPro-Regular_gdi.ttf') format('truetype'),
+		url('/assets/avenir/AvenirNextLTPro-Regular_gdi.svg#AvenirNextLTPro-Regular') format('svg');
+	font-weight: 400;
+	font-style: normal;
+	font-stretch: normal;
+	unicode-range: U+0-10FFFF;
 }
 
 @font-face {

@@ -22,6 +22,7 @@
 // RESETS
 body{
 	background-color: $background;
+	font-family: $body-font;
 	font-size : 14px;
 	@media #{$tablet}{
 		font-size : 16px;
