@@ -1,5 +1,3 @@
-
-
 @mixin n-cols($children,  $max-column: 3){
 	&{
 		@extend .mf-row;
