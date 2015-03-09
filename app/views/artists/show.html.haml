@@ -1,17 +1,16 @@
 .single-tile
-	.tile
-		= image_tag @artist.profile_picture.url(:large), class: 'glitch'
-		.info.mf-row
-			.artist
-				%h1.artist-name= @artist.name
-				%h3.labels= @artist.label
-			.artist-event
-				Playing at: 
-				- event = @artist.events.first
-				%h2.artist-event= event.title
-				.location
-					= link_to event.location.name, static_page_path(1, locale: I18n.locale)
-					= schedule_for(event)
+	= image_tag @artist.profile_picture.url(:large), class: 'glitch'
+	.info
+		.artist.info-left-col
+			%h1.artist-name= @artist.name
+			%h3.labels= @artist.label
+		.artist-event.info-right-col
+			Playing at: 
+			- event = @artist.events.first
+			%h2.artist-event= event.title
+			.location
+				= link_to event.location.name, static_page_path(1, locale: I18n.locale)
+				= schedule_for(event)
 .artist-desc.mf-row
 	.bio
 		= @artist.biography.html_safe unless @artist.biography.blank?
