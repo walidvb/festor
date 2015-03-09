@@ -5,15 +5,31 @@
 // SHARED
 
 .info{
+	font-size: $tile-title-size;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	position: relative;
+	.info-left-col, .info-right-col{
+		flex: 0 0 100%;
+		@media #{$tablet}
+		{
+		  flex: 0 0 50%;
+		}
+	}
 	.type{
 		font-weight: bold;
 	}
-	.event-title{
+	.title, .event-title{
 		margin: 0 0 0px;
 		font-weight: bold;
 	}
 	.location{
 		font-family: $info-font;
+	}
+	h1, h2{
+		margin-top: 0px;
+		margin-bottom: 0px;
 	}
 }
 
@@ -65,7 +81,6 @@
 	h1, h2{
 		margin-top: 0px;
 		margin-bottom: 0px;
-	}
 	.type, .artist-event{
 		flex: 1 0 100%;
 	}
