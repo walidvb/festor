@@ -10,11 +10,11 @@ $(document).on('rails_admin.dom_ready', function(){
 	var buttons;
 	if(isSinglePage)
 	{
-		buttons = ['undo', 'redo' , 'sep', 'bold', 'italic', 'underline', 'sep', 'link', 'sep', 'formatBlock','sep', 'insertUnorderedList', 'sep', 'insertImage', 'insertVideo', 'uploadFile', 'sep', 'html']
+		buttons = ['undo', 'redo' , 'sep', 'bold', 'italic', 'underline', 'sep', 'createLink', 'sep', 'formatBlock','sep', 'insertUnorderedList', 'sep', 'insertImage', 'insertVideo', 'uploadFile', 'sep', 'html']
 	}
 	else
 	{
-		buttons = ['undo', 'redo' , 'sep', 'bold', 'italic', 'underline', 'sep', 'link', 'sep', 'formatBlock','sep', 'insertImage', 'insertVideo', 'uploadFile', 'sep', 'html'];
+		buttons = ['undo', 'redo' , 'sep', 'bold', 'italic', 'underline', 'sep', 'createLink', 'sep', 'formatBlock','sep', 'insertImage', 'insertVideo', 'uploadFile', 'sep', 'html'];
 	}
 	var wysiwygs = $('.biography_field textarea, .description_field textarea, .body_field textarea');
 	wysiwygs.editable({
