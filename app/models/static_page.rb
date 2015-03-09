@@ -8,12 +8,16 @@ class StaticPage < ActiveRecord::Base
 	scope :public, ->{where(public: true)}
 	scope :news, ->{where(news: true).order(:created_at)}
 
-	def prevent_destroy_static_pages
-		if !self.news
-			self.errors[:base] << "You cannot destroy static pages."
-			return false 
-		end
-	end
+	has_attached_file :header_image,
+		:styles => {
+			:thumb => "100x100#",
+			:large => "1200x535#"
+		},
+		:default_url => "/images/missing.jpg",
+		:use_timestamp => false
+  
+	validates_attachment_content_type :header_image, :content_type => /\Aimage\/.*\Z/
+
 
 	### rails_admin
 	rails_admin do
@@ -29,4 +33,13 @@ class StaticPage < ActiveRecord::Base
 			field :public
 		end
 	end
+
+	private
+	def prevent_destroy_static_pages
+		if !self.news
+			self.errors[:base] << "You cannot destroy static pages."
+			return false 
+		end
+	end
+
 end
