@@ -1,3 +1,57 @@
 // Place all the styles related to the artists controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.artist{
+	display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: flex-start;
+    align-items: flex-start;
+    flex: 1 0 100%;
+}
+
+.artist-name, .labels{
+	flex: 1 0 100%;
+}
+
+.artist-desc{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	padding: 0px 5px 0px 5px;
+	strong{
+		font-weight: bold;
+	}
+	@media #{$tablet}{
+		padding: 0px 0px 0px 0px;
+	}
+	.sidebar{
+		flex: 0 0 100%;
+		@media #{$tablet}
+		{
+			flex: 0 0 calc(30% - 7.5px);
+		}
+		@media #{$lg}
+		{
+		  flex: 0 0 calc(40% - 7.5px);
+		}
+	}
+	.links{
+		padding: 5px;
+		background-color: $dark-grey;
+		font-weight: bold;
+	}
+	.bio{
+		flex: 0 0 100%;
+		@media #{$tablet}
+		{
+		  flex: 0 0 calc(70% - 7.5px);
+		}
+		@media #{$lg}
+		{
+		  flex: 0 0 calc(60% - 7.5px);
+		}
+	}
+}

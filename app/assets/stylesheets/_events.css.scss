@@ -49,7 +49,7 @@
 		margin-top: 0px;
 		margin-bottom: 0px;
 	}
-	.type, .artist-event, .artist-name{
+	.type, .artist-event{
 		flex: 1 0 100%;
 	}
 }
@@ -124,46 +124,6 @@
 		padding-left: 15px;
 		.location{
 			font-size: $large;
-		}
-	}
-}
-
-.artist-desc{
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-between;
-	padding: 0px 5px 0px 5px;
-	strong{
-		font-weight: bold;
-	}
-	@media #{$tablet}{
-		padding: 0px 0px 0px 0px;
-	}
-	.sidebar{
-		flex: 0 0 100%;
-		@media #{$tablet}
-		{
-			flex: 0 0 calc(30% - 7.5px);
-		}
-		@media #{$lg}
-		{
-		  flex: 0 0 calc(40% - 7.5px);
-		}
-	}
-	.links{
-		padding: 5px;
-		background-color: $dark-grey;
-		font-weight: bold;
-	}
-	.bio{
-		flex: 0 0 100%;
-		@media #{$tablet}
-		{
-		  flex: 0 0 calc(70% - 7.5px);
-		}
-		@media #{$lg}
-		{
-		  flex: 0 0 calc(60% - 7.5px);
 		}
 	}
 }

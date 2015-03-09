@@ -46,15 +46,23 @@ ul{
 	-webkit-padding-start: 0px;
 }
 
+h1, h2, h3{
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
 h1, h2{
 	font-family: $title-font;
 	font-size: $large;
 }
 
+h3{
+	font-family: $info-font;
+	font-size: $body-size;
+}
+
 main{
 	font-family: $body-font;
 	a{
-		background-color: $brand-color;
 		color: $black;
 		&:hover{
 			color: $black;
