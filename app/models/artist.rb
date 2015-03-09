@@ -11,8 +11,8 @@ class Artist < ActiveRecord::Base
     simple_format
   end
 
-  validates :name, presence: true
-  validates :biography, presence: true
+  #validates :name, presence: true
+  #validates :biography, presence: true
 
   has_many :bookings, dependent: :delete_all
   has_many :events, through: :bookings
@@ -39,11 +39,11 @@ class Artist < ActiveRecord::Base
   end
 
 	rails_admin do
+    configure :translations, :globalize_tabs
     list do 
       field :name
       field :profile_picture
     end
-    configure :translations, :globalize_tabs
     configure :links do 
       visible true
     end

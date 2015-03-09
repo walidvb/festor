@@ -12,7 +12,7 @@
 					= schedule_for(event)
 .artist-desc.mf-row
 	.bio
-		= @artist.biography.html_safe
+		= @artist.biography.html_safe unless @artist.biography.blank?
 	.sidebar
 		- if !@links.empty?
 			%ul.links
