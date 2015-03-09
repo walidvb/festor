@@ -8,7 +8,8 @@ $header-padding-vert: 40px;
 	padding: 5px 0 30px;
 	@media #{$tablet}
 	{
-		padding: $header-padding-vert 0;
+		padding-top: 30px;
+  		padding-bottom: 40px;
 	}
 	.container{
 		display: flex;
@@ -24,6 +25,9 @@ $header-padding-vert: 40px;
 			font-family: $info-font;
 		}
 		.motto{
+			font-family: $title-font;
+			font-size: $large;
+			font-weight: bold;
 			align-self: flex-end;
 			text-align: right;
 			color: $brand-color;
@@ -32,7 +36,8 @@ $header-padding-vert: 40px;
 		@media #{$tablet}
 		{
 			.festival-date{
-				font-size: $larger;
+				  font-size: $larger*1.2;
+  					line-height: 1.1em;
 			}
 		}
 
@@ -80,7 +85,7 @@ header .navbar-nav{
 		text-align: center;
 		a, &.open > a{
 			color: $light-grey;
-			font-size: $large;
+			font-size: $large*1.2;
 			font-weight: bold;
 			text-transform: lowercase;
 			background-color: $black!important;

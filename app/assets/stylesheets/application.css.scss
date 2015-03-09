@@ -25,7 +25,7 @@ body{
 	font-family: $body-font;
 	font-size : 14px;
 	@media #{$tablet}{
-		font-size : 16px;
+		font-size : 20px;
 	}
 }
 img, canvas, iframe{
@@ -69,6 +69,7 @@ main{
 		}
 	}
 }
+
 
 #footer{
 	height: auto;

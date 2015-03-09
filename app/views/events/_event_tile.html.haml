@@ -1,9 +1,10 @@
+.single-event-info
+	- event = @event
+	.date= schedule_for(event)
+	.location= link_to event.location.name, static_page_path(1, locale: I18n.locale)
 .tile
-	= image_tag event.main_image.url(image_size), class: 'glitch'
+	= image_tag event.main_image.url(:large), class: 'glitch'
 	.info.mf-row
 		.type
 			= event.type
 		%h1.mf-2-cols= event.title
-		.location.mf-2-cols
-			= schedule_for(event)
-			= location.name

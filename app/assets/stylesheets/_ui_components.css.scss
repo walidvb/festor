@@ -33,15 +33,51 @@ $form-font-size: 16px;
 	}
 }
 
-.triangle-up{
-	border-bottom: 25px solid white;
-	border-right: 25px solid transparent;
-	border-left: 25px solid transparent;
+@mixin triangle-up($triangle-size){
+	border-bottom: $triangle-size solid white;
+	border-right: $triangle-size solid transparent;
+	border-left: $triangle-size solid transparent;
 	content: '';
-	margin: -25px auto 0;
+	margin: -$triangle-size auto 0;
 	display: block;
 	width: 0;
 	position: relative;
+}
+
+
+.prev-next-navigation{
+	display: none;
+	@media #{$tablet}{
+		display: flex;
+		justify-content: space-between;
+		background-color: $dark-grey;
+		font-family: $title-font;
+		font-weight: bold;
+		line-height: $larger;
+		.next, .prev{
+			& a{
+				padding: 0 5px;
+				display: block;
+				&:after, &:before{
+					width: 30px;
+					height: 30px;
+					display: inline-block;
+					padding: 0 7px;
+				}
+			}
+		}
+		.next{
+			& a:after{
+				content: image-url('next-prev-arrow.svg');
+			}
+		}
+		.prev{
+			& a:before{
+				content: image-url('next-prev-arrow.svg');
+				transform: (rotate(180deg));
+			}
+		}
+	}
 }
 
 .chosen-container.chosen-container, .chosen-container.chosen-container.chosen-with-drop{

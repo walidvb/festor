@@ -2,18 +2,84 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.artist{
-	display:flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    align-content: flex-start;
-    align-items: flex-start;
-    flex: 1 0 100%;
+
+
+.event-name{
+	text-decoration: underline;
+	min-width: 100%;
 }
 
-.artist-name, .labels{
-	flex: 1 0 100%;
+.artist{
+	.artist-name, .labels{
+		display: inline-block;
+		padding-right: 10px;
+	}
+}
+
+.labels{
+	font-weight: normal;
+	font-family: $body-font;
+	@media #{$tablet}{
+		padding-top: 0.7em;
+	}
+}
+
+.links{
+	li{
+		display: inline-block;
+		padding-right: 15px;
+		text-decoration: underline;
+		text-transform: lowercase;
+	}
+}
+
+// SINGLE TILE
+
+.single-tile{
+	.artist{
+		min-width: 100%;
+		.artist-name{
+			width: auto;
+		}
+	}
+	.info{
+		&:before{
+			@include triangle-up($triangle-size: 60px);
+		}
+	}
+	h1, h2{
+		font-size: $largest;
+	}
+}
+
+.single-event-info{
+	display: flex;
+	font-family: $info-font;
+	.date, .location{
+		flex: 1 0 calc(50% - 7.5px);
+	}
+	.date{
+		text-align: left;
+	}
+	.location{
+		text-align: right;
+		&:before{
+			content: image-url('gmap-locator.svg');
+			width: 30px;
+			height: 30px;
+			display: inline-block;
+			padding: 0 7px;
+		}
+	}
+}
+
+.links, .single-event-info{
+	line-height: $larger;
+	background-color: $brand-color;
+	padding-left: 15px;
+	padding-right: 15px;
+	line-height: 2.2em;
+	margin-bottom: 5px;
 }
 
 .artist-desc{
@@ -35,23 +101,19 @@
 		}
 		@media #{$lg}
 		{
-		  flex: 0 0 calc(40% - 7.5px);
+			flex: 0 0 calc(40% - 7.5px);
 		}
-	}
-	.links{
-		padding: 5px;
-		background-color: $dark-grey;
-		font-weight: bold;
 	}
 	.bio{
 		flex: 0 0 100%;
+		padding-top: 5px;
 		@media #{$tablet}
 		{
-		  flex: 0 0 calc(70% - 7.5px);
+			flex: 0 0 calc(70% - 7.5px);
 		}
 		@media #{$lg}
 		{
-		  flex: 0 0 calc(60% - 7.5px);
+			flex: 0 0 calc(60% - 7.5px);
 		}
 	}
 }
