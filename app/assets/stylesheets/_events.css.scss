@@ -36,14 +36,15 @@
 	}
 }
 
-.info{
+.tile .info{
 	font-size: $tile-title-size;
-	@include n-cols($children: ".type, .location", $max-column: 2);
+	display: flex;
+	flex-wrap: wrap;
 	align-items: center;
 	position: relative;
 	.type, .event-title, .location{
 		display: inline-block;
-		min-width: 100%;
+		flex: 0 0 100%;
 	}
 	h1, h2{
 		margin-top: 0px;
