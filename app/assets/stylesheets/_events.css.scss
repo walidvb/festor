@@ -10,6 +10,9 @@
 	flex-wrap: wrap;
 	align-items: center;
 	position: relative;
+	&:before{
+		@include triangle-up($triangle-size: 25px);
+	}
 	.info-left-col, .info-right-col{
 		flex: 0 0 100%;
 		@media #{$tablet}
@@ -44,11 +47,6 @@
 		&:hover{
 			transition: color 0.15s;
 			color: $brand-color;
-		}
-	}
-	.info{
-		&:before{
-			@include triangle-up($triangle-size: 25px);
 		}
 	}
 	.artist, .event-name{
@@ -137,20 +135,17 @@
 	@include n-cols($children: ".event");
 }
 
-.tile{
+.show-header{
 	display: block;
 	background-color: white;
 	text-align: center;
 	margin-bottom: 5px;
 	text-transform: lowercase;
-	.tile-header{
-		width: 100%;
-	}
 }
 
 // SINGLE PAGE
 
-.single-tile .info{
+.show-header .info{
 	@media #{$tablet}{
 		text-align: left;
 		padding-left: 15px;
