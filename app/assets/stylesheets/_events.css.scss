@@ -135,7 +135,7 @@
 	@include n-cols($children: ".event");
 }
 
-.show-header{
+.show-header, .tile{
 	display: block;
 	background-color: white;
 	text-align: center;
