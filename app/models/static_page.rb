@@ -24,6 +24,7 @@ class StaticPage < ActiveRecord::Base
     configure :translations, :globalize_tabs
     edit do 
     	field :public
+    	field :header_image
     	field :translations
     end
 		list do
