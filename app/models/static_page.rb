@@ -11,6 +11,7 @@ class StaticPage < ActiveRecord::Base
 	has_attached_file :header_image,
 		:styles => {
 			:thumb => "100x100#",
+			:tile => "400x180#",
 			:large => "1200x535#"
 		},
 		:default_url => "/images/missing.jpg",

@@ -1,21 +1,21 @@
 %ul.events
 	%li
 		= link_to exhibitions_path do
-			%h2.section-title Exhibitions
+			%h2.section-title= t("nav.exhibitions")
 			= image_tag @exhibition.main_image.url(:tile), class: "glitch"
 			
 	%li
 		= link_to workshops_path do
-			%h2.section-title Workshops
+			%h2.section-title=  t('nav.workshops')
 			= image_tag @workshop.main_image.url(:tile), class: "glitch"
 			
 	%li
-		= link_to artists_path do
-			%h2.section-title Artists
-			= image_tag @artist.profile_picture.url(:tile), class: "glitch"
+		= link_to news_index_path do
+			%h2.section-title= t('nav.news')
+			= image_tag @news.header_image.url(:tile), class: "glitch"
 			
 	%li
 		= link_to events_path do
-			%h2.section-title Events
+			%h2.section-title=  t('nav.events')
 			= image_tag @event.main_image.url(:tile), class: "glitch"
 			
