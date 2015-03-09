@@ -1,2 +1,2 @@
-= image_tag @static_page.header_image.url(:large)
+= image_tag @static_page.header_image.url(:large) if @static_page.header_image.exists?
 = @static_page.body.html_safe

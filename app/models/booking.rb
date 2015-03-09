@@ -3,8 +3,8 @@ class Booking < ActiveRecord::Base
 	belongs_to :artist
 
 	has_one :location, through: :event
-	validates :event, presence: true
-	validates :artist, presence: true
+	#validates :event, presence: true
+	#validates :artist, presence: true
 
 	rails_admin do 
 		list do 
