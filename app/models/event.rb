@@ -18,8 +18,8 @@ class Event < ActiveRecord::Base
 	accepts_nested_attributes_for :links, allow_destroy: true
 	accepts_nested_attributes_for :translations, allow_destroy: true
 
-	validates :location, presence: true
-	validates :main_image, presence: true
+	#validates :location, presence: true
+	#validates :main_image, presence: true
 	has_attached_file :main_image,
 		:styles => {
 			:thumb => "100x100#",
