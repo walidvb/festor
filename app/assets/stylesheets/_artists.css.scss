@@ -73,6 +73,10 @@
 	}
 }
 
+.links a + a{
+	margin-left: 15px;
+}
+
 .links, .single-event-info{
 	line-height: $larger;
 	background-color: $brand-color;

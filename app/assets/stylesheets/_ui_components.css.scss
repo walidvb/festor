@@ -24,7 +24,8 @@ $form-font-size: 16px;
 			width: 15px;
 			border: solid 2px $brand-color;
 			margin-right: 5px;
-			transform: translateY(3px);
+			position: relative;
+			top: 3px;
 			transition: transform 0.1s 0.1s ease-out;
 		}
 	}
@@ -33,7 +34,7 @@ $form-font-size: 16px;
 		background-color: $brand-color;
 	}
 	input[type="checkbox"] + label:hover:before{
-		transform: rotateZ(45deg) translateY(3px);
+		transform: rotateZ(45deg);
 		transition: transform 0.1s ease-out;
 	}
 

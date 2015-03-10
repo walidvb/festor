@@ -1,2 +1,4 @@
 = image_tag @static_page.header_image.url(:large) if @static_page.header_image.exists?
 = @static_page.body.html_safe
+- if user_signed_in?
+	= link_to 'edit', "/admin/static_page/#{@static_page.id}/edit"

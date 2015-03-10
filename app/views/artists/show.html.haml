@@ -21,3 +21,5 @@
 		= @artist.biography.html_safe unless @artist.biography.blank?
 	.sidebar= mf_auto_html(@artist.sidebar_media)
 %div.back_to_all= link_to 'Back to all artists', artists_path
+- if user_signed_in?
+	= link_to 'edit', "/admin/artist/#{@artist.id}/edit"

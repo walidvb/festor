@@ -33,3 +33,6 @@
 				- @links.each do |l|
 					= link_to l.text_to_show, l.url, target: "_blank"
 		= mf_auto_html(@event.sidebar_media)
+
+- if user_signed_in?
+	= link_to 'edit', "/admin/event/#{@event.id}/edit"
