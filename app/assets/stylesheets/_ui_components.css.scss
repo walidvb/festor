@@ -25,12 +25,18 @@ $form-font-size: 16px;
 			border: solid 2px $brand-color;
 			margin-right: 5px;
 			transform: translateY(3px);
+			transition: transform 0.1s 0.1s ease-out;
 		}
 	}
-	input[type="checkbox"] + label:hover:before, input[type="checkbox"]:checked + label:before{
+	input[type="checkbox"]:checked + label:before{
 		border-color: $brand-color;
 		background-color: $brand-color;
 	}
+	input[type="checkbox"] + label:hover:before{
+		transform: rotateZ(45deg) translateY(3px);
+		transition: transform 0.1s ease-out;
+	}
+
 }
 
 @mixin triangle-up($triangle-size){
