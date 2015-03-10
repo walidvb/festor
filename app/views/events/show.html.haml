@@ -9,10 +9,16 @@
 				%h1.title= @event.title
 			.event-musicians.event-artists
 				- @musicians.each do |mu|
-					= "#{mu.name} (#{mu.label} / #{mu.origin})"
+					.artist
+						%h1.artist-name= "#{mu.name}"
+						%h3.labels= "(#{mu.label} / #{mu.origin})"
+			.musicians-links.links
 			.event-vjs.event-artists
 				- @vjs.each do |mu|
-					= "#{mu.name} (#{mu.label} / #{mu.origin})"
+					.artist
+						%h1.artist-name= "#{mu.name}"
+						%h3.labels= "(#{mu.label} / #{mu.origin})"
+			.vjs-links.links
 .links
 	- @links.each do |l|
 		= print_link(l)
