@@ -8,7 +8,12 @@ module ApplicationHelper
   end
 
   def print_link link
-    link_to link.text_to_show, link.url, target: "_blank"
+    if !/^https?\/\/:/.match(link.url)
+      url = "http://" + link.url
+    else
+      url = link.url
+    end
+    link_to link.text_to_show, url, target: "_blank"
   end
 
   def long_date
