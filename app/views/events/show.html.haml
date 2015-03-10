@@ -24,7 +24,8 @@
 		- if next_event = @event.next
 			= link_to t('nav.next'), event_path(next_event, locale: I18n.locale)
 .event-desc.mf-row
-	= @event.description.html_safe
+	.bio
+		= @event.description.html_safe
 	.sidebar
 		= mf_auto_html(@event.sidebar_media)
 - if user_signed_in?
