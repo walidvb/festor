@@ -1,14 +1,18 @@
 .show-header
-	= image_tag @event.main_image.url(:large), class: 'glitch'
-	.info
-		.info-left-col
-			.type
-				= @event.type
-			%h1.title= @event.title
-		.location.info-right-col
-			= schedule_for(@event)
-			%br/
-			= @location.name
+	.single-event-info
+		.date= schedule_for(@event)
+		.location= @location.name
+	.tile
+		= image_tag @event.main_image.url(:large), class: 'glitch'
+		.info
+			.event-name
+				%h1.title= @event.title
+			.event-musicians.event-artists
+				- @musicians.each do |mu|
+					= "#{mu.name} (#{mu.label} / #{mu.origin})"
+			.event-vjs.event-artists
+				- @vjs.each do |mu|
+					= "#{mu.name} (#{mu.label} / #{mu.origin})"
 .links
 	- @links.each do |l|
 		= print_link(l)
@@ -19,13 +23,7 @@
 	.next
 		- if next_event = @event.next
 			= link_to t('nav.next'), event_path(next_event, locale: I18n.locale)
-.event-musicians.event-artists
-	- @musicians.each do |mu|
-		#{mu.name} (#{mu.label} / #{mu.origin})
-.event-vjs.event-artists
-	- @vjs.each do |mu|
-		= "#{mu.name} (#{mu.label} / #{mu.origin})"
-.event-desc
+.event-desc.mf-row
 	= @event.description.html_safe
 	.sidebar
 		- if !@links.empty?
