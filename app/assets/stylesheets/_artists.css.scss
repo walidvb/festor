@@ -9,7 +9,7 @@
 	min-width: 100%;
 }
 
-.artist{
+.artist, .event-artists{
 	.artist-name, .labels{
 		display: inline-block;
 		padding-right: 10px;
@@ -36,7 +36,7 @@
 // SINGLE TILE
 
 .show-page{
-	.artist{
+	.artist, .event-artists{
 		min-width: 100%;
 		.artist-name{
 			width: auto;
@@ -80,6 +80,8 @@
 	padding-right: 15px;
 	line-height: 2.2em;
 	margin-bottom: 5px;
+	min-height:10px;
+	min-width: 100%;
 }
 
 .artist-desc, .event-desc{

@@ -84,6 +84,7 @@
 		}
 	}
 }
+
 // INDEX
 #single-events-list{
 	min-height: 800px;
@@ -153,6 +154,10 @@
 			font-size: $large;
 		}
 	}
+}
+
+.musician-links, .vjs-links{
+	@inclue .links;
 }
 
 .type{
