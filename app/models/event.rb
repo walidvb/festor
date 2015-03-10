@@ -7,7 +7,10 @@ class Event < ActiveRecord::Base
 	
 	scope :featured, -> {where(featured: true)}
 	has_many :bookings, dependent: :delete_all
+
 	has_many :artists, through: :bookings
+	has_many :musicians, -> {where vj: false}, through: :bookings, source: :artist
+	has_many :vjs,  -> {where vj: true}, through: :bookings, source: :artist
 
 	belongs_to :location
 

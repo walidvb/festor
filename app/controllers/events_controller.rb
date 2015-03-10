@@ -13,7 +13,8 @@ class EventsController < ApplicationController
 
 	def show
 		@event = Event.includes(:artists, :location).friendly.find(params[:id])
-		@artists = @event.artists
+		@musicians = @event.musicians
+		@vjs = @event.vjs
 		@location = @event.location
 		@links = @event.links
 	end

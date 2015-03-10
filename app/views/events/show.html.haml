@@ -19,6 +19,12 @@
 	.next
 		- if next_event = @event.next
 			= link_to t('nav.next'), event_path(next_event, locale: I18n.locale)
+.event-musicians.event-artists
+	- @musicians.each do |mu|
+		#{mu.name} (#{mu.label} / #{mu.origin})
+.event-vjs.event-artists
+	- @vjs.each do |mu|
+		= "#{mu.name} (#{mu.label} / #{mu.origin})"
 .event-desc
 	= @event.description.html_safe
 	.sidebar
