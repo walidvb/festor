@@ -12,8 +12,8 @@ class Artist < ActiveRecord::Base
     simple_format
   end
 
-  #validates :name, presence: true
-  #validates :biography, presence: true
+  validates :name, presence: true
+  validates :biography, presence: true
 
   has_many :bookings, dependent: :delete_all
   has_many :events, through: :bookings
@@ -48,11 +48,6 @@ class Artist < ActiveRecord::Base
     # configure :links do 
     #   visible true
     # end
-    edit do 
-      configure :slug do 
-        hide
-      end
-    end
     configure :bookings do 
       visible false
     end
