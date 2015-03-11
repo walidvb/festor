@@ -89,8 +89,11 @@ body.rails_admin {
     }
 
     /* We want input size to be used, unfixate input width */
-    input, textarea {
+    input{
       width:auto;
+    }
+    textarea{
+      width: 100%;
     }
     .help-block {
       clear:left;

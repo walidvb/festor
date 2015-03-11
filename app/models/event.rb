@@ -1,5 +1,5 @@
 class Event < ActiveRecord::Base
-	translates :title, :description, :sidebar_media
+	translates :title, :description, :sidebar_media, :sidebar_text
 	extend FriendlyId
   friendly_id :title, :use => [:globalize, :slugged]
 

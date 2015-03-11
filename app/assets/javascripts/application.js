@@ -18,7 +18,7 @@
 //= require mixitup/build/jquery.mixitup.min.js
 //= require chosen-jquery
 //= require_tree .
-//= stub_tree rails_admin
+//= stub_tree rails_admin/
 
 
 // to be removed when i get what's failing

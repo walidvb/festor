@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150311203131) do
+ActiveRecord::Schema.define(version: 20150311215520) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(version: 20150311203131) do
     t.text     "description"
     t.text     "sidebar_media"
     t.string   "slug"
+    t.text     "sidebar_text"
   end
 
   add_index "event_translations", ["event_id"], name: "index_event_translations_on_event_id", using: :btree
