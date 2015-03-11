@@ -80,8 +80,19 @@ class Event < ActiveRecord::Base
     configure :bookings do 
       visible false
     end
+    configure :musicians do 
+      visible false
+    end
+    configure :vjs do 
+      visible false
+    end
     configure :links do 
       visible true
+    end
+    edit do 
+    	configure :slug do 
+    		hide
+    	end
     end
     list do 
     	scopes Event.type_enum

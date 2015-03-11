@@ -21,6 +21,9 @@ Festor::Application.routes.draw do
 	  resources :static_pages, only: [:show]
 	  resources :news, controller: 'static_pages', only: [:index, :show]
 	  
+	  StaticPage.all.each do |sp|
+	  	get "/#{ActiveSupport::Inflector.parameterize(sp.title)}" => "static_pages#show", id: sp.id
+	  end
 		mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   end
 end

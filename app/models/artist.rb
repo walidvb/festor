@@ -48,6 +48,11 @@ class Artist < ActiveRecord::Base
     # configure :links do 
     #   visible true
     # end
+    edit do 
+      configure :slug do 
+        hide
+      end
+    end
     configure :bookings do 
       visible false
     end
