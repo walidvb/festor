@@ -7,7 +7,8 @@
 					= image_tag artist.profile_picture.url(:tile), class: 'glitch'
 					- event = artist.events.first
 					.info
-						%h2.type= t("events.types.#{event.type}") unless event.blank?	
+						- type = event.category.blank? ? t("events.types.#{event.type}") : t("events.categories.#{event.category}") unless event.blank?	
+						%h2.type= type unless type.blank?	
 						%h1.artist-name
 							= artist.name
 						%h2.event-title= event.title unless event.blank?	
