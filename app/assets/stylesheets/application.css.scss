@@ -31,6 +31,11 @@ body{
 img, canvas, iframe{
 	max-width: 100%;
 }
+iframe{
+	border: none;
+	display: block;
+	margin: auto;
+}
 canvas{
 	width: 100%;
 }
