@@ -13,6 +13,7 @@ class EventsController < ApplicationController
 
 	def show
 		@event = Event.includes(:artists, :location).friendly.find(params[:id])
+		@type = @event.type
 		@musicians = @event.musicians
 		@vjs = @event.vjs
 		@location = @event.location

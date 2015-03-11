@@ -3,15 +3,21 @@
 	.info
 		.info-left-col
 			.type
-				= @event.type
+				= t("events.types.#{@event.type}")
 			%h1.title= @event.title
 		.location.info-right-col
-			= schedule_for(@event)
+			- if @type == 'exhibition'
+				#{l(@event.schedule_start, format: "%A %e")} - #{l(@event.schedule_end, format: "%A %e %B")}
+			- elsif @type == 'workshop'
+				#{l(@event.schedule_start, format: '%A %e')} - #{l(@event.schedule_end, format: '%A %e %B')},  #{l(@event.schedule_start, format: '%H:%M')}-#{l(@event.schedule_end, format: '%H:%M')}
+			- elsif @type == 'single_event'
+				#{l(@event.schedule_start, format: "%A %e %B")} / #{l(@event.schedule_start, format: "%H:%M")}
 			%br/
 			= @location.name
-.links
-	- @links.each do |l|
-		= print_link(l)
+- if !@links.empty?
+	.links
+		- @links.each do |l|
+			= print_link(l)
 .prev-next-navigation
 	.prev
 		- if previous_event = @event.previous
@@ -28,11 +34,6 @@
 .event-desc
 	= @event.description.html_safe
 	.sidebar
-		- if !@links.empty?
-			%ul.links
-				- @links.each do |l|
-					= link_to l.text_to_show, l.url, target: "_blank"
 		= mf_auto_html(@event.sidebar_media)
-
 - if user_signed_in?
 	= link_to 'edit', "/admin/event/#{@event.id}/edit"

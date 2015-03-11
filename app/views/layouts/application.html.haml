@@ -17,6 +17,10 @@
           2015
           %br/
           = t("shared.geneva")
+        .locales{class: I18n.locale}
+          = link_to("FR", url_for(locale: :fr), class: "fr")
+          = link_to("EN", url_for(locale: :en), class: "en")
+
         .header-logo
           = link_to(image_tag( 'logo.svg', class: "header-logo"), root_path)
         .motto

@@ -59,6 +59,24 @@ $header-padding-vert: 40px;
 			margin: auto;
 		}
 	}
+	.locales{
+		position: absolute;
+	  bottom: 0px;
+	  left: 20px;
+	  a{
+	  	color: $black;
+	  	&:hover{
+	  		text-decoration: none;
+	  		color: $brand-color;
+	  	}
+	  }
+	  &.fr .fr{
+	  	color: $brand-color;
+	  }
+	  &.en .en{
+	  	color: $brand-color;
+	  }
+	}
 }
 
 .nav-fixed{

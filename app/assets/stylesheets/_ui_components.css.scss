@@ -26,16 +26,15 @@ $form-font-size: 16px;
 			margin-right: 5px;
 			position: relative;
 			top: 3px;
-			transition: transform 0.1s 0.1s ease-out;
+			transition: transform 0.05s 0.1s ease-out, border-width 0.15s;
 		}
 	}
 	input[type="checkbox"]:checked + label:before{
-		border-color: $brand-color;
-		background-color: $brand-color;
+		border-width: 7px;
 	}
 	input[type="checkbox"] + label:hover:before{
 		transform: rotateZ(45deg);
-		transition: transform 0.1s ease-out;
+		transition: transform 0.05s ease-out, border-width 0.15s;
 	}
 
 }

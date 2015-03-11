@@ -1,10 +1,23 @@
 fr:
   shared:
-    geneva: "geneva"
-    motto: "visuel audio & <br>deviant electronics"
-  menu:
-    home: "Acceuil"
-    events: "Soirées"
-    artists: "Artistes"
-    workshops: "Workshops"
+    geneva: "genève"
+    motto:  "visuel audio & <br>deviant electronics"
+  nav:
+    home:        "Accueil"
+    events:      "Events"
+    artists:     "Artistes"
+    workshops:   "Workshops"
     exhibitions: "Expos"
+    more:        "infos"
+    next:        "prochain"
+    previous:    "précédent"
+  events:
+    types:
+      workshop:   "workshop"
+      exhibition: "expo"
+      single_event: "event"
+    categories:
+      performance: "Performance"
+      conference:  "Conférence"
+      clubbing:    "Clubbing"
+      screening:   "Projection"

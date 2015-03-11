@@ -12,6 +12,10 @@ en:
     next:        "next"
     previous:    "previous"
   events:
+    types:
+      workshop:   "Workshop"
+      exhibition: "Exhibition"
+      single_event: "Event"
     categories:
       performance: "Performance"
       conference:  "Conference"
