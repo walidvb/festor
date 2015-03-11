@@ -1,4 +1,5 @@
 $(document).on('ready page:load', function(){
+	console.log("Somehting has fucking happened!");
 	$(document, '.dropdown a').click(function(){
 		setTimeout(function(){$(this).parent('.dropdown').addClass('open')}, 0);
 	});

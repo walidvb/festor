@@ -4,7 +4,7 @@
 			.date= l(@event.schedule_start, format: "%A %e %b – %H:%M")
 		- else
 			.date #{l(@event.schedule_start, format: "%A %e")} - #{l(@event.schedule_end, format: "%A %e %B")}
-		.location= @location.name
+		.location= link_to @location.name, "/#{I18n.locale}/infos"
 .tile
 	= image_tag @event.main_image.url(:large), class: 'glitch'
 	.info
