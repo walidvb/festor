@@ -31,6 +31,8 @@
 		text-decoration: underline;
 		text-transform: lowercase;
 	}
+	border-top: 5px solid $light-grey;
+  	border-bottom: 5px solid $light-grey;
 }
 
 // SINGLE TILE
@@ -43,12 +45,21 @@
 		}
 	}
 	.info{
+		@media #{$tablet}{
+			text-align: left;
+		}
 		&:before{
-			@include triangle-up($triangle-size: 60px);
+			@include triangle-up($triangle-size: 25px);
+			@media #{$tablet}{
+				@include triangle-up($triangle-size: 60px);
+			}
 		}
 	}
 	h1, h2{
 		font-size: $largest;
+	}
+	.title, .event-artists{
+		padding: 0 15px;
 	}
 }
 

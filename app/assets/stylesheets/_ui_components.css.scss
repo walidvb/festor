@@ -48,7 +48,7 @@ $form-font-size: 16px;
 	display: block;
 	width: 0;
 	position: absolute;
-	top: -25px;
+	top: -$triangle-size;
 	left: 0;
 	right: 0;
 	margin: 0 auto;

@@ -146,10 +146,9 @@
 
 // SINGLE PAGE
 
-.show-header .info{
+.show-header{
 	@media #{$tablet}{
 		text-align: left;
-		padding-left: 15px;
 		.location{
 			font-size: $large;
 		}
