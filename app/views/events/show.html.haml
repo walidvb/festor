@@ -14,17 +14,17 @@
 
 		.event-musicians.event-artists
 			- @musicians.each do |mu|
-				= link_to mu.link do 
+				= link_to artist_path(mu) do 
 					.artist
 						%h1.artist-name= "#{mu.name}"
-						%h3.labels= "(#{mu.label} / #{mu.origin})"
+						%h3.labels= "([#{mu.label}, #{mu.origin}].compact.join(' / '))" unless mu.label.blank? && mu.label.blank?
 
 		.event-vjs.event-artists
 			- @vjs.each do |mu|
-				= link_to mu.link do 
+				= link_to artist_path(mu) do 
 					.artist
 						%h1.artist-name= "#{mu.name}"
-						%h3.labels= "(#{mu.label} / #{mu.origin})"
+						%h3.labels= "([#{mu.label}, #{mu.origin}].compact.join(' / '))" unless mu.label.blank? && mu.label.blank?
 
 .prev-next-navigation
 	.prev
@@ -37,7 +37,7 @@
 	.bio
 		= @event.description.html_safe
 	.sidebar
-		= mf_auto_html(@event.sidebar_text)
+		= mf_auto_html(@event.sidebar_text).html_safe
 		= mf_auto_html(@event.sidebar_media)
 - if user_signed_in?
 	= link_to 'edit', "/admin/event/#{@event.id}/edit"
