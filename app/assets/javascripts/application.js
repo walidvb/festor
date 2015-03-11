@@ -13,7 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 
-//= require bootstrap
 //= require home.js
 //= require mixitup/build/jquery.mixitup.min.js
 //= require chosen-jquery
