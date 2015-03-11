@@ -80,15 +80,48 @@ main{
 	height: auto;
 	bottom:0;
 	width: 100%;
-}
-.footer-logo{
-	margin: auto;
-	max-width:50%;
-	padding-bottom: 20px;
-	@media #{$tablet}{
-		max-width: 15%;
+	background-color: $background;
+	color: $black;
+	font-size: $small;
+	.container{
+		display:flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: space-around;
+		align-content: flex-start;
+		align-items: flex-start;
+		padding-top: 10px;
+	}
+	.social, .logo, .address{
+		flex: 1 0 300px;
+	}
+	.logo{
+		img {
+			width: 30%;
+			margin: auto;
+		}
+	}
+	p{
+		margin-bottom: 0px;
 	}
 }
+
+.address{
+	text-align: right;
+}
+
+.social{
+	.instagram, .facebook, .twitter{
+		display: inline-block;
+	}
+}
+
+.footer-separator{
+	border-bottom: 2px solid $dark-grey;
+	text-align: left;
+	width: 100%;
+}
+
 
 
 

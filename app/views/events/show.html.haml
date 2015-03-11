@@ -2,26 +2,27 @@
 	.single-event-info
 		.date= schedule_for(@event)
 		.location= @location.name
-	.tile
-		= image_tag @event.main_image.url(:large), class: 'glitch'
-		.info
-			.event-name
-				%h1.title= @event.title
-			.event-musicians.event-artists
-				- @musicians.each do |mu|
-					.artist
-						%h1.artist-name= "#{mu.name}"
-						%h3.labels= "(#{mu.label} / #{mu.origin})"
-			.musicians-links.links
-			.event-vjs.event-artists
-				- @vjs.each do |mu|
-					.artist
-						%h1.artist-name= "#{mu.name}"
-						%h3.labels= "(#{mu.label} / #{mu.origin})"
-			.vjs-links.links
-.links
-	- @links.each do |l|
-		= print_link(l)
+.tile
+	= image_tag @event.main_image.url(:large), class: 'glitch'
+	.info
+		.event-name
+			%h1.title= @event.title
+		.event-musicians.event-artists
+			- @musicians.each do |mu|
+				.artist
+					%h1.artist-name= "#{mu.name}"
+					%h3.labels= "(#{mu.label} / #{mu.origin})"
+		.musicians-links.links
+			- @links.each do |l|
+				= print_link(l)
+		.event-vjs.event-artists
+			- @vjs.each do |mu|
+				.artist
+					%h1.artist-name= "#{mu.name}"
+					%h3.labels= "(#{mu.label} / #{mu.origin})"
+		.vjs-links.links
+			- @links.each do |l|
+				= print_link(l)
 .prev-next-navigation
 	.prev
 		- if previous_event = @event.previous
