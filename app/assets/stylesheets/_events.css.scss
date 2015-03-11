@@ -99,20 +99,26 @@
 		font-weight: bold;
 		.chosen-single{
 			border: none;
+			padding-top: 2px;
+			height: 26px;
+			abbr{
+				top: 8px;
+			}
 		}
 		flex: 0 0 100%;
 		@media #{$tablet}
 		{
-			flex: 0 0 160px;
+			flex: 0 0 180px;
 			margin-right: 5px;
 		}
 	}
 	.cat-filters{
 		flex-grow: 1;
 		background: white;
-		padding: 1px 5px 0;
+		padding: 0px 5px 1px;
 		display: flex;
 		flex-wrap: wrap;
+		text-transform: lowercase;
 		input[type="checkbox"] + label{
 			flex-basis: 50%;
 			padding: 5px 10px 3px;
