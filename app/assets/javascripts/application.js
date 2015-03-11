@@ -23,7 +23,7 @@
 
 // to be removed when i get what's failing
 $(document).on('ready page:load', function(){
-	$('.dropdown a').click(function(){
+	$(document, '.dropdown a').click(function(){
 		setTimeout(function(){$(this).parent('.dropdown').addClass('open')}, 0);
 	});
 
