@@ -1,21 +1,21 @@
 .show-header
-.artist-event
-	.single-event-info
-		- event = @artist.events.first
-		.date= l(event.schedule_start, format: "%A %e %B")
-		.location= link_to event.location.name, static_page_path(1, locale: I18n.locale)
-.tile
-	= image_tag @artist.profile_picture.url(:large), class: 'glitch'
-	.info
-		.event-name	
-			%h2.artist-event= event.title
-		.artist
-			%h1.artist-name= @artist.name
-			%h3.labels= @artist.label
-- if !@links.empty?
-	%ul.links
-		- @links.each do |l|
-			%li= link_to l.text_to_show, l.url, target: "_blank"
+	.artist-event
+		.single-event-info
+			- event = @artist.events.first
+			.date= l(event.schedule_start, format: "%A %e %B")
+			.location= link_to event.location.name, static_page_path(1, locale: I18n.locale)
+	.tile
+		= image_tag @artist.profile_picture.url(:large), class: 'glitch'
+		.info
+			.event-name	
+				%h2.artist-event= link_to event.title, event_path(event)
+			.artist
+				%h1.artist-name= @artist.name
+				%h3.labels= @artist.label
+	- if !@links.empty?
+		%ul.links
+			- @links.each do |l|
+				%li= link_to l.text_to_show, l.url, target: "_blank"
 .artist-desc.mf-row
 	.bio
 		= @artist.biography.html_safe unless @artist.biography.blank?

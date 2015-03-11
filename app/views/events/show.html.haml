@@ -1,28 +1,28 @@
 .show-header
 	.single-event-info
-		.date= schedule_for(@event)
+		.date= l(@event.schedule_start, format: "%A %e %b – %H:%M")
 		.location= @location.name
 .tile
 	= image_tag @event.main_image.url(:large), class: 'glitch'
 	.info
 		.event-name
 			%h1.title= @event.title
+
+
 		.event-musicians.event-artists
 			- @musicians.each do |mu|
-				.artist
-					%h1.artist-name= "#{mu.name}"
-					%h3.labels= "(#{mu.label} / #{mu.origin})"
-		.musicians-links.links
-			- @links.each do |l|
-				= print_link(l)
+				= link_to mu.link do 
+					.artist
+						%h1.artist-name= "#{mu.name}"
+						%h3.labels= "(#{mu.label} / #{mu.origin})"
+
 		.event-vjs.event-artists
 			- @vjs.each do |mu|
-				.artist
-					%h1.artist-name= "#{mu.name}"
-					%h3.labels= "(#{mu.label} / #{mu.origin})"
-		.vjs-links.links
-			- @links.each do |l|
-				= print_link(l)
+				= link_to mu.link do 
+					.artist
+						%h1.artist-name= "#{mu.name}"
+						%h3.labels= "(#{mu.label} / #{mu.origin})"
+
 .prev-next-navigation
 	.prev
 		- if previous_event = @event.previous

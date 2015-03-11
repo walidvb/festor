@@ -45,9 +45,9 @@ class Artist < ActiveRecord::Base
       field :name
       field :profile_picture
     end
-    configure :links do 
-      visible true
-    end
+    # configure :links do 
+    #   visible true
+    # end
     configure :bookings do 
       visible false
     end
