@@ -83,6 +83,9 @@ class Event < ActiveRecord::Base
     configure :links do 
       visible true
     end
+    update do 
+    	binding.pry
+    end
     list do 
     	scopes Event.type_enum
       field :title do
