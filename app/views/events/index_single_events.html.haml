@@ -18,5 +18,4 @@
 							= event.category
 						%h2.event-title= event.title
 						.location
-							= schedule_for(event)
-							= event.location.name
+							#{l(event.schedule_start, format: "%A %e %b")} &mdash; #{event.location.name}

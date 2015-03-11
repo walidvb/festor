@@ -1,6 +1,9 @@
 .show-header
 	.single-event-info
-		.date= l(@event.schedule_start, format: "%A %e %b – %H:%M")
+		- if @event.type == 'single_event'
+			.date= l(@event.schedule_start, format: "%A %e %b – %H:%M")
+		- else
+			.date #{l(@event.schedule_start, format: "%A %e")} - #{l(@event.schedule_end, format: "%A %e %B")}
 		.location= @location.name
 .tile
 	= image_tag @event.main_image.url(:large), class: 'glitch'
