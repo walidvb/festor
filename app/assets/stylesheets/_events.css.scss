@@ -58,8 +58,9 @@
 		align-items: flex-start;
 		flex: 1 0 100%;
 	}
-	.artist-name{
-		min-width: 100%;
+	.type, .event-title, .location, .artist-name{
+		display: block;
+  		flex-basis: 100%;
 	}
 }
 
