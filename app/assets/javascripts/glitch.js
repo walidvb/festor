@@ -18,12 +18,12 @@ $(document).on('ready page:load', function(){
       }
     }
   }
-  minInterval = 200;
-  maxInterval = 700;
+  minInterval = 20;
+  maxInterval = 200;
   if(getVisibleCanvas().length < 6)
   {
-    minInterval = 2000;
-    maxInterval = 4500;
+    minInterval = 200;
+    maxInterval = 800;
   }
   setTimeout(function(){
     setTimeout(startRandomGlitching, 1000);
@@ -33,6 +33,67 @@ $(document).on('ready page:load', function(){
         setTimeout(startRandomGlitching, randomInt(minInterval, maxInterval));
       }
   }, 60000);
+
+    function getVisibleCanvas(){
+    var visibles = [];
+    for(var i = 0; i < glitchables.length; i++){
+      var $canvas = $(glitchables[i].canvas);
+      var top = $canvas.offset().top;
+      var canvasHeight = $canvas.height();
+      if(!glitchables[i].isGlitching && 
+        $(window).scrollTop() < top + canvasHeight - 10 && 
+        top + 10 < $(window).height() + $(window).scrollTop())
+      {
+        visibles.push(glitchables[i]);
+      }
+    }
+    return visibles;
+  }
+
+  function getRandomVisibleCanvas(_glitchables){
+    var _glitchables = _glitchables || glitchables;
+    var visibles = getVisibleCanvas(_glitchables);
+    var i = randomInt(0, visibles.length - 1);
+    return visibles[i];
+  }
+
+  function glitchAll(_glitchables){
+    for(var i = 0; i < _glitchables.length; i++)
+    {
+      var currGlitchable = _glitchables[i];
+      currGlitchable.glitchIt.call(currGlitchable);
+    }
+  }
+
+  $(document).keypress(function(e){
+    if(e.keyCode == 32)
+    {
+      // setTimeout(function(){
+      //   glitchAll(glitchables);
+      // }, randomInt(10, 300));
+      e.preventDefault();
+    }
+  });
+  $(document).keyup(function(e){
+    if(e.keyCode == 32)
+    {
+      for(var i = 0; i < glitchables.length; i++)
+      {
+        glitchables[i].isGlitching = false;
+        console.log("glitchables[i]:", glitchables[i]);
+          glitchables[i].reset();
+        setTimeout(function(){
+        }, Math.random()*100 + i*10);
+      }
+      startRandomGlitching();
+      function startRandomGlitching(){
+        var thisGlitch = getRandomVisibleCanvas(glitchables);
+        thisGlitch.glitchItFor(randomInt(200, 2000));
+        setTimeout(startRandomGlitching, randomInt(minInterval, maxInterval));
+      }
+    }
+  })
+
   /* Glitchable declaration */
 
   Glitchable.prototype.init = function(){
@@ -67,7 +128,6 @@ $(document).on('ready page:load', function(){
       }
       that.canvas.onmouseover = glitchThisOne;
       that.canvas.onmouseout = function(){
-        console.log("that:", that);
         clearTimeout(hoverTimer);
         that.reset();
       }
@@ -145,62 +205,6 @@ $(document).on('ready page:load', function(){
   };
   /* /Glitchable declaration */
   
-  function getVisibleCanvas(){
-    var visibles = [];
-    for(var i = 0; i < glitchables.length; i++){
-      var $canvas = $(glitchables[i].canvas);
-      var top = $canvas.offset().top;
-      var canvasHeight = $canvas.height();
-      if(!glitchables[i].isGlitching && 
-        $(window).scrollTop() < top + canvasHeight - 10 && 
-        top + 10 < $(window).height() + $(window).scrollTop())
-      {
-        visibles.push(glitchables[i]);
-      }
-    }
-    return visibles;
-  }
-
-  function getRandomVisibleCanvas(_glitchables){
-    var _glitchables = _glitchables || glitchables;
-    var visibles = getVisibleCanvas(_glitchables);
-    var i = randomInt(0, visibles.length - 1);
-    return visibles[i];
-  }
-
-  function glitchAll(_glitchables){
-    for(var i = 0; i < _glitchables.length; i++)
-    {
-      var currGlitchable = _glitchables[i];
-      currGlitchable.glitchIt.call(currGlitchable);
-    }
-  }
-
-  $(document).keypress(function(e){
-    if(e.keyCode == 32)
-    {
-      setTimeout(function(){
-        glitchAll(glitchables);
-      }, randomInt(10, 300));
-      e.preventDefault();
-    }
-  });
-  $(document).keyup(function(e){
-    if(e.keyCode == 32)
-    {
-      for(var i = 0; i < glitchables.length; i++)
-      {
-        glitchables[i].isGlitching = false;
-      }
-      setTimeout(startRandomGlitching, 1000);
-      function startRandomGlitching(){
-        var thisGlitch = getRandomVisibleCanvas(glitchables);
-        thisGlitch.glitchItFor(randomInt(300, 2000));
-        setTimeout(startRandomGlitching, randomInt(minInterval, maxInterval));
-      }
-    }
-
-  })
   // Utils
   function randomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
