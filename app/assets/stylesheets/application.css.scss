@@ -29,6 +29,18 @@ body{
 		font-size : 20px;
 	}
 }
+
+.container {
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 0px;
+  padding-right: 0px;
+  @media #{$tablet}{
+  	padding-left: 15px;
+  	padding-right: 15px;
+	}
+}
+
 img, canvas, iframe{
 	max-width: 100%;
 }
@@ -84,7 +96,7 @@ main{
 	width: 100%;
 	background-color: $background;
 	color: $black;
-	font-size: $small;
+	font-size: $smaller;
 	margin-top: $larger;
 	.container{
 		display:flex;

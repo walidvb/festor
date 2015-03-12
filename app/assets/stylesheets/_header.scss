@@ -107,6 +107,14 @@ header .navbar-nav{
 			font-weight: bold;
 			text-transform: lowercase;
 			background-color: $black!important;
+			padding: 0px 2px;
+			font-size: $body-size*0.9;
+			line-height: $body-size*2;
+			@media #{$tablet}{
+				padding:10px 15px;
+				font-size: $large;
+				line-height: $large;
+			}
 			&:hover, &.active{
 				color: $brand-color;
 				background-color: $black!important;

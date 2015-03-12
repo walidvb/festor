@@ -49,6 +49,12 @@
 			color: $brand-color;
 		}
 	}
+	.tile{
+		margin-bottom: 15px;
+		@media #{$tablet}{
+			margin-bottom: 5px;
+		}
+	}
 	.artist, .event-name{
 		display:flex;
 		flex-direction: row;
@@ -60,7 +66,7 @@
 	}
 	.type, .event-title, .location, .artist-name{
 		display: block;
-  		flex-basis: 100%;
+		flex-basis: 100%;
 	}
 }
 

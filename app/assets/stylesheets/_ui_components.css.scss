@@ -39,6 +39,23 @@ $form-font-size: 16px;
 
 }
 
+#filters{
+	input[type="chosen-drop"]{
+		padding-left: 15px;
+		min-width: 100%;
+		margin-bottom: 15px;
+		@media #{$tablet}{
+			padding-left:0px;
+		}
+	}
+}
+
+.cat-filters{
+	margin-top: 5px;
+	@media #{$tablet}{
+		margin-top: 0px;
+	}
+}
 @mixin triangle-up($triangle-size){
 	border-bottom: $triangle-size solid white;
 	border-right: $triangle-size solid transparent;
