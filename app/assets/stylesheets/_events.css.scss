@@ -91,6 +91,15 @@
 	}
 }
 
+.events-list, .artists-list{
+	@media #{$tablet}{
+		margin-top: 7.5px;
+	}
+	@media #{$md}{
+		margin-top: 15px;
+	}
+}
+
 #filters{
 	display: flex;
 	margin-bottom: 5px;
@@ -115,6 +124,7 @@
 	}
 	.cat-filters{
 		flex-grow: 1;
+		color: $light-grey;
 		background-color: $dark-grey;
 		padding: 0px 5px 1px;
 		display: flex;

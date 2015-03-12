@@ -1,4 +1,4 @@
-%ul.grid-3-col
+%ul.grid-3-col.artists-list
 	- @artists.each do |artist|
 		%li.mix.artist{data: {position: artist.id}}
 			- path = artist_path(artist, locale: I18n.locale)
