@@ -85,6 +85,7 @@ main{
 	background-color: $background;
 	color: $black;
 	font-size: $small;
+	margin-top: $larger;
 	.container{
 		display:flex;
 		flex-direction: row;
