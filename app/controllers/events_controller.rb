@@ -1,5 +1,7 @@
 class EventsController < ApplicationController
 	before_filter :get_type, only: [:index]
+	skip_before_filter :beta_only
+	before_filter :allow_workshops
 
 	def index
 		@events = Event.includes(:artists, :location).send(@type.to_sym).order(:schedule_start, :schedule_end)
@@ -28,5 +30,9 @@ class EventsController < ApplicationController
 
 	def get_type
 		@type = params[:type] || :all
+	end
+
+	def allow_workshops
+		beta_only if @type != :workshop
 	end
 end

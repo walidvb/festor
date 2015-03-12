@@ -8,7 +8,7 @@ class BetaController < ApplicationController
 	  	cookies.permanent[:beta] = "gingerbread"
 	  	redirect_to rails_admin_path
 	  else
-	  	redirect_to beta_path
+	  	redirect_to home_path
 	  end
   end
 end

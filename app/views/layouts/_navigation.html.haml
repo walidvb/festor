@@ -1,10 +1,17 @@
 %nav
   .container
     %ul.nav.navbar-nav
-      %li= active_link_to t("nav.events"), single_events_path(locale: I18n.locale)
-      %li= active_link_to t("nav.exhibitions"), exhibitions_path(locale: I18n.locale)
+      / %li= active_link_to t("nav.events"), single_events_path(locale: I18n.locale)
+      / %li= active_link_to t("nav.exhibitions"), exhibitions_path(locale: I18n.locale)
+      / %li= active_link_to t("nav.workshops"), workshops_path(locale: I18n.locale)
+      / %li= active_link_to t("nav.artists"), artists_path(locale: I18n.locale)
+      %li
+        %a.disabled= t("nav.events")
+      %li
+        %a.disabled= t("nav.exhibitions")
       %li= active_link_to t("nav.workshops"), workshops_path(locale: I18n.locale)
-      %li= active_link_to t("nav.artists"), artists_path(locale: I18n.locale)
+      %li
+        %a.disabled= t("nav.artists")
       %li.dropdown{:role => "presentation"}
         %a.dropdown-toggle{"aria-expanded" => "false", "data-toggle" => "dropdown", :href => "#", :role => "button"}
           = t(:more)

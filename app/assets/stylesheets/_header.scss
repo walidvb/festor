@@ -65,6 +65,7 @@ $header-padding-vert: 40px;
 			margin: auto;
 		}
 	}
+
 	.locales{
 		position: absolute;
 	  bottom: 0px;
@@ -99,6 +100,12 @@ $header-padding-vert: 40px;
 	}
 }
 header .navbar-nav{
+		a.disabled{
+	  	color: darken($dark-grey, 10%)!important;
+	  	&:hover{
+	  		color: $black!important;
+	  	}
+	  }	
 	margin: -25px auto 5px;
 	background: $black;
 	display: flex;
