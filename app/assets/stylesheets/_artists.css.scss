@@ -40,7 +40,7 @@
 
 .show-page{
 	.artist, .event-artists{
-		min-width: 100%;
+		flex:1 0 100%;
 		.artist-name{
 			width: auto;
 		}
@@ -120,7 +120,7 @@
 	.sidebar{
 		flex: 0 0 100%;
 		padding-top: 5px;
-		@media #{$tablet}
+		@media #{$md}
 		{
 			flex: 0 0 calc(30% - 7.5px);
 		}
