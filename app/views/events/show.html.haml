@@ -37,7 +37,7 @@
 	.bio
 		= @event.description.html_safe
 	.sidebar
-		= @event.sidebar_text.html_safe unless @event.sidebar_text.blank?
 		= mf_auto_html(@event.sidebar_media)
+		= @event.sidebar_text.html_safe unless @event.sidebar_text.blank?
 - if user_signed_in?
 	= link_to 'edit', "/admin/event/#{@event.id}/edit"
