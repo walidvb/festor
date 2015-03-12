@@ -38,7 +38,7 @@
 				
 	- unless @events.empty?
 		%li
-			%h2.section-title= link_to t('nav.events'), events_path
+			%h2.section-title= link_to t('nav.events'), single_events_path
 			.glitchousel
 				- @events.each do |event|
 					= link_to event_path(event) do 
