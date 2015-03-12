@@ -1,9 +1,10 @@
 .glitchousel{
-	padding-bottom: 40px;
+	padding-bottom: 75px;
 	canvas{
 		cursor: pointer;
 	}
 	.legend{
+		min-height: 75px;
 		margin-bottom: 0;
 		background:white;
 		width: 100%;
