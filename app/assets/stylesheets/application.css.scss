@@ -138,7 +138,19 @@ main{
 }
 
 
+// static pages
 
+.static-pages-page{
+	.container{
+		padding: 0px 15px;
+		@media #{$tablet}{
+			padding: 0px;
+		}
+	}
+}
+.map iframe {
+  min-height: 480px;
+}
 
 /* Works in Safari */
 ::selection {
