@@ -105,6 +105,8 @@
 	margin-bottom: 5px;
 	min-height:10px;
 	min-width: 100%;
+	line-height: 3em;
+  	vertical-align: middle;
 }
 
 .artist-desc, .event-desc{
@@ -121,7 +123,7 @@
 	.sidebar{
 		flex: 0 0 100%;
 		padding-top: 5px;
-		font-family: $Baskerville;
+		font-family: $info-font;
 		@media #{$md}
 		{
 			flex: 0 0 calc(30% - 7.5px);
