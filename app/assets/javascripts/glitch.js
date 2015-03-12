@@ -1,10 +1,12 @@
+function Glitchable(img, otherGlitchables){
+  this.originalImg = img;
+}
 $(document).on('ready page:load', function(){
   // assuming there's a loaded img and a canvas element in the DOM.
   var myGlitches = document.getElementsByClassName('glitch');
   var glitchables = [];
   var minInterval, maxInterval;
   var stoppedGlitchCount = 0;
-
   window.glitchables = glitchables;
   for(var i = 0; i < myGlitches.length; i++){
     var currentGlitch = myGlitches[i];
@@ -16,24 +18,22 @@ $(document).on('ready page:load', function(){
       }
     }
   }
-  minInterval = 500;
-  maxInterval = 1500;
+  minInterval = 200;
+  maxInterval = 700;
   if(getVisibleCanvas().length < 6)
   {
     minInterval = 2000;
     maxInterval = 4500;
   }
-  setTimeout(startRandomGlitching, 1000);
-  function startRandomGlitching(){
-    var thisGlitch = getRandomVisibleCanvas(glitchables);
-    thisGlitch.glitchItFor(randomInt(300, 2000));
-    setTimeout(startRandomGlitching, randomInt(minInterval, maxInterval));
-  }
-
+  setTimeout(function(){
+    setTimeout(startRandomGlitching, 1000);
+      function startRandomGlitching(){
+        var thisGlitch = getRandomVisibleCanvas(glitchables);
+        thisGlitch.glitchItFor(randomInt(300, 2000));
+        setTimeout(startRandomGlitching, randomInt(minInterval, maxInterval));
+      }
+  }, 60000);
   /* Glitchable declaration */
-  function Glitchable(img){
-    this.originalImg = img;
-  }
 
   Glitchable.prototype.init = function(){
     var originalImgClone = new Image();
@@ -57,22 +57,40 @@ $(document).on('ready page:load', function(){
 
   Glitchable.prototype.bindEvents = function(){
     var that = this;
-    this.canvas.onmouseover = function() {
-      if(that.isGlitching)
-      {
-        stoppedGlitchCount++;
-        if(stoppedGlitchCount > 5)
-        {
-          alert('Oh, you want to play this game? Let\'s go faster, shall we?');
-          stoppedGlitchCount = 0;
-          minInterval *= 0.5;
-          maxInterval *= 0.5;
-        }
+    var shouldGlitchOnHover = true;
+    if(shouldGlitchOnHover)
+    {
+      var hoverTimer;
+      function glitchThisOne(){
+        that.glitchIt();
+        hoverTimer = setTimeout(glitchThisOne, Math.random()*200+20)
       }
-      that.reset();
+      that.canvas.onmouseover = glitchThisOne;
+      that.canvas.onmouseout = function(){
+        console.log("that:", that);
+        clearTimeout(hoverTimer);
+        that.reset();
+      }
     }
-    this.canvas.onmousedown = function() {
-      that.glitchItFor(1000);
+    else
+    {
+      this.canvas.onmouseover = function() {
+        if(that.isGlitching)
+        {
+          stoppedGlitchCount++;
+          if(stoppedGlitchCount > 5)
+          {
+            alert('Oh, you want to play this game? Let\'s go faster, shall we?');
+            stoppedGlitchCount = 0;
+            minInterval *= 0.3;
+            maxInterval *= 0.3;
+          }
+        }
+        that.reset();
+      }
+      this.canvas.onmousedown = function() {
+        that.glitchItFor(1000);
+      }
     }
   };
   
@@ -110,17 +128,18 @@ $(document).on('ready page:load', function(){
   };
 
   Glitchable.prototype.glitchIt = function(parameters){
+    var that = this;
     var parameters = parameters || {
-      amount: Math.random()*100,
+      amount: Math.random()*50,
       seed: Math.random()*100,
-      iterations: randomInt(0, 70),
+      iterations: randomInt(0, 20),
       quality: Math.random()*100
     };
     var that = this;
     that.isGlitching = true;
     glitch(that.originalImgData, parameters, function(img_data) {
       var rdm = Math.random() > 0.4;
-      var grayscaleImg = rdm ? img_data : grayscale(img_data);
+      var grayscaleImg = rdm ? img_data : that.grayscale(img_data);
       that.ctx.putImageData(grayscaleImg, 0, 0);
     });
   };
@@ -132,8 +151,8 @@ $(document).on('ready page:load', function(){
       var $canvas = $(glitchables[i].canvas);
       var top = $canvas.offset().top;
       var canvasHeight = $canvas.height();
-      if(!$canvas.is(':hover') && 
-        !glitchables[i].isGlitching && $(window).scrollTop() < top + canvasHeight - 10 && 
+      if(!glitchables[i].isGlitching && 
+        $(window).scrollTop() < top + canvasHeight - 10 && 
         top + 10 < $(window).height() + $(window).scrollTop())
       {
         visibles.push(glitchables[i]);
@@ -152,7 +171,8 @@ $(document).on('ready page:load', function(){
   function glitchAll(_glitchables){
     for(var i = 0; i < _glitchables.length; i++)
     {
-      _glitchables[i].glitchIt();
+      var currGlitchable = _glitchables[i];
+      currGlitchable.glitchIt.call(currGlitchable);
     }
   }
 
@@ -161,7 +181,7 @@ $(document).on('ready page:load', function(){
     {
       setTimeout(function(){
         glitchAll(glitchables);
-      }, randomInt(10, 300))
+      }, randomInt(10, 300));
       e.preventDefault();
     }
   });
@@ -172,6 +192,12 @@ $(document).on('ready page:load', function(){
       {
         glitchables[i].isGlitching = false;
       }
+      setTimeout(startRandomGlitching, 1000);
+      function startRandomGlitching(){
+        var thisGlitch = getRandomVisibleCanvas(glitchables);
+        thisGlitch.glitchItFor(randomInt(300, 2000));
+        setTimeout(startRandomGlitching, randomInt(minInterval, maxInterval));
+      }
     }
 
   })
@@ -179,7 +205,7 @@ $(document).on('ready page:load', function(){
   function randomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
-  function grayscale(pixels, args) {
+  Glitchable.prototype.grayscale = function(pixels, args) {
     var d = pixels.data;
     for (var i=0; i<d.length; i+=4) 
     {

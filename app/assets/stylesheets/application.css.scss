@@ -7,16 +7,17 @@
  *= require froala/css/froala_style.min.css 
  *= require froala/css/froala_content.min.css 
  */
- @import "framework_and_overrides";
- @import "variables";
- @import "mixins";
- @import "layouts";
- @import "ui_components";
- @import "header";
- @import "artists";
- @import "events";
- @import "home";
- @import "news";
+@import "framework_and_overrides";
+@import "variables";
+@import "mixins";
+@import "layouts";
+@import "ui_components";
+@import "header";
+@import "artists";
+@import "events";
+@import "home";
+@import "news";
+@import "glitchousel";
 
 
 
@@ -54,6 +55,7 @@ iframe{
 }
 canvas{
 	width: 100%;
+	vertical-align: bottom;
 }
 
 ul{

@@ -91,6 +91,7 @@ ActiveRecord::Schema.define(version: 20150311215520) do
     t.datetime "main_image_updated_at"
     t.string   "buy_link"
     t.string   "category"
+    t.boolean  "featured"
   end
 
   add_index "events", ["location_id"], name: "index_events_on_location_id", using: :btree

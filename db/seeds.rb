@@ -32,6 +32,7 @@ main_event.artists << [
 		Fabricate(:artist, name: "Ron Morelli", profile_picture: File.open("#{Rails.root}/app/assets/images/graze.jpg")),
 		Fabricate(:artist, name: "Graze", profile_picture: File.open("#{Rails.root}/app/assets/images/graze.jpg"))
 	]
+
 workshop = Fabricate(:event, title: "The future workshop", type: :workshop, schedule_start: 2.days.from_now, schedule_end: 7.days.from_now, main_image: pic, location: Fabricate(:location, name: "BAT 43", address: "43 rte des Acacias 1227 les Acacias"))
 workshop.artists <<  [
 		Fabricate(:artist, name: "DBridge", profile_picture: File.open("#{Rails.root}/app/assets/images/DBridge.jpg"))
@@ -51,8 +52,8 @@ Fabricate(:event, title: "The workshop", type: :workshop, schedule_start: 2.days
 Fabricate :event, type: :exhibition, title: "The Exhibition", schedule_start: 2.days.from_now, schedule_end: 4.days.from_now, main_image: pic, location: location
 Fabricate :event, type: :performance, title: "Performance", main_image: pic, location: location, schedule_start: 2.days.from_now
 
-Event.category_enum.each_with_index do |cat, index|
-	Fabricate.times(3, :event, type: :single_event, category: cat, location: location, main_image: File.open("#{Rails.root}/app/assets/images/graze.jpg"), schedule_start: index.days.from_now)
+Event.category_enum.each do |cat|
+	Fabricate.times(3, :event, type: :single_event, category: cat, location: location, main_image: File.open("#{Rails.root}/app/assets/images/graze.jpg"), featured: true)
 end
 
 static_pages = %w(infos about partners gallery previous_editions)
