@@ -97,20 +97,22 @@ $(document).on('ready page:load', function(){
   /* Glitchable declaration */
 
   Glitchable.prototype.init = function(){
-    var originalImgClone = new Image();
-    originalImgClone.src = this.originalImg.src;
-    originalImgClone.crossOrigin = "*"
     var canvas = document.createElement('canvas');
-    var width = originalImgClone.width;
-    var height = originalImgClone.height;
+    var width = this.originalImg.width;
+    var height = this.originalImg.height;
     canvas.width = width;
     canvas.height = height;
-    //debugger;
     $(canvas).insertAfter($(this.originalImg).hide());
     ctx = canvas.getContext('2d');
     // draw the img on the canvas 
+    this.originalImg.crossOrigin = "*"
+    ctx.drawImage(this.originalImg, 0, 0);
+    var originalImgClone = new Image();
+    originalImgClone.crossOrigin = "*";
+    var src = canvas.toDataURL(0, 0, canvas.width, canvas.height);
+    originalImgClone.src = src;
     ctx.drawImage(originalImgClone, 0, 0);
-    this.originalImgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    this.originalImgData = ctx.getImageData(0, 0, canvas.width, canvas.height);;
     this.canvas = canvas;
     this.ctx = ctx;
     this.bindEvents();
