@@ -26,6 +26,9 @@ body{
 	font-family: $body-font;
 	font-size : 14px;
 	@media #{$tablet}{
+		font-size : 16px;
+	}
+	@media #{$md}{
 		font-size : 20px;
 	}
 }
@@ -137,17 +140,6 @@ main{
 	width: 100%;
 }
 
-
-// static pages
-
-.static-pages-page{
-	.container{
-		padding: 0px 15px;
-		@media #{$tablet}{
-			padding: 0px;
-		}
-	}
-}
 .map iframe {
   min-height: 480px;
 }
