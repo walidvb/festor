@@ -41,7 +41,7 @@
 			%h2.section-title= link_to t('nav.events'), single_events_path
 			.glitchousel
 				- @events.each do |event|
-					= link_to event_path(event) do 
+					= link_to single_event_path(event) do 
 						.event.slide
 							= image_tag(event.main_image.url(:tile))
 							.legend
