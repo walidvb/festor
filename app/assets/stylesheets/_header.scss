@@ -26,7 +26,7 @@ $header-padding-vert: 40px;
 		}
 		.motto{
 			font-family: $title-font;
-			font-size: $large;
+			font-size: $large*1.2;
 			font-weight: bold;
 			align-self: flex-end;
 			text-align: right;
@@ -36,7 +36,7 @@ $header-padding-vert: 40px;
 		@media #{$tablet}
 		{
 			.festival-date{
-				  font-size: $larger*1.2;
+				  font-size: $larger*1.5;
   					line-height: 1.1em;
 			}
 		}

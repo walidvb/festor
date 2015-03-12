@@ -39,6 +39,7 @@
 // SINGLE TILE
 
 .show-page{
+	line-height: 1.5em;
 	.artist, .event-artists{
 		flex:1 0 100%;
 		.artist-name{
@@ -110,7 +111,7 @@
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
-	padding: 0px 5px 0px 5px;
+	padding: 0px 15px 0px 5px;
 	strong{
 		font-weight: bold;
 	}
@@ -120,6 +121,7 @@
 	.sidebar{
 		flex: 0 0 100%;
 		padding-top: 5px;
+		font-family: $Baskerville;
 		@media #{$md}
 		{
 			flex: 0 0 calc(30% - 7.5px);
@@ -131,7 +133,7 @@
 	}
 	.bio{
 		flex: 0 0 100%;
-		padding-top: 5px;
+		padding-top: 15px;
 		@media #{$tablet}
 		{
 			flex: 0 0 calc(70% - 7.5px);

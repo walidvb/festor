@@ -43,11 +43,6 @@
 	& a{
 		color: black;
 		text-decoration: none;
-		transition: color 0.2s 0.1s;
-		&:hover{
-			transition: color 0.15s;
-			color: $brand-color;
-		}
 	}
 	.tile{
 		margin-bottom: 15px;
@@ -120,7 +115,7 @@
 	}
 	.cat-filters{
 		flex-grow: 1;
-		background: white;
+		background-color: $dark-grey;
 		padding: 0px 5px 1px;
 		display: flex;
 		flex-wrap: wrap;

@@ -51,6 +51,7 @@ $form-font-size: 16px;
 }
 
 .cat-filters{
+	background-color: $dark-grey;
 	margin-top: 5px;
 	@media #{$tablet}{
 		margin-top: 0px;
