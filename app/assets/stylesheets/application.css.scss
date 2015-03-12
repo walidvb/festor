@@ -132,8 +132,23 @@ main{
 }
 
 .social{
-	.instagram, .facebook, .twitter{
-		display: inline-block;
+	.fa-icon{
+		margin-right: 5px;
+		&:hover:before{
+			color: $dark-grey;
+			border-color: $dark-grey;
+		}
+		&:before{
+			border-radius: 50%;
+			border: 2px solid $black;
+			color: $black;
+			font-size: 1.5em;
+			width: 35px;
+			height: 35px;
+			line-height: 30px;
+			text-align: center;
+			display: inline-block;
+		}
 	}
 }
 
