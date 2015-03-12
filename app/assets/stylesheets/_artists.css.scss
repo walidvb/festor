@@ -97,16 +97,14 @@
 }
 
 .links, .single-event-info{
-	line-height: $larger;
+	line-height: $larger*1.1;
 	background-color: $brand-color;
+	font-size: $large*1.2;
 	padding-left: 15px;
 	padding-right: 15px;
-	line-height: 2.2em;
 	margin-bottom: 5px;
 	min-height:10px;
 	min-width: 100%;
-	line-height: 3em;
-  	vertical-align: middle;
 }
 
 .artist-desc, .event-desc{
