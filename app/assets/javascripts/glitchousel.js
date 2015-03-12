@@ -31,8 +31,11 @@ Glitchousel.prototype.bindEvents = function(){
 	var that = this;
 	if(that.params.pauseOnHover)
 	{
-		this.container.hover(that.stop.bind(that), that.start.bind(that));
+		that.container.hover(that.stop.bind(that), that.start.bind(that));
 	}
+	that.canvas.addEventListener('mousedown', function(){
+		$(that.legends[that.currentIndex]).click();
+	});
 }
 
 Glitchousel.prototype.init = function(){
@@ -165,7 +168,11 @@ Glitchousel.prototype.transition = function(imgSrc, imgTrg, index){
 		}
 		if(currParams.amount <= 0){
 			clearTimeout(that.transitionTimer);
-			setTimeout(function(){that.ctx.putImageData(imgTrg, 0, 0);}, 10);
+			that.ctx.putImageData(imgTrg, 0, 0);
+			setTimeout(function(){
+				console.log("restoring image...");
+				that.ctx.putImageData(imgTrg, 0, 0);
+			}, 20);
 		}
 		glitch(currentImgData, currParams, function(img_data) {
 			var rdm = Math.random() > 0.25;
@@ -177,14 +184,12 @@ Glitchousel.prototype.transition = function(imgSrc, imgTrg, index){
 
 
 /*       Init the whole lot      */
-window.glitchousels = [];
 $(document).on('ready page:load', function(){
 	var containers = $('.glitchousel');
-	//var glitchousels = [];
+	var glitchousels = [];
 	containers.each(function(){
-		window.glitchousels.push(new Glitchousel({
+		glitchousels.push(new Glitchousel({
 			container: $(this),
 		}).init());
 	});
-	console.log("glitchousels:", window.glitchousels);
 });

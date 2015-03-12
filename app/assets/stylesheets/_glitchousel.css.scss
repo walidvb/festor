@@ -1,9 +1,15 @@
 .glitchousel{
+	padding-bottom: 40px;
+	canvas{
+		cursor: pointer;
+	}
 	.legend{
 		margin-bottom: 0;
 		background:white;
 		width: 100%;
 		padding: 10px 5px;
+		position: absolute;
+		bottom: 0;
 		.title{
 			font-weight: bold;
 		}
@@ -11,10 +17,30 @@
 			font-family: $info-font;
 		}
 	}
+
+
 	.legend{
-		display: none;
-		&.active{
-			display: inline-block;
+		opacity: 0;
+		transition: all 0.1s ease-out;
+		> div{
+			opacity: 0;
+			transition: all 0.3s ease-out;
+			transform: translateX(5px);
+		}
+		.details{
+			transition-delay: 0.03s;
+		}
+		&.active {
+			opacity: 1;
+			transition: all 0s ease-out;
+			> div{
+				transition: all 0.3s 0.3s ease-out;
+				opacity: 1;
+				transform: translateX(0px);
+			}
+			.details{
+				transition-delay: 0.33s;
+			}
 		}
 	}
 }

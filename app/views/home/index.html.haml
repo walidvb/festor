@@ -5,11 +5,12 @@
 				%h2.section-title= link_to t('nav.exhibitions'), exhibitions_path
 				.glitchousel
 				- @exhibitions.each do |event|
-					.event.slide
-						= image_tag(event.main_image.url(:tile))
-						.legend
-							.title= event.title
-							.details #{l(event.schedule_start, format: "%A %e %B")} / #{event.location.name}
+					= link_to exhibition_path(event) do 
+						.event.slide
+							= image_tag(event.main_image.url(:tile))
+							.legend
+								.title= event.title
+								.details #{l(event.schedule_start, format: "%A %e %B")} / #{event.location.name}
 			
 	- unless @workshops.empty?
 		%li
@@ -17,31 +18,34 @@
 				%h2.section-title= link_to t('nav.workshops'), workshops_path
 				.glitchousel
 				- @workshops.each do |event|
-					.event.slide
-						= image_tag(event.main_image.url(:tile))
-						.legend
-							.title= event.title
-							.details #{l(event.schedule_start, format: "%A %e %B")} / #{event.location.name}
+					= link_to workshop_path(event) do 
+						.event.slide
+							= image_tag(event.main_image.url(:tile))
+							.legend
+								.title= event.title
+								.details #{l(event.schedule_start, format: "%A %e %B")} / #{event.location.name}
 	- unless @news.empty?
 		%li
 			= link_to artists_path do
 				%h2.section-title= link_to t('nav.news'), news_index_path
 				.glitchousel
 				- @news.each do |event|
-					.event.slide
-						= image_tag(news.header_image.url(:tile))
-						.legend
-							= news.title
-			
+					= link_to news_path(event) do 
+						.event.slide
+							= image_tag(news.header_image.url(:tile))
+							.legend
+								= news.title
+				
 	- unless @events.empty?
 		%li
 			%h2.section-title= link_to t('nav.events'), events_path
 			.glitchousel
 				- @events.each do |event|
-					.event.slide
-						= image_tag(event.main_image.url(:tile))
-						.legend
-							.title= event.title
-							.details #{l(event.schedule_start, format: "%A %e %B")} / #{event.location.name}
+					= link_to event_path(event) do 
+						.event.slide
+							= image_tag(event.main_image.url(:tile))
+							.legend
+								.title= event.title
+								.details #{l(event.schedule_start, format: "%A %e %B")} / #{event.location.name}
 
 		
