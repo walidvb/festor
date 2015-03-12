@@ -33,11 +33,11 @@ $tile-title-size 	:	0.8em;
 
 @font-face {
 	font-family:'Avenir';
-	src: url('/assets/avenir/AvenirNextLTPro-Bold_gdi.eot');
-	src: url('/assets/avenir/AvenirNextLTPro-Bold_gdi.eot?#iefix') format('embedded-opentype'),
-		url('/assets/avenir/AvenirNextLTPro-Bold_gdi.woff') format('woff'),
-		url('/assets/avenir/AvenirNextLTPro-Bold_gdi.ttf') format('truetype'),
-		url('/assets/avenir/AvenirNextLTPro-Bold_gdi.svg#AvenirNextLTPro-Bold') format('svg');
+	src: asset-url('/avenir/AvenirNextLTPro-Bold_gdi.eot');
+	src: asset-url('/avenir/AvenirNextLTPro-Bold_gdi.eot?#iefix') format('embedded-opentype'),
+		asset-url('/avenir/AvenirNextLTPro-Bold_gdi.woff') format('woff'),
+		asset-url('/avenir/AvenirNextLTPro-Bold_gdi.ttf') format('truetype'),
+		asset-url('/avenir/AvenirNextLTPro-Bold_gdi.svg#AvenirNextLTPro-Bold') format('svg');
 	font-weight: 700;
 	font-style: normal;
 	font-stretch: normal;
@@ -46,11 +46,11 @@ $tile-title-size 	:	0.8em;
 
 @font-face {
 	font-family:'Avenir';
-	src: url('/assets/avenir/AvenirNextLTPro-Regular_gdi.eot');
-	src: url('/assets/avenir/AvenirNextLTPro-Regular_gdi.eot?#iefix') format('embedded-opentype'),
-		url('/assets/avenir/AvenirNextLTPro-Regular_gdi.woff') format('woff'),
-		url('/assets/avenir/AvenirNextLTPro-Regular_gdi.ttf') format('truetype'),
-		url('/assets/avenir/AvenirNextLTPro-Regular_gdi.svg#AvenirNextLTPro-Regular') format('svg');
+	src: asset-url('/avenir/AvenirNextLTPro-Regular_gdi.eot');
+	src: asset-url('/avenir/AvenirNextLTPro-Regular_gdi.eot?#iefix') format('embedded-opentype'),
+		asset-url('/avenir/AvenirNextLTPro-Regular_gdi.woff') format('woff'),
+		asset-url('/avenir/AvenirNextLTPro-Regular_gdi.ttf') format('truetype'),
+		asset-url('/avenir/AvenirNextLTPro-Regular_gdi.svg#AvenirNextLTPro-Regular') format('svg');
 	font-weight: 400;
 	font-style: normal;
 	font-stretch: normal;
