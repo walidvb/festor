@@ -29,8 +29,8 @@
 			= link_to artists_path do
 				%h2.section-title= link_to t('nav.news'), news_index_path
 				.glitchousel
-				- @news.each do |event|
-					= link_to news_path(event) do 
+				- @news.each do |news|
+					= link_to news_path(news) do 
 						.event.slide
 							= image_tag(news.header_image.url(:tile))
 							.legend
