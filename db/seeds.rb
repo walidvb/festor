@@ -25,8 +25,8 @@ main_event = Fabricate(:event,
 	main_image: pic,
 	links: [
 		Fabricate(:link)
-	],
-	)
+	]
+)
 workshop = Fabricate(:event, title: "The future workshop", type: :workshop, schedule_start: 2.days.from_now, schedule_end: 7.days.from_now, main_image: pic, location: Fabricate(:location, name: "BAT 43", address: "43 rte des Acacias 1227 les Acacias"))
 workshop.artists <<  [
 		Fabricate(:artist, name: "DBridge", profile_picture: File.open("#{Rails.root}/app/assets/images/DBridge.jpg")),

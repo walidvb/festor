@@ -12,8 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
-//= require bootstrap
 //= require home.js
 //= require mixitup/build/jquery.mixitup.min.js
 //= require mixitup/build/jquery.mixitup.min.js

@@ -3,6 +3,8 @@ function Glitchousel(options){
 		speed: 600,
 		timeout: 5000,
 		pauseOnHover: true,
+		slideSelector: '.slide',
+		legendSelector: '.legend'
 	}
 	this.timer = null;
 	this.transitionTimer = null;
@@ -35,8 +37,11 @@ Glitchousel.prototype.bindEvents = function(){
 
 Glitchousel.prototype.init = function(){
 	var that = this;
+	var $slides = this.container.find(this.params.slideSelector);
 	var $imgs = this.container.find('img');
+	var $legends = this.container.find(this.params.legendSelector);
 	this.imgDatas = [];
+	this.legends = $legends;
 	this.currentIndex = 0;
 	var canvas = document.createElement('canvas');
 	var ctx;
@@ -102,6 +107,12 @@ Glitchousel.prototype.prev = function(){
 	this.goTo(nextIndex);
 };
 
+Glitchousel.prototype.setLegend = function(index){
+	var that = this;
+	that.legends.removeClass('active');
+	$(that.legends[index]).addClass('active');
+}
+
 Glitchousel.prototype.transition = function(imgSrc, imgTrg, index){
 	var that = this;
 	var finishedTransition = false;
@@ -150,6 +161,7 @@ Glitchousel.prototype.transition = function(imgSrc, imgTrg, index){
 			currParams.amount = 100;
 			currentImgData = imgTrg;
 			that.currentIndex = index;
+			that.setLegend(index);
 		}
 		if(currParams.amount <= 0){
 			clearTimeout(that.transitionTimer);

@@ -81,7 +81,7 @@ class Event < ActiveRecord::Base
       	strftime_format("%e %B")
       end
       field :category
-      field :artists
+      field :featured
     end
   end
 end

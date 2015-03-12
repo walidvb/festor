@@ -1,9 +1,9 @@
 class HomeController < ApplicationController
 	def index
 		@home_page  = true
-		@exhibition = Event.exhibition.first
-		@workshop   = Event.workshop.first
+		@exhibitions = Event.exhibition.featured
+		@workshops   = Event.workshop.featured
 		@events     = Event.single_event.featured
-		@artist 		= Artist.first
+		@news 		= StaticPage.news.first(3)
 	end
 end

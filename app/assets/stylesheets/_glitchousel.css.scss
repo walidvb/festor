@@ -1,0 +1,20 @@
+.glitchousel{
+	.legend{
+		margin-bottom: 0;
+		background:white;
+		width: 100%;
+		padding: 10px 5px;
+		.title{
+			font-weight: bold;
+		}
+		.details{
+			font-family: $info-font;
+		}
+	}
+	.legend{
+		display: none;
+		&.active{
+			display: inline-block;
+		}
+	}
+}
