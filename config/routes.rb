@@ -9,9 +9,9 @@ Festor::Application.routes.draw do
 		root "home#index"
 	  post "beta" => "beta#create"
 		devise_for :users
-		
+		get "home" => 'home#index'
 		#get "events/:id" => "events#show", as: :event
-		resources :events, controller: "events", only: [:show, :index], type: :single_event
+		resources :events, controller: "events", only: [:show, :index], type: :single_event, as: :single_events
 		resources :workshops, controller: "events", only: [:show, :index], type: :workshop
 		resources :exhibitions, controller: "events", only: [:show, :index], type: :exhibition
 
