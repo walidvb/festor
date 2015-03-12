@@ -150,7 +150,7 @@
 // SINGLE PAGE
 
 .show-header{
-	font-size: $large*1.2;
+	font-size: $body-size;
 	@media #{$tablet}{
 		text-align: left;
 		.location{
