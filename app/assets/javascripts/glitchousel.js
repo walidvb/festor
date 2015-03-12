@@ -169,10 +169,14 @@ Glitchousel.prototype.transition = function(imgSrc, imgTrg, index){
 		if(currParams.amount <= 0){
 			clearTimeout(that.transitionTimer);
 			that.ctx.putImageData(imgTrg, 0, 0);
+			// had to hack that in, as the original image would not be retored otherwise
 			setTimeout(function(){
 				console.log("restoring image...");
 				that.ctx.putImageData(imgTrg, 0, 0);
 			}, 20);
+			setTimeout(function(){
+				that.ctx.putImageData(imgTrg, 0, 0);
+			}, 50);
 		}
 		glitch(currentImgData, currParams, function(img_data) {
 			var rdm = Math.random() > 0.25;
