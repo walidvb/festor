@@ -1,6 +1,7 @@
 function Glitchousel(options){
 	this.params = {
 		speed: 600,
+		delay: options.delay || 0,
 		timeout: options.timeout || 5000,
 		pauseOnHover: true,
 		slideSelector: '.slide',
@@ -59,7 +60,9 @@ Glitchousel.prototype.init = function(){
 			{
 				processImgs();
 				that.bindEvents();
-				that.start();
+				setTimeout(function(){
+					that.start();
+				}, this.params.delay)
 			}
 		}
 	}
@@ -194,7 +197,7 @@ $(document).on('ready page:load', function(){
 	containers.each(function(){
 		glitchousels.push(new Glitchousel({
 			container: $(this),
-			timeout: Math.random()*2000 + 800,
+			delay: Math.random()*2000 + 800,
 		}).init());
 	});
 });
