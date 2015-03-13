@@ -20,6 +20,12 @@
 @import "glitchousel";
 
 
+.columns-2{
+	@media #{$tablet}
+	{
+		column-count: 2;
+	}
+}
 
 // RESETS
 body{

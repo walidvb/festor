@@ -1,5 +1,6 @@
 //= require froala/js/froala_editor.min.js
 //= require froala/js/plugins/file_upload.min.js
+//= require froala/js/plugins/block_styles.min.js
 //= require froala/js/plugins/video.min.js
 //= require froala/js/plugins/lists.min.js
 //= require froala/js/plugins/urls.min.js
@@ -10,11 +11,11 @@ $(document).on('rails_admin.dom_ready', function(){
 	var buttons;
 	if(isSinglePage)
 	{
-		buttons = ['undo', 'redo' , 'sep', 'bold', 'italic', 'underline', 'sep', 'createLink', 'sep', 'formatBlock', 'align','sep',  'insertUnorderedList', 'sep', 'insertImage', 'insertVideo', 'uploadFile', 'sep', 'html']
+		buttons = ['undo', 'redo' , 'sep', 'bold', 'italic', 'underline', 'sep', 'createLink', 'sep', 'formatBlock', 'blockStyle', 'sep',  'insertUnorderedList', 'sep', 'insertImage', 'insertVideo', 'uploadFile', 'sep', 'html']
 	}
 	else
 	{
-		buttons = ['undo', 'redo' , 'sep', 'bold', 'italic', 'underline', 'sep', 'createLink', 'sep', 'formatBlock', 'align', ,'sep', 'insertImage', 'insertVideo', 'uploadFile', 'sep', 'html'];
+		buttons = ['undo', 'redo' , 'sep', 'bold', 'italic', 'underline', 'sep', 'createLink', 'sep', 'formatBlock', ,'sep', 'insertImage', 'insertVideo', 'uploadFile', 'sep', 'html'];
 	}
 	var wysiwygs = $('.biography_field textarea, .description_field textarea, .body_field textarea, .sidebar_text_field textarea');
 	wysiwygs.editable({
@@ -29,7 +30,7 @@ $(document).on('rails_admin.dom_ready', function(){
 		},
 		blockStyles: {
 	    'p': {
-	      'class1': 'Class 1',
+	      'columns-2': '2 columns',
 		  }
 		},
 		useFrTag: true,
