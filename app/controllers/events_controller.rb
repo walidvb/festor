@@ -16,7 +16,7 @@ class EventsController < ApplicationController
 		events_array = Event.where(type: @event.type).select(:id).order(:schedule_start, :schedule_end).map(&:id)
 		current_index = events_array.index(@event.id)
 		@next = events_array[current_index + 1]
-		@previous = events_array[[0, current_index - 1].max]
+		@previous = events_array[current_index - 1] unless current_index - 1 < 0
 		@type = @event.type
 		@musicians = @event.musicians
 		@vjs = @event.vjs
