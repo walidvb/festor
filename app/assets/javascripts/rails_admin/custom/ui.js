@@ -27,6 +27,11 @@ $(document).on('rails_admin.dom_ready', function(){
 			h3: "h3", 
 			h4: "h4",
 		},
+		blockStyles: {
+	    'p': {
+	      'class1': 'Class 1',
+		  }
+		},
 		useFrTag: true,
 		alwaysBlank: true,
 		paragraphy: false,
