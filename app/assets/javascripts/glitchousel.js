@@ -62,7 +62,7 @@ Glitchousel.prototype.init = function(){
 				that.bindEvents();
 				setTimeout(function(){
 					that.start();
-				}, this.params.delay)
+				}, that.params.delay)
 			}
 		}
 	}
