@@ -1,7 +1,7 @@
 function Glitchousel(options){
 	this.params = {
 		speed: 600,
-		timeout: 5000,
+		timeout: options.timeout || 5000,
 		pauseOnHover: true,
 		slideSelector: '.slide',
 		legendSelector: '.legend'
@@ -194,6 +194,7 @@ $(document).on('ready page:load', function(){
 	containers.each(function(){
 		glitchousels.push(new Glitchousel({
 			container: $(this),
+			timeout: Math.random()*2000 + 800,
 		}).init());
 	});
 });
