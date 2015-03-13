@@ -13,8 +13,8 @@ class EventsController < ApplicationController
 
 	def show
 		@event = Event.includes(:artists, :location).friendly.find(params[:id])
-		events_array = Event.where(type: @event.type).select(:id).order(:schedule_start, :schedule_end).map(&:id)
-		current_index = events_array.index(@event.id)
+		events_array = Event.where(type: @event.type).select(:slug).order(:schedule_start, :schedule_end).map(&:slug)
+		current_index = events_array.index(@event.slug)
 		@next = events_array[current_index + 1]
 		@previous = events_array[current_index - 1] unless current_index - 1 < 0
 		@type = @event.type
