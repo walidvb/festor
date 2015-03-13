@@ -28,10 +28,10 @@
 
 .prev-next-navigation
 	.prev
-		- if previous_event = @event.previous
+		- if previous_event = @previous
 			= link_to t('nav.previous'), send("#{@event.type}_path", previous_event, locale: I18n.locale)
 	.next
-		- if next_event = @event.next
+		- if next_event = @next
 			= link_to t('nav.next'), send("#{@event.type}_path", next_event, locale: I18n.locale)
 .event-desc.mf-row
 	.bio
