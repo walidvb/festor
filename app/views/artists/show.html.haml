@@ -8,7 +8,7 @@
 	= image_tag @artist.profile_picture.url(:large), class: 'glitch'
 	.info
 		.event-name	
-			%h2.artist-event= link_to event.title, event_path(event)
+			%h2.artist-event= link_to event.title, single_event_path(event)
 		.artist
 			%h1.artist-name= @artist.name
 			%h3.labels= @artist.label
