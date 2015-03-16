@@ -119,15 +119,20 @@
 	}
 	.sidebar{
 		flex: 0 0 100%;
-		padding-top: 15px;
+		background-color: lighten($light-grey, 0.5);
+		margin-top: 15px;
 		font-family: $info-font;
 		@media #{$md}
 		{
-			flex: 0 0 calc(30% - 7.5px);
+			flex: 0 0 calc(40% - 7.5px);
+			padding: 15px;
+			font-size: $small;
 		}
 		@media #{$lg}
 		{
 			flex: 0 0 calc(40% - 7.5px);
+			padding: 15px;
+			font-size: $small;
 		}
 	}
 	.bio{
@@ -135,7 +140,7 @@
 		padding-top: 15px;
 		@media #{$tablet}
 		{
-			flex: 0 0 calc(70% - 7.5px);
+			flex: 0 0 calc(60% - 7.5px);
 		}
 		@media #{$lg}
 		{
