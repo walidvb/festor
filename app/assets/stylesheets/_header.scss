@@ -2,7 +2,8 @@ $header-height-sm: 250px;
 $header-padding-vert: 40px;
 
 .body-header{
-	background-image: image-url('header_img.jpg');
+	//background-image: image-url('header_img.jpg');
+	background-color: $dark-grey;
 	background-size: cover;
 	background-position: center 90%;
 	padding: 5px 0 30px;
