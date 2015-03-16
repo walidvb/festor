@@ -40,6 +40,7 @@ module Festor
     end
     config.assets.paths << Rails.root.join('vendor', 'assets', 'components')
     config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
+    
     config.assets.precompile += ['application.css, application.js']
     config.assets.precompile += ['rails_admin/rails_admin.css', 'rails_admin/rails_admin.js']
     config.assets.precompile << /\.(?:svg|eot|woff|ttf)$/
