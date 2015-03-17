@@ -21,9 +21,9 @@ Festor::Application.routes.draw do
 	  
 	  StaticPage.all.each do |sp|
 	  	begin 
-	  		get "/#{ActiveSupport::Inflector.parameterize(sp.title)}" => "static_pages#show", id: sp.id
+	  		get "/#{sp.slug}" => "static_pages#show", id: sp.id
 	  	rescue => e
-	  		puts "Tried routing, got #{e.inspect} for #{sp.title}"
+	  		puts "Tried routing, got #{e.inspect} for #{[sp.title, sp.id]}"
 	  	end
 	  end
 		mount RailsAdmin::Engine => '/admin', as: 'rails_admin'

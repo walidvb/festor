@@ -1,7 +1,9 @@
 class StaticPage < ActiveRecord::Base
-	translates :body, :title, :slug
+	translates :body, :title
 	accepts_nested_attributes_for :translations, allow_destroy: true
 	before_destroy :prevent_destroy_static_pages
+	extend FriendlyId
+  friendly_id :title, :use => [:slugged]
 
 	validates :body, presence: true
 	scope :static, ->{where(news: false).order(:position)}
