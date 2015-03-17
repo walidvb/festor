@@ -40,15 +40,15 @@ body{
 	}
 }
 
-.container {
-  margin-right: auto;
-  margin-left: auto;
-  padding-left: 0px;
-  padding-right: 0px;
-  @media #{$tablet}{
-  	padding-left: 15px;
-  	padding-right: 15px;
+.container, .row, .col-xs-12 {
+	@media #{$mobile}
+	{
+	  margin-right: auto;
+	  margin-left: auto;
+	  padding-left: 0px;
+	  padding-right: 0px;
 	}
+
 }
 
 img, canvas, iframe{
