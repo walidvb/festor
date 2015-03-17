@@ -3,7 +3,7 @@ function Glitchable(img, otherGlitchables){
 }
 $(document).on('ready page:load', function(){
   // assuming there's a loaded img and a canvas element in the DOM.
-  var myGlitches = document.getElementsByClassName('glitch');
+  var myGlitches = document.getElementsByClassName('glitcha');
   var glitchables = [];
   var minInterval, maxInterval;
   var stoppedGlitchCount = 0;
