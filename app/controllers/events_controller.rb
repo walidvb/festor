@@ -1,10 +1,11 @@
 class EventsController < ApplicationController
 	before_filter :get_type, only: [:index]
 	skip_before_filter :beta_only
-	before_filter :allow_workshops
+
 
 	def index
 		@events = Event.includes(:artists, :location).send(@type.to_sym).order(:schedule_start, :schedule_end)
+		beta_only if @type != :workshop
 		if @type == :single_event
 			@dates = @events.map(&:schedule_start).uniq{|d| d.strftime("%e-%b-%y")}.compact.sort()
 			render 'index_single_events'
@@ -20,6 +21,8 @@ class EventsController < ApplicationController
 		@next = events_array[current_index + 1]
 		@previous = events_array[current_index - 1] unless current_index - 1 < 0
 		@type = @event.type
+		p @type
+		beta_only if @type != 'workshop'
 		@musicians = @event.musicians
 		@vjs = @event.vjs
 		@location = @event.location
@@ -32,7 +35,5 @@ class EventsController < ApplicationController
 		@type = params[:type] || :all
 	end
 
-	def allow_workshops
-		beta_only if @type != :workshop
-	end
+
 end
