@@ -49,6 +49,9 @@
 		@media #{$tablet}{
 			margin-bottom: 5px;
 		}
+		.glitch{
+			width: 100%;	
+		}
 	}
 	.artist, .event-name{
 		display:flex;
