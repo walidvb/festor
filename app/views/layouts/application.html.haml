@@ -18,8 +18,12 @@
           %br/
           = t("shared.geneva")
         .locales{class: I18n.locale}
-          = link_to("FR", url_for(locale: :fr), class: "fr")
-          = link_to("EN", url_for(locale: :en), class: "en")
+          - if I18n.locale == :fr
+            FR
+            = link_to("EN", url_for(locale: :en), class: "en")
+          - else
+            = link_to("FR", url_for(locale: :fr), class: "fr")
+            EN
 
         .header-logo
           = link_to(image_tag( 'logo.svg', class: "header-logo"), root_path)

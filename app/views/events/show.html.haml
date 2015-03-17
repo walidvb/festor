@@ -10,22 +10,21 @@
 	.info
 		.event-name
 			%h1.title= @event.title
-
-
 		.event-musicians.event-artists
 			- @musicians.each do |mu|
 				= link_to artist_path(mu) do 
 					.artist
 						%h1.artist-name= "#{mu.name}"
 						%h3.labels= "([#{mu.label}, #{mu.origin}].compact.join(' / '))" unless mu.label.blank? && mu.label.blank?
-
 		.event-vjs.event-artists
 			- @vjs.each do |mu|
 				= link_to artist_path(mu) do 
 					.artist
 						%h1.artist-name= "#{mu.name}"
 						%h3.labels= "([#{mu.label}, #{mu.origin}].compact.join(' / '))" unless mu.label.blank? && mu.label.blank?
-
+.links
+	- @links.each do |link|
+		= print_link link
 .prev-next-navigation
 	.prev
 		- if previous_event = @previous
@@ -34,6 +33,7 @@
 		- if next_event = @next
 			= link_to t('nav.next'), send("#{@event.type}_path", next_event, locale: I18n.locale)
 .event-desc.mf-row
+			
 	.bio
 		= @event.description.html_safe unless @event.description.blank?
 	.sidebar
