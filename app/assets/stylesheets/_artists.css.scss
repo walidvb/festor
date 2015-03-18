@@ -68,9 +68,7 @@
 .single-event-info{
 	display: flex;
 	font-family: $info-font;
-	.date, .location{
-		flex: 1 0 calc(50% - 7.5px);
-	}
+	justify-content: space-between;
 	.date{
 		text-align: left;
 	}

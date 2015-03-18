@@ -24,6 +24,9 @@ $header-padding-vert: 40px;
 			color: white;
 			font-size: $larger;
 			font-family: $info-font;
+			position: absolute;
+			top: 0;
+			left: 10px;
 		}
 		.motto{
 			font-size: $large*1.2;
@@ -32,6 +35,9 @@ $header-padding-vert: 40px;
 			text-align: right;
 			color: $brand-color;
 			text-decoration: underline;
+			position: absolute;
+			bottom: 0;
+			right: 10px;
 		}
 		@media #{$tablet}
 		{

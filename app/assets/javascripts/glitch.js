@@ -88,8 +88,11 @@ $(document).on('ready page:load', function(){
       startRandomGlitching();
       function startRandomGlitching(){
         var thisGlitch = getRandomVisibleCanvas(glitchables);
-        thisGlitch.glitchItFor(randomInt(200, 2000));
-        setTimeout(startRandomGlitching, randomInt(minInterval, maxInterval));
+        if(thisGlitch)
+        {
+          thisGlitch.glitchItFor(randomInt(200, 2000));
+          setTimeout(startRandomGlitching, randomInt(minInterval, maxInterval));
+        }
       }
     }
   })
