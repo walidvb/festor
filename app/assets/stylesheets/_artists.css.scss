@@ -117,18 +117,19 @@
 	}
 	.sidebar{
 		flex: 0 0 100%;
-		background-color: lighten($light-grey, 0.5);
-		margin-top: 15px;
+		padding-top: 25px;
+		.sidebar-inner{
+			background-color: lighten($light-grey, 0.5);
+			padding: 5px 15px;
+		}
 		@media #{$md}
 		{
 			flex: 0 0 calc(40% - 10px);
-			padding: 15px;
 			font-size: $small;
 		}
 		@media #{$lg}
 		{
 			flex: 0 0 calc(40% - 10px);
-			padding: 15px;
 			font-size: $small;
 		}
 	}
