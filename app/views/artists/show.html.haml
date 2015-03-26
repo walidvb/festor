@@ -1,7 +1,11 @@
+- event = @artist.events.first
+- content_for(:og_title, "#{@artist.name} – #{l(event.schedule_start, format: "%A %e %B")}")
+- content_for(:image, @artist.profile_picture.url)
+- content_for(:description, @artist.biography)
+
 .show-header
 	.artist-event
 		.single-event-info
-			- event = @artist.events.first
 			.date= l(event.schedule_start, format: "%A %e %B")
 			.location= link_to event.location.name, static_page_path(1, locale: I18n.locale)
 .tile

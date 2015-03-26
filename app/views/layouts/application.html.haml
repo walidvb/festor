@@ -2,7 +2,15 @@
 %html
   %head
     %meta{:content => "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no", :name => "viewport"}/
-    %title= @title || "Mapping Festival 2015"
+    %meta{property:"og:site_name", content:"Mapping Festival 2015"}
+    - desc = strip_tags(CGI.unescapeHTML("#{content_for?(:description) ? yield(:description) : 'The Pigeonhole'}")).gsub('&nbsp;', ' ')
+    %meta{:name => "description", content: desc}
+    %meta{property:"og:description", content: desc}
+    %meta{property:"og:image", content:"#{content_for?(:image) ? yield(:image) : image_url('logo.svg')}"}
+    %meta{property:"og:url", content: "#{content_for?(:url) ? yield(:url) : request.original_url}"}
+    %meta{property:"og:type", content:"#{content_for?(:type) ? yield(:type) : 'arts'}"}
+    %meta{property:"og:title", content:"#{content_for?(:og_title) ? yield(:og_title) : 'Mapping Festival 2015'}"}
+    %title= content_for?(:title) ? "Mapping Festival 2015 | #{yield(:title)}" : 'Mapping Festival 2015'
     = favicon_link_tag 'favicon.ico'
     = stylesheet_link_tag "application", media: "all", "adata-turbolinks-track" => true
     = javascript_include_tag "application", "adata-turbolinks-track" => true

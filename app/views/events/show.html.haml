@@ -1,3 +1,6 @@
+- content_for(:og_title, @event.title)
+- content_for(:image, @event.main_image.url)
+- content_for(:description, @event.description)
 .show-header
 	.single-event-info
 		- if @event.type == 'single_event'
