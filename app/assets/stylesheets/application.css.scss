@@ -18,7 +18,7 @@
 @import "home";
 @import "news";
 @import "glitchousel";
-
+@import "newsletter";
 
 .columns-2{
 	@media #{$tablet}
@@ -158,10 +158,10 @@ main{
 			border-radius: 50%;
 			border: 2px solid $black;
 			color: $black;
-			font-size: 1.5em;
+			font-size: 1.7em;
 			width: 35px;
 			height: 35px;
-			line-height: 30px;
+			line-height: 32px;
 			text-align: center;
 			display: inline-block;
 		}
