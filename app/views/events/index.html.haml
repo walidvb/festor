@@ -4,7 +4,7 @@
 			- path = event.type == 'workshop' ? workshop_path(event, locale: I18n.locale) : exhibition_path(event, locale: I18n.locale)
 			= link_to path do 
 				.tile
-					= image_tag event.main_image.url(:tile), class: 'glitch'
+					= image_tag event.main_image.url(:tile), size: event.main_image.image_size(:tile),class: 'glitch'
 					.info
 						.type
 							= event.type

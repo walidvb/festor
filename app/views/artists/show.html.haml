@@ -9,7 +9,7 @@
 			.date= l(event.schedule_start, format: "%A %e %B")
 			.location= link_to event.location.name, static_page_path(1, locale: I18n.locale)
 .tile
-	= image_tag @artist.profile_picture.url(:large), class: 'glitch'
+	= image_tag @artist.profile_picture.url(:large), size: @artist.profile_picture.image_size(:large), class: 'glitch'
 	.info
 		.event-name	
 			%h2.artist-event= link_to event.title, single_event_path(event)

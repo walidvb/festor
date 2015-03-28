@@ -69,7 +69,7 @@ Glitchousel.prototype.init = function(){
 	setTimeout(function(){
 		that.start();
 	}, that.params.delay)
-
+	this.setLegend(0);
 	function createUntainted(slide){
 			var img = slide.img;
       img.crossOrigin = "Anonymous";

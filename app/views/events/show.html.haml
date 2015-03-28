@@ -10,8 +10,7 @@
 		.location= link_to @location.name, "/#{I18n.locale}/infos"
 .tile
 	.img-container
-		=# image_tag @event.main_image.url(:large), class: 'glitch'
-		= image_tag 'http://www.mappingfestival.com/2015/assets/main_images/8/large/8783688616_694317fd17_k_15.14.10.jpg', class: 'glitch'
+		= image_tag @event.main_image.url(:large), size: @event.main_image.image_size(:large), class: 'glitch'
 	.info
 		.event-name
 			%h1.title= @event.title
