@@ -16,4 +16,3 @@
 //= require mixitup/build/jquery.mixitup.min.js
 //= require chosen-jquery
 //= require_tree .
-

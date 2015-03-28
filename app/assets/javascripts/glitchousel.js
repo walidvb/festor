@@ -87,6 +87,37 @@ Glitchousel.prototype.init = function(){
 	  that.canvas = canvas;
 	  that.ctx = ctx;
 	}
+
+	function getImagDataAndInsertCanvas(img){
+      img.crossOrigin = "Anonymous";
+      var src = img.src,
+        imgAsData = document.createElement('img');
+      cvs = document.createElement('canvas');
+      ctx = cvs.getContext('2d');
+      debugger;
+      img.parentNode.insertBefore(cvs, img);
+      img.parentNode.insertBefore(imgAsData, img);
+
+
+      img.onload = function() {
+        cvs.width = img.width;
+        cvs.height = img.height;
+        ctx.drawImage( img, 0, 0, img.width, img.height );
+        var dataURL = cvs.toDataURL('image/jpeg', 1);
+        imgAsData.src = dataURL;
+        ctx.drawImage(imgAsData, 0, 0, img.width, img.height);
+        imgData = ctx.getImageData(0, 0, cvs.width, cvs.height);;
+        imgAsData.remove();
+      }
+      img.src = src;
+
+      //  //resets cache on src of img if it comes back undefined, using a 1x1 blank gif dataURI
+      if ( img.complete || img.complete === undefined ) {
+        img.src = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==";
+        img.src = src;
+      }
+      return imgAsData;
+    };
 	return this;
 };
 

@@ -9,7 +9,9 @@
 			.date #{l(@event.schedule_start, format: "%A %e")} - #{l(@event.schedule_end, format: "%A %e %B")}
 		.location= link_to @location.name, "/#{I18n.locale}/infos"
 .tile
-	= image_tag @event.main_image.url(:large), class: 'glitch'
+	.img-container
+		=# image_tag @event.main_image.url(:large), class: 'glitch'
+		= image_tag 'http://www.mappingfestival.com/2015/assets/main_images/8/large/8783688616_694317fd17_k_15.14.10.jpg', class: 'glitch'
 	.info
 		.event-name
 			%h1.title= @event.title
