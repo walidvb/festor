@@ -25,7 +25,8 @@ Glitchousel.prototype.stop = function(){
 	var that = this;
 	clearTimeout(that.timer);
 	clearTimeout(that.transitionTimer);
-	setTimeout(function(){that.ctx.putImageData(that.imgDatas[that.currentIndex], 0, 0)},20);
+	that.slides[that.currentIndex].img.style.display = 'inline-block';
+	that.canvas.style.display = 'none';
 };
 
 Glitchousel.prototype.bindEvents = function(){
@@ -42,72 +43,50 @@ Glitchousel.prototype.bindEvents = function(){
 Glitchousel.prototype.init = function(){
 	var that = this;
 	var $slides = this.container.find(this.params.slideSelector);
+	this.slides = [];
 	var $imgs = this.container.find('img');
 	var $legends = this.container.find(this.params.legendSelector);
 	this.imgDatas = [];
 	this.legends = $legends;
 	this.currentIndex = 0;
 	var canvas = document.createElement('canvas');
-	var ctx;
+	var ctx = canvas.getContext('2d');
+	this.canvas = canvas;
+	this.ctx = ctx;
 	this.container.prepend($(canvas));
 	var tmpImg = new Image();
 	var imgsLoadedCount = 0;
-	for(var i = 0; i < $imgs.length; i++)
+	for(var i = 0; i < $slides.length; i++)
 	{
-		$imgs[i].onload = function(){
-			imgsLoadedCount++;
-			if(imgsLoadedCount == $imgs.length)
-			{
-				processImgs();
-				that.bindEvents();
-				setTimeout(function(){
-					that.start();
-				}, that.params.delay)
-			}
-		}
+		slide = {};
+		slide.html = $slides[i];
+		slide.img = $($slides[i]).find('img')[0];
+		slide.img.style.display = 'none';
+		createUntainted(slide);
+		this.slides.push(slide);
 	}
+	that.bindEvents();
+	setTimeout(function(){
+		that.start();
+	}, that.params.delay)
 
-	function processImgs(){
-		for(var i = 0; i < $imgs.length; i++)
-		{
-			var width = $imgs[i].width;
-			var height = $imgs[i].height;
-			console.log("height:", height);
-			$imgs[i].style.display = 'none';
-			canvas.width = Math.max(width, canvas.width);
-			canvas.height = Math.max(height, canvas.height);
-			tmpImg.src = $imgs[i].src;
-			ctx = canvas.getContext('2d');
-			ctx.drawImage(tmpImg, 0, 0);
-			var tmpImgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-			that.imgDatas.push(tmpImgData);
-		}
-		ctx.putImageData(that.imgDatas[0], 0, 0);
-	  // draw the img on the canvas 
-	  that.canvas = canvas;
-	  that.ctx = ctx;
-	}
-
-	function getImagDataAndInsertCanvas(img){
+	function createUntainted(slide){
+			var img = slide.img;
       img.crossOrigin = "Anonymous";
       var src = img.src,
         imgAsData = document.createElement('img');
-      cvs = document.createElement('canvas');
-      ctx = cvs.getContext('2d');
-      debugger;
-      img.parentNode.insertBefore(cvs, img);
       img.parentNode.insertBefore(imgAsData, img);
 
 
       img.onload = function() {
-        cvs.width = img.width;
-        cvs.height = img.height;
+				canvas.width = Math.max(img.width, canvas.width);
+				canvas.height = Math.max(img.height, canvas.height);
         ctx.drawImage( img, 0, 0, img.width, img.height );
-        var dataURL = cvs.toDataURL('image/jpeg', 1);
+        var dataURL = canvas.toDataURL('image/jpeg', 1);
         imgAsData.src = dataURL;
         ctx.drawImage(imgAsData, 0, 0, img.width, img.height);
-        imgData = ctx.getImageData(0, 0, cvs.width, cvs.height);;
         imgAsData.remove();
+        slide.imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);;
       }
       img.src = src;
 
@@ -122,13 +101,12 @@ Glitchousel.prototype.init = function(){
 };
 
 Glitchousel.prototype.goTo = function(index){
-	var currentImgData = this.imgDatas[index];
-  this.transition(this.imgDatas[this.currentIndex], this.imgDatas[index], index);
+  this.transition(this.slides[this.currentIndex], this.slides[index], index);
 };
 
 Glitchousel.prototype.next = function(){
 	var nextIndex = this.currentIndex + 1;
-	if(nextIndex >= this.imgDatas.length)
+	if(nextIndex >= this.slides.length)
 	{
 		nextIndex = 0;
 	}
@@ -136,12 +114,12 @@ Glitchousel.prototype.next = function(){
 };
 
 Glitchousel.prototype.prev = function(){
-	var nextIndex = this.currentIndex - 0;
-	if(nextIndex < 0)
+	var prevIndex = this.currentIndex - 0;
+	if(prevIndex < 0)
 	{
-		nextIndex = this.imgDatas.length - 1;
+		prevIndex = this.slides.length - 1;
 	}
-	this.goTo(nextIndex);
+	this.goTo(prevIndex);
 };
 
 Glitchousel.prototype.setLegend = function(index){
@@ -150,7 +128,7 @@ Glitchousel.prototype.setLegend = function(index){
 	$(that.legends[index]).addClass('active');
 }
 
-Glitchousel.prototype.transition = function(imgSrc, imgTrg, index){
+Glitchousel.prototype.transition = function(slideSrc, slideTrg, index){
 	var that = this;
 	var finishedTransition = false;
 	var direction = 1;
@@ -160,7 +138,10 @@ Glitchousel.prototype.transition = function(imgSrc, imgTrg, index){
 		iterations: 5,
 		quality: 100
 	};
-	var currentImgData = imgSrc;
+	that.slides[that.currentIndex].img.style.display = 'none';
+	that.canvas.style.display = 'inline-block';
+
+	var currentImgData = slideSrc.imgData;
 	var increment = (100 - currParams.amount) / (that.params.speed / 200);
 	glitchTo();
 	function glitchTo(){
@@ -196,21 +177,14 @@ Glitchousel.prototype.transition = function(imgSrc, imgTrg, index){
 		{
 			direction = -1;
 			currParams.amount = 100;
-			currentImgData = imgTrg;
+			currentImgData = slideTrg.imgData;
 			that.currentIndex = index;
 			that.setLegend(index);
 		}
 		if(currParams.amount <= 0){
 			clearTimeout(that.transitionTimer);
-			that.ctx.putImageData(imgTrg, 0, 0);
-			// had to hack that in, as the original image would not be retored otherwise
-			setTimeout(function(){
-				console.log("restoring image...");
-				that.ctx.putImageData(imgTrg, 0, 0);
-			}, 20);
-			setTimeout(function(){
-				that.ctx.putImageData(imgTrg, 0, 0);
-			}, 50);
+			that.slides[that.currentIndex].img.style.display = 'inline-block';
+			that.canvas.style.display = 'none';
 		}
 		glitch(currentImgData, currParams, function(img_data) {
 			var rdm = Math.random() > 0.25;
