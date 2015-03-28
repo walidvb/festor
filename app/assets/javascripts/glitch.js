@@ -22,6 +22,7 @@ $(document).on('ready page:load', function(){
       img.crossOrigin = "Anonymous";
       var src = img.src,
         imgAsData = document.createElement('img');
+        imgAsData.style.display = 'none';
       cvs = document.createElement('canvas');
       cvs.style.display = 'none';
       ctx = cvs.getContext('2d');

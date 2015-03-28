@@ -85,7 +85,7 @@ Glitchousel.prototype.init = function(){
         var dataURL = canvas.toDataURL('image/jpeg', 1);
         imgAsData.src = dataURL;
         ctx.drawImage(imgAsData, 0, 0, img.width, img.height);
-        imgAsData.remove();
+        imgAsData.style.display = 'none';
         slide.imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);;
       }
       img.src = src;
