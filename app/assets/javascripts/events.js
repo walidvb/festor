@@ -25,6 +25,15 @@
 			updateFilters();
 		});
 
+		var currDateSort = 0;
+		var sortBy = ['asc', 'desc'];
+		$('#date-sort').click(function(){	
+			var currSort = sortBy[currDateSort++]
+			$('#single-events-list').mixItUp('sort', 'date:'+currSort);
+			currDateSort = currDateSort % 2;
+			$(this).toggleClass('sort-asc sort-desc');
+		});
+
 		$('#date-filter').change(function(){
 			updateFilters();
 		});

@@ -1,9 +1,55 @@
+@mixin triangle-up($triangle-size, $color: white){
+	border-bottom: $triangle-size solid $color;
+	border-right: $triangle-size solid transparent;
+	border-left: $triangle-size solid transparent;
+	content: '';
+	margin: -$triangle-size auto 0;
+	display: block;
+	width: 0;
+	position: absolute;
+	top: -$triangle-size;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+}
+
+@mixin triangle-down($triangle-size, $color: white){
+	border-right: $triangle-size solid transparent;
+	border-left: $triangle-size solid transparent;
+	border-top: $triangle-size solid $color;
+	content: '';
+	margin: -$triangle-size auto 0;
+	display: block;
+	width: 0;
+	position: absolute;
+	top: -$triangle-size;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+}
+
 $form-font-size: 16px;
 .link{
 	background-color: $brand-color;
 	color: $black;
 	&:hover{
 		color: lighten($black, 30%);
+	}
+}
+
+.sort{
+	position: relative;
+	flex: 0 0 26px;
+	padding: 0 2px;
+	background: $brand-color;
+	margin-right: 5px;
+	&.sort-desc:before{
+		@include triangle-up(8px, $dark-grey);
+		top: 5px;
+	}
+	&.sort-asc:after{
+		@include triangle-down(8px, $dark-grey);
+		top: 13px;
 	}
 }
 
@@ -56,21 +102,6 @@ $form-font-size: 16px;
 		margin-top: 0px;
 	}
 }
-@mixin triangle-up($triangle-size){
-	border-bottom: $triangle-size solid white;
-	border-right: $triangle-size solid transparent;
-	border-left: $triangle-size solid transparent;
-	content: '';
-	margin: -$triangle-size auto 0;
-	display: block;
-	width: 0;
-	position: absolute;
-	top: -$triangle-size;
-	left: 0;
-	right: 0;
-	margin: 0 auto;
-}
-
 
 .prev-next-navigation{
 	display: none;
