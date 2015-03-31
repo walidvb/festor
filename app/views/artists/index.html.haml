@@ -4,7 +4,7 @@
 			- path = artist_path(artist, locale: I18n.locale)
 			= link_to path do
 				.tile
-					= image_tag artist.profile_picture.url(:tile), size: artist.profile_picture.image_size(:tile), class: 'glitch'
+					= image_tag artist.profile_picture.url(:tile), width: 600, height: 270, class: 'glitch'
 					- event = artist.events.first
 					.info
 						- type = event.category.blank? ? t("events.types.#{event.type}") : t("events.categories.#{event.category}") unless event.blank?	
