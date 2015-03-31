@@ -29,7 +29,7 @@ class Event < ActiveRecord::Base
 		:default_url => "/images/missing.jpg",
 		:use_timestamp => false
   
-	validates_attachment_content_type :main_image, :content_type => /\Aimage\/.*\Z/
+	validates_attachment_content_type :main_image, :content_type => /\Aimage\/(jpg|jpeg|png|gif)\Z/i
 
 
 	def add_artist artist
