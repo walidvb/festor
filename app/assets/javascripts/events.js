@@ -14,7 +14,7 @@
 			animation: {
 		    duration: 400,
 				easing: 'ease-out',
-				effects: 'stagger fade scale(0.8)',
+				effects: 'fade scale(0.95)',
 				staggerSequence: function(i){
 					return (2*i) - (5*((i/3) - ((1/3) * (i%3))));
 				}
