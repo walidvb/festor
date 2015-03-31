@@ -19,7 +19,7 @@
 				= link_to artist_path(mu) do 
 					.artist
 						%h1.artist-name= "#{mu.name}"
-						%h3.labels= "([#{mu.label}, #{mu.origin}].compact.join(' / '))" unless mu.label.blank? && mu.label.blank?
+						%h3.labels= "(#{[mu.label, mu.origin].compact.join(' / ')})" unless mu.label.blank? && mu.label.blank?
 		.event-vjs.event-artists
 			- @vjs.each do |mu|
 				= link_to artist_path(mu) do 
