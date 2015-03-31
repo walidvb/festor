@@ -43,6 +43,7 @@ $form-font-size: 16px;
 	padding: 0 2px;
 	background: $brand-color;
 	margin-right: 5px;
+	cursor: pointer;
 	&.sort-desc:before{
 		@include triangle-up(8px, $dark-grey);
 		top: 5px;
