@@ -43,7 +43,7 @@ $header-padding-vert: 40px;
 		{
 			.festival-date{
 				  font-size: $larger*1.5;
-  					line-height: 1.1em;
+  					line-height: 0.9em;
 			}
 		}
 
@@ -51,12 +51,12 @@ $header-padding-vert: 40px;
 		position: relative;
 		.header-logo{
 			position: absolute;
-			height: 150px;
-			width: 150px;
+			height: 120px;
+			width: 120px;
 			@media #{$tablet}
 			{
-			  height: 250px;
-			  width: 250px;
+			  height: 180px;
+			  width: 180px;
 			}
 			top: 0;
 			bottom: 0;
