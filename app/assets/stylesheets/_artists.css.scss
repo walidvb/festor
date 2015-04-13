@@ -29,12 +29,13 @@
 
 .links{
 	text-align: left;
-	text-decoration: underline;
 	li{
 		display: inline-block;
 		padding-right: 15px;
-		text-decoration: underline;
 		text-transform: lowercase;
+		a:hover{
+			text-decoration: underline;
+		}
 	}
 	border-top: 5px solid $light-grey;
   	border-bottom: 5px solid $light-grey;
