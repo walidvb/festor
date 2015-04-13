@@ -108,7 +108,7 @@
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
-	padding: 0px 15px 0px 5px;
+	padding: 0px 5px 0px 5px;
 	strong{
 		font-weight: bold;
 	}
@@ -136,7 +136,7 @@
 	.bio{
 		flex: 0 0 100%;
 		padding-top: 30px;
-		@media #{$tablet}
+		@media #{$md}
 		{
 			flex: 0 0 calc(60% - 10px);
 		}
