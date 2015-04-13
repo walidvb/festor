@@ -34,8 +34,12 @@
 		margin-top: 0px;
 		margin-bottom: 0px;
 	}
-	a.artist:hover{
-		opacity: 0.7;
+	a.artist
+	{
+		display: inline-block;
+		&:hover{
+			opacity: 0.7;
+		}
 	}
 }
 

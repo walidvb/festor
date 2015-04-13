@@ -1,6 +1,6 @@
 function Glitchousel(options){
 	this.params = {
-		speed: 600,
+		speed: options.speed || 600,
 		delay: options.delay || 0,
 		timeout: options.timeout || 5000,
 		pauseOnHover: true,
@@ -202,7 +202,8 @@ $(document).on('ready page:load', function(){
 	containers.each(function(){
 		glitchousels.push(new Glitchousel({
 			container: $(this),
-			delay: Math.random()*2000 + 800,
+			delay: Math.random()*2500 + 800,
+			speed: Math.random()*600 + 200,
 		}).init());
 	});
 });

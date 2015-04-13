@@ -1,6 +1,9 @@
 .glitchousel{
 	padding-bottom: 75px;
 	position: relative;
+	img{
+		display: none;
+	}
 	canvas{
 		cursor: pointer;
 	}
