@@ -29,6 +29,7 @@
 
 .links{
 	text-align: left;
+	text-decoration: underline;
 	li{
 		display: inline-block;
 		padding-right: 15px;
@@ -95,6 +96,7 @@
 
 .links a + a{
 	margin-left: 15px;
+	text-decoration: none;
 }
 
 .links, .single-event-info{

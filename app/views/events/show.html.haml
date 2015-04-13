@@ -25,9 +25,10 @@
 				= link_to artist_path(mu), class: 'artist' do 
 					%h1.artist-name= "#{mu.name}"
 					%h3.labels= "(#{[mu.label, mu.origin].compact.join(' / ')})" unless mu.label.blank? && mu.label.blank?
-.links
-	- @links.each do |link|
-		= print_link link
+- if !@links.empty?
+	%ul.links
+		- @links.each do |link|
+			%li= print_link link
 .prev-next-navigation
 	.prev
 		- if previous_event = @previous
