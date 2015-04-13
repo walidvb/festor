@@ -19,4 +19,7 @@
 							= event.category
 						%h2.event-title= event.title
 						.location
-							#{l(event.schedule_start, format: "%A %e %B")} &mdash; #{event.location.name}
+							- if event.schedule_end.nil?
+								#{l(event.schedule_start, format: "%A %e %B")} &mdash; #{event.location.name}
+							- else
+								#{l(event.schedule_start, format: "%e")} - #{l(event.schedule_end, format: "%e %B")} &mdash; #{event.location.name}

@@ -6,6 +6,7 @@ class StaticPage < ActiveRecord::Base
   friendly_id :title, :use => [:slugged]
 
 	validates :body, presence: true
+	validates :title, presence: true
 	scope :static, ->{where(news: false).order(:position)}
 	scope :public, ->{where(public: true).order(:position)}
 	scope :news, ->{where(news: true).order("created_at DESC")}

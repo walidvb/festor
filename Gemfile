@@ -20,7 +20,7 @@ gem 'fog'
 gem "paperclip", '~> 4.1'
 gem 'paperclip-sftp', '~> 1.0.0'
 #gem "paperclip-storage-ftp"
-gem 'paperclip-meta'
+#gem 'paperclip-meta'
 
 gem 'compass-rails', '2.0.0'
 gem 'rails_autolink'

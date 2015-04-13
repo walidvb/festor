@@ -335,8 +335,6 @@ GEM
       activesupport (>= 3.0.0)
       cocaine (~> 0.5.3)
       mime-types
-    paperclip-meta (1.2.0)
-      paperclip (>= 3.0.2, < 5.0)
     paperclip-sftp (1.0.4)
       net-sftp (>= 2.0.5)
       paperclip (>= 3.2.0)
@@ -546,7 +544,6 @@ DEPENDENCIES
   launchy
   letter_opener
   paperclip (~> 4.1)
-  paperclip-meta
   paperclip-sftp (~> 1.0.0)
   pg
   pry-rails
