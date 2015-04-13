@@ -123,7 +123,6 @@ Glitchable.prototype.glitchItFor = function(millis){
 
   Glitchable.prototype.glitchIt = function(parameters){
     var that = this;
-    debugger;
     that.originalImg.style.display = 'none';
     that.canvas.style.display = 'inline-block';
     var parameters = parameters || {
@@ -225,32 +224,26 @@ Glitchable.prototype.glitchItFor = function(millis){
   $(document).keypress(function(e){
     if(e.keyCode == 32)
     {
-      debugger;
-      glitchAll(glitchables);
-      e.preventDefault();
+      for(var i = 0; i < glitchables.length; i++)
+      {
+        glitchables[i].isGlitching = false;
+        console.log("glitchables[i]:", glitchables[i]);
+        glitchables[i].reset();
+        setTimeout(function(){
+        }, Math.random()*100 + i*10);
+      }
+      startRandomGlitching();
+      function startRandomGlitching(){
+        var thisGlitch = getRandomVisibleCanvas(glitchables);
+        if(thisGlitch)
+        {
+          thisGlitch.glitchItFor(randomInt(200, 2000));
+          setTimeout(startRandomGlitching, randomInt(minInterval, maxInterval));
+        }
+      }
     }
   });
   $(document).keyup(function(e){
-    // if(e.keyCode == 32)
-    // {
-    //   for(var i = 0; i < glitchables.length; i++)
-    //   {
-    //     glitchables[i].isGlitching = false;
-    //     console.log("glitchables[i]:", glitchables[i]);
-    //     glitchables[i].reset();
-    //     setTimeout(function(){
-    //     }, Math.random()*100 + i*10);
-    //   }
-    //   startRandomGlitching();
-    //   function startRandomGlitching(){
-    //     var thisGlitch = getRandomVisibleCanvas(glitchables);
-    //     if(thisGlitch)
-    //     {
-    //       thisGlitch.glitchItFor(randomInt(200, 2000));
-    //       setTimeout(startRandomGlitching, randomInt(minInterval, maxInterval));
-    //     }
-    //   }
-    // }
   })
 
 
