@@ -7,6 +7,9 @@
 .event-name{
 	text-decoration: underline;
 	min-width: 100%;
+	&:hover{
+		opacity: 0.7;
+	}
 }
 
 .artist, .event-artists{

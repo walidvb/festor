@@ -3,7 +3,7 @@
 - content_for(:description, @event.description)
 .show-header
 	.single-event-info
-		- if @event.type == 'single_event'
+		- if @event.type == 'single_event' && @event.schedule_end.nil?
 			.date= l(@event.schedule_start, format: "%A %e %b – %H:%M")
 		- else
 			.date #{l(@event.schedule_start, format: "%A %e")} - #{l(@event.schedule_end, format: "%A %e %B")}
@@ -16,16 +16,15 @@
 			%h1.title= @event.title
 		.event-musicians.event-artists
 			- @musicians.each do |mu|
-				= link_to artist_path(mu) do 
-					.artist
-						%h1.artist-name= "#{mu.name}"
-						%h3.labels= "(#{[mu.label, mu.origin].compact.join(' / ')})" unless mu.label.blank? && mu.label.blank?
+				= link_to artist_path(mu), class: 'artist' do 
+
+					%h1.artist-name= "#{mu.name}"
+					%h3.labels= "(#{[mu.label, mu.origin].compact.join(' / ')})" unless mu.label.blank? && mu.label.blank?
 		.event-vjs.event-artists
 			- @vjs.each do |mu|
-				= link_to artist_path(mu) do 
-					.artist
-						%h1.artist-name= "#{mu.name}"
-						%h3.labels= "(#{[mu.label, mu.origin].compact.join(' / ')})" unless mu.label.blank? && mu.label.blank?
+				= link_to artist_path(mu), class: 'artist' do 
+					%h1.artist-name= "#{mu.name}"
+					%h3.labels= "(#{[mu.label, mu.origin].compact.join(' / ')})" unless mu.label.blank? && mu.label.blank?
 .links
 	- @links.each do |link|
 		= print_link link
