@@ -1,9 +1,9 @@
 (function($, window){
 	$(document).on('ready page:load', function(){
 
-		var events = $('#single-events-list').mixItUp({
+		var events = $('.sortable-list').mixItUp({
 			selectors: {
-				target: '.event'
+				target: '.mix'
 			},
 			load: {
 	      filter: getFilters()
@@ -29,7 +29,7 @@
 		var sortBy = ['asc', 'desc'];
 		$('#date-sort').click(function(){	
 			var currSort = sortBy[currDateSort++]
-			$('#single-events-list').mixItUp('sort', 'date:'+currSort);
+			$('.sortable-list').mixItUp('sort', 'date:'+currSort);
 			currDateSort = currDateSort % 2;
 			$(this).toggleClass('sort-asc sort-desc');
 		});
@@ -40,7 +40,7 @@
 
 		function updateFilters(filterGroups){
 			console.log("getFilters():", getFilters());
-			$('#single-events-list').mixItUp('multiMix', {
+			$('.sortable-list').mixItUp('multiMix', {
 				filter: getFilters()
 			});
 		};
