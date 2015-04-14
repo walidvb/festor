@@ -7,7 +7,7 @@
 	.artist-event
 		.single-event-info
 			- if event.schedule_end.nil?
-				.date= l(@event.schedule_start, format: "%A %e %b – %H:%M")
+				.date= l(event.schedule_start, format: "%A %e %b – %H:%M")
 			- else
 				.date #{l(event.schedule_start, format: "%A %e")} - #{l(event.schedule_end, format: "%A %e %B")}
 			.location= link_to event.location.name, static_page_path(1, locale: I18n.locale)
