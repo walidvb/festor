@@ -224,10 +224,10 @@ Glitchable.prototype.glitchItFor = function(millis){
   $(document).keypress(function(e){
     if(e.keyCode == 32)
     {
+      e.preventDefault();
       for(var i = 0; i < glitchables.length; i++)
       {
         glitchables[i].isGlitching = false;
-        console.log("glitchables[i]:", glitchables[i]);
         glitchables[i].reset();
         setTimeout(function(){
         }, Math.random()*100 + i*10);
