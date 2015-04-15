@@ -35,8 +35,11 @@ Glitchousel.prototype.bindEvents = function(){
 	{
 		that.container.hover(that.stop.bind(that), that.start.bind(that));
 	}
-	that.canvas.addEventListener('mousedown', function(){
-		$(that.legends[that.currentIndex]).click();
+	that.canvas.addEventListener('mousedown', function(e){
+		if(e.which == 1)
+		{
+			$(that.legends[that.currentIndex]).click();
+		}
 	});
 }
 
@@ -187,6 +190,10 @@ Glitchousel.prototype.transition = function(slideSrc, slideTrg, index){
 		}
 		if(currParams.amount <= 0){
 			clearTimeout(that.transitionTimer);
+			for(var i = 0; i < that.slides.length; i++)
+			{
+				that.slides[i].img.style.display = 'none';
+			}
 			that.slides[that.currentIndex].img.style.display = 'inline-block';
 			that.canvas.style.display = 'none';
 		}
