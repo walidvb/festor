@@ -139,6 +139,10 @@ Glitchousel.prototype.transition = function(slideSrc, slideTrg, index){
 		quality: 100
 	};
 	that.slides[that.currentIndex].img.style.display = 'none';
+	for(var i = 0; i < that.slides.length; i++)
+	{
+		that.slides[i].img.style.display = 'none';
+	}
 	that.canvas.style.display = 'inline-block';
 
 	var currentImgData = slideSrc.imgData;
