@@ -14,7 +14,7 @@ en:
   events:
     types:
       workshop:   "Workshop"
-      exhibition: "Exhibition"
+      exhibition: "Installation"
       single_event: "Event"
     categories:
       performance: "Performance"

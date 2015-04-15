@@ -7,7 +7,7 @@
 					= image_tag event.main_image.url(:tile), width: 600, height: 270,class: 'glitch'
 					.info
 						.type
-							= event.type
+							= t("events.types.#{event.type}")
 						%h2.event-title= event.title
 						.location
 							#{l(event.schedule_start, format: "%e")} - #{l(event.schedule_end, format: "%e %B")} &mdash; #{event.location.name}

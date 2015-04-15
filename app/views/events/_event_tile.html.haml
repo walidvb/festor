@@ -6,5 +6,5 @@
 	= image_tag event.main_image.url(:large), class: 'glitch'
 	.info.mf-row
 		.type
-			= event.type
+			= t("events.types.#{event.type}")
 		%h1.mf-2-cols= event.title
