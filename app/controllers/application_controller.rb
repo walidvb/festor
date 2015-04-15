@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
   before_filter :set_locale
-  before_filter :beta_only unless Rails.env.test?
   before_filter :get_static_pages
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.

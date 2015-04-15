@@ -21,3 +21,6 @@ en:
       conference:  "Conference"
       clubbing:    "Clubbing"
       screening:   "Screening"
+      other:       "Other"
+  time:
+    to: 'to'
