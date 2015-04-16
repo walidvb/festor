@@ -28,6 +28,6 @@
 		= @artist.biography.html_safe unless @artist.biography.blank?
 	.sidebar
 		.sidebar-inner
-			= mf_auto_html(@artist.sidebar_media)
+			.sidebar-text= mf_auto_html(@artist.sidebar_media)
 - if user_signed_in?
 	= link_to 'edit', "/admin/artist/#{@artist.id}/edit"

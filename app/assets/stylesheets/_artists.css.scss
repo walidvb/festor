@@ -128,6 +128,8 @@
 		line-height: 1.5em;
 		.sidebar-inner{
 			background-color: lighten($light-grey, 0.5);
+		}
+		.sidebar-text{
 			padding: 5px 15px;
 		}
 		@media #{$md}

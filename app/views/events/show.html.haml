@@ -44,6 +44,6 @@
 		= link_to t('events.ticket'), @event.buy_link, class: "btn btn-md buy-link fa fa-shopping-cart", target: "_blank" unless @event.buy_link.blank?
 		.sidebar-inner
 			= mf_auto_html(@event.sidebar_media)
-			= @event.sidebar_text.html_safe unless @event.sidebar_text.blank?
+			.sidebar-text= @event.sidebar_text.html_safe unless @event.sidebar_text.blank?
 - if user_signed_in?
 	= link_to 'edit', "/admin/event/#{@event.id}/edit"
