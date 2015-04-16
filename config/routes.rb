@@ -19,7 +19,7 @@ Festor::Application.routes.draw do
 	  
 	  StaticPage.all.each do |sp|
 	  	begin 
-	  		get "/#{sp.slug}" => "static_pages#show", id: sp.id
+	  		get "/#{sp.slug}" => "static_pages#show", id: sp.id, static: false
 	  	rescue => e
 	  		puts "Tried routing, got #{e.inspect} for #{[sp.title, sp.id]}"
 	  	end
