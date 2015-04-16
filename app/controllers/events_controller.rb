@@ -17,8 +17,6 @@ class EventsController < ApplicationController
 		@next = events_array[current_index + 1]
 		@previous = events_array[current_index - 1] unless current_index - 1 < 0
 		@type = @event.type
-		p @type
-		beta_only if @type != 'workshop'
 		@musicians = @event.musicians
 		@vjs = @event.vjs
 		@location = @event.location
