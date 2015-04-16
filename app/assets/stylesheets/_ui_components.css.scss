@@ -86,6 +86,9 @@ $form-font-size: 16px;
 
 }
 
+select{
+	visibility: hidden;
+}
 #filters{
 	input[type="chosen-drop"]{
 		padding-left: 15px;
@@ -103,6 +106,7 @@ $form-font-size: 16px;
 		margin-top: 0px;
 	}
 }
+
 
 .prev-next-navigation{
 	display: none;
