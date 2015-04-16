@@ -1,3 +1,3 @@
 .grid-3-col{
-	@include n-cols($children: ".mix");
+	@include n-cols($children: ".mix, .sortable-placeholder");
 }

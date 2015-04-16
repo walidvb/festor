@@ -194,7 +194,9 @@ main{
 
 
 .admin .sortable li{
-	&.ui-sortable-placeholder{
+
+	&.ui-sortable-placeholder, .sortable-placeholder{
+		
 		visibility: visible!important;
 		display: inline-block;
 	}
