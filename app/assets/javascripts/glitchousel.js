@@ -213,7 +213,7 @@ $(document).on('ready page:load', function(){
 	containers.each(function(){
 		glitchousels.push(new Glitchousel({
 			container: $(this),
-			delay: Math.random()*2500 + 800,
+			delay: Math.random()*2500 + 2800,
 			speed: Math.random()*600 + 200,
 		}).init());
 	});
