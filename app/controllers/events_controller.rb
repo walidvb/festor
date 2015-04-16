@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
 	before_filter :get_type, only: [:index]
+	before_filter :require_admin!, only: [:sortable_index, :sort_update]
 	def index
 		@events = Event.includes(:artists, :location).send(@type.to_sym).order(:position)
 		if @type == :single_event
@@ -8,6 +9,10 @@ class EventsController < ApplicationController
 		else
 			render 'index'
 		end
+	end
+
+	def sortable_index
+		@artists = Artist.all.order(:position)
 	end
 
 	def sort_update
