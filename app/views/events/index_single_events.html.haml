@@ -10,7 +10,7 @@
 				%label{:for => "category-#{cat}"}= t("events.categories.#{cat}")
 %ul#single-events-list.events-list.sortable-list
 	- @events.each do |event|
-		%li.mix.event{class: "#{event.category} #{event.schedule_start.strftime("%d-%m-%y")}", data: {position: event.id, date: event.schedule_start.strftime("%d-%m-%y")}}
+		%li.mix.event{class: "#{event.category} #{event.schedule_start.strftime('%d-%m-%y')} #{event.schedule_end.strftime('%d-%m-%y') unless event.schedule_end.blank?} ", data: {position: event.id, date: event.schedule_start.strftime("%d-%m-%y")}}
 			= link_to single_event_path(event, locale: I18n.locale) do 
 				.tile
 					= image_tag event.main_image.url(:tile), width: 600, height: 270, class: 'glitch'
