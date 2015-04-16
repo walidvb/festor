@@ -2,7 +2,6 @@ class EventsController < ApplicationController
 	before_filter :get_type, only: [:index]
 	def index
 		@events = Event.includes(:artists, :location).send(@type.to_sym).order(:schedule_start, :schedule_end)
-		beta_only if @type != :workshop
 		if @type == :single_event
 			@dates = @events.map(&:schedule_start).uniq{|d| d.strftime("%e-%b-%y")}.compact.sort()
 			render 'index_single_events'
