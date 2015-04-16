@@ -15,7 +15,11 @@ $header-padding-vert: 40px;
 	.container{
 		display: flex;
 		justify-content: space-around;
-		min-height: 250px;
+		min-height: 180px;
+		@media #{$lg}
+		{
+		  min-height: 205px;
+		}
 		.festival-date, .motto{
 			flex: 0 0 50%;
 			padding: 0 5px;

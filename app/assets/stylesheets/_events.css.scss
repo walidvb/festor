@@ -170,6 +170,9 @@
 		color: $brand-color;
 		background-color: black;
 	}
+	&:before{
+		margin-right: 10px;
+	}
 }
 .events-list{
 	@include n-cols($children: ".event");
