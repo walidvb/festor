@@ -1,7 +1,8 @@
 class Artist < ActiveRecord::Base
   extend FriendlyId
-  friendly_id :name, :use => :slugged
 
+  friendly_id :name, :use => :slugged
+  acts_as_list
   scope :vj, -> {where(vj: true)}
   translates :biography, :sidebar_media
   auto_html_for :sidebar_media do

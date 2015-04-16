@@ -1,0 +1,5 @@
+%ul.sortable.list-group{data: {url: url}}
+	- items.each do |item|
+		%li.list-group-item{data: {position: item.position, id: item.id}} 
+			%i.fa.fa-arrows
+			#{item.send(identifier)}

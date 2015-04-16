@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150328190526) do
+ActiveRecord::Schema.define(version: 20150416180412) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 20150328190526) do
     t.boolean  "vj"
     t.string   "link"
     t.text     "profile_picture_meta"
+    t.integer  "position"
   end
 
   create_table "assets", force: true do |t|
@@ -94,6 +95,7 @@ ActiveRecord::Schema.define(version: 20150328190526) do
     t.string   "category"
     t.boolean  "featured"
     t.text     "main_image_meta"
+    t.integer  "position"
   end
 
   add_index "events", ["location_id"], name: "index_events_on_location_id", using: :btree

@@ -4,6 +4,7 @@
 //= require froala/js/plugins/video.min.js
 //= require froala/js/plugins/lists.min.js
 //= require froala/js/plugins/urls.min.js
+//= require rails_admin_sortable.js
 
 $(document).on('rails_admin.dom_ready', function(){
 	var csrf_token = $('meta[name="csrf-token"]').attr('content');

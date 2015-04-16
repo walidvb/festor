@@ -1,6 +1,6 @@
 (function($, window){
 	$(document).on('ready page:load', function(){
-
+		var firstClick = true;
 		var events = $('.sortable-list').mixItUp({
 			selectors: {
 				target: '.mix'
@@ -22,6 +22,11 @@
 		});
 
 		$('.cat-filter').change(function(){
+			if(firstClick){
+				$('.cat-filter').prop('checked', false);
+				$(this).prop('checked', true);
+				firstClick = false;
+			}
 			updateFilters();
 		});
 

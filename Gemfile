@@ -19,6 +19,8 @@ gem 'font-awesome-sass', '4.2.0'
 gem 'fog'
 gem "paperclip", '~> 4.1'
 gem 'paperclip-sftp', '~> 1.0.0'
+gem 'acts_as_list'
+
 #gem "paperclip-storage-ftp"
 #gem 'paperclip-meta'
 
