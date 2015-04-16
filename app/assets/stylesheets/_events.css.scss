@@ -157,6 +157,20 @@
 	}
 }
 // SHOW
+
+.buy-link{
+	background-color: $brand-color;
+	color: black;
+	font-weight: bold;
+	text-transform: uppercase;
+	border-radius: 0;
+	margin-bottom: 10px;
+	width: 100%;
+	&:hover{
+		color: $brand-color;
+		background-color: black;
+	}
+}
 .events-list{
 	@include n-cols($children: ".event");
 }

@@ -22,5 +22,6 @@ fr:
       clubbing:    "Clubbing"
       screening:   "Projection"
       other:       "Autre"
+    ticket:        "Achète ton billet"
   time:
     to: 'au'

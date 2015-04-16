@@ -2,7 +2,7 @@
 - content_for(:image, @static_page.header_image.url) if @static_page.header_image.exists?
 - content_for(:description, @static_page.body)
 
-= image_tag @static_page.header_image.url(:large), size: @static_page.header_image.image_size(:large) if @static_page.header_image.exists?
+= image_tag @static_page.header_image.url(:large), width: 1200, height: 535 if @static_page.header_image.exists?
 = @static_page.body.html_safe
 - if user_signed_in?
 	= link_to 'edit', "/admin/static_page/#{@static_page.id}/edit"

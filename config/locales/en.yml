@@ -22,5 +22,6 @@ en:
       clubbing:    "Clubbing"
       screening:   "Screening"
       other:       "Other"
+    ticket: "Get your ticket"
   time:
     to: 'to'
