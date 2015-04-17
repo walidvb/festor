@@ -2,7 +2,7 @@ class Event < ActiveRecord::Base
 	translates :title, :description, :sidebar_media, :sidebar_text
 	extend FriendlyId
   friendly_id :title, :use => [:globalize, :slugged]
-  acts_as_list
+  acts_as_list scope: 'type = \'#{type}\''
   
 	has_many :links, as: :linkable, dependent: :destroy
 	

@@ -12,7 +12,7 @@ class EventsController < ApplicationController
 	end
 
 	def sortable_index
-		@artists = Artist.all.order(:position)
+		@types = Event.all.order(:position).group_by{|e| e.type}
 	end
 
 	def sort_update

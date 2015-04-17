@@ -17,6 +17,7 @@ Festor::Application.routes.draw do
 		get "admin/artists/sort" => 'artists#sortable_index'
 		post "admin/artists/sort" => 'artists#sort_update'
 		post "admin/events/sort" => 'events#sort_update'
+		get "admin/events/sort" => 'events#sortable_index'
 
 	  resources :static_pages, only: [:show]
 	  resources :news, controller: 'static_pages', only: [:index, :show]
