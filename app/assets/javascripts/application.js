@@ -12,10 +12,14 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require turbolinks
 //= require home.js
 //= require mixitup/build/jquery.mixitup.min.js
 //= require chosen-jquery
 //= require rails_admin_sortable.js
 //= require_tree .
 
+$(function() {
+    FastClick.attach(document.body);
+});
 console.log(Array(16).join("info@vbbros.net" - 1) + " Batman!");

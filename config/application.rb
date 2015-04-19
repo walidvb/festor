@@ -45,12 +45,25 @@ module Festor
     config.assets.precompile += ['rails_admin/rails_admin.css', 'rails_admin/rails_admin.js']
     config.assets.precompile << /\.(?:svg|eot|woff|ttf)$/
 
-    config.paperclip_defaults = {
-      :storage => :fog,
-      :fog_credentials => {:provider => "Local", :local_root => "#{Rails.root}/public"},
-      :fog_directory => "",
-      :fog_host => ''
+    if !ENV['ASSETS_PROD']
+      config.paperclip_defaults = {
+        :storage => :fog,
+        :fog_credentials => {:provider => "Local", :local_root => "#{Rails.root}/public"},
+        :fog_directory => "",
+        :fog_host => ''
+      }
+    else
+     config.paperclip_defaults = {
+      :storage => :sftp,
+      :path => "/assets/:attachment/:id/:style/:filename",
+      :url => "#{ENV['ASSET_HOST']}/assets/:attachment/:id/:style/:filename",
+      :sftp_options => {
+        :host     => ENV['SFTP_SERVER'],
+        :user     => ENV['SFTP_USERNAME'],
+        :password => ENV['SFTP_PASSWORD'],
+        :port     => ENV['SFTP_PORT']
+      }
     }
-
   end
+end
 end

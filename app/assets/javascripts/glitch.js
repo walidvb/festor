@@ -39,6 +39,7 @@ $(document).on('ready page:load', function(){
         ctx.drawImage(imgAsData, 0, 0, img.width, img.height);
         that.originalImgData = ctx.getImageData(0, 0, cvs.width, cvs.height);;
         imgAsData.remove();
+        console.log("image loaded");
       }
       img.src = src;
 
@@ -159,37 +160,42 @@ Glitchable.prototype.glitchItFor = function(millis){
   }
   return pixels;
 }
-  // assuming there's a loaded img and a canvas element in the DOM.
-  var myGlitches = document.querySelectorAll('.glitch');
-
-  var glitchables = [];
-  var minInterval, maxInterval;
-  var stoppedGlitchCount = 0;
-  window.glitchables = glitchables;
-  for(var i = 0; i < myGlitches.length; i++){
-    var currentGlitch = myGlitches[i];
-    if(currentGlitch.nodeName == "IMG"){
-      var foo = new Glitchable(currentGlitch);
-      foo.init();
-      glitchables.push(foo);
-    }
-  }
-  minInterval = 20;
-  maxInterval = 200;
-  if(getVisibleCanvas().length < 6)
+  if(/OS 7_/.test(navigator.userAgent))
   {
-    minInterval = 200;
-    maxInterval = 800;
   }
-  setTimeout(function(){
-    setTimeout(startRandomGlitching, 1000);
-    function startRandomGlitching(){
-      var thisGlitch = getRandomVisibleCanvas(glitchables);
-      thisGlitch.glitchItFor(randomInt(300, 2000));
-      setTimeout(startRandomGlitching, randomInt(minInterval, maxInterval));
-    }
-  }, 60000);
+  else
+  {
+    // assuming there's a loaded img and a canvas element in the DOM.
+    var myGlitches = document.querySelectorAll('.glitch');
 
+    var glitchables = [];
+    var minInterval, maxInterval;
+    var stoppedGlitchCount = 0;
+    window.glitchables = glitchables;
+    for(var i = 0; i < myGlitches.length; i++){
+      var currentGlitch = myGlitches[i];
+      if(currentGlitch.nodeName == "IMG"){
+        var foo = new Glitchable(currentGlitch);
+        foo.init();
+        glitchables.push(foo);
+      }
+    }
+    minInterval = 20;
+    maxInterval = 200;
+    if(getVisibleCanvas().length < 6)
+    {
+      minInterval = 200;
+      maxInterval = 800;
+    }
+    setTimeout(function(){
+      setTimeout(startRandomGlitching, 1000);
+      function startRandomGlitching(){
+        var thisGlitch = getRandomVisibleCanvas(glitchables);
+        thisGlitch.glitchItFor(randomInt(300, 2000));
+        setTimeout(startRandomGlitching, randomInt(minInterval, maxInterval));
+      }
+    }, 90000);
+  }
   function getVisibleCanvas(){
     var visibles = [];
     for(var i = 0; i < glitchables.length; i++){

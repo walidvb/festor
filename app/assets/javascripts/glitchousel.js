@@ -209,12 +209,24 @@ Glitchousel.prototype.transition = function(slideSrc, slideTrg, index){
 /*       Init the whole lot      */
 $(document).on('ready page:load', function(){
 	var containers = $('.glitchousel');
-	var glitchousels = [];
-	containers.each(function(){
-		glitchousels.push(new Glitchousel({
-			container: $(this),
-			delay: Math.random()*2500 + 2800,
-			speed: Math.random()*600 + 200,
-		}).init());
-	});
+	if(/OS 7_/.test(navigator.userAgent))
+	{
+		$('body').addClass('no-glitch');
+		$('.glitchousel').slick({
+		   autoplay: true,
+		   prevArrow: false,
+		   nextArrow: false,
+		});
+	}
+	else
+	{
+		var glitchousels = [];
+		containers.each(function(){
+			glitchousels.push(new Glitchousel({
+				container: $(this),
+				delay: Math.random()*2500 + 2800,
+				speed: Math.random()*600 + 200,
+			}).init());
+		});
+	}
 });

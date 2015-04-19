@@ -1,11 +1,13 @@
 .glitchousel{
-	padding-bottom: 75px;
 	position: relative;
-	img{
-		display: none;
-	}
-	canvas{
-		cursor: pointer;
+	body:not(.no-glitch) &{
+		padding-bottom: 75px;
+			img{
+			display: none;
+			canvas{
+				cursor: pointer;
+			}
+		}
 	}
 	.legend{
 		min-height: 75px;
@@ -13,8 +15,6 @@
 		background:white;
 		width: 100%;
 		padding: 10px 5px;
-		position: absolute;
-		bottom: 0;
 		.title{
 			font-weight: bold;
 		}
@@ -22,29 +22,33 @@
 			font-family: $info-font;
 		}
 	}
-
+	
 
 	.legend{
-		opacity: 0;
-		transition: all 0.1s ease-out;
-		> div{
+		body:not(.no-glitch) &{
+			position: absolute;
+			bottom: 0;
 			opacity: 0;
-			transition: all 0.3s ease-out;
-			transform: translateX(5px);
-		}
-		.details{
-			transition-delay: 0.03s;
-		}
-		&.active {
-			opacity: 1;
-			transition: all 0s ease-out;
+			transition: all 0.1s ease-out;
 			> div{
-				transition: all 0.3s 0.3s ease-out;
-				opacity: 1;
-				transform: translateX(0px);
+				opacity: 0;
+				transition: all 0.3s ease-out;
+				transform: translateX(5px);
 			}
 			.details{
-				transition-delay: 0.33s;
+				transition-delay: 0.03s;
+			}
+			&.active {
+				opacity: 1;
+				transition: all 0s ease-out;
+				> div{
+					transition: all 0.3s 0.3s ease-out;
+					opacity: 1;
+					transform: translateX(0px);
+				}
+				.details{
+					transition-delay: 0.33s;
+				}
 			}
 		}
 	}

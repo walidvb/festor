@@ -11,9 +11,12 @@
     %meta{property:"og:type", content:"#{content_for?(:type) ? yield(:type) : 'website'}"}
     %meta{property:"og:title", content:"#{content_for?(:og_title) ? yield(:og_title) : 'Mapping Festival 2015'}"}
     %title= content_for?(:title) ? "Mapping Festival 2015 | #{yield(:title)}" : 'Mapping Festival 2015'
+    %link{:rel => "stylesheet", :href => "//cdn.jsdelivr.net/jquery.slick/1.5.0/slick.css"}/
+    
     = favicon_link_tag 'favicon.ico'
-    = stylesheet_link_tag "application", media: "all", "adata-turbolinks-track" => true
-    = javascript_include_tag "application", "adata-turbolinks-track" => true
+    = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    %script{src: "//cdn.jsdelivr.net/jquery.slick/1.5.0/slick.min.js"}
     = csrf_meta_tags
     - images = ["banner1.jpg", "banner2.jpg", "banner3.jpg", "banner4.jpg"]
     :css
@@ -23,7 +26,7 @@
   %body{class: "#{controller.controller_name}-page #{controller.action_name}-page #{yield(:body_class)} #{'debug' if Rails.env.development?} #{current_user.nil? ? nil : 'admin'}"}
 
     .body-header
-      .container
+      .container{"data-no-turbolink" => true}
         .festival-date
           7 – 17 #{l(Date.parse("7 may"), format: "%b")}
           %br/
@@ -42,7 +45,7 @@
           = link_to(image_tag( 'logo.svg', class: "header-logo"), root_path)
         .motto
           = t("shared.motto").html_safe
-    %header
+    %header{"data-no-turbolink" => true}
       = render 'layouts/navigation'
     %main
       .container
