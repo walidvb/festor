@@ -192,14 +192,15 @@ main{
 	color: white;
 }
 
-.admin .list-group li.sortable-placeholder{
-	min-height: 40px;
-	@extend .list-group-item;
-	margin-bottom: 5px;
+.admin .sortable-list li{
+	&.ui-sortable-placeholder, &.sortable-placeholder{
+		min-height: 40px;
+		@extend .list-group-item;
+		margin-bottom: 5px;
+	}
 }
 .admin .sortable li{
-
-	&.ui-sortable-placeholder, .sortable-placeholder{
+	&.ui-sortable-placeholder, &.sortable-placeholder{
 		visibility: visible!important;
 		display: inline-block;
 	}
