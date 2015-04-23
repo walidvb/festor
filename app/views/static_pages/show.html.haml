@@ -1,7 +1,7 @@
 - content_for(:og_title, @static_page.title)
 - content_for(:image, @static_page.header_image.url) if @static_page.header_image.exists?
 - content_for(:description, @static_page.body)
-
+- content_for(:body_class, @static_page.slug)
 = image_tag @static_page.header_image.url(:large), width: 1200, height: 535, class: 'glitch' if @static_page.header_image.exists?
 = @static_page.body.html_safe
 - if user_signed_in?

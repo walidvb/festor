@@ -30,6 +30,14 @@
 h2{
 	clear: both;
 }
+
+// HARD FIX
+
+.partners img.fr-image-dropped{
+	float: auto!important;
+	display: inline-block;
+	
+}
 // RESETS
 body{
 	background-color: $background;

@@ -12,7 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-// //= require turbolinks
 //= require home.js
 //= require mixitup/build/jquery.mixitup.min.js
 //= require chosen-jquery
