@@ -209,7 +209,7 @@ Glitchousel.prototype.transition = function(slideSrc, slideTrg, index){
 /*       Init the whole lot      */
 $(document).on('ready page:load', function(){
 	var containers = $('.glitchousel');
-	if(/OS 7_/.test(navigator.userAgent))
+	if(/OS 7_|OS 6/.test(navigator.userAgent))
 	{
 		$('body').addClass('no-glitch');
 		$('.glitchousel').slick({

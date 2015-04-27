@@ -160,7 +160,7 @@ Glitchable.prototype.glitchItFor = function(millis){
   }
   return pixels;
 }
-  if(/OS 7_/.test(navigator.userAgent))
+  if(/OS 7_|OS 6/.test(navigator.userAgent))
   {
   }
   else
