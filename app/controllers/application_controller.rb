@@ -50,7 +50,7 @@ class ApplicationController < ActionController::Base
   end
 
   def beta_only
-    #redirect_to beta_path if !cookies[:beta].present? && /sessions|confirmation/.match(params[:controller]).nil?
+    redirect_to beta_path if !cookies[:beta].present? && /sessions|confirmation/.match(params[:controller]).nil?
   end
 
   def get_static_pages
