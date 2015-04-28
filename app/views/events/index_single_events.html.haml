@@ -18,6 +18,7 @@
 						%h2.type
 							= event.category
 						%h2.event-title= event.title
+						.artists= event.artists.map(&:name).join(', ')
 						.location
 							- if event.schedule_end.nil?
 								#{l(event.schedule_start, format: "%A %e %B")} &mdash; #{event.location.name}
