@@ -3,7 +3,7 @@
 		%option{:value => "empty"}
 		- @dates.each do |d|
 			%option{:value => d.strftime("%d-%m-%y")}= l(d, format: "%A %e")
-	%div#date-sort.sort.sort-asc
+	%div#date-sort.sort.sort-desc
 	.cat-filters
 		- Event.category_enum.each do |cat|
 			- if ![:exhibition, :installation].include?(cat)

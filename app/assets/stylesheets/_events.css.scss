@@ -10,6 +10,7 @@
 	flex-wrap: wrap;
 	align-items: center;
 	position: relative;
+	padding-top: 10px;
 	&:before{
 		@include triangle-up($triangle-size: 25px);
 	}
