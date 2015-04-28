@@ -21,7 +21,7 @@
 						%h2.type= type unless type.blank?	
 						%h1.artist-name
 							= artist.name
-						%h2.event-title= event.title unless event.blank?	
+						.artists= event.title unless event.blank?	
 						.location
 							= schedule_for(event) unless event.blank?
 							= event.location.name unless event.blank?
