@@ -54,6 +54,7 @@ class ApplicationController < ActionController::Base
   end
 
   def get_static_pages
+    @tickets = StaticPage.find(13)
     @static_pages = StaticPage.static.public
   end
 end

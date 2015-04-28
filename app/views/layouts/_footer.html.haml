@@ -2,6 +2,8 @@
   .container
     .footer-separator
       = link_to t('shared.program'), image_path('grille.pdf'), target: '_blank', class: 'program'
+      |
+      = link_to @tickets.title, static_page_path(@tickets), class: 'program'
       | follow us
   .container
     .social

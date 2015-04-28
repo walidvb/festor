@@ -46,11 +46,15 @@ $header-padding-vert: 40px;
 			right: 10px;
 		}
 		.program{
-			color: $brand-color;
 			position: absolute;
 			top: 0px;
 			right: 15px;
 			text-transform: uppercase;
+			text-align: right;
+			a{
+				display: block;
+				color: $brand-color;
+			}
 		}
 		@media #{$tablet}
 		{
