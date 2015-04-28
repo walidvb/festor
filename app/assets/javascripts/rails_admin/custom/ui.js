@@ -59,7 +59,7 @@ $(document).on('rails_admin.dom_ready', function(){
 	$('#event_type').on('change', function(){
    var event_type = $(this).val();
    console.log(event_type);
-   if(event_type == 'single_event'){
+   if(event_type != 'workshop'){
       $('#event_category_field').slideDown();
    }
    else{

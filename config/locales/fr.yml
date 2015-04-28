@@ -14,8 +14,8 @@ fr:
     previous:    "précédent"
   events:
     types:
-      workshop:   "workshop"
-      exhibition: "installation"
+      workshop:     "workshop"
+      exhibition:   "installation"
       single_event: "event"
     categories:
       performance: "Performance"
@@ -23,6 +23,8 @@ fr:
       clubbing:    "Clubbing"
       screening:   "Projection"
       other:       "Autre"
+      exhibition:  "Exposition"
+      installation: "Installation"
     ticket:        "Achetez votre billet"
   time:
     to: 'au'

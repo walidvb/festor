@@ -1,9 +1,9 @@
 #filters
 	.cat-filters
 		- Event.type_enum.each do |type|
-			- if type != :single_event
-				%input.cat-filter{:type => "checkbox", value: type, id: "category-#{type}", checked: true} 
-					%label{:for => "category-#{type}"}= t("events.types.#{type}")
+			/ - if type != :single_event
+			/ 	%input.cat-filter{:type => "checkbox", value: type, id: "category-#{type}", checked: true} 
+			/ 		%label{:for => "category-#{type}"}= t("events.types.#{type}")
 		- Event.category_enum.each do |cat|
 			%input.cat-filter{:type => "checkbox", value: cat, id: "category-#{cat}", checked: true} 
 				%label{:for => "category-#{cat}"}= t("events.categories.#{cat}")
@@ -11,7 +11,7 @@
 	- @artists.each do |artist|
 		- event = artist.events.first
 		- type = event.category.blank? ? t("events.types.#{event.type}") : t("events.categories.#{event.category}") unless event.blank?
-		- classes = "#{event.category} #{event.type}" unless event.blank?
+		- classes = "#{event.category}" unless event.blank?
 		%li.mix.artist{class: classes, data: {position: artist.position, id: artist.id}}
 			- path = artist_path(artist, locale: I18n.locale)
 			= link_to path do

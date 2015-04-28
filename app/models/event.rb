@@ -40,6 +40,7 @@ class Event < ActiveRecord::Base
 	def next 
 		Event.where('schedule_start > ? AND type = ?', self.schedule_start, self.type).first
 	end
+	
 	def previous
 		Event.where('schedule_start < ? AND type = ?', self.schedule_start, self.type).last
 	end
@@ -49,7 +50,7 @@ class Event < ActiveRecord::Base
 	end
 
 	def self.category_enum
-		[:clubbing, :performance, :screening, :other]
+		[:clubbing, :performance, :screening, :other, :installation, :exhibition]
 	end
 
 	self.type_enum.each do |type|

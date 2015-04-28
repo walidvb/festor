@@ -6,8 +6,9 @@
 	%div#date-sort.sort.sort-asc
 	.cat-filters
 		- Event.category_enum.each do |cat|
-			%input.cat-filter{:type => "checkbox", value: cat, id: "category-#{cat}", checked: true} 
-				%label{:for => "category-#{cat}"}= t("events.categories.#{cat}")
+			- if ![:exhibition, :installation].include?(cat)
+				%input.cat-filter{:type => "checkbox", value: cat, id: "category-#{cat}", checked: true} 
+					%label{:for => "category-#{cat}"}= t("events.categories.#{cat}")
 %ul#single-events-list.events-list.sortable-list.sortable{data: {url: 'admin/events/sort'}}
 	- @events.each do |event|
 		%li.mix.event{class: "#{event.category} #{event.schedule_start.strftime('%d-%m-%y')} #{event.schedule_end.strftime('%d-%m-%y') unless event.schedule_end.blank?} ", data: {position: event.position, id: event.id, date: event.schedule_start.strftime("%d-%m-%y")}}

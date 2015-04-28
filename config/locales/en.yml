@@ -23,6 +23,8 @@ en:
       clubbing:    "Clubbing"
       screening:   "Screening"
       other:       "Other"
+      exhibition:  "Exhibition"
+      installation: "Installation"
     ticket: "Get your ticket"
   time:
     to: 'to'

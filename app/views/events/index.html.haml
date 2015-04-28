@@ -7,8 +7,9 @@
 				.tile
 					= image_tag event.main_image.url(:tile), width: 600, height: 270,class: 'glitch'
 					.info
-						.type
-							= t("events.types.#{event.type}")
+						- if !event.category.blank?
+							.type
+								= t("events.types.#{event.category}")
 						%h2.event-title= event.title
 						- artists.each do |a|
 							.artist-name= a.name
