@@ -86,8 +86,11 @@ $form-font-size: 16px;
 
 }
 
-select{
-	visibility: hidden;
+@media #{$tablet}
+{
+	select{
+		visibility: hidden;
+	}
 }
 #filters{
 	input[type="chosen-drop"]{
