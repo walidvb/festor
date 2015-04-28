@@ -1,7 +1,8 @@
 #footer
   .container
     .footer-separator
-      follow us
+      = link_to t('shared.program'), image_path('grille.pdf'), target: '_blank', class: 'program'
+      | follow us
   .container
     .social
       %a{:href => "http://www.instagram.com/mappingfestival", class: "fa fa-icon fa-instagram"}

@@ -1,6 +1,8 @@
 $header-height-sm: 250px;
 $header-padding-vert: 40px;
-
+.program{
+	text-transform: lowercase;
+}
 .body-header{
 	//background-image: image-url('header_img.jpg');
 	background-color: $dark-grey;
@@ -42,6 +44,13 @@ $header-padding-vert: 40px;
 			position: absolute;
 			bottom: 0;
 			right: 10px;
+		}
+		.program{
+			color: $brand-color;
+			position: absolute;
+			top: 0px;
+			right: 15px;
+			text-transform: uppercase;
 		}
 		@media #{$tablet}
 		{

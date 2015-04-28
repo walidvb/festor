@@ -40,6 +40,7 @@
           - else
             = link_to("FR", url_for(locale: :fr), class: "fr")
             EN
+        = link_to t('shared.program'), image_path('grille.pdf'), target: '_blank', class: 'program'
         .header-logo
           = link_to(image_tag( 'logo.svg', class: "header-logo"), root_path)
         .motto

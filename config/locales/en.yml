@@ -2,6 +2,7 @@ en:
   shared:
     geneva: "geneva"
     motto:  "visual audio & <br>deviant electronics"
+    program: "Program"
   nav:
     home:        "Home"
     events:      "Events"
