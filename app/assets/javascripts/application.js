@@ -12,8 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require home.js
 //= require mixitup/build/jquery.mixitup.min.js
+//= require home.js
 //= require chosen-jquery
 //= require rails_admin_sortable.js
 //= require_tree .

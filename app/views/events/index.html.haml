@@ -9,7 +9,7 @@
 					.info
 						- if !event.category.blank?
 							.type
-								= t("events.types.#{event.category}")
+								= t("events.categories.#{event.category}")
 						%h2.event-title= event.title
 						- artists.each do |a|
 							.artist-name= a.name

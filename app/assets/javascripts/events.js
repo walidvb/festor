@@ -1,5 +1,16 @@
+;
 (function($, window){
 	$(document).on('ready page:load', function(){
+		var mixedSucceded = false;
+		ready();
+		setTimeout(function(){
+			if(!mixedSucceded)
+			{
+				ready();
+			}
+		}, 300);
+	}); 
+	function ready(){
 		var firstClick = true;
 		var events = $('.sortable-list').mixItUp({
 			selectors: {
@@ -71,5 +82,6 @@
 
 			return filters.join(', ');
 		}
-	}); 
-})(jQuery, window)
+		mixedSucceeded = true;
+	}
+})(jQuery, window);
