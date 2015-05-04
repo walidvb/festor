@@ -26,6 +26,10 @@ module ApplicationHelper
     link_to txt, url, class: active ? "active" : nil, locale: I18n.locale
   end
 
+  def image_shower asset, gallery_id
+    link_to(image_tag(asset.file.url(:thumb)), asset.file.url, "rel" => gallery_id, class: "fancybox")
+  end
+
   def mf_auto_html html
     auto_html(html){
       html_escape;

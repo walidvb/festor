@@ -1,6 +1,7 @@
 Festor::Application.routes.draw do
 
 
+  get "static_controller/gallery"
   get "beta" => "beta#new"
   match "/upload" => "assets#upload", via: :post
   scope "(:locale)", locale: /en|fr/, defaults: {locale: 'en'} do
@@ -29,6 +30,7 @@ Festor::Application.routes.draw do
 	  		puts "Tried routing, got #{e.inspect} for #{[sp.title, sp.id]}"
 	  	end
 	  end
+	  get "/gallery" => 'static#gallery'
 		mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   end
 end

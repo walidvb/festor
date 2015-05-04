@@ -13,6 +13,8 @@ class Event < ActiveRecord::Base
 	has_many :musicians, -> {where vj: false}, through: :bookings, source: :artist
 	has_many :vjs,  -> {where vj: true}, through: :bookings, source: :artist
 
+	has_many :assets, as: :assetable
+	accepts_nested_attributes_for :assets, allow_destroy: true
 	belongs_to :location
 
 	accepts_nested_attributes_for :artists, allow_destroy: true

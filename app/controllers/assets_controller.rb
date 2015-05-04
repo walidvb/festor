@@ -1,6 +1,6 @@
 class AssetsController < ApplicationController
 	skip_before_filter :beta_only
-	
+
 	def upload
 		begin
 			asset = Asset.create!(file: params[:file])
@@ -14,3 +14,4 @@ class AssetsController < ApplicationController
 		end
 	end
 end
+ 

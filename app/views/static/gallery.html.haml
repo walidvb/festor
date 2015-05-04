@@ -1,0 +1,6 @@
+- @galleries.each do |event, assets|
+  - event = Event.find(event)
+  = event.slug
+  = link_to(image_tag(event.main_image.url(:thumb)), event.main_image.url, "rel" => event.slug, class: "fancybox")
+  - assets.each do |asset|
+    = link_to('', asset.file.url, "rel" => event.slug, class: "fancybox")

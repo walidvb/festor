@@ -45,5 +45,9 @@
 		.sidebar-inner
 			= mf_auto_html(@event.sidebar_media)
 			.sidebar-text= @event.sidebar_text.html_safe unless @event.sidebar_text.blank?
+			.gallery
+				- @assets.each do |a|
+					= image_shower a, @event.slug
+
 - if user_signed_in?
 	= link_to 'edit', "/admin/event/#{@event.id}/edit"

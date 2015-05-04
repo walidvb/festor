@@ -1,12 +1,12 @@
 function Glitchousel(options){
-	this.params = {
+	this.params = $.extend({
 		speed: options.speed || 600,
 		delay: options.delay || 0,
 		timeout: options.timeout || 5000,
 		pauseOnHover: true,
 		slideSelector: '.slide',
 		legendSelector: '.legend'
-	}
+	}, options);
 	this.timer = null;
 	this.transitionTimer = null;
 	this.container = options.container
