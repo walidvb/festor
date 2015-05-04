@@ -36,7 +36,7 @@ RailsAdmin.config do |config|
   end
 
   ## == Globalize ==
-  config.included_models = ['Artist', 'Artist::Translation', 'Event', 'Event::Translation', 'Location', 'User', 'StaticPage', 'StaticPage::Translation', 'Booking', 'Link']
+  config.included_models = ['Artist', 'Artist::Translation', 'Event', 'Event::Translation', 'Location', 'User', 'StaticPage', 'StaticPage::Translation', 'Booking', 'Link', 'Asset']
 
   config.model 'Artist::Translation' do
     visible false
@@ -64,6 +64,12 @@ RailsAdmin.config do |config|
 
   config.model 'Booking' do 
     configure :location do 
+      visible false
+    end
+  end
+
+  config.model 'Asset' do 
+    configure :assetable do 
       visible false
     end
   end
