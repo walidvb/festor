@@ -2,7 +2,7 @@ class StaticPagesController < ApplicationController
 	before_filter :store_location
 
 	def index
-		@news = StaticPage.news
+		@news = StaticPage.public_news
 	end
 
 	def show
