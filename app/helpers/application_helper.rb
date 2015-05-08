@@ -26,6 +26,23 @@ module ApplicationHelper
     link_to txt, url, class: active ? "active" : nil, locale: I18n.locale
   end
 
+  def image_shower asset, gallery_id
+    link_to(image_tag(asset.file.url(:thumb)), asset.file.url, "rel" => gallery_id, class: "fancybox")
+  end
+
+  def getEmbedLink src
+    regexp_yt = /(https?:\/\/)?(www.)?(youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/watch\?(?:[\d|\w]+=[\d|\w]+)&*v=)([A-Za-z0-9_-]*)(\&\S+)?(\?\S+)?/
+    regexp_vimeo = /https?:\/\/(www.)?vimeo\.com\/([A-Za-z0-9._%-]*)((\?|#)\S+)?/
+    matches = regexp_yt.match(src)
+    if !matches.nil?
+      return "//www.youtube.com/embed/#{matches[4]}"
+    end
+    matches = regexp_vimeo.match(src)
+    if !matches.nil?
+      return "//player.vimeo.com/video/#{matches[2]}"
+    end
+  end
+
   def mf_auto_html html
     auto_html(html){
       html_escape;
@@ -38,5 +55,14 @@ module ApplicationHelper
       link(:target => 'blank')
       image
     }.html_safe unless html.blank?
+  end
+
+  def asset_colorbox asset, group
+    if asset.file.exists?
+     link_to('', asset.file.url, "rel" => group, class: "colorbox image")
+    elsif !asset.video.blank?
+      link_to('', getEmbedLink(asset.video), "rel" => group, class: "colorbox video")
+    end
+
   end
 end

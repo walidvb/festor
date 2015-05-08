@@ -5,6 +5,7 @@ User.delete_all
 Artist.delete_all
 Location.delete_all
 Link.delete_all
+Asset.delete_all
 StaticPage.delete_all
 u = User.new(
     email: "admin@example.com",
@@ -16,6 +17,7 @@ u.skip_confirmation!
 u.save!
 
 pic = File.open("#{Rails.root}/app/assets/images/lezoo.jpg")
+asset = File.open("#{Rails.root}/app/assets/images/lezoo.jpg")
 location = Fabricate :location, name: "ZOO", picture: pic
 main_event = Fabricate(:event, 
 	type: :single_event,
@@ -28,6 +30,9 @@ main_event = Fabricate(:event,
 		Fabricate(:link)
 	],
 	)
+main_event.assets << Fabricate(:asset, file: asset)
+main_event.assets << Fabricate(:asset, file: File.open("#{Rails.root}/app/assets/images/graze.jpg"))
+main_event.assets << Fabricate(:asset, video: 'https://vimeo.com/21969232')
 main_event.artists << [
 		Fabricate(:artist, name: "Ron Morelli", profile_picture: File.open("#{Rails.root}/app/assets/images/graze.jpg")),
 		Fabricate(:artist, name: "Graze", profile_picture: File.open("#{Rails.root}/app/assets/images/graze.jpg"))

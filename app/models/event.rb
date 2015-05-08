@@ -13,6 +13,8 @@ class Event < ActiveRecord::Base
 	has_many :musicians, -> {where vj: false}, through: :bookings, source: :artist
 	has_many :vjs,  -> {where vj: true}, through: :bookings, source: :artist
 
+	has_many :assets, as: :assetable
+	accepts_nested_attributes_for :assets, allow_destroy: true
 	belongs_to :location
 
 	accepts_nested_attributes_for :artists, allow_destroy: true
@@ -32,6 +34,13 @@ class Event < ActiveRecord::Base
   
 	validates_attachment_content_type :main_image, :content_type => /\Aimage\/(jpg|jpeg|png|gif)\Z/i
 
+	def finished?
+		if schedule_end.nil?
+			DateTime.now > schedule_start
+		else
+			DateTime.now > schedule_end
+		end
+	end
 
 	def add_artist artist
 		Booking.create! event: self, artist: artist

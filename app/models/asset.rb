@@ -1,8 +1,11 @@
 class Asset < ActiveRecord::Base
+	scope :gallery, ->{where.not(assetable_type: nil)}
 
+	belongs_to :assetable, polymorphic: true
 	has_attached_file :file,
 		:styles => {
-			:large => "1200>"
+			:large => "1200>",
+			:thumb => "150x90#"
 		},
 		:default_url => "/images/missing.jpg",
 		:use_timestamp => false

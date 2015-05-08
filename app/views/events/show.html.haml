@@ -2,48 +2,54 @@
 - content_for(:image, @event.main_image.url)
 - content_for(:description, @event.description)
 .show-header
-	.single-event-info
-		- if @event.type == 'single_event' && @event.schedule_end.nil?
-			.date= l(@event.schedule_start, format: "%A %e %b – %H:%M")
-		- else
-			.date #{l(@event.schedule_start, format: "%A %e")} - #{l(@event.schedule_end, format: "%A %e %B")}
-		.location= link_to @location.name, "/#{I18n.locale}/infos"
+  .single-event-info
+    - if @event.type == 'single_event' && @event.schedule_end.nil?
+      .date= l(@event.schedule_start, format: "%A %e %b – %H:%M")
+    - else
+      .date #{l(@event.schedule_start, format: "%A %e")} - #{l(@event.schedule_end, format: "%A %e %B")}
+    .location= link_to @location.name, "/#{I18n.locale}/infos"
 .tile
-	.img-container
-		= image_tag @event.main_image.url(:large), width: 1200, height: 535, class: 'glitch'
-	.info
-		.event-name
-			%h1.title= @event.title
-		.event-musicians.event-artists
-			- @musicians.each do |mu|
-				= link_to artist_path(mu, locale: I18n.locale), class: 'artist' do 
+  .img-container
+    = image_tag @event.main_image.url(:large), width: 1200, height: 535, class: 'glitch'
+  .info
+    .event-name
+      %h1.title= @event.title
+    .event-musicians.event-artists
+      - @musicians.each do |mu|
+        = link_to artist_path(mu, locale: I18n.locale), class: 'artist' do 
 
-					%h1.artist-name= "#{mu.name}"
-					%h3.labels= "(#{[mu.label, mu.origin].compact.join(' / ')})" unless mu.label.blank? && mu.label.blank?
-		.event-vjs.event-artists
-			- @vjs.each do |mu|
-				= link_to artist_path(mu, locale: I18n.locale), class: 'artist' do 
-					%h1.artist-name= "#{mu.name}"
-					%h3.labels= "(#{[mu.label, mu.origin].compact.join(' / ')})" unless mu.label.blank? && mu.label.blank?
+          %h1.artist-name= "#{mu.name}"
+          %h3.labels= "(#{[mu.label, mu.origin].compact.join(' / ')})" unless mu.label.blank? && mu.label.blank?
+    .event-vjs.event-artists
+      - @vjs.each do |mu|
+        = link_to artist_path(mu, locale: I18n.locale), class: 'artist' do 
+          %h1.artist-name= "#{mu.name}"
+          %h3.labels= "(#{[mu.label, mu.origin].compact.join(' / ')})" unless mu.label.blank? && mu.label.blank?
 - if !@links.empty?
-	%ul.links
-		- @links.each do |link|
-			%li= print_link link
+  %ul.links
+    - @links.each do |link|
+      %li= print_link link
 .prev-next-navigation
-	.prev
-		- if previous_event = @previous
-			= link_to t('nav.previous'), send("#{@event.type}_path", previous_event, locale: I18n.locale)
-	.next
-		- if next_event = @next
-			= link_to t('nav.next'), send("#{@event.type}_path", next_event, locale: I18n.locale)
+  .prev
+    - if previous_event = @previous
+      = link_to t('nav.previous'), send("#{@event.type}_path", previous_event, locale: I18n.locale)
+  .next
+    - if next_event = @next
+      = link_to t('nav.next'), send("#{@event.type}_path", next_event, locale: I18n.locale)
 .event-desc.mf-row
-			
-	.bio
-		= @event.description.html_safe unless @event.description.blank?
-	.sidebar
-		= link_to t('events.ticket'), @event.buy_link, class: "btn btn-md buy-link fa fa-shopping-cart", target: "_blank" unless @event.buy_link.blank?
-		.sidebar-inner
-			= mf_auto_html(@event.sidebar_media)
-			.sidebar-text= @event.sidebar_text.html_safe unless @event.sidebar_text.blank?
+      
+  .bio
+    = @event.description.html_safe unless @event.description.blank?
+  .sidebar
+    - if(!@event.finished?)
+      = link_to t('events.ticket'), @event.buy_link, class: "btn btn-md buy-link fa fa-shopping-cart", target: "_blank" unless @event.buy_link.blank?
+    - if !@assets.empty?
+      = link_to 'images', @event.main_image.url(:large), "rel" => @event.slug, class: "btn btn-md buy-link fa fa-picture-o colorbox trigger"
+    .sidebar-inner
+      = mf_auto_html(@event.sidebar_media)
+      .sidebar-text= @event.sidebar_text.html_safe unless @event.sidebar_text.blank?
+      .gallery
+        - @assets.each do |asset|
+          = asset_colorbox(asset, @event.slug)
 - if user_signed_in?
-	= link_to 'edit', "/admin/event/#{@event.id}/edit"
+  = link_to 'edit', "/admin/event/#{@event.id}/edit"

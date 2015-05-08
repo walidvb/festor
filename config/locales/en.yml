@@ -9,9 +9,11 @@ en:
     artists:     "Artists"
     workshops:   "Workshops"
     exhibitions: "Installations"
+    gallery:     "gallery"
     more:        "More"
     next:        "next"
     previous:    "previous"
+    gallery:    "gallery"
   events:
     types:
       workshop:   "Workshop"

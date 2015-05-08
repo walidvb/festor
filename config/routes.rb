@@ -29,6 +29,7 @@ Festor::Application.routes.draw do
 	  		puts "Tried routing, got #{e.inspect} for #{[sp.title, sp.id]}"
 	  	end
 	  end
+	  get "/gallery" => 'static#gallery', as: :gallery
 		mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   end
 end

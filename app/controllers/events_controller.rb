@@ -32,6 +32,7 @@ class EventsController < ApplicationController
 		@vjs = @event.vjs
 		@location = @event.location
 		@links = @event.links
+		@assets = @event.assets
 	end
 
 	private
