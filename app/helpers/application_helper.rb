@@ -30,6 +30,19 @@ module ApplicationHelper
     link_to(image_tag(asset.file.url(:thumb)), asset.file.url, "rel" => gallery_id, class: "fancybox")
   end
 
+  def getEmbedLink src
+    regexp_yt = /(https?:\/\/)?(www.)?(youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/watch\?(?:[\d|\w]+=[\d|\w]+)&*v=)([A-Za-z0-9_-]*)(\&\S+)?(\?\S+)?/
+    regexp_vimeo = /https?:\/\/(www.)?vimeo\.com\/([A-Za-z0-9._%-]*)((\?|#)\S+)?/
+    matches = regexp_yt.match(src)
+    if !matches.nil?
+      return "//www.youtube.com/embed/#{matches[4]}"
+    end
+    matches = regexp_vimeo.match(src)
+    if !matches.nil?
+      return "//player.vimeo.com/video/#{matches[2]}"
+    end
+  end
+
   def mf_auto_html html
     auto_html(html){
       html_escape;

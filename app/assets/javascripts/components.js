@@ -1,17 +1,24 @@
 $(document).ready(function() {
 	var options = {
-		padding: 0,
-		nextClick: true,
-		preload: 2,
+		maxWidth: "95%",
+		maxHeight: "95%",
 	};
 
-	$('.colorbox.trigger').colorbox();
-	$('.colorbox.image').colorbox();
+	$('.colorbox.trigger').colorbox(options);
+	$('.colorbox.image').colorbox(options);
 	$('.colorbox.video').each(function(){
-		var href = $(this).attr('data-content');
-		$(this).colorbox({
-			inline: true,
-			href: href
-		});
+		var href = $(this).attr('href');
+		debugger;
+		if(/youtube/.test(href)){
+			options.width = 1120;
+			options.height = 630;
+		}
+		else
+		{
+			options.width = 1000;
+			options.height = 562;
+		}
+		options.iframe= true;
+		$(this).colorbox(options);
 	});
 });

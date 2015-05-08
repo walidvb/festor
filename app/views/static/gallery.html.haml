@@ -6,5 +6,4 @@
     - if asset.file.exists?
       = link_to('', asset.file.url, "rel" => event.slug, class: "colorbox image")
     - elsif !asset.video.blank?
-      = link_to('', asset.video, "rel" => event.slug, class: "colorbox video", "data-content" => "#video-#{asset.id}")
-      %div{id: "video-#{asset.id}"}= mf_auto_html(asset.video)
+      = link_to('', getEmbedLink(asset.video), "rel" => event.slug, class: "colorbox video")
