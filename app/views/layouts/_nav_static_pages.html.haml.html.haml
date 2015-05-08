@@ -1,6 +1,8 @@
 %ul#nav-static-pages
 	%li
 		= link_to t(:news), news_index_path(locale: I18n.locale)
-	- @static_pages.each do |sp|
+	%li 
+		= link_to(t('nav.gallery'), gallery_path)
+	- @static_pages.each_with_index do |sp, i|
 		%li 
 			= link_to(sp.title, "/#{[I18n.locale == I18n.default_locale ? nil : I18n.locale, sp.slug].compact.join('/')}")

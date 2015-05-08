@@ -12,6 +12,7 @@ fr:
     more:        "infos"
     next:        "suivant"
     previous:    "précédent"
+    gallery:    "gallerie"
   events:
     types:
       workshop:     "workshop"

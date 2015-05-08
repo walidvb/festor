@@ -13,6 +13,7 @@ en:
     more:        "More"
     next:        "next"
     previous:    "previous"
+    gallery:    "gallery"
   events:
     types:
       workshop:   "Workshop"
