@@ -8,7 +8,6 @@ $(document).ready(function() {
 	$('.colorbox.image').colorbox(options);
 	$('.colorbox.video').each(function(){
 		var href = $(this).attr('href');
-		debugger;
 		if(/youtube/.test(href)){
 			options.width = 1120;
 			options.height = 630;
