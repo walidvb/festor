@@ -17,6 +17,7 @@
     "tests"
   ],
   "dependencies": {
-    "fancybox": "~2.1.5"
+    "fancybox": "~2.1.5",
+    "colorbox": "~1.6.0"
   }
 }

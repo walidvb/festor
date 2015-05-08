@@ -1,6 +1,10 @@
 - @galleries.each do |event, assets|
   - event = Event.find(event)
   = event.slug
-  = link_to(image_tag(event.main_image.url(:thumb)), event.main_image.url, "rel" => event.slug, class: "fancybox")
+  = link_to(image_tag(event.main_image.url(:thumb)), event.main_image.url, "rel" => event.slug, class: "colorbox trigger")
   - assets.each do |asset|
-    = link_to('', asset.file.url, "rel" => event.slug, class: "fancybox")
+    - if asset.file.exists?
+      = link_to('', asset.file.url, "rel" => event.slug, class: "colorbox image")
+    - elsif !asset.video.blank?
+      = link_to('', asset.video, "rel" => event.slug, class: "colorbox video", "data-content" => "#video-#{asset.id}")
+      %div{id: "video-#{asset.id}"}= mf_auto_html(asset.video)

@@ -4,5 +4,14 @@ $(document).ready(function() {
 		nextClick: true,
 		preload: 2,
 	};
-	$(".fancybox").fancybox(options);
+
+	$('.colorbox.trigger').colorbox();
+	$('.colorbox.image').colorbox();
+	$('.colorbox.video').each(function(){
+		var href = $(this).attr('data-content');
+		$(this).colorbox({
+			inline: true,
+			href: href
+		});
+	});
 });
