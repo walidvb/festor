@@ -16,13 +16,14 @@
       %h1.title= @event.title
     .event-musicians.event-artists
       - @musicians.each do |mu|
-        = link_to artist_path(mu, locale: I18n.locale), class: 'artist' do 
-
+        = link_to artist_path(mu, locale: I18n.locale), class: 'artist artist-with-logo' do 
+          = fa_icon('bullseye')
           %h1.artist-name= "#{mu.name}"
           %h3.labels= "(#{[mu.label, mu.origin].compact.join(' / ')})" unless mu.label.blank? && mu.label.blank?
     .event-vjs.event-artists
       - @vjs.each do |mu|
-        = link_to artist_path(mu, locale: I18n.locale), class: 'artist' do 
+        = link_to artist_path(mu, locale: I18n.locale), class: 'artist artist-with-logo' do 
+          = fa_icon('connectdevelop')
           %h1.artist-name= "#{mu.name}"
           %h3.labels= "(#{[mu.label, mu.origin].compact.join(' / ')})" unless mu.label.blank? && mu.label.blank?
 - if !@links.empty?
