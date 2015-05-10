@@ -58,7 +58,7 @@ module ApplicationHelper
   end
 
   def asset_colorbox asset, group
-    if asset.file.exists?
+    if asset.file?
      link_to('', asset.file.url, "rel" => group, class: "colorbox image")
     elsif !asset.video.blank?
       link_to('', getEmbedLink(asset.video), "rel" => group, class: "colorbox video")

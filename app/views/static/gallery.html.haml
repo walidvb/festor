@@ -12,7 +12,7 @@
             - else
               #{l(event.schedule_start, format: "%e")} - #{l(event.schedule_end, format: "%e %B")} &mdash; #{event.location.name}
     - assets.each do |asset|
-      - if asset.file.exists?
-        = link_to('', asset.file.url, "rel" => event.slug, class: "colorbox image")
+      - if asset.file?
+        = link_to('', asset.file.url, "rel" => event.slug, class: "a.")
       - elsif !asset.video.blank?
         = link_to('', getEmbedLink(asset.video), "rel" => event.slug, class: "colorbox video")
