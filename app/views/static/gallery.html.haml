@@ -1,4 +1,4 @@
-%ul.sortable.grid-3-col
+%ul.sortable.grid-3-col{data: {url: 'admin/events/sort'}}
   - @galleries.each do |event, assets|
     - event = Event.find(event)
     %li.mix.event

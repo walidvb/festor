@@ -4,7 +4,6 @@ Festor::Application.routes.draw do
   get "beta" => "beta#new"
   match "/upload" => "assets#upload", via: :post
   scope "(:locale)", locale: /en|fr/, defaults: {locale: 'en'} do
-		root "home#index"
 	  post "beta" => "beta#create"
 		devise_for :users
 		get "home" => 'home#index'
@@ -29,6 +28,11 @@ Festor::Application.routes.draw do
 	  		puts "Tried routing, got #{e.inspect} for #{[sp.title, sp.id]}"
 	  	end
 	  end
+  	if(Rails.env.prod? && home = StaticPage.find(21) && home.public?)
+  		root static_page_path(home)
+  	else
+			root "home#index"
+		end
 	  get "/gallery" => 'static#gallery', as: :gallery
 		mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   end

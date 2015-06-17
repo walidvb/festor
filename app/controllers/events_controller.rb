@@ -2,7 +2,7 @@ class EventsController < ApplicationController
 	before_filter :get_type, only: [:index]
 	before_filter :require_admin!, only: [:sortable_index, :sort_update]
 	def index
-		@events = Event.includes(:artists, :location).send(@type.to_sym).order(:position)
+		@events = Event.includes(:artists, :location).send(@type.to_sym).order(:schedule_start)
 		if @type == :single_event
 			@dates = @events.map(&:schedule_start).uniq{|d| d.strftime("%e-%b-%y")}.compact.sort()
 			render 'index_single_events'
