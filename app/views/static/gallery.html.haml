@@ -1,7 +1,7 @@
 %ul.sortable.grid-3-col{data: {url: 'admin/events/sort'}}
   - @galleries.each do |event, assets|
     - event = Event.find(event)
-    %li.mix.event
+    %li.mix.event{data: {position: event.position, id: event.id}}
       = link_to(event.main_image.url, "rel" => event.slug, class: "colorbox trigger") do 
         .tile
           = image_tag(event.main_image.url(:tile), width: 600, height: 270,class: 'glitch')
