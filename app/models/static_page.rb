@@ -9,7 +9,7 @@ class StaticPage < ActiveRecord::Base
 	validates :title, presence: true
 	scope :static, ->{where(news: false).order(:position)}
 	scope :public, ->{where(public: true).order(:position)}
-	scope :public_news, ->{where(news: true, public: true).order(:position)}
+	scope :public_news, ->{where(news: true, public: true).order(:created_at)}
 	scope :news, ->{where(news: true).order("created_at DESC")}
 
 	has_attached_file :header_image,
