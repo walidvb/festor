@@ -1,6 +1,6 @@
 %ul.events
 	- unless @news.empty?
-		%li
+		%li.full-width
 			= link_to artists_path do
 				%h2.section-title= link_to t('nav.news'), news_index_path
 				.glitchousel
