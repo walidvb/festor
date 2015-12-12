@@ -208,7 +208,7 @@ Glitchousel.prototype.transition = function(slideSrc, slideTrg, index){
 
 /*       Init the whole lot      */
 $(document).on('ready page:load', function(){
-	var containers = $('.glitchousel');
+	var containers = $('.glitchousel:not(.news)');
 	if(/OS 7_|OS 6/.test(navigator.userAgent))
 	{
 		$('body').addClass('no-glitch');
@@ -228,5 +228,11 @@ $(document).on('ready page:load', function(){
 				speed: Math.random()*1200 + 200,
 			}).init());
 		});
+		
+		glitchousels.push(new Glitchousel({
+			container: $('.news.glitchousel'),
+			delay: 3000,
+			speed: Math.random()*2200 + 200,
+		}).init());
 	}
 });
