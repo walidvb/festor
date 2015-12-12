@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.1.1'
+ruby '2.1.5'
 gem 'rails', '4.0.4'
 gem 'pg'
 gem 'sass-rails', '4.0.3'
@@ -70,7 +70,7 @@ end
 group :development, :test do
   gem 'rails_layout', '1.0.21'
   gem 'fabrication'
-  gem 'jazz_hands'
+  gem 'jazz_hands', github: 'jkrmr/jazz_hands'
   gem 'pry-rescue'
   gem 'pry-stack_explorer'
   gem 'terminal-notifier-guard'
