@@ -71,7 +71,9 @@ Glitchousel.prototype.init = function(){
 	that.bindEvents();
 	setTimeout(function(){
 		that.start();
-	}, that.params.delay)
+	}, that.params.delay);
+	console.log("this.slides:", this.slides);
+	this.slides[0].img.style.display = 'inline-block';
 	this.setLegend(0);
 	function createUntainted(slide){
 			var img = slide.img;
@@ -90,6 +92,7 @@ Glitchousel.prototype.init = function(){
         ctx.drawImage(imgAsData, 0, 0, img.width, img.height);
         imgAsData.style.display = 'none';
         slide.imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);;
+        canvas.style.display = 'none';
       }
       img.src = src;
 
@@ -224,15 +227,15 @@ $(document).on('ready page:load', function(){
 		containers.each(function(){
 			glitchousels.push(new Glitchousel({
 				container: $(this),
-				delay: Math.random()*2500 + 3800,
-				speed: Math.random()*1200 + 200,
+				delay: Math.random()*1500 + 3800,
+				speed: Math.random()*500 + 200,
 			}).init());
 		});
 		
 		glitchousels.push(new Glitchousel({
 			container: $('.news.glitchousel'),
-			delay: 3000,
-			speed: Math.random()*2200 + 200,
+			delay: 4000,
+			speed: Math.random()*200 + 200,
 		}).init());
 	}
 });
