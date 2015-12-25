@@ -1,6 +1,6 @@
 RailsAdmin.config do |config|
 
-  config.main_app_name = ["Mapping 2015"]
+  config.main_app_name = ["Mapping 2016"]
 
   ### Popular gems integration
   I18n.default_locale = :en
@@ -36,7 +36,7 @@ RailsAdmin.config do |config|
   end
 
   ## == Globalize ==
-  config.included_models = ['Artist', 'Artist::Translation', 'Event', 'Event::Translation', 'Location', 'User', 'StaticPage', 'StaticPage::Translation', 'Booking', 'Link', 'Asset', 'EventDate']
+  config.included_models = ['Artist', 'Artist::Translation', 'Event', 'Event::Translation', 'Location', 'User', 'StaticPage', 'StaticPage::Translation', 'Booking', 'Link', 'EventDate']
 
   config.model 'Artist::Translation' do
     visible false
@@ -68,6 +68,10 @@ RailsAdmin.config do |config|
     end
   end
 
+  config.model 'Link' do
+    visible false
+  end
+  
   config.model 'Asset' do
     configure :assetable do
       visible false
@@ -84,8 +88,5 @@ RailsAdmin.config do |config|
     configure :bookings do
       visible false
     end
-  end
-
-  config.model 'EventDate' do
   end
 end

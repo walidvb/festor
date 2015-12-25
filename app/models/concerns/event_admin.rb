@@ -24,17 +24,17 @@ module EventAdmin
       end
       edit do
   			configure :event_dates do
-  				label "Datesa"
+  				label "Dates"
   			end
-      	configure :slug do
-      		hide
-      	end
-  			configure :artists do
-  				hide
-  			end
-  			configure :assets do
-  				hide
-  			end
+        configure :artists do
+          orderable true
+          nested_form false
+        end
+        [:slug, :assets, :position].each do |h|
+          configure h do
+            hide
+          end
+        end
       end
       list do
       	scopes Event.type_enum
@@ -48,17 +48,16 @@ module EventAdmin
       end
     end
   end
-end
-def artist_ids=(ids)
-	unless (ids = ids.map(&:to_i).select{|i|i>0}) == (current_ids = bookings.map(&:artist_id))
-		(current_ids - ids).each { |id| bookings.select{|b|b.block_id == id}.first.mark_for_destruction }
-		self.blocks = ids.each_with_index.map do |id, index|
-			if current_ids.include?(id)
-				(artist_association = bookings.select{|b|b.block_id == id}.first).position = (index+1)
-				artist_association
-			else
-				booking.build({:block_id => id, :position => (index+1)})
-			end
-		end.map(&:artist)
-	end
+  def artist_ids=(ids)
+    unless (ids = ids.map(&:to_i).select { |i| i>0 }) == (current_ids = bookings.map(&:artist_id))
+      (current_ids - ids).each { |id| bookings.select{|b|b.artist_id == id}.first.mark_for_destruction }
+      ids.each_with_index do |id, index|
+        if current_ids.include? (id)
+          bookings.select { |b| b.artist_id == id }.first.position = (index+1)
+        else
+          bookings.build({:artist_id => id, :position => (index+1)})
+        end
+      end
+    end
+  end
 end

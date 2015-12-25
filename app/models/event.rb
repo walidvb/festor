@@ -2,7 +2,8 @@
 class Event < ActiveRecord::Base
 
 	include EventAdmin
-	translates :title, :description, :sidebar_media, :sidebar_text
+	attr_accessor :artist_ids
+	translates :title, :description
 	extend FriendlyId
   friendly_id :title, :use => [:globalize, :slugged]
   acts_as_list scope: 'type = \'#{type}\''

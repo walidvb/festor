@@ -1,10 +1,11 @@
 class Artist < ActiveRecord::Base
   extend FriendlyId
+  include ArtistAdmin
 
   friendly_id :name, :use => :slugged
   acts_as_list
   scope :vj, -> {where(vj: true)}
-  translates :biography, :sidebar_media
+  translates :biography
 
 
   validates :name, presence: true
@@ -33,25 +34,4 @@ class Artist < ActiveRecord::Base
   def book_for event
   	Booking.create! event: event, artist: self
   end
-
-	rails_admin do
-    configure :translations, :globalize_tabs
-    list do
-      field :name
-      field :profile_picture
-    end
-    # configure :links do
-    #   visible true
-    # end
-    configure :bookings do
-      visible false
-    end
-    configure :events do
-      visible false
-    end
-    configure :locations do
-      visible false
-    end
-  end
-
 end

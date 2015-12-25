@@ -6,10 +6,15 @@ class Booking < ActiveRecord::Base
 	#validates :event, presence: true
 	#validates :artist, presence: true
 
-	rails_admin do 
-		list do 
+	rails_admin do
+		list do
 			field :artist
 			field :event
+		end
+		edit do
+			configure :location do
+				visible false
+			end
 		end
 	end
 end

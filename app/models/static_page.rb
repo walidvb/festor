@@ -20,31 +20,14 @@ class StaticPage < ActiveRecord::Base
 		},
 		:default_url => "/images/missing.jpg",
 		:use_timestamp => false
-  
+
 	validates_attachment_content_type :header_image, :content_type => /\Aimage\/(jpg|jpeg|png|gif)\Z/i
-
-
-	### rails_admin
-	rails_admin do
-    configure :translations, :globalize_tabs
-    edit do 
-    	field :public
-    	field :header_image
-    	field :translations
-    end
-		list do
-			scopes [:news, :static]
-			field :title
-			field :updated_at
-			field :public
-		end
-	end
 
 	private
 	def prevent_destroy_static_pages
 		if !self.news
 			self.errors[:base] << "You cannot destroy static pages."
-			return false 
+			return false
 		end
 	end
 
