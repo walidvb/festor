@@ -7,15 +7,13 @@
     %title Mapping Festival 2015
     = csrf_meta_tags
     %meta{:content => "width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1, minimal-ui", :name => "viewport"}
+    = javascript_include_tag "application", "data-turbolinks-track" => true
     :css
-      html, body {
+      html, body, #canvas {
         height: 100%;
         width: 100%;
         background: #111111;
         margin: 0;
-        background-image: url(#{image_url("back.png")});
-        background-size: cover;
-        background-position: center 37%; 
       }
       .login-form {
       position: fixed;
@@ -46,14 +44,15 @@
       .login-form input {
         text-align: center;
         padding: 5px 5px;
-        color: white;
-        border-bottom: white solid 2px;
+        color: #FF4136;
+        border-bottom: #FF4136 solid 2px;
         border-radius: 0; }
 
   %body
+    %canvas#canvas
     .login-form
-      = form_tag beta_path do 
-        %input.input{:autofocus => "", :name => "beta_login", :size => "15", :type => "password"}
+      = form_tag beta_path do
+        %input.input#beta{:autofocus => true, :name => "beta_login", :size => "15", :type => "password"}
         %button.input{:type => "submit", :value => "Entrer"} Entrer
     :javascript
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

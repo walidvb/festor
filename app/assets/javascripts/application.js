@@ -13,6 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require mixitup/build/jquery.mixitup.min.js
+//= require vendors/processing.min
+//= require lines.js
 //= require home.js
 //= require slick.min.js
 //= require chosen-jquery
