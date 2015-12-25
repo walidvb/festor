@@ -7,6 +7,9 @@ class Event < ActiveRecord::Base
 	has_many :links, as: :linkable, dependent: :destroy
 
 	scope :featured, -> {where(featured: true)}
+	has_many :event_dates, dependent: :delete_all
+	accepts_nested_attributes_for :event_dates, allow_destroy: true
+
 	has_many :bookings, dependent: :delete_all
 
 	has_many :artists, through: :bookings
@@ -47,11 +50,9 @@ class Event < ActiveRecord::Base
 	end
 
 	def next
-		Event.where('schedule_start > ? AND type = ?', self.schedule_start, self.type).first
 	end
 
 	def previous
-		Event.where('schedule_start < ? AND type = ?', self.schedule_start, self.type).last
 	end
 
 	def self.type_enum
@@ -91,6 +92,10 @@ class Event < ActiveRecord::Base
     configure :bookings do
       visible false
     end
+		configure :event_dates do
+			label :dates
+			visible true
+		end
     configure :musicians do
       visible false
     end
@@ -98,12 +103,21 @@ class Event < ActiveRecord::Base
       visible false
     end
     configure :links do
-      visible true
+      visible false
     end
     edit do
+			configure :event_dates do
+				label "Dates"
+			end
     	configure :slug do
     		hide
     	end
+			configure :artists do
+				hide
+			end
+			configure :assets do
+				hide
+			end
     end
     list do
     	scopes Event.type_enum
@@ -111,9 +125,6 @@ class Event < ActiveRecord::Base
       	# pretty_value do
       	#  bindings[:view].link_to(bindings[:object].title, edit_path(model_name: bindings[:object].class)) << value
       	# end
-      end
-      field :schedule_start do
-      	strftime_format("%e %B")
       end
       field :category
       field :featured

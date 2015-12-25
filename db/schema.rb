@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151225141704) do
+ActiveRecord::Schema.define(version: 20151225150049) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_stat_statements"
@@ -360,10 +360,14 @@ ActiveRecord::Schema.define(version: 20151225141704) do
   end
 
   create_table "event_dates", force: true do |t|
-    t.integer  "events_id"
+    t.integer  "event_id"
+    t.datetime "start"
+    t.datetime "end"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "event_dates", ["event_id"], name: "index_event_dates_on_event_id", using: :btree
 
   create_table "event_translations", force: true do |t|
     t.integer  "event_id",      null: false
@@ -383,8 +387,6 @@ ActiveRecord::Schema.define(version: 20151225141704) do
   create_table "events", force: true do |t|
     t.string   "slug"
     t.string   "type"
-    t.datetime "schedule_start"
-    t.datetime "schedule_end"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "location_id"
