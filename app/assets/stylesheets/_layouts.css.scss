@@ -1,7 +1,0 @@
-.grid-3-col{
-	@include n-cols($children: ".mix, .sortable-placeholder");
-}
-
-.full-width{
-	flex-basis: 100%!important;
-}

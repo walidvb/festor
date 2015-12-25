@@ -3,9 +3,9 @@ class Event < ActiveRecord::Base
 	extend FriendlyId
   friendly_id :title, :use => [:globalize, :slugged]
   acts_as_list scope: 'type = \'#{type}\''
-  
+
 	has_many :links, as: :linkable, dependent: :destroy
-	
+
 	scope :featured, -> {where(featured: true)}
 	has_many :bookings, dependent: :delete_all
 
@@ -31,7 +31,7 @@ class Event < ActiveRecord::Base
 		},
 		:default_url => "/images/missing.jpg",
 		:use_timestamp => false
-  
+
 	validates_attachment_content_type :main_image, :content_type => /\Aimage\/(jpg|jpeg|png|gif)\Z/i
 
 	def finished?
@@ -46,10 +46,10 @@ class Event < ActiveRecord::Base
 		Booking.create! event: self, artist: artist
 	end
 
-	def next 
+	def next
 		Event.where('schedule_start > ? AND type = ?', self.schedule_start, self.type).first
 	end
-	
+
 	def previous
 		Event.where('schedule_start < ? AND type = ?', self.schedule_start, self.type).last
 	end
@@ -88,27 +88,27 @@ class Event < ActiveRecord::Base
 
 	rails_admin do
     configure :translations, :globalize_tabs
-    configure :bookings do 
+    configure :bookings do
       visible false
     end
-    configure :musicians do 
+    configure :musicians do
       visible false
     end
-    configure :vjs do 
+    configure :vjs do
       visible false
     end
-    configure :links do 
+    configure :links do
       visible true
     end
-    edit do 
-    	configure :slug do 
+    edit do
+    	configure :slug do
     		hide
     	end
     end
-    list do 
+    list do
     	scopes Event.type_enum
       field :title do
-      	# pretty_value do 
+      	# pretty_value do
       	#  bindings[:view].link_to(bindings[:object].title, edit_path(model_name: bindings[:object].class)) << value
       	# end
       end

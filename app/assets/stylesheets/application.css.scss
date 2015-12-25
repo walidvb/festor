@@ -4,22 +4,18 @@
  *= require_self
  *= require chosen
  *= require rails_admin/ra.globalize_tabs
- *= require froala/css/froala_style.min.css 
- *= require froala/css/froala_content.min.css 
+ *= require froala/css/froala_style.min.css
+ *= require froala/css/froala_content.min.css
  *= require colorbox/colorbox.css
  */
 @import "framework_and_overrides";
 @import "variables";
 @import "mixins";
-@import "colorbox";
-@import "layouts";
 @import "ui_components";
 @import "header";
 @import "artists";
 @import "events";
 @import "home";
-@import "news";
-@import "glitchousel";
 @import "newsletter";
 
 .columns-2{
@@ -38,7 +34,7 @@ h2{
 .partners img.fr-image-dropped{
 	float: none!important;
 	display: inline-block;
-	
+
 }
 // RESETS
 body{
