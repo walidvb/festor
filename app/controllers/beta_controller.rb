@@ -4,7 +4,8 @@ class BetaController < ApplicationController
   end
 
   def create
-  	if params[:beta_login] == 'showtime2015' 
+		binding.pry
+  	if params[:beta_login] == 'borisisathug'
 	  	cookies.permanent[:beta] = "gingerbread"
 	  	redirect_to session[:previous_url] || root_path
 	  else

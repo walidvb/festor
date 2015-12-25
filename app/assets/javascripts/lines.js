@@ -15,7 +15,6 @@ var sketchProc = (function($p) {
     var coord_y = $p.createJavaArray('float', [max_points]);
 
     var record = false;
-
     function setup() {
         $p.frameRate(60);
         $p.size(render_width, render_height);
@@ -96,13 +95,21 @@ var sketchProc = (function($p) {
     }
     $p.my_line_3 = my_line_3;
     my_line_3 = my_line_3.bind($p);
+
+    $p.resize = function(w, h){
+      render_width = w;
+      render_height = h;
+      setup();
+    }
 });
 
 $(document).ready(function(){
   var canvas = document.getElementById("canvas");
   var processingInstance = new Processing(canvas, sketchProc);
   $('#beta').on('keypress', function(evt){
-    console.log(evt);
     processingInstance.random_coords();
+  });
+  $(window).on('resize', function(){
+    processingInstance.resize(window.innerWidth, window.innerHeight);
   });
 });
