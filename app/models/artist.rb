@@ -5,13 +5,7 @@ class Artist < ActiveRecord::Base
   acts_as_list
   scope :vj, -> {where(vj: true)}
   translates :biography, :sidebar_media
-  auto_html_for :sidebar_media do
-    html_escape
-    image
-    youtube(:width => 400, :height => 250)
-    link :target => "_blank", :rel => "nofollow"
-    simple_format
-  end
+
 
   validates :name, presence: true
   validates :biography, presence: true
@@ -33,7 +27,7 @@ class Artist < ActiveRecord::Base
 		},
 		:default_url => "/images/missing.jpg",
 		:use_timestamp => false
-  
+
 	validates_attachment_content_type :profile_picture, :content_type => /\Aimage\/(jpg|jpeg|png|gif)\Z/i
 
   def book_for event
@@ -42,20 +36,20 @@ class Artist < ActiveRecord::Base
 
 	rails_admin do
     configure :translations, :globalize_tabs
-    list do 
+    list do
       field :name
       field :profile_picture
     end
-    # configure :links do 
+    # configure :links do
     #   visible true
     # end
-    configure :bookings do 
+    configure :bookings do
       visible false
     end
-    configure :events do 
+    configure :events do
       visible false
     end
-    configure :locations do 
+    configure :locations do
       visible false
     end
   end
