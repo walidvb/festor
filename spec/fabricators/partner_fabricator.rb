@@ -1,0 +1,2 @@
+Fabricator(:partner) do
+end
