@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151225150049) do
+ActiveRecord::Schema.define(version: 20151225164227) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_stat_statements"
@@ -51,12 +51,11 @@ ActiveRecord::Schema.define(version: 20151225150049) do
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "artist_translations", force: true do |t|
-    t.integer  "artist_id",     null: false
-    t.string   "locale",        null: false
+    t.integer  "artist_id",  null: false
+    t.string   "locale",     null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "biography"
-    t.text     "sidebar_media"
   end
 
   add_index "artist_translations", ["artist_id"], name: "index_artist_translations_on_artist_id", using: :btree
@@ -370,15 +369,13 @@ ActiveRecord::Schema.define(version: 20151225150049) do
   add_index "event_dates", ["event_id"], name: "index_event_dates_on_event_id", using: :btree
 
   create_table "event_translations", force: true do |t|
-    t.integer  "event_id",      null: false
-    t.string   "locale",        null: false
+    t.integer  "event_id",    null: false
+    t.string   "locale",      null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "title"
     t.text     "description"
-    t.text     "sidebar_media"
     t.string   "slug"
-    t.text     "sidebar_text"
   end
 
   add_index "event_translations", ["event_id"], name: "index_event_translations_on_event_id", using: :btree
@@ -397,7 +394,6 @@ ActiveRecord::Schema.define(version: 20151225150049) do
     t.string   "buy_link"
     t.string   "category"
     t.boolean  "featured"
-    t.text     "main_image_meta"
     t.integer  "position"
   end
 
