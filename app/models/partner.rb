@@ -9,5 +9,6 @@ class Partner < ActiveRecord::Base
     },
     :default_url => "/images/missing.jpg",
     :use_timestamp => false
+    validates_attachment_content_type :logo, :content_type => /\Aimage\/(jpg|jpeg|png|gif)\Z/i
 
 end

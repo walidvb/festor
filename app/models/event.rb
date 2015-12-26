@@ -42,11 +42,6 @@ class Event < ActiveRecord::Base
 	validates_attachment_content_type :main_image, :content_type => /\Aimage\/(jpg|jpeg|png|gif)\Z/i
 
 	def finished?
-		if schedule_end.nil?
-			DateTime.now > schedule_start
-		else
-			DateTime.now > schedule_end
-		end
 	end
 
 	def add_artist artist
