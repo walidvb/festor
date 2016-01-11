@@ -4,6 +4,8 @@
       = link_to t('shared.program'), image_path('grille.pdf'), target: '_blank', class: 'program'
       |
       = link_to 'tickets'
+      |
+      = link_to t('nav.about'), about_path(locale: I18n.locale)
       | follow us
   .container
     .logo

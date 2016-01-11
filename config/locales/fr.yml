@@ -13,6 +13,7 @@ fr:
     next:        "suivant"
     previous:    "précédent"
     gallery:    "galerie"
+    about:      'à propos'
   events:
     types:
       workshop:     "workshop"
