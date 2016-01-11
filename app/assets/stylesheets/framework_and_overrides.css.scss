@@ -2,7 +2,7 @@
 // BOOTSTRAP VARIABLES OVERRIDES
 
 // Color system
-$brand-primary: #428bca;
+$brand-primary: $black;
 $brand-success: #5cb85c;
 $brand-warning: #f0ad4e;
 $brand-danger: #d9534f;
@@ -180,7 +180,7 @@ $navbar-inverse-toggle-border-color: #333333;
 // Nav: Default nav
 // -> Common values
 $nav-link-padding: 10px 15px;
-$nav-link-hover-bg: #eeeeee;
+$nav-link-hover-bg: $black;
 $nav-disabled-link-color: #cccccc;
 $nav-disabled-link-hover-color: #cccccc;
 $nav-open-link-hover-color: #ffffff;

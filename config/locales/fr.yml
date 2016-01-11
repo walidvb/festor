@@ -1,7 +1,7 @@
 fr:
   shared:
     geneva: "genève"
-    motto:  "visual audio & <br>deviant electronics"
+    motto:  "visual audio & deviant electronics"
     program: "Programme"
   nav:
     home:        "Accueil"
@@ -12,7 +12,7 @@ fr:
     more:        "infos"
     next:        "suivant"
     previous:    "précédent"
-    gallery:    "galerie" 
+    gallery:    "galerie"
   events:
     types:
       workshop:     "workshop"

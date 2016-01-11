@@ -19,32 +19,41 @@
     = csrf_meta_tags
 
   %body{class: "#{controller.controller_name}-page #{controller.action_name}-page #{yield(:body_class)} #{'debug' if Rails.env.development?} #{current_user.nil? ? nil : 'admin'}"}
-
-    .body-header
-      .container{"data-no-turbolink" => true}
-        .festival-date
-          #{l(Date.parse("28 april"), format: "%e %b")} – #{l(Date.parse("7 may"), format: "%e %b")}
-          %br/
-          2016
-          %br/
-          = t("shared.geneva")
-        .locales{class: I18n.locale}
-          - if I18n.locale == :fr
-            FR
-            = link_to("EN", url_for(locale: :en), class: "en")
-          - else
-            = link_to("FR", url_for(locale: :fr), class: "fr")
-            EN
-        .program
-          = link_to t(:news), news_index_path(locale: I18n.locale)
-          =# link_to t('shared.program'), image_path(I18n.locale == :fr ? 'grille.pdf' : 'grid.pdf'), target: '_blank'
-          = link_to @tickets.title, static_page_path(@tickets)
-        .header-logo
-          = link_to(image_tag( 'logo.svg', class: "header-logo"), root_path)
-        .motto
-          = t("shared.motto").html_safe
     %header{"data-no-turbolink" => true}
-      = render 'layouts/navigation'
+      .body-header
+        .container
+          .header-left
+            .festival-date
+              #{l(Date.parse("28 april"), format: "%e %b")} – #{l(Date.parse("7 may"), format: "%e %b")} / 2016 / #{ t("shared.geneva")}
+            .social
+              %a{:href => "http://www.instagram.com/mappingfestival", class: "fa fa-icon fa-instagram"}
+              %a{:href => "http://www.twitter.com/mappingfestival", class: "fa fa-icon fa-twitter"}
+              %a{:href => "https://www.facebook.com/mappingfest", class: "fa fa-icon fa-facebook"}
+              - if I18n.locale == :en
+                %form#mlb2-477433.newsletter-form{:action => "//app.mailerlite.fr/webforms/submit/r9a8o1", "data-code" => "r9a8o1", :target => "_blank"}
+                  %button.ml-subscribe-button.fa.fa-icon.fa-inbox{:type => "submit"}
+              - else
+                %form#mlb2-448223.newsletter-form{:action => "//app.mailerlite.fr/webforms/submit/u2g5s5", "data-code" => "u2g5s5", :target => "_blank"}
+                  %button.ml-subscribe-button.fa.fa-icon.fa-inbox{:type => "submit"}
+          .header-middle
+            .header-logo
+              = link_to(image_tag( 'logo.svg', class: "header-logo"), root_path)
+          .header-right
+            .locales{class: I18n.locale}
+              - if I18n.locale == :fr
+                FR
+                = link_to("EN", url_for(locale: :en), class: "en")
+              - else
+                = link_to("FR", url_for(locale: :fr), class: "fr")
+                EN
+            .news
+              = link_to t(:news), news_index_path(locale: I18n.locale)
+              =# link_to t('shared.program'), image_path(I18n.locale == :fr ? 'grille.pdf' : 'grid.pdf'), target: '_blank'
+              = link_to @tickets.title, static_page_path(@tickets)
+            .motto
+              = t("shared.motto").html_safe
+        %canvas#canvas
+        = render 'layouts/navigation'
     %main
       .container
         .row

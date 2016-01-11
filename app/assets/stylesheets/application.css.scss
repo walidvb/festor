@@ -3,16 +3,15 @@
  *
  *= require_self
  *= require chosen
- *= require rails_admin/ra.globalize_tabs
  *= require froala/css/froala_style.min.css
  *= require froala/css/froala_content.min.css
  *= require colorbox/colorbox.css
  */
-@import "framework_and_overrides";
 @import "variables";
+@import "framework_and_overrides";
 @import "mixins";
 @import "ui_components";
-// @import "header";
+@import "header";
 // @import "artists";
 @import "events";
 @import "home";
@@ -41,6 +40,7 @@ body{
 	background-color: $background;
 	font-family: $body-font;
 	font-size : 14px;
+	padding-top:	$margin-vertical-normal;
 	@media #{$tablet}{
 		font-size : 16px;
 	}
@@ -88,30 +88,24 @@ ul{
 h1, h2, h3, h4{
 	color: $black;
 }
-h1, h2, h3{
-	margin-top: 5px;
-	margin-bottom: 5px;
-}
-h1, h2{
-	font-weight: bold;
-	font-size: $large;
-}
 
 h3{
-	font-family: $info-font;
 	font-size: $body-size;
 }
 
 main{
 	font-family: $body-font;
-	a{
-		color: $black;
-		&:hover{
-			color:  $black;
-		}
-	}
 }
 
+body a{
+	color: $black;
+	text-decoration: underline;
+	&:hover{
+		color: $white;
+		background:	$black;
+		text-decoration: none;
+	}
+}
 
 #footer{
 	height: auto;
@@ -143,14 +137,6 @@ main{
 	p{
 		margin-bottom: 0px;
 	}
-	a{
-		color: $black;
-		text-decoration: underline;
-		&:hover{
-			color: $black;
-			text-decoration: none;
-		}
-	}
 }
 
 .address{
@@ -160,17 +146,20 @@ main{
 .social{
 	.fa-icon{
 		margin-right: 5px;
+		a:hover{
+			background: $white;
+		}
 		&:hover:before{
 			border-color: $dark-grey;
+			box-shadow: inset	0	10px	0 $black;
 		}
 		&:before{
 			border-radius: 50%;
 			border: 2px solid $black;
-			color: $black;
-			font-size: 1.7em;
-			width: 35px;
-			height: 35px;
-			line-height: 32px;
+			font-size: 1em;
+	    width: 1.3em;
+	    height: 1.3em;
+	    line-height: 1.15em;
 			text-align: center;
 			display: inline-block;
 		}

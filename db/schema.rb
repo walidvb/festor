@@ -127,6 +127,17 @@ ActiveRecord::Schema.define(version: 20151225183518) do
     t.datetime "picture_updated_at"
   end
 
+  create_table "partners", force: true do |t|
+    t.string   "name"
+    t.string   "link"
+    t.string   "logo_file_name"
+    t.string   "logo_content_type"
+    t.integer  "logo_file_size"
+    t.datetime "logo_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "static_page_translations", force: true do |t|
     t.integer  "static_page_id", null: false
     t.string   "locale",         null: false

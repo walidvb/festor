@@ -4,177 +4,28 @@ $header-padding-vert: 40px;
 	text-transform: lowercase;
 }
 
-/*.body-header{
-	//background-image: image-url('header_img.jpg');
-	background-color: $dark-grey;
-	background-size: cover;
-	background-position: center 90%;
-	padding: 5px 0 30px;
-	@media #{$tablet}
-	{
-		padding-top: 30px;
-  		padding-bottom: 40px;
-	}
-	.container{
-		display: flex;
-		justify-content: space-around;
-		min-height: 180px;
-		@media #{$lg}
-		{
-		  min-height: 205px;
-		}
-		.festival-date, .motto{
-			flex: 0 0 50%;
-			padding: 0 5px;
-		}
-		.festival-date{
-			color: white;
-			font-size: $larger;
-			font-family: $info-font;
-			position: absolute;
-			top: 0;
-			left: 10px;
-		}
-		.motto{
-			font-size: $large*1.2;
-			font-weight: bold;
-			align-self: flex-end;
-			text-align: right;
-			color: $brand-color;
-			text-decoration: underline;
-			position: absolute;
-			bottom: 0;
-			right: 10px;
-		}
-		.program{
-			position: absolute;
-			top: 0px;
-			right: 15px;
-			text-transform: uppercase;
-			text-align: right;
-			a{
-				display: block;
-				color: $brand-color;
-			}
-		}
-		@media #{$tablet}
-		{
-			.festival-date{
-				  font-size: $larger*1.5;
-  					line-height: 0.9em;
-			}
-		}
-
-		// very weird stuff i had to do here. Need to explore the effects of flex on images...
-		position: relative;
-		.header-logo{
-			position: absolute;
-			height: 120px;
-			width: 120px;
-			@media #{$tablet}
-			{
-			  height: 160px;
-			  width: 160px;
-			}
-			top: 0;
-			bottom: 0;
-			left: 0;
-			right: 0;
-			margin: auto;
-		}
-	}
-
-	.locales{
-		position: absolute;
-	  bottom: 0px;
-	  left: 20px;
-	  a{
-	  	color: $black;
-	  	&:hover{
-	  		text-decoration: underline;
-	  		color: $brand-color;
-	  	}
-	  }
-	  &.en .fr{
-	  	color: $brand-color;
-	  }
-	  &.fr .en{
-	  	color: $brand-color;
-	  }
-	}
-}
-
-.nav-fixed{
-	main{
-		margin-top: 25px;
-	}
-	header .container{
-		position: fixed;
-		margin: 25px auto 0;
-		top: 0;
-		left: 0;
-		right: 0;
-		z-index: 100;
-	}
-}
-header .navbar-nav{
-		a.disabled{
-	  	color: darken($dark-grey, 10%)!important;
-	  	&:hover{
-	  		color: $black!important;
-	  	}
-	  }
-	margin: -25px auto 5px;
-	background: $black;
+.body-header .container{
 	display: flex;
-	justify-content: space-between;
-	width: 100%;
- > li{
-		flex: 1 1 auto;
-		text-align: center;
-		a, &.open > a{
-			color: $light-grey;
-			font-size: $large*1.2;
-			font-weight: bold;
-			text-transform: lowercase;
-			background-color: $black!important;
-			padding: 0px 2px;
-			font-size: $body-size*0.9;
-			line-height: $body-size*2;
-			@media #{$tablet}{
-				padding:10px 15px;
-				font-size: $large;
-				line-height: $large;
-			}
-			&:hover, &.active{
-				color: $brand-color;
-				background-color: $black!important;
-			}
-		}
-		> a:hover, a.active{
-			color: $brand-color;
-		}
-		&.dropdown{
-			.dropdown-menu{
-				text-align: right;
-				border-radius: 0;
-				border: 0;
-				width: 100%;
-				min-width: initial;
-				background: $black;
-				box-sizing: content-box;
-				border-right: 1px solid $black;
-				a{
-					display: inline-block;
-					padding: 5px 5px;
-					width: 100%;
-					&:hover{
-						text-decoration: none;
-					}
-				}
-			}
+	justify-content: space-around;
+}
+.header-left, .header-right, .header-logo{
+	flex: 1 0 33%;
+}
 
-		}
+.body-header{
+	form{
+		display: inline-block;
 	}
 }
-*/
+
+.header-right{
+	text-align: right;
+}
+
+.body-header #canvas{
+	max-height: 200px;
+}
+
+.header-logo {
+    height: 100px;
+}

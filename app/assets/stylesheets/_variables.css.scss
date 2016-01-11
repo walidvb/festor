@@ -11,6 +11,7 @@ $lg                     : "(min-width: 1200px)";
 // colors
 $brand-color: #000000;
 $black: #000000;
+$white: #ffffff;
 $dark-grey: rgba(102, 102, 102, 1);
 $light-grey: rgb(178, 178, 178);
 ;
@@ -30,6 +31,10 @@ $large				: 	1.75em;
 $larger 			: 	2.25em;
 $largest			:	3.625em;
 $tile-title-size 	:	0.8em;
+
+// margins & padding
+$margin-vertical-normal : 1rem;
+$margin-vertical-large : 2rem;
 
 @font-face {
 	font-family:'Avenir';

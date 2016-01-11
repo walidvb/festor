@@ -6,7 +6,7 @@
 				.glitchousel.news
 					- @news.each do |news|
 						= link_to news_path(news) do
-					.event.slide
+							.event.slide
 								= image_tag(news.header_image.url(:large), width: 1200, height: 535)
 								.legend
 									= news.title

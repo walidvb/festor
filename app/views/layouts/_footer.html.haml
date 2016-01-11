@@ -6,18 +6,6 @@
       = link_to @tickets.title, static_page_path(@tickets), class: 'program'
       | follow us
   .container
-    .social
-      %a{:href => "http://www.instagram.com/mappingfestival", class: "fa fa-icon fa-instagram"}
-      %a{:href => "http://www.twitter.com/mappingfestival", class: "fa fa-icon fa-twitter"}
-      %a{:href => "https://www.facebook.com/mappingfest", class: "fa fa-icon fa-facebook"}
-      - if I18n.locale == :en
-        %form#mlb2-477433.newsletter-form{:action => "//app.mailerlite.fr/webforms/submit/r9a8o1", "data-code" => "r9a8o1", :target => "_blank"}
-          %button.ml-subscribe-button.fa.fa-icon.fa-inbox{:type => "submit"}
-      - else
-        %form#mlb2-448223.newsletter-form{:action => "//app.mailerlite.fr/webforms/submit/u2g5s5", "data-code" => "u2g5s5", :target => "_blank"}
-          %button.ml-subscribe-button.fa.fa-icon.fa-inbox{:type => "submit"}
-
-
     .logo
       .footer-logo=image_tag('logo_black.png')
     .address
