@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160111130613) do
+ActiveRecord::Schema.define(version: 20160111152518) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_stat_statements"
@@ -456,6 +456,25 @@ ActiveRecord::Schema.define(version: 20160111130613) do
     t.datetime "picture_updated_at"
   end
 
+  create_table "optimizely_experiments", force: true do |t|
+    t.string   "experiment_id"
+    t.boolean  "active",        default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "title"
+  end
+
+  create_table "paragraphs", force: true do |t|
+    t.integer  "chapter_id"
+    t.integer  "paragraph_id"
+    t.integer  "draft_comments_count",     default: 0
+    t.integer  "published_comments_count", default: 0
+    t.integer  "deleted_comments_count",   default: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "paragraphs", ["chapter_id"], name: "index_paragraphs_on_chapter_id", using: :btree
 
   create_table "partners", force: true do |t|
     t.string   "name"
@@ -466,6 +485,7 @@ ActiveRecord::Schema.define(version: 20160111130613) do
     t.datetime "logo_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "type"
   end
 
   create_table "pre_sign_ups", force: true do |t|

@@ -16,6 +16,11 @@ en:
     gallery:    "gallery"
     about:      'about'
     partners:   'partners'
+  partners:
+    media: 'Media Partners'
+    private: 'Private Partners'
+    venue: 'Venue Partners'
+    institutional: 'Institutional Partners'
   events:
     types:
       workshop:   "Workshop"

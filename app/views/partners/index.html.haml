@@ -1,2 +1,4 @@
-- @partners.each do |partner|
-  = link_to(image_tag(partner.logo.url), partner.name, target: '_blank')
+- @partners_type.each do |type|
+  = type[0]
+  - type[1].each do |partner|
+    .partner= link_to(image_tag(partner.logo.url), partner.link, target: '_blank')

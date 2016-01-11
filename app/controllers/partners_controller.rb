@@ -1,5 +1,5 @@
 class PartnersController < ApplicationController
   def index
-    @partners = Partner.all
+    @partners_type = Partner.all.group_by(&:type)
   end
 end
