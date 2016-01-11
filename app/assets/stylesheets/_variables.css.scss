@@ -9,25 +9,26 @@ $md                     : "(min-width: 991px)";
 $lg                     : "(min-width: 1200px)";
 
 // colors
-$brand-color: #FFEE00;
-$black: #111111;
-$dark-grey: #666666;
-$light-grey: #CCCCCC;
+$brand-color: #000000;
+$black: #000000;
+$dark-grey: rgba(102, 102, 102, 1);
+$light-grey: rgb(178, 178, 178);
+;
 
 $container-max-width: 960px;
-$background: #C6C6C6;
+$background: #ffffff;
 
 // typography
 $body-font		:	Grotesk, Helvetica, Sans-Serif;
-$info-font		:	Baskerville, Garamond, Serif;
+$info-font		:	$body-font;
 
 
 $body-size 			: 	16px;
 $smaller			:	0.65em;
-$small				:	0.75em;
-$large				: 	1.1em;
-$larger 			: 	1.6em;
-$largest			:	2.2em;
+$small				:	1.375em;
+$large				: 	1.75em;
+$larger 			: 	2.25em;
+$largest			:	3.625em;
 $tile-title-size 	:	0.8em;
 
 @font-face {

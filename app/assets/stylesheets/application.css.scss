@@ -12,11 +12,11 @@
 @import "variables";
 @import "mixins";
 @import "ui_components";
-@import "header";
-//@import "artists";
-//@import "events";
+// @import "header";
+// @import "artists";
+@import "events";
 @import "home";
-@import "newsletter";
+//@import "newsletter";
 
 .columns-2{
 	@media #{$tablet}
