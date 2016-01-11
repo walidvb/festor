@@ -34,4 +34,10 @@ class Artist < ActiveRecord::Base
   def book_for event
   	Booking.create! event: event, artist: self
   end
+
+  def self.type_enum
+    [:vj, :dj, :instructor, :performer]
+  end
+
+  self.inheritance_column = :fake_column
 end

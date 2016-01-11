@@ -30,5 +30,13 @@
       %tr
         %td= extra.title
         %td=extra.body
+- unless @event.artists.empty?
+  %ul.artist-list
+    - @event.artists.each do |artist|
+      %li
+        =artist.name
+        =artist.origin
+        =artist.label
+        =artist.biography.html_safe
 - if user_signed_in?
   = link_to 'edit', "/admin/event/#{@event.id}/edit"

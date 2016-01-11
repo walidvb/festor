@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160111171640) do
+ActiveRecord::Schema.define(version: 20160111173819) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,10 +38,10 @@ ActiveRecord::Schema.define(version: 20160111171640) do
     t.string   "slug"
     t.string   "label"
     t.string   "origin"
-    t.boolean  "vj"
     t.string   "link"
     t.text     "profile_picture_meta"
     t.integer  "position"
+    t.string   "type"
   end
 
   create_table "assets", force: true do |t|

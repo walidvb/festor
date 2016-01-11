@@ -17,8 +17,9 @@ class Event < ActiveRecord::Base
 	has_many :bookings, dependent: :delete_all
 
 	has_many :artists, through: :bookings
-	has_many :musicians, -> {where vj: false}, through: :bookings, source: :artist
-	has_many :vjs,  -> {where vj: true}, through: :bookings, source: :artist
+	has_many :musicians, -> {where type: :dj}, through: :bookings, source: :artist
+	has_many :vjs,  -> {where type: :vj}, through: :bookings, source: :artist
+	has_many :instructors,  -> {where type: :instructor}, through: :bookings, source: :artist
 
 	has_many :assets, as: :assetable
 	accepts_nested_attributes_for :assets, allow_destroy: true
