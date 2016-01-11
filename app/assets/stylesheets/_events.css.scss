@@ -37,3 +37,25 @@
 		text-decoration: none;
 	}
 }
+
+.artist-list, .extra{
+	li{
+		display: flex;
+		justify-content: space-between;
+	}
+	.left, .right{
+		border-top: solid 1px $black;
+	}
+	.left{
+		flex: 0 0 20%;
+	}
+	.right{
+		flex: 0 0 70%;
+	}
+	.event-artist-name, .event-artist-origin, .event-artist-label{
+		display: inline-block;
+	}
+	.event-artist-bio{
+		float: right;
+	}
+}
