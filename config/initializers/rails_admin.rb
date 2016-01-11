@@ -20,15 +20,24 @@ RailsAdmin.config do |config|
   ### More at https://github.com/sferik/rails_admin/wiki/Base-configuration
 
   config.actions do
-    dashboard                     # mandatory
-    index                         # mandatory
-    new
+    dashboard do
+      except ['Setting']
+    end
+    index do
+    end
+    new do
+      except ['Setting']
+    end
     export
     bulk_delete
     show
     edit
-    delete
-    show_in_app
+    delete do
+      except ['Setting']
+    end
+    show_in_app do
+      except ['Setting']
+    end
 
     ## With an audit adapter, you can add:
     # history_index
@@ -36,7 +45,7 @@ RailsAdmin.config do |config|
   end
 
   ## == Globalize ==
-  config.included_models = ['Artist', 'Artist::Translation', 'Event', 'Event::Translation', 'Location', 'User', 'StaticPage', 'StaticPage::Translation', 'Booking', 'Link', 'EventDate', 'Partner', 'Setting']
+  config.included_models = ['Artist', 'Artist::Translation', 'Event', 'Event::Translation', 'Location', 'User', 'StaticPage', 'StaticPage::Translation', 'Booking', 'Link', 'EventDate', 'Partner', 'Setting', 'Setting::Translation']
 
   config.model 'Artist::Translation' do
     visible false
@@ -60,6 +69,14 @@ RailsAdmin.config do |config|
       help ''
     end
     include_fields :locale, *StaticPage.translated_attribute_names
+  end
+
+  config.model 'Setting::Translation' do
+    visible false
+    configure :locale, :hidden do
+      help ''
+    end
+    include_fields :locale, *Setting.translated_attribute_names
   end
 
   config.model 'Booking' do

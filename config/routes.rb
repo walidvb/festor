@@ -34,6 +34,7 @@ Festor::Application.routes.draw do
 			root "home#index"
 		end
 		get "/gallery" => 'static#gallery', as: :gallery
+		get "/about" => 'static#about', as: :about
 		mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 	end
 end
