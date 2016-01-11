@@ -21,11 +21,14 @@
       - @dates.each do |date|
         = "#{l(date.start, format: "%A %e %b – %H:%M")} - #{l(date.end, format: "%A %e %b – %H:%M")}"
     %h5.location= link_to @location.name, "/#{I18n.locale}/infos"
-
-  %h5 Modalités
+    - if(!@event.finished?)
+      %h5= link_to t('events.ticket'), @event.buy_link, class: "btn btn-md buy-link fa fa-shopping-cart", target: "_blank" unless @event.buy_link.blank?
 .show-desc= @event.description.html_safe unless @event.description.blank?
-.sidebar
-  - if(!@event.finished?)
-    = link_to t('events.ticket'), @event.buy_link, class: "btn btn-md buy-link fa fa-shopping-cart", target: "_blank" unless @event.buy_link.blank?
-  - if !@assets.empty?
-    = link_to 'images', @event.main_image.url(:large), "rel" => @event.slug, class: "btn btn-md buy-link fa fa-picture-o colorbox trigger"
+- unless @event.extra_infos.empty?
+  %table.extra-infos
+    -@event.extra_infos.each do |extra|
+      %tr
+        %td= extra.title
+        %td=extra.body
+- if user_signed_in?
+  = link_to 'edit', "/admin/event/#{@event.id}/edit"
