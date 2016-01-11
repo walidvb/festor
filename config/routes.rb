@@ -10,6 +10,8 @@ Festor::Application.routes.draw do
 		resources :workshops, controller: "events", only: [:show, :index], type: :workshop
 		resources :exhibitions, controller: "events", only: [:show, :index], type: :exhibition
 
+		resources :venues, controller: 'locations', only: [:index]
+
 		resources :artists, only: [:index, :show]
 		get "admin/artists/sort" => 'artists#sortable_index'
 		post "admin/artists/sort" => 'artists#sort_update'
