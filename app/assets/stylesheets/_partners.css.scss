@@ -1,0 +1,9 @@
+.partners-page{
+  .partners-list{
+    display: flex;
+  }
+  .partner{
+    flex: 0 1 25%;
+    max-height: 70px;
+  }
+}
