@@ -49,7 +49,7 @@
             .news
               = link_to t(:news), news_index_path(locale: I18n.locale)
               =# link_to t('shared.program'), image_path(I18n.locale == :fr ? 'grille.pdf' : 'grid.pdf'), target: '_blank'
-              = link_to @tickets.title, static_page_path(@tickets)
+              = link_to 'tickets'
             .motto
               = t("shared.motto").html_safe
         %canvas#canvas
