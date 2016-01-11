@@ -24,8 +24,11 @@ class Event < ActiveRecord::Base
 	accepts_nested_attributes_for :assets, allow_destroy: true
 	belongs_to :location
 
+	has_many :extra_infos
+
 	accepts_nested_attributes_for :artists, allow_destroy: true
 	accepts_nested_attributes_for :links, allow_destroy: true
+	accepts_nested_attributes_for :extra_infos, allow_destroy: true
 	accepts_nested_attributes_for :translations, allow_destroy: true
 
 	#validates :location, presence: true

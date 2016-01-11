@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160111152518) do
+ActiveRecord::Schema.define(version: 20160111171640) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_stat_statements"
@@ -398,6 +398,24 @@ ActiveRecord::Schema.define(version: 20160111152518) do
   end
 
   add_index "events", ["location_id"], name: "index_events_on_location_id", using: :btree
+
+  create_table "extra_info_translations", force: true do |t|
+    t.integer  "extra_info_id", null: false
+    t.string   "locale",        null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "body"
+    t.string   "title"
+  end
+
+  add_index "extra_info_translations", ["extra_info_id"], name: "index_extra_info_translations_on_extra_info_id", using: :btree
+  add_index "extra_info_translations", ["locale"], name: "index_extra_info_translations_on_locale", using: :btree
+
+  create_table "extra_infos", force: true do |t|
+    t.integer  "event_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "faqs", force: true do |t|
     t.text     "question"
