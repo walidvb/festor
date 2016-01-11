@@ -20,7 +20,7 @@ Festor::Application.routes.draw do
 		resources :news, controller: 'static_pages', only: [:index, :show]
 
 		StaticPage.all.each do |sp|
-			begin 
+			begin
 				get "/#{sp.slug}" => "static_pages#show", id: sp.id, static: false
 			rescue => e
 				puts "Tried routing, got #{e.inspect} for #{[sp.title, sp.id]}"
@@ -31,7 +31,7 @@ Festor::Application.routes.draw do
 		else
 			root "home#index"
 		end
-		# get "/gallery" => 'static#gallery', as: :gallery
+		get "/gallery" => 'static#gallery', as: :gallery
 		mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 	end
 end
