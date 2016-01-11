@@ -4,7 +4,6 @@ class BetaController < ApplicationController
   end
 
   def create
-		binding.pry
   	if params[:beta_login] == 'borisisathug'
 	  	cookies.permanent[:beta] = "gingerbread"
 	  	redirect_to session[:previous_url] || root_path

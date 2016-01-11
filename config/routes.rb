@@ -1,10 +1,8 @@
 Festor::Application.routes.draw do
-
-
-  get "beta" => "beta#new"
-  match "/upload" => "assets#upload", via: :post
-  scope "(:locale)", locale: /en|fr/, defaults: {locale: 'en'} do
-	  post "beta" => "beta#create"
+	get "beta" => "beta#new"
+	match "/upload" => "assets#upload", via: :post
+	scope "(:locale)", locale: /en|fr/, defaults: {locale: 'en'} do
+		post "beta" => "beta#create"
 		devise_for :users
 		get "home" => 'home#index'
 		#get "events/:id" => "events#show", as: :event
@@ -18,22 +16,22 @@ Festor::Application.routes.draw do
 		post "admin/events/sort" => 'events#sort_update'
 		get "admin/events/sort" => 'events#sortable_index'
 
-	  resources :static_pages, only: [:show]
-	  resources :news, controller: 'static_pages', only: [:index, :show]
-	  
-	  StaticPage.all.each do |sp|
-	  	begin 
-	  		get "/#{sp.slug}" => "static_pages#show", id: sp.id, static: false
-	  	rescue => e
-	  		puts "Tried routing, got #{e.inspect} for #{[sp.title, sp.id]}"
-	  	end
-	  end
-  	if(Rails.env.prod? && home = StaticPage.find(21) && home.public?)
-  		root static_page_path(home)
-  	else
+		resources :static_pages, only: [:show]
+		resources :news, controller: 'static_pages', only: [:index, :show]
+
+		StaticPage.all.each do |sp|
+			begin 
+				get "/#{sp.slug}" => "static_pages#show", id: sp.id, static: false
+			rescue => e
+				puts "Tried routing, got #{e.inspect} for #{[sp.title, sp.id]}"
+			end
+		end
+		if(Rails.env.prod? && home = StaticPage.find(21) && home.public?)
+			root static_page_path(home)
+		else
 			root "home#index"
 		end
-	  get "/gallery" => 'static#gallery', as: :gallery
+		# get "/gallery" => 'static#gallery', as: :gallery
 		mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  end
+	end
 end
