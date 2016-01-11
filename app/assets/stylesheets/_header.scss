@@ -4,12 +4,18 @@ $header-padding-vert: 40px;
 	text-transform: lowercase;
 }
 
-.body-header .container{
+.body-header .container, .navbar-header, .navbar-nav{
 	display: flex;
 	justify-content: space-around;
 }
-.header-left, .header-right, .header-logo{
+.header-left, .header-right, .header-logo, .navbar-nav li{
 	flex: 1 0 33%;
+}
+
+.navbar-nav{
+	li{
+		text-align:center;
+	}
 }
 
 .body-header{
@@ -28,4 +34,8 @@ $header-padding-vert: 40px;
 
 .header-logo {
     height: 100px;
+}
+
+.navbar-nav{
+	display : flex;
 }

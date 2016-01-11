@@ -4,3 +4,36 @@
 .mix{
 	display: none;
 }
+
+.event-infos{
+	margin-left: 1px;
+	h5{
+		display: inline-block;
+    position: relative;
+    border-bottom: solid 1px $black;
+		padding-left: 5px;
+    padding-right: 5px;
+		&:before{
+			content: '';
+		}
+		&:before, &:after{
+	    height: 0.5em;
+	    display: inline-block;
+	    border-left: 1px solid $black;
+	    position: absolute;
+	    top: 8px;
+	    left: 0px;
+		}
+		&:not(:first-child){
+			margin-left: -0.6rem;
+		}
+		&:last-child:after{
+			content: '';
+			border-right: 1px solid $black;
+			right: 0px;
+		}
+	}
+	a{
+		text-decoration: none;
+	}
+}
