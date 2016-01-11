@@ -1,4 +1,5 @@
 class StaticPage < ActiveRecord::Base
+	include StaticPageAdmin
 	translates :body, :title
 	accepts_nested_attributes_for :translations, allow_destroy: true
 	before_destroy :prevent_destroy_static_pages

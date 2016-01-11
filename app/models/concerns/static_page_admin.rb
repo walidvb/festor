@@ -11,7 +11,7 @@ module StaticPageAdmin
       end
   		list do
   			scopes [:news, :static]
-  			field :title
+  			field :slug
   			field :updated_at
   			field :public
   		end
