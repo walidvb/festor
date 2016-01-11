@@ -15,6 +15,7 @@ en:
     previous:    "previous"
     gallery:    "gallery"
     about:      'about'
+    partners:   'partners'
   events:
     types:
       workshop:   "Workshop"

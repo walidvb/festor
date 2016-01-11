@@ -1,4 +1,5 @@
 Festor::Application.routes.draw do
+
 	get "beta" => "beta#new"
 	match "/upload" => "assets#upload", via: :post
 	scope "(:locale)", locale: /en|fr/, defaults: {locale: 'en'} do
@@ -13,6 +14,8 @@ Festor::Application.routes.draw do
 		resources :venues, controller: 'locations', only: [:index]
 
 		resources :artists, only: [:index, :show]
+
+    resources :partners, only: [:index]
 		get "admin/artists/sort" => 'artists#sortable_index'
 		post "admin/artists/sort" => 'artists#sort_update'
 		post "admin/events/sort" => 'events#sort_update'
