@@ -24,3 +24,8 @@
 
   %h5 Modalités
 .show-desc= @event.description.html_safe unless @event.description.blank?
+.sidebar
+  - if(!@event.finished?)
+    = link_to t('events.ticket'), @event.buy_link, class: "btn btn-md buy-link fa fa-shopping-cart", target: "_blank" unless @event.buy_link.blank?
+  - if !@assets.empty?
+    = link_to 'images', @event.main_image.url(:large), "rel" => @event.slug, class: "btn btn-md buy-link fa fa-picture-o colorbox trigger"
