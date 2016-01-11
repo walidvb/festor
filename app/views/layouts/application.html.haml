@@ -36,8 +36,8 @@
             = link_to("FR", url_for(locale: :fr), class: "fr")
             EN
         .program
-
-          = link_to t('shared.program'), image_path(I18n.locale == :fr ? 'grille.pdf' : 'grid.pdf'), target: '_blank'
+          = link_to t(:news), news_index_path(locale: I18n.locale)
+          =# link_to t('shared.program'), image_path(I18n.locale == :fr ? 'grille.pdf' : 'grid.pdf'), target: '_blank'
           = link_to @tickets.title, static_page_path(@tickets)
         .header-logo
           = link_to(image_tag( 'logo.svg', class: "header-logo"), root_path)
