@@ -1,17 +1,16 @@
-%ul.sortable.grid-3-col{data: {url: 'admin/events/sort'}}
+.grid
 	- @events.each do |event|
-		%li.event{data: {position: event.position, id: event.id}}
+		.grid-item{data: {position: event.position, id: event.id}}
 			- path = event.type == 'workshop' ? workshop_path(event, locale: I18n.locale) : exhibition_path(event, locale: I18n.locale)
 			- artists = event.artists
 			= link_to path do
-				.tile
-					= image_tag event.main_image.url(:tile), width: 600, height: 270,class: 'glitch'
-					.info
-						- if !event.category.blank?
-							.type
-								= t("events.categories.#{event.category}")
-						%h2.event-title= event.title
-						- artists.each do |a|
-							.artist-name= a.name
-						.location
-							#{l(event.event_dates.first.start, format: "%e")} - #{l(event.event_dates.first.end, format: "%e %B")} &mdash; #{event.location.name}
+				= image_tag event.main_image.url(:tile), width: 600, height: 270
+				.info
+					- if !event.category.blank?
+						%h3.type
+							= t("events.categories.#{event.category}")
+					%h4.event-title= event.title
+					- artists.each do |a|
+						.artist-name= a.name
+					.location
+						#{l(event.event_dates.first.start, format: "%e")} - #{l(event.event_dates.first.end, format: "%e %B")} &mdash; #{event.location.name}
