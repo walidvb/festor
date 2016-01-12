@@ -20,4 +20,16 @@ $(document).ready(function() {
 		options.iframe= true;
 		$(this).colorbox(options);
 	});
+
+	$('#container').imagesLoaded( function() {
+
+		$('.grid').isotope({
+			// options
+			itemSelector: '.grid-item',
+			layoutMode: 'masonry',
+			packery: {
+				gutter: 0
+			}
+		});
+	});
 });

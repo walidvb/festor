@@ -7,18 +7,17 @@
 		- Event.category_enum.each do |cat|
 			%input.cat-filter{:type => "checkbox", value: cat, id: "category-#{cat}", checked: true}
 				%label{:for => "category-#{cat}"}= t("events.categories.#{cat}")
-%ul.grid-3-col.artists-list.sortable-list.sortable{data: {url: 'admin/artists/sort'}}
+.grid.artists-list.sortable-list.sortable{data: {url: 'admin/artists/sort'}}
 	- @artists.each do |artist|
 		- event = artist.events.first
 		- type = event.category.blank? ? t("events.types.#{event.type}") : t("events.categories.#{event.category}") unless event.blank?
 		- classes = "#{event.category}" unless event.blank?
-		%li.mix.artist{class: classes, data: {position: artist.position, id: artist.id}}
+		.grid-item.mix.artist{class: classes, data: {position: artist.position, id: artist.id}}
 			- path = artist_path(artist, locale: I18n.locale)
 			= link_to path do
-				.tile
-					= image_tag artist.profile_picture.url(:tile), width: 600, height: 270, class: 'glitch'
-					.info
-						%h2.type= type unless type.blank?
-						%h1.artist-name
-							= artist.name
-						.artists= event.title unless event.blank?	
+				= image_tag artist.profile_picture.url(:tile), width: 600, height: 270
+				.info
+					%h4.type= type unless type.blank?
+					%h3.artist-name
+						= artist.name
+					.artists= event.title unless event.blank?
