@@ -7,7 +7,7 @@
 		- Event.category_enum.each do |cat|
 			%input.cat-filter{:type => "checkbox", value: cat, id: "category-#{cat}", checked: true}
 				%label{:for => "category-#{cat}"}= t("events.categories.#{cat}")
-.grid.artists-list.sortable-list.sortable{data: {url: 'admin/artists/sort'}}
+.grid.artists-list{data: {url: 'admin/artists/sort'}}
 	- @artists.each do |artist|
 		- event = artist.events.first
 		- type = event.category.blank? ? t("events.types.#{event.type}") : t("events.categories.#{event.category}") unless event.blank?
