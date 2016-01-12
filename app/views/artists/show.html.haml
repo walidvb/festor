@@ -1,20 +1,16 @@
 - event = @artist.events.first
-- content_for(:og_title, "#{@artist.name} – #{l(event.schedule_start, format: "%A %e %B")}")
+- content_for(:og_title, "#{@artist.name}")
 - content_for(:image, @artist.profile_picture.url)
 - content_for(:description, @artist.biography)
 
 .show-header
 	.artist-event
 		.single-event-info
-			- if event.schedule_end.nil?
-				.date= l(event.schedule_start, format: "%A %e %b – %H:%M")
-			- else
-				.date #{l(event.schedule_start, format: "%A %e")} - #{l(event.schedule_end, format: "%A %e %B")}
 			.location= link_to event.location.name, static_page_path(1, locale: I18n.locale)
 .tile
 	= image_tag @artist.profile_picture.url(:large), width: 1200, height: 535, class: 'glitch'
 	.info
-		.event-name	
+		.event-name
 			%h2.artist-event= link_to event.title, single_event_path(event, locale: I18n.locale)
 		.artist
 			%h1.artist-name= @artist.name
@@ -26,8 +22,5 @@
 .artist-desc.mf-row
 	.bio
 		= @artist.biography.html_safe unless @artist.biography.blank?
-	.sidebar
-		.sidebar-inner
-			.sidebar-text= mf_auto_html(@artist.sidebar_media)
 - if user_signed_in?
 	= link_to 'edit', "/admin/artist/#{@artist.id}/edit"
