@@ -3,7 +3,7 @@ class Event < ActiveRecord::Base
 
 	include EventAdmin
 	attr_accessor :artist_ids
-	translates :title, :description
+	translates :title, :description, :participants, :languages, :requirements, :material, :notes 
 	extend FriendlyId
   friendly_id :title, :use => [:globalize, :slugged]
   acts_as_list scope: 'type = \'#{type}\''

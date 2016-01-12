@@ -8,19 +8,14 @@
   .event-artists
     .event-musicians
       - @musicians.each do |mu|
-        = link_to artist_path(mu, locale: I18n.locale), class: "artist" do
-          %h5.artist-name= "#{mu.name}"
-          %h6.labels= "(#{[mu.label, mu.origin].compact.join(' / ')})" unless mu.label.blank? && mu.origin.blank?
+        = render 'artist', artist: mu
     .event-vjs
       - @vjs.each do |vj|
         = link_to artist_path(vj, locale: I18n.locale), class: "artist" do
-          %h5.artist-name= "#{vj.name}"
-          %h6.labels= "(#{[vj.label, vj.origin].compact.join(' / ')})" unless vj.label.blank? && vj.origin.blank?
+          = render 'artist', artist: vj
     .event-instructors
       - @instructors.each do |instructor|
-        = link_to artist_path(instructor, locale: I18n.locale), class: "artist" do
-          %h5.artist-name= "#{instructor.name}"
-          %h6.labels= "(#{[instructor.label, instructor.origin].compact.join(' / ')})" unless instructor.label.blank? && instructor.origin.blank?
+        = render 'artist', artist: instructor
   %h1.event-name= @event.title
   .event-infos
     - @dates.each do |date|
@@ -30,6 +25,27 @@
     - if(@event.finished?)
       %h5= link_to t('events.ticket'), @event.buy_link, class: "btn btn-md buy-link fa fa-shopping-cart", target: "_blank" unless @event.buy_link.blank?
 .show-desc= @event.description.html_safe unless @event.description.blank?
+.show-info
+  %ul.info-list
+    %li
+      .left= t('events.fields.price')
+      .right= @event.price
+    %li
+      .left= t('events.fields.participants')
+      .right= @event.participants
+    %li
+      .left= t('events.fields.languages')
+      .right= @event.languages
+    %li
+      .left= t('events.fields.requirements')
+      .right= @event.requirements
+    %li
+      .left= t('events.fields.material')
+      .right= @event.material
+    %li
+      .left= t('events.fields.notes')
+      .right= @event.notes
+
 - unless @event.extra_infos.empty?
   %table.extra-infos
     -@event.extra_infos.each do |extra|

@@ -22,6 +22,8 @@ en:
     venue: 'Venue Partners'
     institutional: 'Institutional Partners'
   events:
+    fields:
+      price:     "Price"
     types:
       workshop:   "Workshop"
       exhibition: "Installation"
