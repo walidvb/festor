@@ -9,18 +9,18 @@
     .event-musicians
       - @musicians.each do |mu|
         = link_to artist_path(mu, locale: I18n.locale), class: "artist" do
-          %h2.artist-name= "#{mu.name}"
-          %h3.labels= "(#{[mu.label, mu.origin].compact.join(' / ')})" unless mu.label.blank? && mu.label.blank?
+          %h5.artist-name= "#{mu.name}"
+          %h6.labels= "(#{[mu.label, mu.origin].compact.join(' / ')})" unless mu.label.blank? && mu.origin.blank?
     .event-vjs
       - @vjs.each do |vj|
-        = link_to artist_path(vj, locale: I18n.locale), class: "artist}" do
-          %h2.artist-name= "#{vj.name}"
-          %h3.labels= "(#{[vj.label, vj.origin].compact.join(' / ')})" unless vj.label.blank? && vj.label.blank?
+        = link_to artist_path(vj, locale: I18n.locale), class: "artist" do
+          %h5.artist-name= "#{vj.name}"
+          %h6.labels= "(#{[vj.label, vj.origin].compact.join(' / ')})" unless vj.label.blank? && vj.origin.blank?
     .event-instructors
       - @instructors.each do |instructor|
-        = link_to artist_path(instructor, locale: I18n.locale), class: "artist}" do
-          %h2.artist-name= "#{instructor.name}"
-          %h3.labels= "(#{[instructor.label, instructor.origin].compact.join(' / ')})" unless instructor.label.blank? && instructor.label.blank?
+        = link_to artist_path(instructor, locale: I18n.locale), class: "artist" do
+          %h5.artist-name= "#{instructor.name}"
+          %h6.labels= "(#{[instructor.label, instructor.origin].compact.join(' / ')})" unless instructor.label.blank? && instructor.origin.blank?
   %h1.event-name= @event.title
   .event-infos
     - @dates.each do |date|

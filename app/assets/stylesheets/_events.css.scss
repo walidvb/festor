@@ -5,19 +5,40 @@
 	display: none;
 }
 
+.show-header{
+	margin-bottom: $margin-vertical-large;
+	a{
+		display: inline-block;
+	}
+	.artist:not(:first-child){
+		margin-left: $margin-horizontal-normal;
+	}
+	.artist-name, .labels{
+		display: inline-block;
+		text-transform: uppercase;
+	}
+	.labels{
+		vertical-align: super;
+	}
+}
+
+.show-desc, .event-artist-bio, .artist-desc{
+	max-width: 80ch;
+}
+
 .event-infos{
 	margin-left: 1px;
 	h5{
 		display: inline-block;
     position: relative;
     border-bottom: solid 1px $black;
-		padding-left: 5px;
-    padding-right: 5px;
+		padding-left: 10px;
+    padding-right: 25px;
 		&:before{
 			content: '';
 		}
 		&:before, &:after{
-	    height: 0.5em;
+	    height: 0.6em;
 	    display: inline-block;
 	    border-left: 1px solid $black;
 	    position: absolute;
@@ -38,6 +59,10 @@
 	}
 }
 
+.show-desc{
+	margin-bottom: $margin-vertical-largest;
+}
+
 .artist-list, .extra{
 	li{
 		display: flex;
@@ -50,12 +75,9 @@
 		flex: 0 0 20%;
 	}
 	.right{
-		flex: 0 0 70%;
+		flex: 0 0 60%;
 	}
 	.event-artist-name, .event-artist-origin, .event-artist-label{
 		display: inline-block;
-	}
-	.event-artist-bio{
-		float: right;
 	}
 }

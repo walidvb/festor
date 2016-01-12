@@ -40,14 +40,8 @@ h2{
 body{
 	background-color: $background;
 	font-family: $body-font;
-	font-size : 14px;
 	padding-top:	$margin-vertical-normal;
-	@media #{$tablet}{
-		font-size : 16px;
-	}
-	@media #{$md}{
-		font-size : 20px;
-	}
+	font-size : $body-size;
 }
 
 .container, .row, .col-xs-12 {
@@ -90,12 +84,36 @@ h3{
 	font-size: $body-size;
 }
 
-h1, h2, h3, h4{
+h1, h2, h3, h4, h5{
 	color: $black;
+	font-weight: normal;
+	font-family: $body-font;
+}
+
+h1{
+	font-size : $largest;
+	margin-bottom: $margin-vertical-largest;
+	margin-top: 0px;
+}
+
+h2{
+	font-size : $larger;
+}
+
+h3{
+	font-size : $large;
+}
+
+h4{
+	font-size : $small;
 }
 
 h5{
-	font-weight: normal;
+	font-size : $body-size;
+}
+
+h6{
+	font-size : $smaller;
 }
 main{
 	font-family: $body-font;
@@ -103,7 +121,7 @@ main{
 
 body a{
 	color: $black;
-	text-decoration: underline;
+	text-decoration: none;
 	&:hover{
 		color: $white;
 		background:	$black;
