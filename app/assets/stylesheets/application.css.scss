@@ -13,10 +13,10 @@
 @import "ui_components";
 @import "header";
 @import "partners";
-// @import "artists";
+@import "artists";
 @import "events";
 @import "home";
-//@import "newsletter";
+@import "newsletter";
 
 .columns-2{
 	@media #{$tablet}
