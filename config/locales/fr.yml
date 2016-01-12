@@ -21,6 +21,13 @@ fr:
     venue: 'Espaces partenaires'
     institutional: 'Partenaires institutionnels'
   events:
+    fields:
+      price:        'Prix'
+      requirements: 'Profil des participants'
+      participants: 'Nombre de participants'
+      languages:    'Languages'
+      material:     'Matériel à fournir par les participants'
+      notes:        'Notes'
     types:
       workshop:     "workshop"
       exhibition:   "installation"

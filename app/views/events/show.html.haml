@@ -27,24 +27,30 @@
 .show-desc= @event.description.html_safe unless @event.description.blank?
 .show-info
   %ul.info-list
-    %li
-      .left= t('events.fields.price')
-      .right= @event.price
-    %li
-      .left= t('events.fields.participants')
-      .right= @event.participants
-    %li
-      .left= t('events.fields.languages')
-      .right= @event.languages
-    %li
-      .left= t('events.fields.requirements')
-      .right= @event.requirements
-    %li
-      .left= t('events.fields.material')
-      .right= @event.material
-    %li
-      .left= t('events.fields.notes')
-      .right= @event.notes
+    - unless @event.price.blank?
+      %li
+        .left= t('events.fields.price')
+        .right= @event.price
+    - unless @event.participants.blank?
+      %li
+        .left= t('events.fields.participants')
+        .right= @event.participants
+    - unless @event.languages.blank?
+      %li
+        .left= t('events.fields.languages')
+        .right= @event.languages
+    - unless @event.requirements.blank?
+      %li
+        .left= t('events.fields.requirements')
+        .right= @event.requirements
+    - unless @event.material.blank?
+      %li
+        .left= t('events.fields.material')
+        .right= @event.material
+    - unless @event.notes.blank?
+      %li
+        .left= t('events.fields.notes')
+        .right= @event.notes
 
 - unless @event.extra_infos.empty?
   %table.extra-infos
