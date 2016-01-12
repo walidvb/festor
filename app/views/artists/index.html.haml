@@ -2,10 +2,10 @@
 	.cat-filters
 		- Event.type_enum.each do |type|
 			/ - if type != :single_event
-			/ 	%input.cat-filter{:type => "checkbox", value: type, id: "category-#{type}", checked: true} 
+			/ 	%input.cat-filter{:type => "checkbox", value: type, id: "category-#{type}", checked: true}
 			/ 		%label{:for => "category-#{type}"}= t("events.types.#{type}")
 		- Event.category_enum.each do |cat|
-			%input.cat-filter{:type => "checkbox", value: cat, id: "category-#{cat}", checked: true} 
+			%input.cat-filter{:type => "checkbox", value: cat, id: "category-#{cat}", checked: true}
 				%label{:for => "category-#{cat}"}= t("events.categories.#{cat}")
 %ul.grid-3-col.artists-list.sortable-list.sortable{data: {url: 'admin/artists/sort'}}
 	- @artists.each do |artist|
@@ -18,10 +18,7 @@
 				.tile
 					= image_tag artist.profile_picture.url(:tile), width: 600, height: 270, class: 'glitch'
 					.info
-						%h2.type= type unless type.blank?	
+						%h2.type= type unless type.blank?
 						%h1.artist-name
 							= artist.name
 						.artists= event.title unless event.blank?	
-						.location
-							= schedule_for(event) unless event.blank?
-							= event.location.name unless event.blank?

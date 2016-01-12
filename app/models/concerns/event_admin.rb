@@ -30,6 +30,10 @@ module EventAdmin
           orderable true
           nested_form false
         end
+        configure :extra_infos do
+          orderable true
+          nested_form false
+        end
         [:slug, :assets, :position].each do |h|
           configure h do
             hide
