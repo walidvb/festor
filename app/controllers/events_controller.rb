@@ -27,6 +27,7 @@ class EventsController < ApplicationController
 		@dates = @event.event_dates
 		@musicians = @event.musicians
 		@vjs = @event.vjs
+		@instructors = @event.instructors
 		@location = @event.location
 		@links = @event.links
 		@assets = @event.assets

@@ -1,17 +1,12 @@
 #footer
   .container
-    .footer-separator
-      = link_to t('shared.program'), image_path('grille.pdf'), target: '_blank', class: 'program'
-      |
-      = link_to 'tickets'
-      |
+    .footer-links
       = link_to t('nav.about'), about_path(locale: I18n.locale)
       |
       = link_to t('nav.partners'), partners_path(locale: I18n.locale)
-      | follow us
-  .container
-    .logo
-      .footer-logo=image_tag('logo_black.png')
+      |
+      = link_to t('nav.previous'), partners_path(locale: I18n.locale)
+    .logo=image_tag('logo_black.png')
     .address
       %b Mapping Festival
       %p Avenue Ernest-Pictet 28/30

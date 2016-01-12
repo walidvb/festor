@@ -170,10 +170,9 @@ body a{
 	}
 }
 
-.footer-separator{
-	border-bottom: 2px solid $dark-grey;
-	text-align: left;
-	width: 100%;
+#footer{
+	border-top: solid 1px $black;
+	display: flex;
 }
 
 .map iframe {
