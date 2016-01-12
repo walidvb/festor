@@ -17,6 +17,7 @@
 @import "events";
 @import "home";
 @import "newsletter";
+@import "grid_index.css.scss";
 
 .columns-2{
 	@media #{$tablet}
@@ -246,4 +247,15 @@ body a{
     -webkit-transform: rotate(359deg);
     transform: rotate(359deg);
   }
+}
+
+/* isotope requirements*/
+.grid-item {
+	width: 100%;
+	@media #{$tablet}{
+		width: 50%;
+	}
+	@media #{$md}{
+		width: 33%;
+	}
 }
