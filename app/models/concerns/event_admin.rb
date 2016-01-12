@@ -31,6 +31,7 @@ module EventAdmin
           nested_form false
         end
         configure :extra_infos do
+          hide
           orderable true
           nested_form false
         end
