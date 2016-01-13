@@ -44,6 +44,7 @@ body{
 	font-family: $body-font;
 	padding-top:	$margin-vertical-normal;
 	font-size : $body-size;
+	overflow-x: hidden;
 }
 
 .container, .row, .col-xs-12 {
