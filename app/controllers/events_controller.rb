@@ -4,7 +4,7 @@ class EventsController < ApplicationController
 	def index
 		@events = Event.includes(:artists, :location).send(@type.to_sym)
 		if @type == :single_event
-			@dates = EventDate.all.uniq{|d| d.strftime("%e-%b-%y")}.map(&:start)
+			@dates = EventDate.all.uniq{|d| d.start.strftime("%e-%b-%y")}.map(&:start)
 			render 'index_single_events'
 		else
 			render 'index'

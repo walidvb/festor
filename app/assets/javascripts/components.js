@@ -1,3 +1,4 @@
+
 $(document).ready(function() {
 	var options = {
 		maxWidth: "95%",
@@ -22,14 +23,23 @@ $(document).ready(function() {
 	});
 
 	$('#container').imagesLoaded( function() {
-
-		$('.grid').isotope({
+		var $grid = $('.grid').isotope({
 			// options
 			itemSelector: '.grid-item',
 			layoutMode: 'masonry',
 			packery: {
 				gutter: 0
 			}
+		});
+
+		$('.cat-filters input').change(function(){
+			var filter = jQuery.map($('.cat-filters input:checked'), function(item){
+				return '.'+$(item).val();
+			}).join(', ');
+			console.log(filter);
+			$grid.isotope({
+				filter: filter
+			});
 		});
 	});
 });
