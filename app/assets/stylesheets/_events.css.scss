@@ -9,7 +9,11 @@
 	a{
 		display: inline-block;
 	}
-
+	.artist{
+		h5, h6{
+			margin: 0px;
+		}
+	}
 	.event-artists, .artist-event{
 		text-transform: uppercase;
 	}
@@ -85,7 +89,7 @@
 	margin-bottom: $margin-vertical-largest;
 }
 
-.artist-list, .extra{
+.artist-list, .extra, .info-list{
 	li{
 		display: flex;
 		justify-content: space-between;

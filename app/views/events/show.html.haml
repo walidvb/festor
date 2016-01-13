@@ -23,13 +23,16 @@
     %h5.location= link_to @location.name, "/#{I18n.locale}/infos"
     - if(@event.finished?)
       %h5= link_to t('events.ticket'), @event.buy_link, class: "btn btn-md buy-link fa fa-shopping-cart", target: "_blank" unless @event.buy_link.blank?
+    - if(@event.type != "workshop" )
+      %h5= @event.price
 .show-desc= @event.description.html_safe unless @event.description.blank?
 .show-info
   %ul.info-list
     - unless @event.price.blank?
-      %li
-        .left= t('events.fields.price')
-        .right= @event.price
+      - if(@event.type == "workshop" )
+        %li
+          .left= t('events.fields.price')
+          .right= @event.price
     - unless @event.participants.blank?
       %li
         .left= t('events.fields.participants')
