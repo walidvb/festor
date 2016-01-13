@@ -11,8 +11,8 @@
 					%label{:for => "category-#{cat}"}= t("events.categories.#{cat}")
 .grid#single-events-list.events-list.sortable-list.sortable{data: {url: 'admin/events/sort'}}
 	- @events.each do |event|
-		- date = event.event_dates.first
-		.grid-item.event{class: "#{event.category} #{date.start.strftime('%d-%m-%y')} #{date.end.strftime('%d-%m-%y') unless date.end.blank?} ", data: {position: event.position, id: event.id, date: date.start.strftime("%d-%m-%y")}}
+		- dates_as_string = event.event_dates.map{|date| date.start.strftime('%d-%m-%y')}.join(' ')
+		.grid-item.event{class: "#{event.category} #{dates_as_string}", data: {position: event.position, id: event.id}}
 			= link_to single_event_path(event, locale: I18n.locale) do
 				.tile
 					= image_tag event.main_image.url(:tile), width: 600, height: 270, class: 'glitch'
@@ -22,7 +22,8 @@
 						%h2.event-title= event.title
 						.artists= event.artists.map(&:name).join(', ')
 						.location
-							- if date.end.nil?
-								#{l(date.start, format: "%A %e %B")} &mdash; #{event.location.name}
-							- else
-								#{l(date.start, format: "%e")} - #{l(date.end, format: "%e %B")} &mdash; #{event.location.name}
+							- event.event_dates.each do |date|
+								- if date.end.nil?
+									#{l(date.start, format: "%A %e %B")} &mdash; #{event.location.name}
+								- else
+									#{l(date.start, format: "%e")} - #{l(date.end, format: "%e %B")} &mdash; #{event.location.name}

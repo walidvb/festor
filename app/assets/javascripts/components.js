@@ -33,13 +33,24 @@ $(document).ready(function() {
 		});
 
 		$('.cat-filters input').change(function(){
-			var filter = jQuery.map($('.cat-filters input:checked'), function(item){
-				return '.'+$(item).val();
-			}).join(', ');
-			console.log(filter);
 			$grid.isotope({
-				filter: filter
+				filter: getCurrentFilters()
 			});
 		});
+
+		function getCurrentFilters(){
+			var filters;
+			var filters = jQuery.map($('.cat-filters input:checked'), function(item){
+				return '.'+$(item).val();
+			});
+			var dateFilter = $('#date-filter').val();
+			if(dateFilter != 'empty'){
+				filters = jQuery.map(filters, function(item){
+					return item+'.'+dateFilter;
+				});
+			}
+			console.log(filters);
+			return filters.join(', ')
+		}
 	});
 });
