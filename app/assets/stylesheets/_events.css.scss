@@ -4,7 +4,7 @@
 .mix{
 }
 
-.show-header{
+.show-header, .artist-list{
 	margin-bottom: $margin-vertical-large;
 	a{
 		display: inline-block;
@@ -88,8 +88,13 @@
 .show-desc, .artist-desc{
 	margin-bottom: $margin-vertical-largest;
 }
-
-.artist-list, .extra, .info-list{
+.artist-list{
+	padding-top: $margin-vertical-largest;
+	.artist-name, .label{
+		text-transform: uppercase;
+	}
+}
+.info-list{
 	li{
 		display: flex;
 		justify-content: space-between;
@@ -102,9 +107,6 @@
 	}
 	.right{
 		flex: 0 0 60%;
-	}
-	.event-artist-name, .event-artist-origin, .event-artist-label{
-		display: inline-block;
 	}
 }
 

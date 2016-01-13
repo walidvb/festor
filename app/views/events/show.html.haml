@@ -30,27 +30,27 @@
   %ul.info-list
     - unless @event.price.blank?
       - if(@event.type == "workshop" )
-        %li
+        %li.price
           .left= t('events.fields.price')
           .right= @event.price
     - unless @event.participants.blank?
-      %li
+      %li.participants
         .left= t('events.fields.participants')
         .right= @event.participants
     - unless @event.languages.blank?
-      %li
+      %li.languages
         .left= t('events.fields.languages')
         .right= @event.languages
     - unless @event.requirements.blank?
-      %li
+      %li.requirements
         .left= t('events.fields.requirements')
         .right= @event.requirements
     - unless @event.material.blank?
-      %li
+      %li.material
         .left= t('events.fields.material')
         .right= @event.material
     - unless @event.notes.blank?
-      %li
+      %li.notes
         .left= t('events.fields.notes')
         .right= @event.notes
 
@@ -65,11 +65,5 @@
 - unless @event.artists.empty?
   %ul.artist-list
     - @event.artists.each do |artist|
-      %ul
-        %li
-          .left
-            .event-artist-name=artist.name
-            .event-artist-origin=artist.origin
-            .event-artist-label=artist.label
-          .right
-            .event-artist-bio=artist.biography.html_safe
+      = render 'artist', artist: artist
+      .event-artist-bio= artist.biography.html_safe
