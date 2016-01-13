@@ -11,8 +11,7 @@
         = render 'artist', artist: mu
     .event-vjs
       - @vjs.each do |vj|
-        = link_to artist_path(vj, locale: I18n.locale), class: "artist" do
-          = render 'artist', artist: vj
+        = render 'artist', artist: vj
     .event-instructors
       - @instructors.each do |instructor|
         = render 'artist', artist: instructor

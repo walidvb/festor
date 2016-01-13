@@ -14,7 +14,7 @@
 		text-transform: uppercase;
 	}
 	.artist-name, .labels, .origin{
-		display: block;
+		display: inline-block;
 		@media #{$tablet} {
 			display: inline;
 		}
@@ -23,8 +23,8 @@
 		vertical-align: super;
 	}
 	.event-artists{
-		.artist:not(:first-child){
-			margin-left: $margin-horizontal-normal;
+		.artist:not(:last-child){
+			margin-right: $margin-horizontal-normal;
 		}
 	}
 }
