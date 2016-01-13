@@ -138,11 +138,10 @@ body a{
 	height: auto;
 	bottom:0;
 	width: 100%;
-	background-color: $background;
+	background-color: $white;
 	color: $black;
 	font-size: $smaller;
 	margin-top: $larger;
-	margin-bottom: $smaller;
 	.container{
 		display:flex;
 		flex-direction: row;
@@ -262,4 +261,12 @@ body a{
 	@media #{$md}{
 		width: 33%;
 	}
+}
+/* p5 Lines*/
+#canvas{
+	height: 100%;
+	width: 100%;
+	position: fixed;
+	top: 0;
+	z-index: -1;
 }

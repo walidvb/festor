@@ -35,9 +35,6 @@
               - else
                 %form#mlb2-448223.newsletter-form{:action => "//app.mailerlite.fr/webforms/submit/u2g5s5", "data-code" => "u2g5s5", :target => "_blank"}
                   %button.ml-subscribe-button.fa.fa-icon.fa-inbox{:type => "submit"}
-          .header-middle
-            .header-logo
-              = link_to(image_tag( 'logo.svg', class: "header-logo"), root_path)
           .header-right
             .locales{class: I18n.locale}
               - if I18n.locale == :fr
@@ -57,7 +54,6 @@
             %h1.logo
               - %w{M A P P I N G F E S T I V A L * 2 0 1 6}.each do |letter|
                 %span.letter= letter
-          %canvas#canvas
         = render 'layouts/navigation'
     %main
       .container
@@ -65,7 +61,7 @@
           .col-xs-12
             = yield
     = render 'layouts/footer'
-
+    %canvas#canvas
     :plain
       <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
