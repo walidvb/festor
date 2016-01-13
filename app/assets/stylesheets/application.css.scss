@@ -93,7 +93,10 @@ h1, h2, h3, h4, h5{
 
 h1{
 	font-size : $largest;
-	margin-bottom: $margin-vertical-largest;
+	margin-bottom: $margin-vertical-normal;
+	@media #{$tablet} {
+		margin-bottom: $margin-vertical-largest;
+	}
 	margin-top: 0px;
 }
 

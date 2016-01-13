@@ -9,16 +9,39 @@
 	a{
 		display: inline-block;
 	}
-	.artist:not(:first-child){
-		margin-left: $margin-horizontal-normal;
-	}
-	.artist-name, .labels{
-		display: inline-block;
+
+	.event-artists, .artist-event{
 		text-transform: uppercase;
 	}
-	.labels{
+	.artist-name, .labels, .origin{
+		display: block;
+		@media #{$tablet} {
+			display: inline;
+		}
+	}
+	.labels, .origin{
 		vertical-align: super;
 	}
+	.event-artists{
+		.artist:not(:first-child){
+			margin-left: $margin-horizontal-normal;
+		}
+	}
+}
+
+.single-artist{
+		.artist-name{
+			vertical-align: middle;
+		}
+		.labels{
+			margin: 0;
+		}
+		h4{
+			margin : 0;
+		}
+		.origin:before{
+			content : ' / ';
+		}
 }
 
 .show-desc, .event-artist-bio, .artist-desc{
@@ -58,7 +81,7 @@
 	}
 }
 
-.show-desc{
+.show-desc, .artist-desc{
 	margin-bottom: $margin-vertical-largest;
 }
 
@@ -78,5 +101,14 @@
 	}
 	.event-artist-name, .event-artist-origin, .event-artist-label{
 		display: inline-block;
+	}
+}
+
+.links{
+	width: 33%;
+	display: flex;
+	justify-content: space-between;
+	li{
+		flex: 0 0 20%;
 	}
 }
