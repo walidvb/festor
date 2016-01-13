@@ -12,10 +12,6 @@
 		%h1.artist-name= @artist.name
 		%h4.labels= @artist.label
 		%h4.origin= @artist.origin
-.tile
-	= image_tag @artist.profile_picture.url(:large), width: 1200, height: 535
-	.info
-
 - if !@links.empty?
 	%ul.links
 		- @links.each do |l|
