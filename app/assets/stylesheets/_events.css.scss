@@ -4,7 +4,7 @@
 .mix{
 }
 
-.show-header{
+.show-header, .artist-list{
 	margin-bottom: $margin-vertical-large;
 	a{
 		display: inline-block;
@@ -48,6 +48,16 @@
 		}
 }
 
+.inline-image{
+	&:nth-of-type(2n){
+		float: left;
+		margin-left: -150px;
+	}
+	&:nth-of-type(2n+1){
+		float: right;
+		margin-right: -150px;
+	}
+}
 .show-desc, .event-artist-bio, .artist-desc{
 	max-width: 80ch;
 }
@@ -88,8 +98,13 @@
 .show-desc, .artist-desc{
 	margin-bottom: $margin-vertical-largest;
 }
-
-.artist-list, .extra, .info-list{
+.artist-list{
+	padding-top: $margin-vertical-largest;
+	.artist-name, .label{
+		text-transform: uppercase;
+	}
+}
+.info-list{
 	li{
 		display: flex;
 		justify-content: space-between;
@@ -102,9 +117,6 @@
 	}
 	.right{
 		flex: 0 0 60%;
-	}
-	.event-artist-name, .event-artist-origin, .event-artist-label{
-		display: inline-block;
 	}
 }
 

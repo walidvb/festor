@@ -1,75 +1,76 @@
 - content_for(:og_title, @event.title)
 - content_for(:image, @event.main_image.url)
 - content_for(:description, @event.description)
-.admin-entry
-  - if user_signed_in?
-    = link_to 'edit', "/admin/event/#{@event.id}/edit"
-.show-header
-  .event-artists
-    .event-musicians
-      - @musicians.each do |mu|
-        = render 'artist', artist: mu
-    .event-vjs
-      - @vjs.each do |vj|
-        = render 'artist', artist: vj
-    .event-instructors
-      - @instructors.each do |instructor|
-        = render 'artist', artist: instructor
-  %h1.event-name= @event.title
-  .event-infos
-    - @dates.each do |date|
-      %h5.day= [date.start, date.end].compact.map{|d| l(d, format: "%A %e %b")}.join(' – ')
-      %h5.time= [date.start, date.end].compact.map{|d| l(d, format: "%H:%M")}.join(' – ')
-    %h5.location= link_to @location.name, "/#{I18n.locale}/infos"
-    - if(@event.finished?)
-      %h5= link_to t('events.ticket'), @event.buy_link, class: "btn btn-md buy-link fa fa-shopping-cart", target: "_blank" unless @event.buy_link.blank?
-    - if(@event.type != "workshop" )
-      %h5= @event.price
-.show-desc= text_image(@event.description, @event.main_image.url(:tile)) unless @event.description.blank?
-.show-info
-  %ul.info-list
-    - unless @event.price.blank?
-      - if(@event.type == "workshop" )
+- cache(@event) do    
+  .admin-entry
+    - if user_signed_in?
+      = link_to 'edit', "/admin/event/#{@event.id}/edit"
+  .show-header
+    .event-artists
+      .event-musicians
+        - @musicians.each do |mu|
+          = render 'artist', artist: mu
+      .event-vjs
+        - @vjs.each do |vj|
+          = render 'artist', artist: vj
+      .event-instructors
+        - @instructors.each do |instructor|
+          = render 'artist', artist: instructor
+    %h1.event-name= @event.title
+    .event-infos
+      - @dates.each do |date|
+        %h5.day= [date.start, date.end].compact.map{|d| l(d, format: "%A %e %b")}.join(' – ')
+        %h5.time= [date.start, date.end].compact.map{|d| l(d, format: "%H:%M")}.join(' – ')
+      %h5.location= link_to @location.name, "/#{I18n.locale}/infos"
+      - if(@event.finished?)
+        %h5= link_to t('events.ticket'), @event.buy_link, class: "btn btn-md buy-link fa fa-shopping-cart", target: "_blank" unless @event.buy_link.blank?
+      - if(@event.type != "workshop" )
+        %h5= @event.price
+  .show-desc= text_image(@event.description, @event.main_image.url(:tile)) unless @event.description.blank?
+  .show-info
+    %ul.info-list
+      - unless @event.price.blank?
+        - if(@event.type == "workshop" )
+          %li
+            .left= t('events.fields.price')
+            .right= @event.price
+      - unless @event.participants.blank?
         %li
-          .left= t('events.fields.price')
-          .right= @event.price
-    - unless @event.participants.blank?
-      %li
-        .left= t('events.fields.participants')
-        .right= @event.participants
-    - unless @event.languages.blank?
-      %li
-        .left= t('events.fields.languages')
-        .right= @event.languages
-    - unless @event.requirements.blank?
-      %li
-        .left= t('events.fields.requirements')
-        .right= @event.requirements
-    - unless @event.material.blank?
-      %li
-        .left= t('events.fields.material')
-        .right= @event.material
-    - unless @event.notes.blank?
-      %li
-        .left= t('events.fields.notes')
-        .right= @event.notes
+          .left= t('events.fields.participants')
+          .right= @event.participants
+      - unless @event.languages.blank?
+        %li
+          .left= t('events.fields.languages')
+          .right= @event.languages
+      - unless @event.requirements.blank?
+        %li
+          .left= t('events.fields.requirements')
+          .right= @event.requirements
+      - unless @event.material.blank?
+        %li
+          .left= t('events.fields.material')
+          .right= @event.material
+      - unless @event.notes.blank?
+        %li
+          .left= t('events.fields.notes')
+          .right= @event.notes
 
-- unless @event.extra_infos.empty?
-  %table.extra-infos
-    -@event.extra_infos.each do |extra|
-      %ul
-        %li
-          .left= extra.title
-        %li
-          .right=extra.body
-- unless @event.artists.empty?
-  %ul.artist-list
-    - @event.artists.each do |artist|
-      %ul
-        %li
-          .left
-            .event-artist-name=artist.name
-            .event-artist-origin=artist.origin
-            .event-artist-label=artist.label
-          .right
-            .event-artist-bio=artist.biography.html_safe
+  - unless @event.extra_infos.empty?
+    %table.extra-infos
+      -@event.extra_infos.each do |extra|
+        %ul
+          %li
+            .left= extra.title
+          %li
+            .right=extra.body
+  - unless @event.artists.empty?
+    %ul.artist-list
+      - @event.artists.each do |artist|
+        %ul
+          %li
+            .left
+              .event-artist-name=artist.name
+              .event-artist-origin=artist.origin
+              .event-artist-label=artist.label
+            .right
+              .event-artist-bio=artist.biography.html_safe
