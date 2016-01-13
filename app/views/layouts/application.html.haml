@@ -52,7 +52,12 @@
               = link_to 'tickets'
             .motto
               = t("shared.motto").html_safe
-        %canvas#canvas
+        #banner
+          .logo.container
+            %h1.logo
+              - %w{M A P P I N G F E S T I V A L * 2 0 1 6}.each do |letter|
+                %span.letter= letter
+          %canvas#canvas
         = render 'layouts/navigation'
     %main
       .container

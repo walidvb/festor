@@ -111,6 +111,6 @@ $(document).ready(function(){
     processingInstance.random_coords();
   });
   $(window).on('resize', function(){
-    processingInstance.resize(window.innerWidth, window.innerHeight);
+    processingInstance.resize(canvas.offsetWidth, canvas.offsetHeight);
   });
 });
