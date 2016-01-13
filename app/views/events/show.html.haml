@@ -25,7 +25,7 @@
       %h5= link_to t('events.ticket'), @event.buy_link, class: "btn btn-md buy-link fa fa-shopping-cart", target: "_blank" unless @event.buy_link.blank?
     - if(@event.type != "workshop" )
       %h5= @event.price
-.show-desc= @event.description.html_safe unless @event.description.blank?
+.show-desc= text_image(@event.description, @event.main_image.url(:tile)) unless @event.description.blank?
 .show-info
   %ul.info-list
     - unless @event.price.blank?

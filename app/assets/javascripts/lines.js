@@ -107,7 +107,7 @@ $(document).ready(function(){
   var canvas = document.getElementById("canvas");
   var processingInstance = new Processing(canvas, sketchProc);
   processingInstance.resize(canvas.offsetWidth, canvas.offsetHeight);
-  $('#beta').on('keypress', function(evt){
+  $('#banner').on('click', function(evt){
     processingInstance.random_coords();
   });
   $(window).on('resize', function(){
