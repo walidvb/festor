@@ -42,11 +42,15 @@ h2{
 body{
 	background-color: $background;
 	font-family: $body-font;
-	padding-top:	$margin-vertical-normal;
 	font-size : $body-size;
 	overflow-x: hidden;
 }
 
+.super-main{
+		@extend .container;
+    background: rgba(255,255,255,0.95);
+    padding-top: $margin-vertical-normal;
+}
 .container, .row, .col-xs-12 {
 	@media #{$mobile}
 	{
