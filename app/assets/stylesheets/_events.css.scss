@@ -110,19 +110,38 @@ h1{
 		text-transform: uppercase;
 	}
 }
-.info-list{
-	li{
-		display: flex;
-		justify-content: space-between;
+
+.show-info{
+	margin: 2rem 0 2rem 1rem;
+	background: transparent;
+	display: block;
+	float: right;
+	@media #{$tablet}{
+		width: 440px;
+		margin-right: 30rem;
 	}
-	.left, .right{
+}
+
+.info-list{
+	table{
+		width: 100%;
+	}
+	tr{
 		border-top: solid 1px $black;
 	}
+	td{
+		vertical-align: top;
+	}
+	.left, .right{
+		display: inline-block;
+	}
 	.left{
-		flex: 0 0 20%;
+		min-width: 40%;
+		font-weight: bold;
 	}
 	.right{
-		flex: 0 0 60%;
+		max-width: 50%;
+		padding-left: 1rem;
 	}
 }
 
