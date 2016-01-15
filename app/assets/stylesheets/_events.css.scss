@@ -112,13 +112,14 @@ h1{
 }
 
 .show-info{
-	margin: 2rem 0 2rem 1rem;
 	background: transparent;
 	display: block;
 	float: right;
+	margin: 2rem 0 2rem 0rem;
 	@media #{$tablet}{
 		width: 440px;
 		margin-right: 30rem;
+		margin: 2rem 0 2rem 1rem;
 	}
 }
 
@@ -129,6 +130,9 @@ h1{
 	tr{
 		border-top: solid 1px $black;
 	}
+	tr:last-child{
+		border-bottom: solid 1px $black;
+	}
 	td{
 		vertical-align: top;
 	}
@@ -136,6 +140,10 @@ h1{
 		display: inline-block;
 	}
 	.left{
+		padding-left: 1rem;
+		@media #{$tablet}{
+			padding-left: 0;
+		}
 		min-width: 40%;
 		font-weight: bold;
 	}
