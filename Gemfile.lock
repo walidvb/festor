@@ -53,7 +53,7 @@ GEM
       redcarpet (~> 3.3)
       rinku (~> 1.7)
       tag_helper (~> 0.5)
-    autoprefixer-rails (6.2.3)
+    autoprefixer-rails (6.3.1)
       execjs
       json
     awesome_print (1.6.1)
@@ -254,7 +254,7 @@ GEM
     fog-vsphere (0.4.0)
       fog-core
       rbvmomi (~> 1.8)
-    fog-xenserver (0.2.2)
+    fog-xenserver (0.2.3)
       fog-core
       fog-xml
     fog-xml (0.1.2)
@@ -453,7 +453,7 @@ GEM
       activesupport (= 4.0.4)
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
-    rake (10.4.2)
+    rake (10.5.0)
     rb-fchange (0.0.6)
       ffi
     rb-fsevent (0.9.7)
@@ -499,7 +499,7 @@ GEM
       sass (~> 3.2.0)
       sprockets (~> 2.8, <= 2.11.0)
       sprockets-rails (~> 2.0)
-    selenium-webdriver (2.48.1)
+    selenium-webdriver (2.49.0)
       childprocess (~> 0.5)
       multi_json (~> 1.0)
       rubyzip (~> 1.0)

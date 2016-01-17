@@ -51,7 +51,7 @@ module ApplicationHelper
       dailymotion(:width => 600, :height => 375)
       soundcloud
       flickr
-      simple_format;
+      simple_format
       link(:target => 'blank')
       image
     }.html_safe unless html.blank?
@@ -64,8 +64,4 @@ module ApplicationHelper
       link_to('', getEmbedLink(asset.video), "rel" => group, class: "colorbox video")
     end
   end
-
-	def text_image text, image_url
-		text.gsub('[image]', image_tag(image_url, class: 'inline-image')).html_safe
-	end
 end
