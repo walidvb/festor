@@ -1,0 +1,26 @@
+%table.show-info
+  %tbody.info-list
+    - if !event.price.blank? && event.type == "workshop"
+      %tr.price
+        %td.left= t('events.fields.price')
+        %td.right= event.price
+    - unless event.participants.blank?
+      %tr.participants
+        %td.left= t('events.fields.participants')
+        %td.right= event.participants
+    - unless event.languages.blank?
+      %tr.languages
+        %td.left= t('events.fields.languages')
+        %td.right= event.languages
+    - unless event.requirements.blank?
+      %tr.requirements
+        %td.left= t('events.fields.requirements')
+        %td.right= event.requirements
+    - unless event.material.blank?
+      %tr.material
+        %td.left= t('events.fields.material')
+        %td.right= event.material
+    - unless event.notes.blank?
+      %tr.notes
+        %td.left= t('events.fields.notes')
+        %td.right= event.notes
