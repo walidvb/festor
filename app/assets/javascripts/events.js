@@ -13,9 +13,10 @@ $(document, '[data-load-more]').on('click', function(e){
     $.ajax({
       url: $this.data('load-more'),
       success: function(data){
-        $('.close').show();
+        var container = $('.load-more-container');
         $('#main-content').hide();
-        $('.load-more-container').html($(data).find('#main-content')).show();
+        container.html($(data).find('#main-content')).show();
+        $('<div class="close"/>').prependTo(container).show();
       }
     })
   };
