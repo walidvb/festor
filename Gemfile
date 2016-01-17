@@ -34,7 +34,7 @@ gem 'colorbox-rails'
 
 gem "rails_admin"
 
-gem "auto_html"
+gem "auto_html", '~> 1.6.4'
 #### I18
 gem 'rails-i18n', '~> 4.0.0'
 gem 'globalize'
