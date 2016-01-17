@@ -43,20 +43,6 @@ module ApplicationHelper
     end
   end
 
-  def mf_auto_html html
-    auto_html(html){
-      html_escape;
-      youtube(:width => 600, :height => 375)
-      vimeo(:width => 600, :height => 375)
-      dailymotion(:width => 600, :height => 375)
-      soundcloud
-      flickr
-      simple_format
-      link(:target => 'blank')
-      image
-    }.html_safe unless html.blank?
-  end
-
   def asset_colorbox asset, group
     if asset.file?
      link_to('', asset.file.url, "rel" => group, class: "colorbox image")
