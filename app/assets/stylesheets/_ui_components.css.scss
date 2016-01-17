@@ -1,33 +1,13 @@
-@mixin triangle-up($triangle-size, $color: white){
-	border-bottom: $triangle-size solid $color;
-	border-right: $triangle-size solid transparent;
-	border-left: $triangle-size solid transparent;
-	content: '';
-	margin: -$triangle-size auto 0;
-	display: block;
-	width: 0;
+.close{
+	display: none;
 	position: absolute;
-	top: -$triangle-size;
-	left: 0;
-	right: 0;
-	margin: 0 auto;
+	top: 25px;
+	right: 25px;
+	@extend .fa;
+	@extend .fa-close;
+	opacity: 1;
+	font-size: 2em;
 }
-
-@mixin triangle-down($triangle-size, $color: white){
-	border-right: $triangle-size solid transparent;
-	border-left: $triangle-size solid transparent;
-	border-top: $triangle-size solid $color;
-	content: '';
-	margin: -$triangle-size auto 0;
-	display: block;
-	width: 0;
-	position: absolute;
-	top: -$triangle-size;
-	left: 0;
-	right: 0;
-	margin: 0 auto;
-}
-
 $form-font-size: 16px;
 .prev-next-navigation{
 	display: none;

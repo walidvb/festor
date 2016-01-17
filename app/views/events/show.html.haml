@@ -1,6 +1,7 @@
 - content_for(:og_title, @event.title)
 - content_for(:image, @event.main_image.url)
 - content_for(:description, @event.description)
+.close
 #main-content
   .admin-entry
     - if user_signed_in?
