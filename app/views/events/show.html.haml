@@ -2,21 +2,23 @@
 - content_for(:image, @event.main_image.url)
 - content_for(:description, @event.description)
 .close
+.show-header
+  .event-artists
+    .event-musicians
+      - @musicians.each do |mu|
+        = render 'artist', artist: mu
+    .event-vjs
+      - @vjs.each do |vj|
+        = render 'artist', artist: vj
+    .event-instructors
+      - @instructors.each do |instructor|
+        = render 'artist', artist: instructor
 #main-content
   .admin-entry
     - if user_signed_in?
       = link_to 'edit', "/admin/event/#{@event.id}/edit"
+
   .show-header
-    .event-artists
-      .event-musicians
-        - @musicians.each do |mu|
-          = render 'artist', artist: mu
-      .event-vjs
-        - @vjs.each do |vj|
-          = render 'artist', artist: vj
-      .event-instructors
-        - @instructors.each do |instructor|
-          = render 'artist', artist: instructor
     %h1.event-name= @event.title
     .event-infos
       - @dates.each do |date|

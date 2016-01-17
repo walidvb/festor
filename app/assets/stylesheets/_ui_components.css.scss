@@ -1,13 +1,26 @@
-.close{
-	display: none;
+.load-more-container .nav{
 	position: absolute;
 	top: 25px;
 	right: 25px;
-	@extend .fa;
-	@extend .fa-close;
 	opacity: 1;
 	font-size: 2em;
 }
+
+.close{
+	@extend .fa;
+	@extend .fa-close;
+}
+
+.prev{
+	@extend .fa;
+	@extend .fa-angle-left;
+}
+
+.next{
+	@extend .fa;
+	@extend .fa-angle-right;
+}
+
 $form-font-size: 16px;
 .prev-next-navigation{
 	display: none;
