@@ -2,20 +2,22 @@
 - content_for(:og_title, "#{@artist.name}")
 - content_for(:image, @artist.profile_picture.url)
 - content_for(:description, @artist.biography)
-.admin-entry
-	- if user_signed_in?
-		= link_to 'edit', "/admin/artist/#{@artist.id}/edit"
-.show-header
-	.event-name
-		%h5.artist-event= link_to event.title, single_event_path(event, locale: I18n.locale)
-	.single-artist
-		%h1.artist-name= @artist.name
-		%h4.labels= @artist.label
-		%h4.origin= @artist.origin
-- if !@links.empty?
-	%ul.links
-		- @links.each do |l|
-			%li= link_to l.text_to_show, l.url, target: "_blank"
-.artist-desc.mf-row
-	.bio
-		= @artist.biography.html_safe unless @artist.biography.blank?
+#main-content
+	.admin-entry
+		- if user_signed_in?
+			= link_to 'edit', "/admin/artist/#{@artist.id}/edit"
+	.close.hidden
+	.show-header
+		.event-name
+			%h5.artist-event= link_to event.title, single_event_path(event, locale: I18n.locale)
+		.single-artist
+			%h1.artist-name= @artist.name
+			%h4.labels= @artist.label
+			%h4.origin= @artist.origin
+	- if !@links.empty?
+		%ul.links
+			- @links.each do |l|
+				%li= link_to l.text_to_show, l.url, target: "_blank"
+	.artist-desc.mf-row
+		.bio
+			= @artist.biography.html_safe unless @artist.biography.blank?
