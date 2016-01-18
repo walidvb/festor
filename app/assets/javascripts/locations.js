@@ -285,4 +285,6 @@ function loadScript() {
   document.body.appendChild(script);
 }
 
-window.onload = loadScript;
+$(document).ready(function(){
+	loadScript();
+});
