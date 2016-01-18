@@ -23,6 +23,7 @@
 //= require rails_admin_sortable.js
 //= require colorbox/jquery.colorbox-min.js
 //= require logo
+//= require locations
 //= require_tree .
 
 $(function() {
