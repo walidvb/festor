@@ -23,11 +23,12 @@
       - @dates.each do |date|
         %h5.day= [date.start, date.end].compact.map{|d| l(d, format: "%A %e %b")}.join(' – ')
         %h5.time= [date.start, date.end].compact.map{|d| l(d, format: "%H:%M")}.join(' – ')
-      %h5.location= link_to @location.name, "/#{I18n.locale}/infos"
+        - unless @location.nil?
+          %h5.location= link_to @location.name, "/#{I18n.locale}/infos" 
       - if(@event.finished?)
         %h5= link_to t('events.ticket'), @event.buy_link, class: "btn btn-md buy-link fa fa-shopping-cart", target: "_blank" unless @event.buy_link.blank?
-      - if(@event.type != "workshop" )
-        %h5= @event.price
+      - if(@event.type != "workshop" && !@event.price.blank? )
+        %h5.price= @event.price
   .show-desc= interpolate(@event.description, image: @event.main_image.url(:large), infos: render('info_block', event: @event)).html_safe unless @event.description.blank?
   - unless @event.extra_infos.empty?
     %table.extra-infos
