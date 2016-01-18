@@ -44,7 +44,7 @@ $(document).ready(function() {
 				return '.'+$(item).val();
 			});
 			var dateFilter = $('#date-filter').val();
-			if(dateFilter != 'empty'){
+			if(dateFilter != 'empty' && dateFilter != undefined){
 				filters = jQuery.map(filters, function(item){
 					return item+'.'+dateFilter;
 				});

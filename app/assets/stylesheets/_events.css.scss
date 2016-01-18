@@ -148,6 +148,12 @@ h1{
 	}
 }
 
+.show-xs{
+	@media #{$tablet}{
+		display: none;
+	}
+}
+
 .iframe{
 	width: 55ch;
 	float: left;
