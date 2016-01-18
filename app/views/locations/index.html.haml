@@ -1,3 +1,4 @@
-#google-map-wrapper
+
+#google-map-wrapper{ data: { "marker-url" => image_url("google-map-marker.png")}}
   #google-map-loader
-  #google-map{ data: {"adresse" => @locations.map(&:name).join('*'), "latitude" => @locations.map(&:latitude).join('-'), "longitude" => @locations.map(&:longitude).join('-'), "title" => @locations.map(&:name).join('*'),    "url" => @locations.map(&:name).join('*'), "zoom" => "14"}}
+  #google-map{ data: {"adresse" => @locations.map(&:address).join('*'), "latitude" => @locations.map(&:latitude).join('-'), "longitude" => @locations.map(&:longitude).join('-'), "title" => @locations.map(&:name).join('*'),    "url" => @locations.map{|l| "##{l.slug}"}.join('*'), "zoom" => "14"}}

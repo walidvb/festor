@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160118163737) do
+ActiveRecord::Schema.define(version: 20160118223302) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_stat_statements"
@@ -480,7 +480,10 @@ ActiveRecord::Schema.define(version: 20160118163737) do
     t.datetime "picture_updated_at"
     t.float    "latitude"
     t.float    "longitude"
+    t.string   "slug"
   end
+
+  add_index "locations", ["slug"], name: "index_locations_on_slug", using: :btree
 
   create_table "optimizely_experiments", force: true do |t|
     t.string   "experiment_id"

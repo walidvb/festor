@@ -208,13 +208,14 @@ function renderGoogleMap() {
 		content: 'chargement...'
 	});
 	var markerArray = [];
+	var iconUrl = $('#google-map-wrapper').data('marker-url');
 	for(var i = 0; i < latitude.length; i++) {
 		var myNewLatLng = new google.maps.LatLng(latitude[i], longitude[i]);
 		var marker = new google.maps.Marker({
 			position: myNewLatLng,
 			map: map,
 			title: title[i],
-			icon: '#{image_url("google-map-marker.png")}',
+			icon: iconUrl,
 			zIndex: i+10
 		});
 		markerArray[i] = marker;
@@ -263,6 +264,7 @@ function renderGoogleMap() {
 	$(window).bind('hashchange',function() {
 		var pageHash = window.location.hash;
 		pageHash = pageHash.substring(1);
+		console.log(pageHash);
 		$('#lieux .button').each(function(i) {
 			if($(this).attr('data-title') == pageHash) {
 				openInfoWindow(map, i, latitude, longitude, title, adresse, url, markerArray);
