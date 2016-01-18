@@ -35,3 +35,18 @@
     }
   }
 }
+
+a.artist{
+  .artist-name{
+    transition: text-shadow 0.25s cubic-bezier(0, 0.59, 0.34, 0.85);
+    text-shadow: 0em 0 0px white, 0em 0 0px white;
+  }
+  &:hover .labels{
+    color: transparent;
+  }
+  &:hover .artist-name{
+    transition: text-shadow 0.25s cubic-bezier(0, 0.59, 0.34, 0.85);
+    text-shadow: 0.15em 0 0px white, 0.3em 0 0px white;
+    color: white;
+  }
+}
