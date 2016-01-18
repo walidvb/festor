@@ -20,16 +20,18 @@
     left: 0;
     right: 0;
   }
+  text-shadow: 0.3em 0 0px black, 0.6em 0 0px black;
+  will-change: true;
   .letter{
     padding: 0.3em 0;
     flex: 0 0 25%;
-    text-shadow: 0.3em 0 0px black, 0.6em 0 0px black;
     transition: all 0.3s ease-out;
   }
-  &:hover .letter{
-    text-shadow: 0 0px 0px black, 0 0px 0px black;
-    &:hover{
-      text-shadow: 0.3em 0 0px black, 0.6em 0 0px black;
+  &:hover{
+      text-shadow: 0 0px 0px black, 0 0px 0px black;
+    & .letter:hover{
+
+            text-shadow: 0.3em 0 0px black, 0.6em 0 0px black;
     }
   }
 }
