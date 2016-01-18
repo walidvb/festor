@@ -9,7 +9,8 @@
 		}
 	}
 	.event-artists, .artist-event{
-		text-transform: uppercase;
+		text-transform: capitalize;
+		max-width: 85ch;
 	}
 	.artist-name, .labels, .origin{
 		display: inline-block;
@@ -112,7 +113,7 @@ h1{
 .artist-list{
 	padding-top: $margin-vertical-largest;
 	.artist-name, .label{
-		text-transform: uppercase;
+		text-transform: capitalize;
 	}
 }
 
