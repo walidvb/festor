@@ -2,11 +2,11 @@
   text-transform: uppercase;
   display: flex;
   align-items: center;
-
   height: 100vh;
   color: #111;
   position: relative;
   font-size: 3em;
+  will-change: true;
   .logo{
     align-content: center;
     font-size: inherit;
@@ -21,7 +21,7 @@
     right: 0;
   }
   text-shadow: 0.3em 0 0px black, 0.6em 0 0px black;
-  will-change: true;
+  text-indent: 0.6em;
   .letter{
     padding: 0.3em 0;
     flex: 0 0 25%;
