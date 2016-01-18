@@ -27,6 +27,8 @@ gem 'acts_as_list'
 gem 'compass-rails', '2.0.0'
 gem 'rails_autolink'
 
+gem 'geocoder'
+
 #### UI
 gem 'chosen-rails'
 gem "autoprefixer-rails"
