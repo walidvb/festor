@@ -214,7 +214,7 @@ function renderGoogleMap() {
 			position: myNewLatLng,
 			map: map,
 			title: title[i],
-			icon: 'http://miragefestival.com/2015/dev/wp-content/themes/Mirage2015/images/google-map-marker.png',
+			icon: '#{image_url("google-map-marker.png")}',
 			zIndex: i+10
 		});
 		markerArray[i] = marker;
