@@ -114,12 +114,11 @@ h1{
 
 .show-info{
 	background: transparent;
-	display: block;
 	float: right;
 	margin: 2rem 0 2rem 0rem;
 	@media #{$tablet}{
 		width: 440px;
-		margin: 2rem 30rem 2rem 1rem;
+		margin: 2rem 3rem 2rem 1rem;
 	}
 }
 
