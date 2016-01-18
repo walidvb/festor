@@ -16,6 +16,7 @@ en:
     gallery:    "gallery"
     about:      'about'
     partners:   'partners'
+    previous_title: 'previous editions'
   partners:
     media:          'Media Partners'
     private:        'Private Partners'

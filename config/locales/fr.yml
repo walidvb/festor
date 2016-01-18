@@ -15,6 +15,7 @@ fr:
     gallery:    "galerie"
     about:      'à propos'
     partners:   'partenaires'
+    previous_title: 'éditions précédentes'
   partners:
     media: 'Partenaires médias'
     private: 'Partenaires privés'
