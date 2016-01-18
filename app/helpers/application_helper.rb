@@ -50,4 +50,19 @@ module ApplicationHelper
       link_to('', getEmbedLink(asset.video), "rel" => group, class: "colorbox video")
     end
   end
+
+  def interpolate text, options = {}
+    text.gsub!('[image]', image_tag(options[:image], class: 'inline-image')) unless options[:image].blank?
+    text.gsub!('[info]', options[:infos]) unless options[:infos].nil?
+    auto_html(text) {
+      youtube(:width => 600, :height => 375)
+      vimeo(:width => 600, :height => 375)
+      dailymotion(:width => 600, :height => 375)
+      soundcloud
+      flickr
+      simple_format
+      link(:target => 'blank')
+      image
+    }
+  end
 end
