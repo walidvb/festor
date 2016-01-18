@@ -60,7 +60,7 @@ module ApplicationHelper
       youtube(:width => 600, :height => 375)
       vimeo(:width => 600, :height => 375)
       dailymotion(:width => 600, :height => 375)
-      soundcloud
+      soundcloud_()
       flickr
       simple_format
       link(:target => 'blank')
