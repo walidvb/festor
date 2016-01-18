@@ -33,7 +33,7 @@
 
   // shadows
   text-shadow: 0.3em 0 0px black, 0.6em 0 0px black;
-  &.shadow-opposite{
+  .shadow-opposite &{
     text-shadow: -0.3em 0 0px black, -0.6em 0 0px black;
     & .logo:hover{
         text-shadow: 0 0px 0px black, 0 0px 0px black!important;
