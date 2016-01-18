@@ -1,6 +1,7 @@
 $(document).ready(function(){
-  var target = $('#banner');
-  target.mousemove(function(e){
+
+  var target = $('h1.logo')
+  $('#banner').mousemove(function(e){
     var $this = $(this);
     var yInDiv = event.clientY - this.offsetTop;
     var totalHeight = $this.height()/2;
@@ -19,7 +20,7 @@ $(document).ready(function(){
       'text-shadow': dist + 'em 0 0px black, '+dist*2+'em 0 0px black'
     });
   }).mouseleave(function(){
-    $(this).attr('style', '');
+    target.attr('style', '');
   });
 
   function map(value, minTo, maxTo, minFrom, maxFrom){
