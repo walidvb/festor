@@ -141,8 +141,17 @@ h1{
 	margin: 2rem 0 2rem 0rem;
 	@media #{$tablet}{
 		width: 440px;
-		margin: 2rem 3rem 2rem 1rem;
+		margin: 2rem -8ch 2rem 1rem;
 	}
+	@media #{$md}{
+		margin: 2rem -32ch 2rem 1rem;
+	}
+}
+
+.iframe{
+	width: 55ch;
+	float: left;
+	margin-left: -20ch;
 }
 
 .info-list{
