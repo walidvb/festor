@@ -1,4 +1,4 @@
-var thanks = "large up to http://www.miragefestival.com/ for this code. We love you mirage";
+console.log("Thank you mirage for this code, couldn't be bothered to write it myself – the vbbros");
 var myInfoWindow, newInfoWindow = null;
 
 // Create an array of styles.
