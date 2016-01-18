@@ -1,25 +1,27 @@
 #banner{
   text-transform: uppercase;
-  display: flex;
-  align-items: center;
-  height: 100vh;
-  color: #111;
-  position: relative;
   font-size: 3em;
   will-change: true;
+  padding: 40px 0;
+  // to center when text-shadowed
+  text-indent: 0.6em;
   .logo{
     align-content: center;
     font-size: inherit;
-    position: absolute;
     top: 0;
     bottom: 0;
     margin: auto;
     width: 6em;
     display: flex;
     flex-wrap: wrap;
-    left: 0;
-    right: 0;
   }
+  .letter{
+    padding: 0.3em 0;
+    flex: 0 0 25%;
+    transition: all 0.3s ease-out;
+  }
+
+  // shadows
   text-shadow: 0.3em 0 0px black, 0.6em 0 0px black;
   &.shadow-opposite{
     text-shadow: -0.3em 0 0px black, -0.6em 0 0px black;
@@ -30,13 +32,6 @@
       }
     }
   }
-  text-indent: 0.6em;
-  .letter{
-    padding: 0.3em 0;
-    flex: 0 0 25%;
-    transition: all 0.3s ease-out;
-  }
-
   & .logo:hover{
       text-shadow: 0 0px 0px black, 0 0px 0px black!important;
     & .letter:hover{
