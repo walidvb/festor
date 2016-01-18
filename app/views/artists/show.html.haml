@@ -2,14 +2,15 @@
 - content_for(:og_title, "#{@artist.name}")
 - content_for(:image, @artist.profile_picture.url)
 - content_for(:description, @artist.biography)
-.close.hidden close
+.admin-entry
+	- if user_signed_in?
+		= link_to 'edit', "/admin/artist/#{@artist.id}/edit"
+.show-header
+	.event-name
+		%h5.artist-event= link_to event.title, single_event_path(event, locale: I18n.locale)
 #main-content
-	.admin-entry
-		- if user_signed_in?
-			= link_to 'edit', "/admin/artist/#{@artist.id}/edit"
+
 	.show-header
-		.event-name
-			%h5.artist-event= link_to event.title, single_event_path(event, locale: I18n.locale)
 		.single-artist
 			%h1.artist-name= @artist.name
 			%h4.labels= @artist.label
