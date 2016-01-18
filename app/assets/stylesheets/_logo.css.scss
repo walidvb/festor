@@ -1,7 +1,6 @@
 #banner{
   text-transform: uppercase;
   font-size: 3em;
-  will-change: true;
   padding: 40px 0;
   // to center when text-shadowed
   text-indent: 0.6em;
@@ -16,9 +15,20 @@
     flex-wrap: wrap;
   }
   .letter{
+    will-change: true;
     padding: 0.3em 0;
     flex: 0 0 25%;
     transition: all 0.3s ease-out;
+  }
+  $list: 3n, 2n+1, 2n, 4n+1, 3n+1;
+  $delay: 0s;
+  &:not(:hover) .letter{
+    @each $var in $list{
+      &:nth-child(#{$var}){
+        transition-delay: #{$delay};
+        $delay: $delay+0.015;
+      }
+    }
   }
 
   // shadows

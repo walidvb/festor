@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
   var target = $('h1.logo')
-  $('#banner').mousemove(function(e){
+  $('header').mousemove(function(e){
     var $this = $(this);
     var yInDiv = event.clientY - this.offsetTop;
     var totalHeight = $this.height()/2;
