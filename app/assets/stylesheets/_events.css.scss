@@ -57,7 +57,11 @@ h1{
 	}
 }
 .show-desc, .event-artist-bio, .artist-desc, .static-page-body{
-	max-width: 80ch;
+	padding: 0 1rem 0 1rem;
+	@media #{$tablet}{
+		max-width: 80ch;
+		padding: 0 0 0 0;
+	}
 }
 
 .inline-image:nth-of-type(2n){
