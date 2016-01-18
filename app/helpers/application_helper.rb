@@ -53,7 +53,9 @@ module ApplicationHelper
 
   def interpolate text, options = {}
     text.gsub!('[image]', image_tag(options[:image], class: 'inline-image')) unless options[:image].blank?
-    text.gsub!('[info]', options[:infos]) unless options[:infos].nil?
+    text.gsub!('[info]', options[:infos].gsub(/[\n\r]/, '')
+      ) unless options[:infos].nil?
+
     auto_html(text) {
       youtube(:width => 600, :height => 375)
       vimeo(:width => 600, :height => 375)
