@@ -1,4 +1,7 @@
 class Location < ActiveRecord::Base
+	geocoded_by :address_with_country   # can also be an IP address
+	after_validation :geocode          # auto-fetch coordinates
+
 	has_many :events
 	has_many :bookings, through: :events
 	has_many :artists, through: :bookings
@@ -13,4 +16,8 @@ class Location < ActiveRecord::Base
 	:use_timestamp => false
 	validates_attachment_content_type :picture, :content_type => /\Aimage\/.*\Z/
 
+	private
+	def address_with_country
+		self.address + ' Switzerland'
+	end
 end

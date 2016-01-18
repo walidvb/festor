@@ -1,4 +1,3 @@
-- @locations.each do |location|
-  = raw location.name
-  = raw location.address
-  = image_tag(location.picture.url)
+#google-map-wrapper
+  #google-map-loader
+  #google-map{ data: {"adresse" => @locations.map(&:name).join('*'), "latitude" => @locations.map(&:latitude).join('-'), "longitude" => @locations.map(&:longitude).join('-'), "title" => @locations.map(&:name).join('*'),    "url" => @locations.map(&:name).join('*'), "zoom" => "14"}}
