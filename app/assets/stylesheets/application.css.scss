@@ -20,13 +20,6 @@
 @import "grid_index.css.scss";
 @import "logo";
 
-.columns-2{
-	@media #{$tablet}
-	{
-		column-count: 2;
-	}
-}
-
 h2{
 	clear: both;
 }

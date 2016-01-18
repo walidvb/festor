@@ -19,25 +19,24 @@
     = csrf_meta_tags
 
   %body{class: "#{controller.controller_name}-page #{controller.action_name}-page #{yield(:body_class)} #{'debug' if Rails.env.development?} #{current_user.nil? ? nil : 'admin'}"}
-    .super-main
-      %header{"data-no-turbolink" => true}
-        .body-header
+    %header{"data-no-turbolink" => true}
+      .body-header
+        .container
+          .row
+            .col-xs-12.header-top= render 'layouts/header'
+        #banner
           .container
-            .row
-              .col-xs-12.header-top= render 'layouts/header'
-          #banner
-            .container
-              %h1.logo
-                - %w{M A P P I N G F E S T I V A L * 2 0 1 6}.each do |letter|
-                  %span.letter= letter
-          .container
-            .row
-              .col-xs-12= render 'layouts/navigation'
-      %main.container
-        .row
-          .col-xs-12
-            = yield
-      = render 'layouts/footer'
+            %h1.logo
+              - %w{M A P P I N G F E S T I V A L * 2 0 1 6}.each do |letter|
+                %span.letter= letter
+        .container
+          .row
+            .col-xs-12= render 'layouts/navigation'
+    %main.container
+      .row
+        .col-xs-12
+          = yield
+    = render 'layouts/footer'
     %canvas#canvas
     :plain
       <script>

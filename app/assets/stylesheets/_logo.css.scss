@@ -1,8 +1,10 @@
 #banner{
   text-transform: uppercase;
   font-size: 3em;
-  padding: 40px 0;
-  // to center when text-shadowed
+  .container{
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
   text-indent: 0.6em;
   .logo{
     align-content: center;
@@ -42,28 +44,10 @@
       }
     }
   }
-  & .logo:hover{
+  &:hover .logo{
       text-shadow: 0 0px 0px black, 0 0px 0px black!important;
     & .letter:hover{
             text-shadow: 0.3em 0 0px black, 0.6em 0 0px black!important;
     }
-  }
-}
-
-a.artist{
-  $trans: 0.25s cubic-bezier(0, 0.04, 0, 0.96);
-  .artist-name{
-    transition: text-shadow #{$trans}, letter-spacing #{$trans};
-    text-shadow: 0em 0 0px white, 0em 0 0px white;
-    letter-spacing: 0em;
-  }
-  &:hover .labels{
-    color: transparent;
-  }
-  &:hover .artist-name{
-    transition: text-shadow #{$trans}, letter-spacing #{$trans};
-    text-shadow: 0.3em 0 0px white, 0.6em 0 0px white;
-    letter-spacing: 0.3em;
-    color: white;
   }
 }

@@ -103,7 +103,7 @@ var sketchProc = (function($p) {
     }
 });
 
-$(document).ready(function(){
+$('document').ready(function(){
   var canvas = document.getElementById("canvas");
   var processingInstance = new Processing(canvas, sketchProc);
   processingInstance.resize(canvas.offsetWidth, canvas.offsetHeight);
