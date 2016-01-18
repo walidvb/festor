@@ -15,7 +15,6 @@ $(document).ready(function(){
     xDiffToMiddle += $('.logo').width()/2*(xDiffToMiddle > 0 ? -1 : 1);
     dist = map(-xDiffToMiddle, -0.5, 0.5, -totalWidth, totalWidth);
     $this.toggleClass('shadow-opposite', (dist < 0));
-    console.log(xInDiv, '. ', xDiffToMiddle, 'dist: ', dist);
     target.css({
       'text-shadow': dist + 'em 0 0px black, '+dist*2+'em 0 0px black'
     });

@@ -26,7 +26,7 @@
     @each $var in $list{
       &:nth-child(#{$var}){
         transition-delay: #{$delay};
-        $delay: $delay+0.015;
+        $delay: $delay+0.05;
       }
     }
   }
