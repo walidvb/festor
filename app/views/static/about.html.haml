@@ -1,0 +1,11 @@
+- content_for(:og_title, t("nav.about"))
+.static-desc
+	= @text.html_safe
+.previous-years.grid
+	- @previous_editions.each do |prev|
+		.grid-item
+			= link_to prev.url do
+				= image_tag prev.thumbnail(:tile), width: 600, height: 270
+				.info
+					%h3.year
+						= prev.edition

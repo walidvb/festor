@@ -5,6 +5,7 @@ class StaticController < ApplicationController
 
   def about
     @text = Setting.first.about
-    render :static
+    @previous_editions = PreviousEdition.all
+    render :about
   end
 end

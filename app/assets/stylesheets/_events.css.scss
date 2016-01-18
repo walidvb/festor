@@ -57,7 +57,7 @@ h1{
 		margin-right: -150px;
 	}
 }
-.show-desc, .event-artist-bio, .artist-desc, .static-page-body{
+.show-desc, .event-artist-bio, .artist-desc, .static-desc{
 	padding: 0 1rem 0 1rem;
 	@media #{$tablet}{
 		max-width: 80ch;
