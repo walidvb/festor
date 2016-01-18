@@ -1,20 +1,23 @@
 $header-height-sm: 250px;
 $header-padding-vert: 40px;
-.program{
-	text-transform: lowercase;
+
+.header-top{
+  padding-top: $margin-vertical-normal;
 }
 
-.body-header .container, .navbar-header, .navbar-nav{
+.body-header .header-top, .navbar-header, .navbar-nav{
 	display: flex;
 	justify-content: space-around;
 }
-.header-left, .header-right, .header-logo, .navbar-nav li{
+.header-left, .header-right, .header-logo{
 	flex: 1 0 33%;
 }
 
 .navbar-nav{
+	width: 100%;
 	li{
 		text-align:center;
+		flex: 1 0 20%;
 	}
 }
 
@@ -26,10 +29,6 @@ $header-padding-vert: 40px;
 
 .header-right{
 	text-align: right;
-}
-
-.body-header #banner{
-	max-height: 440px;
 }
 
 .header-logo {

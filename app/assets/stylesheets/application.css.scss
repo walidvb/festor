@@ -31,13 +31,6 @@ h2{
 	clear: both;
 }
 
-// HARD FIX
-
-.partners img.fr-image-dropped{
-	float: none!important;
-	display: inline-block;
-
-}
 // RESETS
 body{
 	background-color: $background;
@@ -46,10 +39,8 @@ body{
 	overflow-x: hidden;
 }
 
-.super-main{
-		@extend .container;
-    background: rgba(255,255,255,0.95);
-    padding-top: $margin-vertical-normal;
+.container{
+	background: rgba(255,255,255,0.95);
 }
 .container, .row, .col-xs-12 {
 	@media #{$mobile}
@@ -185,8 +176,6 @@ body a{
 			box-shadow: inset	0	10px	0 $black;
 		}
 		&:before{
-			border-radius: 50%;
-			border: 2px solid $black;
 			font-size: 1em;
 	    width: 1.3em;
 	    height: 1.3em;

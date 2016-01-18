@@ -1,0 +1,27 @@
+.header-left
+  .festival-date
+    #{l(Date.parse("28 april"), format: "%e %b")} – #{l(Date.parse("7 may"), format: "%e %b")} / 2016 / #{ t("shared.geneva")}
+  .social
+    %a{:href => "http://www.instagram.com/mappingfestival", class: "fa fa-icon fa-instagram"}
+    %a{:href => "http://www.twitter.com/mappingfestival", class: "fa fa-icon fa-twitter"}
+    %a{:href => "https://www.facebook.com/mappingfest", class: "fa fa-icon fa-facebook"}
+    - if I18n.locale == :en
+      %form#mlb2-477433.newsletter-form{:action => "//app.mailerlite.fr/webforms/submit/r9a8o1", "data-code" => "r9a8o1", :target => "_blank"}
+        %button.ml-subscribe-button.fa.fa-icon.fa-inbox{:type => "submit"}
+    - else
+      %form#mlb2-448223.newsletter-form{:action => "//app.mailerlite.fr/webforms/submit/u2g5s5", "data-code" => "u2g5s5", :target => "_blank"}
+        %button.ml-subscribe-button.fa.fa-icon.fa-inbox{:type => "submit"}
+.header-right
+  .locales{class: I18n.locale}
+    - if I18n.locale == :fr
+      FR
+      = link_to("EN", url_for(locale: :en), class: "en")
+    - else
+      = link_to("FR", url_for(locale: :fr), class: "fr")
+      EN
+  .news
+    = link_to t(:news), news_index_path(locale: I18n.locale)
+    =# link_to t('shared.program'), image_path(I18n.locale == :fr ? 'grille.pdf' : 'grid.pdf'), target: '_blank'
+    = link_to 'tickets'
+  .motto
+    = t("shared.motto").html_safe
