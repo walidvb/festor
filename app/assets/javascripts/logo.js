@@ -10,7 +10,8 @@ $(document).ready(function(){
 
     var xInDiv = event.clientX - this.offsetLeft;
     var totalWidth = $this.width()/2;
-    var xDiffToMiddle = xInDiv - totalWidth;
+    var xDiffToMiddle = xInDiv - (totalWidth);
+    xDiffToMiddle += $('.logo').width()/2*(xDiffToMiddle > 0 ? -1 : 1);
     dist = map(-xDiffToMiddle, -0.5, 0.5, -totalWidth, totalWidth);
     $this.toggleClass('shadow-opposite', (dist < 0));
     console.log(xInDiv, '. ', xDiffToMiddle, 'dist: ', dist);

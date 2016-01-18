@@ -26,10 +26,9 @@
             .row
               .col-xs-12.header-top= render 'layouts/header'
           #banner
-            .logo
-              %h1.logo
-                - %w{M A P P I N G F E S T I V A L * 2 0 1 6}.each do |letter|
-                  %span.letter= letter
+            %h1.logo
+              - %w{M A P P I N G F E S T I V A L * 2 0 1 6}.each do |letter|
+                %span.letter= letter
           .container
             .row
               .col-xs-12= render 'layouts/navigation'
