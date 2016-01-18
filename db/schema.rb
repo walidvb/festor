@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160118133810) do
+ActiveRecord::Schema.define(version: 20160118163737) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_stat_statements"
@@ -478,6 +478,8 @@ ActiveRecord::Schema.define(version: 20160118133810) do
     t.string   "picture_content_type"
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   create_table "optimizely_experiments", force: true do |t|
