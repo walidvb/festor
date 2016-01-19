@@ -1,4 +1,4 @@
-console.log("Thank you mirage for this code, couldn't be bothered to write it myself – the vbbros");
+
 var myInfoWindow, newInfoWindow = null;
 
 // Create an array of styles.
@@ -246,35 +246,18 @@ function renderGoogleMap() {
 		map.panTo(myLatlng);
 	});
 
-	// center map on click
-	// $('#home-lieux-nav li a').click(function() {
-	// 	var index = $(this).closest('li').index();
-	// 	openInfoWindow(map, index, latitude, longitude, title, adresse, url, markerArray);
-	// 	return false;
-	// });
 	if(window.location.hash != '') {
-		var pageHash = window.location.hash;
-		pageHash = pageHash.substring(1);
-		$('#lieux .button').each(function(i) {
-			if($(this).attr('data-title') == pageHash) {
-				openInfoWindow(map, i, latitude, longitude, title, adresse, url, markerArray);
-			}
-		});
+		openFromHash();
 	}
-	$(window).bind('hashchange',function() {
+	$(window).bind('hashchange', openFromHash);
+
+	function openFromHash(){
 		var pageHash = window.location.hash;
 		pageHash = pageHash.substring(1);
-		console.log(pageHash);
-		$('#lieux .button').each(function(i) {
+		$('.location-link').each(function(i) {
 			if($(this).attr('data-title') == pageHash) {
 				openInfoWindow(map, i, latitude, longitude, title, adresse, url, markerArray);
 			}
-		});
-	});
-
-	if($('body').hasClass('home')) {
-		google.maps.event.addListenerOnce(map, 'idle', function() {
-			$('#site-loader').fadeOut(400);
 		});
 	}
 }
@@ -288,5 +271,8 @@ function loadScript() {
 }
 
 $(document).ready(function(){
-	loadScript();
+	if($('#google-map-wrapper').length){
+		console.log("Thank you mirage for this code, couldn't be bothered to write it myself – the vbbros");
+		loadScript();
+	}
 });
