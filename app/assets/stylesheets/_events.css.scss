@@ -66,13 +66,8 @@ h1{
 }
 
 .inline-image{
-	&:nth-of-type(2n){
-		float: left;
-		margin-left: -150px;
-	}
-	&:nth-of-type(2n+1){
-		float: right;
-		margin-right: -150px;
+	float: left;
+	margin-left: -200px;
 	}
 }
 .show-desc, .event-artist-bio, .artist-desc, .static-desc{
