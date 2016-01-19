@@ -254,9 +254,9 @@ function renderGoogleMap() {
 	function openFromHash(){
 		var pageHash = window.location.hash;
 		pageHash = pageHash.substring(1);
+		$('.location-event').hide();
 		if(pageHash.length){
-			$('.location-event').hide();
-			$('.'+pageHash).show();
+			$('.location-event.'+pageHash).show();
 			$('.location-link.active').removeClass('active');
 			$('.location-link').each(function(i) {
 				if($(this).attr('data-title') == pageHash) {
