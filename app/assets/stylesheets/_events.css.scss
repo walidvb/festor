@@ -66,8 +66,10 @@ h1{
 }
 
 .inline-image{
-	float: left;
-	margin-left: -200px;
+  @media #{$tablet}{    
+  	float: left;
+  	margin-left: -30em;
+  }
 }
 .show-desc, .event-artist-bio, .artist-desc, .static-desc{
 	padding: 0 1rem 0 1rem;
@@ -75,15 +77,6 @@ h1{
 		max-width: 80ch;
 		padding: 0 0 0 0;
 	}
-}
-
-.inline-image:nth-of-type(2n){
-	float: left;
-	margin-left: -150px;
-}
-.inline-image:nth-of-type(2n+1){
-	float: right;
-	margin-right: -150px;
 }
 
 .event-infos{
