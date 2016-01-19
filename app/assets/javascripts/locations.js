@@ -254,11 +254,17 @@ function renderGoogleMap() {
 	function openFromHash(){
 		var pageHash = window.location.hash;
 		pageHash = pageHash.substring(1);
-		$('.location-link').each(function(i) {
-			if($(this).attr('data-title') == pageHash) {
-				openInfoWindow(map, i, latitude, longitude, title, adresse, url, markerArray);
-			}
-		});
+		if(pageHash.length){
+			$('.location-event').hide();
+			$('.'+pageHash).show();
+			$('.location-link.active').removeClass('active');
+			$('.location-link').each(function(i) {
+				if($(this).attr('data-title') == pageHash) {
+					$(this).addClass('active');
+					openInfoWindow(map, i, latitude, longitude, title, adresse, url, markerArray);
+				}
+			});
+		}
 	}
 }
 
