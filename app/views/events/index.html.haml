@@ -1,9 +1,8 @@
 .grid
 	- @events.each do |event|
 		.grid-item{data: {position: event.position, id: event.id}}
-			- path_for(event)
 			- artists = event.artists
-			= link_to path do
+			= link_to path_for(event) do
 				= image_tag event.main_image.url(:tile), width: 600, height: 270
 				.info
 					- if !event.category.blank?
