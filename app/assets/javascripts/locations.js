@@ -246,9 +246,7 @@ function renderGoogleMap() {
 		map.panTo(myLatlng);
 	});
 
-	if(window.location.hash != '') {
-		openFromHash();
-	}
+	openFromHash();
 	$(window).bind('hashchange', openFromHash);
 
 	function openFromHash(){
