@@ -1,5 +1,10 @@
 #google-map-wrapper{
   height: 440px;
+  @media #{$tablet}{
+
+    margin-left: -15px;
+    margin-right: -15px;
+  }
 }
 
 #google-map{
