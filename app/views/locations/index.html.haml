@@ -1,11 +1,13 @@
-- @locations.each do |loc|
-  = link_to loc.name,  "##{loc.slug}", class: 'location-link', data: { title: loc.slug}
-%hr
-- @events.each do |event|
-  = link_to path_for(event), class: "location-event #{event.location.slug}" do
-    = event.title
+.location-list
+	- @locations.each do |loc|
+		= link_to loc.name,	"##{loc.slug}", class: 'location-link', data: { title: loc.slug}
+.location-event
+	%hr
+	- @events.each do |event|
+		= link_to path_for(event), class: "location-event #{event.location.slug}" do
+			= event.title
 
 
 #google-map-wrapper{ data: { "marker-url" => image_url("google-map-marker.png")}}
-  #google-map-loader
-  #google-map{ data: {"adresse" => @locations.map(&:address).join('*'), "latitude" => @locations.map(&:latitude).join('-'), "longitude" => @locations.map(&:longitude).join('-'), "title" => @locations.map(&:name).join('*'),    "url" => @locations.map{|l| "##{l.slug}"}.join('*'), "zoom" => "14"}}
+	#google-map-loader
+	#google-map{ data: {"adresse" => @locations.map(&:address).join('*'), "latitude" => @locations.map(&:latitude).join('-'), "longitude" => @locations.map(&:longitude).join('-'), "title" => @locations.map(&:name).join('*'),		"url" => @locations.map{|l| "##{l.slug}"}.join('*'), "zoom" => "14"}}
