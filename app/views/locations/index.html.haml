@@ -1,7 +1,7 @@
 .location-list
 	- @locations.each do |loc|
 		= link_to loc.name,	"##{loc.slug}", class: 'location-link', data: { title: loc.slug}
-.location-event
+.location-events
 	%hr
 	- @events.each do |event|
 		= link_to path_for(event), class: "location-event #{event.location.slug}" do
