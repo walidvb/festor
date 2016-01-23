@@ -20,10 +20,10 @@
     will-change: true;
     padding: 0.3em 0;
     flex: 0 0 25%;
-    transition: all 0.3s ease-out;
+    transition: all 0.3s 0.3s ease-out;
   }
   $list: 3n, 2n+1, 2n, 4n+1, 3n+1;
-  $delay: 0s;
+  $delay: 0.3s;
   &:not(:hover) .letter{
     @each $var in $list{
       &:nth-child(#{$var}){
@@ -47,7 +47,8 @@
   &:hover .logo{
       text-shadow: 0 0px 0px black, 0 0px 0px black!important;
     & .letter:hover{
-            text-shadow: 0.3em 0 0px black, 0.6em 0 0px black!important;
+      text-shadow: 0.3em 0 0px black, 0.6em 0 0px black!important;
+      transition: all 0.3s ease-out;
     }
   }
 }
