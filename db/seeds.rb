@@ -6,7 +6,6 @@ Artist.delete_all
 Location.delete_all
 Link.delete_all
 Asset.delete_all
-StaticPage.delete_all
 u = User.new(
     email: "admin@example.com",
     password: "admin",
@@ -19,7 +18,7 @@ u.save!
 pic = File.open("#{Rails.root}/app/assets/images/lezoo.jpg")
 asset = File.open("#{Rails.root}/app/assets/images/lezoo.jpg")
 location = Fabricate :location, name: "ZOO", picture: pic
-main_event = Fabricate(:event, 
+main_event = Fabricate(:event,
 	type: :single_event,
 	category: :clubbing,
 	title: "IDM not EBM",
@@ -38,30 +37,31 @@ main_event.artists << [
 		Fabricate(:artist, name: "Graze", profile_picture: File.open("#{Rails.root}/app/assets/images/graze.jpg"))
 	]
 
-workshop = Fabricate(:event, title: "The future workshop", type: :workshop, schedule_start: 2.days.from_now, schedule_end: 7.days.from_now, main_image: pic, location: Fabricate(:location, name: "BAT 43", address: "43 rte des Acacias 1227 les Acacias"))
+workshop = Fabricate(:event, title: "The future workshop", type: :workshop, main_image: pic, location: Fabricate(:location, name: "BAT 43", address: "43 rte des Acacias 1227 les Acacias"))
 workshop.artists <<  [
 		Fabricate(:artist, name: "DBridge", profile_picture: File.open("#{Rails.root}/app/assets/images/DBridge.jpg"))
 	]
+Fabricate(:event_date, start: 2.days.from_now, end: 7.days.from_now, event: workshop)
 workshop.attributes = {
-	description: "<h2>Workshop presented by Laurent Novac (CH)<br>The inscriptions are open!</h2><br>Crazy generative art stuff going on here.<br><br><h3>Program / Day 1</h3>We have fun", 
+	description: "<h2>Workshop presented by Laurent Novac (CH)<br>The inscriptions are open!</h2><br>Crazy generative art stuff going on here.<br><br><h3>Program / Day 1</h3>We have fun",
 	locale: :en
 }
 workshop.save!
 workshop.attributes = {
-	description: "<h2>Workshop présenté par Laurent Novac (CH)<br>Les inscriptions sont ouvertes!</h2><br>Cet atelir est une exploration dans le domaine de l'art génératif hehe.<br><br><h3>Programme / Jour 1</h3>On se marre", 
+	description: "<h2>Workshop présenté par Laurent Novac (CH)<br>Les inscriptions sont ouvertes!</h2><br>Cet atelir est une exploration dans le domaine de l'art génératif hehe.<br><br><h3>Programme / Jour 1</h3>On se marre",
 	locale: :fr
 }
 workshop.save!
-Fabricate(:event, title: "The workshop", type: :workshop, schedule_start: 2.days.from_now, schedule_end: 7.days.from_now, main_image: pic, location: Fabricate(:location, name: "BAT 43", address: "43 rte des Acacias 1227 les Acacias"))
+w = Fabricate(:event, title: "The workshop", type: :worksho, main_image: pic,
+  location: Fabricate(:location, name: "BAT 43", address: "43 rte des Acacias 1227 les Acacias")
+)
+Fabricate(:event_date, start: 2.days.from_now, end: 7.days.from_now, event: w)
 
-Fabricate :event, type: :exhibition, title: "The Exhibition", schedule_start: 2.days.from_now, schedule_end: 4.days.from_now, main_image: pic, location: location
-Fabricate :event, type: :performance, title: "Performance", main_image: pic, location: location, schedule_start: 2.days.from_now
+ev = Fabricate :event, type: :exhibition, title: "The Exhibition", main_image: pic, location: location
+Fabricate(:event_date, start: 2.days.from_now, end: 7.days.from_now, event: ev)
+ev2 = Fabricate :event, type: :performance, title: "Performance", main_image: pic, location: location
+Fabricate(:event_date, start: 2.days.from_now, end: 7.days.from_now, event: ev2)
 
 Event.category_enum.each do |cat|
 	Fabricate.times(3, :event, type: :single_event, category: cat, location: location, main_image: File.open("#{Rails.root}/app/assets/images/graze.jpg"), featured: true)
-end
-
-static_pages = %w(infos about partners gallery previous_editions)
-static_pages.each do |slug|
-	Fabricate(:static_page, title: slug, news: false)
 end
