@@ -19,3 +19,9 @@
 [href="http://editor.froala.com"] {
 	display: none!important;
 }
+
+.modal-open{
+	.ui-datepicker, .ui-timepicker{
+		z-index: 1051 !important;
+	}
+}
