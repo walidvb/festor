@@ -24,13 +24,6 @@ Festor::Application.routes.draw do
 		resources :static_pages, only: [:show]
 		resources :news, controller: 'static_pages', only: [:index, :show]
 
-		StaticPage.all.each do |sp|
-			begin
-				get "/#{sp.slug}" => "static_pages#show", id: sp.id, static: false
-			rescue => e
-				puts "Tried routing, got #{e.inspect} for #{[sp.title, sp.id]}"
-			end
-		end
 		if(Rails.env.prod? && home = StaticPage.find(21) && home.public?)
 			root static_page_path(home)
 		else
