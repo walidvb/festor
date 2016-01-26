@@ -1,26 +1,26 @@
 $(document).on('ready page:load', function(){
 
 	// fix menu
-	var nav = $('.navbar-nav');
-	var navOffsetTop = nav.offset().top;
-	$(window).on('resize', function(){
-		$('body').removeClass('nav-fixed');
-		navOffsetTop = nav.offset().top;
-	});
-	$(window).on('scroll', function(e){
-		if(window.innerWidth >= 767)
-		{
-			var scrollTop = $(this).scrollTop();
-			if(scrollTop >= navOffsetTop)
-			{
-				$('body').addClass('nav-fixed');
-			}
-			else
-			{
-				$('body').removeClass('nav-fixed');
-			}
-		}
-	});
+	// var nav = $('.navbar-nav');
+	// var navOffsetTop = nav.offset().top;
+	// $(window).on('resize', function(){
+	// 	$('body').removeClass('nav-fixed');
+	// 	navOffsetTop = nav.offset().top;
+	// });
+	// $(window).on('scroll', function(e){
+	// 	if(window.innerWidth >= 767)
+	// 	{
+	// 		var scrollTop = $(this).scrollTop();
+	// 		if(scrollTop >= navOffsetTop)
+	// 		{
+	// 			$('body').addClass('nav-fixed');
+	// 		}
+	// 		else
+	// 		{
+	// 			$('body').removeClass('nav-fixed');
+	// 		}
+	// 	}
+	// });
 
 	$('select').chosen({
 		allow_single_deselect: true,

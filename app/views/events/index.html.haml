@@ -12,4 +12,8 @@
 					- artists.each do |a|
 						.artist-name= a.name
 					.location
-						#{l(event.event_dates.first.start, format: "%e")} - #{l(event.event_dates.first.end, format: "%e %B")} &mdash; #{event.location.name}
+						- if date_ = event.event_dates.first
+							- if date_.end.nil?
+								#{l(date_.start, format: "%e %B")} &mdash; #{event.location.try(:name)}
+							- else
+								#{l(date_.start, format: "%e")} - #{l(date_.end, format: "%e %B")} &mdash; #{event.location.try(:name)}

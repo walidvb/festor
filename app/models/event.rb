@@ -17,7 +17,7 @@ class Event < ActiveRecord::Base
 	has_many :bookings, dependent: :delete_all, inverse_of: :event
 
 	has_many :artists, through: :bookings, inverse_of: :events
-	has_many :musicians, -> {where type: :dj}, through: :bookings, source: :artist, inverse_of: :event
+	has_many :musicians, -> {where type: :dj}, through: :bookings, source: :artist, inverse_of: :events
 	has_many :vjs,  -> {where type: :vj}, through: :bookings, source: :artist, inverse_of: :events
 	has_many :instructors,  -> {where type: :instructor}, through: :bookings, source: :artist, inverse_of: :events
 
