@@ -37,7 +37,7 @@ class Event < ActiveRecord::Base
 		:styles => {
 			:thumb => "100x100",
 			:tile => "600x",
-			:large => "1200x535#"
+			:large => "800x"
 		},
 		:default_url => "/images/missing.jpg",
 		:use_timestamp => false

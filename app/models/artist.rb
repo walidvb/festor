@@ -22,7 +22,7 @@ class Artist < ActiveRecord::Base
 		:styles => {
 			:thumb => "100x100#",
 			:medium => "350x200#",
-      :large => "1200x535#",
+      :large => "800x",
       :tile => "600x"
 		},
 		:default_url => "/images/missing.jpg",
