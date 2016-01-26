@@ -14,7 +14,7 @@ class Artist < ActiveRecord::Base
   has_many :bookings, dependent: :delete_all, inverse_of: :artist
   has_many :events, through: :bookings, inverse_of: :artists
   has_many :locations, through: :bookings, inverse_of: :artists
-  has_many :links, as: :linkable, dependent: :destroy, inverse_of: :artists
+  has_many :links, as: :linkable, dependent: :destroy, inverse_of: :linkable
 
   accepts_nested_attributes_for :translations, allow_destroy: true
   accepts_nested_attributes_for :links, allow_destroy: true
