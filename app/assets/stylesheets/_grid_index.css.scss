@@ -2,7 +2,11 @@
   min-width: 25%;
   min-height: 270px;
   position: relative;
-  .info{
+  @media #{$mobile}{
+    position: relative!important;
+    top: 0!important;
+  }
+  &.sr-active:hover .info, .info{
     position: absolute;
     top : 0px;
     width: 100%;
@@ -12,10 +16,13 @@
     background: rgba(255,255,255, 0.95);
     opacity : 1;
     transition : all 0.3s 0.2s ease-out;
-
   }
-  &:hover .info, &.sr-active .info{
+  .no-touch &:hover .info, &.sr-active .info{
     transition : all 0.3s ease-out;
     opacity : 0;
   }
+}
+
+body.mCSB_inside > .mCSB_container{
+  margin-right: 10px;
 }

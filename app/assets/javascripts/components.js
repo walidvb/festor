@@ -24,8 +24,7 @@ $(document).ready(function() {
 
 	$('.grid').imagesLoaded( function() {
 		$('body').scrollReveal();
-		
-		var $grid = $('.grisd').isotope({
+		var $grid = $('.grid').isotope({
 			// options
 			itemSelector: '.grid-item',
 			layoutMode: 'masonry',

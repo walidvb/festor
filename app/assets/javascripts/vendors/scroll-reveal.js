@@ -10,6 +10,7 @@
       shouldShow: shouldShow,
       touchOnly: true,
       mCustomScrollbar: {
+        autoHideScrollbar: true,
         callbacks: {
           whileScrolling: function(){
             var that = this;
@@ -27,7 +28,7 @@
 
     var elems = $(options.itemSelector);
     if(!elems.length) return;
-    if(window.ontouchstart)
+    if(window.hasOwnProperty('ontouchstart'))
     {
       $(that).css('overflow', 'hidden');
       $(that).mCustomScrollbar(options.mCustomScrollbar);
@@ -55,7 +56,6 @@
       });
     }
     function shouldShow(elem){
-      console.log('top',getTop(), offsetTop(elem));
       var distTop = (offsetTop(elem) + elem.height()/2) - getTop();
       var distCenter = $(that).height()/2 - distTop;
       return Math.abs(distCenter) <= elem.height()/2;
