@@ -4,7 +4,7 @@ class EventDate < ActiveRecord::Base
   validates_presence_of :event, :start
 
   def title
-    "#{start.strftime("%B %m, %H:%M")} - #{event.title}"
+    "#{start.strftime("%B %m, %H:%M")}"
   end
 
   rails_admin do
