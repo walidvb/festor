@@ -1,10 +1,10 @@
 - content_for(:og_title, t("nav.about"))
 %h1.event-name= t("nav.about")
 .static-desc
-	= @text.html_safe
+	= @text.try(:html_safe) || 'Coming soon...'
 .previous-title
 	%h1= t("nav.previous_title")
-.previous-years.grid
+.previous-years.grid#previous
 	- @previous_editions.each do |prev|
 		.grid-item
 			= link_to prev.url do
