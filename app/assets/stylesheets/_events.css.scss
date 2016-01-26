@@ -77,10 +77,26 @@ h1{
 		}
 }
 
-.inline-image{
+.show-desc{
   @media #{$tablet}{
-  	float: left;
-  	margin-left: -30em;
+    .left{
+    	float: left;
+      &.large{
+    	  margin-left: -25em;
+      }
+      &.small{
+        margin-left: -13em;
+      }
+    }
+    .right{
+      float: right;
+      &.large{
+        margin-right: -15em;
+      }
+      &.small{
+        margin-right: -10em;
+      }
+    }
   }
 }
 #main-content{

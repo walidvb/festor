@@ -1,4 +1,14 @@
 (function($){
+  $(document).on('ready', function(){
+    body = $('body').imagesLoaded(function(){
+      $('.show-desc img, .show-desc iframe').each(function(i){
+        var dir = i%2 ? 'right' : 'left';
+        dir += ($(this).width() < $('.show-desc').width()*0.5 ? ' small' : ' large');
+        $(this).addClass(dir);
+
+      });
+    });
+  });
 
   $(document, '.close').click(function(e){
     if($(e.target).hasClass('close')){
@@ -26,17 +36,8 @@
   });
 
   function appendNavTo(siblingOf, container){
-    // var prevUrl = siblingOf.prev('[data-load-more]').data('load-more');
-    // var nextUrl = siblingOf.next('[data-load-more]').data('load-more');
-
     var nav = $('<div class="nav"/>');
-    // if(prevUrl){
-    //   $('<a class="prev" data-load-more="' + prevUrl + '" href="' + prevUrl + '"/>').appendTo(nav);
-    // }
     $('<div class="close"/>').prependTo(nav);
-    // if(nextUrl){
-    //   $('<a class="next" data-load-more="' + nextUrl + '" href="' + nextUrl + '"/>').appendTo(nav);
-    // }
     nav.prependTo(container).show();
   }
 })(jQuery);
