@@ -17,9 +17,16 @@ a.artist{
 }
 
 .show-header, .artist-list{
+	margin: 0 $margin-horizontal-normal 0 $margin-horizontal-normal;
+	@media #{$tablet}{
+			display: inline-block;
+	}
 	margin-bottom: $margin-vertical-large;
 	a{
-		display: inline-block;
+		display: block;
+		@media #{$tablet}{
+				display: inline-block;
+		}
 	}
 	.artist{
 		h5, h6{
@@ -81,12 +88,18 @@ h1{
 
 .event-infos{
 	margin-left: 1px;
+	@media #{$tablet} {
+		padding: 0;
+	}
 	h5{
 		display: inline-block;
     position: relative;
     border-bottom: solid 1px $black;
 		padding-left: 0.6rem;
-		padding-right: 5rem;
+		padding-right: 2rem;
+		@media #{$tablet}{
+			padding-right: 5rem;
+		}
 		&:before{
 			content: '';
 		}

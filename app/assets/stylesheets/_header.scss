@@ -7,7 +7,12 @@ $header-padding-vert: 40px;
 }
 
 .body-header .header-top, .navbar-header{
+	margin: 0 $margin-horizontal-normal 0 $margin-horizontal-normal;
+	@media #{$tablet}{
+		margin: 0;
+	}
 	display: flex;
+	flex-wrap: wrap;
 	justify-content: space-around;
 }
 
