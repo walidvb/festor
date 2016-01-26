@@ -30,11 +30,14 @@
 
 $(function() {
     FastClick.attach(document.body);
-    if(window.hasOwnProperty('ontouchstart')){
-      $('body').addClass('touch');
-    }
-    else{
-      $('body').addClass('no-touch');
-    }
+});
+
+$(document).ready(function(){
+  if(window.hasOwnProperty('ontouchstart')){
+    $('body').addClass('touch');
+  }
+  else{
+    $('body').addClass('no-touch');
+  }
 });
 console.log(Array(16).join("info@vbbros.net" - 1) + " Batman!");
