@@ -106,12 +106,14 @@ var sketchProc = (function($p) {
 
 $('document').ready(function(){
   var canvas = document.getElementById("canvas");
-  var processingInstance = new Processing(canvas, sketchProc);
-  processingInstance.resize(canvas.offsetWidth, canvas.offsetHeight);
-  $('#beta').on('keypress', function(evt){
-    processingInstance.random_coords();
-  });
-  $(window).on('resize', function(){
+  if(canvas){
+    var processingInstance = new Processing(canvas, sketchProc);
     processingInstance.resize(canvas.offsetWidth, canvas.offsetHeight);
-  });
+    $('#beta').on('keypress', function(evt){
+      processingInstance.random_coords();
+    });
+    $(window).on('resize', function(){
+      processingInstance.resize(canvas.offsetWidth, canvas.offsetHeight);
+    });
+  }
 });
