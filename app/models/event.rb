@@ -27,7 +27,6 @@ class Event < ActiveRecord::Base
 
 	has_many :extra_infos, inverse_of: :event
 
-	# accepts_nested_attributes_for :artists, allow_destroy: true
 	accepts_nested_attributes_for :links, allow_destroy: true
 	accepts_nested_attributes_for :extra_infos, allow_destroy: true
 	accepts_nested_attributes_for :translations, allow_destroy: true

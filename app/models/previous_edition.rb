@@ -1,7 +1,7 @@
 class PreviousEdition < ActiveRecord::Base
   has_attached_file :thumbnail,
 		:styles => {
-      :tile => "600x270#"
+      :tile => "600x"
 		},
 		:default_url => "/images/missing.jpg",
 		:use_timestamp => false
