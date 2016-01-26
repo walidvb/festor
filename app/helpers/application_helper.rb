@@ -52,21 +52,19 @@ module ApplicationHelper
   end
 
   def interpolate text, options = {}
-    text.gsub!(/\[image:?(\S*)?\]/) do |match|
-      image_tag(options[:image], class: "inline-image #{Regexp.last_match[1].to_s}")
-    end unless options[:image].blank?
-    text.gsub!('[info]', options[:infos].gsub(/[\n\r]/, '')
-      ) unless options[:infos].nil?
-
-    auto_html(text) {
+    result = auto_html(text) {
+      link(:target => 'blank')
       youtube(:width => 600, :height => 375)
       vimeo(:width => 600, :height => 375)
       dailymotion(:width => 600, :height => 375)
-      soundcloud_()
+      soundcloud_
       flickr
       simple_format
-      link(:target => 'blank')
-      image
     }
+    result.gsub!(/\[image:?(\S*)?\]/) do |match|
+      image_tag(options[:image], class: "inline-image #{Regexp.last_match[1].to_s}")
+    end unless options[:image].blank?
+    result.gsub!('[info]', options[:infos].gsub(/[\n\r]/, '')) unless options[:infos].nil?
+    result
   end
 end

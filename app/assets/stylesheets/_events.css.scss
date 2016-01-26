@@ -81,21 +81,21 @@ h1{
   @media #{$tablet}{
     .left{
     	float: left;
+      margin-left: -13em;
       &.large{
     	  margin-left: -25em;
-      }
-      &.small{
-        margin-left: -13em;
       }
     }
     .right{
       float: right;
+      margin-right: -10em;
       &.large{
         margin-right: -15em;
       }
-      &.small{
-        margin-right: -10em;
-      }
+    }
+    iframe{
+      float: right;
+      margin-right: -25em;
     }
   }
 }

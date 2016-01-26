@@ -1,7 +1,7 @@
 (function($){
   $(document).on('ready', function(){
     body = $('body').imagesLoaded(function(){
-      $('.show-desc img, .show-desc iframe').each(function(i){
+      $('.show-desc img').each(function(i){
         var dir = i%2 ? 'right' : 'left';
         dir += ($(this).width() < $('.show-desc').width()*0.5 ? ' small' : ' large');
         $(this).addClass(dir);
