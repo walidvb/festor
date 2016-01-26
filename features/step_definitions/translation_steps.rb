@@ -1,3 +1,5 @@
+include EventsHelper
+
 Given(/^there is an event$/) do
   @event = Fabricate(:event, location: Fabricate(:location))
 end
@@ -14,7 +16,7 @@ Given(/^that even has a translated description only$/) do
 end
 
 When(/^I visit the event$/) do
-	visit event_path(@event, {locale: :en})
+	visit path_for(@event, {locale: :en})
 end
 
 Then(/^I should see the event in english$/) do
@@ -23,7 +25,7 @@ Then(/^I should see the event in english$/) do
 end
 
 When(/^I switch to french$/) do
-	click_on "fr"
+	click_on("FR")
 end
 
 Then(/^I should see the event in french$/) do

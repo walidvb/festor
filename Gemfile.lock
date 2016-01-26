@@ -292,6 +292,9 @@ GEM
     friendly_id (5.0.4)
       activerecord (>= 4.0.0)
     fssm (0.2.10)
+    fuubar (2.0.0)
+      rspec (~> 3.0)
+      ruby-progressbar (~> 1.4)
     geocoder (1.2.14)
     gherkin (3.2.0)
     globalize (4.0.3)
@@ -498,6 +501,7 @@ GEM
       rspec-mocks (~> 3.1.0)
       rspec-support (~> 3.1.0)
     rspec-support (3.1.2)
+    ruby-progressbar (1.7.5)
     ruby_parser (3.7.3)
       sexp_processor (~> 4.1)
     rubyzip (1.1.7)
@@ -580,6 +584,7 @@ DEPENDENCIES
   fog
   font-awesome-sass (= 4.2.0)
   friendly_id (= 5.0.4)
+  fuubar
   geocoder
   globalize
   guard-bundler

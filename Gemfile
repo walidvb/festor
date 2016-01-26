@@ -92,4 +92,5 @@ group :test do
   gem 'anticipate'
   gem 'rspec-html-matchers'
   gem 'show_me_the_cookies'
+	gem 'fuubar'
 end

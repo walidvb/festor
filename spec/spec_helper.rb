@@ -39,9 +39,9 @@ RSpec.configure do |config|
   # the seed, which is printed after each run.
   #     --seed 1234
   config.order = "random"
-  
+
   # Use color in STDOUT
- config.color_enabled = true
+  config.color = true
 
  config.formatter = Fuubar
 
@@ -49,7 +49,7 @@ RSpec.configure do |config|
  # config.tty = true
 
   config.before(:suite) do
-    
+
     DatabaseCleaner.strategy = :truncation
   end
   config.before(:each) do
