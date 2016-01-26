@@ -22,8 +22,10 @@ $(document).ready(function() {
 		$(this).colorbox(options);
 	});
 
-	$('#container').imagesLoaded( function() {
-		var $grid = $('.grid').isotope({
+	$('.grid').imagesLoaded( function() {
+		$('body').scrollReveal();
+		
+		var $grid = $('.grisd').isotope({
 			// options
 			itemSelector: '.grid-item',
 			layoutMode: 'masonry',

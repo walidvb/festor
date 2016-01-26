@@ -1,7 +1,7 @@
 //= require html5sortable/jquery.sortable.min.js
 $(document).ready(function(){
 	var handleSelector = 'i';
-	$('.admin .sortable').sortable({
+	$('.admsin .sortable').sortable({
 		handler: handleSelector
 	}).bind('sortupdate', function(e, ui) {
 		console.log("e, ui:", e, ui);

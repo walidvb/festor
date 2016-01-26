@@ -1,6 +1,7 @@
 .grid-item{
   min-width: 25%;
   min-height: 270px;
+  position: relative;
   .info{
     position: absolute;
     top : 0px;
@@ -12,9 +13,9 @@
     opacity : 1;
     transition : all 0.3s 0.2s ease-out;
 
-    &:hover{
-      transition : all 0.3s ease-out;
-      opacity : 0;
-    }
+  }
+  &:hover .info, &.sr-active .info{
+    transition : all 0.3s ease-out;
+    opacity : 0;
   }
 }

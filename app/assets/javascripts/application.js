@@ -16,7 +16,6 @@
 //= require vendors/imagesloaded.pkgd.min.js
 //= require vendors/isotope.pkgd.min
 //= require vendors/processing.min
-//= require vendors/jquery-mousewheel/jquery.mousewheel
 //= require vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar
 //= require vendors/scroll-reveal
 //= require lines.js
