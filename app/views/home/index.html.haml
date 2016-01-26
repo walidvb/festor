@@ -1,15 +1,4 @@
 %ul.events
-	- unless @news.empty?
-		%li.full-width
-			= link_to artists_path do
-				%h2.section-title= link_to t('nav.news'), news_index_path
-				.glitchousel.news
-					- @news.each do |news|
-						= link_to news_path(news) do
-							.event.slide
-								= image_tag(news.header_image.url(:large), width: 1200, height: 535)
-								.legend
-									= news.title
 	- unless @exhibitions.empty?
 		%li
 			= link_to exhibitions_path do

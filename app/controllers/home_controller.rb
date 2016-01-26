@@ -4,6 +4,5 @@ class HomeController < ApplicationController
 		@exhibitions = Event.exhibition.featured
 		@workshops   = Event.workshop.featured
 		@events     = Event.single_event.featured
-		@news 		= StaticPage.public_news.first(2)
 	end
 end
