@@ -3,6 +3,10 @@ class EventDate < ActiveRecord::Base
 
   validates_presence_of :event, :start
 
+  def title
+    "#{start.strftime("%B %m, %H:%M")} - #{event.title}"
+  end
+
   rails_admin do
       field :start do
         # date_format "%d/%m/%Y %H:%M"

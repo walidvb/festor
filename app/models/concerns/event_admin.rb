@@ -2,7 +2,7 @@ module EventAdmin
   extend ActiveSupport::Concern
   included do
     attr_accessor :link_ids
-  	attr_accessor :artist_ids
+  	# attr_accessor :artist_ids
 
     rails_admin do
       configure :translations, :globalize_tabs
@@ -27,8 +27,6 @@ module EventAdmin
   				label "Dates"
   			end
         configure :artists do
-          orderable true
-          nested_form false
         end
         configure :instructors do
           hide
@@ -56,16 +54,16 @@ module EventAdmin
       end
     end
   end
-  def artist_ids=(ids)
-    unless (ids = ids.map(&:to_i).select { |i| i>0 }) == (current_ids = bookings.map(&:artist_id))
-      (current_ids - ids).each { |id| bookings.select{|b|b.artist_id == id}.first.mark_for_destruction }
-      ids.each_with_index do |id, index|
-        if current_ids.include? (id)
-          bookings.select { |b| b.artist_id == id }.first.position = (index+1)
-        else
-          bookings.build({:artist_id => id, :position => (index+1)})
-        end
-      end
-    end
-  end
+  # def artist_ids=(ids)
+  #   unless (ids = ids.map(&:to_i).select { |i| i>0 }) == (current_ids = bookings.map(&:artist_id))
+  #     (current_ids - ids).each { |id| bookings.select{|b|b.artist_id == id}.first.mark_for_destruction }
+  #     ids.each_with_index do |id, index|
+  #       if current_ids.include? (id)
+  #         bookings.select { |b| b.artist_id == id }.first.position = (index+1)
+  #       else
+  #         bookings.build({:artist_id => id, :position => (index+1)})
+  #       end
+  #     end
+  #   end
+  # end
 end
