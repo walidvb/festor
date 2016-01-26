@@ -4,13 +4,37 @@ $header-padding-vert: 40px;
 .body-header{
 	padding-top: $margin-vertical-normal;
 	margin-bottom: 2*$margin-vertical-large;
+	padding-bottom: $margin-vertical-large;
+	background: $black;
+	color: $white;
+	.active{
+		background: $white;
+		color: $black;
+	}
+	a{
+		color: white;
+		@media #{$tablet}{
+			color: $black;
+		}
+	}
+	.container{
+		background: rgba(255,255,255,0);
+		@media #{$tablet}{
+			background: rgba(255,255,255,0.95);
+		}
+	}
+	@media #{$tablet}{
+		background: $white;
+		color: $black;
+		padding-bottom: 0px;
+	}
 }
 
+.header-top{
+	background-opacity: 0;
+}
 .body-header .header-top, .navbar-header{
-	margin: 0 $margin-horizontal-normal 0 $margin-horizontal-normal;
-	@media #{$tablet}{
-		margin: 0;
-	}
+	padding: 0 $margin-horizontal-normal 0 $margin-horizontal-normal;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-around;
@@ -18,9 +42,12 @@ $header-padding-vert: 40px;
 
 .header-left {
 	flex: 1 0 100%;
+	margin-bottom: $margin-vertical-largest;
 	@media #{$tablet}{
 		flex: 1 0 40%;
 		display: flex;
+		margin-bottom: 0;
+
 	}
 }
 
@@ -34,33 +61,45 @@ $header-padding-vert: 40px;
 
 .header-right{
 	flex: 1 0 100%;
+	margin-top: $margin-vertical-normal;
 	@media #{$tablet}{
+		margin-top: 0px;
 		flex: 1 0 60%;
 		display: flex;
 		border-bottom: solid 1px $black;
-		.social, .locales{
-			flex: 1 0 25%;
+	}
+	li{
+		text-transform: capitalize;
+		width: 49%;
+		display: inline-block;
+		border-bottom: solid 1px $white;
+		@media #{$tablet}{
+			text-align: left;
 		}
-		.desktop-nav{
-			flex: 1 0 50%;
-			li{
-				width:49%;
-				display: inline-block;
-				&:hover{
-					background:$black;
-				}
+	}
+	a{
+		display: block;
+		height: 2rem;
+		width: 100%;
+	}
+	.desktop-nav{
+		flex: 1 0 50%;
+		li{
+			&:hover{
+				background:$black;
 			}
 		}
+	}
+	.social, .locales{
+		flex: 1 0 25%;
 		li{
-			width: 100%;
-			display: block;
-			text-align: left;
-			text-transform: capitalize;
+			@media #{$tablet}{
+				width: 100%;
+			}
 		}
-		a{
-			display: block;
-			height: 2rem;
-			width: 100%;
+		margin-top: $margin-vertical-normal;
+		@media #{$tablet}{
+			margin-top: 0;
 		}
 	}
 }
