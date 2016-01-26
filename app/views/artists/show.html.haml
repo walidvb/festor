@@ -4,9 +4,9 @@
 .admin-entry
 	- if user_signed_in?
 		= link_to 'edit', "/admin/artist/#{@artist.id}/edit"
-- if events = @artist.events && !events.empty?
+- if !@artist.events.empty?
 	.show-header
-		- events.each do |event|
+		- @artist.events.each do |event|
 			.event-name
 				%h5.artist-event= link_to event.title, single_event_path(event, locale: I18n.locale)
 #main-content
