@@ -1,7 +1,7 @@
 en:
-  date:
+  dates:
     formats:
-      long: "%B %d/ %Y %H:%M"
+      long: "%d/%B/%Y %H:%M"
   shared:
     geneva: "geneva"
     motto:  "visual audio & deviant electronics"
