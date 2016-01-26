@@ -27,7 +27,7 @@ RailsAdmin.config do |config|
     index do
     end
     new do
-      except ['Setting']
+      except ['Settings']
     end
     export
     bulk_delete
@@ -46,7 +46,7 @@ RailsAdmin.config do |config|
   end
 
   ## == Globalize ==
-  config.included_models = ['Artist', 'Artist::Translation', 'Event', 'Event::Translation', 'Location', 'User', 'Booking', 'Link', 'EventDate', 'Partner', 'Setting', 'Setting::Translation', 'PreviousEdition']
+  config.included_models = ['Artist', 'Artist::Translation', 'Event', 'Event::Translation', 'Location', 'User', 'Booking', 'EventDate', 'Partner', 'Setting', 'Setting::Translation', 'PreviousEdition']
 
   config.model 'Artist::Translation' do
     visible false
