@@ -52,7 +52,9 @@ module ApplicationHelper
   end
 
   def interpolate text, options = {}
-    text.gsub!('[image]', image_tag(options[:image], class: 'inline-image')) unless options[:image].blank?
+    text.gsub!(/\[image:?(\S*)?\]/) do |match|
+      image_tag(options[:image], class: "inline-image #{Regexp.last_match[1].to_s}")
+    end unless options[:image].blank?
     text.gsub!('[info]', options[:infos].gsub(/[\n\r]/, '')
       ) unless options[:infos].nil?
 
