@@ -14,7 +14,7 @@
     padding-right: $margin-horizontal-normal;
     background: rgba(255,255,255, 0.95);
     opacity : 1;
-    transition : all 0.3s 0.2s ease-out;
+    transition : all 0.3s ease-out;
   }
   .no-touch &:hover .info, &.sr-active .info{
     transition : all 0.3s ease-out;

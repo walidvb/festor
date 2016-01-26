@@ -1,5 +1,17 @@
+$(function() {
+    FastClick.attach(document.body);
+});
+console.log(Array(16).join("info@vbbros.net" - 1) + " Batman!");
+
+
 $(document).on('ready page:load', function(){
 
+	if(window.hasOwnProperty('ontouchstart')){
+		$('body').addClass('touch');
+	}
+	else{
+		$('body').addClass('no-touch');
+	}
 	// fix menu
 	// var nav = $('.navbar-nav');
 	// var navOffsetTop = nav.offset().top;

@@ -27,17 +27,3 @@
 //= require logo
 //= require locations
 //= require_tree .
-
-$(function() {
-    FastClick.attach(document.body);
-});
-
-$(document).ready(function(){
-  if(window.hasOwnProperty('ontouchstart')){
-    $('body').addClass('touch');
-  }
-  else{
-    $('body').addClass('no-touch');
-  }
-});
-console.log(Array(16).join("info@vbbros.net" - 1) + " Batman!");
