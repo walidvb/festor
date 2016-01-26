@@ -62,7 +62,7 @@ class Event < ActiveRecord::Base
 	end
 
 	def self.category_enum
-		[:clubbing, :performance, :screening, :other, :installation, :exhibition]
+		[:clubbing, :performance, :screening, :other, :installation, :exhibition, :conference]
 	end
 
 	self.type_enum.each do |type|
