@@ -5,7 +5,7 @@
 AutoHtml.add_filter(:soundcloud_).with(:width => '100%', :height => 450, :auto_play => false, :theme_color => '000000', :color => '000000', :show_comments => false, :show_artwork => true, :visual => true) do |text, options|
   require 'uri'
   require 'net/http'
-  text.gsub!(/<a href="(https?:\/\/?(?:www)?.?soundcloud\.com\/[^\"]*)[^>]*>[^<]*<\/a>/) do |match|
+  text.gsub(/<a href="(https?:\/\/?(?:www)?.?soundcloud\.com\/[^\"]*)[^>]*>[^<]*<\/a>/) do |match|
     new_uri = Regexp.last_match[1].to_s
     new_uri = (new_uri =~ /^https?\:\/\/.*/) ? URI(new_uri) : URI("http://#{new_uri}")
     new_uri.normalize!
