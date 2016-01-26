@@ -142,7 +142,7 @@ body a{
 		margin: 0 16px 0 16px;
 		padding-top: $margin-vertical-normal;
 		@media #{$tablet}{
-			margin: 0px;
+			margin: 0 auto 0 auto;
 		}
 	}
 	.footer-links, .address{
