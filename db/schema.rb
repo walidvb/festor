@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160118223302) do
+ActiveRecord::Schema.define(version: 20160126134431) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -193,33 +193,6 @@ ActiveRecord::Schema.define(version: 20160118223302) do
   create_table "settings", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "static_page_translations", force: true do |t|
-    t.integer  "static_page_id", null: false
-    t.string   "locale",         null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.text     "body"
-    t.string   "title"
-  end
-
-  add_index "static_page_translations", ["locale"], name: "index_static_page_translations_on_locale", using: :btree
-  add_index "static_page_translations", ["static_page_id"], name: "index_static_page_translations_on_static_page_id", using: :btree
-
-  create_table "static_pages", force: true do |t|
-    t.integer  "position"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.boolean  "news",                      default: true
-    t.boolean  "public",                    default: false
-    t.string   "header_image_file_name"
-    t.string   "header_image_content_type"
-    t.integer  "header_image_file_size"
-    t.datetime "header_image_updated_at"
-    t.string   "slug"
-    t.text     "header_image_meta"
-    t.boolean  "requires_authentication",   default: false
   end
 
   create_table "users", force: true do |t|

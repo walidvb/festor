@@ -19,9 +19,10 @@ RailsAdmin.config do |config|
 
   ### More at https://github.com/sferik/rails_admin/wiki/Base-configuration
 
+  nested_only = %w{Setting Link}
   config.actions do
     dashboard do
-      except ['Setting']
+      except nested_only
     end
     index do
     end
@@ -33,10 +34,10 @@ RailsAdmin.config do |config|
     show
     edit
     delete do
-      except ['Setting']
+      except nested_only
     end
     show_in_app do
-      except ['Setting']
+      except nested_only
     end
 
     ## With an audit adapter, you can add:
@@ -45,7 +46,7 @@ RailsAdmin.config do |config|
   end
 
   ## == Globalize ==
-  config.included_models = ['Artist', 'Artist::Translation', 'Event', 'Event::Translation', 'Location', 'User', 'StaticPage', 'StaticPage::Translation', 'Booking', 'Link', 'EventDate', 'Partner', 'Setting', 'Setting::Translation',  'ExtraInfo', 'ExtraInfo::Translation', 'PreviousEdition']
+  config.included_models = ['Artist', 'Artist::Translation', 'Event', 'Event::Translation', 'Location', 'User', 'Booking', 'Link', 'EventDate', 'Partner', 'Setting', 'Setting::Translation',  'ExtraInfo', 'ExtraInfo::Translation', 'PreviousEdition']
 
   config.model 'Artist::Translation' do
     visible false
@@ -62,15 +63,7 @@ RailsAdmin.config do |config|
     end
     include_fields :locale, *Event.translated_attribute_names
   end
-
-  config.model 'StaticPage::Translation' do
-    visible false
-    configure :locale, :hidden do
-      help ''
-    end
-    include_fields :locale, *StaticPage.translated_attribute_names
-  end
-
+  
   config.model 'Setting::Translation' do
     visible false
     configure :locale, :hidden do

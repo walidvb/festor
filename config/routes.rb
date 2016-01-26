@@ -24,11 +24,7 @@ Festor::Application.routes.draw do
 		resources :static_pages, only: [:show]
 		resources :news, controller: 'static_pages', only: [:index, :show]
 
-		if(Rails.env.prod? && home = StaticPage.find(21) && home.public?)
-			root static_page_path(home)
-		else
-			root "home#index"
-		end
+		root "home#index"
 		get "/gallery" => 'static#gallery', as: :gallery
 		get "/about" => 'static#about', as: :about
 		mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
