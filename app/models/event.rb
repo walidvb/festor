@@ -3,7 +3,7 @@ class Event < ActiveRecord::Base
 
 	include EventAdmin
 	attr_accessor :artist_ids
-	translates :title, :description, :participants, :languages, :requirements, :material, :notes 
+	translates :title, :description, :participants, :languages, :requirements, :material, :notes
 	extend FriendlyId
   friendly_id :title, :use => [:globalize, :slugged]
   acts_as_list scope: 'type = \'#{type}\''
@@ -11,21 +11,21 @@ class Event < ActiveRecord::Base
 	has_many :links, as: :linkable, dependent: :destroy
 
 	scope :featured, -> {where(featured: true)}
-	has_many :event_dates, dependent: :delete_all
+	has_many :event_dates, dependent: :delete_all, inverse_of: :event
 	accepts_nested_attributes_for :event_dates, allow_destroy: true
 
-	has_many :bookings, dependent: :delete_all
+	has_many :bookings, dependent: :delete_all, inverse_of: :event
 
-	has_many :artists, through: :bookings
-	has_many :musicians, -> {where type: :dj}, through: :bookings, source: :artist
-	has_many :vjs,  -> {where type: :vj}, through: :bookings, source: :artist
-	has_many :instructors,  -> {where type: :instructor}, through: :bookings, source: :artist
+	has_many :artists, through: :bookings, inverse_of: :events
+	has_many :musicians, -> {where type: :dj}, through: :bookings, source: :artist, inverse_of: :event
+	has_many :vjs,  -> {where type: :vj}, through: :bookings, source: :artist, inverse_of: :events
+	has_many :instructors,  -> {where type: :instructor}, through: :bookings, source: :artist, inverse_of: :events
 
 	has_many :assets, as: :assetable
 	accepts_nested_attributes_for :assets, allow_destroy: true
-	belongs_to :location
+	belongs_to :location, inverse_of: :events
 
-	has_many :extra_infos
+	has_many :extra_infos, inverse_of: :event
 
 	accepts_nested_attributes_for :artists, allow_destroy: true
 	accepts_nested_attributes_for :links, allow_destroy: true

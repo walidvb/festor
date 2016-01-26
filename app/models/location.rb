@@ -5,9 +5,9 @@ class Location < ActiveRecord::Base
 	extend FriendlyId
 	friendly_id :name, :use => [:globalize, :slugged]
 
-	has_many :events
-	has_many :bookings, through: :events
-	has_many :artists, through: :bookings
+	has_many :events, inverse_of: :location
+	has_many :bookings, through: :events, inverse_of: :location
+	has_many :artists, through: :bookings, inverse_of: :location
 
 	has_attached_file :picture,
 	:styles => {

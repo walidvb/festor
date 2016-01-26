@@ -11,10 +11,10 @@ class Artist < ActiveRecord::Base
   validates :name, presence: true
   validates :biography, presence: true
 
-  has_many :bookings, dependent: :delete_all
-  has_many :events, through: :bookings
-  has_many :locations, through: :bookings
-  has_many :links, as: :linkable, dependent: :destroy
+  has_many :bookings, dependent: :delete_all, inverse_of: :artist
+  has_many :events, through: :bookings, inverse_of: :artists
+  has_many :locations, through: :bookings, inverse_of: :artists
+  has_many :links, as: :linkable, dependent: :destroy, inverse_of: :artists
 
   accepts_nested_attributes_for :translations, allow_destroy: true
   accepts_nested_attributes_for :links, allow_destroy: true
