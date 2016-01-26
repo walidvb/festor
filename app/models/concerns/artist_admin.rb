@@ -18,7 +18,7 @@ module ArtistAdmin
         visible false
       end
       configure :events do
-        visible false
+        visible true
       end
       configure :locations do
         visible false
