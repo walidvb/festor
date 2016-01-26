@@ -131,7 +131,7 @@ body a{
 	background-color: $white;
 	color: $black;
 	font-size: $smaller;
-	padding-top: $larger;
+	padding: 1.25rem 0 1.25rem 0;
 	.container{
 		display:flex;
 		flex-direction: row;
@@ -250,6 +250,14 @@ body a{
 		width: 33%;
 	}
 }
+
+.grid-item--width2 {
+		width: 200px;
+}
+.grid-item--height2 {
+	height: 200px; 
+}
+
 /* p5 Lines*/
 #canvas{
 	height: 100%;

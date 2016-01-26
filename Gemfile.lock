@@ -619,3 +619,6 @@ DEPENDENCIES
   terminal-notifier-guard
   timecop
   uglifier (= 2.5.3)
+
+BUNDLED WITH
+   1.11.2

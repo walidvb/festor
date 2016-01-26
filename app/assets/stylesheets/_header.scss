@@ -1,24 +1,59 @@
 $header-height-sm: 250px;
 $header-padding-vert: 40px;
 
-.header-top{
-  padding-top: $margin-vertical-normal;
+.body-header{
+	padding-top: $margin-vertical-normal;
+	margin-bottom: 2*$margin-vertical-large;
 }
 
-.body-header .header-top, .navbar-header, .navbar-nav{
+.body-header .header-top, .navbar-header{
 	display: flex;
 	justify-content: space-around;
 }
-.header-left, .header-right, .header-logo{
-	flex: 1 0 33%;
+
+.header-left {
+	flex: 1 0 100%;
+	@media #{$tablet}{
+		flex: 1 0 40%;
+		display: flex;
+	}
 }
 
-.navbar-nav{
-	width: 100%;
-  margin-bottom: $margin-vertical-normal;
-	li{
-		text-align:center;
-		flex: 1 0 20%;
+#logo, .motto{
+	flex: 1 0 100%;
+	@media #{$tablet}{
+		display: inline-block;
+		flex: 1 0 50%;
+	}
+}
+
+.header-right{
+	flex: 1 0 100%;
+	@media #{$tablet}{
+		flex: 1 0 60%;
+		display: flex;
+		border-bottom: solid 1px $black;
+		.social, .locales{
+			flex: 1 0 25%;
+		}
+		.desktop-nav{
+			flex: 1 0 50%;
+			li{
+				width:49%;
+				display: inline-block;
+			}
+		}
+		li{
+			width: 100%;
+			display: block;
+			text-align: left;
+			text-transform: capitalize;
+		}
+		a{
+			height: 2rem;
+			width: 100%;
+			padding: $margin-vertical-normal 0 $margin-vertical-normal 0;
+		}
 	}
 }
 
@@ -26,16 +61,4 @@ $header-padding-vert: 40px;
 	form{
 		display: inline-block;
 	}
-}
-
-.header-right{
-	text-align: right;
-}
-
-.header-logo {
-    height: 100px;
-}
-
-.navbar-nav{
-	display : flex;
 }
