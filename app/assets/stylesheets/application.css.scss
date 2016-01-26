@@ -139,15 +139,16 @@ body a{
 		justify-content: space-around;
 		align-content: flex-start;
 		align-items: flex-start;
-		padding-top: 10px;
+		margin: 0 16px 0 16px;
+		padding-top: $margin-vertical-normal;
+		@media #{$tablet}{
+			margin: 0px;
+		}
 	}
-	.social, .logo, .address{
-		flex: 1 0 200px;
-	}
-	.logo{
-		img {
-			width: 30%;
-			margin: auto;
+	.footer-links, .address{
+		flex: 1 0 100%;
+		@media #{$tablet}{
+			flex: 1 0 50%;
 		}
 	}
 	p{
@@ -156,7 +157,10 @@ body a{
 }
 
 .address{
-	text-align: right;
+	margin-top: $margin-vertical-normal;
+	@media #{$tablet}{
+		text-align: right;
+	}
 }
 
 .social{
@@ -255,7 +259,7 @@ body a{
 		width: 200px;
 }
 .grid-item--height2 {
-	height: 200px; 
+	height: 200px;
 }
 
 /* p5 Lines*/
