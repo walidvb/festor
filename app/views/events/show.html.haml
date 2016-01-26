@@ -29,8 +29,8 @@
         %h5= link_to t('events.ticket'), @event.buy_link, class: "btn btn-md buy-link fa fa-shopping-cart", target: "_blank" unless @event.buy_link.blank?
       - if(@event.type != "workshop" && !@event.price.blank? )
         %h5.price= @event.price
-  .show-infos.show-xs= render('info_block', event: @event)
-  .show-desc= interpolate(@event.description, image: @event.main_image.url(:large), infos: render('info_block', event: @event)).html_safe unless @event.description.blank?
+  = render('info_block', event: @event, classes: 'show-xs')
+  .show-desc= interpolate(@event.description, image: @event.main_image.url(:large), infos: render('info_block', event: @event, classes: 'hidden-xs')).html_safe unless @event.description.blank?
   - unless @event.extra_infos.empty?
     %table.extra-infos
       -@event.extra_infos.each do |extra|

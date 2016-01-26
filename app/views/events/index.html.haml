@@ -3,7 +3,7 @@
 		.grid-item{data: {position: event.position, id: event.id}}
 			- artists = event.artists
 			= link_to path_for(event) do
-				= image_tag event.main_image.url(:tile), width: 600, height: 270
+				= image_tag event.main_image.url(:tile), width: 600
 				.info
 					- if !event.category.blank?
 						%h3.type
