@@ -1,6 +1,6 @@
 class Booking < ActiveRecord::Base
-	belongs_to :event, inverse_of: :booking
-	belongs_to :artist, inverse_of: :booking
+	belongs_to :event, inverse_of: :bookings
+	belongs_to :artist, inverse_of: :bookings
 
 	has_one :location, through: :event
 	#validates :event, presence: true
