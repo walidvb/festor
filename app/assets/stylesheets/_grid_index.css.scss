@@ -1,12 +1,11 @@
 .grid-item{
   min-width: 25%;
-  min-height: 270px;
   position: relative;
   @media #{$mobile}{
     position: relative!important;
     top: 0!important;
   }
-  &.sr-active:hover .info, .info{
+  .no-touch &.sr-active:hover .info, .info{
     position: absolute;
     top : 0px;
     width: 100%;
