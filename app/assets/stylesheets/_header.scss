@@ -41,6 +41,9 @@ $header-padding-vert: 40px;
 			li{
 				width:49%;
 				display: inline-block;
+				&:hover{
+					background:$black;
+				}
 			}
 		}
 		li{
@@ -50,9 +53,9 @@ $header-padding-vert: 40px;
 			text-transform: capitalize;
 		}
 		a{
+			display: block;
 			height: 2rem;
 			width: 100%;
-			padding: $margin-vertical-normal 0 $margin-vertical-normal 0;
 		}
 	}
 }
