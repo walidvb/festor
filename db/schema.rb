@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160126161311) do
+ActiveRecord::Schema.define(version: 20160126162240) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,7 +39,6 @@ ActiveRecord::Schema.define(version: 20160126161311) do
     t.string   "label"
     t.string   "origin"
     t.string   "link"
-    t.text     "profile_picture_meta"
     t.integer  "position"
     t.string   "type"
   end
