@@ -77,7 +77,6 @@ class Event < ActiveRecord::Base
 		unless (ids = ids.map(&:to_i).select { |i| i>0 }) == (current_ids = bookings.map(&:artist_id))
 			(current_ids - ids).each { |id| bookings.select{|b|b.artist_id == id}.first.mark_for_destruction }
 			ids.each_with_index do |id, index|
-				binding.pry
 				if current_ids.include? (id)
 					#bookings.select { |b| b.artist_id == id }.first.position = (index+1)
 				else
