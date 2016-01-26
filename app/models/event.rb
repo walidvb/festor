@@ -62,6 +62,10 @@ class Event < ActiveRecord::Base
 		[:clubbing, :performance, :screening, :other, :installation, :exhibition, :conference]
 	end
 
+	def finished?
+	  false
+	end
+
 	self.type_enum.each do |type|
 		scope type, -> {where(type: type)}
 	end

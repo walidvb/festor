@@ -15,11 +15,16 @@ a.artist{
     color: white;
   }
 }
-
-.show-header, .artist-list{
+.event-name{
 	margin: 0 $margin-horizontal-normal 0 $margin-horizontal-normal;
 	@media #{$tablet}{
-			display: inline-block;
+		margin: 0;
+	}
+}
+.show-header, .artist-list{
+	@media #{$tablet}{
+		margin: 0;
+		display: inline-block;
 	}
 	margin-bottom: $margin-vertical-large;
 	a{
@@ -78,11 +83,15 @@ h1{
   	margin-left: -30em;
   }
 }
-.show-desc, .event-artist-bio, .artist-desc, .static-desc{
+#main-content{
 	padding: 0 1rem 0 1rem;
 	@media #{$tablet}{
+		padding: 0;
+	}
+}
+.show-desc, .event-artist-bio, .artist-desc, .static-desc{
+	@media #{$tablet}{
 		max-width: 80ch;
-		padding: 0 0 0 0;
 	}
 }
 
