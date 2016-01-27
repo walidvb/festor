@@ -1,3 +1,7 @@
+@mixin text-shadow($color1: $black, $color2: $black,$gap: 0.2em){
+	text-shadow: $gap 0 0px $color1, #{$gap * 2} 0 0px $color2;
+}
+
 @mixin n-cols($children,  $max-column: 3){
 	&{
 		@extend .mf-row;

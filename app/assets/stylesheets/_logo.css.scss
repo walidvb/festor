@@ -17,19 +17,19 @@
       }
     }
   }
+  @include text-shadow($color1: $black, $color2: $white);
 	@media #{$tablet} {
-		text-shadow: 0.2em 0 0px black, 0.4em 0 0px $black;
+    @include text-shadow($color1: $black);
 	}
-  text-shadow: 0.2em 0 0px black, 0.4em 0 0px $white;
   header:hover &{
-      text-shadow: 0 0px 0px black, 0 0px 0px $white!important;
+    @include text-shadow($color1: $black, $color2: $white, $gap: 0);
 			@media #{$tablet} {
-				text-shadow: 0 0px 0px black, 0 0px 0px $black!important;
+        @include text-shadow($gap: 0);
 			}
     & .letter:hover{
-      text-shadow: 0.2em 0 0px black, 0.4em 0 0px $white!important;
+      @include text-shadow($color1: $black, $color2: $white);
 			@media #{$tablet} {
-				text-shadow: 0.2em 0 0px black, 0.4em 0 0px $black!important;
+        @include text-shadow();
 			}
       transition: all 0.2s ease-out;
     }
