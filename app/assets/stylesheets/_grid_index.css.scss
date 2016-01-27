@@ -19,7 +19,6 @@
 
 .grid-item{
   min-width: 25%;
-  display: flex;
   .tile{
     position: relative;
   }
@@ -32,18 +31,19 @@
     top: 0!important;
   }
 
-  &:before{
-    content: '';
+  & .tile-link{
+    will-change: true;
     opacity: 1;
-    position: absolute;
-    top : 0px;
     width: 100%;
     height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
     transition : all 0.3s ease-out;
     background: rgba(255,255,255, 0.95);
     z-index: 1;
   }
-  .no-touch &.sr-middle:hover:before{
+  .no-touch &.sr-middle:hover .tile-link{
     opacity: 1;
   }
   .no-touch &.sr-middle:hover .info, .info{
@@ -59,7 +59,7 @@
     .info{
       opacity: 0;
     }
-    &:before{
+    & .tile-link{
       transition : all 0.3s ease-out;
       opacity : 0;
     }

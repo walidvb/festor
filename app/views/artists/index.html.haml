@@ -19,8 +19,8 @@
 		- classes.push("grid-item--width2") if artist.featured?
 		.grid-item.mix.artist{class: classes, data: {position: artist.position, id: artist.id}}
 			- path = artist_path(artist, locale: I18n.locale)
-			= link_to path do
-				= image_tag artist.profile_picture.url(artist.featured? ? :large : :tile)
+			= image_tag artist.profile_picture.url(artist.featured? ? :large : :tile)
+			= link_to path, class: 'tile-link' do
 				.info
 					%h4.type= type unless type.blank?
 					%h3.artist-name

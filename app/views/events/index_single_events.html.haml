@@ -18,17 +18,16 @@
 		- classes = [dates_as_string, event.category]
 		- classes.push("grid-item--width2") if event.featured?
 		.grid-item.event{class: classes.join(' '), data: {position: event.position, id: event.id}}
-			= link_to single_event_path(event, locale: I18n.locale) do
-				.tile
-					= image_tag event.main_image.url(event.featured? ? :large : :tile)
-					.info
-						%h2.type
-							= event.category
-						%h2.event-title= event.title
-						.artists= event.artists.map(&:name).join(', ')
-						.location
-							- event.event_dates.each do |date|
-								- if date.end.nil?
-									#{l(date.start, format: "%A %e %B")} &mdash; #{event.location.name}
-								- else
-									#{l(date.start, format: "%e")} - #{l(date.end, format: "%e %B")} &mdash; #{event.location.name}
+			= image_tag event.main_image.url(event.featured? ? :large : :tile)
+			= link_to single_event_path(event, locale: I18n.locale), class: 'tile-link' do
+				.info
+					%h2.type
+						= event.category
+					%h2.event-title= event.title
+					.artists= event.artists.map(&:name).join(', ')
+					.location
+						- event.event_dates.each do |date|
+							- if date.end.nil?
+								#{l(date.start, format: "%A %e %B")} &mdash; #{event.location.name}
+							- else
+								#{l(date.start, format: "%e")} - #{l(date.end, format: "%e %B")} &mdash; #{event.location.name}

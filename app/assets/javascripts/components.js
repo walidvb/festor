@@ -36,7 +36,13 @@ $(document).ready(function() {
 
 		$('.cat-filters input').change(function(){
 			$grid.isotope({
-				filter: getCurrentFilters()
+				filter: getCurrentFilters(),
+				layoutMode: 'masonry',
+				itemSelector: '.grid-item',
+				masonry: {
+					columnWidth: '.grid-sizer',
+					percentPosition: true
+				}
 			});
 		});
 
