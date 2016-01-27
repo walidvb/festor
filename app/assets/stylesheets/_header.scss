@@ -8,8 +8,11 @@ $header-padding-vert: 40px;
 	background: $black;
 	color: $white;
 	.active{
-		background: $white;
-		color: $black;
+		background: $black;
+		color: $white;
+		&:hover{
+			@include text-shadow();
+		}
 	}
 	a{
 		color: white;
