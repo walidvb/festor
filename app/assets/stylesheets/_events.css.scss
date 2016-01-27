@@ -198,10 +198,10 @@ h1{
 	td{
 		vertical-align: top;
 	}
-	.left, .right{
+	.left-info, .right-info{
 		display: inline-block;
 	}
-	.left{
+	.left-info{
 		padding-left: 1rem;
 		@media #{$tablet}{
 			padding-left: 0;
@@ -209,7 +209,7 @@ h1{
 		min-width: 40%;
 		font-weight: bold;
 	}
-	.right{
+	.right-info{
 		max-width: 50%;
 		padding-left: 1rem;
 	}
