@@ -29,9 +29,6 @@ $(document).on('rails_admin.dom_ready', function(){
 			h4: "h4",
 		},
 		blockStyles: {
-	    'p': {
-	      'columns-2': '2 columns',
-		  }
 		},
 		useFrTag: true,
 		alwaysBlank: true,
