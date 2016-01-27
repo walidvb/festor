@@ -27,6 +27,7 @@ module EventAdmin
   				label "Dates"
   			end
         configure :artists do
+          orderable true
         end
         configure :instructors do
           hide
@@ -43,7 +44,7 @@ module EventAdmin
         end
       end
       list do
-      	scopes [:all, Event.type_enum*]
+      	scopes [:all, *Event.type_enum]
         field :title do
         	# pretty_value do
         	#  bindings[:view].link_to(bindings[:object].title, edit_path(model_name: bindings[:object].class)) << value
