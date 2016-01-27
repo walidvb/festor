@@ -115,15 +115,15 @@ main{
 	font-family: $body-font;
 }
 
-//body a{
-//	color: $black;
-//	text-decoration: none;
-//	&:hover{
-//		color: $white;
-//		background:	$black;
-//		text-decoration: none;
-//	}
-//}
+body a{
+	//color: $black;
+	text-decoration: none;
+	&:hover{
+		//color: $white;
+		//background:	$black;
+		text-decoration: none;
+	}
+}
 
 #footer{
 	height: auto;
