@@ -33,7 +33,11 @@
 		flex-basis: 24ch;
 	}
 	&:hover{
-		color: white !important;
+		background: $black;
+		color: $white;
+		h4, h5{
+			color: $white;
+		}
 	}
 	h3{
 		font-size: $body-size;

@@ -5,14 +5,16 @@
 	- @events.each do |event|
 		- artists = event.artists
 		= link_to path_for(event), class: "location-event #{event.location.slug}" do
-			= image_tag event.main_image.url(:thumb), width: 200
 			.info
-				- if !event.category.blank?
-					%h3.type
-						= t("events.categories.#{event.category}")
 				%h4.event-title= event.title
 				- artists.each do |a|
 					.artist-name= a.name
+				%h5.date
+					- if date_ = event.event_dates.first
+						- if date_.end.nil?
+							#{l(date_.start, format: "%e %B")} &mdash}
+						- else
+							#{l(date_.start, format: "%e")} - #{l(date_.end, format: "%e %B")} &mdash}
 
 
 
