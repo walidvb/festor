@@ -9,10 +9,18 @@
     });
   });
 
+  var moreContainer, main;
+  $(document).ready(function(){
+    moreContainer = $('.load-more-container');
+    main = $('#main-content');
+  });
+
   $(document, '.close').click(function(e){
     if($(e.target).hasClass('close')){
-      $('.load-more-container').hide();
-      $('#main-content').show();
+      moreContainer.addClass('leaving');
+      setTimeout(function(){
+        $('#main-content').removeClass('leaving');
+      }, 2000);
       $('.close').hide();
     }
   });
@@ -24,16 +32,39 @@
     var url = $this.data('load-more') || $(e.target).data('load-more');
     if(url != undefined){
       e.preventDefault();
+      moreContainer.addClass('leaving');
+      main.addClass('leaving');
+      var transitionFinished = false;
+      main.on('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', replaceContent);
+      var replaceContent = function(){
+        transitionFinished  = true;
+        debugger;
+      }
       $.ajax({
         url: url,
         success: function(data){
+<<<<<<< HEAD
           var container = $('.load-more-container');
           $('#main-content').hide();
           container.html($(data).find('#main-content')).show();
           appendNavTo($this, container);
           $(document).trigger('page:load');
+=======
+          raeplaceContent = function(){
+            var new_ = $(data).find('#main-content').html();
+            moreContainer.html(new_);
+            appendNavTo($this, moreContainer);
+            moreContainer.addClass('leaving');
+            setTimeout(function(){
+              moreContainer.removeClass('leaving');
+            }, 1000);
+          };
+          if(transitionFinished){
+            replaceContent();
+          }
+>>>>>>> wip: adds transition
         }
-      })
+      });
     };
   });
 
