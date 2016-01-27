@@ -1,18 +1,18 @@
 #google-map-wrapper{
-  height: 440px;
+  height: 60rem;
   @media #{$tablet}{
     margin-left: -15px;
     margin-right: -15px;
   }
 }
 
-.location-list{
+.location-list, .location-events{
 	display: flex;
 	flex-flow: row wrap;
 	justify-content: space-between;
 	margin: 0 0 $margin-vertical-normal 0;
 	padding: 0 $margin-horizontal-normal 0 $margin-horizontal-normal;
-	.location-link{
+	.location-link, .location-event{
 		flex-basis: 100%;
 		border: solid 1px $black;
 		text-align: center;
@@ -21,6 +21,11 @@
 			flex-basis: 24ch;
 		}
 	}
+}
+
+.location-events{
+	border-top: solid 1px $black;
+	padding-top: $margin-vertical-normal;
 }
 
 #google-map{

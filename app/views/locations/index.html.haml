@@ -2,10 +2,18 @@
 	- @locations.each do |loc|
 		= link_to loc.name,	"##{loc.slug}", class: 'location-link', data: { title: loc.slug}
 .location-events
-	%hr
 	- @events.each do |event|
+		- artists = event.artists
 		= link_to path_for(event), class: "location-event #{event.location.slug}" do
-			= event.title
+			= image_tag event.main_image.url(:thumbnail), width: 200
+			.info
+				- if !event.category.blank?
+					%h3.type
+						= t("events.categories.#{event.category}")
+				%h4.event-title= event.title
+				- artists.each do |a|
+					.artist-name= a.name
+
 
 
 #google-map-wrapper{ data: { "marker-url" => image_url("google-map-marker.png")}}
