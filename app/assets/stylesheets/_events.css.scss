@@ -1,29 +1,39 @@
 .nav-link{
-  $trans: 0.25s cubic-bezier(0, 0.04, 0, 0.96);
-  @include text-shadow($color1: $white, $color2: $white, $gap: 0.3em);
-  letter-spacing: 0em;
-  transition: text-shadow #{$trans}, letter-spacing #{$trans};
-  color: $black;
-  background: $white;
-  &.active, .active, &:hover{
-    background: $black;
-    color: $white;
-    @extend .nav-link;
-  }
-  &:hover{
-    @include text-shadow($color1: $white, $color2: $white, $gap: 0.3em);
-    letter-spacing: 0.3em;
-    transition: text-shadow #{$trans}, letter-spacing #{$trans};
-  }
+	background: $black;
+	color: $white;
+	$trans: 0.25s cubic-bezier(0, 0.04, 0, 0.96);
+	@media #{$tablet}{
+		@include text-shadow($color1: $white, $color2: $white, $gap: 0.3em);
+		letter-spacing: 0em;
+		transition: text-shadow #{$trans}, letter-spacing #{$trans};
+		color: $black;
+		background: $white;
+	}
+	&.active, .active, &:hover{
+		color: $black;
+		background: $white;
+		@media #{$tablet}{
+			background: $black;
+			color: $white;
+			@extend .nav-link;
+		}
+	}
+	&:hover{
+		@media #{$tablet}{
+			@include text-shadow($color1: $white, $color2: $white, $gap: 0.3em);
+			letter-spacing: 0.3em;
+			transition: text-shadow #{$trans}, letter-spacing #{$trans};
+		}
+	}
 }
 
 a.artist{
-  @extend .nav-link;
-  &:hover .labels{
-    color:transparent;
-    letter-spacing: 1em;
-    text-shadow: none;
-  }
+	@extend .nav-link;
+	&:hover .labels{
+		color:transparent;
+		letter-spacing: 1em;
+		text-shadow: none;
+	}
 }
 .event-name{
 	margin: 0 $margin-horizontal-normal 0 $margin-horizontal-normal;
@@ -40,7 +50,7 @@ a.artist{
 	a{
 		display: block;
 		@media #{$tablet}{
-				display: inline-block;
+			display: inline-block;
 		}
 	}
 	.artist{
@@ -69,45 +79,45 @@ a.artist{
 }
 
 h1{
-		max-width: 26ch;
-		text-transform: capitalize;
+	max-width: 26ch;
+	text-transform: capitalize;
 }
 .single-artist{
-		.artist-name{
-			vertical-align: middle;
-		}
-		.labels{
-			margin: 0;
-		}
-		h4{
-			margin : 0;
-		}
-		.origin:before{
-			content : ' / ';
-		}
+	.artist-name{
+		vertical-align: middle;
+	}
+	.labels{
+		margin: 0;
+	}
+	h4{
+		margin : 0;
+	}
+	.origin:before{
+		content : ' / ';
+	}
 }
 
 .show-desc{
-  @media #{$tablet}{
-    .left{
-    	float: left;
-      margin-left: -13em;
-      &.large{
-    	  margin-left: -25em;
-      }
-    }
-    .right{
-      float: right;
-      margin-right: -10em;
-      &.large{
-        margin-right: -15em;
-      }
-    }
-    iframe{
-      float: right;
-      margin-right: -25em;
-    }
-  }
+	@media #{$tablet}{
+		.left{
+			float: left;
+			margin-left: -13em;
+			&.large{
+				margin-left: -25em;
+			}
+		}
+		.right{
+			float: right;
+			margin-right: -10em;
+			&.large{
+				margin-right: -15em;
+			}
+		}
+		iframe{
+			float: right;
+			margin-right: -25em;
+		}
+	}
 }
 #main-content{
 	padding: 0 1rem 0 1rem;
@@ -128,8 +138,8 @@ h1{
 	}
 	h5{
 		display: inline-block;
-    position: relative;
-    border-bottom: solid 1px $black;
+		position: relative;
+		border-bottom: solid 1px $black;
 		padding-left: 0.6rem;
 		padding-right: 2rem;
 		@media #{$tablet}{
@@ -139,12 +149,12 @@ h1{
 			content: '';
 		}
 		&:before, &:after{
-	    height: 0.6em;
-	    display: inline-block;
-	    border-left: 1px solid $black;
-	    position: absolute;
-	    top: 8px;
-	    left: 0px;
+			height: 0.6em;
+			display: inline-block;
+			border-left: 1px solid $black;
+			position: absolute;
+			top: 8px;
+			left: 0px;
 		}
 		&:not(:first-child){
 			margin-left: -0.6rem;
