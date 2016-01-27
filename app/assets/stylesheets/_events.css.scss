@@ -106,7 +106,7 @@ h1{
 	margin-left: 1px;
 	display: flex;
 	justify-content: space-around;
-	.date-details{
+	.event-dates{
 		flex: 1 0 90%;
 	}
 	@media #{$tablet} {
@@ -163,7 +163,7 @@ h1{
 }
 
 .show-info{
-	background: transparent;
+	background: rgba(255,255,255,0.95);;
 	float: right;
 	margin: 2rem 0 2rem 0rem;
 	@media #{$tablet}{

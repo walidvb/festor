@@ -20,16 +20,17 @@
 	.show-header
 		%h1.event-name= @event.title
 		.event-infos
-			- @dates.each do |date|
-				.date-details
-					%h5.day= [date.start, date.end].compact.map{|d| l(d, format: "%A %e %b")}.join(' – ')
-					%h5.time= [date.start, date.end].compact.map{|d| l(d, format: "%H:%M")}.join(' – ')
-					- unless @location.nil?
-						%h5.location= link_to @location.name, venues_path(locale: I18n.locale, anchor: @location.slug)
-				- if(@event.finished?)
-					%h5= link_to t('events.ticket'), @event.buy_link, class: "btn btn-md buy-link fa fa-shopping-cart", target: "_blank" unless @event.buy_link.blank?
-				- if(@event.type != "workshop" && !@event.price.blank? )
-					%h5.price= @event.price
+			.event-dates
+				- @dates.each do |date|
+					.date-details
+						%h5.day= [date.start, date.end].compact.map{|d| l(d, format: "%A %e %b")}.join(' – ')
+						%h5.time= [date.start, date.end].compact.map{|d| l(d, format: "%H:%M")}.join(' – ')
+						- unless @location.nil?
+							%h5.location= link_to @location.name, venues_path(locale: I18n.locale, anchor: @location.slug)
+					- if(@event.finished?)
+						%h5= link_to t('events.ticket'), @event.buy_link, class: "btn btn-md buy-link fa fa-shopping-cart", target: "_blank" unless @event.buy_link.blank?
+					- if(@event.type != "workshop" && !@event.price.blank? )
+						%h5.price= @event.price
 			.inner-nav
 				= link_to('', path_for(@event.previous), class: 'prev') if !@event.previous.nil?
 				= link_to('', path_for(@event.next), class: 'next') if !@event.next.nil?
