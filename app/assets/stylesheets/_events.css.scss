@@ -5,6 +5,10 @@ a.artist{
 		letter-spacing: normal;
 		text-shadow: none;
 	}
+	&.active{
+		color: transparent;
+		text-shadow: none;
+	}
 }
 .event-name{
 	margin: 0 $margin-horizontal-normal 0 $margin-horizontal-normal;

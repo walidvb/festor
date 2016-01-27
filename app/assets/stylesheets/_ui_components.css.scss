@@ -17,6 +17,7 @@
 	&.active, .active, &:hover{
 		color: $black;
 		background: $white;
+		letter-spacing: 0.3em;
 		@media #{$tablet}{
 			background: $black;
 			color: $white;
