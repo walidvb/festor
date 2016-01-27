@@ -24,7 +24,7 @@ Festor::Application.routes.draw do
 		resources :static_pages, only: [:show]
 		resources :news, controller: 'static_pages', only: [:index, :show]
 
-		root "home#index"
+		root "events#index", type: :workshop
 		get "/gallery" => 'static#gallery', as: :gallery
 		get "/about" => 'static#about', as: :about
 		mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
