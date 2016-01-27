@@ -18,7 +18,9 @@
   });
 
   $(document, '[data-load-more]').on('click', function(e){
+    $('[data-load-more]').removeClass('active');
     var $this = $(e.target).parent('[data-load-more]');
+    $this.addClass('active');
     var url = $this.data('load-more') || $(e.target).data('load-more');
     if(url != undefined){
       e.preventDefault();
@@ -37,7 +39,7 @@
 
   function appendNavTo(siblingOf, container){
     var nav = $('<div class="nav"/>');
-    $('<div class="close"/>').prependTo(nav);
+    nav.html('back');
     nav.prependTo(container).show();
   }
 })(jQuery);
