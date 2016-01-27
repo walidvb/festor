@@ -24,7 +24,9 @@
     background: rgba(255,255,255, 0.95);
     z-index: 1;
   }
-
+  .no-touch &.sr-middle:hover:before{
+    opacity: 1;
+  }
   .no-touch &.sr-middle:hover .info, .info{
     position: absolute;
     top: 0;
