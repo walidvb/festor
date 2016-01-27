@@ -102,3 +102,27 @@ $form-font-size: 16px;
 		}
 	}
 }
+
+#filters{
+	input[type="checkbox"]{
+		display: none;
+	}
+	input[type="checkbox"]:checked + label{
+		&:before{
+			border-width: 8px;
+		}
+	}
+	label{
+		font-weight: normal;
+		&:before{
+			content: '';
+			display: inline-block;
+			height: 15px;
+			width: 15px;
+			border: solid 2px $black;
+			margin-right: 5px;
+			position: relative;
+			top: 3px;
+		}
+	}
+}

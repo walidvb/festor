@@ -5,7 +5,6 @@
 			= link_to path_for(event) do
 				= image_tag event.main_image.url(:tile), width: 600
 				.info
-				- content_for(:filters) do
 					- if !event.category.blank?
 						%h3.type
 							= t("events.categories.#{event.category}")

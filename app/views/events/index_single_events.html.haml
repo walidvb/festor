@@ -1,9 +1,3 @@
-#filters
-	%select#date-filter{"data-placeholder" => "date"}
-		%option{:value => "empty"}
-		- @dates.each do |d|
-			%option{:value => d.strftime("%d-%m-%y")}= l(d, format: "%A %e")
-	%div#date-sort.sort.sort-desc
 .grid#single-events-list.events-list.sortable-list.sortable{data: {url: 'admin/events/sort'}}
 	- @events.each do |event|
 		- dates_as_string = event.event_dates.map{|date| date.start.strftime('%d-%m-%y')}.join(' ')
@@ -12,14 +6,13 @@
 				.tile
 					= image_tag event.main_image.url(:tile), width: 600
 					.info
-						- content_for(:filters) do
-							%h2.type
-								= event.category
-							%h2.event-title= event.title
-							.artists= event.artists.map(&:name).join(', ')
-							.location
-								- event.event_dates.each do |date|
-									- if date.end.nil?
-										#{l(date.start, format: "%A %e %B")} &mdash; #{event.location.name}
-									- else
-										#{l(date.start, format: "%e")} - #{l(date.end, format: "%e %B")} &mdash; #{event.location.name}
+						%h2.type
+							= event.category
+						%h2.event-title= event.title
+						.artists= event.artists.map(&:name).join(', ')
+						.location
+							- event.event_dates.each do |date|
+								- if date.end.nil?
+									#{l(date.start, format: "%A %e %B")} &mdash; #{event.location.name}
+								- else
+									#{l(date.start, format: "%e")} - #{l(date.end, format: "%e %B")} &mdash; #{event.location.name}

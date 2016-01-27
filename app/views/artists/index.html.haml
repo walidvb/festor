@@ -6,10 +6,9 @@
 		.grid-item.mix.artist{class: classes, data: {position: artist.position, id: artist.id}}
 			- path = artist_path(artist, locale: I18n.locale)
 			= link_to path do
-				= image_tag artist.profile_picture.url(:tile)
+				= image_tag artist.profile_picture.url(:tile)	
 				.info
-					- content_for(:filters) do
-						%h4.type= type unless type.blank?
-						%h3.artist-name
-							= artist.name
-						.artists= event.title unless event.blank?
+					%h4.type= type unless type.blank?
+					%h3.artist-name
+						= artist.name
+					.artists= event.title unless event.blank?
