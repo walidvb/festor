@@ -1,20 +1,16 @@
 - content_for :filters do
 	#filters
 		.cat-filters
-			- Event.type_enum.each do |type|
-				/ - if type != :single_event
-				/ 	%input.cat-filter{:type => "checkbox", value: type, id: "category-#{type}", checked: true}
-				/ 		%label{:for => "category-#{type}"}= t("events.types.#{type}")
-			- Event.category_enum.each do |cat|
-				%input.cat-filter{:type => "checkbox", value: cat, id: "category-#{cat}", checked: true}
-					%label{:for => "category-#{cat}"}= t("events.categories.#{cat}")
+			- Artist.type_enum.each do |type|
+				%input.cat-filter{:type => "checkbox", value: type, id: "category-#{type}", checked: true}
+					%label{:for => "category-#{type}"}= t("artists.types.#{type}")
 
 .grid.artists-list{data: {url: 'admin/artists/sort'}}
 	.grid-sizer.grid-item
 	- @artists.each do |artist|
 		- event = artist.events.first
-		- type = event.category.blank? ? t("events.types.#{event.type}") : t("events.categories.#{event.category}") unless event.blank?
-		- classes = []
+		- type = artist.type
+		- classes = [type]
 		- classes.push(event.category) unless event.blank?
 		- classes.push("grid-item--width2") if artist.featured?
 		.grid-item.mix.artist{class: classes, data: {position: artist.position, id: artist.id}}

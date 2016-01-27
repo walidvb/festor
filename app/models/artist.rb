@@ -35,7 +35,7 @@ class Artist < ActiveRecord::Base
   end
 
   def self.type_enum
-    [:vj, :dj, :instructor, :performer]
+    [:vj, :dj, :instructor, :performer, :exhibitor]
   end
 
   self.inheritance_column = :fake_column

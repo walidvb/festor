@@ -25,6 +25,14 @@ en:
     private:        'Private Partners'
     venue:          'Venue Partners'
     institutional:  'Institutional Partners'
+  artists:
+    types:
+      dj: 'dj'
+      vj: 'vj'
+      instructor: 'instructor'
+      speaker: 'speaker'
+      performer: 'performer'
+      exhibitor: 'exhibitor'
   events:
     fields:
       price:        'Price'
