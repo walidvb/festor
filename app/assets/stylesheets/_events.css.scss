@@ -87,10 +87,26 @@ h1{
 		}
 }
 
-.inline-image{
+.show-desc{
   @media #{$tablet}{
-  	float: left;
-  	margin-left: -30em;
+    .left{
+    	float: left;
+      margin-left: -13em;
+      &.large{
+    	  margin-left: -25em;
+      }
+    }
+    .right{
+      float: right;
+      margin-right: -10em;
+      &.large{
+        margin-right: -15em;
+      }
+    }
+    iframe{
+      float: right;
+      margin-right: -25em;
+    }
   }
 }
 #main-content{
@@ -192,10 +208,10 @@ h1{
 	td{
 		vertical-align: top;
 	}
-	.left, .right{
+	.left-info, .right-info{
 		display: inline-block;
 	}
-	.left{
+	.left-info{
 		padding-left: 1rem;
 		@media #{$tablet}{
 			padding-left: 0;
@@ -203,7 +219,7 @@ h1{
 		min-width: 40%;
 		font-weight: bold;
 	}
-	.right{
+	.right-info{
 		max-width: 50%;
 		padding-left: 1rem;
 	}

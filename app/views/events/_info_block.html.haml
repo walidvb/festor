@@ -2,25 +2,25 @@
   %tbody.info-list
     - if !event.price.blank? && event.type == "workshop"
       %tr.price
-        %td.left= t('events.fields.price')
-        %td.right= event.price
+        %td.left-info= t('events.fields.price')
+        %td.right-info= event.price
     - unless event.participants.blank?
       %tr.participants
-        %td.left= t('events.fields.participants')
-        %td.right= event.participants
+        %td.left-info= t('events.fields.participants')
+        %td.right-info= event.participants
     - unless event.languages.blank?
       %tr.languages
-        %td.left= t('events.fields.languages')
-        %td.right= event.languages
+        %td.left-info= t('events.fields.languages')
+        %td.right-info= event.languages
     - unless event.requirements.blank?
       %tr.requirements
-        %td.left= t('events.fields.requirements')
-        %td.right= event.requirements
+        %td.left-info= t('events.fields.requirements')
+        %td.right-info= event.requirements
     - unless event.material.blank?
       %tr.material
-        %td.left= t('events.fields.material')
-        %td.right= event.material
+        %td.left-info= t('events.fields.material')
+        %td.right-info= event.material
     - unless event.notes.blank?
       %tr.notes
-        %td.left= t('events.fields.notes')
-        %td.right= event.notes
+        %td.left-info= t('events.fields.notes')
+        %td.right-info= event.notes
