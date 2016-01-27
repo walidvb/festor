@@ -24,7 +24,7 @@
             main.removeClass('leaving')
           })
         })
-      }, 2000);
+      }, 300);
       $('.close').hide();
     }
   });
