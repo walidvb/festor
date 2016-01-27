@@ -1,6 +1,9 @@
 .grid-item{
+  $duration: 0.3s;
+  $delay: 0.2s;
   min-width: 25%;
   position: relative;
+  overflow: hidden;
   @media #{$mobile}{
     position: relative!important;
     top: 0!important;
@@ -13,12 +16,22 @@
     padding-left: $margin-horizontal-normal;
     padding-right: $margin-horizontal-normal;
     background: rgba(255,255,255, 0.95);
-    opacity : 1;
-    transition : all 0.3s ease-out;
+    opacity : 0.8;
+    transition : all $duration $delay ease-out;
   }
   .no-touch &:hover .info, &.sr-active .info{
-    transition : all 0.3s ease-out;
+    transition : all $duration ease-out;
     opacity : 0;
+  }
+
+  img{
+    -webkit-filter: blur(5px);
+    transition: filter $duration ease-out;
+  }
+
+  .no-touch &:hover img, .no-touch &.sr-active img{
+    -webkit-filter: blur(0px);
+    transition: filter $duration $delay ease-out;
   }
 }
 
