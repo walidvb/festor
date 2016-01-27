@@ -69,6 +69,10 @@ h1{
 }
 
 .show-desc{
+	.leaving & img, iframe, .show-info{
+		margin-left: 0;
+		margin-right: 0;
+	}
 	@media #{$tablet}{
 		img, iframe{
 			transition: margin .3s ease-out;
