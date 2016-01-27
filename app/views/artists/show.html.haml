@@ -19,6 +19,5 @@
 		%ul.links
 			- @links.each do |l|
 				%li= link_to l.text_to_show, l.url, target: "_blank"
-	.artist-desc.mf-row
-		.bio
-			= interpolate(@artist.biography, image: @artist.profile_picture.url(:large)).html_safe unless @artist.biography.blank?
+	.show-desc
+		= interpolate(@artist.biography, image: @artist.profile_picture.url(:large)).html_safe unless @artist.biography.blank?
