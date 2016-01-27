@@ -3,6 +3,8 @@ $(document).ready(function(){
 	var handleSelector = 'i';
 	$('.admin .sortable').sortable({
 		handler: handleSelector
+	}).bind('sortstart', function(e, ui){
+		console.log('sortstarted');
 	}).bind('sortupdate', function(e, ui) {
 		console.log("e, ui:", e, ui);
 		var position = $('li', this).index(ui.item);
