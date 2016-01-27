@@ -5,31 +5,31 @@
 .nav-link{
   $trans: 0.25s cubic-bezier(0, 0.04, 0, 0.96);
 	background: $black;
-		color: $white;
-		$trans: 0.25s cubic-bezier(0, 0.04, 0, 0.96);
+	color: $white;
+	$trans: 0.25s cubic-bezier(0, 0.04, 0, 0.96);
+	@media #{$tablet}{
+		@include text-shadow($color1: $white, $color2: $white, $gap: 0.3em);
+		letter-spacing: 0em;
+		transition: text-shadow #{$trans}, letter-spacing #{$trans};
+		color: $black;
+		background: $white;
+	}
+	&.active, .active, &:hover{
+		color: $black;
+		background: $white;
+		@media #{$tablet}{
+			background: $black;
+			color: $white;
+			@extend .nav-link;
+		}
+	}
+	&:hover{
 		@media #{$tablet}{
 			@include text-shadow($color1: $white, $color2: $white, $gap: 0.3em);
-			letter-spacing: 0em;
+			letter-spacing: 0.3em;
 			transition: text-shadow #{$trans}, letter-spacing #{$trans};
-			color: $black;
-			background: $white;
 		}
-		&.active, .active, &:hover{
-			color: $black;
-			background: $white;
-			@media #{$tablet}{
-				background: $black;
-				color: $white;
-				@extend .nav-link;
-			}
-		}
-		&:hover{
-			@media #{$tablet}{
-				@include text-shadow($color1: $white, $color2: $white, $gap: 0.3em);
-				letter-spacing: 0.3em;
-				transition: text-shadow #{$trans}, letter-spacing #{$trans};
-			}
-		}
+	}
 }
 
 .load-more-container .nav{
