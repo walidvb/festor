@@ -70,8 +70,8 @@ h1{
 
 .show-desc{
 	.leaving & img, iframe, .show-info{
-		margin-left: 0;
-		margin-right: 0;
+		margin-left: 0!important;
+		margin-right: 0!important;
 	}
 	@media #{$tablet}{
 		img, iframe{
