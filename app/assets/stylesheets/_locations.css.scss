@@ -1,9 +1,9 @@
 #google-map-wrapper{
-  height: 60rem;
-  @media #{$tablet}{
-    margin-left: -15px;
-    margin-right: -15px;
-  }
+	height: 60rem;
+	@media #{$tablet}{
+		margin-left: -15px;
+		margin-right: -15px;
+	}
 }
 
 .location-list, .location-events{
@@ -12,7 +12,7 @@
 	justify-content: space-between;
 	margin: 0 0 $margin-vertical-normal 0;
 	padding: 0 $margin-horizontal-normal 0 $margin-horizontal-normal;
-	.location-link, .location-event{
+	.location-link{
 		flex-basis: 100%;
 		border: solid 1px $black;
 		text-align: center;
@@ -28,6 +28,23 @@
 	padding-top: $margin-vertical-normal;
 }
 
+.location-event{
+	@media #{$tablet}{
+		flex-basis: 24ch;
+	}
+	&:hover{
+		color: white !important;
+	}
+	h3{
+		font-size: $body-size;
+	}
+	.info{
+		padding: $margin-vertical-normal $margin-horizontal-normal 0 $margin-horizontal-normal;
+		position: relative;
+		top: 0px;
+	}
+}
+
 #google-map{
-  height: 100%;
+	height: 100%;
 }
