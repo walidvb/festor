@@ -104,6 +104,11 @@ h1{
 
 .event-infos{
 	margin-left: 1px;
+	display: flex;
+	justify-content: space-around;
+	.date-details{
+		flex: 1 0 90%;
+	}
 	@media #{$tablet} {
 		padding: 0;
 	}
@@ -141,8 +146,14 @@ h1{
 	}
 }
 
+.inner-nav{
+	flex: 1 0 10%;
+	font-size: 1.5em;
+}
+
 .show-desc, .artist-desc{
 	margin-bottom: $margin-vertical-largest;
+	padding-bottom: 2*$margin-vertical-largest;
 }
 .artist-list{
 	padding-top: $margin-vertical-largest;
