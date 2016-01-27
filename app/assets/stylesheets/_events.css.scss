@@ -74,8 +74,8 @@ h1{
 		margin-right: 0!important;
 	}
 	@media #{$tablet}{
-		img, iframe{
-			transition: margin .3s ease-out;
+		img, iframe, .show-info{
+			transition: margin .2s ease-out;
 		}
 		.left{
 			float: left;
