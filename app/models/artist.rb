@@ -8,7 +8,7 @@ class Artist < ActiveRecord::Base
   translates :biography
 
 
-  validates_presence_of :name, :biography
+  validates_presence_of :name, :biography, :type
 
   has_many :bookings, dependent: :delete_all, inverse_of: :artist
   has_many :events, through: :bookings, inverse_of: :artists
