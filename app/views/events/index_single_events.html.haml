@@ -1,3 +1,20 @@
+- content_for :filters do
+	#filters
+		- if !@dates.nil?
+			%select#date-filter{"data-placeholder" => "date"}
+				%option{:value => "empty"}
+				- @dates.each do |d|
+					%option{:value => d.strftime("%d-%m-%y")}= l(d, format: "%A %e")
+			%div#date-sort.sort.sort-desc
+		.cat-filters
+			- Event.type_enum.each do |type|
+				/ - if type != :single_event
+				/ 	%input.cat-filter{:type => "checkbox", value: type, id: "category-#{type}", checked: true}
+				/ 		%label{:for => "category-#{type}"}= t("events.types.#{type}")
+			- Event.category_enum.each do |cat|
+				%input.cat-filter{:type => "checkbox", value: cat, id: "category-#{cat}", checked: true}
+					%label{:for => "category-#{cat}"}= t("events.categories.#{cat}")
+
 .grid#single-events-list.events-list.sortable-list.sortable{data: {url: 'admin/events/sort'}}
 	- @events.each do |event|
 		- dates_as_string = event.event_dates.map{|date| date.start.strftime('%d-%m-%y')}.join(' ')

@@ -1,3 +1,14 @@
+- content_for :filters do
+	#filters
+		.cat-filters
+			- Event.type_enum.each do |type|
+				/ - if type != :single_event
+				/ 	%input.cat-filter{:type => "checkbox", value: type, id: "category-#{type}", checked: true}
+				/ 		%label{:for => "category-#{type}"}= t("events.types.#{type}")
+			- Event.category_enum.each do |cat|
+				%input.cat-filter{:type => "checkbox", value: cat, id: "category-#{cat}", checked: true}
+					%label{:for => "category-#{cat}"}= t("events.categories.#{cat}")
+
 .grid.artists-list{data: {url: 'admin/artists/sort'}}
 	- @artists.each do |artist|
 		- event = artist.events.first
@@ -6,7 +17,7 @@
 		.grid-item.mix.artist{class: classes, data: {position: artist.position, id: artist.id}}
 			- path = artist_path(artist, locale: I18n.locale)
 			= link_to path do
-				= image_tag artist.profile_picture.url(:tile)	
+				= image_tag artist.profile_picture.url(:tile)
 				.info
 					%h4.type= type unless type.blank?
 					%h3.artist-name

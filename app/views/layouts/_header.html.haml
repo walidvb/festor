@@ -14,18 +14,4 @@
 			#{l(Date.parse("28 april"), format: "%e %b")} – #{l(Date.parse("7 may"), format: "%e %b")} / 2016 / #{ t("shared.geneva")}
 .header-right
 	= render 'layouts/navigation'
-#filters
-	- if !@dates.nil?
-		%select#date-filter{"data-placeholder" => "date"}
-			%option{:value => "empty"}
-			- @dates.each do |d|
-				%option{:value => d.strftime("%d-%m-%y")}= l(d, format: "%A %e")
-		%div#date-sort.sort.sort-desc
-	.cat-filters
-		- Event.type_enum.each do |type|
-			/ - if type != :single_event
-			/ 	%input.cat-filter{:type => "checkbox", value: type, id: "category-#{type}", checked: true}
-			/ 		%label{:for => "category-#{type}"}= t("events.types.#{type}")
-		- Event.category_enum.each do |cat|
-			%input.cat-filter{:type => "checkbox", value: cat, id: "category-#{cat}", checked: true}
-				%label{:for => "category-#{cat}"}= t("events.categories.#{cat}")
+= yield :filters
