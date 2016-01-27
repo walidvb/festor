@@ -187,6 +187,9 @@ body a{
 	}
 }
 
+body{
+	margin-bottom: 105px;
+}
 #footer{
 	border-top: solid 1px $black;
 	display: flex;
@@ -229,22 +232,6 @@ body a{
 	&:hover i{
 		visibility: visible;
 	}
-}
-
-.fa-spin-custom, .glyphicon-spin {
-  -webkit-animation: spin 1000ms infinite linear;
-  animation: spin 1000ms infinite linear;
-}
-
-@keyframes spin {
-  0% {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-  100% {
-    -webkit-transform: rotate(359deg);
-    transform: rotate(359deg);
-  }
 }
 
 /* p5 Lines*/
