@@ -2,7 +2,7 @@ a.artist{
 	@extend .nav-link;
 	&:hover .labels{
 		color:transparent;
-		letter-spacing: 1em;
+		letter-spacing: normal;
 		text-shadow: none;
 	}
 }
