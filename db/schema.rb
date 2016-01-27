@@ -191,6 +191,18 @@ ActiveRecord::Schema.define(version: 20160127124712) do
     t.datetime "updated_at"
   end
 
+  create_table "static_page_translations", force: true do |t|
+    t.integer  "static_page_id", null: false
+    t.string   "locale",         null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "body"
+    t.string   "title"
+  end
+
+  add_index "static_page_translations", ["locale"], name: "index_static_page_translations_on_locale", using: :btree
+  add_index "static_page_translations", ["static_page_id"], name: "index_static_page_translations_on_static_page_id", using: :btree
+
   create_table "users", force: true do |t|
     t.string   "email",                  default: "",    null: false
     t.string   "encrypted_password",     default: "",    null: false
