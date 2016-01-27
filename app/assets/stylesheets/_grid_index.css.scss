@@ -1,3 +1,22 @@
+/* isotope requirements*/
+.grid{
+  .grid-item{
+    width: 100%;
+    @media #{$tablet}{
+      width: 50%;
+    }
+    @media #{$md}{
+      width: 33%;
+      &.grid-item--width2 {
+        width: 66%;
+      }
+    }
+  }
+}
+
+
+
+
 .grid-item{
   min-width: 25%;
   display: flex;

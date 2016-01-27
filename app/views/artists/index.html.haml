@@ -10,14 +10,17 @@
 					%label{:for => "category-#{cat}"}= t("events.categories.#{cat}")
 
 .grid.artists-list{data: {url: 'admin/artists/sort'}}
+	.grid-sizer.grid-item
 	- @artists.each do |artist|
 		- event = artist.events.first
 		- type = event.category.blank? ? t("events.types.#{event.type}") : t("events.categories.#{event.category}") unless event.blank?
-		- classes = "#{event.category}" unless event.blank?
+		- classes = []
+		- classes.push(event.category) unless event.blank?
+		- classes.push("grid-item--width2") if artist.featured?
 		.grid-item.mix.artist{class: classes, data: {position: artist.position, id: artist.id}}
 			- path = artist_path(artist, locale: I18n.locale)
 			= link_to path do
-				= image_tag artist.profile_picture.url(:tile)
+				= image_tag artist.profile_picture.url(artist.featured? ? :large : :tile)
 				.info
 					%h4.type= type unless type.blank?
 					%h3.artist-name

@@ -49,11 +49,15 @@ class Event < ActiveRecord::Base
 	end
 
 	def next
-		EventDate.where('event_id != ? AND start > ?', self.id, event_dates.first.start.strftime("%Y-%m-%d %H:%M")).first.try(:event)
+		if ed = event_dates.first
+			EventDate.where('event_id != ? AND start > ?', self.id, ed.start.strftime("%Y-%m-%d %H:%M")).first.try(:event)
+		end
 	end
 
 	def previous
-		EventDate.where('event_id != ? AND start < ?', self.id, event_dates.first.start.strftime("%Y-%m-%d %H:%M")).first.try(:event)
+		if ed = event_dates.first
+			EventDate.where('event_id != ? AND start < ?', self.id, ed.start.strftime("%Y-%m-%d %H:%M")).first.try(:event)
+		end
 	end
 
 	def self.type_enum

@@ -5,7 +5,7 @@
 	- @events.each do |event|
 		- artists = event.artists
 		= link_to path_for(event), class: "location-event #{event.location.slug}" do
-			= image_tag event.main_image.url(:thumbnail), width: 200
+			= image_tag event.main_image.url(:thumb), width: 200
 			.info
 				- if !event.category.blank?
 					%h3.type

@@ -28,8 +28,9 @@ $(document).ready(function() {
 			// options
 			itemSelector: '.grid-item',
 			layoutMode: 'masonry',
-			packery: {
-				gutter: 0
+			masonry: {
+				columnWidth: '.grid-sizer',
+				percentPosition: true
 			}
 		});
 

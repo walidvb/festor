@@ -1,9 +1,10 @@
 .grid
+	.grid-item.grid-sizer
 	- @events.each do |event|
-		.grid-item{data: {position: event.position, id: event.id}}
+		.grid-item{class: event.featured? ? "grid-item--width2" : nil, data: {position: event.position, id: event.id}}
 			- artists = event.artists
 			= link_to path_for(event) do
-				= image_tag event.main_image.url(:tile), width: 600
+				= image_tag event.main_image.url(event.featured? ? :large : :tile)
 				.info
 					- if !event.category.blank?
 						%h3.type

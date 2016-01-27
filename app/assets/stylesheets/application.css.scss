@@ -245,24 +245,6 @@ body a{
   }
 }
 
-/* isotope requirements*/
-.grid-item {
-	width: 100%;
-	@media #{$tablet}{
-		width: 50%;
-	}
-	@media #{$md}{
-		width: 33%;
-	}
-}
-
-.grid-item--width2 {
-		width: 200px;
-}
-.grid-item--height2 {
-	height: 200px;
-}
-
 /* p5 Lines*/
 #canvas{
 	height: 100%;
