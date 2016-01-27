@@ -1,11 +1,10 @@
 (function($){
-  $(document).on('ready', function(){
+  $(document).on('ready page:load', function(){
     body = $('body').imagesLoaded(function(){
       $('.show-desc img, .bio img').each(function(i){
         var dir = i%2 ? 'right' : 'left';
         dir += ($(this).width() < $('.show-desc, .bio').width()*0.5 ? ' small' : ' large');
         $(this).addClass(dir);
-
       });
     });
   });
@@ -30,6 +29,7 @@
           $('#main-content').hide();
           container.html($(data).find('#main-content')).show();
           appendNavTo($this, container);
+          $(document).trigger('page:load');
         }
       })
     };
