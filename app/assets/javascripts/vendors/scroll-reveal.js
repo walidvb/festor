@@ -47,18 +47,29 @@
     function onScroll(){
       elems.each(function(){
         var $this = $(this);
-        if(shouldShow($this)){
-          $this.addClass(options.activeClass);
+
+        var distTop = (offsetTop($this) + $this.height()/2) - getTop();
+        var distCenter = $(that).height()/2 - distTop;
+
+        function addActive(){
+          $this.addClass('sr-middle')
+          $this.removeClass('sr-top sr-bottom');
         }
-        else {
-          $this.removeClass(options.activeClass)
+        function addTopOrBottom(top){
+          $this.removeClass('sr-middle')
+          if(top){
+            $this.addClass('sr-top');
+          }
+          else{
+            $this.addClass('sr-bottom');
+          }
         }
+        Math.abs(distCenter) <= $this.height()/2 ? addActive() :
+          addTopOrBottom(distCenter > 0);
+
       });
     }
     function shouldShow(elem){
-      var distTop = (offsetTop(elem) + elem.height()/2) - getTop();
-      var distCenter = $(that).height()/2 - distTop;
-      return Math.abs(distCenter) <= elem.height()/2;
     }
 
   }
