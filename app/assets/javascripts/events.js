@@ -19,50 +19,38 @@
     if($(e.target).hasClass('close')){
       moreContainer.addClass('leaving');
       setTimeout(function(){
-        $('#main-content').removeClass('leaving');
+        moreContainer.fadeOut('300', function(){
+          main.addClass('leaving').fadeIn('300', function(){
+            main.removeClass('leaving')
+          })
+        })
       }, 2000);
       $('.close').hide();
     }
   });
-
   $(document, '[data-load-more]').on('click', function(e){
     $('[data-load-more]').removeClass('active');
     var $this = $(e.target).parent('[data-load-more]');
     $this.addClass('active');
     var url = $this.data('load-more') || $(e.target).data('load-more');
+    var transitionFinished = false;
     if(url != undefined){
       e.preventDefault();
-      moreContainer.addClass('leaving');
-      main.addClass('leaving');
-      var transitionFinished = false;
-      main.on('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', replaceContent);
-      var replaceContent = function(){
-        transitionFinished  = true;
-        debugger;
-      }
+      main.add(moreContainer).addClass('leaving');
       $.ajax({
         url: url,
         success: function(data){
-<<<<<<< HEAD
-          var container = $('.load-more-container');
-          $('#main-content').hide();
-          container.html($(data).find('#main-content')).show();
-          appendNavTo($this, container);
-          $(document).trigger('page:load');
-=======
-          raeplaceContent = function(){
+          moreContainer.fadeOut('300',function(){
+            main.add(moreContainer).removeClass('leaving');
             var new_ = $(data).find('#main-content').html();
+            moreContainer.add(main).hide();
             moreContainer.html(new_);
             appendNavTo($this, moreContainer);
-            moreContainer.addClass('leaving');
-            setTimeout(function(){
-              moreContainer.removeClass('leaving');
-            }, 1000);
-          };
-          if(transitionFinished){
-            replaceContent();
-          }
->>>>>>> wip: adds transition
+            moreContainer.addClass('leaving').hide().fadeIn(function(){
+              moreContainer.add(main).removeClass('leaving');
+            });
+            $(document).trigger('page:load');
+          });
         }
       });
     };
