@@ -17,4 +17,4 @@
 							- if date_.end.nil?
 								#{l(date_.start, format: "%e %B")} &mdash; #{event.location.try(:name)}
 							- else
-								#{l(date_.start, format: "%e")} - #{l(date_.end, format: "%e %B")} &mdash; #{event.location.try(:name)}
+								#{l(date_.start, format: "%e %B")} - #{l(date_.end, format: "%e %B")} &mdash; #{event.location.try(:name)}
