@@ -7,13 +7,7 @@ $header-padding-vert: 40px;
 	padding-bottom: $margin-vertical-large;
 	background: $black;
 	color: $white;
-	.active{
-		background: $black;
-		color: $white;
-		&:hover{
-			@include text-shadow();
-		}
-	}
+
 	a{
 		color: white;
 		@media #{$tablet}{
@@ -71,14 +65,14 @@ $header-padding-vert: 40px;
 		display: flex;
 		border-bottom: solid 1px $black;
 	}
+	.nav-link.active:not(:hover){
+		text-shadow: none;
+	}
 	li{
 		text-transform: capitalize;
 		width: 49%;
 		display: inline-block;
 		border-bottom: solid 1px $white;
-		@media #{$tablet}{
-			text-align: left;
-		}
 	}
 	a{
 		display: block;
@@ -87,15 +81,11 @@ $header-padding-vert: 40px;
 	}
 	.desktop-nav{
 		flex: 1 0 50%;
-		li{
-			&:hover{
-				background:$black;
-			}
-		}
 	}
 	.social, .locales{
 		flex: 1 0 25%;
 		li{
+			cursor: pointer;
 			@media #{$tablet}{
 				width: 100%;
 			}
@@ -105,10 +95,16 @@ $header-padding-vert: 40px;
 			margin-top: 0;
 		}
 	}
-}
-
-.body-header{
-	form{
-		display: inline-block;
+	.nav-link#newsletter:hover{
+		text-shadow: none;
+		color: black;
+		button{
+			letter-spacing: inherit;
+		}
+		.fa-icon{
+			@include text-shadow($color1: $white, $color2: $white);
+			color: white;
+			transition: all 0.3s ease-out;
+		}
 	}
 }

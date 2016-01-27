@@ -1,18 +1,28 @@
-a.artist{
+.nav-link{
   $trans: 0.25s cubic-bezier(0, 0.04, 0, 0.96);
-  .artist-name{
-    transition: text-shadow #{$trans}, letter-spacing #{$trans};
-    text-shadow: 0em 0 0px white, 0em 0 0px white;
-    letter-spacing: 0em;
+  @include text-shadow($color1: $white, $color2: $white, $gap: 0.3em);
+  letter-spacing: 0em;
+  transition: text-shadow #{$trans}, letter-spacing #{$trans};
+  color: $black;
+  background: $white;
+  &.active, .active, &:hover{
+    background: $black;
+    color: $white;
+    @extend .nav-link;
   }
-  &:hover .labels{
-    color: transparent;
-  }
-  &:hover .artist-name{
-    transition: text-shadow #{$trans}, letter-spacing #{$trans};
-    text-shadow: 0.3em 0 0px white, 0.6em 0 0px white;
+  &:hover{
+    @include text-shadow($color1: $white, $color2: $white, $gap: 0.3em);
     letter-spacing: 0.3em;
-    color: white;
+    transition: text-shadow #{$trans}, letter-spacing #{$trans};
+  }
+}
+
+a.artist{
+  @extend .nav-link;
+  &:hover .label{
+    color:transparent;
+    letter-spacing: 1em;
+    text-shadow: none;
   }
 }
 .event-name{

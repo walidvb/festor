@@ -5,24 +5,27 @@
 	%li= active_link_to t("nav.venues"), venues_path(locale: I18n.locale)
 	%li= active_link_to t("nav.workshops"), workshops_path(locale: I18n.locale)
 	%li.tickets
-		= link_to 'tickets'
+		= link_to 'tickets', '#', class: 'nav-link'
 %ul.social
-	%li= link_to("instagram", "http://www.instagram.com/mappingfestival")
-	%li= link_to("twitter", "http://www.twitter.com/mappingfestival")
-	%li= link_to("facebook", "http://www.facebook.com/mappingfestival")
+	%li= link_to("instagram", "http://www.instagram.com/mappingfestival", target: '_blank', class: 'nav-link')
+	%li= link_to("twitter", "http://www.twitter.com/mappingfestival", target: '_blank', class: 'nav-link')
+	%li= link_to("facebook", "http://www.facebook.com/mappingfestival", target: '_blank', class: 'nav-link')
 %ul.locales
 	- if I18n.locale == :fr
 		FR
-		%li= link_to("EN", url_for(locale: :en), class: "en")
+		%li= link_to("EN", url_for(locale: :en), class: "en nav-link")
 	- else
-		%li= link_to("FR", url_for(locale: :fr), class: "fr")
+		%li= link_to("FR", url_for(locale: :fr), class: "fr nav-link")
 		EN
-	%li
+	%li.nav-link#newsletter
 		- if I18n.locale == :en
-			newsletter
 			%form#mlb2-477433.newsletter-form{:action => "//app.mailerlite.fr/webforms/submit/r9a8o1", "data-code" => "r9a8o1", :target => "_blank"}
-				%button.ml-subscribe-button.fa.fa-icon.fa-inbox{:type => "submit"}
+				%button.ml-subscribe-button{:type => "submit"}
+					%span Newsletter
+					.fa.fa-icon.fa-inbox
 		- else
-			newsletter
 			%form#mlb2-448223.newsletter-form{:action => "//app.mailerlite.fr/webforms/submit/u2g5s5", "data-code" => "u2g5s5", :target => "_blank"}
-				%button.ml-subscribe-button.fa.fa-icon.fa-inbox{:type => "submit"}
+
+				%button.ml-subscribe-button{:type => "submit"}
+					%span Newsletter
+					.fa.fa-icon.fa-inbox
