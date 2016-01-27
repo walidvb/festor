@@ -8,7 +8,8 @@
 			= link_to path do
 				= image_tag artist.profile_picture.url(:tile)
 				.info
-					%h4.type= type unless type.blank?
-					%h3.artist-name
-						= artist.name
-					.artists= event.title unless event.blank?
+					- content_for(:filters) do
+						%h4.type= type unless type.blank?
+						%h3.artist-name
+							= artist.name
+						.artists= event.title unless event.blank?

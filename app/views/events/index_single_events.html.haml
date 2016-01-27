@@ -4,11 +4,6 @@
 		- @dates.each do |d|
 			%option{:value => d.strftime("%d-%m-%y")}= l(d, format: "%A %e")
 	%div#date-sort.sort.sort-desc
-	.cat-filters
-		- Event.category_enum.each do |cat|
-			- if ![:exhibition, :installation].include?(cat)
-				%input.cat-filter{:type => "checkbox", value: cat, id: "category-#{cat}", checked: true}
-					%label{:for => "category-#{cat}"}= t("events.categories.#{cat}")
 .grid#single-events-list.events-list.sortable-list.sortable{data: {url: 'admin/events/sort'}}
 	- @events.each do |event|
 		- dates_as_string = event.event_dates.map{|date| date.start.strftime('%d-%m-%y')}.join(' ')
@@ -17,13 +12,14 @@
 				.tile
 					= image_tag event.main_image.url(:tile), width: 600
 					.info
-						%h2.type
-							= event.category
-						%h2.event-title= event.title
-						.artists= event.artists.map(&:name).join(', ')
-						.location
-							- event.event_dates.each do |date|
-								- if date.end.nil?
-									#{l(date.start, format: "%A %e %B")} &mdash; #{event.location.name}
-								- else
-									#{l(date.start, format: "%e")} - #{l(date.end, format: "%e %B")} &mdash; #{event.location.name}
+						- content_for(:filters) do
+							%h2.type
+								= event.category
+							%h2.event-title= event.title
+							.artists= event.artists.map(&:name).join(', ')
+							.location
+								- event.event_dates.each do |date|
+									- if date.end.nil?
+										#{l(date.start, format: "%A %e %B")} &mdash; #{event.location.name}
+									- else
+										#{l(date.start, format: "%e")} - #{l(date.end, format: "%e %B")} &mdash; #{event.location.name}
