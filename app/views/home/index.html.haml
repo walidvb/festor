@@ -10,7 +10,6 @@
 								= image_tag(event.main_image.url(:tile), width: 600, height: 270)
 								.legend
 									.title= event.title
-
 	- unless @workshops.empty?
 		%li
 			= link_to workshops_path do

@@ -34,8 +34,8 @@ body{
 	overflow-x: hidden;
 }
 
-.container{
-	background: rgba(255,255,255,0.95);
+#footer.container, .show-page .container{
+	background: rgba($white,0.95);
 }
 .container, .row, .col-xs-12 {
 	@media #{$mobile}
@@ -126,9 +126,11 @@ body a{
 }
 
 #footer{
+	position: fixed;
 	height: auto;
 	bottom:0;
 	width: 100%;
+	z-index: 100;
 	background-color: $white;
 	color: $black;
 	font-size: $smaller;
