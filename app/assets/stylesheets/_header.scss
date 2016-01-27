@@ -34,7 +34,7 @@ $header-padding-vert: 40px;
 	padding: 0 $margin-horizontal-normal 0 $margin-horizontal-normal;
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: space-around;
+	justify-content: flex-end;
 }
 
 .header-left {
@@ -55,7 +55,10 @@ $header-padding-vert: 40px;
 		flex: 1 0 50%;
 	}
 }
-
+#filters {
+    flex: 0 0 60%;
+    justify-content: flex-end;
+}
 .header-right{
 	flex: 1 0 100%;
 	margin-top: $margin-vertical-normal;

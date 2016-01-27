@@ -1,12 +1,3 @@
-#filters
-	.cat-filters
-		- Event.type_enum.each do |type|
-			/ - if type != :single_event
-			/ 	%input.cat-filter{:type => "checkbox", value: type, id: "category-#{type}", checked: true}
-			/ 		%label{:for => "category-#{type}"}= t("events.types.#{type}")
-		- Event.category_enum.each do |cat|
-			%input.cat-filter{:type => "checkbox", value: cat, id: "category-#{cat}", checked: true}
-				%label{:for => "category-#{cat}"}= t("events.categories.#{cat}")
 .grid.artists-list{data: {url: 'admin/artists/sort'}}
 	- @artists.each do |artist|
 		- event = artist.events.first
