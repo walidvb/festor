@@ -98,16 +98,28 @@ $header-padding-vert: 40px;
 			margin-top: 0;
 		}
 	}
+	.social .fa-icon{
+		color: transparent;
+	}
+	.social .nav-link, .nav-link#newsletter{
+		&:hover{
+			span{
+				text-shadow: none;
+				color: black;
+			}
+			.fa-icon{
+				@include text-shadow($color1: $white, $color2: $white, $gap: 0.4em);
+				color: white;
+				transition: text-shadow 0.3s ease-out;
+			}
+		}
+	}
 	.nav-link#newsletter:hover{
-		text-shadow: none;
-		color: black;
 		button{
 			letter-spacing: inherit;
 		}
 		.fa-icon{
-			@include text-shadow($color1: $white, $color2: $white);
-			color: white;
-			transition: all 0.3s ease-out;
+			color: inherit;
 		}
 	}
 }

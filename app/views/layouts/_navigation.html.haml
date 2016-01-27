@@ -7,9 +7,18 @@
 	%li.tickets
 		= link_to 'tickets', '#', class: 'nav-link'
 %ul.social
-	%li= link_to("instagram", "http://www.instagram.com/mappingfestival", target: '_blank', class: 'nav-link')
-	%li= link_to("twitter", "http://www.twitter.com/mappingfestival", target: '_blank', class: 'nav-link')
-	%li= link_to("facebook", "http://www.facebook.com/mappingfestival", target: '_blank', class: 'nav-link')
+	%li
+		= link_to("http://www.instagram.com/mappingfestival", target: '_blank', class: 'nav-link') do
+			%span instagram
+			.fa.fa-icon.fa-instagram
+	%li
+		= link_to("http://www.twitter.com/mappingfestival", target: '_blank', class: 'nav-link') do
+			%span twitter
+			.fa.fa-icon.fa-twitter
+	%li
+		= link_to("http://www.facebook.com/mappingfestival", target: '_blank', class: 'nav-link') do
+			%span facebook
+			.fa.fa-icon.fa-facebook
 %ul.locales
 	- if I18n.locale == :fr
 		FR
