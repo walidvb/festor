@@ -15,8 +15,8 @@
     main = $('#main-content');
   });
 
-  $(document, '.close').click(function(e){
-    if($(e.target).hasClass('close')){
+  $(document, '.nav.back').click(function(e){
+    if($(e.target).hasClass('back')){
       moreContainer.addClass('leaving');
       setTimeout(function(){
         moreContainer.fadeOut('300', function(){
@@ -57,7 +57,7 @@
   });
 
   function appendNavTo(siblingOf, container){
-    var nav = $('<div class="nav"/>');
+    var nav = $('<div class="nav back"/>');
     nav.html('back');
     nav.prependTo(container).show();
   }
