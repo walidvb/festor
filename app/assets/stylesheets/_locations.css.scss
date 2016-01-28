@@ -17,6 +17,11 @@
 		border: solid 1px $black;
 		text-align: center;
 		margin: $margin-vertical-normal 0 0 0;
+		background: $white;
+		&:hover, &.active{
+			background: $black;
+			color: $white;
+		}
 		@media #{$tablet}{
 			flex-basis: 24ch;
 		}
