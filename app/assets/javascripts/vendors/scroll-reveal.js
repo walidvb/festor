@@ -78,9 +78,9 @@
   // N milliseconds. If `immediate` is passed, trigger the function on the
   // leading edge, instead of the trailing.
   function debounce(func, wait, immediate) {
-    console.log('timeout', window.debounceTimeout);
   	var timeout;
   	return function() {
+      console.log('timeout', window.debounceTimeout);
   		var context = this, args = arguments;
   		var later = function() {
   			timeout = null;
