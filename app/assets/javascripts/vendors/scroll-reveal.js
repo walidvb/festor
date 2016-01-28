@@ -30,7 +30,8 @@
     if(!elems.length) return;
 
 
-    var onScroll = myDebounce(function(){
+    var onScroll = debounce(function(){
+      console.log('running');
       elems.each(function(){
         var $this = $(this);
 
@@ -52,10 +53,9 @@
         }
         Math.abs(distCenter) <= $this.height()/2 ? addActive() :
         addTopOrBottom(distCenter > 0);
-
       });
     }, window.debounceTimeout);
-
+    console.log('timeout', window.debounceTimeout);
 
     if(window.hasOwnProperty('ontouchstart'))
     {
@@ -78,7 +78,7 @@
   // be triggered. The function will be called after it stops being called for
   // N milliseconds. If `immediate` is passed, trigger the function on the
   // leading edge, instead of the trailing.
-  function myDebounce(func, wait, immediate) {
+  function debounce(func, wait, immediate) {
   	var timeout;
   	return function() {
   		var context = this, args = arguments;
