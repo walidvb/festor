@@ -1,4 +1,5 @@
 (function($, window){
+  window.debounceTimeout = 10;
   $.fn.scrollReveal = function(options_){
     var that = this;
     var offsetTop, getTop;
@@ -30,7 +31,6 @@
 
 
     var onScroll = debounce(function(){
-      console.log('running');
       elems.each(function(){
         var $this = $(this);
 
@@ -54,7 +54,7 @@
         addTopOrBottom(distCenter > 0);
 
       });
-    }, 15);
+    }, window.debounceTimeout);
 
 
     if(window.hasOwnProperty('ontouchstart'))
