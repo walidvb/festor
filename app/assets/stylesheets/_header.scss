@@ -41,10 +41,13 @@ $header-padding-vert: 40px;
 	flex: 1 0 100%;
 	margin-bottom: $margin-vertical-largest;
 	@media #{$tablet}{
-		flex: 1 0 40%;
 		display: flex;
+		flex: 1 0 50%;
+	}
+	@media #{$md}{
+		display: flex;
+		flex: 1 0 40%;
 		margin-bottom: 0;
-
 	}
 }
 
@@ -65,9 +68,15 @@ $header-padding-vert: 40px;
 	@media #{$tablet}{
 		margin-top: 0px;
 		display: flex;
-		flex: 1 0 60%;
 		align-self: flex-start;
 		flex-wrap: wrap;
+	}
+	@media #{$tablet}{
+		margin-top: 0px;
+		flex: 1 0 50%;
+	}
+	@media #{$md}{
+		flex: 1 0 60%;
 	}
 	.nav-link.active:not(:hover){
 		text-shadow: none;
@@ -147,8 +156,11 @@ $header-padding-vert: 40px;
 	label{
 		flex: 1 0 50%;
 	}
+
 	@media #{$tablet}{
 		display: block;
+		margin: inherit;
+		padding: inherit;
 		.cat-filters{
 			display: block;
 		}
@@ -163,6 +175,11 @@ $header-padding-vert: 40px;
 		@media #{$tablet}{
 			flex: none;
 		}
+}
+
+.chosen-results li {
+    width: 100%;
+    color: $white;
 }
 .desktop-nav, .social, .locales{
 	@media #{$tablet}{
