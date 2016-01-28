@@ -44,7 +44,7 @@ class Event < ActiveRecord::Base
 
 	validates_attachment_content_type :main_image, :content_type => /\Aimage\/(jpg|jpeg|png|gif)\Z/i
 
-	validates_presence_of :category, :type
+	validates_presence_of :type, :title
 	def add_artist artist
 		Booking.create! event: self, artist: artist
 	end
