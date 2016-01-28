@@ -1,6 +1,7 @@
 /* isotope requirements*/
 .grid{
   .grid-item{
+    opacity: 0.99;
     width: 100%;
     @media #{$tablet}{
       width: 50%;

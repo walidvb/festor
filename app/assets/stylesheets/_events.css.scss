@@ -73,27 +73,31 @@ h1{
 		margin-left: 0!important;
 		margin-right: 0!important;
 	}
-	@media #{$tablet}{
-		img, iframe, .show-info{
+	img, iframe, .show-info{
+		opacity: 0.98;
+		@media #{$tablet}{
 			transition: margin .2s ease-out;
-		}
-		.left{
-			float: left;
-			margin-left: -13em;
-			&.large{
-				margin-left: -25em;
+			.left{
+				float: left;
+				clear: right;
+				margin-left: -13em;
+				&.large{
+					margin-left: -25em;
+				}
 			}
-		}
-		.right{
-			float: right;
-			margin-right: -10em;
-			&.large{
-				margin-right: -15em;
+			.right{
+				float: right;
+				clear: left;
+				margin-right: -10em;
+				&.large{
+					margin-right: -15em;
+				}
 			}
-		}
-		iframe{
-			float: right;
-			margin-right: -25em;
+			iframe{
+				float: right;
+				margin-right: -25em;
+				clear: left;
+			}
 		}
 	}
 }
