@@ -55,7 +55,6 @@
         addTopOrBottom(distCenter > 0);
       });
     }, window.debounceTimeout);
-    console.log('timeout', window.debounceTimeout);
 
     if(window.hasOwnProperty('ontouchstart'))
     {
@@ -79,6 +78,7 @@
   // N milliseconds. If `immediate` is passed, trigger the function on the
   // leading edge, instead of the trailing.
   function debounce(func, wait, immediate) {
+    console.log('timeout', window.debounceTimeout);
   	var timeout;
   	return function() {
   		var context = this, args = arguments;
