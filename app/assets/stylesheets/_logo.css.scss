@@ -20,6 +20,7 @@
   @include text-shadow($color1: $black, $color2: $white);
 	@media #{$tablet} {
     @include text-shadow($color1: $black);
+    margin-top: -5px;
 	}
   header:hover &{
     @include text-shadow($color1: $black, $color2: $white, $gap: 0);
