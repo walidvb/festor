@@ -1,8 +1,9 @@
 class ArtistsController < ApplicationController
 	before_filter :require_admin!, only: [:sortable_index, :sort_update]
-	
+
 	def index
 		@artists = Artist.includes(:events).order(:position)
+		@filters = Event.category_enum
 	end
 
 	def sortable_index
