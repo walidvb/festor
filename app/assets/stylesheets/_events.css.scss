@@ -114,7 +114,8 @@ h1{
 }
 .show-desc, .event-artist-bio, .artist-desc, .static-desc{
 	@media #{$tablet}{
-		max-width: 80ch;
+		max-width: 100ch;
+		margin-left: 12.5%;
 	}
 }
 
