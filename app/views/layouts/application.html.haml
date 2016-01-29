@@ -18,6 +18,8 @@
     = csrf_meta_tags
 
   %body{class: "#{controller.controller_name}-page #{controller.action_name}-page #{yield(:body_class)} #{'debug' if Rails.env.development?} #{current_user.nil? ? nil : 'admin'}"}
+    - if Rails.env.production?
+      %canvas#canvas
     %header.container{"data-no-turbolink" => true}
       .row.body-header
         .col-xs-12.header-top= render 'layouts/header'
@@ -26,8 +28,6 @@
         .col-xs-12
           = yield
     = render 'layouts/footer'
-    - if Rails.env.production?
-      %canvas#canvas
     :plain
       <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
