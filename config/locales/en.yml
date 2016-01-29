@@ -35,11 +35,11 @@ en:
       exhibitor: 'exhibitor'
   events:
     fields:
-      price:        'Price'
-      requirements: 'Requirements'
       participants: 'Number of Participants'
       languages:    'Languages'
-      material:     'Material'
+      requirements: 'Required Skills'
+      material:     'Required Material'
+      price:        'Price'
       notes:        'Notes'
 
     types:

@@ -28,12 +28,12 @@ fr:
       exhibitor: 'exhibiteur'
   events:
     fields:
-      price:        'Prix'
-      requirements: 'Profil des participants'
       participants: 'Nombre de participants'
-      languages:    'Languages'
-      material:     'Matériel à fournir par les participants'
-      notes:        'Notes'
+      languages:    'Langues'
+      requirements: 'Profil'
+      material:     'Matériel à fournir'
+      price:        'Prix'
+      notes:        'Remarques'
     types:
       workshop:     "workshop"
       exhibition:   "installation"
