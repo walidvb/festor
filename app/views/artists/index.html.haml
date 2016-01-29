@@ -1,10 +1,4 @@
-- content_for :filters do
-	#filters
-		.cat-filters
-			- Artist.type_enum.each do |type|
-				%input.cat-filter{:type => "checkbox", value: type, id: "category-#{type}", checked: true}
-					%label{:for => "category-#{type}"}= t("artists.types.#{type}")
-
+= render 'layouts/filters'
 .grid.artists-list{data: {url: 'admin/artists/sort'}}
 	.grid-sizer.grid-item
 	- @artists.each do |artist|
