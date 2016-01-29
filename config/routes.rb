@@ -7,9 +7,9 @@ Festor::Application.routes.draw do
 		devise_for :users
 		get "home" => 'home#index'
 		#get "events/:id" => "events#show", as: :event
-		resources :events, controller: "events", only: [:show, :index], type: :single_event, as: :single_events
-		resources :workshops, controller: "events", only: [:show, :index], type: :workshop
-		resources :exhibitions, controller: "events", only: [:show, :index], type: :exhibition
+		resources :events, controller: "events", only: [:show, :index], category: :single_event, as: :single_events
+		resources :workshops, controller: "events", only: [:show, :index], category: :workshop
+		resources :exhibitions, controller: "events", only: [:show, :index], category: :exhibition
 
 		resources :venues, controller: 'locations', only: [:index]
 
@@ -24,7 +24,7 @@ Festor::Application.routes.draw do
 		resources :static_pages, only: [:show]
 		resources :news, controller: 'static_pages', only: [:index, :show]
 
-		root "events#index", type: :workshop
+		root "events#index", category: :workshop
 		get "/gallery" => 'static#gallery', as: :gallery
 		get "/about" => 'static#about', as: :about
 		mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
