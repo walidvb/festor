@@ -92,28 +92,12 @@ h1{
 	margin-top: 0px;
 }
 
-h2{
-	font-size : $larger;
-}
-
-h3{
-	font-size : $large;
-}
-
-h4{
-	font-size : $small;
-}
-
-h5{
-	font-size : $body-size;
-}
-
-h6{
-	font-size : $smaller;
-}
-main{
-	font-family: $body-font;
-}
+h2{font-size : $larger;}
+h3{font-size : $large;}
+h4{font-size : $small;}
+h5{font-size : $body-size;}
+h6{font-size : $smaller;}
+main{font-family: $body-font;}
 
 body a{
 	//color: $black;
@@ -126,9 +110,6 @@ body a{
 }
 
 #footer{
-	position: fixed;
-	height: auto;
-	bottom:0;
 	width: 100%;
 	z-index: 100;
 	background-color: $white;
@@ -188,7 +169,6 @@ body a{
 }
 
 main{
-	margin-bottom: 105px;
 }
 #footer{
 	border-top: solid 1px $black;
