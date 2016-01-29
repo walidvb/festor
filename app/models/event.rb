@@ -8,7 +8,10 @@ class Event < ActiveRecord::Base
   friendly_id :title, :use => [:globalize, :slugged]
   acts_as_list scope: 'type = \'#{type}\''
 
-	has_many :links, as: :linkable, dependent: :destroy
+
+	scope :workshop, ->{where(category: [:workshop, :conference, :masterclass])}
+	scope :exhibition, ->{where(category: :exhibition)}
+	scope :other, ->{where.not(category: [:workshop, :conference, :masterclass, :exhibition])}
 
 	scope :featured, -> {where(featured: true)}
 	has_many :event_dates, dependent: :delete_all, inverse_of: :event
@@ -26,6 +29,7 @@ class Event < ActiveRecord::Base
 	belongs_to :location, inverse_of: :events
 
 	has_many :extra_infos, inverse_of: :event
+	has_many :links, as: :linkable, dependent: :destroy
 
 	accepts_nested_attributes_for :links, allow_destroy: true
 	accepts_nested_attributes_for :extra_infos, allow_destroy: true
@@ -44,7 +48,7 @@ class Event < ActiveRecord::Base
 
 	validates_attachment_content_type :main_image, :content_type => /\Aimage\/(jpg|jpeg|png|gif)\Z/i
 
-	validates_presence_of :type, :title
+	validates_presence_of :category, :title
 	def add_artist artist
 		Booking.create! event: self, artist: artist
 	end
@@ -61,10 +65,6 @@ class Event < ActiveRecord::Base
 		end
 	end
 
-	def self.type_enum
-		[:single_event, :exhibition, :workshop]
-	end
-
 	def self.category_enum
 		[:clubbing, :performance, :screening, :exhibition, :conference, :masterclass, :specials, :workshop]
 	end
@@ -72,12 +72,6 @@ class Event < ActiveRecord::Base
 	def finished?
 	  false
 	end
-
-	self.type_enum.each do |type|
-		scope type, -> {where(type: type)}
-	end
-
-	self.inheritance_column = :fake_column
 
 	attr_accessor :artist_ids
 	def artist_ids=(ids)

@@ -51,17 +51,4 @@ $(document).on('rails_admin.dom_ready', function(){
 		console.log(error);
 		alert("Error uploading file... Please send along console log if you request support.");
 	});
-
-	// Remove category for non-single_events
-	$('#event_type').on('change', function(){
-   var event_type = $(this).val();
-   console.log(event_type);
-   if(event_type != 'workshop'){
-      $('#event_category_field').slideDown();
-   }
-   else{
-     $('#event_category_field').slideUp();
-   }
-})
-
 });

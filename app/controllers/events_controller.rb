@@ -5,14 +5,16 @@ class EventsController < ApplicationController
 		@events = Event.order("position ASC").includes(:artists, :location).send(@type.to_sym)
 		if @type == :single_event
 			@dates = EventDate.all.uniq{|d| d.start.strftime("%e-%b-%y")}.map(&:start)
+			@filters = Event.category_enum
 			render 'index_single_events'
 		else
+			@filters = @type == :workshop ? [:workshop, :conference, :masterclass] : []
 			render 'index'
 		end
 	end
 
 	def sortable_index
-		@types = Event.all.order(:position).group_by{|e| e.type}
+		@types = Event.all.order(:position).group_by{|e| e.categories}
 	end
 
 	def sort_update

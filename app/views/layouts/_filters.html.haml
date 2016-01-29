@@ -7,6 +7,6 @@
 					%option{:value => d.strftime("%d-%m-%y")}= l(d, format: "%A %e")
 			%div#date-sort.sort.sort-desc
 		.cat-filters
-			- Event.category_enum.each do |cat|
+			- @filters.each do |cat|
 				%input.cat-filter{:type => "checkbox", value: cat, id: "category-#{cat}", checked: true}
 					%label{:for => "category-#{cat}"}= t("events.categories.#{cat}")
