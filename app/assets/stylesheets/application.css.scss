@@ -31,13 +31,15 @@ body{
 	flex-direction: column;
 	min-height: 100vh;
 }
+main{
+	font-size: $main-size;
+}
 footer{
 	align-self: flex-end;
 }
 
 // RESETS
 body{
-	background-color: $background;
 	font-family: $body-font;
 	font-size : $body-size;
 	line-height: 1.3em;
