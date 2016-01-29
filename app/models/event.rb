@@ -66,7 +66,7 @@ class Event < ActiveRecord::Base
 	end
 
 	def self.category_enum
-		[:clubbing, :performance, :screening, :other, :installation, :exhibition, :conference]
+		[:clubbing, :performance, :screening, :exhibition, :conference, :masterclass, :specials, :workshop]
 	end
 
 	def finished?

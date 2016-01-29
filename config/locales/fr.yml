@@ -39,12 +39,12 @@ fr:
       exhibition:   "installation"
       single_event: "event"
     categories:
-      performance: "Performance"
-      conference:  "Conférence"
       clubbing:    "Clubbing"
-      screening:   "Projection"
-      other:       "Autre"
+      performance: "Performance"
+      screening:   "Film"
       exhibition:  "Exposition"
-      installation: "Installation"
+      conference:  "Conférence"
+      masterclass: "Masterclass"
+      specials:    "Spéciaux"
   time:
     to: 'au'

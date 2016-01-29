@@ -47,13 +47,14 @@ en:
       exhibition: "Installation"
       single_event: "Event"
     categories:
-      performance: "Performance"
-      conference:  "Conference"
       clubbing:    "Clubbing"
+      performance: "Performance"
       screening:   "Screening"
-      other:       "Other"
+      conference:  "Conference"
       exhibition:  "Exhibition"
-      installation: "Installation"
+      workshop:    "Workshop"
+      masterclass: "Masterclass"
+      specials:    "Specials"
     ticket: "Get your ticket"
   time:
     to: 'to'
