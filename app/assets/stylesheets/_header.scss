@@ -7,7 +7,6 @@ $header-padding-vert: 40px;
 	padding-bottom: $margin-vertical-large;
 	background: $black;
 	color: $white;
-
 	a{
 		color: white;
 		@media #{$tablet}{
@@ -23,7 +22,6 @@ $header-padding-vert: 40px;
 	@media #{$tablet}{
 		background: $white;
 		color: $black;
-		padding-bottom: 0px;
 	}
 }
 
@@ -31,7 +29,6 @@ $header-padding-vert: 40px;
 	background-opacity: 0;
 }
 .body-header .header-top, .navbar-header{
-	//padding: 0 $margin-horizontal-normal 0 $margin-horizontal-normal;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: flex-end;
@@ -156,7 +153,6 @@ $header-padding-vert: 40px;
 	label{
 		flex: 1 0 50%;
 	}
-
 	@media #{$tablet}{
 		display: block;
 		margin: inherit;

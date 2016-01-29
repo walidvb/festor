@@ -12,11 +12,9 @@
 				%h5.date
 					- if date_ = event.event_dates.first
 						- if date_.end.nil?
-							#{l(date_.start, format: "%e %B")} &mdash}
+							#{l(date_.start, format: "%e %B")}
 						- else
 							#{l(date_.start, format: "%e")} - #{l(date_.end, format: "%e %B")}
-
-
 
 #google-map-wrapper{ data: { "marker-url" => image_url("google-map-marker.png")}}
 	#google-map-loader
