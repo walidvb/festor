@@ -81,6 +81,9 @@ h1{
 	}
 	@media #{$tablet}{
 		transition: margin .2s ease-out;
+		img{
+			max-width: 800px;
+		}
 		.left{
 			float: left;
 			clear: right;
