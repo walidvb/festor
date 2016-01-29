@@ -26,6 +26,15 @@ h2{
 	clear: both;
 }
 
+body{
+	display: flex;
+	flex-wrap: wrap;
+	min-height: 100vh;
+}
+footer{
+	align-self: flex-end;
+}
+
 // RESETS
 body{
 	background-color: $background;
