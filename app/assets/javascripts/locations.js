@@ -143,7 +143,7 @@ function openInfoWindow(map, index, latitude, longitude, title, adresse, url, ma
 	newInfoWindow = new google.maps.InfoWindow({
 		content: 'chargement...'
 	});
-	newInfoWindow.setContent('<div class="marker-content"><h5 class="marker-title">' + title[index] + '</h5><p>' + adresse[index] + '</p><p><a href="' + url[index] + '" class="marker-link" title="Voir le programme de ce lieu">Voir le programme de ce lieu</a></p></div>');
+	newInfoWindow.setContent('<div class="marker-content"><h5 class="marker-title">' + title[index] + '</h5><p>' + infos[index] + '</p><p><a href="' + url[index] + '" class="marker-link" title="Voir le programme de ce lieu">Voir le programme de ce lieu</a></p></div>');
 	map.panTo(newCenter);
 	markerArray[index].setZIndex(300);
 	newInfoWindow.open(map, markerArray[index]);
@@ -165,11 +165,12 @@ function renderGoogleMap() {
 	var dataCenter = document.getElementById('google-map').getAttribute('data-center');
 	var url = document.getElementById('google-map').getAttribute('data-url');
 	var adresse = document.getElementById('google-map').getAttribute('data-adresse');
-
+	var infos = document.getElementById('google-map').getAttribute('data-infos');
 	// split latitude and longitude
 	latitude = latitude.split('-');
 	longitude = longitude.split('-');
 	title = title.split('*');
+	infos = infos.split('*');
 	url = url.split('*');
 	adresse = adresse.split('*');
 

@@ -4,6 +4,12 @@ module EventAdmin
     attr_accessor :link_ids
   	attr_accessor :artist_ids
 
+    accepts_nested_attributes_for :event_dates, allow_destroy: true
+    accepts_nested_attributes_for :assets, allow_destroy: true
+    accepts_nested_attributes_for :links, allow_destroy: true
+    accepts_nested_attributes_for :extra_infos, allow_destroy: true
+    accepts_nested_attributes_for :translations, allow_destroy: true
+
     rails_admin do
       configure :translations, :globalize_tabs
       configure :bookings do
