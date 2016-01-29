@@ -7,9 +7,9 @@
       width: 50%;
     }
     @media #{$md}{
-      width: 33%;
+      width: 33.3335%;
       &.grid-item--width2 {
-        width: 66%;
+        width: 66.666666%;
       }
     }
   }
@@ -57,10 +57,7 @@
     padding-right: $margin-horizontal-normal;
   }
   .no-touch &:hover, &.sr-middle{
-    .info{
-      opacity: 0;
-    }
-    & .tile-link{
+    .tile-link{
       transition : all 0.3s ease-out;
       opacity : 0;
     }
