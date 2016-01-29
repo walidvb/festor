@@ -114,7 +114,7 @@ h1{
 }
 .show-desc, .event-artist-bio, .artist-desc, .static-desc{
 	@media #{$tablet}{
-		max-width: 100ch;
+		max-width: 80ch;
 		margin-left: 12.5%;
 	}
 }
@@ -180,14 +180,17 @@ h1{
 }
 
 .show-info{
-	float: right;
+	float: left;
 	margin: 2rem 0 2rem 0rem;
 	@media #{$tablet}{
-		width: 440px;
-		margin: 2rem -8ch 2rem 1rem;
+		width: 60ch;
+		margin-left: -18%;
+		z-index: 100;
 	}
 	@media #{$md}{
-		margin: 2rem -32ch 2rem 1rem;
+		width: 60ch;
+		margin-left: -18%;
+		z-index: 100;
 	}
 }
 
