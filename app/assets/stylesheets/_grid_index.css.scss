@@ -40,14 +40,14 @@
     position: absolute;
     top: 0;
     left: 0;
-    transition : all 0.3s ease-out;
+    transition : all 0.3s ease-in;
     background: rgba(255,255,255, 0.95);
     z-index: 1;
   }
   .no-touch &.sr-middle:hover .tile-link{
     opacity: 1;
   }
-  .no-touch &.sr-middle:hover .info, .info{
+   .info{
     position: absolute;
     top: 0;
     bottom: auto;
