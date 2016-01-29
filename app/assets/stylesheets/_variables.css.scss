@@ -24,12 +24,12 @@ $body-font		:	Grotesk, Helvetica, Sans-Serif;
 $info-font		:	$body-font;
 
 
-$body-size 			: 	16px;
-$smaller			:	0.65em;
-$small				:	1.375em;
+$body-size 		: 	20px;
+$smaller			:		0.65em;
+$small				:		1.375em;
 $large				: 	1.75em;
 $larger 			: 	2.25em;
-$largest			:	3.625em;
+$largest			:		3.625em;
 $tile-title-size 	:	0.8em;
 
 // margins & padding
@@ -38,10 +38,6 @@ $margin-vertical-large : 2rem;
 $margin-vertical-larger : 3rem;
 $margin-vertical-largest : 4rem;
 $margin-horizontal-normal : 1rem;
-
-
-
-
 
 @font-face {
     font-family: 'Grotesk';
