@@ -4,18 +4,15 @@ fr:
     motto:  "visual audio & deviant electronics"
     program: "Programme"
   nav:
-    home:        "Accueil"
-    events:      "Events"
+    events:      "Programme"
     artists:     "Artistes"
     workshops:   "Workshops"
-    exhibitions: "Installations"
-    more:        "infos"
-    next:        "suivant"
-    previous:    "précédent"
-    gallery:    "galerie"
+    exhibitions: "Exposition"
+    venues:      "Lieux"
+    tickets:     "Billeterie"
     about:      'à propos'
     partners:   'partenaires'
-    previous_title: 'éditions précédentes'
+    previous_title: 'Archives'
   partners:
     media: 'Partenaires médias'
     private: 'Partenaires privés'
@@ -49,6 +46,5 @@ fr:
       other:       "Autre"
       exhibition:  "Exposition"
       installation: "Installation"
-    ticket:        "Achetez votre billet"
   time:
     to: 'au'

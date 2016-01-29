@@ -5,7 +5,7 @@
 	%li= active_link_to t("nav.venues"), venues_path(locale: I18n.locale)
 	%li= active_link_to t("nav.workshops"), workshops_path(locale: I18n.locale)
 	%li.tickets
-		= link_to 'tickets', '#', class: 'nav-link'
+		= link_to t('nav.tickets'), '#', class: 'nav-link'
 %ul.social
 	%li
 		= link_to("http://www.instagram.com/mappingfestival", target: '_blank', class: 'nav-link') do
