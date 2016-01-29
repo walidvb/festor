@@ -8,8 +8,15 @@ class Event < ActiveRecord::Base
   friendly_id :title, :use => [:globalize, :slugged]
   acts_as_list scope: 'type = \'#{type}\''
 
+	def self.workshop_cats
+		[:workshop, :conference, :masterclass]
+	end
 
-	scope :workshop, ->{where(category: [:workshop, :conference, :masterclass])}
+	def is_workshop?
+		Event.workshop_cats.include?(category)
+	end
+
+	scope :workshop, ->{where(category: workshop_cats)}
 	scope :exhibition, ->{where(category: :exhibition)}
 	scope :other, ->{where.not(category: [:workshop, :conference, :masterclass, :exhibition])}
 

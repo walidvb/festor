@@ -7,7 +7,7 @@
 		- classes.push("grid-item--width2") if event.featured?
 		.grid-item.event{class: classes.join(' '), data: {position: event.position, id: event.id}}
 			= image_tag event.main_image.url(event.featured? ? :large : :tile)
-			= link_to single_event_path(event, locale: I18n.locale), class: 'tile-link' do
+			= link_to path_for(event, locale: I18n.locale), class: 'tile-link' do
 				.info
 					%h2.type
 						= event.category
