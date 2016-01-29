@@ -32,6 +32,7 @@ body{
 	min-height: 100vh;
 }
 main{
+	flex: 1;
 	font-size: $main-size;
 }
 footer{
