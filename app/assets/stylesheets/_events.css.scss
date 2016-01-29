@@ -85,8 +85,7 @@ h1{
 			float: left;
 			clear: right;
 			margin-left: -13em;
-			padding-top: 0.5em;
-			padding-right: 0.8em;
+			margin-right: 0.8em;
 			&.large{
 				margin-left: -25em;
 			}
@@ -95,8 +94,7 @@ h1{
 			float: right;
 			clear: left;
 			margin-right: -10em;
-			padding-top: 0.5em;
-			padding-left: 0.8em;
+			margin-left: 0.8em;
 			&.large{
 				margin-right: -15em;
 			}
