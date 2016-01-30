@@ -17,7 +17,7 @@ $(document).on('rails_admin.dom_ready', function(){
 	{
 		buttons = ['undo', 'redo' , 'sep', 'bold', 'italic', 'underline', 'sep', 'createLink', 'sep', 'formatBlock', ,'sep', 'insertImage', 'insertVideo', 'uploadFile', 'sep', 'html'];
 	}
-	var wysiwygs = $('.biography_field textarea, .description_field textarea, .body_field textarea, .about_field textarea, .infos_field textarea');
+	var wysiwygs = $('.biography_field textarea, .description_field textarea, .body_field textarea, .about_field textarea, .infos_field textarea, .notes_field textarea');
 	wysiwygs.editable({
 		inlineMode: false,
 		plainPaste: true,
