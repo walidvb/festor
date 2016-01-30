@@ -7,6 +7,7 @@ a.artist{
 	}
 	&.active{
 		color: transparent!important;
+		text-shadow: none!important;
 	}
 }
 .event-name{
