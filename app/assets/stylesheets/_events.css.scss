@@ -6,9 +6,11 @@ a.artist{
 		text-shadow: none;
 	}
 	&.active{
-		color: transparent!important;
-		text-shadow: none!important;
-		letter-spacing: 0.3em;
+		color: transparent;
+		text-shadow: none;
+		.labels{
+			letter-spacing: normal;
+		}
 	}
 }
 .event-name{
@@ -73,6 +75,10 @@ h1{
 }
 
 .show-desc{
+ 		img, iframe, .show-info{
+			transition: margin-left 0.3s ease-out, margin-right 0.3s ease-out;
+		}
+
 	.leaving & img, .leaving iframe, .leaving .show-info{
 		margin-left: 0!important;
 		margin-right: 0!important;

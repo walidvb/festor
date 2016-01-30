@@ -1,4 +1,5 @@
 (function($){
+  var nav = $('<span style="display: inline-block; cursor: pointer;" class="nav back">back</span>');
   $(document).on('ready page:load', function(){
     body = $('body').imagesLoaded(function(){
       $('.show-desc img, .bio img').each(function(i){
@@ -7,42 +8,56 @@
         $(this).addClass(dir);
       });
     });
+
   });
 
-  $(document, '.inner-nav').click(function(e){
-    if($(e.target).hasClass('inner-nav')){
+  var moreContainer, main;
+  $(document).ready(function(){
+    moreContainer = $('.load-more-container');
+    main = $('#main-content');
+    nav.appendTo($('.related')).hide();
+  });
+
+  $(document, '.nav.back').click(function(e){
+    if($(e.target).hasClass('back')){
+      moreContainer.addClass('leaving');
       $('[data-load-more]').removeClass('active');
-      $('.load-more-container').hide();
-      $('#main-content').show();
-      $('.inner-nav').hide();
+      nav.fadeOut('100', function(){nav.remove()});
+      setTimeout(function(){
+        moreContainer.fadeOut('300', function(){
+          main.addClass('leaving').fadeIn('300', function(){
+            main.removeClass('leaving')
+          })
+        })
+      }, 300);
+      nav.hide();
     }
   });
-
   $(document, '[data-load-more]').on('click', function(e){
     var $this = $(e.target).parent('[data-load-more]');
-    if($this.length){
-      $('[data-load-more]').removeClass('active');
-      $this.addClass('active');
-      var url = $this.data('load-more') || $(e.target).data('load-more');
-      if(url != undefined){
-        e.preventDefault();
-        $.ajax({
-          url: url,
-          success: function(data){
-            var container = $('.load-more-container');
-            $('#main-content').hide();
-            container.html($(data).find('#main-content')).show();
-            appendNavTo($this, container);
+    $this.addClass('active');
+    var url = $this.data('load-more') || $(e.target).data('load-more');
+    var transitionFinished = false;
+    if(url != undefined){
+      e.preventDefault();
+      main.add(moreContainer).addClass('leaving');
+      $.ajax({
+        url: url,
+        success: function(data){
+          moreContainer.fadeOut('300',function(){
+            main.add(moreContainer).removeClass('leaving');
+            var new_ = $(data).find('#main-content').html();
+            moreContainer.add(main).hide();
+            moreContainer.html(new_);
+            nav.css('display', 'inline-block');
+            moreContainer.addClass('leaving').hide().fadeIn(function(){
+              moreContainer.add(main).removeClass('leaving');
+            });
             $(document).trigger('page:load');
-          }
-        })
-      };
-    }
+          });
+        }
+      });
+    };
   });
 
-  function appendNavTo(siblingOf, container){
-    var nav = $('<div class="inner-nav"/>');
-    nav.html('back');
-    nav.appendTo($('.event-artists')).show();
-  }
 })(jQuery);

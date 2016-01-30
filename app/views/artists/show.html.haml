@@ -5,7 +5,7 @@
 	- if user_signed_in?
 		= link_to 'edit', "/admin/artist/#{@artist.id}/edit"
 - if !@artist.events.empty?
-	.show-header
+	.show-header.related
 		- @artist.events.each do |event|
 			.event-name
 				%h5.artist-event= link_to event.title, path_for(event, locale: I18n.locale), data: {'load-more' => path_for(event, locale: I18n.locale)}

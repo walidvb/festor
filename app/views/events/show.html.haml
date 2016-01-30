@@ -5,16 +5,9 @@
 	- if user_signed_in?
 		= link_to 'edit', "/admin/event/#{@event.id}/edit"
 .show-header
-	.event-artists
-		.event-musicians
-			- @musicians.each do |mu|
-				= render 'artist', artist: mu
-		.event-vjs
-			- @vjs.each do |vj|
-				= render 'artist', artist: vj
-		.event-instructors
-			- @instructors.each do |instructor|
-				= render 'artist', artist: instructor
+	%span.event-artists.related
+		- @artists.each do |artist|
+			= render 'artist', artist: artist
 #main-content
 	.show-header
 		%h1.event-name= @event.title

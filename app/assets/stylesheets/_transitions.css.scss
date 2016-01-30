@@ -1,0 +1,10 @@
+#main-content, .load-more-container{
+  $duration: 0.3s;
+  text-shadow: none;
+  transition: text-shadow $duration 0.15s, transform $duration 0.2s, height 0s $duration;
+  &.leaving{
+    @include text-shadow($gap: 0.8em);
+    transition: text-shadow $duration, transform $duration 0.1s, height 0s $duration;
+    height: 0px;
+  }
+}
