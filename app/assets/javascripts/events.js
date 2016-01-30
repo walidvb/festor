@@ -11,6 +11,7 @@
 
   $(document, '.inner-nav').click(function(e){
     if($(e.target).hasClass('inner-nav')){
+      $('[data-load-more]').removeClass('active');
       $('.load-more-container').hide();
       $('#main-content').show();
       $('.inner-nav').hide();
@@ -18,28 +19,30 @@
   });
 
   $(document, '[data-load-more]').on('click', function(e){
-    $('[data-load-more]').removeClass('active');
     var $this = $(e.target).parent('[data-load-more]');
-    $this.addClass('active');
-    var url = $this.data('load-more') || $(e.target).data('load-more');
-    if(url != undefined){
-      e.preventDefault();
-      $.ajax({
-        url: url,
-        success: function(data){
-          var container = $('.load-more-container');
-          $('#main-content').hide();
-          container.html($(data).find('#main-content')).show();
-          appendNavTo($this, container);
-          $(document).trigger('page:load');
-        }
-      })
-    };
+    if($this.length){
+      $('[data-load-more]').removeClass('active');
+      $this.addClass('active');
+      var url = $this.data('load-more') || $(e.target).data('load-more');
+      if(url != undefined){
+        e.preventDefault();
+        $.ajax({
+          url: url,
+          success: function(data){
+            var container = $('.load-more-container');
+            $('#main-content').hide();
+            container.html($(data).find('#main-content')).show();
+            appendNavTo($this, container);
+            $(document).trigger('page:load');
+          }
+        })
+      };
+    }
   });
 
   function appendNavTo(siblingOf, container){
     var nav = $('<div class="inner-nav"/>');
     nav.html('back');
-    nav.prependTo(container).show();
+    nav.appendTo($('.event-artists')).show();
   }
 })(jQuery);

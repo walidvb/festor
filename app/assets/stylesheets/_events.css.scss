@@ -8,6 +8,7 @@ a.artist{
 	&.active{
 		color: transparent!important;
 		text-shadow: none!important;
+		letter-spacing: 0.3em;
 	}
 }
 .event-name{
