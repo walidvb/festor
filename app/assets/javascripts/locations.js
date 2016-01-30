@@ -129,6 +129,7 @@ var styles = [
 	}
 ];
 
+var seeProg = $('html').attr('lang') == 'en' ? 'See this venue\'s programm' : 'Voir le programme de ce lieu'
 function openInfoWindow(map, index, latitude, longitude, title, adresse, infos, url, markerArray) {
 	if(newInfoWindow) {
 		newInfoWindow.close();
@@ -143,7 +144,7 @@ function openInfoWindow(map, index, latitude, longitude, title, adresse, infos, 
 	newInfoWindow = new google.maps.InfoWindow({
 		content: 'chargement...'
 	});
-	newInfoWindow.setContent('<div class="marker-content"><h5 class="marker-title">' + title[index] + '</h5><p>' + infos[index] + '</p><p><a href="' + url[index] + '" class="marker-link" title="Voir le programme de ce lieu">Voir le programme de ce lieu</a></p></div>');
+	newInfoWindow.setContent('<div class="marker-content"><h5 class="marker-title">' + title[index] + '</h5><p>' + infos[index] + '</p><p><a href="' + url[index] + '" class="marker-link" title=' + seeProg + '>' + seeProg + '</a></p></div>');
 	map.panTo(newCenter);
 	markerArray[index].setZIndex(300);
 	newInfoWindow.open(map, markerArray[index]);
