@@ -9,11 +9,11 @@
     });
   });
 
-  $(document, '.close').click(function(e){
-    if($(e.target).hasClass('close')){
+  $(document, '.inner-nav').click(function(e){
+    if($(e.target).hasClass('inner-nav')){
       $('.load-more-container').hide();
       $('#main-content').show();
-      $('.close').hide();
+      $('.inner-nav').hide();
     }
   });
 
@@ -38,7 +38,7 @@
   });
 
   function appendNavTo(siblingOf, container){
-    var nav = $('<div class="nav"/>');
+    var nav = $('<div class="inner-nav"/>');
     nav.html('back');
     nav.prependTo(container).show();
   }
