@@ -1,6 +1,6 @@
 %table.show-info{class: classes}
   %tbody.info-list
-    - if !event.price.blank? && event.type == "workshop"
+    - if !event.price.blank? && event.is_workshop?
       %tr.price
         %td.left-info= t('events.fields.price')
         %td.right-info= event.price

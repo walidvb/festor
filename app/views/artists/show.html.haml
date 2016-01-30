@@ -8,7 +8,7 @@
 	.show-header
 		- @artist.events.each do |event|
 			.event-name
-				%h5.artist-event= link_to event.title, single_event_path(event, locale: I18n.locale)
+				%h5.artist-event= link_to event.title, path_for(event, locale: I18n.locale)
 #main-content
 	.show-header
 		.single-artist

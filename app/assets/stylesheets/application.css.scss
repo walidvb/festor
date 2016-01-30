@@ -109,7 +109,7 @@ h1{
 h2{font-size : $larger;}
 h3{font-size : $large;}
 h4{font-size : $small;}
-h5{font-size : 1rem;}
+h5{font-size : $body-size;}
 h6{font-size : $smaller;}
 main{font-family: $body-font;}
 
