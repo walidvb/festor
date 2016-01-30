@@ -26,10 +26,6 @@ h2{
 	clear: both;
 }
 
-table{
-	background: transparentize($white, 0.2);
-}
-
 body{
 	@media #{$tablet}{
 		display: flex;

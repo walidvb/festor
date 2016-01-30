@@ -5,6 +5,9 @@ a.artist{
 		letter-spacing: normal;
 		text-shadow: none;
 	}
+	&.active{
+		color: transparent!important;
+	}
 }
 .event-name{
 	margin: 0 $margin-horizontal-normal 0 $margin-horizontal-normal;
@@ -184,6 +187,7 @@ h1{
 .show-info{
 	float: left;
 	margin: 2rem 0 2rem 0rem;
+	position: relative;
 	@media #{$tablet}{
 		width: 60ch;
 		margin-left: -18%;
