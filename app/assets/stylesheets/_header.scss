@@ -30,7 +30,11 @@
 		}
 	}
 }
-
+@media #{$tablet}{
+	.not-link-logo{
+		display: none!important;
+	}
+}
 
 
 $header-height-sm: 250px;
