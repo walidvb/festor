@@ -129,7 +129,7 @@ var styles = [
 	}
 ];
 
-function openInfoWindow(map, index, latitude, longitude, title, adresse, url, markerArray) {
+function openInfoWindow(map, index, latitude, longitude, title, adresse, infos, url, markerArray) {
 	if(newInfoWindow) {
 		newInfoWindow.close();
 	}
@@ -170,7 +170,7 @@ function renderGoogleMap() {
 	latitude = latitude.split('-');
 	longitude = longitude.split('-');
 	title = title.split('*');
-	infos = infos.split('*');
+	infos = infos.split('|');
 	url = url.split('*');
 	adresse = adresse.split('*');
 
@@ -260,7 +260,7 @@ function renderGoogleMap() {
 			$('.location-link').each(function(i) {
 				if($(this).attr('data-title') == pageHash) {
 					$(this).addClass('active');
-					openInfoWindow(map, i, latitude, longitude, title, adresse, url, markerArray);
+					openInfoWindow(map, i, latitude, longitude, title, adresse, infos, url, markerArray);
 				}
 			});
 		}

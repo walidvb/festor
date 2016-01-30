@@ -1,5 +1,5 @@
 class AddInfosToLocations < ActiveRecord::Migration
   def change
-    add_column :locations, :infos, :text
+    Location.create_translation_table! infos: :text
   end
 end

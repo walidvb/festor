@@ -139,6 +139,17 @@ ActiveRecord::Schema.define(version: 20160129232551) do
     t.string   "linkable_type"
   end
 
+  create_table "location_translations", force: true do |t|
+    t.integer  "location_id", null: false
+    t.string   "locale",      null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "infos"
+  end
+
+  add_index "location_translations", ["locale"], name: "index_location_translations_on_locale", using: :btree
+  add_index "location_translations", ["location_id"], name: "index_location_translations_on_location_id", using: :btree
+
   create_table "locations", force: true do |t|
     t.string   "name"
     t.text     "address"
@@ -147,7 +158,6 @@ ActiveRecord::Schema.define(version: 20160129232551) do
     t.float    "latitude"
     t.float    "longitude"
     t.string   "slug"
-    t.text     "infos"
   end
 
   add_index "locations", ["slug"], name: "index_locations_on_slug", using: :btree
