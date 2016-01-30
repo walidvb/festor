@@ -27,8 +27,10 @@ h2{
 }
 
 body{
-	display: flex;
-	flex-direction: column;
+	@media #{$tablet}{
+		display: flex;
+		flex-direction: column;
+	}
 	min-height: 100vh;
 }
 main{
@@ -42,7 +44,10 @@ footer{
 // RESETS
 body{
 	font-family: $body-font;
-	font-size : $body-size;
+	font-size : 14px;
+	@media #{$tablet}{
+		font-size : 16px;
+	}
 	line-height: 1.3em;
 	overflow-x: hidden;
 }
@@ -86,10 +91,6 @@ ul{
 	-webkit-padding-start: 0px;
 }
 
-h3{
-	font-size: $body-size;
-}
-
 h1, h2, h3, h4, h5{
 	color: $black;
 	font-weight: normal;
@@ -108,7 +109,7 @@ h1{
 h2{font-size : $larger;}
 h3{font-size : $large;}
 h4{font-size : $small;}
-h5{font-size : $body-size;}
+h5{font-size : 1rem;}
 h6{font-size : $smaller;}
 main{font-family: $body-font;}
 
