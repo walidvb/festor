@@ -128,8 +128,9 @@ var styles = [
 		]
 	}
 ];
-
-var seeProg = $('html').attr('lang') == 'en' ? 'See this venue\'s programm' : 'Voir le programme de ce lieu'
+var lang = $('html').attr('lang');
+var seeProg = lang == 'en' ? 'See this venue\'s programm' : 'Voir le programme de ce lieu';
+var loading = lang == 'en' ? 'loading' : 'chargement...';
 function openInfoWindow(map, index, latitude, longitude, title, adresse, infos, url, markerArray) {
 	if(newInfoWindow) {
 		newInfoWindow.close();
@@ -142,7 +143,7 @@ function openInfoWindow(map, index, latitude, longitude, title, adresse, infos, 
 	}
 	var newCenter = new google.maps.LatLng(latitude[index], longitude[index]);
 	newInfoWindow = new google.maps.InfoWindow({
-		content: 'chargement...'
+		content: loading
 	});
 	newInfoWindow.setContent('<div class="marker-content"><h5 class="marker-title">' + title[index] + '</h5><p>' + infos[index] + '</p><p><a href="' + url[index] + '" class="marker-link" title=' + seeProg + '>' + seeProg + '</a></p></div>');
 	map.panTo(newCenter);
