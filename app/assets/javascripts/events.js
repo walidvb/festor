@@ -22,7 +22,6 @@
     if($(e.target).hasClass('back')){
       moreContainer.addClass('leaving');
       $('[data-load-more]').removeClass('active');
-      nav.fadeOut('100', function(){nav.remove()});
       setTimeout(function(){
         moreContainer.fadeOut('300', function(){
           main.addClass('leaving').fadeIn('300', function(){
