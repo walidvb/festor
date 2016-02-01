@@ -1,6 +1,7 @@
 (function($, window){
   $.fn.scrollReveal = function(options_){
     var that = this;
+    var $that = $(that);
     var offsetTop, getTop;
 
     var options = $.extend({
@@ -28,14 +29,13 @@
     var elems = $(options.itemSelector);
     if(!elems.length) return;
 
-
     var onScroll = debounce(function(){
       elems.each(function(){
         var $this = $(this);
 
-        var distTop = (offsetTop($this) + $this.height()/2) - getTop();
-        var distCenter = $(that).height()/2 - distTop;
-
+        var centerRel = window.scrollY + window.innerHeight/2;
+        var itemCenterRel = offsetTop($this) + $this.height()/2;
+        var distCenter = centerRel - itemCenterRel;
         function addActive(){
           $this.addClass('sr-middle')
           $this.removeClass('sr-top sr-bottom');
@@ -49,7 +49,8 @@
             $this.addClass('sr-bottom');
           }
         }
-        Math.abs(distCenter) <= $this.height()/2 ? addActive() :
+        var thresholdFromCenter = ($this.height() / 2) * 0.45;
+        Math.abs(distCenter) <= thresholdFromCenter ? addActive() :
         addTopOrBottom(distCenter > 0);
       });
     }, 10, false);

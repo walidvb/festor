@@ -23,4 +23,4 @@
     - unless event.notes.blank?
       %tr.notes
         %td.left-info= t('events.fields.notes')
-        %td.right-info= event.notes
+        %td.right-info= event.notes.html
