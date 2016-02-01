@@ -24,7 +24,7 @@
     position: relative;
   }
   &.sr-top .info{
-    bottom: 0;
+    bottom: 0px;
     top: auto;
   }
   @media #{$mobile}{
@@ -40,7 +40,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    transition : all 0.3s ease-in;
+    transition : all 0.2s ease-in;
     background: rgba(255,255,255, 0.95);
     z-index: 1;
   }
@@ -48,8 +48,9 @@
     opacity: 1;
   }
    .info{
+    transition : all 0.3s ease-in;
     position: absolute;
-    top: 0;
+    top: 0px;
     bottom: auto;
     z-index: 2;
     opacity: 1;
@@ -58,7 +59,7 @@
   }
   .no-touch &:hover, &.sr-middle{
     .tile-link{
-      transition : all 0.3s ease-out;
+      transition : all 0.2s ease-out;
       opacity : 0;
     }
   }
