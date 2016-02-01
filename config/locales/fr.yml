@@ -27,6 +27,7 @@ fr:
       performer: 'performeur'
       exhibitor: 'exhibiteur'
   events:
+    ticket: "Billets"
     fields:
       participants: 'Nombre de participants'
       languages:    'Langues'
