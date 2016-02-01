@@ -12,7 +12,7 @@
 		letter-spacing: 0em;
 		transition: text-shadow #{$trans}, letter-spacing #{$trans};
 		color: $black;
-		background: $white;
+		background: transparent;
 	}
 	&.active, .active, &:hover{
 		color: $black;
