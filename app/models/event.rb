@@ -20,7 +20,7 @@ class Event < ActiveRecord::Base
 	scope :other, ->{where.not(category: [:workshop, :conference, :masterclass, :exhibition])}
 
 	scope :featured, -> {where(featured: true)}
-	has_many :event_dates, dependent: :delete_all, inverse_of: :event
+	has_many :event_dates, dependent: :delete_all, inverse_of: :dateable, as: :dateable
 
 	has_many :bookings, dependent: :delete_all, inverse_of: :event
 
@@ -50,19 +50,16 @@ class Event < ActiveRecord::Base
 	validates_attachment_content_type :main_image, :content_type => /\Aimage\/(jpg|jpeg|png|gif)\Z/i
 
 	validates_presence_of :category, :title
-	def add_artist artist
-		Booking.create! event: self, artist: artist
-	end
 
 	def next
 		if ed = event_dates.first
-			EventDate.where('event_id != ? AND start > ?', self.id, ed.start.strftime("%Y-%m-%d %H:%M")).first.try(:event)
+			EventDate.where('dateable_type = ? AND dateable_id != ? AND start > ?', self.category, self.id, ed.start.strftime("%Y-%m-%d %H:%M")).first.try(:event)
 		end
 	end
 
 	def previous
 		if ed = event_dates.first
-			EventDate.where('event_id != ? AND start < ?', self.id, ed.start.strftime("%Y-%m-%d %H:%M")).first.try(:event)
+			EventDate.where('dateable_type = ? AND dateable_id != ? AND start < ?', self.category, self.id, ed.start.strftime("%Y-%m-%d %H:%M")).first.try(:event)
 		end
 	end
 

@@ -1,7 +1,6 @@
 class EventDate < ActiveRecord::Base
-  belongs_to :event, inverse_of: :event_dates
-
-  validates_presence_of :event, :start
+  belongs_to :dateable, inverse_of: :event_dates, polymorphic: true
+  validates_presence_of :dateable, :start
 
   def title
     "#{start.strftime("%B %m, %H:%M")}"
@@ -12,6 +11,8 @@ class EventDate < ActiveRecord::Base
         # date_format "%d/%m/%Y %H:%M"
       end
       field :end
-      field :event
+      field :dateable do
+        visible false
+      end
   end
 end
