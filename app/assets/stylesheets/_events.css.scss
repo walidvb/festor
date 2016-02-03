@@ -30,7 +30,7 @@ a.artist{
 			display: inline-block;
 		}
 	}
-	.artist{
+	.artist, .artist-event{
 		h5, h6{
 			margin: 0px;
 		}
@@ -39,13 +39,13 @@ a.artist{
 		text-transform: capitalize;
 		max-width: 85ch;
 	}
-	.artist-name, .labels, .origin{
+	.artist-name, .labels, .origin, .artist-event-name, .artist-event-type{
 		display: inline-block;
 		@media #{$tablet} {
 			display: inline;
 		}
 	}
-	.labels, .origin{
+	.labels, .origin, .artist-event-type{
 		vertical-align: super;
 	}
 	.event-artists{

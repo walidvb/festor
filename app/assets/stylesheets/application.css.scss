@@ -80,6 +80,10 @@ canvas{
 	vertical-align: bottom;
 }
 
+#main-content{
+	color: $dark-grey;
+}
+
 ul{
 	li{
 		list-style: none;
@@ -92,7 +96,7 @@ ul{
 	-webkit-padding-start: 0px;
 }
 
-h1, h2, h3, h4, h5{
+h1, h2, h3, h4, h5, h6{
 	color: $black;
 	font-weight: normal;
 	font-family: $body-font;
@@ -128,7 +132,7 @@ body a{
 	width: 100%;
 	z-index: 100;
 	background-color: $white;
-	color: $black;
+	color: $dark-grey;
 	font-size: $smaller;
 	padding: 1.25rem 0 1.25rem 0;
 	.container{
