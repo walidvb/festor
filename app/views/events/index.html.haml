@@ -10,9 +10,9 @@
 			= link_to path_for(event), class: 'tile-link' do
 				.info
 					- if !event.category.blank?
-						%h3.type
+						%h4.type
 							= t("events.categories.#{event.category}")
-					%h4.event-title= event.title
+					%h3.event-title= event.title
 					- artists.each do |a|
 						.artist-name= a.name
 					.location
