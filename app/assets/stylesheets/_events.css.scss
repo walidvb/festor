@@ -100,7 +100,7 @@ h1{
 			margin-left: -13em;
 			margin-right: 0.8em;
 			&.large{
-				margin-left: -25em;
+				margin-left: -15em;
 			}
 		}
 		.right{
@@ -198,12 +198,12 @@ h1{
 	position: relative;
 	font-size: $small;
 	@media #{$tablet}{
-		width: 60ch;
+		width: 70ch;
 		margin-left: -18%;
 		z-index: 100;
 	}
 	@media #{$md}{
-		width: 60ch;
+		width: 70ch;
 		margin-left: -18%;
 		z-index: 100;
 	}
@@ -242,11 +242,11 @@ h1{
 		@media #{$tablet}{
 			padding-left: 0;
 		}
-		min-width: 40%;
+		min-width: 30%;
 		font-weight: bold;
 	}
 	.right-info{
-		max-width: 50%;
+		max-width: 65%;
 		padding-left: 1rem;
 		p{
 			margin: 0;
