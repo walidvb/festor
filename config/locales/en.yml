@@ -8,10 +8,10 @@ en:
     program: "Program"
   nav:
     home:        "Home"
-    events:      "Events"
+    events:      "Program"
     artists:     "Artists"
     workshops:   "Workshops"
-    exhibitions: "Exhibitions"
+    exhibitions: "Exhibition"
     gallery:     "gallery"
     more:        "More"
     next:        "next"
