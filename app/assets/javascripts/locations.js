@@ -129,7 +129,7 @@ var styles = [
 	}
 ];
 var lang = $('html').attr('lang');
-var seeProg = lang == 'en' ? 'See this venue\'s programm' : 'Voir le programme de ce lieu';
+var seeProg = lang == 'en' ? 'See the program of this venue' : 'Voir le programme de ce lieu';
 var loading = lang == 'en' ? 'loading' : 'chargement...';
 function openInfoWindow(map, index, latitude, longitude, title, adresse, infos, url, markerArray) {
 	if(newInfoWindow) {
