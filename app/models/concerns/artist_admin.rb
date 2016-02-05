@@ -9,7 +9,7 @@ module ArtistAdmin
         field :profile_picture
       end
       configure :links do
-        visible false
+        visible true
       end
       configure :slug do
         visible false
