@@ -31,7 +31,20 @@
     position: relative!important;
     top: 0!important;
   }
-
+	h3{
+		max-width: 20ch;
+		margin: 0;
+	}
+	.type, .artist-origin{
+		vertical-align: super;
+		text-transform: capitalize;
+	}
+	.type, .artist-event-type{
+		font-size: $smaller;
+	}
+	.artists{
+		font-size: $small;
+	}
   & .tile-link{
     will-change: true;
     opacity: 1;

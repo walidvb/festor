@@ -10,11 +10,12 @@
 			= link_to path_for(event), class: 'tile-link' do
 				.info
 					- if !event.category.blank?
-						%h4.type
-							= t("events.categories.#{event.category}")
-					%h3.event-title= event.title
-					- artists.each do |a|
-						.artist-name= a.name
+						%h5.type= t("events.categories.#{event.category}")
+					.event-title
+						%h3= event.title
+					.artists
+						- artists.each do |a|
+							.artist-name= a.name
 					.location
 						- if date_ = event.event_dates.first
 							- if date_.end.nil?
