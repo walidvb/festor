@@ -33,7 +33,6 @@
     }
   });
   $(document, '[data-load-more]').on('click', function(e){
-    debugger;
     var $this = $(e.target).parent('[data-load-more]');
     $this.addClass('active');
     var url = $this.data('load-more') || $(e.target).data('load-more');

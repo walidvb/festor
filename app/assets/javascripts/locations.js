@@ -225,16 +225,13 @@ function renderGoogleMap() {
 		// infowindow
 		google.maps.event.addListener(marker, 'click', function(i) {
 			return function() {
+				window.location.hash = url[i];
 				if(myInfoWindow) {
 					myInfoWindow.close();
 				}
 				if(newInfoWindow) {
 					newInfoWindow.close();
 				}
-				var newCenter = new google.maps.LatLng(latitude[i], longitude[i]);
-				map.panTo(newCenter);
-				myInfoWindow.setContent('<div class="marker-content"><h5 class="marker-title">' + title[i] + '</h5><p>' + adresse[i] + '</p><p><a href="' + url[i] + '" class="marker-link" title="Voir le programme de ce lieu">Voir le programme de ce lieu</a></p></div>');
-				myInfoWindow.open(map, this);
 			}
 		}(i));
 	}
