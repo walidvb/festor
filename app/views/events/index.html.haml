@@ -9,8 +9,9 @@
 			= image_tag event.main_image.url(event.featured? ? :large : :tile)
 			= link_to path_for(event), class: 'tile-link' do
 				.info
-					- if !event.category.blank?
-						%h5.type= t("events.categories.#{event.category}")
+					- if @category != :exhibition
+						- if !event.category.blank?
+							%h5.type= t("events.categories.#{event.category}")
 					.event-title
 						%h3= event.title
 					.artists
