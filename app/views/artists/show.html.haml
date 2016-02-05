@@ -7,10 +7,9 @@
 - if !@artist.events.empty?
 	.show-header.related
 		- @artist.events.each do |event|
-			.artist-event
-				= link_to  path_for(event, locale: I18n.locale), data: {'load-more' => path_for(event, locale: I18n.locale)} do
-					%h5.artist-event-name= event.title
-					%h6.artist-event-type= event.category
+			= link_to  path_for(event, locale: I18n.locale), class: 'artist-event', data: {'load-more' => path_for(event, locale: I18n.locale)} do
+				%h5.artist-event-name= event.title
+				%h6.artist-event-type.sup= event.category
 #main-content
 	.show-header
 		.single-artist

@@ -1,6 +1,6 @@
-a.artist{
+a.artist, a.artist-event{
 	@extend .nav-link;
-	&:hover .labels{
+	&:hover .sup{
 		color:transparent;
 		letter-spacing: normal;
 		text-shadow: none;
@@ -8,7 +8,7 @@ a.artist{
 	&.active{
 		color: transparent;
 		text-shadow: none;
-		.labels{
+		.sup{
 			letter-spacing: normal;
 		}
 	}
