@@ -100,7 +100,7 @@
 
   config.paperclip_defaults = {
     :storage => :sftp,
-    :path => "/assets/:attachment/:id/:style/:filename",
+    :path => "/#{ENV['SFTP_PATH']}/assets/:attachment/:id/:style/:filename",
     :url => "#{ENV['SFTP_HOST']}/:attachment/:id/:style/:filename",
     :sftp_options => {
       :host     => ENV['SFTP_SERVER'],
