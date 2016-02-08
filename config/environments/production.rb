@@ -1,4 +1,4 @@
-Festor::Application.configure do
+ Festor::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
@@ -101,7 +101,7 @@ Festor::Application.configure do
   config.paperclip_defaults = {
     :storage => :sftp,
     :path => "/assets/:attachment/:id/:style/:filename",
-    :url => "#{ENV['ASSET_HOST']}/assets/:attachment/:id/:style/:filename",
+    :url => "#{ENV['ASSET_HOST']}/:attachment/:id/:style/:filename",
     :sftp_options => {
       :host     => ENV['SFTP_SERVER'],
       :user     => ENV['SFTP_USERNAME'],
