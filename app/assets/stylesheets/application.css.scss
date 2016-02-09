@@ -52,10 +52,6 @@ body{
 	line-height: 1.3em;
 	overflow-x: hidden;
 }
-
-#footer.container, .show-page .container{
-	background: rgba($white,0.95);
-}
 .container, .row, .col-xs-12 {
 	@media #{$mobile}
 	{
@@ -74,6 +70,10 @@ iframe{
 	border: none;
 	display: block;
 	margin: auto;
+}
+
+.super-main{
+	background: rgba(255,255,255,0.8);
 }
 canvas{
 	width: 100%;
