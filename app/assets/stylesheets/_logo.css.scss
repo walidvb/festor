@@ -22,6 +22,7 @@
 	@media #{$tablet} {
     @include text-shadow($color1: $black);
     margin-top: -5px;
+		margin-right: $margin-horizontal-normal;
 	}
   header:hover &{
     @include text-shadow($color1: $black, $color2: $white, $gap: 0);

@@ -135,7 +135,8 @@ body a{
 	background-color: $white;
 	color: $dark-grey;
 	font-size: $smaller;
-	padding: 1.25rem 0 1.25rem 0;
+	padding: $margin-horizontal-normal 0 $margin-horizontal-normal 0;
+	line-height: $body-size;
 	.container{
 		display:flex;
 		flex-direction: row;
@@ -151,6 +152,7 @@ body a{
 	}
 	.footer-links, .address{
 		flex: 1 0 100%;
+		text-transform: capitalize;
 		@media #{$tablet}{
 			flex: 1 0 50%;
 		}
@@ -161,7 +163,6 @@ body a{
 }
 
 .address{
-	margin-top: $margin-vertical-normal;
 	@media #{$tablet}{
 		text-align: right;
 	}
