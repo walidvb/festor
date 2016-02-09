@@ -1,10 +1,12 @@
 #main-content, .load-more-container{
   $duration: 0.3s;
   text-shadow: none;
-  transition: text-shadow $duration 0.15s, transform $duration 0.2s, height 0s $duration;
+  transition: text-shadow $duration 0.15s, transform $duration 0.2s, height 0s $duration, opacity $duration;
+	opacity: 1;
   &.leaving{
     @include text-shadow($gap: 0.8em);
-    transition: text-shadow $duration, transform $duration 0.1s, height 0s $duration;
+    transition: text-shadow $duration, transform $duration 0.1s, height 0s $duration, opacity $duration;
     height: 0px;
+		opacity: 0;
   }
 }
