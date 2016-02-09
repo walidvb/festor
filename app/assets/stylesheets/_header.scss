@@ -54,7 +54,7 @@ $header-padding-vert: 40px;
 	.container{
 		background: rgba(255,255,255,0);
 		@media #{$tablet}{
-			background: rgba(255,255,255,0.95);
+			background: rgba(255,255,255,0);
 		}
 	}
 	@media #{$tablet}{

@@ -52,6 +52,10 @@ body{
 	line-height: 1.3em;
 	overflow-x: hidden;
 }
+
+.show-desc, .artist-desc, .static-desc{
+	background: rgba($white,0.95);
+}
 .container, .row, .col-xs-12 {
 	@media #{$mobile}
 	{
