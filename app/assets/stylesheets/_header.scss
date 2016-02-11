@@ -171,10 +171,12 @@ $header-padding-vert: 40px;
 #filters{
 	margin: $margin-vertical-normal (-$margin-horizontal-normal) $margin-vertical-normal (-$margin-horizontal-normal);
 	padding: $margin-vertical-normal $margin-horizontal-normal 0 $margin-horizontal-normal;
-	background:$white;
 	color: $black;
 	display: flex;
 	flex-wrap: wrap;
+	@media #{$tablet}{
+		border-top: 1px solid black;
+	}
 	.cat-filters{
 		display: flex;
 		flex-wrap: wrap;
@@ -207,9 +209,4 @@ $header-padding-vert: 40px;
 .chosen-results li {
     width: 100%;
     color: $white;
-}
-.desktop-nav, .social, .locales{
-	@media #{$tablet}{
-		border-bottom: solid 1px $black;
-	}
 }

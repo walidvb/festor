@@ -1,5 +1,5 @@
 - @partners_type.each do |type|
   %h1= type[0].titleize
-  .partners-list
+  %ul.partners-list
     - type[1].each do |partner|
-      .partner= link_to(image_tag(partner.logo.url(:tile)), partner.link, target: '_blank')
+      %li.partner= link_to(image_tag(partner.logo.url(:tile)), partner.link, target: '_blank')
