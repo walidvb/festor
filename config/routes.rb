@@ -27,6 +27,8 @@ Festor::Application.routes.draw do
 		root "events#index", category: :workshop
 		get "/gallery" => 'static#gallery', as: :gallery
 		get "/about" => 'static#about', as: :about
+		get "/volunteers" => 'static#volunteers', as: :volunteers
+		get "/tickets" => 'static#tickets', as: :tickets
 		mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 	end
 end

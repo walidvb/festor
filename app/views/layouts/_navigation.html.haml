@@ -5,7 +5,7 @@
 	%li.nav-link= active_link_to t("nav.venues"), venues_path(locale: I18n.locale)
 	%li.nav-link= active_link_to t("nav.workshops"), workshops_path(locale: I18n.locale)
 	%li.tickets.nav-link
-		= link_to t('nav.tickets'), '#'
+		= link_to t('nav.tickets'), tickets_path
 %ul.social
 	%li.nav-link
 		= link_to("http://www.instagram.com/mappingfestival", target: '_blank') do
@@ -28,7 +28,7 @@
 		%li.nav-link.locale
 			EN /
 			#{link_to("FR", url_for(locale: :fr), class: "fr nav-link")}
-	%li.nav-link= link_to t('nav.volunteers')
+	%li.nav-link= link_to t('nav.volunteers'), volunteers_path
 	%li.nav-link#newsletter
 		- if I18n.locale == :en
 			%form#mlb2-477433.newsletter-form{:action => "//app.mailerlite.fr/webforms/submit/r9a8o1", "data-code" => "r9a8o1", :target => "_blank"}
@@ -37,7 +37,6 @@
 					.fa.fa-icon.fa-inbox
 		- else
 			%form#mlb2-448223.newsletter-form{:action => "//app.mailerlite.fr/webforms/submit/u2g5s5", "data-code" => "u2g5s5", :target => "_blank"}
-
 				%button.ml-subscribe-button{:type => "submit"}
 					%span Newsletter
 					.fa.fa-icon.fa-inbox

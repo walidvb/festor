@@ -8,4 +8,15 @@ class StaticController < ApplicationController
     @previous_editions = PreviousEdition.all
     render :about
   end
+
+  def volunteers
+    @iframe = Setting.first.volunteers
+    render :volunteers
+  end
+
+  def tickets
+    @tickets = Setting.first.tickets
+    render :tickets
+  end
+
 end

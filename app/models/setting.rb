@@ -1,7 +1,8 @@
 class Setting < ActiveRecord::Base
   before_create :unique_setting
-  translates :about
+  translates :about, :volunteers
   accepts_nested_attributes_for :translations, allow_destroy: true
+
 
   rails_admin do
     configure :translations, :globalize_tabs
