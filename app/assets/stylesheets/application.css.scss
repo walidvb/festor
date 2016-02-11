@@ -53,9 +53,6 @@ body{
 	overflow-x: hidden;
 }
 
-.show-desc, .artist-desc, .static-desc{
-	background: rgba($white,0.95);
-}
 .container, .row, .col-xs-12 {
 	@media #{$mobile}
 	{
@@ -76,9 +73,8 @@ iframe{
 	margin: auto;
 }
 
-.super-main{
-	background: rgba(255,255,255,0.8);
-	min-height: 100vh;
+table{
+	background: transparent;
 }
 canvas{
 	width: 100%;
@@ -137,7 +133,7 @@ body a{
 #footer{
 	width: 100%;
 	z-index: 100;
-	background-color: $white;
+	background-color: transparent;
 	color: $dark-grey;
 	font-size: $smaller;
 	padding: $margin-horizontal-normal 0 $margin-horizontal-normal 0;

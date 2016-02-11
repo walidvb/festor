@@ -3,6 +3,7 @@ var sketchProc = (function($p) {
 
     var time = 0;
     var fill_color = 255;
+    var line_color = 240;
     var render_width = window.innerWidth;
     var render_height = window.innerHeight;
 
@@ -29,7 +30,7 @@ var sketchProc = (function($p) {
         $p.background(fill_color);
 
         for (var i = 1; i < width_base; i++) {
-            my_line_3(coord_x, coord_y, (width_base - i) * width_base - (width_base / 2), i % 2 == 0 ? 255 : 0);
+            my_line_3(coord_x, coord_y, (width_base - i) * width_base - (width_base / 2), i % 2 == 0 ? 255 : line_color);
         }
         for (var i = 1; i < max_points - 1; i++) {
             $p.randomSeed($p.millis() * 111);
