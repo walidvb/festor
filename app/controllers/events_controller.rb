@@ -2,6 +2,10 @@ class EventsController < ApplicationController
 	before_filter :get_category, only: [:index]
 	before_filter :require_admin!, only: [:sortable_index, :sort_update]
 	def index
+		if @category != :workshop
+			render 'static/coming_soon'
+			return
+		end
 		@events = Event.order("position ASC").includes(:artists, :location).send(@category.to_sym)
 		if @category == :single_event
 			@dates = EventDate.all.uniq{|d| d.start.strftime("%e-%b-%y")}.map(&:start)

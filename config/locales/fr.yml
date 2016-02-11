@@ -52,3 +52,4 @@ fr:
       specials:    "Spéciaux"
   time:
     to: 'au'
+    coming_soon: 'À venir...'
