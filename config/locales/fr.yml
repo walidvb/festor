@@ -13,8 +13,9 @@ fr:
     tickets:     "Billetterie"
     about:      'à propos'
     partners:   'partenaires'
-    previous_title: 'Archives'
+    archives:   'archives'
     volunteers: 'Bénévoles'
+    about:      'À propos'
   partners:
     media: 'Partenaires médias'
     private: 'Partenaires privés'
