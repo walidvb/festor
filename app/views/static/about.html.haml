@@ -4,11 +4,12 @@
 	= @text.try(:html_safe) || 'Coming soon...'
 .previous-title
 	%h1= t("nav.previous_title")
-.previous-years.grid#previous
+.previous-editions.grid#previous
+	.grid-item.grid-sizer
 	- @previous_editions.each do |prev|
 		.grid-item
-			= link_to prev.url do
-				= image_tag prev.thumbnail(:tile), width: 600, height: 270
+			= link_to prev.url, target: '_blank' do
+				= image_tag prev.thumbnail(:tile)
 				.info
 					%h3.year
 						= prev.edition
