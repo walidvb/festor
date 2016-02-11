@@ -5,7 +5,7 @@ class StaticController < ApplicationController
 
   def about
     @text = Setting.first.about
-    @previous_editions = PreviousEdition.all
+    @previous_editions = PreviousEdition.all.order("edition DESC")
     render :about
   end
 
