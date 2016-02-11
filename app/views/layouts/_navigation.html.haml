@@ -1,28 +1,34 @@
 %ul.desktop-nav
-	%li= active_link_to t("nav.events"), events_path(locale: I18n.locale)
-	%li= active_link_to t("nav.artists"), artists_path(locale: I18n.locale)
-	%li= active_link_to t("nav.exhibitions"), exhibitions_path(locale: I18n.locale)
-	%li= active_link_to t("nav.venues"), venues_path(locale: I18n.locale)
-	%li= active_link_to t("nav.workshops"), workshops_path(locale: I18n.locale)
-	%li.tickets
-		= link_to t('nav.tickets'), '#', class: 'nav-link'
+	%li.nav-link= active_link_to t("nav.events"), events_path(locale: I18n.locale)
+	%li.nav-link= active_link_to t("nav.artists"), artists_path(locale: I18n.locale)
+	%li.nav-link= active_link_to t("nav.exhibitions"), exhibitions_path(locale: I18n.locale)
+	%li.nav-link= active_link_to t("nav.venues"), venues_path(locale: I18n.locale)
+	%li.nav-link= active_link_to t("nav.workshops"), workshops_path(locale: I18n.locale)
+	%li.tickets.nav-link
+		= link_to t('nav.tickets'), '#'
 %ul.social
-	%li
-		= link_to("http://www.instagram.com/mappingfestival", target: '_blank', class: 'nav-link') do
-			instagram
-	%li
-		= link_to("http://www.twitter.com/mappingfestival", target: '_blank', class: 'nav-link') do
-			twitter
-	%li
-		= link_to("http://www.facebook.com/mappingfestival", target: '_blank', class: 'nav-link') do
-			facebook
+	%li.nav-link
+		= link_to("http://www.instagram.com/mappingfestival", target: '_blank') do
+			%span instagram
+			.fa.fa-icon.fa-instagram
+	%li.nav-link
+		= link_to("http://www.twitter.com/mappingfestival", target: '_blank') do
+			%span	twitter
+			.fa.fa-icon.fa-twitter
+	%li.nav-link
+		= link_to("http://www.facebook.com/mappingfestival", target: '_blank') do
+			%span facebook
+			.fa.fa-icon.fa-facebook
 %ul.locales
 	- if I18n.locale == :fr
-		FR
-		%li= link_to("EN", url_for(locale: :en), class: "en nav-link")
+		%li.nav-link.locale
+			#{link_to("EN", url_for(locale: :en), class: "en nav-link")}
+			= "/ FR"
 	- else
-		%li= link_to("FR", url_for(locale: :fr), class: "fr nav-link")
-		EN
+		%li.nav-link.locale
+			EN /
+			#{link_to("FR", url_for(locale: :fr), class: "fr nav-link")}
+	%li.nav-link= link_to t('nav.volunteers')
 	%li.nav-link#newsletter
 		- if I18n.locale == :en
 			%form#mlb2-477433.newsletter-form{:action => "//app.mailerlite.fr/webforms/submit/r9a8o1", "data-code" => "r9a8o1", :target => "_blank"}

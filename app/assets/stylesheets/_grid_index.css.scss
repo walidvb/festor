@@ -1,7 +1,7 @@
 /* isotope requirements*/
 .grid{
   .grid-item{
-    opacity: 0.993;
+    opacity: 0.83;
     width: 100%;
     @media #{$tablet}{
       width: 50%;
@@ -68,6 +68,7 @@
     padding-right: $margin-horizontal-normal;
   }
   .no-touch &:hover, &.sr-middle{
+    opacity: 0.9;
     .tile-link{
       transition : all 0.2s ease-out;
       opacity : 0;

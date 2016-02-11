@@ -23,7 +23,7 @@ module ApplicationHelper
   def active_link_to txt, url
     path_1 = /\/?\w{0,2}?\/((\w*-?_?)+)/.match(url)[1]
     active = !request.fullpath.match(path_1).nil?
-    link_to txt, url, class: active ? "active nav-link" : 'nav-link', locale: I18n.locale
+    link_to txt, url, class: active ? "active" : nil, locale: I18n.locale
   end
 
   def image_shower asset, gallery_id

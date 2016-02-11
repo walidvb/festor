@@ -7,28 +7,35 @@
 	background: $black;
 	color: $white;
 	$trans: 0.25s cubic-bezier(0, 0.04, 0, 0.96);
+	a{
+		display: inline-block;
+		width: 100%;
+	}
 	@media #{$tablet}{
-		@include text-shadow($color1: $white, $color2: $white, $gap: 0.3em);
-		letter-spacing: 0em;
-		transition: text-shadow #{$trans}, letter-spacing #{$trans};
 		color: $black;
 		background: transparent;
+		a{
+			letter-spacing: 0em;
+			transition: text-shadow #{$trans}, letter-spacing #{$trans};
+			color: $black;
+		}
 	}
-	&.active, .active, &:hover{
+	&.active, .active, &:hover a, &:hover{
 		color: $black;
 		background: $white;
 		letter-spacing: 0.3em;
 		@media #{$tablet}{
 			background: $black;
 			color: $white;
-			@extend .nav-link;
 		}
 	}
 	&:hover{
 		@media #{$tablet}{
-			@include text-shadow($color1: $white, $color2: $white, $gap: 0.3em);
-			letter-spacing: 0.3em;
-			transition: text-shadow #{$trans}, letter-spacing #{$trans};
+			a{
+				@include text-shadow($color1: $white, $color2: $white, $gap: 0.3em);
+				letter-spacing: 0.3em;
+				transition: text-shadow #{$trans}, letter-spacing #{$trans};
+			}
 		}
 	}
 }

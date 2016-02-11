@@ -87,6 +87,10 @@ $header-padding-vert: 40px;
 #filters {
     flex: 0 0 100%;
 }
+
+.locale a{
+	display: inline;
+}
 .header-right{
 	flex: 1 0 100%;
 	margin-top: $margin-vertical-normal;
@@ -111,11 +115,9 @@ $header-padding-vert: 40px;
 		width: 49%;
 		display: inline-block;
 		border-bottom: solid 1px $white;
-	}
-	a{
-		display: block;
-		height: 2rem;
-		width: 100%;
+		@media #{$tablet}{
+			border-bottom: none;
+		}
 	}
 	.desktop-nav{
 		flex: 1 0 50%;
