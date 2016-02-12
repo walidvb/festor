@@ -14,9 +14,9 @@
 	@media #{$tablet}{
 		color: $black;
 		background: transparent;
+		transition: text-shadow #{$trans}, letter-spacing #{$trans};
 		a{
 			letter-spacing: 0em;
-			transition: text-shadow #{$trans}, letter-spacing #{$trans};
 			color: $black;
 		}
 	}
@@ -31,11 +31,9 @@
 	}
 	&:hover{
 		@media #{$tablet}{
-			a{
-				@include text-shadow($color1: $white, $color2: $white, $gap: 0.3em);
-				letter-spacing: 0.3em;
-				transition: text-shadow #{$trans}, letter-spacing #{$trans};
-			}
+			@include text-shadow($color1: $white, $color2: $white, $gap: 0.3em);
+			letter-spacing: 0.3em;
+			transition: text-shadow #{$trans}, letter-spacing #{$trans};
 		}
 	}
 }

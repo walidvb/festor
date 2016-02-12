@@ -1,6 +1,8 @@
 @media #{$mobile}{
+	$header-height-mobile: 70px;
 	.link-logo{
 		display: none;
+		flex: 1 1 auto;
 		.open &{
 			display: flex;
 		}
@@ -11,7 +13,7 @@
 	header.container{
 		position: fixed;
 		bottom: 0;
-		transform: translateY(calc(100% - 70px));
+		transform: translateY(calc(100% - #{$header-height-mobile}));
 		transition: all 0.25s ease-out;
 		&.open{
 			transform: translateY(0);
@@ -28,8 +30,15 @@
 		.logo, .motto{
 			flex: 1 1 auto;
 		}
+		.nav-link{
+			line-height: 1.5em;
+		}
+	}
+	footer{
+		margin-bottom: $header-height-mobile;
 	}
 }
+
 @media #{$tablet}{
 	.not-link-logo{
 		display: none!important;

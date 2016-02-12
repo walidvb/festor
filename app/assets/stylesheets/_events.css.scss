@@ -1,23 +1,32 @@
 a.artist, a.artist-event{
 	@extend .nav-link;
+	background: transparent;
+	color: black;
 	&:hover .sup{
 		color:transparent;
 		letter-spacing: normal;
 		text-shadow: none;
 	}
 	&.active{
-		color: transparent;
+		@media #{$tablet}{
+			background: $black;
+			color: transparent;
+		}
 		text-shadow: none;
 		.sup{
 			letter-spacing: normal;
 		}
 	}
 }
+
 .event-name{
 	margin: 0 $margin-horizontal-normal 0 $margin-horizontal-normal;
 	@media #{$tablet}{
 		margin: 0;
 	}
+}
+.show-header{
+	color: $black;
 }
 .show-header, .artist-list{
 	@media #{$tablet}{
