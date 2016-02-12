@@ -8,6 +8,7 @@ $(document).ready(function() {
 	}
 
 	$('.grid').imagesLoaded( function() {
+		$('.grid').css('opacity', 1);
 		$('body').scrollReveal();
 		var $grid = $('.grid').isotope({
 			// options
@@ -39,14 +40,14 @@ $(document).ready(function() {
 					return '.'+$(item).val();
 				});
 
-				var locationsFilter = $('.location-link.active').data('title')
-				if(locationsFilter.length){
+				var locationsFilter = $('.location-link.active').data('title');
+				if(locationsFilter && locationsFilter.length){
 					locationsFilter = '.' + locationsFilter
 				}
 				var dateFilter = $('#date-filter').val();
 				if(dateFilter != 'empty' && dateFilter != undefined){
 					filters = jQuery.map(filters, function(item){
-						if(locationsFilter.length){
+						if(locationsFilter && locationsFilter.length){
 							item += locationsFilter;
 						}
 						return item+'.'+dateFilter;
