@@ -1,0 +1,17 @@
+.container{
+  width: 100%;
+  margin: auto;
+  @media #{$tablet}{
+    max-width: 750px;
+  }
+  @media #{$sm}{
+    max-width: 970px;
+  }
+  @media #{$lg}{
+    max-width: 1170px;
+  }
+}
+
+a, a:hover, a:active{
+  color: $black;
+}
