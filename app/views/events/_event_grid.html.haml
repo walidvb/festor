@@ -2,6 +2,7 @@
 	.grid-item.grid-sizer
 	- events.each do |event|
 		- classes = [event.featured? ? "grid-item--width2" : nil]
+		- classes.push(event.location.try(:slug))
 		- classes.push(event.category)
 		.grid-item{class: classes.join(' '), data: {position: event.position, id: event.id}}
 			- artists = event.artists

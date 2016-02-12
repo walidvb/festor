@@ -149,6 +149,7 @@ function openInfoWindow(map, index, latitude, longitude, title, adresse, infos, 
 	map.panTo(newCenter);
 	markerArray[index].setZIndex(300);
 	newInfoWindow.open(map, markerArray[index]);
+	$(document).trigger('filter-events');
 }
 
 function renderGoogleMap() {

@@ -27,6 +27,9 @@ h2{
 	clear: both;
 }
 
+a:hover, a:active{
+	text-decoration: none;
+}
 body{
 	@media #{$tablet}{
 		display: flex;

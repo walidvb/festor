@@ -1,21 +1,9 @@
-.location-list
-	- @locations.each do |loc|
-		= link_to loc.name,	"##{loc.slug}", class: 'location-link', data: { title: loc.slug}
+.location-main
+	.location-list
+		- @locations.each do |loc|
+			= link_to loc.name,	"##{loc.slug}", class: 'location-link', data: { title: loc.slug}
+	#google-map-wrapper{ data: { "marker-url" => image_url("google-map-marker.png")}}
+		#google-map-loader
+		#google-map{ data: {"adresse" => @locations.map(&:address).join('*'), "latitude" => @locations.map(&:latitude).join('-'), "longitude" => @locations.map(&:longitude).join('-'), "title" => @locations.map(&:name).join('*'),		"url" => @locations.map{|l| "##{l.slug}"}.join('*'), "zoom" => "14", "infos" => @locations.map(&:infos).join('|')}}
 .location-events
-	- @events.each do |event|
-		- artists = event.artists
-		= link_to path_for(event), class: "location-event #{event.location.slug}" do
-			.info
-				%h4.event-title= event.title
-				- artists.each do |a|
-					.artist-name= a.name
-				%h5.date
-					- if date_ = event.event_dates.first
-						- if date_.end.nil?
-							#{l(date_.start, format: "%e %B")}
-						- else
-							#{l(date_.start, format: "%e")} - #{l(date_.end, format: "%e %B")}
-
-#google-map-wrapper{ data: { "marker-url" => image_url("google-map-marker.png")}}
-	#google-map-loader
-	#google-map{ data: {"adresse" => @locations.map(&:address).join('*'), "latitude" => @locations.map(&:latitude).join('-'), "longitude" => @locations.map(&:longitude).join('-'), "title" => @locations.map(&:name).join('*'),		"url" => @locations.map{|l| "##{l.slug}"}.join('*'), "zoom" => "14", "infos" => @locations.map(&:infos).join('|')}}
+	= render 'events/event_grid', events: @events

@@ -1,16 +1,17 @@
 @media #{$tablet}{
-	.locations-page main > .row > .col-xs-12{
+	.location-main{
 		display: flex;
 	}
 }
+
 #google-map-wrapper{
 	height: 60rem;
 	width: 100%;
 	@media #{$tablet}{
 		display: flex;
-		flex: 1 0 60%;
+		flex: 1 0 75%;
 		flex-direction: column;
-		height: auto;
+		min-height: 550px;
 		width: auto;
 		#google-map{
 			flex: 1 0 100%;
@@ -18,28 +19,20 @@
 	}
 }
 
-.location-list, .location-events{
+.location-list{
 	display: flex;
-	flex-flow: row wrap;
-	justify-content: space-between;
+	flex-direction: column;
 	@media #{$tablet}{
-		align-items: flex-end;
-		flex: 0 1 20%;
+		align-content: flex-start;
+		flex: 0 1 25%;
 	}
 	margin: 0 0 $margin-vertical-normal 0;
-	padding: 0 $margin-horizontal-normal 0 $margin-horizontal-normal;
+	padding: 0 $margin-horizontal-normal 0 0;
 	.location-link{
-		flex-basis: 100%;
-		border: solid 1px $black;
-		text-align: center;
-		margin: $margin-vertical-normal 0 0 0;
-		background: $white;
+		padding: 10px 0;
 		&:hover, &.active{
-			background: $black;
-			color: $white;
-		}
-		@media #{$tablet}{
-			flex-basis: 24ch;
+			border-bottom: solid 1px $black;
+			font-weight: bold;
 		}
 	}
 }
