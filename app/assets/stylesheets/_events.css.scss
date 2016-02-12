@@ -22,7 +22,7 @@ a.artist, a.artist-event{
 .event-name{
 	margin: 0 $margin-horizontal-normal 0 $margin-horizontal-normal;
 	@media #{$tablet}{
-		margin: 0;
+		margin: 1rem 0 4rem 0;
 	}
 }
 .show-header{
@@ -67,6 +67,7 @@ a.artist, a.artist-event{
 h1{
 	max-width: 26ch;
 	text-transform: capitalize;
+	margin-bottom: 4em;
 }
 .single-artist{
 	.artist-name{
@@ -146,6 +147,7 @@ h1{
 	@media #{$tablet}{
 		max-width: 80ch;
 		margin-left: 12.5%;
+		margin-top: 4rem;
 	}
 	a{
 		text-decoration: underline;
@@ -164,34 +166,18 @@ h1{
 	}
 	@media #{$tablet} {
 		padding: 0;
+		max-width: 40%;
+		margin-bottom: $margin-vertical-normal;
 	}
 	h5{
-		display: inline-block;
+		display: block;
 		position: relative;
 		border-bottom: solid 1px $black;
 		padding-left: 0.7rem;
 		padding-right: 2rem;
 		@media #{$tablet}{
 			padding-right: 5rem;
-		}
-		&:before{
-			content: '';
-		}
-		&:before, &:after{
-			height: 0.7em;
-			display: inline-block;
-			border-left: 1px solid $black;
-			position: absolute;
-			top: 8px;
-			left: 0px;
-		}
-		&:not(:first-child){
-			margin-left: -0.7rem;
-		}
-		&:last-child:after{
-			content: '';
-			border-right: 1px solid $black;
-			right: 0px;
+			margin: 0;
 		}
 	}
 	a{
