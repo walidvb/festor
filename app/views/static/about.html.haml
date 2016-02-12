@@ -8,5 +8,7 @@
 	.grid-item.grid-sizer
 	- @previous_editions.each do |prev|
 		.grid-item
-			= link_to prev.url, target: '_blank' do
-				= image_tag prev.thumbnail(:tile)
+			= image_tag prev.thumbnail(:tile)
+			= link_to prev.url, class: 'tile-link', target: '_blank' do
+				.info
+					%h3= prev.edition
