@@ -150,6 +150,11 @@ function openInfoWindow(map, index, latitude, longitude, title, adresse, infos, 
 	markerArray[index].setZIndex(300);
 	newInfoWindow.open(map, markerArray[index]);
 	$(document).trigger('filter-events');
+	$('.marker-link').click(function(){
+		$(window).animate({
+			scrollTop: $('#location-events').offset().top,
+		})
+	});
 }
 
 function renderGoogleMap() {
@@ -251,14 +256,17 @@ function renderGoogleMap() {
 	$(window).bind('hashchange', openFromHash);
 
 	function openFromHash(){
+		$('#location-events').show();
 		var pageHash = window.location.hash;
 		pageHash = pageHash.substring(1);
 		$('.location-event').hide();
 		if(pageHash.length){
 			$('.location-event.'+pageHash).show();
 			$('.location-link.active').removeClass('active');
+
 			$('.location-link').each(function(i) {
 				if($(this).attr('data-title') == pageHash) {
+					$('#location-title').html(title[i]);
 					$(this).addClass('active');
 					openInfoWindow(map, i, latitude, longitude, title, adresse, infos, url, markerArray);
 				}
