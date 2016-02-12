@@ -30,7 +30,7 @@
 			#{link_to("FR", url_for(locale: :fr), class: "fr nav-link")}
 	%li.nav-link= link_to t('nav.volunteers'), volunteers_path
 	%li.nav-link#newsletter
-		- if I18n.locale == :en
+		- if I18n.locale == 'en'
 			%form#mlb2-477433.newsletter-form{:action => "//app.mailerlite.fr/webforms/submit/r9a8o1", "data-code" => "r9a8o1", :target => "_blank"}
 				%button.ml-subscribe-button{:type => "submit"}
 					%span Newsletter
