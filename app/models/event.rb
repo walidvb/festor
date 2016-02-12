@@ -12,7 +12,7 @@ class Event < ActiveRecord::Base
 	end
 
 	def is_workshop?
-		Event.workshop_cats.include?(category)
+		Event.workshop_cats.include?(category.to_sym)
 	end
 
 	scope :workshop, ->{where(category: workshop_cats)}
