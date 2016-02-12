@@ -2,7 +2,7 @@ class EventsController < ApplicationController
 	before_filter :get_category, only: [:index]
 	before_filter :require_admin!, only: [:sortable_index, :sort_update]
 	def index
-		if @category != :workshop
+		if @category != :workshop && !cookies[:beta].present?
 			render 'static/coming_soon'
 			return
 		end
