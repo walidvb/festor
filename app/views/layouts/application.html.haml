@@ -22,16 +22,15 @@
 			%canvas#canvas
 		- else
 			.rulers.container
-				- 5.times do |i|
-					- if i != 0
-						.gutter
-					.column
+				.row
+					- 5.times do |i|
+						.column.col-xs-1
 		%header.container{"data-no-turbolink" => true}
 			.row.body-header
-				.col-xs-12.header-top= render 'layouts/header'
+				.col-xs-5.header-top= render 'layouts/header'
 		%main.container
 			.row
-				.col-xs-12
+				.col-xs-5
 					= yield
 		= render 'layouts/footer'
 		:plain
