@@ -1,4 +1,4 @@
-- if user_signed_in?
+- if !@filters.empty? && user_signed_in?
 	#filters
 		- if !@dates.nil?
 			%select#date-filter{"data-placeholder" => "date"}
@@ -8,5 +8,5 @@
 			%div#date-sort.sort.sort-desc
 		.cat-filters
 			- @filters.each do |cat|
-				%input.cat-filter{:type => "checkbox", value: cat, id: "category-#{cat}", checked: true}
+				%input.cat-filter{:type => "checkbox", value: cat, id: "category-#{cat}", checked: false}
 					%label{:for => "category-#{cat}"}= t("events.categories.#{cat}")
