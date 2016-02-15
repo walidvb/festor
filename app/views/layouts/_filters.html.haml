@@ -1,11 +1,12 @@
-#filters
-	- if !@dates.nil?
-		%select#date-filter{"data-placeholder" => "date"}
-			%option{:value => "empty"}
-			- @dates.each do |d|
-				%option{:value => d.strftime("%d-%m-%y")}= l(d, format: "%A %e")
-		%div#date-sort.sort.sort-desc
-	.cat-filters
-		- @filters.each do |cat|
-			%input.cat-filter{:type => "checkbox", value: cat, id: "category-#{cat}", checked: true}
-				%label{:for => "category-#{cat}"}= t("events.categories.#{cat}")
+- if user_signed_in?
+	#filters
+		- if !@dates.nil?
+			%select#date-filter{"data-placeholder" => "date"}
+				%option{:value => "empty"}
+				- @dates.each do |d|
+					%option{:value => d.strftime("%d-%m-%y")}= l(d, format: "%A %e")
+			%div#date-sort.sort.sort-desc
+		.cat-filters
+			- @filters.each do |cat|
+				%input.cat-filter{:type => "checkbox", value: cat, id: "category-#{cat}", checked: true}
+					%label{:for => "category-#{cat}"}= t("events.categories.#{cat}")

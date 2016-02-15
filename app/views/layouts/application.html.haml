@@ -18,7 +18,7 @@
 		= csrf_meta_tags
 
 	%body{class: "#{controller.controller_name}-page #{controller.action_name}-page #{yield(:body_class)} #{'debug' if Rails.env.development?} #{current_user.nil? ? nil : 'admin'}"}
-		- if Rails.env.production? || true
+		- if Rails.env.production?
 			%canvas#canvas
 		%header.container{"data-no-turbolink" => true}
 			.row.body-header
