@@ -1,0 +1,21 @@
+.rulers{
+  position: fixed;
+  z-index: -10;
+  left: 0;
+  right: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  .gutter, .column{
+    height: 100vh;
+    display: inline-block;
+  }
+  .gutter{
+    background-color: rgba(240, 0, 0, 0.2);
+    flex: 0 0 28px;
+  }
+  .column{
+    background-color: rgba(0, 240, 0, 0.3);
+    flex: 0 1 20%;
+  }
+}
