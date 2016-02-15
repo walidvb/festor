@@ -1,6 +1,6 @@
 class LocationsController < ApplicationController
   def index
-    @locations = Location.includes(:events).all
+    @locations = Location.order('name ASC').includes(:events).all
     if !user_signed_in?
       @locations.select! do |loc|
         loc.events.map(&:is_workshop?).include?(true)
