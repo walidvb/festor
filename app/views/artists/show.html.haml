@@ -14,8 +14,8 @@
 	.show-header
 		.single-artist
 			%h1.artist-name= @artist.name
-			%h4.labels= @artist.label
-			%h4.origin= @artist.origin
+			%h4.labels.sup= @artist.label
+			%h4.origin.sup= @artist.origin
 	- if !@links.empty?
 		%ul.links
 			- @links.each do |l|

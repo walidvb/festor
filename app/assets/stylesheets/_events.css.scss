@@ -3,9 +3,10 @@ a.artist, a.artist-event{
 	background: transparent;
 	color: black;
 	&:hover .sup{
-		color:transparent;
+		color: inherit;
 		letter-spacing: normal;
 		text-shadow: none;
+		font-weight: normal;
 	}
 	&.active{
 		@media #{$tablet}{
@@ -18,8 +19,11 @@ a.artist, a.artist-event{
 		}
 	}
 }
-
-.event-name{
+.sup{
+	font-weight: normal;
+}
+.artist-name, .event-name{
+	font-weight: normal;
 	margin: 0 $margin-horizontal-normal 0 $margin-horizontal-normal;
 	@media #{$tablet}{
 		margin: 1rem 0 4rem 0;
@@ -41,8 +45,9 @@ a.artist, a.artist-event{
 		}
 	}
 	.artist, .artist-event{
-		h5, h6{
+		.artist-event-name, .sup{
 			margin: 0px;
+			font-weight: inherit;
 		}
 	}
 	.event-artists, .artist-event{

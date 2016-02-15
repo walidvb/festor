@@ -103,7 +103,6 @@ ul{
 }
 
 h1, h2, h3, h4, h5, h6{
-	font-weight: normal;
 	font-family: $body-font;
 }
 
@@ -185,10 +184,10 @@ body a{
 		a:hover{
 			background: $white;
 		}
-		&:hover:before{
-			border-color: $dark-grey;
-			box-shadow: inset	0	10px	0 $black;
-		}
+		//&:hover:before{
+		//	border-color: $dark-grey;
+		//	box-shadow: inset	0	10px	0 $black;
+		//}
 		&:before{
 			font-size: 1em;
 	    width: 1.3em;
