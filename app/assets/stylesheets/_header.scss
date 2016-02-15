@@ -161,7 +161,8 @@ $header-padding-vert: 40px;
 			}
 			.fa-icon{
 				@include text-shadow($color1: $white, $color2: $white, $gap: 0.4em);
-				color: white;
+				color: inherit;
+				
 				transition: text-shadow 0.3s ease-out;
 			}
 		}
