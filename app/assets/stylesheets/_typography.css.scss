@@ -3,15 +3,14 @@
 .link-logo {
 	@include fontSize(33px);
 	@include lineHeight(33px);
-	@include lineJump(7);
 }
 
 
 // ----- 2 - Baseline ----- //
 
 .motto {
-	@include fontSize(22px);
-	@include lineHeight(15px);
+	@include fontSize($body-size);
+	@include lineHeight($body-size);
 	@include lineJump(3);
 	}
 
@@ -19,18 +18,17 @@
 // ----- 3 - Menu ----- //
 
 .header-right {
-	font-size: $body-size  ;
-	line-height: 2rem ;
-	margin-top: 7rem ;
-	}
+	@include fontSize($body-size);
+	@include lineHeight(28px);
+}
 
 
 // ----- 4 - Artist ----- //
 
 .show-header {
 	h5, h6{
-		font-size: 1.857rem ;
-		line-height: 2rem ;
+		@include fontSize(26px) ;
+		@include lineHeight(28px);
 		margin-top: 13rem ;
 	}
 	}
