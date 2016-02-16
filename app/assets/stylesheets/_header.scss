@@ -23,12 +23,6 @@
 		.logo{
 			padding-left: 5px;
 		}
-		.motto{
-			align-self: flex-end;
-		}
-		.logo, .motto{
-			flex: 1 1 auto;
-		}
 		.nav-link{
 			line-height: 1.5em;
 		}
@@ -68,27 +62,20 @@ $header-padding-vert: 40px;
 }
 
 .body-header .header-top, .navbar-header{
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: flex-end;
+
 }
 
 .header-left {
-	flex: 1 0 100%;
-	display: flex;
+
 	margin-bottom: $margin-vertical-normal;
 	@media #{$tablet}{
-		flex: 1 0 50%;
 	}
 	@media #{$md}{
-		display: flex;
-		flex: 1 0 40%;
 		margin-bottom: 0;
 	}
 }
 
 .logo, .motto{
-	flex: 1 0 50%;
 	@media #{$tablet}{
 		display: inline-block;
 	}
@@ -98,18 +85,17 @@ $header-padding-vert: 40px;
 	display: inline;
 }
 .header-right{
-	flex: 1 0 100%;
 	text-transform: capitalize;
 	@media #{$tablet}{
 		display: flex;
 		align-self: flex-start;
-		flex-wrap: wrap;
+		flex-direction: row;
 	}
 	@media #{$tablet}{
-		flex: 1 0 50%;
+
 	}
 	@media #{$md}{
-		flex: 1 0 60%;
+
 	}
 	.nav-link.active:not(:hover){
 		text-shadow: none;
@@ -123,15 +109,13 @@ $header-padding-vert: 40px;
 		}
 	}
 	.desktop-nav{
-		flex: 1 0 50%;
+		flex: 0 0 50%;
 		display: flex;
 		justify-content: flex-start;
 		flex-wrap: wrap;
 		flex-direction: row;
 		align-content: flex-start;
-		li{
-			flex: 1 0 50%;
-		}
+
 	}
 	.social, .locales{
 		flex: 1 0 25%;
@@ -154,7 +138,7 @@ $header-padding-vert: 40px;
 			.fa-icon{
 				@include text-shadow($color1: $white, $color2: $white, $gap: 0.4em);
 				color: inherit;
-				
+
 				transition: text-shadow 0.3s ease-out;
 			}
 		}

@@ -1,4 +1,4 @@
-.header-left
+.col-xs-5.col-sm-2
 	.link-logo
 		=link_to root_path, class: 'logo' do
 			= render 'layouts/logo'
@@ -7,6 +7,6 @@
 		= t("shared.motto").html_safe
 		.festival-date
 			#{l(Date.parse("28 april"), format: "%e %b")} – #{l(Date.parse("8 may"), format: "%e %b")} / 2016 / #{ t("shared.geneva")}
-.header-right
+.header-right.col-xs-12.col-sm-3
 	= render 'layouts/navigation'
 	= yield :filters
