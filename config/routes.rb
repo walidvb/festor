@@ -7,7 +7,7 @@ Festor::Application.routes.draw do
 		devise_for :users
 		get "home" => 'home#index'
 		#get "events/:id" => "events#show", as: :event
-		resources :events, controller: "events", only: [:show, :index], category: :other, as: :events
+		resources :events, controller: "events", only: [:show, :index], category: :all, as: :events
 		resources :workshops, controller: "events", only: [:show, :index], category: :workshop
 		resources :exhibitions, controller: "events", only: [:show, :index], category: :exhibition
 

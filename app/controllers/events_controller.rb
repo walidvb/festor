@@ -7,8 +7,8 @@ class EventsController < ApplicationController
 			return
 		end
 		@events = Event.order("position ASC").includes(:artists, :location).send(@category.to_sym)
-		if @category == :single_event
-			@dates = EventDate.all.uniq{|d| d.start.strftime("%e-%b-%y")}.map(&:start)
+		if @category == :all
+			@dates = EventDate.all.to_a.uniq{|d| p d.start.strftime("%e-%b-%y"); d.start.strftime("%e-%b-%y")}.map(&:start)
 			@filters = Event.category_enum
 			render 'index_single_events'
 		else

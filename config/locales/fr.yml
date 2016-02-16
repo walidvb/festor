@@ -9,6 +9,7 @@ fr:
     artists:     "Artistes"
     workshops:   "Workshops"
     exhibitions: "Exposition"
+    all:          'Programme'
     venues:      "Lieux"
     tickets:     "Billetterie"
     about:      'à propos'
@@ -43,6 +44,7 @@ fr:
       workshop:     "workshop"
       exhibition:   "installation"
       single_event: "event"
+      all:          'Programme'
     categories:
       clubbing:    "Clubbing"
       performance: "Performance"

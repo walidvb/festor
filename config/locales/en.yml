@@ -13,6 +13,7 @@ en:
     artists:     "Artists"
     workshops:   "Workshops"
     exhibitions: "Exhibition"
+    all:          'Program'
     gallery:     "gallery"
     more:        "More"
     next:        "next"
@@ -49,6 +50,7 @@ en:
       workshop:   "Workshop"
       exhibition: "Installation"
       single_event: "Event"
+      all:          'Program'
     categories:
       clubbing:    "Clubbing"
       performance: "Performance"

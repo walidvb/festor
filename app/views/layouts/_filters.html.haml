@@ -1,12 +1,13 @@
 - if !@filters.empty? && user_signed_in?
-	#filters
-		- if !@dates.nil?
-			%select#date-filter{"data-placeholder" => "date"}
-				%option{:value => "empty"}
-				- @dates.each do |d|
-					%option{:value => d.strftime("%d-%m-%y")}= l(d, format: "%A %e")
-			%div#date-sort.sort.sort-desc
-		.cat-filters
+	- dates_present = !@dates.nil?
+	#filters.row
+		- if dates_present
+			.date-filter.col-xs-1
+				%select#date-filter{"data-placeholder" => "date"}
+					%option{:value => "empty"}
+					- @dates.each do |d|
+						%option{:value => d.strftime("%d-%m-%y")}= l(d, format: "%A %e")
+		.cat-filters{class: dates_present ? 'col-xs-4' : 'col-xs-5'}
 			- @filters.each do |cat|
 				%input.cat-filter{:type => "checkbox", value: cat, id: "category-#{cat}", checked: false}
 					%label{:for => "category-#{cat}"}= t("events.categories.#{cat}")

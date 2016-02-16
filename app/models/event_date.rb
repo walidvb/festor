@@ -2,6 +2,9 @@ class EventDate < ActiveRecord::Base
   belongs_to :dateable, inverse_of: :event_dates, class_name: 'Event'#, polymorphic: true
   validates_presence_of :dateable, :start
 
+  default_scope { order('start') } 
+
+
   def title
     "#{start.strftime("%B %m, %H:%M")}"
   end
