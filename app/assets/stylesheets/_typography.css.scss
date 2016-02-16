@@ -2,8 +2,9 @@
 
 .link-logo {
 	@include fontSize(33px);
-	margin-top: 7rem ;
-	}
+	@include lineHeight(33px);
+	@include lineJump(7);
+}
 
 
 // ----- 2 - Baseline ----- //
