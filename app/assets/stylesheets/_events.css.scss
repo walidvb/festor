@@ -122,6 +122,9 @@ h1{
 	a{
 		text-decoration: underline;
 	}
+	@media #{$tablet}{
+		padding-left: 41%;
+	}
 }
 
 .event-infos{
@@ -140,11 +143,6 @@ h1{
 		position: relative;
 		border-bottom: solid 1px $black;
 		padding-left: 0.7rem;
-		padding-right: 2rem;
-		@media #{$tablet}{
-			padding-right: 5rem;
-			margin: 0;
-		}
 	}
 	a{
 		text-decoration: none;

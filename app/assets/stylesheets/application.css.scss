@@ -46,6 +46,9 @@ main{
 	}
 }
 
+p{
+	margin-bottom: 0 !important;
+}
 
 footer{
 	align-self: flex-end;
@@ -156,9 +159,6 @@ body a{
 		@media #{$tablet}{
 			flex: 1 0 50%;
 		}
-	}
-	p{
-		margin-bottom: 0px;
 	}
 }
 

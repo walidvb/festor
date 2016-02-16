@@ -53,17 +53,15 @@
 	@include lineJump (4);
 }
 
-
-// ----- 7 - Texte Courant ----- //
-
 .show-desc, .event-artist-bio, .artist-desc, .static-desc{
-	@include fontSize($body-size) ;
-	@include lineHeight($lineheight-base * 2) ;
-	@include lineJump (4);
-}
-
-
-.show-desc, .event-artist-bio, .artist-desc, .static-desc {
+	// ----- 7 - Texte Courant ----- //
+	p{
+		@include fontSize($body-size) ;
+		@include lineHeight($lineheight-base * 2) ;
+	}
+	p.fr-tag{
+		@include lineJump (4);
+	}
 	// ----- 8 - Sous -Titres ----- //
 	h1{
 		@include fontSize(33px) ;
@@ -80,7 +78,7 @@
 
 // ----- 10 - Workshop Info ----- //
 
-.show-info {
+.show-info, .notes p{
 	@include fontSize(16px) ;
 	@include lineHeight($lineheight-base * 1.57) ;
 	@include lineJump (3.2);
