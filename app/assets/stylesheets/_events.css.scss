@@ -41,7 +41,7 @@ a.artist, a.artist-event{
 	}
 	.artist, .artist-event{
 		.artist-event-name, .sup{
-			margin: 0px;
+			margin: 0 $lineheight-base 0 0;
 			font-weight: inherit;
 		}
 	}
