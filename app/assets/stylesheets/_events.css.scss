@@ -89,13 +89,19 @@ h1{
 }
 
 .show-desc{
- 		img, iframe, .show-info{
-			transition: margin-left 0.3s ease-out, margin-right 0.3s ease-out;
+	.left{
+		img{
+			float: right;
 		}
-
-	.leaving & img, .leaving iframe, .leaving .show-info{
-		margin-left: 0!important;
-		margin-right: 0!important;
+	}
+	.right{
+		img{
+			float: left;
+		}
+	}
+	iframe{
+		@extend .col-xs-5;
+		@extend .col-sm-3;
 	}
 	h3{
 		clear: left;
@@ -108,37 +114,6 @@ h1{
 		img{
 			max-width: 800px;
 		}
-		.left{
-			float: left;
-			clear: right;
-			margin-left: -13em;
-			margin-right: 0.8em;
-			&.large{
-				margin-left: -15em;
-			}
-		}
-		.right{
-			float: right;
-			clear: left;
-			margin-right: -10em;
-			margin-left: 0.8em;
-			&.large{
-				margin-right: -15em;
-			}
-		}
-		iframe{
-			float: right;
-			clear: left;
-			@media #{$tablet}{
-				margin-right: -3vw;
-			}
-			@media #{$md}{
-				margin-right: -2vw;
-			}
-			@media #{$lg}{
-				margin-right: -29vw;
-			}
-		}
 	}
 }
 #main-content{
@@ -148,10 +123,6 @@ h1{
 	}
 }
 .show-desc, .event-artist-bio, .artist-desc, .static-desc{
-	@media #{$tablet}{
-		max-width: 80ch;
-		margin-left: 12.5%;
-	}
 	a{
 		text-decoration: underline;
 	}
@@ -196,17 +167,11 @@ h1{
 }
 
 .show-info{
-	float: left;
-	margin: 0rem 0 2rem 0rem;
+	@extend .col-xs-5;
+	@extend .col-sm-2;
+	clear: both;
 	position: relative;
 	@media #{$tablet}{
-		width: 70ch;
-		margin-left: -18%;
-		z-index: 100;
-	}
-	@media #{$md}{
-		width: 70ch;
-		margin-left: -18%;
 		z-index: 100;
 	}
 }
@@ -218,9 +183,6 @@ h1{
 }
 
 .iframe{
-	width: 55ch;
-	float: left;
-	margin-left: -20ch;
 }
 
 .info-list{

@@ -5,7 +5,7 @@
       $('.show-desc img, .bio img').each(function(i){
         var dir = i%2 ? 'right' : 'left';
         dir += ($(this).width() < $('.show-desc, .bio').width()*0.5 ? ' small' : ' large');
-        $(this).addClass(dir);
+        $(this).wrap($('<div class="col-xs-2 ' + dir + '"/>'));
       });
     });
 
