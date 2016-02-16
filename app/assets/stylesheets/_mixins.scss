@@ -7,7 +7,7 @@
 
 @mixin lineHeight($size) {
 	$remSize: $size / $base-size;
-	$calculatedRemSize: #{$remSize}rem;
+	$calculatedRemSize: #{$remSize}em;
   line-height: $size; //Fallback in px
   line-height: $calculatedRemSize;
 }

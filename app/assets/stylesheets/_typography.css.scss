@@ -10,9 +10,9 @@
 // ----- 2 - Baseline ----- //
 
 .motto {
-	font-size: $body-size  ;
-	line-height: 1.071em ;
-	margin-top: 3rem ;
+	@include fontSize(22px);
+	@include lineHeight(15px);
+	@include lineJump(3);
 	}
 
 
