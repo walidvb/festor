@@ -1,13 +1,12 @@
 .col-xs-5.col-sm-2.header-left
-	.row
-		.link-logo.logo
-			=link_to root_path do
-				= render 'layouts/logo'
-		.logo.not-link-logo= render 'layouts/logo'
-		.motto
-			= t("shared.motto").html_safe
-			.festival-date
-				#{l(Date.parse("28 april"), format: "%e %b")} – #{l(Date.parse("8 may"), format: "%e %b")} / 2016
-			.festival-place #{ t("shared.geneva")}
+	.link-logo.logo
+		=link_to root_path do
+			= render 'layouts/logo'
+	.logo.not-link-logo= render 'layouts/logo'
+	.motto
+		= t("shared.motto").html_safe
+		.festival-date
+			#{l(Date.parse("28 april"), format: "%e.%-m")} – #{l(Date.parse("8 may"), format: "%e.%-m.")}
+		.festival-place #{ t("shared.geneva")}
 .header-right.col-xs-5.col-sm-3
 	= render 'layouts/navigation'

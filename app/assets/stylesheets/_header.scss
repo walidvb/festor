@@ -54,6 +54,18 @@
 	.not-link-logo{
 		display: none!important;
 	}
+
+	header{
+		position: relative;
+		&:after {
+		  position: absolute;
+		  content: '';
+		  border-bottom: 1px solid black;
+		  right: 0;
+		  bottom: 0;
+		  width: calc(60% - 14px);
+		}
+	}
 }
 
 
