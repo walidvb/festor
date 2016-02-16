@@ -1,7 +1,7 @@
 // ----- 1 - Logo Mapping ----- //
 
 .logo {
-	@include fontSize(24px);
+	@include fontSize(22.8px);
 	@media #{$tablet}{
 		@include fontSize(33px);
 	}
@@ -12,8 +12,8 @@
 
 .motto {
 	@include fontSize($body-size);
-	@include lineHeight($body-size);
-	@include lineJump (3);
+	@include lineHeight($lineheight-base * 2);
+	@include lineJump (2);
 }
 
 
@@ -66,13 +66,13 @@
 	}
 	// ----- 8 - Sous -Titres ----- //
 	h1{
-		@include fontSize(33px) ;
+		@include fontSize(31.35px) ;
 		@include lineHeight($lineheight-base * 2) ;
 		@include lineJump (3);
 	}
 	// ----- 9 - Sous-Sous Titres ----- //
 	h2{
-		@include fontSize(27px) ;
+		@include fontSize(25.65px) ;
 		@include lineHeight($lineheight-base * 2) ;
 		@include lineJump (6);
 	}
@@ -81,7 +81,7 @@
 // ----- 10 - Workshop Info ----- //
 
 .show-info, .notes p{
-	@include fontSize(16px) ;
+	@include fontSize(15.2px) ;
 	@include lineHeight($lineheight-base * 1.57) ;
 	@include lineJump (3.2);
 }
@@ -90,7 +90,7 @@
 // ----- 11 - Footer Left ----- //
 
 #footer {
-	@include fontSize(16px) ;
+	@include fontSize(15.2px) ;
 	@include lineHeight($lineheight-base * 1.57) ;
 }
 
@@ -98,7 +98,7 @@
 // ----- 12 - Ticker ----- //
 
 .announcement {
-	@include fontSize(22px) ;
+	@include fontSize(20.9px) ;
 	@include lineHeight($lineheight-base * 2) ;
 }
 
@@ -120,13 +120,13 @@
 .info {
 	// ----- 15 - Progr Titre ----- //
 	h3{
-		@include fontSize(28px) ;
+		@include fontSize(26.6px) ;
 		@include lineHeight($lineheight-base * 2) ;
 		@include lineJump (1.429);
 	}
 	// ----- 16 - Progr. Artiste ----- //
 	h4{
-		@include fontSize(16px) ;
+		@include fontSize(15.2px) ;
 		@include lineHeight($lineheight-base * 1.29) ;
 		@include lineJump (1.429);
 	}
@@ -134,7 +134,7 @@
 	// ----- 17 - Progr. Date ----- //
 
 	h5, .date, .location{
-		@include fontSize(16px) ;
+		@include fontSize(15.2px) ;
 		@include lineHeight($lineheight-base * 1.29) ;
 		@include lineJump (1.429);
 	}
@@ -146,7 +146,7 @@
 // ----- 18 - Venue Place ----- //
 
 .location-link {
-	@include fontSize(22px) ;
+	@include fontSize(20.9px) ;
 	@include lineHeight($lineheight-base * 2) ;
 	@include lineJump (7.5);
 }
@@ -155,7 +155,7 @@
 // ----- 19 - Venue Titre ----- //
 
 .venue-title {
-	@include fontSize(22px);
+	@include fontSize(20.9px);
 	@include lineHeight($lineheight-base * 2) ;
 	@include lineJump (2);
 }
@@ -163,7 +163,7 @@
 // ----- 20 - Venue Artiste ----- //
 
 .venue-artist {
-	@include fontSize(16px) ;
+	@include fontSize(15.2px) ;
 	@include lineHeight($lineheight-base * 1.57) ;
 }
 
@@ -171,6 +171,6 @@
 // ----- 21 - Venue Date ----- //
 
 .venue-date {
-	@include fontSize(16px) ;
+	@include fontSize(15.2px) ;
 	@include lineHeight($lineheight-base * 1.29) ;
 }
