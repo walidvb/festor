@@ -118,6 +118,7 @@
 
 
 .info {
+	padding-top: $lineheight-base * 1.429;
 	// ----- 15 - Progr Titre ----- //
 	h3{
 		@include fontSize(26.6px) ;
@@ -133,7 +134,7 @@
 	// ----- 14 - Progr Type ----- //
 	// ----- 17 - Progr. Date ----- //
 
-	h5, .date, .location{
+	.date, .location{
 		@include fontSize(15.2px) ;
 		@include lineHeight($lineheight-base * 1.29) ;
 		@include lineJump (1.429);
