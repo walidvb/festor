@@ -37,7 +37,6 @@ a.artist, a.artist-event{
 	@media #{$tablet}{
 		margin: 0;
 	}
-	margin-bottom: $margin-vertical-large;
 	a{
 		display: block;
 		@media #{$tablet}{
@@ -73,7 +72,6 @@ a.artist, a.artist-event{
 h1{
 	max-width: 26ch;
 	text-transform: capitalize;
-	margin-bottom: 4em;
 }
 .single-artist{
 	.artist-name{

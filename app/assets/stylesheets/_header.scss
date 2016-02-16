@@ -44,7 +44,6 @@ $header-padding-vert: 40px;
 
 .body-header{
 	padding-top: $margin-vertical-normal;
-	//margin-bottom: 2*$margin-vertical-large;
 	background: $black;
 	color: $white;
 	a{
@@ -53,8 +52,6 @@ $header-padding-vert: 40px;
 	@media #{$tablet}{
 		background: transparent;
 		color: $black;
-		padding-bottom: $margin-vertical-large;
-		margin-bottom: 13rem;
 		a{
 			color: $black;
 		}
@@ -65,25 +62,10 @@ $header-padding-vert: 40px;
 
 }
 
-.header-left {
-
-	margin-bottom: $margin-vertical-normal;
-	@media #{$tablet}{
-	}
-	@media #{$md}{
-		margin-bottom: 0;
-	}
-}
-
-.logo, .motto{
-	@media #{$tablet}{
-		display: inline-block;
-	}
-}
-
 .locale a{
 	display: inline;
 }
+
 .header-right{
 	text-transform: capitalize;
 	@media #{$tablet}{
