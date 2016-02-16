@@ -1,8 +1,7 @@
 // ----- 1 - Logo Mapping ----- //
 
 .link-logo {
-	font-size: 2.357rem ;
-	line-height: 2.357rem ;
+	@include fontSize(33px);
 	margin-top: 7rem ;
 	}
 
@@ -10,7 +9,7 @@
 // ----- 2 - Baseline ----- //
 
 .motto {
-	font-size: 1.571rem ;
+	font-size: $body-size  ;
 	line-height: 1.071rem ;
 	margin-top: 3rem ;
 	}
@@ -19,7 +18,7 @@
 // ----- 3 - Menu ----- //
 
 .header-right {
-	font-size: 1.571rem ;
+	font-size: $body-size  ;
 	line-height: 2rem ;
 	margin-top: 7rem ;
 	}
@@ -27,10 +26,12 @@
 
 // ----- 4 - Artist ----- //
 
-.show-header h5 h6 {
-	font-size: 1.857rem ;
-	line-height: 2rem ;
-	margin-top: 13rem ;
+.show-header {
+	h5, h6{
+		font-size: 1.857rem ;
+		line-height: 2rem ;
+		margin-top: 13rem ;
+	}
 	}
 
 
@@ -46,7 +47,7 @@
 // ----- 6 - Date / Heure / Lieu ----- //
 
 .dates-details h5 {
-	font-size: 1.571rem ;
+	font-size: $body-size  ;
 	line-height: 2rem ;
 	margin-top: 4rem ;
 	}
@@ -55,7 +56,7 @@
 // ----- 7 - Texte Courant ----- //
 
 .show-desc {
-	font-size: 1.571rem ;
+	font-size: $body-size  ;
 	line-height: 2rem ;
 	margin-top: 4rem ;
 	}
@@ -83,7 +84,7 @@
 
 .show-info {
 	font-size: 1.143rem ;
-	line-height: 1.571rem ;
+	line-height: $body-size  ;
 	margin-top: 3.2rem ;
 	}
 
@@ -92,14 +93,14 @@
 
 #footer {
 	font-size: 1.143rem ;
-	line-height: 1.571rem ;
+	line-height: $body-size  ;
 	}
 
 
 // ----- 12 - Ticker ----- //
 
 .announcement {
-	font-size: 1.571rem ;
+	font-size: $body-size  ;
 	line-height: 2rem ;
 	margin-top: 2rem ;
 	}
@@ -108,7 +109,7 @@
 // ----- 13 - Filtre ----- //
 
 .cat-filters {
-	font-size: 1.571rem ;
+	font-size: $body-size  ;
 	line-height: 2rem ;
 	margin-top: 2rem ;
 	}
@@ -153,7 +154,7 @@
 // ----- 18 - Venue Place ----- //
 
 .location-link {
-	font-size: 1.571rem ;
+	font-size: $body-size  ;
 	line-height: 2rem ;
 	margin-top: 7.5rem ;
 	}
@@ -162,7 +163,7 @@
 // ----- 19 - Venue Titre ----- //
 
 .venue-title {
-	font-size: 1.571rem ;
+	font-size: $body-size  ;
 	line-height: 2rem ;
 	margin-top: 2rem ;
 	}
@@ -172,7 +173,7 @@
 
 .venue-artiste {
 	font-size: 1.143rem ;
-	line-height: 1.571rem ;
+	line-height: $body-size  ;
 	}
 
 

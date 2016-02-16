@@ -24,10 +24,10 @@ $info-font						:	$body-font;
 
 //applied to body so as to define root em
 $base-size						:	14px;
-$font-base-size				:	$base-size;
+$base-font-size				:	$base-size;
 
 
-$body-size    				:   1em;
+$body-size    				:   1.571rem;
 $main-size   				 	:   1.25em;
 $smaller							:		0.65em;
 $small								:		0.8em;
@@ -37,8 +37,8 @@ $largest							:		2.8em;
 $tile-title-size 			:		0.8em;
 
 // defines line-height for all texts
-$lineheight-variable	: 	1;
-$lineheight-base 			:		calc ($lineheight-variable * $base-size);
+$lineheight-variable	: 	4;
+$lineheight-base 			:		($lineheight-variable * $base-size);
 
 // margins & padding
 $margin-vertical-normal 	: 1rem;
