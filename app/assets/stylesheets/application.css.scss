@@ -126,7 +126,8 @@ body a{
 	z-index: 100;
 	background-color: transparent;
 	color: $dark-grey;
-	padding: $margin-horizontal-normal 0 $margin-horizontal-normal 0;
+	padding-top: $lineheight-base;
+	margin-bottom: $lineheight-base*2;
 	.container{
 		display:flex;
 		flex-direction: row;
