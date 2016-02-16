@@ -32,10 +32,7 @@
 		align-content: flex-start;
 		flex: 0 1 25%;
 	}
-	margin: 0 0 $margin-vertical-normal 0;
-	padding: 0 $margin-horizontal-normal 0 0;
 	.location-link{
-		padding: 10px 0;
 		&:hover, &.active{
 			border-bottom: solid 1px $black;
 			font-weight: bold;
