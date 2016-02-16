@@ -3,8 +3,8 @@ en:
     formats:
       long: "%d/%B/%Y %H:%M"
   shared:
-    geneva: "geneva"
-    motto:  "visual audio & deviant electronics"
+    geneva: "Geneva"
+    motto:  "visual audio + deviant electronics"
     program: "Program"
     switzerland: "Switzerland"
   nav:
