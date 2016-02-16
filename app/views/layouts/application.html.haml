@@ -26,8 +26,8 @@
 					- 5.times do |i|
 						.column.col-xs-1
 		%header.container{"data-no-turbolink" => true}
-			.row.body-header
-				.header-top= render 'layouts/header'
+			%nav.row.body-header
+				= render 'layouts/header'
 		%main.container
 			.row
 				.col-xs-5

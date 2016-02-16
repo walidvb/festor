@@ -1,7 +1,10 @@
 // ----- 1 - Logo Mapping ----- //
 
-.link-logo {
-	@include fontSize(33px);
+.logo {
+	@include fontSize(24px);
+	@media #{$tablet}{
+		@include fontSize(33px);
+	}
 	@include lineHeight(33px);
 }
 
@@ -11,7 +14,6 @@
 .motto {
 	@include fontSize($body-size);
 	@include lineHeight($body-size);
-	@include lineJump(3);
 	}
 
 
