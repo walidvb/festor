@@ -28,7 +28,9 @@ a.artist, a.artist-event{
 .show-header{
 	color: $black;
 }
-
+.inline-image{
+	margin-bottom: $lineheight-base * 2;
+}
 .show-header, .artist-list{
 	@media #{$tablet}{
 		margin: 0;
@@ -179,6 +181,7 @@ h1{
 }
 
 .info-list{
+	@include lineJump(1);
 	table{
 		width: 100%;
 	}
@@ -197,6 +200,7 @@ h1{
 	}
 	.left-info{
 		padding-left: 1rem;
+		color: $black;
 		@media #{$tablet}{
 			padding-left: 0;
 		}
