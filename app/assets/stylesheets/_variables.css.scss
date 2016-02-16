@@ -19,23 +19,27 @@ $container-max-width: 960px;
 $background: #ffffff;
 
 // typography
-$body-font		:	Grotesk, Helvetica, Sans-Serif;
-$info-font		:	$body-font;
+$body-font						:	Grotesk, Helvetica, Sans-Serif;
+$info-font						:	$body-font;
 
-$body-size    :   1em;
-$main-size    :   1.25em;
-$smaller			:		0.65em;
-$small				:		0.8em;
-$large				: 	1.4em;
-$larger 			: 	2.25em;
-$largest			:		2.8em;
-$tile-title-size 	:	0.8em;
+$body-size    				:   1em;
+$main-size   				 	:   1.25em;
+$smaller							:		0.65em;
+$small								:		0.8em;
+$large								: 	1.4em;
+$larger 							: 	2.25em;
+$largest							:		2.8em;
+$tile-title-size 			:		0.8em;
+
+// defines line-height for all texts
+$lineheight-variable	: 	1;
+$lineheight-base 			:		calc ($lineheight-variable*$body-size);
 
 // margins & padding
-$margin-vertical-normal : 1rem;
-$margin-vertical-large : 2rem;
-$margin-vertical-larger : 3rem;
-$margin-vertical-largest : 4rem;
+$margin-vertical-normal 	: 1rem;
+$margin-vertical-large 		: 2rem;
+$margin-vertical-larger 	: 3rem;
+$margin-vertical-largest 	: 4rem;
 $margin-horizontal-normal : 1rem;
 
 @font-face {
