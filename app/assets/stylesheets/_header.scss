@@ -22,7 +22,6 @@
 		z-index: 1000;
 		.logo{
 			padding-left: 5px;
-			font-size: 1.25em;
 		}
 		.motto{
 			align-self: flex-end;
@@ -100,16 +99,13 @@ $header-padding-vert: 40px;
 }
 .header-right{
 	flex: 1 0 100%;
-	margin-top: $margin-vertical-normal;
 	text-transform: capitalize;
 	@media #{$tablet}{
-		margin-top: 0px;
 		display: flex;
 		align-self: flex-start;
 		flex-wrap: wrap;
 	}
 	@media #{$tablet}{
-		margin-top: 0px;
 		flex: 1 0 50%;
 	}
 	@media #{$md}{
@@ -144,10 +140,6 @@ $header-padding-vert: 40px;
 			@media #{$tablet}{
 				width: 100%;
 			}
-		}
-		margin-top: $margin-vertical-normal;
-		@media #{$tablet}{
-			margin-top: 0;
 		}
 	}
 	.social .fa-icon{
