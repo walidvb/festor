@@ -1,5 +1,8 @@
-- @partners_type.each do |type|
-  %h1= type[0].titleize
-  %ul.partners-list
-    - type[1].each do |partner|
-      %li.partner= link_to(image_tag(partner.logo.url(:tile)), partner.link, target: '_blank')
+.page-title
+	%h1 Partners
+.static-desc
+	- @partners_type.each do |type|
+		%h2= type[0].titleize
+		%ul.partners-list
+			- type[1].each do |partner|
+				%li.partner= link_to(image_tag(partner.logo.url(:tile)), partner.link, target: '_blank')

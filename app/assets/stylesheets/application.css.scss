@@ -106,6 +106,7 @@ h1, h2, h3, h4, h5, h6{
 	font-family: $body-font;
 	font-weight: inherit;
 	font-size: inherit;
+	margin-bottom: 0;
 }
 
 main{font-family: $body-font;}
@@ -120,6 +121,9 @@ body a{
 	}
 }
 
+.page-title{
+	width: 100%;
+}
 #footer{
 	width: 100%;
 	z-index: 100;

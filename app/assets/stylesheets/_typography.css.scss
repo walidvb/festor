@@ -109,6 +109,7 @@
 	@include fontSize($body-size) ;
 	@include lineHeight($lineheight-base * 2) ;
 	@include lineJump (2);
+	padding-bottom : $lineheight-base * 2;
 }
 
 

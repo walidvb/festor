@@ -9,9 +9,9 @@
 		- @artists.each do |artist|
 			= render 'artist', artist: artist
 #main-content
-	.show-header.page-title.col-sm-5
+	.show-header.page-title
 		%h1.event-name= @event.title
-		.event-infos.col-sm-2
+		.event-infos
 			.event-dates
 				- @dates.each do |date|
 					.date-details
