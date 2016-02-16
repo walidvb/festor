@@ -112,6 +112,9 @@
 	padding-bottom : $lineheight-base * 2;
 }
 
+.grid{
+		@include lineJump (3.5);
+}
 
 
 .info {
