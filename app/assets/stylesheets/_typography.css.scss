@@ -123,13 +123,13 @@
 	h3{
 		@include fontSize(26.6px) ;
 		@include lineHeight($lineheight-base * 2) ;
-		@include lineJump (1.429);
+		@include lineJump (0.9);
 	}
 	// ----- 16 - Progr. Artiste ----- //
 	h4{
 		@include fontSize(15.2px) ;
 		@include lineHeight($lineheight-base * 1.29) ;
-		@include lineJump (1.429);
+		@include lineJump (0.9);
 	}
 	// ----- 14 - Progr Type ----- //
 	// ----- 17 - Progr. Date ----- //
@@ -137,7 +137,7 @@
 	.date, .location{
 		@include fontSize(15.2px) ;
 		@include lineHeight($lineheight-base * 1.29) ;
-		@include lineJump (1.429);
+		@include lineJump (0.9);
 	}
 	.date, .location{
 		display: block;
