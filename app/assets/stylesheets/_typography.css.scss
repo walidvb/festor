@@ -12,170 +12,157 @@
 	@include fontSize($body-size);
 	@include lineHeight($body-size);
 	@include lineJump(3);
-	}
+}
 
 
 // ----- 3 - Menu ----- //
 
 .header-right {
 	@include fontSize($body-size);
-	@include lineHeight(28px);
+	@include lineHeight($lineheight-base * 2);
 }
 
 
 // ----- 4 - Artist ----- //
 
 .artist-name, .artist-event-name {
-		@include fontSize(26px) ;
-		@include lineHeight(28px);
+	@include fontSize(26px) ;
+	@include lineHeight($lineheight-base * 2);
 }
 
 
 // ----- 5 - Titre Perfo ----- //
 
-.show-header h1 {
+.show-header h1, .index-title, h1.page-title {
 	@include fontSize(58px) ;
-	@include lineHeight(58px);
+	@include lineHeight($lineheight-base * 4.14);
 	@include lineJump (1);
-	}
+}
 
 
 // ----- 6 - Date / Heure / Lieu ----- //
 
 .event-infos {
 	@include fontSize($body-size) ;
-	@include lineHeight(28px);
+	@include lineHeight($lineheight-base * 2);
 	@include lineJump (4);
-	}
+}
 
 
 // ----- 7 - Texte Courant ----- //
 
-.show-desc {
+.show-desc, .event-artist-bio, .artist-desc, .static-desc{
 	@include fontSize($body-size) ;
-	@include lineHeight(28px) ;
+	@include lineHeight($lineheight-base * 2) ;
 	@include lineJump (4);
+}
+
+
+.show-desc, .event-artist-bio, .artist-desc, .static-desc {
+	// ----- 8 - Sous -Titres ----- //
+	h1{
+		@include fontSize(33px) ;
+		@include lineHeight($lineheight-base * 2) ;
+		@include lineJump (3);
 	}
-
-
-// ----- 8 - Sous -Titres ----- //
-
-.show-desc h1 {
-	font-size: 2.357rem ;
-	line-height: 2rem ;
-	margin-top: 3rem ;
+	// ----- 9 - Sous-Sous Titres ----- //
+	h2{
+		@include fontSize(27px) ;
+		@include lineHeight($lineheight-base * 2) ;
+		@include lineJump (6);
 	}
-
-
-// ----- 9 - Sous-Sous Titres ----- //
-
-.show-desc h2 {
-	font-size: 1.929rem ;
-	line-height: 2rem ;
-	margin-top: 6rem ;
-	}
-
+}
 
 // ----- 10 - Workshop Info ----- //
 
 .show-info {
-	font-size: 1.143rem ;
-	line-height: $body-size  ;
-	margin-top: 3.2rem ;
-	}
+	@include fontSize(16px) ;
+	@include lineHeight($lineheight-base * 1.57) ;
+	@include lineJump (3.2);
+}
 
 
 // ----- 11 - Footer Left ----- //
 
 #footer {
-	font-size: 1.143rem ;
-	line-height: $body-size  ;
-	}
+	@include fontSize(16px) ;
+	@include lineHeight($lineheight-base * 1.57) ;
+}
 
 
 // ----- 12 - Ticker ----- //
 
 .announcement {
-	font-size: $body-size  ;
-	line-height: 2rem ;
-	margin-top: 2rem ;
-	}
+	@include fontSize(22px) ;
+	@include lineHeight($lineheight-base * 2) ;
+}
 
 
 // ----- 13 - Filtre ----- //
 
 .cat-filters {
-	font-size: $body-size  ;
-	line-height: 2rem ;
-	margin-top: 2rem ;
+	@include fontSize($body-size) ;
+	@include lineHeight($lineheight-base * 2) ;
+	@include lineJump (2);
+}
+
+
+
+.info {
+	// ----- 15 - Progr Titre ----- //
+	h3{
+		@include fontSize(28px) ;
+		@include lineHeight($lineheight-base * 2) ;
+		@include lineJump (1.429);
 	}
-
-
-// ----- 14 - Progr Type ----- //
-
-.info h5 {
-	font-size: 1.143rem ;
-	line-height: 1.286rem ;
-	margin-top: 1.429rem ;
+	// ----- 16 - Progr. Artiste ----- //
+	h4{
+		@include fontSize(16px) ;
+		@include lineHeight($lineheight-base * 1.29) ;
+		@include lineJump (1.429);
 	}
+	// ----- 14 - Progr Type ----- //
+	// ----- 17 - Progr. Date ----- //
 
-
-// ----- 15 - Progr Titre ----- //
-
-.info h3 {
-	font-size: 2.357rem ;
-	line-height: 2rem ;
-	margin-top: 1.429rem ;
+	h5, .date, .location{
+		@include fontSize(16px) ;
+		@include lineHeight($lineheight-base * 1.29) ;
+		@include lineJump (1.429);
 	}
-
-
-// ----- 16 - Progr. Artiste ----- //
-
-.info h4 {
-	font-size: 1.143rem ;
-	line-height: 1.286rem ;
-	margin-top: 1.429rem ;
+	.date, .location{
+		display: block;
 	}
-
-
-// ----- 17 - Progr. Date ----- //
-
-.info .date, .info .location {
-	font-size: 1.143rem ;
-	line-height: 1.286rem ;
-	margin-top: 1.429rem ;
-	}
-
+}
 
 // ----- 18 - Venue Place ----- //
 
 .location-link {
-	font-size: $body-size  ;
-	line-height: 2rem ;
-	margin-top: 7.5rem ;
-	}
+	@include fontSize(22px) ;
+	@include lineHeight($lineheight-base * 2) ;
+	@include lineJump (7.5);
+}
 
 
 // ----- 19 - Venue Titre ----- //
 
 .venue-title {
-	font-size: $body-size  ;
-	line-height: 2rem ;
-	margin-top: 2rem ;
-	}
+	@include fontSize(22px) ;
+	@include lineHeight($lineheight-base * 2) ;
+	@include lineJump (2);
+}
 
 
 // ----- 20 - Venue Artiste ----- //
 
-.venue-artiste {
-	font-size: 1.143rem ;
-	line-height: $body-size  ;
-	}
+.venue-artist {
+	@include fontSize(16px) ;
+	@include lineHeight($lineheight-base * 1.57) ;
+}
 
 
 // ----- 21 - Venue Date ----- //
 
 .venue-date {
-	font-size: 1.143rem ;
-	line-height: 1.286rem ;
-	}
+	@include fontSize(16px) ;
+	@include lineHeight($lineheight-base * 1.29) ;
+}
