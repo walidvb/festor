@@ -11,7 +11,7 @@
 #main-content
 	.show-header
 		%h1.event-name= @event.title
-		.event-infos
+		.event-infos.col-sm-2
 			.event-dates
 				- @dates.each do |date|
 					.date-details
@@ -27,7 +27,7 @@
 				= link_to('', path_for(@event.previous), class: 'prev') if !@event.previous.nil?
 				= link_to('', path_for(@event.next), class: 'next') if !@event.next.nil?
 	= render('info_block', event: @event, classes: 'show-xs')
-	.show-desc= interpolate(@event.description, image: @event.main_image.url(:large), infos: render('info_block', event: @event, classes: 'hidden-xs')).html_safe unless @event.description.blank?
+	.row.show-desc= interpolate(@event.description, image: @event.main_image.url(:large), infos: render('info_block', event: @event, classes: 'hidden-xs')).html_safe unless @event.description.blank?
 	- unless @event.extra_infos.empty?
 		%table.extra-infos
 			-@event.extra_infos.each do |extra|

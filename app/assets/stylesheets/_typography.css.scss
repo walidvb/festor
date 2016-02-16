@@ -25,39 +25,36 @@
 
 // ----- 4 - Artist ----- //
 
-.show-header {
-	h5, h6{
+.artist-name, .artist-event-name {
 		@include fontSize(26px) ;
 		@include lineHeight(28px);
-		margin-top: 13rem ;
-	}
-	}
+}
 
 
 // ----- 5 - Titre Perfo ----- //
 
 .show-header h1 {
-	font-size: 4.143rem ;
-	line-height: 4.143rem ;
-	margin-top: 1rem ;
+	@include fontSize(58px) ;
+	@include lineHeight(58px);
+	@include lineJump (1);
 	}
 
 
 // ----- 6 - Date / Heure / Lieu ----- //
 
-.dates-details h5 {
-	font-size: $body-size  ;
-	line-height: 2rem ;
-	margin-top: 4rem ;
+.event-infos {
+	@include fontSize($body-size) ;
+	@include lineHeight(28px);
+	@include lineJump (4);
 	}
 
 
 // ----- 7 - Texte Courant ----- //
 
 .show-desc {
-	font-size: $body-size  ;
-	line-height: 2rem ;
-	margin-top: 4rem ;
+	@include fontSize($body-size) ;
+	@include lineHeight(28px) ;
+	@include lineJump (4);
 	}
 
 

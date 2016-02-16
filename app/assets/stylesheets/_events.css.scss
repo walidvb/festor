@@ -25,9 +25,6 @@ a.artist, a.artist-event{
 .artist-name, .event-name{
 	font-weight: normal;
 	margin: 0 $margin-horizontal-normal 0 $margin-horizontal-normal;
-	@media #{$tablet}{
-		margin: 1rem 0 4rem 0;
-	}
 }
 .show-header{
 	color: $black;

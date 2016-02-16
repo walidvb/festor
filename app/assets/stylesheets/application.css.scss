@@ -88,7 +88,6 @@ canvas{
 
 #main-content{
 	color: $dark-grey;
-	line-height: 1.2em;
 }
 
 ul{
@@ -105,6 +104,8 @@ ul{
 
 h1, h2, h3, h4, h5, h6{
 	font-family: $body-font;
+	font-weight: inherit;
+	font-size: inherit;
 }
 
 main{font-family: $body-font;}
