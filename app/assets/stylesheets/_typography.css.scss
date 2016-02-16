@@ -178,8 +178,8 @@
 	@include lineHeight($lineheight-base * 1.29) ;
 }
 
-.sub-title h1{
-	@include fontSize(58px) ;
-	@include lineHeight($lineheight-base * 4.14);
+h2.sub-title {
+	@include fontSize(31.35px) ;
+	@include lineHeight($lineheight-base * 2) ;
 	@include lineJump(6);
 }
