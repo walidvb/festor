@@ -80,12 +80,6 @@
 		vertical-align: super;
 		text-transform: capitalize;
 	}
-	.type, .artist-event-type{
-		font-size: $smaller;
-	}
-	.artists{
-		font-size: $small;
-	}
   & .tile-link{
     will-change: true;
     opacity: 1;
@@ -121,7 +115,6 @@
     }
   }
 }
-
 
 .mCustomScrollbar .mCSB_inside > .mCSB_container{
   margin-right: 10px;
