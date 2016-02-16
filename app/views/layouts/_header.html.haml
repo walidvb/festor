@@ -1,10 +1,10 @@
 .col-xs-5.col-sm-2.header-left
 	.row
-		.link-logo.col-xs-2.logo
+		.link-logo.logo
 			=link_to root_path do
 				= render 'layouts/logo'
-		.logo.not-link-logo.col-xs-2= render 'layouts/logo'
-		.motto.col-xs-3
+		.logo.not-link-logo= render 'layouts/logo'
+		.motto
 			= t("shared.motto").html_safe
 			.festival-date
 				#{l(Date.parse("28 april"), format: "%e %b")} – #{l(Date.parse("8 may"), format: "%e %b")} / 2016

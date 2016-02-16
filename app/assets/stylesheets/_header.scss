@@ -1,36 +1,49 @@
 @media #{$mobile}{
-	$header-height-mobile: 70px;
+	$header-height-mobile: 110px;
 	.link-logo{
 		display: none;
-		flex: 1 1 auto;
 		.open &{
-			display: flex;
+			display: inline-block;
 		}
 	}
 	.open .not-link-logo{
 		display: none;
 	}
 	.header-left{
+		> .row{
+			margin-left: 0;
+			margin-right: 0;
+			display: flex;
+		}
 		display: flex;
-		.motto, .logo{
-			flex: 0 0 40%;
+		.motto{
+			font-size: 1.1em;
+			flex: 1 1 60%;
+		}
+		.logo{
+			flex: 1 1 30%;
 		}
 	}
 	header.container{
-
 		position: fixed;
 		bottom: 0;
 		transform: translateY(calc(100% - #{$header-height-mobile}));
 		transition: all 0.25s ease-out;
 		width: 100%;
+		padding-bottom: 5px;
 		&.open{
 			transform: translateY(0);
 			transition: all 0.4s ease-out;
 		}
 		z-index: 1000;
 		.nav-link{
-			line-height: 1.5em;
+			line-height: 1.8em;
+			font-size: 0.8em;
 		}
+	}
+	.social li{
+		display: inline-block;
+		float: left;
 	}
 	footer{
 		margin-bottom: $header-height-mobile;
