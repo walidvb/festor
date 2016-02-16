@@ -4,8 +4,8 @@
     body = $('body').imagesLoaded(function(){
       $('.show-desc img, .bio img').each(function(i){
         var $this = $(this);
-        if(!$this.data('wrapped')){  
-          var dir = i%2 ? 'right' : 'left';
+        if(!$this.data('wrapped')){
+          var dir = i%2 ? 'right pull-right' : 'left';
           dir += ($this.width() < $('.show-desc, .bio').width()*0.5 ? ' small' : ' large');
           $this.wrap($('<div class="col-xs-2 ' + dir + '"/>')).data('wrapped', true);
         }
