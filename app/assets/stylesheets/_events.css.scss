@@ -28,6 +28,7 @@ a.artist, a.artist-event{
 .show-header{
 	color: $black;
 }
+
 .show-header, .artist-list{
 	@media #{$tablet}{
 		margin: 0;
