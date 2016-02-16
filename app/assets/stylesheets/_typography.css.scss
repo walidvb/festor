@@ -33,12 +33,17 @@
 
 // ----- 5 - Titre Perfo ----- //
 
-.show-header h1, .index-title, h1.page-title {
+.page-title h1{
 	@include fontSize(58px) ;
 	@include lineHeight($lineheight-base * 4.14);
 	@include lineJump (1);
 }
 
+.show-header{
+	.sup{
+		@include fontSize(16px);
+	}
+}
 
 // ----- 6 - Date / Heure / Lieu ----- //
 

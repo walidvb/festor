@@ -1,3 +1,4 @@
-%h1.index-title= t("events.types.#{@category}").pluralize.html_safe
+.page-title.col-sm-5
+	%h1.index-title= t("events.types.#{@category}").pluralize.html_safe
 = render 'layouts/filters'
 = render 'event_grid', events: @events
