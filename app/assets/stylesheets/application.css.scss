@@ -46,6 +46,9 @@ main{
 	}
 }
 
+p{
+	margin-bottom: 0 !important;
+}
 
 footer{
 	align-self: flex-end;
@@ -82,7 +85,6 @@ canvas{
 
 #main-content{
 	color: $dark-grey;
-	line-height: 1.2em;
 }
 
 ul{
@@ -99,6 +101,9 @@ ul{
 
 h1, h2, h3, h4, h5, h6{
 	font-family: $body-font;
+	font-weight: inherit;
+	font-size: inherit;
+	margin-bottom: 0;
 }
 
 main{font-family: $body-font;}
@@ -113,13 +118,15 @@ body a{
 	}
 }
 
+.page-title{
+	width: 100%;
+}
 #footer{
 	width: 100%;
 	z-index: 100;
 	background-color: transparent;
 	color: $dark-grey;
 	padding: $margin-horizontal-normal 0 $margin-horizontal-normal 0;
-	line-height: $body-size;
 	.container{
 		display:flex;
 		flex-direction: row;
@@ -146,9 +153,6 @@ body a{
 		@media #{$tablet}{
 			flex: 1 0 50%;
 		}
-	}
-	p{
-		margin-bottom: 0px;
 	}
 }
 

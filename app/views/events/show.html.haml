@@ -9,7 +9,7 @@
 		- @artists.each do |artist|
 			= render 'artist', artist: artist
 #main-content
-	.show-header
+	.show-header.page-title
 		%h1.event-name= @event.title
 		.event-infos
 			.event-dates
@@ -27,7 +27,7 @@
 				= link_to('', path_for(@event.previous), class: 'prev') if !@event.previous.nil?
 				= link_to('', path_for(@event.next), class: 'next') if !@event.next.nil?
 	= render('info_block', event: @event, classes: 'show-xs')
-	.show-desc= interpolate(@event.description, image: @event.main_image.url(:large), infos: render('info_block', event: @event, classes: 'hidden-xs')).html_safe unless @event.description.blank?
+	.row.show-desc= interpolate(@event.description, image: @event.main_image.url(:large), infos: render('info_block', event: @event, classes: 'hidden-xs')).html_safe unless @event.description.blank?
 	- unless @event.extra_infos.empty?
 		%table.extra-infos
 			-@event.extra_infos.each do |extra|

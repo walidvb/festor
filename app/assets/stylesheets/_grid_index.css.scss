@@ -1,12 +1,10 @@
 #filters{
 
-	padding: $margin-vertical-normal $margin-horizontal-normal 0 $margin-horizontal-normal;
 	color: $black;
 	display: flex;
 	flex-wrap: wrap;
 	@media #{$tablet}{
 		@include lineJump(4);
-		padding: 0;
     border-bottom: 1px solid black;
 		border-top: 1px solid black;
 	}
