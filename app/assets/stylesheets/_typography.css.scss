@@ -13,6 +13,7 @@
 .motto {
 	@include fontSize($body-size);
 	@include lineHeight($body-size);
+	@include lineJump (3);
 }
 
 
