@@ -22,7 +22,9 @@
 		}
 	}
 }
-
+.location-main{
+	@include lineJump(7.5);
+}
 .location-list{
 	display: flex;
 	flex-direction: column;

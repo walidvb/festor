@@ -8,7 +8,8 @@
 		#google-map-loader
 		#google-map{ data: {"adresse" => @locations.map(&:address).join('*'), "latitude" => @locations.map(&:latitude).join('-'), "longitude" => @locations.map(&:longitude).join('-'), "title" => @locations.map(&:name).join('*'),		"url" => @locations.map{|l| "##{l.slug}"}.join('*'), "zoom" => "14", "infos" => @locations.map(&:infos).join('|')}}
 .location-events#location-events
-	%h1.sub-title
-		Events @
-		%span#location-title
-	= render 'events/event_grid', events: @events
+	.page-title
+		%h2.sub-title
+			Events @
+			%span#location-title
+		= render 'events/event_grid', events: @events
