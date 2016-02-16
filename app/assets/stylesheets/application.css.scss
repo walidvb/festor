@@ -24,12 +24,8 @@
 @import "logo";
 @import "locations";
 
-h2{
-	clear: both;
-}
-
-a:hover, a:active{
-	text-decoration: none;
+html{
+	font-size: $font-base-size;
 }
 
 body{
@@ -42,11 +38,20 @@ body{
 	}
 	min-height: 100vh;
 }
+
 main{
 	flex: 1;
 }
 footer{
 	align-self: flex-end;
+}
+
+h2{
+	clear: both;
+}
+
+a:hover, a:active{
+	text-decoration: none;
 }
 
 .container, .row, .col-xs-12 {
@@ -57,7 +62,6 @@ footer{
 	  padding-left: 0px;
 	  padding-right: 0px;
 	}
-
 }
 
 img, canvas, iframe{
