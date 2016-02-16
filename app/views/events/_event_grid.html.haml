@@ -19,7 +19,5 @@
 							%h4.artist-name= a.name
 					.location
 						- if date_ = event.event_dates.first
-							- if date_.end.nil?
-								#{l(date_.start, format: "%e %B")} &mdash; #{event.location.try(:name)}
-							- else
-								#{l(date_.start, format: "%e %B")} - #{l(date_.end, format: "%e %B")} &mdash; #{event.location.try(:name)}
+							- dates_formatted = date_.end.nil? ? l(date_.start, format: "%e %B") : "#{l(date_.start, format: "%e %B")} - #{l(date_.end, format: "%e %B")}"
+							= event.is_workshop? ? dates_formatted : "#{dates_formatted} &mdash; #{event.location.try(:name)}".html_safe
