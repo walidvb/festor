@@ -123,7 +123,7 @@ h1{
 		text-decoration: underline;
 	}
 	@media #{$tablet}{
-		padding-left: 41%;
+		padding-left: 21%;
 	}
 }
 
@@ -161,12 +161,11 @@ h1{
 }
 
 .show-info{
-	@extend .col-xs-5;
-	@extend .col-sm-2;
 	clear: both;
 	position: relative;
 	@media #{$tablet}{
 		z-index: 100;
+		max-width: 60%;
 	}
 }
 
@@ -192,6 +191,7 @@ h1{
 	td{
 		vertical-align: top;
 	}
+
 	.left-info, .right-info{
 		display: inline-block;
 	}

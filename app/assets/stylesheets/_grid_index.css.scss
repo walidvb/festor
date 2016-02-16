@@ -33,6 +33,9 @@
   &.ready{
     opacity: 1;
   }
+	@media #{$tablet}{
+		margin-bottom: $lineheight-base * 4;
+	}
   .grid-item{
     opacity: 0.83;
     width: 100%;

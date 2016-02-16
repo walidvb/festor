@@ -8,7 +8,6 @@
 	@include lineHeight(33px);
 }
 
-
 // ----- 2 - Baseline ----- //
 
 .motto {
@@ -155,11 +154,10 @@
 // ----- 19 - Venue Titre ----- //
 
 .venue-title {
-	@include fontSize(22px) ;
+	@include fontSize(22px);
 	@include lineHeight($lineheight-base * 2) ;
 	@include lineJump (2);
 }
-
 
 // ----- 20 - Venue Artiste ----- //
 
