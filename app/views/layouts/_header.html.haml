@@ -6,7 +6,7 @@
 	.motto
 		= t("shared.motto").html_safe
 		.festival-date
-			#{l(Date.parse("28 april"), format: "%e.%-m")} – #{l(Date.parse("8 may"), format: "%e.%-m.")}
+			#{l(Date.parse("28 april"), format: "%e.%-m")} – #{l(Date.parse("8 may"), format: "%e.%-m.%y")}
 		.festival-place #{ t("shared.geneva")}
 .header-right.col-xs-5.col-sm-3
 	= render 'layouts/navigation'
