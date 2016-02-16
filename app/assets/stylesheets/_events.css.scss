@@ -153,13 +153,9 @@ h1{
 	@media #{$tablet}{
 		max-width: 80ch;
 		margin-left: 12.5%;
-		margin-top: 4rem;
 	}
 	a{
 		text-decoration: underline;
-	}
-	p{
-		margin-bottom: 1.2em !important;
 	}
 }
 
@@ -173,7 +169,6 @@ h1{
 	@media #{$tablet} {
 		padding: 0;
 		max-width: 40%;
-		margin-bottom: $margin-vertical-normal;
 	}
 	h5{
 		display: block;
@@ -193,13 +188,8 @@ h1{
 
 .inner-nav{
 	flex: 1 0 10%;
-	font-size: 1.5em;
 }
 
-.show-desc, .artist-desc{
-	margin-bottom: $margin-vertical-largest;
-	padding-bottom: 2*$margin-vertical-largest;
-}
 .artist-list{
 	padding-top: $margin-vertical-largest;
 	.artist-name, .label{
@@ -211,7 +201,6 @@ h1{
 	float: left;
 	margin: 0rem 0 2rem 0rem;
 	position: relative;
-	font-size: $small;
 	@media #{$tablet}{
 		width: 70ch;
 		margin-left: -18%;
