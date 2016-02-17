@@ -134,8 +134,10 @@ h1{
 		padding-left: 10%;
 	}
 	iframe, .left, .right{
-		padding-left: 0;
-		padding-right: 0;
+		@media #{$mobile}{
+			padding-left: 0;
+			padding-right: 0;
+		}
 	}
 }
 

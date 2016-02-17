@@ -1,5 +1,5 @@
+$header-height-mobile: 110px;
 @media #{$mobile}{
-	$header-height-mobile: 110px;
 	.link-logo{
 		display: none;
 		.open &{
@@ -40,12 +40,14 @@
 		&.open{
 			transform: translateY(0);
 			transition: all 0.4s ease-out;
+			animation: none;
 		}
 		z-index: 1000;
 		.nav-link{
 			line-height: 1.8em;
 			font-size: 0.8em;
 		}
+		animation: bounce 0.75s 1s 1;
 	}
 	.social li{
 		display: inline-block;
@@ -54,6 +56,27 @@
 	footer{
 		margin-bottom: $header-height-mobile;
 	}
+}
+
+@keyframes bounce {
+  from, 20%, 53%, 80%, to {
+    animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    transform: translateY(calc(100% - #{$header-height-mobile}));
+  }
+
+  40%, 43% {
+    animation-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+    transform: translateY(calc(100% - #{$header-height-mobile} - 30px));
+  }
+
+  70% {
+    animation-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+    transform: translateY(calc(100% - #{$header-height-mobile} - 15px));
+  }
+
+  90% {
+    transform: translateY(calc(100% - #{$header-height-mobile} - 4px));
+  }
 }
 
 @media #{$tablet}{
