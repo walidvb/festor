@@ -3,7 +3,7 @@ var sketchProc = (function($p) {
 
     var time = 0;
     var fill_color = 255;
-    var line_color = 240;
+    var line_color = 0;
     var render_width = window.innerWidth;
     var render_height = window.innerHeight;
 
@@ -110,8 +110,22 @@ $('document').ready(function(){
   if(canvas){
     var processingInstance = new Processing(canvas, sketchProc);
     processingInstance.resize(canvas.offsetWidth, canvas.offsetHeight);
+
+    var pressCount = 1;
+    var newOp = 1;
     $('#beta').on('keypress', function(evt){
       processingInstance.random_coords();
+      pressCount++;
+      var newOp = Math.max(0.1, 1/pressCount);
+      $('#canvas').css('opacity', newOp);
+      if(pressCount >= 2){
+        setTimeout(function(){
+          $('body').addClass('ready');
+        }, 2000);
+      };
+      if(pressCount >= 5){
+        $('body').addClass('ready');
+      };
     });
     $(window).on('resize', function(){
       processingInstance.resize(canvas.offsetWidth, canvas.offsetHeight);

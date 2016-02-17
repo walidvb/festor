@@ -1,6 +1,5 @@
 /*
  * Overwritten by RailsBricks
- *
  *= require_self
  *= require chosen
  *= require froala/css/froala_style.min.css
@@ -23,6 +22,7 @@
 @import "grid_index.css.scss";
 @import "logo";
 @import "locations";
+@import "landing";
 
 html{
 	font-size: $base-font-size;
@@ -229,6 +229,13 @@ main{
 	}
 }
 
+
+#the-content{
+	opacity: 0;
+	.ready &{
+		opacity: 1;
+	}
+}
 /* p5 Lines*/
 #canvas{
 	height: 100%;
@@ -236,4 +243,15 @@ main{
 	position: fixed;
 	top: 0;
 	z-index: -1;
+	opacity: 1;
+	.loading &, .ready &{
+		opacity: 0.1;
+	}
+}
+
+.ready .login-form{
+	display: none;
+}
+#the-content, #canvas{
+	transition: opacity 0.4s ease-in-out;
 }

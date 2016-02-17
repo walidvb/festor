@@ -1,5 +1,10 @@
 class ApplicationController < ActionController::Base
   before_filter :set_locale
+  after_filter :remove_landing
+  before_filter :set_first_visit
+  def set_first_visit
+    @is_not_first_visit = session[:is_not_first_visit]
+  end
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
@@ -44,6 +49,10 @@ class ApplicationController < ActionController::Base
     options.merge({ locale: I18n.locale })
   end
 
+  def remove_landing
+    session[:is_not_first_visit] = true
+  end
+
   private
 
   def set_locale
@@ -54,5 +63,6 @@ class ApplicationController < ActionController::Base
   def beta_only
     redirect_to beta_path if !cookies[:beta].present? && /sessions|confirmation/.match(params[:controller]).nil? && Rails.env.production?
   end
+
 
 end
