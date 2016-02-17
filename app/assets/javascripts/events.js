@@ -7,7 +7,7 @@
         if(!$this.data('wrapped')){
           var dir = i%2 ? 'right pull-right' : 'left';
           dir += ($this.width() < $('.show-desc, .bio').width()*0.5 ? ' small' : ' large');
-          $this.wrap($('<div class="col-sm-2 col-xs-5' + dir + '"/>')).data('wrapped', true);
+          $this.wrap($('<div class="col-sm-2 col-xs-5 ' + dir + '"/>')).data('wrapped', true);
         }
       });
     });
