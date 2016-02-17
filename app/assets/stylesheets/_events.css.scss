@@ -1,3 +1,16 @@
+.wrapper.col-sm-2 {
+	&.left{
+		img.fr-fil.fr-dib{
+			float:right!important;
+		}
+	}
+	&.right{
+		img.fr-fil.fr-dib{
+			float:left!important;
+		}
+	}
+}
+
 a.artist, a.artist-event{
 	@extend .nav-link;
 	background: transparent;
