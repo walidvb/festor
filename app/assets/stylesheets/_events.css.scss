@@ -104,8 +104,11 @@ h1{
 	h3{
 		clear: left;
 	}
-	img, iframe, .show-info{
-		opacity: 0.993;
+	img, iframe{
+		opacity: 0.9;
+		&:hover{
+			opacity: 1;
+		}
 	}
 	@media #{$tablet}{
 		transition: margin .2s ease-out;
