@@ -29,10 +29,14 @@
 /* isotope requirements*/
 .grid{
   opacity: 0;
+	margin-left: -$grid-gutter-width;
+	margin-right: -$grid-gutter-width;
   &.ready{
     opacity: 1;
   }
 	@media #{$tablet}{
+		margin-left: inherit;
+		margin-right: inherit;
 		margin-bottom: $lineheight-base * 4;
 	}
   .grid-item{
@@ -61,6 +65,7 @@
 
 .grid-item{
   min-width: 25%;
+
   .tile{
     position: relative;
   }

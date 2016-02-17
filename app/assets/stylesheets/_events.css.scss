@@ -9,8 +9,9 @@ a.artist, a.artist-event{
 		font-weight: normal;
 	}
 	&.active{
+		background: $black;
+		color: $black;
 		@media #{$tablet}{
-			background: $black;
 			color: transparent;
 		}
 		text-shadow: none;
@@ -87,14 +88,16 @@ h1{
 }
 
 .show-desc{
-	.left{
-		img{
-			float: right;
+	@media #{$tablet}{
+		.left{
+			img{
+				float: right;
+			}
 		}
-	}
-	.right{
-		img{
-			float: left;
+		.right{
+			img{
+				float: left;
+			}
 		}
 	}
 	iframe{
@@ -129,6 +132,10 @@ h1{
 	}
 	@media #{$tablet}{
 		padding-left: 10%;
+	}
+	iframe, .left, .right{
+		padding-left: 0;
+		padding-right: 0;
 	}
 }
 
@@ -168,6 +175,7 @@ h1{
 .show-info{
 	clear: both;
 	position: relative;
+	width: 100%;
 	@media #{$tablet}{
 		z-index: 100;
 		max-width: 60%;
@@ -197,13 +205,12 @@ h1{
 	}
 	td{
 		vertical-align: top;
-	}
-
-	.left-info, .right-info{
-		display: inline-block;
+		display:block;
+		@media #{$tablet}{
+			display: inline-block;
+		}
 	}
 	.left-info{
-		padding-left: 1rem;
 		color: $black;
 		@media #{$tablet}{
 			padding-left: 0;
@@ -213,7 +220,9 @@ h1{
 	}
 	.right-info{
 		max-width: 65%;
-		padding-left: 1rem;
+		@media #{$tablet}{
+			padding-left: 1rem;
+		}
 		p{
 			margin: 0;
 		}

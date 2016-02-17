@@ -4,16 +4,20 @@
 	@include fontSize(22.8px);
 	@media #{$tablet}{
 		@include fontSize(33px);
+		@include lineHeight(33px);
 	}
-	@include lineHeight(33px);
 }
 
 // ----- 2 - Baseline ----- //
 
 .motto {
 	@include fontSize($body-size);
+	@include lineHeight($lineheight-base * 1.2);
+	@include lineJump (0.7);
+	@media #{$tablet}{
 	@include lineHeight($lineheight-base * 2);
 	@include lineJump (2);
+	}
 }
 
 
