@@ -199,13 +199,12 @@ h1{
 	}
 	td{
 		vertical-align: top;
-	}
-
-	.left-info, .right-info{
-		display: inline-block;
+		display:block;
+		@media #{$tablet}{
+			display: inline-block;
+		}
 	}
 	.left-info{
-		padding-left: 1rem;
 		color: $black;
 		@media #{$tablet}{
 			padding-left: 0;
@@ -215,7 +214,9 @@ h1{
 	}
 	.right-info{
 		max-width: 65%;
-		padding-left: 1rem;
+		@media #{$tablet}{
+			padding-left: 1rem;
+		}
 		p{
 			margin: 0;
 		}
