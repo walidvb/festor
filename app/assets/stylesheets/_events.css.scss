@@ -87,16 +87,15 @@ h1{
 }
 
 .show-desc{
-	.left, .right{
-		width: 100%;
-	}
 	@media #{$tablet}{
 		.left{
+			width: inherit;
 			img{
 				float: right;
 			}
 		}
 		.right{
+			width: inherit;
 			img{
 				float: left;
 			}
