@@ -40,9 +40,9 @@ class Event < ActiveRecord::Base
 	#validates :main_image, presence: true
 	has_attached_file :main_image,
 		:styles => {
-			:thumb => "100x100",
-			:tile => "600x",
-			:large => "800x"
+			:thumb => "100x100>",
+			:tile => "600x>",
+			:large => "800x>"
 		},
 		:default_url => "/images/missing.jpg",
 		:use_timestamp => false
