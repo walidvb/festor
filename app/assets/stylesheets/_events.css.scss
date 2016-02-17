@@ -168,6 +168,7 @@ h1{
 	@media #{$tablet}{
 		z-index: 100;
 		max-width: 60%;
+		min-width: 50%;
 	}
 }
 
