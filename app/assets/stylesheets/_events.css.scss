@@ -87,14 +87,19 @@ h1{
 }
 
 .show-desc{
-	.left{
-		img{
-			float: right;
-		}
+	.left, .right{
+		width: 100%;
 	}
-	.right{
-		img{
-			float: left;
+	@media #{$tablet}{
+		.left{
+			img{
+				float: right;
+			}
+		}
+		.right{
+			img{
+				float: left;
+			}
 		}
 	}
 	iframe{

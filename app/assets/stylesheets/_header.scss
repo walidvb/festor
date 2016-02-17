@@ -16,12 +16,18 @@
 			display: flex;
 		}
 		display: flex;
+		flex-wrap: wrap;
 		.motto{
 			font-size: 1.1em;
-			flex: 1 1 60%;
+			flex: 1 0 100%;
+			@include lineJump(0.5);
 		}
 		.logo{
-			flex: 1 1 30%;
+			@include lineJump(0.5);
+			flex: 1 0 100%;
+		}
+		.festival-date, .festival-place{
+			display: inline-block;
 		}
 	}
 	header.container{
@@ -113,10 +119,13 @@ $header-padding-vert: 40px;
 		text-shadow: none;
 	}
 	li{
-		width: 50%;
+		width: 48%;
+		margin-right: 2%;
 		display: inline-block;
 		border-bottom: solid 1px $white;
 		@media #{$tablet}{
+			width: 50%;
+			margin: 0;
 			border-bottom: none;
 		}
 	}
