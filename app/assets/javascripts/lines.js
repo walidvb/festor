@@ -116,6 +116,12 @@ $('document').ready(function(){
     });
     var pressCount = 1;
     var newOp = 1;
+
+    $('.login-form').click(function(){
+      if(window.innerWidth < 768){
+        $('body').addClass('ready');
+      }
+    })
     $('#beta').on('keypress', function(evt){
       processingInstance.random_coords();
       pressCount++;

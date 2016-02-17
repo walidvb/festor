@@ -31,6 +31,11 @@ a.artist, a.artist-event{
 }
 .inline-image{
 	margin-bottom: $lineheight-base * 2;
+	transition: all 0.4s ease-out;
+}
+.wrapper{
+	transition: all 0.4s ease-out;
+	margin: 0;
 }
 .show-header, .artist-list{
 	@media #{$tablet}{

@@ -1,3 +1,3 @@
 $(document).ready(function(){
-  // $('body').addClass('ready');
+  $('body').addClass('content-ready');
 });
