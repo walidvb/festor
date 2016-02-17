@@ -1,6 +1,6 @@
 - content_for(:og_title, "#{@artist.name}")
 - content_for(:image, @artist.profile_picture.url)
-- content_for(:description, @artist.biography)
+- content_for(:description, remove_tags(@artist.biography))
 .admin-entry
 	- if user_signed_in?
 		= link_to 'edit', "/admin/artist/#{@artist.id}/edit"
