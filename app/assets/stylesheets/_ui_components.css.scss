@@ -26,6 +26,7 @@
 		background: $white;
 		//letter-spacing: 0.3em;
 		@media #{$tablet}{
+			background: none;
 			//background: $black;
 			//color: $white;
 		}
