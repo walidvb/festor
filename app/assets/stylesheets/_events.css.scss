@@ -109,6 +109,7 @@ h1{
 	}
 	img, iframe{
 		opacity: 0.9;
+		transition: all 0.3s ease-out;
 		&:hover{
 			opacity: 1;
 		}
