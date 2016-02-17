@@ -49,7 +49,7 @@ class Event < ActiveRecord::Base
 
 	validates_attachment_content_type :main_image, :content_type => /\Aimage\/(jpg|jpeg|png|gif)\Z/i
 
-	validates_presence_of :category, :title
+	validates_presence_of :category, :title, :location
 
 	def next
 		if ed = event_dates.first
