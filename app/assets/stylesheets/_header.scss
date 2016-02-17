@@ -21,6 +21,7 @@ $header-height-mobile: 110px;
 			font-size: 1.1em;
 			flex: 1 0 100%;
 			@include lineJump(0.5);
+			margin-bottom: 1rem;
 		}
 		.logo{
 			@include lineJump(0.5);

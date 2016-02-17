@@ -3,6 +3,9 @@ class ArtistsController < ApplicationController
 
 	def index
 		@artists = Artist.includes(:events).order(:position)
+		if !user_signed_in?
+			@artists = @artists.where(type: :instructor)
+		end
 		@filters = Event.category_enum
 	end
 
