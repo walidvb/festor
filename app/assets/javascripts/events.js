@@ -14,10 +14,11 @@
 
   });
 
-  var moreContainer, main;
+  var moreContainer, main, body;
   $(document).ready(function(){
     moreContainer = $('.load-more-container');
     main = $('#main-content');
+    body = $('body');
     nav.appendTo($('.related')).hide();
   });
 
@@ -25,10 +26,12 @@
     if($(e.target).hasClass('back')){
       moreContainer.addClass('leaving');
       $('[data-load-more]').removeClass('active');
+      body.addClass('transitionning');
       setTimeout(function(){
         moreContainer.fadeOut('300', function(){
           main.addClass('leaving').fadeIn('300', function(){
-            main.removeClass('leaving')
+            body.removeClass('transitionning');
+            main.removeClass('leaving');
           })
         })
       }, 300);
@@ -42,18 +45,22 @@
     var transitionFinished = false;
     if(url != undefined){
       e.preventDefault();
+      body.addClass('transitionning');
       main.add(moreContainer).addClass('leaving');
       $.ajax({
         url: url,
         success: function(data){
           moreContainer.fadeOut('300',function(){
             main.add(moreContainer).removeClass('leaving');
+            body.removeClass('transitionning');
             var new_ = $(data).find('#main-content').html();
             moreContainer.add(main).hide();
             moreContainer.html(new_);
             nav.css('display', 'inline-block');
+            body.addClass('transitionning');
             moreContainer.addClass('leaving').hide().fadeIn(function(){
               moreContainer.add(main).removeClass('leaving');
+              body.removeClass('transitionning');
             });
             $(document).trigger('page:load');
           });

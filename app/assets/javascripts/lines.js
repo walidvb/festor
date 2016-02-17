@@ -111,6 +111,9 @@ $('document').ready(function(){
     var processingInstance = new Processing(canvas, sketchProc);
     processingInstance.resize(canvas.offsetWidth, canvas.offsetHeight);
 
+    $(document).on('random-coords', function(){
+      processingInstance.random_coords();
+    });
     var pressCount = 1;
     var newOp = 1;
     $('#beta').on('keypress', function(evt){
