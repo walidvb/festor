@@ -1,3 +1,6 @@
+- content_for(:og_title, "Mapping Festival 2016 – #{@category.titleize}")
+- content_for(:image, image_url('lines_2.png'))
+- content_for(:description, "6 workshops – limited spaces. Send in your application now!")
 .page-title
 	%h1.index-title= t("events.types.#{@category}").pluralize.html_safe
 = render 'layouts/filters'
