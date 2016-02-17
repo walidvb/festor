@@ -3,7 +3,7 @@
 }
 
 .nav-link{
-  $trans: 0.25s cubic-bezier(0, 0.04, 0, 0.96);
+	$trans: 0.25s cubic-bezier(0, 0.04, 0, 0.96);
 	background: $black;
 	color: $white;
 	a{
@@ -22,14 +22,7 @@
 	}
 	&.active, .active, &:hover a, &:hover{
 		font-weight: bold;
-		color: $black;
-		background: $white;
 		//letter-spacing: 0.3em;
-		@media #{$tablet}{
-			background: none;
-			//background: $black;
-			//color: $white;
-		}
 	}
 	&:hover{
 		@media #{$tablet}{
@@ -39,7 +32,20 @@
 		}
 	}
 }
-
+.body-header{
+	.nav-link{
+		&.active, .active, &:hover a, &:hover{
+			color: $black;
+			background: $white;
+			//letter-spacing: 0.3em;
+			@media #{$tablet}{
+				background: none;
+				//background: $black;
+				//color: $white;
+			}
+		}
+	}
+}
 .load-more-container .nav{
 	position: absolute;
 	top: 25px;
@@ -85,9 +91,9 @@ $form-font-size: 16px;
 					padding: 5px 7px 0px;
 					@media #{$sm}
 					{
-					  padding: 0px 7px 0px;;
+						padding: 0px 7px 0px;;
 					}
-  				vertical-align: middle;
+					vertical-align: middle;
 				}
 			}
 		}

@@ -9,8 +9,9 @@ a.artist, a.artist-event{
 		font-weight: normal;
 	}
 	&.active{
+		background: $black;
+		color: $black;
 		@media #{$tablet}{
-			background: $black;
 			color: transparent;
 		}
 		text-shadow: none;
@@ -172,6 +173,7 @@ h1{
 .show-info{
 	clear: both;
 	position: relative;
+	width: 100%;
 	@media #{$tablet}{
 		z-index: 100;
 		max-width: 60%;
