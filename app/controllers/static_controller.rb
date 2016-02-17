@@ -11,10 +11,14 @@ class StaticController < ApplicationController
 
   def volunteers
     @iframe = Setting.first.volunteers
-    render :coming_soon
+    render :coming_out
+    return
+    render :volunteers
   end
 
   def tickets
+    render :coming_out
+    return
     @tickets = Setting.first.tickets
     render :tickets
   end
