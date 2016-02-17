@@ -23,7 +23,7 @@
 	&.active, .active, &:hover a, &:hover{
 		font-weight: bold;
 		color: $black;
-		//background: $white;
+		background: $white;
 		//letter-spacing: 0.3em;
 		@media #{$tablet}{
 			//background: $black;
