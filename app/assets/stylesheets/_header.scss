@@ -55,6 +55,30 @@
 		margin-bottom: $header-height-mobile;
 	}
 }
+@media (min-width: 767px) and (max-width: 990px){
+	.logo, .motto{
+		display: inline-block;
+	}
+	.logo{
+		vertical-align: top;
+	}
+	.motto{
+		margin-top: 0;
+	}
+
+	.festival-date, .festival-place{
+		display: inline-block;
+	}
+
+	.header-right{
+		@include lineJump(2);
+		margin-bottom: $lineheight-base * 1;
+	}
+
+	header:after{
+		width: 100% !important;
+	}
+}
 
 @media #{$tablet}{
 	.not-link-logo{
