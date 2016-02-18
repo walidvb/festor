@@ -232,6 +232,9 @@ main{
 
 #the-content{
 	opacity: 0;
+	body:not(.ready){
+		z-index: -1;
+	}
 	.ready &{
 		opacity: 1;
 	}
