@@ -2,7 +2,7 @@
 - content_for(:image, image_url('lines_1.png'))
 - content_for(:description, "Watch out for all the great artists lined up for you!")
 .page-title
-	%h1.index-title Artists
+	%h1.index-title= t("nav.artist").titleize.html_safe
 = render 'layouts/filters'
 .grid.artists-list{data: {url: 'admin/artists/sort'}}
 	.grid-sizer.grid-item
