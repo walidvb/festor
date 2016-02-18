@@ -151,9 +151,9 @@ function openInfoWindow(map, index, latitude, longitude, title, adresse, infos, 
 	newInfoWindow.open(map, markerArray[index]);
 	$(document).trigger('filter-events');
 	$('.marker-link').click(function(){
-		$(window).animate({
-			scrollTop: $('#location-events').offset().top,
-		})
+		$('body, html').animate({
+			scrollTop: $('#location-events').offset().top - 20,
+		});
 	});
 }
 
