@@ -5,7 +5,7 @@ class Event < ActiveRecord::Base
 	translates :title, :description, :participants, :languages, :requirements, :material, :notes
 	extend FriendlyId
   friendly_id :title, :use => [:globalize, :slugged]
-  acts_as_list scope: 'category = \'#{category}\''
+  acts_as_list
 
 	def self.workshop_cats
 		[:workshop, :conference, :masterclass]

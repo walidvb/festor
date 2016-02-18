@@ -18,7 +18,7 @@ class EventsController < ApplicationController
 	end
 
 	def sortable_index
-		@categorys = Event.all.order(:position)
+		@events = Event.all.order(:position)
 	end
 
 	def sort_update
