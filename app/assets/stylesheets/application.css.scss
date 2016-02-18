@@ -232,7 +232,7 @@ main{
 
 #the-content{
 	opacity: 0;
-	body:not(.ready){
+	body:not(.ready) &{
 		z-index: -1;
 	}
 	.ready &{
