@@ -1,4 +1,6 @@
-- @types.each do |type, items|
-	%h2= t("events.types.#{type}").pluralize
-	- url = '/admin/events/sort'
-	= render 'shared/sortable', items: items, identifier: :title, url: url
+-# - @types.each do |type, items|
+-# 	%h2= t("events.types.#{type}").pluralize
+.page-title
+	%h1 Sort Events
+- url = '/admin/events/sort'
+= render 'shared/sortable', items: @events, identifier: :title, url: url
