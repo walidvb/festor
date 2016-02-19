@@ -55,8 +55,8 @@ $header-height-mobile: 110px;
 		display: inline-block;
 		float: left;
 	}
-	footer{
-		margin-bottom: $header-height-mobile + 20px;
+	body{
+		padding-bottom: $header-height-mobile + 20px;
 	}
 }
 
