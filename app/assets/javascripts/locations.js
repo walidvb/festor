@@ -258,11 +258,11 @@ function renderGoogleMap() {
 	$(window).bind('hashchange', openFromHash);
 
 	function openFromHash(){
-		$('#location-events').show();
 		var pageHash = window.location.hash;
 		pageHash = pageHash.substring(1);
 		$('.location-event').hide();
 		if(pageHash.length){
+			$('#location-events').show();
 			$('.location-event.'+pageHash).show();
 			$('.location-link.active').removeClass('active');
 
@@ -285,9 +285,16 @@ function loadScript() {
   document.body.appendChild(script);
 }
 
+var gmapsLoaded = false;
 $(document).on('ready turbolinks:load',function(){
-	if($('#google-map-wrapper').length && typeof(google) == 'undefined'){
-		console.log("Thank you mirage for this code, couldn't be bothered to write it myself – the vbbros");
-		loadScript();
+	if($('#google-map-wrapper').length){
+		if(!gmapsLoaded){
+			gmapsLoaded = true;
+			console.log("Thank you mirage for this code, couldn't be bothered to write it myself – the vbbros");
+			loadScript();
+		}
+		else if(typeof(google) != 'undefined'){
+			renderGoogleMap();
+		}
 	}
 });
