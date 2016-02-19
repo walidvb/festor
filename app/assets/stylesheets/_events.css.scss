@@ -264,8 +264,10 @@ h1{
 }
 
 .mapping-team{
-	column-count: 2;
-	p:first-child{
-		margin-top: 0;
+	@media #{$tablet}{
+		column-count: 2;
+		p:first-child{
+			margin-top: 0;
+		}
 	}
 }
