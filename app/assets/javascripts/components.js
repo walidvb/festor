@@ -9,8 +9,6 @@ $(document).click('.header-left, .header-left a', function(e){
 });
 $(document).on('ready turbolinks:load', function() {
 	var header = $('header');
-	console.log($('.header-left, .header-left a').html());
-
 	$('.grid').imagesLoaded( function() {
 		$('.grid').css('opacity', 1);
 		$('body').scrollReveal();
