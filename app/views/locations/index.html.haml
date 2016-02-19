@@ -4,7 +4,7 @@
 .page-title
 	%h1.index-title= t('nav.venues')
 .location-main
-	.location-list
+	.location-list{'data-turbolinks' => 'false'}
 		- @locations.each do |loc|
 			= link_to loc.name,	"##{loc.slug}", class: 'location-link', data: { title: loc.slug}
 	#google-map-wrapper{ data: { "marker-url" => image_url("google-map-marker.png")}}

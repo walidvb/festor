@@ -141,14 +141,14 @@ function openInfoWindow(map, index, latitude, longitude, title, adresse, infos, 
 	for(var i=0; i < markerArray.length; i++) {
 		markerArray[i].setZIndex(i+10);
 	}
-	var newCenter = new google.maps.LatLng(latitude[index], longitude[index]);
+	var newCenter = new google.maps.LatLng(parseFloat(latitude[index]), parseFloat(longitude[index]));
 	newInfoWindow = new google.maps.InfoWindow({
 		content: loading
 	});
 	newInfoWindow.setContent('<div class="marker-content"><h5 class="marker-title">' + title[index] + '</h5><p>' + infos[index] + '</p><p data-turbolinks=false><a href="' + url[index] + '" class="marker-link" title=' + seeProg + '>' + seeProg + '</a></p></div>');
-	map.panTo(newCenter);
 	markerArray[index].setZIndex(300);
 	newInfoWindow.open(map, markerArray[index]);
+	map.panTo(newCenter);
 	$(document).trigger('filter-events');
 	$('.marker-link').click(function(e){
 		e.stopPropagation();
@@ -286,7 +286,7 @@ function loadScript() {
 }
 
 $(document).on('ready turbolinks:load',function(){
-	if($('#google-map-wrapper').length){
+	if($('#google-map-wrapper').length && typeof(google) == 'undefined'){
 		console.log("Thank you mirage for this code, couldn't be bothered to write it myself – the vbbros");
 		loadScript();
 	}
