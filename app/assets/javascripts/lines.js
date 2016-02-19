@@ -57,6 +57,7 @@ var sketchProc = (function($p) {
       speed = 0.1;
       if(!firstLoad){
         $('html').addClass('imready');
+        $('body').addClass('content-ready');
         setTimeout(function(){
           $('html').removeClass('transitionning');
         }, 100);
@@ -122,6 +123,7 @@ $('document').ready(function(){
     $('.login-form').click(function(){
       if(window.innerWidth < 768 && pressCount >= 3){
         $('html').addClass('imready');
+        $('body').addClass('content-ready');
         $(canvas).css('opacity', '');
       }
       processingInstance.random_coords();
@@ -131,11 +133,13 @@ $('document').ready(function(){
       if(pressCount >= 3){
         setTimeout(function(){
           $('html').addClass('imready');
+          $('body').addClass('content-ready');
           $(canvas).css('opacity', '');
         }, 4000);
       };
       if(pressCount >= 2){
         $('html').addClass('imready');
+        $('body').addClass('content-ready');
         $(canvas).css('opacity', '');
       };
     })

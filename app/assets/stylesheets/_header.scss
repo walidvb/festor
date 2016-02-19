@@ -47,8 +47,8 @@ $header-height-mobile: 110px;
 			line-height: 1.8em;
 			font-size: 0.8em;
 		}
-		.content-ready{
-			animation: bounce 1s 0s 1;
+		.content-ready &{
+			animation: bounce 1s 1s 1;
 		}
 	}
 	.social li{

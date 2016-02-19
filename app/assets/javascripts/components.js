@@ -1,10 +1,13 @@
 
 $(document).click('.header-left, .header-left a', function(e){
 	if($(e.target).hasClass('.header-left') || $(e.target).parents('.header-left').length){
-		if(window.innerWidth < 767){
-			var header = $('header');
-			header.toggleClass('open');
-		}
+			if(window.innerWidth < 767){
+				var header = $('header');
+				header.toggleClass('open');
+			}
+	}
+	else{
+		header.removeClass('open');
 	}
 });
 $(document).on('ready turbolinks:load', function() {
