@@ -5,16 +5,15 @@ class Event < ActiveRecord::Base
 	translates :title, :description, :participants, :languages, :requirements, :material, :notes
 	extend FriendlyId
   friendly_id :title, :use => [:globalize, :slugged]
-  acts_as_list
-
-	def self.workshop_cats
-		[:workshop, :conference, :masterclass]
-	end
 
 	def is_workshop?
 		Event.workshop_cats.include?(category.to_sym)
 	end
 
+	def self.workshop_cats
+		[:workshop, :conference, :masterclass]
+	end
+	
 	scope :workshop, ->{where(category: workshop_cats)}
 	scope :exhibition, ->{where(category: :exhibition)}
 	scope :other, ->{where.not(category: [:workshop, :conference, :masterclass, :exhibition])}
@@ -37,7 +36,7 @@ class Event < ActiveRecord::Base
 
 	include EventAdmin
 	#validates :location, presence: true
-	#validates :main_image, presence: true
+	#validates :main_image, presence: tru
 	has_attached_file :main_image,
 		:styles => {
 			:thumb => "100x100>",

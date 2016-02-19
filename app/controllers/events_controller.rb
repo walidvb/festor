@@ -19,6 +19,7 @@ class EventsController < ApplicationController
 
 	def sortable_index
 		@events = Event.all.order(:position)
+		@events = @events.send(params[:type]) if params[:type].present? && @events.respond_to?(params[:type])
 	end
 
 	def sort_update

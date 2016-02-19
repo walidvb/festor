@@ -1,6 +1,8 @@
 -# - @types.each do |type, items|
 -# 	%h2= t("events.types.#{type}").pluralize
 .page-title
-	%h1 Sort Events
+	%h1{style: 'display: inline-block;'}= link_to 'workshops', sortable_events_path(type: :workshop)
+	%h1{style: 'display: inline-block; margin-left: 35px;'}= link_to 'exhibitions', sortable_events_path(type: :exhibitions)
+	%h1{style: 'display: inline-block; margin-left: 35px;'}= link_to 'others', sortable_events_path(type: :others)
 - url = '/admin/events/sort'
 = render 'shared/sortable', items: @events, identifier: :title, url: url
