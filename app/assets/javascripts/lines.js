@@ -22,6 +22,9 @@ var sketchProc = (function($p) {
         $p.size(render_width, render_height);
 
         random_coords();
+        $p.strokeJoin($p.MITER);
+        $p.strokeCap($p.SQUARE);
+        $p.noFill();
     }
     $p.setup = setup;
     setup = setup.bind($p);
@@ -31,22 +34,17 @@ var sketchProc = (function($p) {
     function draw() {
         $p.background(fill_color);
 
+
         for (var i = 1; i < width_base; i++) {
             my_line_3(coord_x, coord_y, (width_base - i) * width_base - (width_base / 2), i % 2 == 0 ? 255 : line_color);
         }
-        for (var i = 1; i < max_points - 1; i++) {
+        var iterator = 1;
+        for (iterator = 1; i < max_points - 1; iterator++) {
             $p.randomSeed($p.millis() * 111);
-            coord_y[i] = (coord_y[i] + yDir*(i / 12.0 + speed)) % render_height;
+            coord_y[iterator] = (coord_y[iterator] + yDir*(iterator / 12.0 + speed)) % render_height;
         }
         $p.randomSeed($p.millis() * 57);
-        coord_x[i] = (coord_x[i] + xDir*(i / 10.0 + speed)) % render_width;
-
-        if (record) {
-            record = false;
-            $p.endRecord();
-            $p.println("Recording: end");
-            $p.println();
-        }
+        coord_x[iterator] = (coord_x[iterator] + xDir*(iterator / 10.0 + speed)) % render_width;
     }
     $p.draw = draw;
     draw = draw.bind($p);
@@ -69,7 +67,6 @@ var sketchProc = (function($p) {
     function random_coords() {
         yDir = Math.random() > 0.5 ? 1 : -1;
         xDir = Math.random() > 0.5 ? 1 : -1;
-        console.log(xDir, yDir);
         for (var i = 0; i < max_points; i++) {
             if (i > 0) {
                 coord_x[i] = ($p.random(coord_x[i - 1] - random_offset, coord_x[i - 1] + random_offset) + render_width * 4) % render_width;
@@ -101,10 +98,6 @@ var sketchProc = (function($p) {
     my_spot = my_spot.bind($p);
 
     function my_line_3(coord_x, coord_y, weight, brightness) {
-        $p.strokeJoin($p.MITER);
-        $p.strokeCap($p.SQUARE);
-        $p.noFill();
-
         $p.stroke(brightness, 255);
         $p.strokeWeight(weight);
         $p.beginShape();
@@ -144,13 +137,13 @@ $('document').ready(function(){
       pressCount++;
       var newOp = Math.max(0.1, 1/pressCount);
       $('#canvas').css('opacity', newOp);
-      if(pressCount >= 3){
+      if(pressCount >= 2){
         setTimeout(function(){
           $('html').addClass('imready');
           $(canvas).css('opacity', '');
         }, 4000);
       };
-      if(pressCount >= 6){
+      if(pressCount >= 2){
         $('html').addClass('imready');
         $(canvas).css('opacity', '');
       };
