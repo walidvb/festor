@@ -45,7 +45,7 @@
     opacity: 0.83;
     width: 100%;
     @media #{$tablet}{
-      width: 33.33333%;
+      width: 50%%;
     }
     @media #{$md}{
       width: 25%;
@@ -100,7 +100,7 @@
 		color: $white;
     z-index: 1;
   }
-	
+
   .no-touch &.sr-middle:hover .tile-link{
     opacity: 1;
   }
