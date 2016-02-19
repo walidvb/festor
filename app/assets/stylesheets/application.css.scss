@@ -256,7 +256,7 @@ main{
 	.loading &, .imready &{
 		opacity: 0.1;
 	}
-	.imready .transitionning &{
+	.imready.transitionning &{
 		opacity: 1;
 	}
 }

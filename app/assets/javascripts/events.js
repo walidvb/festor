@@ -1,7 +1,7 @@
-$(document).on('ready turbolinks:load', function(){
+$(document).on('ready', function(){
   var nav = $('#back');
   $(document).on('ready turbolinks:load', function(){
-    body = $('body').imagesLoaded(function(){
+    html = $('html').imagesLoaded(function(){
       $('.show-desc img, .bio img').each(function(i){
         var $this = $(this);
         if(!$this.data('wrapped')){
@@ -16,22 +16,22 @@ $(document).on('ready turbolinks:load', function(){
 
   });
 
-  var moreContainer, main, body;
+  var moreContainer, main, html;
   $(document).on('ready turbolinks:load', function(){
     moreContainer = $('.load-more-container');
     main = $('#main-content');
-    body = $('body');
+    html = $('html');
     nav = $('#back');
   });
 
   $(document, '.nav.back').click(function(e){
     if($(e.target).hasClass('back')){
       moreContainer.addClass('leaving');
-      body.addClass('transitionning');
+      html.addClass('transitionning');
       setTimeout(function(){
         moreContainer.fadeOut('300', function(){
           main.addClass('leaving').fadeIn('300', function(){
-            body.removeClass('transitionning');
+            html.removeClass('transitionning');
             main.removeClass('leaving');
             $('[data-load-more]').removeClass('active');
           })
@@ -47,22 +47,22 @@ $(document).on('ready turbolinks:load', function(){
     var transitionFinished = false;
     if(url != undefined){
       e.preventDefault();
-      body.addClass('transitionning');
+      html.addClass('transitionning');
       main.add(moreContainer).addClass('leaving');
       $.ajax({
         url: url,
         success: function(data){
           moreContainer.fadeOut('300',function(){
             main.add(moreContainer).removeClass('leaving');
-            body.removeClass('transitionning');
+            html.removeClass('transitionning');
             var new_ = $(data).find('#main-content').html();
             moreContainer.add(main).hide();
             moreContainer.html(new_);
             nav.css('display', 'inline-block');
-            body.addClass('transitionning');
+            html.addClass('transitionning');
             moreContainer.addClass('leaving').hide().fadeIn(function(){
               moreContainer.add(main).removeClass('leaving');
-              body.removeClass('transitionning');
+              html.removeClass('transitionning');
             });
             $(document).trigger('page:load');
           });

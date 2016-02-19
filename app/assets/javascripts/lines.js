@@ -57,13 +57,13 @@ var sketchProc = (function($p) {
       yDir *= -1;
       xDir *= -1;
       speed = 0.2;
-      $('body').addClass('transitionning');
+      $('html').addClass('transitionning');
     }).on('turbolinks:load', function(e){
       speed = 0.1;
       if(!firstLoad){
         $('html').addClass('imready');
         setTimeout(function(){
-          $('body').removeClass('transitionning');
+          $('html').removeClass('transitionning');
         }, 100);
       }
       firstLoad = false;
@@ -146,13 +146,13 @@ $('document').ready(function(){
       pressCount++;
       var newOp = Math.max(0.1, 1/pressCount);
       $('#canvas').css('opacity', newOp);
-      if(pressCount >= 2){
+      if(pressCount >= 3){
         setTimeout(function(){
           $('html').addClass('imready');
           $(canvas).css('opacity', '');
-        }, 2000);
+        }, 4000);
       };
-      if(pressCount >= 5){
+      if(pressCount >= 6){
         $('html').addClass('imready');
         $(canvas).css('opacity', '');
       };
