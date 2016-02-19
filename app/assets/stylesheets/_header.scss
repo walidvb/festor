@@ -98,7 +98,8 @@ $header-height-mobile: 110px;
 			bottom: -14px;
 			width: calc(100% - 75px);
 			@media #{$md}{
-			  right: 0;
+			  right: 14px;
+				left: auto;
 			  bottom: 0;
 				width: calc(60% - 14px);
 			}

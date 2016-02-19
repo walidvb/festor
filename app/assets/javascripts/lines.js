@@ -104,13 +104,13 @@ var sketchProc = (function($p) {
       setup();
     }
 });
-
+window.processingInstanc
 $('document').ready(function(){
   var canvas = document.getElementById("canvas");
   if(canvas){
     var processingInstance = new Processing(canvas, sketchProc);
     processingInstance.resize(canvas.offsetWidth, canvas.offsetHeight);
-
+    window.processingInstance = processingInstance;
     $(document).on('random-coords', function(){
       processingInstance.random_coords();
     });
@@ -139,5 +139,39 @@ $('document').ready(function(){
     $(window).on('resize', function(){
       processingInstance.resize(canvas.offsetWidth, canvas.offsetHeight);
     });
+
+    // Adapted slightly from Sam Dutton
+    // Set name of hidden property and visibility change event
+    // since some browsers only offer vendor-prefixed support
+    var hidden, state, visibilityChange;
+    if (typeof document.hidden !== "undefined") {
+    	hidden = "hidden";
+    	visibilityChange = "visibilitychange";
+    	state = "visibilityState";
+    } else if (typeof document.mozHidden !== "undefined") {
+    	hidden = "mozHidden";
+    	visibilityChange = "mozvisibilitychange";
+    	state = "mozVisibilityState";
+    } else if (typeof document.msHidden !== "undefined") {
+    	hidden = "msHidden";
+    	visibilityChange = "msvisibilitychange";
+    	state = "msVisibilityState";
+    } else if (typeof document.webkitHidden !== "undefined") {
+    	hidden = "webkitHidden";
+    	visibilityChange = "webkitvisibilitychange";
+    	state = "webkitVisibilityState";
+    }
+
+    // Add a listener that constantly changes the title
+    document.addEventListener(visibilityChange, function() {
+    	var hidden = document[state] == 'hidden';
+      $(document).trigger('visibility', { visibility: hidden });
+      hidden ? processingInstance.noLoop() : processingInstance.loop();
+      hidden ? console.log(hidden) : console.log(hidden);
+    }, false);
+
+    // Set the initial value
+    document.title = document[state];
+
   }
 });
