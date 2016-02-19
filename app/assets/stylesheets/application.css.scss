@@ -44,6 +44,9 @@ main{
 	@media #{$tablet}{
 		@include lineJump(13);
 	}
+	@media #{$md}{
+		@include lineJump(13);
+	}
 }
 
 p{

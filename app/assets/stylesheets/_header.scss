@@ -90,16 +90,27 @@ $header-height-mobile: 110px;
 	header{
 		position: relative;
 		&:after {
+			content: '';
 		  position: absolute;
-		  content: '';
 		  border-bottom: 1px solid black;
-		  right: 0;
-		  bottom: 0;
-		  width: calc(60% - 14px);
+			
+			left: 10px;
+			bottom: -14px;
+			width: calc(100% - 75px)
+			@media #{$md}{
+			  right: 0;
+			  bottom: 0;
+				width: calc(60% - 14px);
+			}
 		}
 	}
 }
-
+@media #{$md}{
+	header
+	{
+		width: calc(60% - 14px);
+	}
+}
 
 $header-height-sm: 250px;
 $header-padding-vert: 40px;
