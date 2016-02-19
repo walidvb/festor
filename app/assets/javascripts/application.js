@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require turbolinks
 //= require jquery_ujs
 //= require mixitup/build/jquery.mixitup.min.js
 //= require vendors/imagesloaded.pkgd.min.js

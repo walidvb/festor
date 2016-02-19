@@ -8,6 +8,7 @@
 	%span.event-artists.related
 		- @artists.each do |artist|
 			= render 'artist', artist: artist
+			%span#back.nav.back{:style => "cursor: pointer;"} [back]
 #main-content
 	.show-header.page-title
 		%h1.event-name= @event.title

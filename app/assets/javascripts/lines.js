@@ -18,14 +18,16 @@ var sketchProc = (function($p) {
 
     var record = false;
     function setup() {
-        $p.frameRate(60);
+        $p.frameRate(30);
         $p.size(render_width, render_height);
 
         random_coords();
     }
     $p.setup = setup;
     setup = setup.bind($p);
-
+    var speed = 0.1;
+    var xDir = 1;
+    var yDir = 1;
     function draw() {
         $p.background(fill_color);
 
@@ -34,11 +36,11 @@ var sketchProc = (function($p) {
         }
         for (var i = 1; i < max_points - 1; i++) {
             $p.randomSeed($p.millis() * 111);
-            coord_y[i] = (coord_y[i] + i / 12.0 + 0.1) % render_height;
+            coord_y[i] = (coord_y[i] + yDir*(i / 12.0 + speed)) % render_height;
         }
         for (var i = 0; i < max_points; i++) {
             $p.randomSeed($p.millis() * 57);
-            coord_x[i] = (coord_x[i] + i / 10.0 + 0.1) % render_width;
+            coord_x[i] = (coord_x[i] + xDir*(i / 10.0 + speed)) % render_width;
         }
 
         if (record) {
@@ -50,8 +52,26 @@ var sketchProc = (function($p) {
     }
     $p.draw = draw;
     draw = draw.bind($p);
-
+    var firstLoad = true;
+    $(document).on('turbolinks:click', function(e){
+      yDir *= -1;
+      xDir *= -1;
+      speed = 0.2;
+      $('body').addClass('transitionning');
+    }).on('turbolinks:load', function(e){
+      speed = 0.1;
+      if(!firstLoad){
+        $('html').addClass('imready');
+        setTimeout(function(){
+          $('body').removeClass('transitionning');
+        }, 100);
+      }
+      firstLoad = false;
+    });
     function random_coords() {
+        yDir = Math.random() > 0.5 ? 1 : -1;
+        xDir = Math.random() > 0.5 ? 1 : -1;
+        console.log(xDir, yDir);
         for (var i = 0; i < max_points; i++) {
             if (i > 0) {
                 coord_x[i] = ($p.random(coord_x[i - 1] - random_offset, coord_x[i - 1] + random_offset) + render_width * 4) % render_width;
@@ -118,24 +138,25 @@ $('document').ready(function(){
     var newOp = 1;
 
     $('.login-form').click(function(){
-      if(window.innerWidth < 768){
-        $('body').addClass('ready');
+      if(window.innerWidth < 768 && pressCount >= 3){
+        $('html').addClass('imready');
+        $(canvas).css('opacity', '');
       }
-    })
-    $('#beta').on('keypress', function(evt){
       processingInstance.random_coords();
       pressCount++;
       var newOp = Math.max(0.1, 1/pressCount);
       $('#canvas').css('opacity', newOp);
       if(pressCount >= 2){
         setTimeout(function(){
-          $('body').addClass('ready');
+          $('html').addClass('imready');
+          $(canvas).css('opacity', '');
         }, 2000);
       };
       if(pressCount >= 5){
-        $('body').addClass('ready');
+        $('html').addClass('imready');
+        $(canvas).css('opacity', '');
       };
-    });
+    })
     $(window).on('resize', function(){
       processingInstance.resize(canvas.offsetWidth, canvas.offsetHeight);
     });
@@ -169,9 +190,5 @@ $('document').ready(function(){
       hidden ? processingInstance.noLoop() : processingInstance.loop();
       hidden ? console.log(hidden) : console.log(hidden);
     }, false);
-
-    // Set the initial value
-    document.title = document[state];
-
   }
 });

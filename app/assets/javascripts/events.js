@@ -1,6 +1,6 @@
-(function($){
-  var nav = $('<span style="display: inline-block; cursor: pointer;" class="nav back">back</span>');
-  $(document).on('ready page:load', function(){
+$(document).on('ready turbolinks:load', function(){
+  var nav = $('#back');
+  $(document).on('ready turbolinks:load', function(){
     body = $('body').imagesLoaded(function(){
       $('.show-desc img, .bio img').each(function(i){
         var $this = $(this);
@@ -17,23 +17,23 @@
   });
 
   var moreContainer, main, body;
-  $(document).ready(function(){
+  $(document).on('ready turbolinks:load', function(){
     moreContainer = $('.load-more-container');
     main = $('#main-content');
     body = $('body');
-    nav.appendTo($('.related')).hide();
+    nav = $('#back');
   });
 
   $(document, '.nav.back').click(function(e){
     if($(e.target).hasClass('back')){
       moreContainer.addClass('leaving');
-      $('[data-load-more]').removeClass('active');
       body.addClass('transitionning');
       setTimeout(function(){
         moreContainer.fadeOut('300', function(){
           main.addClass('leaving').fadeIn('300', function(){
             body.removeClass('transitionning');
             main.removeClass('leaving');
+            $('[data-load-more]').removeClass('active');
           })
         })
       }, 300);
@@ -71,4 +71,4 @@
     };
   });
 
-})(jQuery);
+});

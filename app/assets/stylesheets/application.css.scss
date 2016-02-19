@@ -235,11 +235,11 @@ main{
 
 #the-content{
 	opacity: 0;
-	body:not(.ready) &{
+	html:not(.imready) &{
 		z-index: -1;
 		pointer-events: none;
 	}
-	.ready &{
+	.imready &{
 		opacity: 1;
 	}
 }
@@ -253,24 +253,33 @@ main{
 	top: 0;
 	z-index: -1;
 	opacity: 1;
-	.loading &, .ready &{
+	.loading &, .imready &{
 		opacity: 0.1;
 	}
-	.ready.transitionning &{
+	.imready .transitionning &{
 		opacity: 1;
 	}
 }
 
-.ready .login-form{
+.turbolinks-progress-bar {
+  height: 0!important;
+}
+
+.imready .login-form{
 	display: none;
 }
 
 main{
 	opacity: 1;
-	.ready.transitionning &{
+	min-height: 600px;
+}
+.imready.transitionning {
+	#main-content, .load-more-container{
 		opacity: 0;
 	}
-	min-height: 600px;
+	canvas{
+		opacity: 1;
+	}
 }
 #the-content, #canvas, main{
 	transition: opacity 0.4s ease-in-out;

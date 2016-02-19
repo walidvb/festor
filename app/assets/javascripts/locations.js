@@ -145,12 +145,14 @@ function openInfoWindow(map, index, latitude, longitude, title, adresse, infos, 
 	newInfoWindow = new google.maps.InfoWindow({
 		content: loading
 	});
-	newInfoWindow.setContent('<div class="marker-content"><h5 class="marker-title">' + title[index] + '</h5><p>' + infos[index] + '</p><p><a href="' + url[index] + '" class="marker-link" title=' + seeProg + '>' + seeProg + '</a></p></div>');
+	newInfoWindow.setContent('<div class="marker-content"><h5 class="marker-title">' + title[index] + '</h5><p>' + infos[index] + '</p><p data-turbolinks=false><a href="' + url[index] + '" class="marker-link" title=' + seeProg + '>' + seeProg + '</a></p></div>');
 	map.panTo(newCenter);
 	markerArray[index].setZIndex(300);
 	newInfoWindow.open(map, markerArray[index]);
 	$(document).trigger('filter-events');
-	$('.marker-link').click(function(){
+	$('.marker-link').click(function(e){
+		e.stopPropagation();
+		e.preventDefault();
 		$('body, html').animate({
 			scrollTop: $('#location-events').offset().top - 20,
 		});
@@ -283,7 +285,7 @@ function loadScript() {
   document.body.appendChild(script);
 }
 
-$(document).ready(function(){
+$(document).on('ready turbolinks:load',function(){
 	if($('#google-map-wrapper').length){
 		console.log("Thank you mirage for this code, couldn't be bothered to write it myself – the vbbros");
 		loadScript();

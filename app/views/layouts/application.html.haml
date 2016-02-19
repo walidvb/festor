@@ -17,20 +17,17 @@
 		= javascript_include_tag "application", "data-turbolinks-track" => true
 		= csrf_meta_tags
 
-	%body{class: ["#{controller.controller_name}-page", "#{controller.action_name}-page", "#{'debug' if Rails.env.development?}", "#{current_user.nil? ? nil : 'admin'}", content_for(:body_class), @is_not_first_visit ? 'ready' : nil].join(' ')}
-		- if Rails.env.production?
-			%canvas#canvas
+	%body{class: ["#{controller.controller_name}-page", "#{controller.action_name}-page", "#{'debug' if Rails.env.development?}", "#{current_user.nil? ? nil : 'admin'}", content_for(:body_class), @is_not_first_visit ? 'reaady' : nil].join(' ')}
+		- if true || Rails.env.production?
+			%canvas#canvas{"data-turbolinks-permanent" => true}
 		- else
 			.rulers.container
 				.row
 					- 5.times do |i|
 						.column.col-xs-1
 		.login-form
-			= form_tag beta_path do
-				%input.input#beta{:autofocus => true, :name => "beta_login", :size => "15", :type => "password"}
-				%button.input{:type => "submit", :value => "Entrer"} Entrer
 		#the-content
-			%header.container{"data-no-turbolink" => true}
+			%header.container
 				%nav.row.body-header
 					= render 'layouts/header'
 			%main.container

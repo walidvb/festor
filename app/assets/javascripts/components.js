@@ -1,5 +1,5 @@
 
-$(document).ready(function() {
+$(document).on('ready turbolinks:load', function() {
 	var header = $('header');
 	$('.header-left, .header-left a').click(function(e){
 		if(window.innerWidth < 767){
