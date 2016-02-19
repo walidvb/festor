@@ -1,11 +1,15 @@
 
-$(document).on('ready turbolinks:load', function() {
-	var header = $('header');
-	$('.header-left, .header-left a').click(function(e){
+$(document).click('.header-left, .header-left a', function(e){
+	if($(e.target).hasClass('.header-left') || $(e.target).parents('.header-left').length){
 		if(window.innerWidth < 767){
+			var header = $('header');
 			header.toggleClass('open');
 		}
-	});
+	}
+});
+$(document).on('ready turbolinks:load', function() {
+	var header = $('header');
+	console.log($('.header-left, .header-left a').html());
 
 	$('.grid').imagesLoaded( function() {
 		$('.grid').css('opacity', 1);
