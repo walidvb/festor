@@ -130,6 +130,10 @@
   }
 }
 
+
 .mCustomScrollbar .mCSB_inside > .mCSB_container{
-  margin-right: 10px;
+  margin-right: 0;
+}
+.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar, .mCSB_scrollTools .mCSB_draggerRail{
+	background-color: transparent!important;
 }
