@@ -18,7 +18,7 @@
 		= csrf_meta_tags
 
 	%body{class: ["#{controller.controller_name}-page", "#{controller.action_name}-page", "#{'debug' if Rails.env.development?}", "#{current_user.nil? ? nil : 'admin'}", content_for(:body_class), @is_not_first_visit ? 'ready' : nil].join(' ')}
-		- if true || Rails.env.production?
+		- if Rails.env.production?
 			%canvas#canvas
 		- else
 			.rulers.container

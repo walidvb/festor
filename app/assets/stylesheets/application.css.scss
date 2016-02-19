@@ -237,6 +237,7 @@ main{
 	opacity: 0;
 	body:not(.ready) &{
 		z-index: -1;
+		pointer-events: none;
 	}
 	.ready &{
 		opacity: 1;
