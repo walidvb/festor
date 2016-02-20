@@ -5,7 +5,7 @@
     var offsetTop, getTop;
 
     var options = $.extend({
-      maxDistanceToCenter: window.innerHeight*0.15,
+      maxDistanceToCenter: window.innerHeight*0.20,
       itemSelector: '.grid-item',
       activeClass: 'sr-active',
       touchOnly: true,

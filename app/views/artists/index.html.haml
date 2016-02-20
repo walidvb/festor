@@ -12,9 +12,9 @@
 		- classes = [type]
 		- classes.push(event.category) unless event.blank?
 		- classes.push("grid-item--width2") if artist.featured?
-		.grid-item.mix.artist{class: classes, data: {position: artist.position, id: artist.id}}
+		.grid-item.mix.artist{class: classes, data: {position: artist.position, id: artist.id, img: artist.profile_picture.url(artist.featured? ? :large : :tile}}
 			- path = artist_path(artist, locale: I18n.locale)
-			= image_tag artist.profile_picture.url(artist.featured? ? :large : :tile)
+			= image_tag artist.profile_picture.url(artist.featured? ? :large_blurred : :tile_blurred)
 			= link_to path, class: 'tile-link' do
 				.info
 					%h5.artist-event-type= artist.events.first.try:category unless event.blank?

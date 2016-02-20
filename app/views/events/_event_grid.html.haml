@@ -4,9 +4,9 @@
 		- classes = [event.featured? ? "grid-item--width2" : nil]
 		- classes.push(event.location.try(:slug))
 		- classes.push(event.category)
-		.grid-item{class: classes.join(' '), data: {position: event.position, id: event.id}}
+		.grid-item{class: classes.join(' '), data: {position: event.position, id: event.id, img: event.main_image.url(event.featured? ? :large : :tile)}, style: "background-image:url(#{event.main_image.url(event.featured? ? :large_blurred : :tile_blurred)})"}
 			- artists = event.artists
-			= image_tag event.main_image.url(event.featured? ? :large : :tile)
+			= image_tag event.main_image.url(event.featured? ? :large_blurred : :tile_blurred), class: 'image'
 			= link_to path_for(event), class: 'tile-link' do
 				.info
 					- if @category != :exhibition

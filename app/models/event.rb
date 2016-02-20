@@ -13,7 +13,7 @@ class Event < ActiveRecord::Base
 	def self.workshop_cats
 		[:workshop, :conference, :masterclass]
 	end
-	
+
 	scope :workshop, ->{where(category: workshop_cats)}
 	scope :exhibition, ->{where(category: :exhibition)}
 	scope :other, ->{where.not(category: [:workshop, :conference, :masterclass, :exhibition])}
@@ -41,7 +41,13 @@ class Event < ActiveRecord::Base
 		:styles => {
 			:thumb => "100x100>",
 			:tile => "600x>",
-			:large => "800x>"
+			:large => "800x>",
+			:tile_blurred => "600x>",
+			:large_blurred => "800x>"
+		},
+		:convert_options => {
+			:large_blurred => '-blur 0x8',
+			:tile_blurred => '-blur 0x8'
 		},
 		:default_url => "/images/missing.jpg",
 		:use_timestamp => false

@@ -65,16 +65,49 @@
   }
 }
 
+@mixin infoOn(){
+	.tile-link{
+		opacity: 1;
+	}
+	.image{
+		opacity: 0;
+	}
+}
+
+
+@mixin infoOff(){
+	.tile-link{
+		opacity: 0;
+	}
+	.image{
+		opacity: 1;
+	}
+}
+
+.grid-item {
+	background-size: cover;
+}
+
 .grid-item{
   min-width: 25%;
+
+	opacity: 0.9;
+	@include infoOff();
+	.no-touch &.sr-middle:hover{
+		@include infoOff();
+	}
+	.no-touch &:hover, &.sr-middle{
+		@include infoOn();
+	}
+
 
   .tile{
     position: relative;
   }
-  &.sr-top .info{
-    bottom: 0px;
-    top: auto;
-  }
+  //&.sr-top .info{
+  //  bottom: 0px;
+  //  top: auto;
+  //}
   @media #{$mobile}{
     position: relative!important;
     top: 0!important;
@@ -89,7 +122,6 @@
 	}
   & .tile-link{
     will-change: true;
-    opacity: 1;
     width: 100%;
     height: 100%;
     position: absolute;
@@ -100,12 +132,10 @@
 		color: $white;
     z-index: 1;
   }
-
-  .no-touch &.sr-middle:hover .tile-link{
-    opacity: 1;
-  }
-   .info{
-    transition : all 0.3s ease-in;
+	.info, .image{
+		transition : all 0.3s ease-in;
+	}
+  .info{
     position: absolute;
     top: 0px;
     bottom: auto;
@@ -121,16 +151,8 @@
 		}
 		padding-bottom: 1rem;
   }
-  .no-touch &:hover, &.sr-middle{
-    opacity: 0.9;
-    .tile-link{
-      transition : all 0.2s ease-out;
-      opacity : 0;
-    }
-  }
+
 }
-
-
 .mCustomScrollbar .mCSB_inside > .mCSB_container{
   margin-right: 0;
 }
