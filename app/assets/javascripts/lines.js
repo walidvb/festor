@@ -120,28 +120,9 @@ $('document').ready(function(){
     var pressCount = 1;
     var newOp = 1;
 
-    $('.login-form').click(function(){
-      if(window.innerWidth < 768 && pressCount >= 3){
-        $('html').addClass('imready');
-        $('body').addClass('content-ready');
-        $(canvas).css('opacity', '');
-      }
-      processingInstance.random_coords();
-      pressCount++;
-      var newOp = Math.max(0.1, 1/pressCount);
-      //$('#canvas').css('opacity', newOp);
-      if(pressCount >= 3){
-        setTimeout(function(){
-          $('html').addClass('imready');
-          $('body').addClass('content-ready');
-          $(canvas).css('opacity', '');
-        }, 4000);
-      };
-      if(pressCount >= 2){
-        $('html').addClass('imready');
-        $('body').addClass('content-ready');
-        $(canvas).css('opacity', '');
-      };
+    $('.login-form').one('click touchdown', function(){
+      $('html').addClass('imready');
+      setTimeout(function(){$('html').removeClass('first-load');}, 5000);
     })
     $(window).on('resize', function(){
       processingInstance.resize(canvas.offsetWidth, canvas.offsetHeight);

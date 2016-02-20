@@ -1,16 +1,20 @@
 
-$(document).click('.header-left, .header-left a', function(e){
+$(document).on('touchstart mousedown', '.header-left, .header-left a', function(e){
 	var header = $('header');
-	if($(e.target).hasClass('.header-left') || $(e.target).parents('.header-left').length){
+	//if($(e.target).hasClass('.header-left') || $(e.target).parents('.header-left').length){
 			if(window.innerWidth < 767){
 				var header = $('header');
 				header.toggleClass('open');
 			}
-	}
-	else{
-		header.removeClass('open');
-	}
-});
+	//}
+	//else{
+	//	header.removeClass('open');
+	//}
+}).on('touchstart mousedown', 'main', hideHeader)
+.on('turbolinks:click turbolinks:visit', hideHeader);
+function hideHeader(e){
+	$('header').removeClass('open');
+}
 $(document).on('ready turbolinks:load', function() {
 	$('.grid').imagesLoaded( function() {
 		$('.grid').css('opacity', 1);
