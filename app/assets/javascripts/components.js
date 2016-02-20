@@ -1,5 +1,6 @@
 
 $(document).click('.header-left, .header-left a', function(e){
+	var header = $('header');
 	if($(e.target).hasClass('.header-left') || $(e.target).parents('.header-left').length){
 			if(window.innerWidth < 767){
 				var header = $('header');
@@ -11,7 +12,6 @@ $(document).click('.header-left, .header-left a', function(e){
 	}
 });
 $(document).on('ready turbolinks:load', function() {
-	var header = $('header');
 	$('.grid').imagesLoaded( function() {
 		$('.grid').css('opacity', 1);
 		$('body').scrollReveal();
