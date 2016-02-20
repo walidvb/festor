@@ -47,7 +47,7 @@ $header-height-mobile: 110px;
 			line-height: 1.8em;
 			font-size: 0.8em;
 		}
-		.content-ready &{
+		.content-ready &:not(.open){
 			animation: bounce 1s 1s 1;
 		}
 	}
