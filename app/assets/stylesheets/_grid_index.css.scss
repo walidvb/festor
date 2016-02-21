@@ -86,7 +86,9 @@
   min-width: 25%;
 
 	opacity: 0.9;
-	@include infoOff();
+	@media #{$tablet}{		
+		@include infoOff();
+	}
 	.no-touch &.sr-middle:hover{
 		@include infoOff();
 	}
