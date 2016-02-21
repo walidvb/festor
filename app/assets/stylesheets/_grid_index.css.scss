@@ -66,21 +66,15 @@
 }
 
 @mixin infoOn(){
-	.tile-link{
+	.tile-link, .image{
 		opacity: 1;
-	}
-	.image{
-		opacity: 0;
 	}
 }
 
 
 @mixin infoOff(){
-	.tile-link{
+	.tile-link, .image{
 		opacity: 0;
-	}
-	.image{
-		opacity: 1;
 	}
 }
 
