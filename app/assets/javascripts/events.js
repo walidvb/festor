@@ -1,8 +1,7 @@
-$(document).on('ready', function(){
+$(document).on('turbolinks:load', function(){
   var nav = $('#back');
   $(document).on('ready turbolinks:load', function(){
     html = $('html').imagesLoaded(wrapImages);
-
   });
 
   function wrapImages(){
@@ -19,7 +18,7 @@ $(document).on('ready', function(){
   };
 
   var moreContainer, main, html;
-  $(document).on('ready turbolinks:load', function(){
+  $(document).on('turbolinks:load', function(){
     moreContainer = $('.load-more-container');
     main = $('#main-content');
     html = $('html');
@@ -72,5 +71,4 @@ $(document).on('ready', function(){
       });
     };
   });
-
 });

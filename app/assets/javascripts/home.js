@@ -4,7 +4,7 @@ $(function() {
 console.log(Array(16).join("info@vbbros.net" - 1) + " Batman!");
 
 
-$(document).on('ready', function(){
+$(document).on('turbolinks:load', function(){
 
 	if(window.hasOwnProperty('ontouchstart')){
 		$('body').addClass('touch');
@@ -34,7 +34,7 @@ $(document).on('ready', function(){
 	// 	}
 	// });
 });
-$(document).on('ready turbolinks:load', function(){
+$(document).on('turbolinks:load', function(){
 	$('select').chosen({
 		allow_single_deselect: true,
 		disable_search_threshold: 10,

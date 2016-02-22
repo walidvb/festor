@@ -286,7 +286,7 @@ function loadScript() {
 }
 
 var gmapsLoaded = false;
-$(document).on('ready turbolinks:load',function(){
+$(document).on('turbolinks:load',function(){
 	if($('#google-map-wrapper').length){
 		if(!gmapsLoaded){
 			gmapsLoaded = true;

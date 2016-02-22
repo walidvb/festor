@@ -16,22 +16,23 @@ function hideHeader(e){
 	$('header').removeClass('open');
 }
 $(document).on('turbolinks:load', function() {
+	console.log('test');
+	$('.grid-item[data-img]').each(function(){
+		var $this = $(this);
+		if(!$this.data('blurred')){
+			var img = new Image();
+			img.src = $this.data('img');
+			img.className = 'non-blurred';
+			img.onload = function(){
+				console.log(this.src);
+				$this.find('img').attr('src', this.src);
+			};
+			$this.data('blurred', true);
+		}
+	});
 	$('.grid').imagesLoaded( function() {
 		$('.grid').css('opacity', 1);
 		$('body').scrollReveal();
-		$('.grid-item[data-img]').each(function(){
-			var $this = $(this);
-			if(!$this.data('blurred')){
-				var img = new Image();
-				img.src = $this.data('img');
-				img.className = 'non-blurred';
-				img.onload = function(){
-					console.log(this.src);
-					$this.find('img').attr('src', this.src);
-				};
-				$this.data('blurred', true);
-			}
-		});
 		var $grid = $('.grid').isotope({
 			// options
 			itemSelector: '.grid-item',
