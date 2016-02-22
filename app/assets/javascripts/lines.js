@@ -119,7 +119,9 @@ $('document').ready(function(){
     });
     var pressCount = 1;
     var newOp = 1;
-
+    $(document).on('keypress', function(e){
+      processingInstance.random_coords();
+    });
     $('.login-form').one('click touchdown', function(){
       $('html').addClass('imready');
       setTimeout(function(){$('html').removeClass('first-load');}, 5000);
