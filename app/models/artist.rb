@@ -22,6 +22,8 @@ class Artist < ActiveRecord::Base
 		:styles => {
 			:thumb => "100x100#",
 			:medium => "350x200#",
+      :tile => "600x>",
+			:large => "800x>",
       :tile_blurred => "600x>",
 			:large_blurred => "800x>"
 		},

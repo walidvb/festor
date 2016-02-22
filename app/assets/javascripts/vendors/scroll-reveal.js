@@ -5,7 +5,7 @@
     var offsetTop, getTop;
 
     var options = $.extend({
-      maxDistanceToCenter: window.innerHeight*0.20,
+      maxDistanceToCenter: window.innerHeight*0.3,
       itemSelector: '.grid-item',
       activeClass: 'sr-active',
       touchOnly: true,
@@ -25,8 +25,8 @@
         }
       }
     }, options_);
-
     var elems = $(options.itemSelector);
+
     if(!elems.length) return;
 
     var onScroll = debounce(function(){
@@ -57,7 +57,7 @@
 
     if(window.hasOwnProperty('ontouchstart'))
     {
-      $(that).css('overflow', 'hidden');
+      $(that).css('overflow-y', 'hidden');
       $(that).mCustomScrollbar(options.mCustomScrollbar);
 
     }
