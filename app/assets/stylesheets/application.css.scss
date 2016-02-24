@@ -253,7 +253,7 @@ main{
 	width: 100%;
 	position: fixed;
 	top: 0;
-	z-index: -1;
+	pointer-events: none;
 	opacity: 1;
 	.loading &, .imready &{
 		opacity: 0.1;
@@ -281,6 +281,13 @@ main{
 	}
 	canvas{
 		opacity: 1;
+	}
+	.no-touch{
+		header *, header:after, p, h1, h2, h3, h4, h5, label, label:before, #cat-filters{
+			color: white!important;
+			mix-blend-mode: difference;
+			border-color: white!important;
+		}
 	}
 }
 #the-content, #canvas, main{
