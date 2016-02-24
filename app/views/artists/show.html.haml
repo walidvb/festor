@@ -3,7 +3,7 @@
 - content_for(:description, remove_tags(@artist.biography))
 .admin-entry
 	- if user_signed_in?
-		= link_to 'edit', "/admin/artist/#{@artist.id}/edit"
+		= link_to 'edit', "/admin/artist/#{@artist.id}/edit", data: {turbolinks: "false"}
 - if !@artist.events.empty?
 	.show-header.related
 		- @artist.events.each do |event|
