@@ -114,11 +114,11 @@ $('document').ready(function(){
     var processingInstance = new Processing(canvas, sketchProc);
     processingInstance.resize(canvas.offsetWidth, canvas.offsetHeight);
     window.processingInstance = processingInstance;
+    processingInstance.externals.context.globalCompositeOperation = 'difference';
+    processingInstance.resize(canvas.offsetWidth, canvas.offsetHeight);
     $(document).on('random-coords', function(){
       processingInstance.random_coords();
     });
-    var pressCount = 1;
-    var newOp = 1;
     $(document).on('keypress', function(e){
       processingInstance.random_coords();
     });
