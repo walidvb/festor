@@ -174,6 +174,9 @@ h1{
 		text-decoration: underline;
 	}
 
+	img.fr-tag{
+		width: auto!important;
+	}
 	@media #{$tablet}{
 
 		.imready &{
