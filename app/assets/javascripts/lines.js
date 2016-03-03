@@ -27,7 +27,7 @@ var sketchProc = (function($p) {
     }
     $p.setup = setup;
     setup = setup.bind($p);
-    var speed = window.innerWidth < 768 ? 0.03 : 0.1;
+    var speed = window.hasOwnProperty('ontouchstart') ? 0.03 : 0.1;
     var xDir = 1;
     var yDir = 1;
     function draw() {
