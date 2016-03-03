@@ -54,6 +54,7 @@ p{
 }
 
 footer{
+	@include lineJump(4);
 	align-self: flex-end;
 }
 
