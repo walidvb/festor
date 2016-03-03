@@ -19,6 +19,12 @@ a.artist, a.artist-event{
 	@extend .nav-link;
 	background: transparent;
 	color: black;
+	h5{
+		text-decoration: underline;
+		&:hover{
+			text-decoration: none;
+		}
+	}
 	&:hover .sup{
 		color: inherit;
 		letter-spacing: normal;
