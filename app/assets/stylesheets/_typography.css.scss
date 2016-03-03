@@ -76,7 +76,7 @@
 	}
 	// ----- 9 - Sous-Sous Titres ----- //
 	h2{
-		@include fontSize(25.65px) ;
+		@include fontSize(25.65px);
 		@include lineHeight($lineheight-base * 2) ;
 		@include lineJump (6);
 	}

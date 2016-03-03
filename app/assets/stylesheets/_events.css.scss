@@ -173,6 +173,7 @@ h1{
 	a{
 		text-decoration: underline;
 	}
+
 	@media #{$tablet}{
 
 		.imready &{
@@ -287,16 +288,5 @@ h1{
 	justify-content: space-between;
 	li{
 		flex: 0 0 20%;
-	}
-}
-
-
-.mapping-team{
-	@include lineJump(4);
-	@media #{$tablet}{
-		column-count: 2;
-		p:first-child{
-			margin-top: 0;
-		}
 	}
 }
