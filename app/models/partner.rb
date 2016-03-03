@@ -6,6 +6,10 @@ class Partner < ActiveRecord::Base
       :thumb => "100x100#",
       :tile => "x80",
     },
+    :convert_options => {
+      :thumb => '-type Grayscale',
+      :tile => '-type Grayscale'
+    },
     :default_url => "/images/missing.jpg",
     :use_timestamp => false
     validates_attachment_content_type :logo, :content_type => /\Aimage\/(jpg|jpeg|png|gif)\Z/i
