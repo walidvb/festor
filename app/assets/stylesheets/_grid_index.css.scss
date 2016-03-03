@@ -9,6 +9,9 @@
 		margin-left: 0;
 		margin-right: 0;
 	}
+	.date-filter{
+		@include lineJump(2);
+	}
 	.cat-filters{
 		display: flex;
 		flex-wrap: wrap;
@@ -86,7 +89,7 @@
   min-width: 25%;
 
 	opacity: 0.9;
-	@media #{$tablet}{		
+	@media #{$tablet}{
 		@include infoOff();
 	}
 	.no-touch &.sr-middle:hover{
