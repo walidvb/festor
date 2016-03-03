@@ -4,7 +4,8 @@
   }
   .partners-list{
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
+    flex-wrap: wrap;
   }
   .partner{
     text-align: center;
