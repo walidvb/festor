@@ -37,6 +37,15 @@ en:
       speaker: 'speaker'
       performer: 'performer'
       exhibitor: 'exhibitor'
+    event_type:
+      clubbing:    "Clubbing"
+      performance: "Performance"
+      screening:   "Screening"
+      conference:  "Conference"
+      exhibition:  "Installation"
+      workshop:    "Workshop"
+      masterclass: "Masterclass"
+      specials:    "Specials"
   events:
     fields:
       participants: 'Number of participants'

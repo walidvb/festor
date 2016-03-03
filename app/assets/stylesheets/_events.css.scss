@@ -290,7 +290,9 @@ h1{
 	}
 }
 
+
 .mapping-team{
+	@include lineJump(4);
 	@media #{$tablet}{
 		column-count: 2;
 		p:first-child{
