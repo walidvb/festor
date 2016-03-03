@@ -12,7 +12,8 @@ en:
     events:      "Program"
     artists:     "Artists"
     workshops:   "Workshops"
-    exhibitions: "Exhibition"
+    exhibitions_menu: "Exhibition"
+    exhibitions: "Installation"
     all:          'Program'
     gallery:     "gallery"
     more:        "More"
@@ -65,7 +66,7 @@ en:
       performance: "Performance"
       screening:   "Screening"
       conference:  "Conference"
-      exhibition:  "Exhibition"
+      exhibition:  "Installation"
       workshop:    "Workshop"
       masterclass: "Masterclass"
       specials:    "Specials"

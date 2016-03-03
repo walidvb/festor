@@ -8,7 +8,8 @@ fr:
     events:      "Programme"
     artists:     "Artistes"
     workshops:   "Workshops"
-    exhibitions: "Exposition"
+    exhibitions_menu: "Exposition"
+    exhibitions: "Installation"
     all:          'Programme'
     venues:      "Lieux"
     tickets:     "Billetterie"
@@ -49,7 +50,7 @@ fr:
       clubbing:    "Clubbing"
       performance: "Performance"
       screening:   "Film"
-      exhibition:  "Exposition"
+      exhibition:  "Installation"
       conference:  "Conférence"
       masterclass: "Masterclass"
       specials:    "Spéciaux"
