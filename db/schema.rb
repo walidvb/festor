@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160211152653) do
+ActiveRecord::Schema.define(version: 20160303121101) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 20160211152653) do
     t.integer  "position"
     t.string   "type"
     t.boolean  "featured"
+    t.boolean  "published",                    default: false
   end
 
   create_table "assets", force: true do |t|
@@ -109,6 +110,7 @@ ActiveRecord::Schema.define(version: 20160211152653) do
     t.boolean  "featured"
     t.integer  "position"
     t.integer  "price"
+    t.boolean  "published",               default: false
   end
 
   add_index "events", ["location_id"], name: "index_events_on_location_id", using: :btree

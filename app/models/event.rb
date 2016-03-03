@@ -14,6 +14,8 @@ class Event < ActiveRecord::Base
 		[:workshop, :conference, :masterclass]
 	end
 
+	scope :public, -> {where(published: true)}
+
 	scope :workshop, ->{where(category: workshop_cats)}
 	scope :exhibition, ->{where(category: :exhibition)}
 	scope :other, ->{where.not(category: [:workshop, :conference, :masterclass, :exhibition])}
