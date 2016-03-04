@@ -15,4 +15,4 @@
 	.col-xs-12.col-md-3.pull-right.news-banner.slick
 		- @news.each do |news|
 			%marquee.news
-				= link_to news.message, news.link
+				= link_to news.message, news.link, class: news.colorbox? ? 'colorbox' : nil

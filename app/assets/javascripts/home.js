@@ -14,10 +14,16 @@ $(document).on('turbolinks:load', function(){
 
   $('.slick').slick({
     autoplay: true,
+    autoplaySpeed: 3000,
     arrows: false,
     cssease: 'ease-out',
     fade: false,
   });
+  $('.colorbox').colorbox({
+    iframe: true,
+    innerWidth: 600,
+    innerHeight: 281 * (600/500),
+  })
 	// fix menu
 	// var nav = $('.navbar-nav');
 	// var navOffsetTop = nav.offset().top;
