@@ -220,8 +220,8 @@ $header-padding-vert: 40px;
 	}
 	@media #{$md}{
 		margin-top: 0;
-		right: 0rem;
-		width: calc(60% - 1rem);
+		right: 1rem;
+		width: calc(60% - 2rem);
 	}
 	.news{
 		@include lineJump(1);
