@@ -205,10 +205,10 @@ $header-padding-vert: 40px;
 }
 
 .news-banner{
-	border-top: solid 1px black;
-	border-bottom: solid 1px black;
-	margin-top: 1rem;
 	@media #{$sm}{
+		border-top: solid 1px black;
+		border-bottom: solid 1px black;
+		margin-top: 1rem;
 		position: relative;
 		right: 1rem;
 		width: calc(100% - 2rem);
@@ -220,8 +220,14 @@ $header-padding-vert: 40px;
 		width: calc(60% - 3rem);
 	}
 	.news{
-		@include lineJump(2);
+		@include lineJump(1);
 		// to fix weird non-existing margin
-		margin-bottom: calc(2rem - 5px);
+		margin-bottom: calc(1rem - 5px);
+
+		@media #{$tablet}{
+			@include lineJump(2);
+			// to fix weird non-existing margin
+			margin-bottom: calc(2rem - 5px);
+		}
 	}
 }
