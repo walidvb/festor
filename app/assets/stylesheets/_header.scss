@@ -85,25 +85,6 @@ $header-height-mobile: 110px;
 	.not-link-logo{
 		display: none!important;
 	}
-
-	header{
-		position: relative;
-		&:after {
-			content: '';
-		  position: absolute;
-		  border-bottom: 1px solid black;
-
-			left: 10px;
-			bottom: -14px;
-			width: calc(100% - 75px);
-			@media #{$md}{
-			  right: 14px;
-				left: auto;
-			  bottom: 0;
-				width: calc(60% - 14px);
-			}
-		}
-	}
 }
 @media #{$md}{
 	header
@@ -221,4 +202,22 @@ $header-padding-vert: 40px;
 .chosen-results li {
     width: 100%;
     color: $white;
+}
+
+.news-banner{
+	border-top: solid 1px black;
+	border-bottom: solid 1px black;
+	margin-top: 1rem;
+	@media #{$md}{
+		margin-top: 0;
+		position: relative;
+		right: 2rem;
+		width: calc(60% - 3rem);
+		padding: 0;
+	}
+	.news{
+		@include lineJump(2);
+		// to fix weird non-existing margin
+		margin-bottom: calc(2rem - 5px);
+	}
 }

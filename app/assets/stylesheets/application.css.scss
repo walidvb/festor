@@ -46,7 +46,7 @@ main{
 		@include lineJump(13);
 	}
 	@media #{$md}{
-		@include lineJump(13);
+		@include lineJump(8);
 	}
 }
 

@@ -23,7 +23,7 @@
 
 // ----- 3 - Menu ----- //
 
-.header-right {
+.header-right, .news-banner {
 	@include fontSize($body-size);
 	@include lineHeight($lineheight-base * 2);
 }

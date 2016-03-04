@@ -5,13 +5,19 @@ console.log(Array(16).join("info@vbbros.net" - 1) + " Batman!");
 
 
 $(document).on('turbolinks:load', function(){
-
 	if(window.hasOwnProperty('ontouchstart')){
 		$('body').addClass('touch');
 	}
 	else{
 		$('body').addClass('no-touch');
 	}
+
+  $('.slick').slick({
+    autoplay: true,
+    arrows: false,
+    cssease: 'ease-out',
+    fade: false,
+  });
 	// fix menu
 	// var nav = $('.navbar-nav');
 	// var navOffsetTop = nav.offset().top;

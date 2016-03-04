@@ -2,6 +2,10 @@
 	transform: scaleX(-1);
 }
 
+.slick{
+	overflow: hidden;
+}
+
 .nav-link{
 	$trans: 0.25s cubic-bezier(0, 0.04, 0, 0.96);
 	background: $black;
