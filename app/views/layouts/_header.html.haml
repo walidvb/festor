@@ -5,7 +5,7 @@
 				= render 'layouts/logo'
 		.logo.not-link-logo= render 'layouts/logo'
 		.motto
-			= t("shared.motto").html_safe
+			.statment= t("shared.motto").html_safe
 			.festival-date
 				#{l(Date.parse("28 april"), format: "%e.%-m")} – #{l(Date.parse("8 may"), format: "%e.%-m.%y")}
 			.festival-place #{ t("shared.geneva")}

@@ -1,4 +1,4 @@
-$header-height-mobile: 110px;
+$header-height-mobile: 140px;
 @media #{$mobile}{
 	.link-logo{
 		display: none;
@@ -22,13 +22,15 @@ $header-height-mobile: 110px;
 			flex: 1 0 100%;
 			@include lineJump(0.5);
 			margin-bottom: 1rem;
+			display: flex;
+			flex-direction: column;
+		}
+		.statement{
+			order: 4;
 		}
 		.logo{
 			@include lineJump(0.5);
 			flex: 1 0 100%;
-		}
-		.festival-date, .festival-place{
-			display: inline-block;
 		}
 	}
 	header.container{
