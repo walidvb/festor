@@ -14,10 +14,10 @@ $(document).on('turbolinks:load', function(){
 
   $('.slick').slick({
     autoplay: true,
-    autoplaySpeed: 3000,
+    autoplaySpeed: 5000,
     arrows: false,
-    cssease: 'ease-out',
-    fade: false,
+    cssease: 'cubic-bezier(0, 1.54, 0, 1.16)',
+    fade: true,
   });
   $('.colorbox').colorbox({
     iframe: true,

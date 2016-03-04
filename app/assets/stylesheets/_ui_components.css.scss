@@ -173,6 +173,9 @@ $form-font-size: 16px;
 }
 
 //Colorbox
+.colorbox:focus{
+	outline: none;
+}
 #cboxBottomLeft, #cboxBottomCenter, #cboxBottomRight, #cboxTopLeft, #cboxTopCenter, #cboxTopRight, #cboxMiddleRight, #cboxMiddleLeft, #cboxClose{
 	background: none!important;
 }
