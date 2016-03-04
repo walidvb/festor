@@ -6,8 +6,8 @@ class Location < ActiveRecord::Base
 
 	rails_admin do
 		configure :translations, :globalize_tabs
-		[:artists, :events, :bookings, :slug].each do |ffield|
-			configure ffield do
+		[:artists, :events, :bookings, :slug].each do |field_|
+			configure field_ do
 				hide
 			end
 		end

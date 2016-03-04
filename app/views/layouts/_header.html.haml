@@ -1,12 +1,17 @@
-.col-xs-5.col-md-2.header-left
-	.link-logo.logo
-		=link_to root_path do
-			= render 'layouts/logo'
-	.logo.not-link-logo= render 'layouts/logo'
-	.motto
-		= t("shared.motto").html_safe
-		.festival-date
-			#{l(Date.parse("28 april"), format: "%e.%-m")} – #{l(Date.parse("8 may"), format: "%e.%-m.%y")}
-		.festival-place #{ t("shared.geneva")}
-.header-right.col-xs-5.col-md-3
-	= render 'layouts/navigation'
+%nav.row.body-header
+	.col-xs-5.col-md-2.header-left
+		.link-logo.logo
+			=link_to root_path do
+				= render 'layouts/logo'
+		.logo.not-link-logo= render 'layouts/logo'
+		.motto
+			= t("shared.motto").html_safe
+			.festival-date
+				#{l(Date.parse("28 april"), format: "%e.%-m")} – #{l(Date.parse("8 may"), format: "%e.%-m.%y")}
+			.festival-place #{ t("shared.geneva")}
+	.header-right.col-xs-5.col-md-3
+		= render 'layouts/navigation'
+.row{"data-turbolinks-permanent" => true}
+	.col-xs-12.col-sm-5.col-md-3.pull-right
+		- @news.each do |news|
+			= link_to news.message, news.link

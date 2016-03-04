@@ -1,9 +1,9 @@
 class ApplicationController < ActionController::Base
   before_filter :set_locale
   after_filter :remove_landing
-  before_filter :set_first_visit
-  def set_first_visit
-    @is_not_first_visit = session[:is_not_first_visit]
+  before_filter :load_news
+  def load_news
+    @news = News.all.order('created_at DESC').last(3)
   end
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
