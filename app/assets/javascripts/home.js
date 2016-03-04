@@ -11,6 +11,7 @@ $(document).on('turbolinks:load', function(){
 	else{
 		$('body').addClass('no-touch');
 	}
+  $('html:not(.imready) header').addClass('open');
 
   $('.slick').slick({
     autoplay: true,
