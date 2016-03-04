@@ -207,7 +207,9 @@ $header-padding-vert: 40px;
 .news-banner{
 	@media #{$sm}{
 		border-top: solid 1px black;
-		border-bottom: solid 1px black;
+		&.slick{
+			border-bottom: solid 1px black;
+		}
 		margin-top: 1rem;
 		position: relative;
 		right: 1rem;
@@ -216,8 +218,8 @@ $header-padding-vert: 40px;
 	}
 	@media #{$md}{
 		margin-top: 0;
-		right: 2rem;
-		width: calc(60% - 3rem);
+		right: 0rem;
+		width: calc(60% - 1rem);
 	}
 	.news{
 		@include lineJump(1);

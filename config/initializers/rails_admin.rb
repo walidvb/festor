@@ -87,7 +87,7 @@ RailsAdmin.config do |config|
     end
     include_fields :locale, *News.translated_attribute_names
   end
-  
+
   config.model 'Booking' do
     configure :location do
       visible false
