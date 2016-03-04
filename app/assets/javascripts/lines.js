@@ -27,7 +27,13 @@ var sketchProc = (function($p) {
     }
     $p.setup = setup;
     setup = setup.bind($p);
-    var speed = window.hasOwnProperty('ontouchstart') ? 0.03 : 0.1;
+    var getSpeed = function(){
+      var sp = window.hasOwnProperty('ontouchstart') ? 0.15 : 0.35;
+      console.log('sp: ', sp);
+      return 1;
+      return sp;
+    };
+    var speed = getSpeed();
     var xDir = 1;
     var yDir = 1;
     function draw() {
@@ -39,10 +45,10 @@ var sketchProc = (function($p) {
         var i = 1;
         for (; i < max_points - 1; i++) {
             $p.randomSeed($p.millis() * 111);
-            coord_y[i] = (coord_y[i] + yDir*(i / 12.0 + speed)) % render_height;            $p.randomSeed($p.millis() * 57);
-            coord_x[i] = (coord_x[i] + xDir*(i / 10.0 + speed)) % render_width;
+            coord_y[i] = (coord_y[i] + yDir*(i / 12.0 * speed)) % render_height;            $p.randomSeed($p.millis() * 57);
+            coord_x[i] = (coord_x[i] + xDir*(i / 10.0 * speed)) % render_width;
         }
-        coord_x[i] = (coord_x[i] + xDir*(i / 10.0 + speed)) % render_width;
+        coord_x[i] = (coord_x[i] + xDir*(i / 10.0 * speed)) % render_width;
     }
     $p.draw = draw;
     draw = draw.bind($p);
@@ -51,10 +57,10 @@ var sketchProc = (function($p) {
     $(document).on('turbolinks:click', function(e){
       yDir *= -1;
       xDir *= -1;
-      speed = 0.2;
+      speed = getSpeed()*2;
       $('html').addClass('transitionning');
     }).on('turbolinks:load', function(e){
-      speed = 0.1;
+      speed = getSpeed();
       if(!firstLoad){
         $('html').addClass('imready');
         $('body').addClass('content-ready');
