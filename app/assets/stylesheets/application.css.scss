@@ -283,7 +283,7 @@ main{
 		opacity: 1;
 	}
 	.no-touch{
-		header *, header:after, p, h1, h2, h3, h4, h5, label, label:before, #cat-filters{
+		header *, header:after, p, h1, h2, h3, h4, h5, label, label:before, #filters, .news{
 			color: white!important;
 			mix-blend-mode: difference;
 			border-color: white!important;
