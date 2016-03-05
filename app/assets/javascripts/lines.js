@@ -28,9 +28,7 @@ var sketchProc = (function($p) {
     $p.setup = setup;
     setup = setup.bind($p);
     var getSpeed = function(){
-      var sp = window.hasOwnProperty('ontouchstart') ? 0.15 : 0.35;
-      console.log('sp: ', sp);
-      return 1;
+      var sp = window.hasOwnProperty('ontouchstart') ? 0.15 : 0.55;
       return sp;
     };
     var speed = getSpeed();
