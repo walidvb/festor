@@ -21,7 +21,7 @@ $header-height-mobile: 140px;
 			font-size: 1.1em;
 			flex: 1 0 100%;
 			@include lineJump(0.5);
-			margin-bottom: 1rem;
+			margin-bottom: 0;
 			display: flex;
 			flex-direction: column;
 		}
@@ -33,25 +33,41 @@ $header-height-mobile: 140px;
 			flex: 1 0 100%;
 		}
 	}
+
+	.body-header{
+		margin-top: 0;
+	}
 	header.container{
+		background: $black;
+		color: $white;
+		a{
+			color: white;
+		}
 		position: fixed;
-		bottom: 0;
-		transform: translateY(calc(100% - #{$header-height-mobile}));
+		bottom: 0px;
+		padding-bottom: 5px;
 		transition: all 0.25s ease-out;
 		width: 100%;
-		&.open{
-			transform: translateY(0);
-			transition: all 0.4s ease-out;
-			animation: none;
-		}
 		z-index: 1000;
+		.header-right{
+			max-height: 0px;
+			min-height: 0px;
+			transition: max-height .5s .5s ease-out;
+			overflow: hidden;
+		}
+		&.open {
+			.header-right{
+				transition-delay: 0s;
+				max-height: 300px;
+			}
+		}
 		.nav-link{
 			line-height: 1.8em;
 			font-size: 0.8em;
 		}
-		.imready.first-load &:not(.open){
-			animation: bounce 1s 1s 1;
-		}
+	}
+	.desktop-nav{
+		@include lineJump(1);
 	}
 	.social li{
 		display: inline-block;
@@ -60,27 +76,6 @@ $header-height-mobile: 140px;
 	body{
 		padding-bottom: $header-height-mobile + 20px;
 	}
-}
-
-@keyframes bounce {
-  from, 20%, 53%, 80%, to {
-    animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
-    transform: translateY(calc(100% - #{$header-height-mobile}));
-  }
-
-  40%, 43% {
-    animation-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
-    transform: translateY(calc(100% - #{$header-height-mobile} - 30px));
-  }
-
-  70% {
-    animation-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
-    transform: translateY(calc(100% - #{$header-height-mobile} - 15px));
-  }
-
-  90% {
-    transform: translateY(calc(100% - #{$header-height-mobile} - 4px));
-  }
 }
 
 @media #{$tablet}{
@@ -98,14 +93,9 @@ $header-height-mobile: 140px;
 $header-height-sm: 250px;
 $header-padding-vert: 40px;
 
-.body-header{
-	@include lineJump(3);
-	background: $black;
-	color: $white;
-	a{
-		color: white;
-	}
-	@media #{$tablet}{
+@media #{$tablet}{
+	.body-header{
+		@include lineJump(3);
 		background: transparent;
 		color: $black;
 		a{
