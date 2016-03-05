@@ -1,5 +1,5 @@
 
-$(document).on('touchstart mousedown', '.header-left', function(e){
+$(document).on('touchend mouseup', '.header-left', function(e){
 	var header = $('header');
 	//if($(e.target).hasClass('.header-left') || $(e.target).parents('.header-left').length){
 			if(window.innerWidth < 767){
@@ -11,7 +11,7 @@ $(document).on('touchstart mousedown', '.header-left', function(e){
 	//else{
 	//	header.removeClass('open');
 	//}
-}).on('touchstart mousedown', 'main', hideHeader)
+}).on('touchend mouseup', 'main', hideHeader)
 .on('turbolinks:click turbolinks:visit', hideHeader);
 function hideHeader(e){
 	header.toggleClass('open');
