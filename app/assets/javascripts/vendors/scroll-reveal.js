@@ -55,11 +55,11 @@
       });
     }, 10, false);
 
-    if(window.hasOwnProperty('ontouchstart'))
+    //remove as not working.....
+    if(false && window.hasOwnProperty('ontouchstart'))
     {
       $(that).css('overflow-y', 'hidden');
       $(that).mCustomScrollbar(options.mCustomScrollbar);
-
     }
     else{
       getTop = function(){
