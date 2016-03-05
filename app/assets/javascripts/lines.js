@@ -61,9 +61,13 @@ var sketchProc = (function($p) {
       xDir *= -1;
       speed = getSpeed()*2;
       $('html').addClass('transitionning');
+      if(!isPlaying){
+        $p.loop();
+      }
     }).on('turbolinks:load', function(e){
       if(!isPlaying){
         random_coords();
+        $p.noLoop();
         draw();
       }
       speed = getSpeed();
