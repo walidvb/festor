@@ -160,6 +160,9 @@ $header-padding-vert: 40px;
 	}
 	.social .fa-icon{
 		color: transparent;
+		.transitionning &{
+			color: transparent!important;
+		}
 	}
 	.social .nav-link, .nav-link#newsletter{
 		&:hover{
