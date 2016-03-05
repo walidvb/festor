@@ -21,12 +21,13 @@
 			.fa.fa-icon.fa-facebook
 %ul.locales
 	- if I18n.locale == :fr
-		%li.nav-link.locale
+		%li.locale
 			#{link_to("EN", url_for(locale: :en), class: "en nav-link")}
-			= "/ FR"
+			%span.current-locale= "/ FR"
 	- else
-		%li.nav-link.locale
-			EN /
+		%li.locale
+			%span.current-locale EN
+			= "/"
 			#{link_to("FR", url_for(locale: :fr), class: "fr nav-link")}
 	%li.nav-link= link_to t('nav.volunteers'), volunteers_path
 	%li.nav-link#newsletter

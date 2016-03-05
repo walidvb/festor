@@ -139,9 +139,19 @@ $('document').ready(function(){
       processingInstance.random_coords();
     });
     $('.login-form').one('click touchdown', enterSite);
-    setTimeout(enterSite, 3000);
+    var autoLogin = setTimeout(function(){
+      $('#canvas').animate({
+        opacity: 0.1,
+      }, 1000, function(){
+        enterSite();
+        setTimeout(function(){$('#canvas').css('opacity', '')}, 1000);
+      });
+    }, 2000);
+
     function enterSite(){
+      clearTimeout(autoLogin);
       $('html').addClass('imready');
+      setTimeout(function(){$('html').removeClass('transitionning');}, 200);
       setTimeout(function(){$('html').removeClass('first-load');}, 5000);
     }
     $(window).on('resize', function(){

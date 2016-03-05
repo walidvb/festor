@@ -77,7 +77,9 @@ $header-height-mobile: 140px;
 		padding-bottom: $header-height-mobile + 20px;
 	}
 }
-
+.current-locale{
+	font-weight: bold;
+}
 @media #{$tablet}{
 	.not-link-logo{
 		display: none!important;
@@ -151,7 +153,6 @@ $header-padding-vert: 40px;
 	.social, .locales{
 		flex: 1 0 25%;
 		li{
-			cursor: pointer;
 			@media #{$tablet}{
 				width: 100%;
 			}
