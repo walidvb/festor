@@ -52,7 +52,11 @@ var sketchProc = (function($p) {
     }
     $p.draw = draw;
     draw = draw.bind($p);
-
+    var isPlaying = true;
+    if(iOSVersion() > 0 && iOSVersion() < 9){
+      isPlaying = false;
+      $p.noLoop();
+    }
     var firstLoad = true;
     $(document).on('turbolinks:click', function(e){
       yDir *= -1;
@@ -60,6 +64,10 @@ var sketchProc = (function($p) {
       speed = getSpeed()*2;
       $('html').addClass('transitionning');
     }).on('turbolinks:load', function(e){
+      if(!isPlaying){
+        random_coords();
+        draw();
+      }
       speed = getSpeed();
       if(!firstLoad){
         $('html').addClass('imready');
@@ -113,7 +121,7 @@ var sketchProc = (function($p) {
       setup();
     }
 });
-window.processingInstanc
+
 $('document').ready(function(){
   var canvas = document.getElementById("canvas");
   if(canvas){
