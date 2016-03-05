@@ -3,6 +3,9 @@
 }
 
 .wrapper.col-sm-2 {
+	@media #{$tablet}{
+		margin-bottom: 2rem;
+	}
 	&.left{
 		img.fr-fil.fr-dib{
 			float:right!important;
