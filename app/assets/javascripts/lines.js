@@ -128,10 +128,12 @@ $('document').ready(function(){
     $(document).on('keypress', function(e){
       processingInstance.random_coords();
     });
-    $('.login-form').one('click touchdown', function(){
+    $('.login-form').one('click touchdown', enterSite);
+    setTimeout(enterSite, 3000);
+    function enterSite(){
       $('html').addClass('imready');
       setTimeout(function(){$('html').removeClass('first-load');}, 5000);
-    })
+    }
     $(window).on('resize', function(){
       processingInstance.resize(canvas.offsetWidth, canvas.offsetHeight);
     });
