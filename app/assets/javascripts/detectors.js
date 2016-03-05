@@ -7,3 +7,7 @@ function iOSVersion() {
   }
   else return -1;
 }
+
+function disableLines(){
+  return (iOSVersion() > 0 && iOSVersion() < 9);
+}

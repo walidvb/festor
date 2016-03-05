@@ -51,7 +51,7 @@ var sketchProc = (function($p) {
     $p.draw = draw;
     draw = draw.bind($p);
     var isPlaying = true;
-    if(iOSVersion() > 0 && iOSVersion() < 9){
+    if(disableLines()){
       isPlaying = false;
       $p.noLoop();
     }
