@@ -33,10 +33,10 @@ class EventsController < ApplicationController
 		@event = Event.includes(:artists, :location, :event_dates).friendly.find(params[:id])
 		@category = @event.category
 		@dates = @event.event_dates
-		@artists = @event.artists
-		@musicians = @event.musicians
-		@vjs = @event.vjs
-		@instructors = @event.instructors
+		@artists = @event.artists.public
+		@musicians = @event.musicians.public
+		@vjs = @event.vjs.public
+		@instructors = @event.instructors.public
 		@location = @event.location
 		@links = @event.links
 		@assets = @event.assets
