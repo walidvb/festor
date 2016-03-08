@@ -154,6 +154,7 @@ h1{
 	iframe{
 		@extend .col-xs-5;
 		@extend .col-sm-3;
+		padding-bottom: 2rem;
 	}
 	h3{
 		clear: left;
@@ -197,7 +198,6 @@ h1{
 		@media #{$mobile}{
 			padding-left: 0;
 			padding-right: 0;
-			padding-bottom: 2rem;
 		}
 	}
 }
