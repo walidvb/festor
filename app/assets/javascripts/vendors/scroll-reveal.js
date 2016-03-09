@@ -5,7 +5,7 @@
     var offsetTop, getTop;
 
     var options = $.extend({
-      maxDistanceToCenter: window.innerHeight*0.3,
+      maxDistanceToCenter: window.innerHeight*0.2,
       itemSelector: '.grid-item',
       activeClass: 'sr-active',
       touchOnly: true,
@@ -49,7 +49,7 @@
             $this.addClass('sr-bottom');
           }
         }
-        var thresholdFromCenter = ($this.height() / 2) * 0.45;
+        var thresholdFromCenter = options.maxDistanceToCenter;
         Math.abs(distCenter) <= thresholdFromCenter ? addActive() :
         addTopOrBottom(distCenter > 0);
       });

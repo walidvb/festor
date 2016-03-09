@@ -93,7 +93,9 @@
 		@include infoOff();
 	}
 	.no-touch &.sr-middle:hover{
-		@include infoOff();
+		.image{
+			opacity: 0;
+		}
 	}
 	.no-touch &:hover, &.sr-middle{
 		@include infoOn();
