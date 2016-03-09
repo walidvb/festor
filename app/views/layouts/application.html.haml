@@ -19,13 +19,7 @@
 		= csrf_meta_tags
 
 	%body{class: ["#{controller.controller_name}-page", "#{controller.action_name}-page", "#{'debug' if Rails.env.development?}", "#{current_user.nil? ? nil : 'admin'}", content_for(:body_class)].join(' ')}
-		- if true || Rails.env.production?
-			%canvas#canvas{"data-turbolinks-permanent" => true}
-		- else
-			.rulers.container
-				.row
-					- 5.times do |i|
-						.column.col-xs-1
+		%canvas#canvas{"data-turbolinks-permanent" => true}
 		.login-form
 		#the-content
 			%header.container

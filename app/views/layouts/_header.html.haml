@@ -16,5 +16,5 @@
 .row{"data-turbolinks-permanent" => true}
 	.col-xs-5.col-md-3.pull-right.news-banner{class: @news.empty? ? nil : "slick"}
 		- @news.each do |news|
-			%marquee.news{scrolldelay: 1000, scrollamount: 30}
-				= link_to news.message, news.link, class: news.colorbox? ? 'colorbox' : nil
+			%marquee.news{scrolldelay: 500, scrollamount: 50}
+				= link_to news.message, news.link+"?locale=#{I18n.locale}", class: news.colorbox? ? 'colorbox' : nil

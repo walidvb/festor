@@ -18,7 +18,7 @@ var sketchProc = (function($p) {
 
     var record = false;
     function setup() {
-        $p.frameRate(60);
+        $p.frameRate(30);
         $p.size(render_width, render_height);
         $p.strokeJoin($p.MITER);
         $p.strokeCap($p.SQUARE);
