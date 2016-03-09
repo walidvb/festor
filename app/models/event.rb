@@ -5,7 +5,7 @@ class Event < ActiveRecord::Base
 	translates :title, :description, :participants, :languages, :requirements, :material, :notes
 	extend FriendlyId
   friendly_id :title, :use => [:globalize, :slugged]
-
+	default_scope { includes(:translations) }
 	def is_workshop?
 		Event.workshop_cats.include?(category.to_sym)
 	end

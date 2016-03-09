@@ -6,6 +6,7 @@ Festor::Application.routes.draw do
 		post "beta" => "beta#create"
 		devise_for :users, skip: :registrations
 		get "home" => 'home#index'
+		get "program" => 'events#program'
 		#get "events/:id" => "events#show", as: :event
 		resources :events, controller: "events", only: [:show, :index], category: :all, as: :events
 		resources :workshops, controller: "events", only: [:show, :index], category: :workshop
@@ -24,7 +25,7 @@ Festor::Application.routes.draw do
 		resources :static_pages, only: [:show]
 		resources :news, controller: 'static_pages', only: [:index, :show]
 
-		root "events#index", category: :workshop
+		root "events#program"
 		get "/gallery" => 'static#gallery', as: :gallery
 		get "/about" => 'static#about', as: :about
 		get "/volunteers" => 'static#volunteers', as: :volunteers

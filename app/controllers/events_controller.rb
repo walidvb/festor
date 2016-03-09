@@ -1,6 +1,20 @@
 class EventsController < ApplicationController
 	before_filter :get_category, only: [:index]
 	before_filter :require_admin!, only: [:sortable_index, :sort_update]
+
+	def program
+		@filters = Event.category_enum
+		@days = EventDate.where.not(dateable_type: %w{Workshop Exhibition}).order('start ASC').includes(:dateable, :artists, :locations)
+		@event_dates = {}
+		@days.each do |ed|
+			@event_dates[ed.dateable_id] = ed
+		end
+		@days = @days.group_by do |ed|
+				ed.start.to_date
+		end
+		render 'program'
+	end
+
 	def index
 		if @category != :workshop && !user_signed_in?
 			render 'static/coming_soon'
@@ -8,14 +22,8 @@ class EventsController < ApplicationController
 		end
 		@events = Event.order("position ASC").includes(:artists, :location).send(@category.to_sym)
 		@events = @events.public unless user_signed_in?
-		if @category == :all
-			@dates = EventDate.all.to_a.uniq{|d| p d.start.strftime("%e-%b-%y"); d.start.strftime("%e-%b-%y")}.map(&:start)
-			@filters = Event.category_enum
-			render 'index_single_events'
-		else
-			@filters = @category == :workshop ? [:workshop, :conference, :masterclass] : []
-			render 'index'
-		end
+		@filters = @category == :workshop ? [:workshop, :conference, :masterclass] : []
+		render 'index'
 	end
 
 	def sortable_index

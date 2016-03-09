@@ -25,6 +25,7 @@
 //= require chosen-jquery
 //= require rails_admin_sortable.js
 //= require colorbox/jquery.colorbox-min.js
+//= require underscore/underscore-min.js
 //= require logo
 //= require locations
 //= require_tree .

@@ -4,7 +4,7 @@
  *= require chosen
  * require froala/css/froala_style.min.css
  * require froala/css/froala_content.min.css
- *= require colorbox/colorbox.css
+ *= require colorbox/example1/colorbox.css
  *= require vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css
  */
 @import "variables";
@@ -24,6 +24,7 @@
 @import "locations";
 @import "landing";
 @import "about";
+@import "program";
 
 html{
 	font-size: $base-font-size;
