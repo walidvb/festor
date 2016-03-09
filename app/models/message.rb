@@ -1,4 +1,4 @@
-class News < ActiveRecord::Base
+class Message < ActiveRecord::Base
   translates :message
   accepts_nested_attributes_for :translations, allow_destroy: true
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160304012741) do
+ActiveRecord::Schema.define(version: 20160309182033) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -165,23 +165,23 @@ ActiveRecord::Schema.define(version: 20160304012741) do
 
   add_index "locations", ["slug"], name: "index_locations_on_slug", using: :btree
 
-  create_table "news", force: true do |t|
-    t.string   "link"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.boolean  "colorbox",   default: false
-  end
-
-  create_table "news_translations", force: true do |t|
-    t.integer  "news_id",    null: false
+  create_table "message_translations", force: true do |t|
+    t.integer  "message_id", null: false
     t.string   "locale",     null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "message"
   end
 
-  add_index "news_translations", ["locale"], name: "index_news_translations_on_locale", using: :btree
-  add_index "news_translations", ["news_id"], name: "index_news_translations_on_news_id", using: :btree
+  add_index "message_translations", ["locale"], name: "index_message_translations_on_locale", using: :btree
+  add_index "message_translations", ["message_id"], name: "index_message_translations_on_message_id", using: :btree
+
+  create_table "messages", force: true do |t|
+    t.string   "link"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "colorbox",   default: false
+  end
 
   create_table "partners", force: true do |t|
     t.string   "name"

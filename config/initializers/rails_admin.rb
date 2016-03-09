@@ -46,7 +46,7 @@ RailsAdmin.config do |config|
   end
 
   ## == Globalize ==
-  config.included_models = ['Artist', 'Artist::Translation', 'Event', 'Event::Translation', 'Link', 'Location', 'Location::Translation', 'User', 'Booking', 'EventDate', 'Partner', 'Setting', 'Setting::Translation', 'PreviousEdition', 'News', 'News:Translation']
+  config.included_models = ['Artist', 'Artist::Translation', 'Event', 'Event::Translation', 'Link', 'Location', 'Location::Translation', 'User', 'Booking', 'EventDate', 'Partner', 'Setting', 'Setting::Translation', 'PreviousEdition', 'Message', 'Message::Translation']
 
   config.model 'Artist::Translation' do
     visible false
@@ -80,12 +80,12 @@ RailsAdmin.config do |config|
     include_fields :locale, *Location.translated_attribute_names
   end
 
-  config.model 'News::Translation' do
+  config.model 'Message::Translation' do
     visible false
     configure :locale, :hidden do
       help ''
     end
-    include_fields :locale, *News.translated_attribute_names
+    include_fields :locale, *Message.translated_attribute_names
   end
 
   config.model 'Booking' do

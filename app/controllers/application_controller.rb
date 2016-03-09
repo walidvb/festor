@@ -1,9 +1,9 @@
 class ApplicationController < ActionController::Base
   before_filter :set_locale
   after_filter :remove_landing
-  before_filter :load_news
-  def load_news
-    @news = News.all.order('created_at DESC').first(3)
+  before_filter :load_message
+  def load_message
+    @message = Message.all.order('created_at DESC').first(3)
   end
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
