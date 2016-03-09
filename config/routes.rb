@@ -4,7 +4,7 @@ Festor::Application.routes.draw do
 	match "/upload" => "assets#upload", via: :post
 	scope "(:locale)", locale: /en|fr/, defaults: {locale: 'en'} do
 		post "beta" => "beta#create"
-		devise_for :users
+		devise_for :users, skip: :registrations
 		get "home" => 'home#index'
 		#get "events/:id" => "events#show", as: :event
 		resources :events, controller: "events", only: [:show, :index], category: :all, as: :events
