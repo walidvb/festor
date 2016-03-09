@@ -76,6 +76,62 @@ $header-height-mobile: 140px;
 	body{
 		padding-bottom: $header-height-mobile + 20px;
 	}
+
+	.hamburger {
+	  display: flex;
+	  align-items: center;
+	  width: 100px;
+	  height: 100px;
+	  margin: 0 auto;
+	  position: absolute;
+	  top: 0px;
+		right: 0px;
+	}
+
+	.bars,
+	.bars:before,
+	.bars:after {
+	  position: relative;
+	  width: 50px;
+	  height: 6px;
+	  margin: 0 auto;
+	  background: #ffffff;
+	  border-radius: 0px;
+	  transition: top .2s .2s, transform .2s;
+	}
+
+	.bars:before,
+	.bars:after {
+	  content: "";
+	  display: block;
+	  position: absolute;
+	}
+
+	.bars:before {
+	  top: -15px;
+	}
+
+	.bars:after {
+	  top: 15px;
+	}
+
+	.open .bars:before,
+	.open .bars:after {
+	  transition: top .2s, transform .2s .2s;
+	  top: 0;
+	}
+
+	.open .bars {
+	  background: transparent;
+	}
+
+	.open .bars:before {
+	  transform: rotate(45deg);
+	}
+
+	.open .bars:after {
+	  transform: rotate(-45deg);
+	}
 }
 .current-locale{
 	font-weight: bold;

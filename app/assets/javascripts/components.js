@@ -1,11 +1,11 @@
 
-	$(document).on('touchend mouseup', '.header-left', function(e){
+	$(document).on('click', '.header-left', function(e){
 		var header = $('header');
 		if(window.innerWidth < 767){
 			header = $('header');
 			header.toggleClass('open');
 		}
-	}).on('touchend mouseup', 'main', hideHeader)
+	}).on('click', 'main', hideHeader)
 	.on('turbolinks:click turbolinks:visit', hideHeader);
 function hideHeader(e){
 	$('header').removeClass('open');
