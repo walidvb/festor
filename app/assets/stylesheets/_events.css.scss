@@ -285,8 +285,8 @@ h1{
 		font-weight: bold;
 	}
 	.right-info{
-		max-width: 65%;
 		@media #{$tablet}{
+			max-width: 65%;
 			padding-left: 1rem;
 		}
 		p{
