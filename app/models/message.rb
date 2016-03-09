@@ -1,5 +1,5 @@
 class Message < ActiveRecord::Base
-  translates :message
+  translates :message, :link
   accepts_nested_attributes_for :translations, allow_destroy: true
 
   rails_admin do
