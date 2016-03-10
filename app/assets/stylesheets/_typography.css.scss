@@ -116,7 +116,7 @@
 	padding-bottom : $lineheight-base * 2;
 }
 
-.grid{
+.grid, .grid-legend{
 		@include lineJump (3.5);
 }
 

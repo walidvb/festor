@@ -35,8 +35,11 @@ $(document).on('turbolinks:load', function() {
 				columnWidth: '.grid-sizer',
 				percentPosition: true
 			}
+		}).on('arrangeComplete', function(){
+			initProgram();
+			console.log('arrangeComplete');
 		});
-
+		console.log('here');
 		var filterInputs = $('.cat-filters input');
 		filterInputs.change(updateList);
 		$(document).on('filter-events', updateList);

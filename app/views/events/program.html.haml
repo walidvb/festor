@@ -1,18 +1,19 @@
 = render 'layouts/filters'
+- date_format = "%m-%d"
 .row#program
-	.col-xs-1.timeline
+	.col-xs-1.timeline.grid-legend
 		- @days.each do |day, events|
-			- in_s = day.strftime("%A-%e-%B")
-			.day{id: in_s, class: in_s}= day.strftime("%A %e %B")
+			- in_s = day.strftime(date_format)
+			.day{data: {date:in_s}, class: in_s}= day.strftime("%A %e %B")
 	.col-xs-4
-		.grid.events-list
+		#program.grid.events-list
 			.grid-sizer.grid-item
 			- @days.each do |day, events|
 				- events.map(&:dateable).each do |event|
 					- classes = [event.featured? ? "grid-item--width2" : nil]
 					- classes.push(event.location.try(:slug))
 					- classes.push(event.category)
-					- classes.push(day.strftime("%A-%e-%B"))
+					- classes.push(day.strftime(date_format))
 					.grid-item{class: classes.join(' '), data: {position: event.position, id: event.id, img: event.main_image.url(event.featured? ? :large : :tile)}, style: "background-image:url(#{event.main_image.url(event.featured? ? :large_blurred : :tile_blurred)})"}
 						- artists = event.artists
 						= image_tag event.main_image.url(event.featured? ? :large_blurred : :tile_blurred), class: 'image'
