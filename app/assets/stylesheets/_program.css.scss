@@ -8,6 +8,9 @@
     &.active{
       max-height: initial;
     }
+    @media #{$tablet}{
+      max-height: initial;
+    }
   }
   .day{
     width: 100%;
@@ -53,9 +56,16 @@
     padding: 0;
     overflow: hidden;
     display: none;
+    @media #{$tablet}{
+      display: initial;
+      max-height: initial;
+    }
   }
   #dates{
     display: none;
+    @media #{$tablet}{
+      display: initial
+    }
   }
   #dates-dropdown-trigger{
     width: 100%;
