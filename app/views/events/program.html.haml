@@ -4,13 +4,17 @@
 .page-title
 	%h1.index-title= t('nav.program')
 = render 'layouts/filters'
-- date_format = "%m-%d"
+- date_format = "%m-%d-%y"
 .row#program
-	.col-xs-5.col-sm-1
-		- @days.each do |day, event_dates|
-			- in_s = day.strftime(date_format)
-			.day{data: {date:in_s}, class: in_s}
-				%h2= day.strftime("%A %e %B")
+	.col-xs-5.col-sm-1.dates
+		%input#dates{type: :checkbox, name: 'dates'}
+		%label#date-dropdown-trigger{for: 'dates'}
+			%h2 Dates
+		%ul.dates-list
+			- @days.each do |day, event_dates|
+				- in_s = day.strftime(date_format)
+				%li.location-link.day{data: {date:in_s}, class: in_s}
+					%h2= day.strftime("%A %e %B")
 	.col-xs-5.col-sm-4
 		- @days.each do |day, event_dates|
 			- in_s = day.strftime(date_format)

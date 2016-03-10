@@ -9,7 +9,37 @@ $(document).on('turbolinks:load', function(){
       var days = _.map(dayElems, function(elem){
         return $(elem).data('date');
       });
+      var closestDateIndex = getClosestDate(days);
+      function getClosestDate(days){
+        var today = new Date();
+        var candidate;
+        for(var i = 0; i < days.length; i++){
+          var d = days[i];
+          var that = new Date(d);
+          candidate = that;
+          if(candidate >= today){
+            return i;
+          }
+        }
+      };
+      showDate(closestDateIndex);
+      function showDate(i){
+        $(dayElems).removeClass('active');
+        $(dayElems[i]).addClass('active');
+        $('#dates').prop('checked', false);
+        $('#program .events-list').removeClass('active');
+        $('#program .events-list#events-for-'+days[i]).addClass('active');
+      }
+      function bindClick(i){
+        var $this = $(dayElems[i]);
+        $this.on('click', function(){
+          showDate(i);
+        });
+      };
+
+      // placements
       for(var i = 0; i < dayElems.length; i++){
+        bindClick(i);
         placeDate(i);
         bindHoverDate(i);
       };

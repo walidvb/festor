@@ -34,12 +34,13 @@
 		flex: 0 1 25%;
 		@include lineJump(1);
 	}
-	.location-link{
-		border-bottom: solid 1px transparent;
-		&:hover, &.active{
-			border-bottom: solid 1px $black;
-			font-weight: bold;
-		}
+}
+
+.location-link{
+	border-bottom: solid 1px transparent;
+	&:hover, &.active{
+		border-bottom: solid 1px $black;
+		font-weight: bold;
 	}
 }
 

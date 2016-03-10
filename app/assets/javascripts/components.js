@@ -35,7 +35,7 @@ $(document).on('turbolinks:load', function() {
 				columnWidth: '.grid-sizer',
 				percentPosition: true
 			}
-		});
+		})
 
 		var filterInputs = $('.cat-filters input');
 		filterInputs.change(updateList);

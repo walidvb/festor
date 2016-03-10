@@ -1,11 +1,16 @@
 #program{
   overflow: hidden;
+  .events-list{
+    transition: all 0.5s ease-out;
+    overflow: hidden;
+    margin-top: 0;
+    max-height: 0;
+    &.active{
+      max-height: initial;
+    }
+  }
   .day{
     width: 100%;
-    border-bottom: black 1px solid;
-    min-height: 20px;
-    margin-bottom: 1rem;
-    padding: 0 $margin-vertical-normal;
     &:hover, &.focused{
       font-weight: bold;
     }
@@ -32,5 +37,30 @@
       left: 14px;
       transition: top 0.3s ease-out;
     }
+  }
+
+
+}
+
+.dates {
+  margin-bottom: 2rem;
+  .dates-list{
+    margin-top: -2rem;
+  }
+  .day:not(.active){
+    max-height: 0px;
+    margin-top: 0;
+    padding: 0;
+    overflow: hidden;
+    display: none;
+  }
+  #dates{
+    display: none;
+  }
+  #dates-dropdown-trigger{
+    width: 100%;
+  }
+  #dates:checked ~ ul .day{
+    max-height: 1000px;
   }
 }
