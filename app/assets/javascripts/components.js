@@ -1,10 +1,11 @@
 
-	$(document).on('click', '.header-left', function(e){
-		var header = $('header');
-		header = $('header');
-		header.toggleClass('open');
-	}).on('click', 'main', hideHeader)
-	.on('turbolinks:click turbolinks:visit', hideHeader);
+$(document).on('click', '.header-left', function(e){
+	var header = $('header');
+	header = $('header');
+	header.toggleClass('open');
+	console.log('toggling menu');
+}).on('click', 'main', hideHeader)
+.on('turbolinks:click turbolinks:visit', hideHeader);
 function hideHeader(e){
 	$('header').removeClass('open');
 }
