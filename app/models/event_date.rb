@@ -3,7 +3,10 @@ class EventDate < ActiveRecord::Base
   has_many :artists, through: :dateable
   has_many :locations, through: :dateable
   validates_presence_of :dateable, :start
-
+  before_save :set_event_date_type
+	def set_event_date_type
+		self.dateable_type = dateable.sup_category
+	end
   default_scope { order('start') }
 
 

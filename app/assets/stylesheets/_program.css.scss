@@ -4,11 +4,13 @@
     width: 100%;
     border-bottom: black 1px solid;
     min-height: 20px;
-    @include lineJump(2);
     margin-bottom: 1rem;
     padding: 0 $margin-vertical-normal;
     &:hover, &.focused{
       font-weight: bold;
+    }
+    h2{
+      @include lineJump(2);
     }
   }
   @media #{$mobile}{

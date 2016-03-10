@@ -4,7 +4,8 @@ class EventsController < ApplicationController
 
 	def program
 		@filters = Event.category_enum
-		@days = EventDate.where.not(dateable_type: %w{Workshop Exhibition}).order('start ASC').includes(:dateable, :artists, :locations)
+		@days = EventDate.where(dateable_type: :event).order('start ASC').includes(:dateable, :artists, :locations)
+		# filter out repeated booking
 		@event_dates = {}
 		@days.each do |ed|
 			@event_dates[ed.dateable_id] = ed

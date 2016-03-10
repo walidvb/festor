@@ -23,10 +23,10 @@ $(document).on('turbolinks:load', function(){
           $this.fadeOut();
         }
         else{
-          var offset = parseInt(firstVisibleEvent.css('top'));
+          var offset = parseInt(firstVisibleEvent.css('top') + firstVisibleEvent.css('margin-top'));
           $this.fadeIn();
           $this.css({top: offset >= minOffset ? offset : minOffset})
-          minOffset = offset + $this.find('h2').outerHeight();
+          minOffset = offset + $this.find('h2').outerHeight(true);
         }
       };
 

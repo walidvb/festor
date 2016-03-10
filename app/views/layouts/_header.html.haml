@@ -13,8 +13,8 @@
 			.bars
 	.header-right.col-xs-5.col-md-3
 		= render 'layouts/navigation'
-		.row{"data-turbolinks-permanent" => true}
-			.col-xs-5.col-md-3.pull-right.news-banner{class: @messages.empty? ? nil : "slick"}
-				- @messages.each do |message|
-					%marquee.news{scrolldelay: 500, scrollamount: 50}
-						= link_to message.message, message.link, class: message.colorbox? ? 'colorbox' : nil
+.row{"data-turbolinks-permanent" => true}
+	.col-xs-5.col-md-3.pull-right.news-banner{class: @messages.empty? ? nil : "slick"}
+		- @messages.each do |message|
+			%marquee.news{scrolldelay: 500, scrollamount: 50}
+				= link_to message.message, message.link, class: message.colorbox? ? 'colorbox' : nil

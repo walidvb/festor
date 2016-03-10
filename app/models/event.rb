@@ -6,9 +6,6 @@ class Event < ActiveRecord::Base
 	extend FriendlyId
   friendly_id :title, :use => [:globalize, :slugged]
 	default_scope { includes(:translations) }
-	def is_workshop?
-		Event.workshop_cats.include?(category.to_sym)
-	end
 
 	def self.workshop_cats
 		[:workshop, :conference, :masterclass]
@@ -60,13 +57,13 @@ class Event < ActiveRecord::Base
 
 	def next
 		if ed = event_dates.first
-			EventDate.where('dateable_type = ? AND dateable_id != ? AND start > ?', self.category, self.id, ed.start.strftime("%Y-%m-%d %H:%M")).first.try(:event)
+			EventDate.where('dateable_type = ? AND dateable_id != ? AND start > ?', self.sup_category, self.id, ed.start.strftime("%Y-%m-%d %H:%M")).first.try(:event)
 		end
 	end
 
 	def previous
 		if ed = event_dates.first
-			EventDate.where('dateable_type = ? AND dateable_id != ? AND start < ?', self.category, self.id, ed.start.strftime("%Y-%m-%d %H:%M")).first.try(:event)
+			EventDate.where('dateable_type = ? AND dateable_id != ? AND start < ?', self.sup_category, self.id, ed.start.strftime("%Y-%m-%d %H:%M")).first.try(:event)
 		end
 	end
 
@@ -76,6 +73,15 @@ class Event < ActiveRecord::Base
 
 	def finished?
 	  false
+	end
+
+	def is_workshop?
+		Event.workshop_cats.include?(category.to_sym)
+	end
+
+	def sup_category
+		self.is_workshop? ? :workshop :
+			self.category == 'exhibition' ? :exhibition : :event
 	end
 
 	attr_accessor :artist_ids
@@ -91,5 +97,4 @@ class Event < ActiveRecord::Base
 			end
 		end
 	end
-
 end
