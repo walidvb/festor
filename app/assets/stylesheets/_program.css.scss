@@ -45,7 +45,7 @@
 .dates {
   margin-bottom: 2rem;
   .dates-list{
-    margin-top: -2rem;
+    margin-top: -1rem;
   }
   .day:not(.active){
     max-height: 0px;
@@ -62,5 +62,6 @@
   }
   #dates:checked ~ ul .day{
     max-height: 1000px;
+    display: list-item;
   }
 }
