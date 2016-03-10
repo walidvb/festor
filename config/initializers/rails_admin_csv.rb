@@ -19,8 +19,7 @@ module RailsAdmin
 [image:flip]
 ,[image]
 [info]}
-                ActionView::Base.full_sanitizer.sanitize(result).gsub('&nbsp;', ' ').gsub(/(\[(?:info|image):?\w*\])/, '').gsub(/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/
-, '')
+                ActionView::Base.full_sanitizer.sanitize(result).gsub('&nbsp;', ' ').gsub(/(\[(?:info|image):?\w*\])/, '').gsub(/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/, '')
               else
                 result
               end

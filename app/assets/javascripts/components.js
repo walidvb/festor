@@ -1,15 +1,17 @@
 
-$(document).on('click', '.header-left', function(e){
-	var header = $('header');
-	header = $('header');
-	header.toggleClass('open');
-	console.log('toggling menu');
-}).on('click', 'main', hideHeader)
-.on('turbolinks:click turbolinks:visit', hideHeader);
 function hideHeader(e){
+	console.log('hiding header');
 	$('header').removeClass('open');
 }
 $(document).on('turbolinks:load', function() {
+	$('.header-left').on('click', function(e){
+		console.log('toggling menu');
+		var header = $('header');
+		header = $('header');
+		header.toggleClass('open');
+	});
+	$('main').on('mousedown', 'main', hideHeader);
+
 	$('.grid-item[data-img]').each(function(){
 		var $this = $(this);
 		if(!$this.data('blurred')){
