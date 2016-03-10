@@ -1,9 +1,37 @@
-.timeline{
-  position: relative;
+#program{
+  overflow: hidden;
   .day{
-    transform: translateY(-100%);
     width: 100%;
     border-bottom: black 1px solid;
-    position: absolute;
+    min-height: 20px;
+    @include lineJump(2);
+    margin-bottom: 1rem;
+    padding: 0 $margin-vertical-normal;
+  }
+  @media #{$mobile}{
+    .grid-item{
+      position: relative !important;
+    }
+  }
+  @media #{$tablet}{
+    position: relative;
+    .grid{
+      padding-left: 20%;
+    }
+    .grid-item{
+      width: 40%!important;
+    }
+    .day{
+      padding: 0;
+      @include lineJump(0);
+      border-top: black 1px solid;
+      border-bottom: none;
+      top: 0;
+      width: 20%;
+      min-height: 100%;
+      position: absolute;
+      left: 0;
+      transition: top 0.3s ease-out;
+    }
   }
 }

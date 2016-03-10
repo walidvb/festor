@@ -97,7 +97,7 @@
 			opacity: 0;
 		}
 	}
-	.no-touch &:hover, &.sr-middle{
+	.no-touch &:hover, &.sr-middle, &.focused{
 		@include infoOn();
 	}
 
@@ -105,10 +105,7 @@
   .tile{
     position: relative;
   }
-  //&.sr-top .info{
-  //  bottom: 0px;
-  //  top: auto;
-  //}
+
   @media #{$mobile}{
     position: relative!important;
     top: 0!important;

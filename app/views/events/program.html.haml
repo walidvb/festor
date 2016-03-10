@@ -1,14 +1,12 @@
 = render 'layouts/filters'
 - date_format = "%m-%d"
 .row#program
-	.col-xs-1.timeline.grid-legend
-		- @days.each do |day, events|
-			- in_s = day.strftime(date_format)
-			.day{data: {date:in_s}, class: in_s}= day.strftime("%A %e %B")
-	.col-xs-4
-		#program.grid.events-list
+	.col-xs-5
+		.grid.events-list
 			.grid-sizer.grid-item
 			- @days.each do |day, events|
+				- in_s = day.strftime(date_format)
+				%h2.day{data: {date:in_s}, class: in_s}= day.strftime("%A %e %B")
 				- events.map(&:dateable).each do |event|
 					- classes = [event.featured? ? "grid-item--width2" : nil]
 					- classes.push(event.location.try(:slug))
