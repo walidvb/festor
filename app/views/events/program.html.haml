@@ -6,13 +6,14 @@
 			.grid-sizer.grid-item
 			- @days.each do |day, events|
 				- in_s = day.strftime(date_format)
-				%h2.day{data: {date:in_s}, class: in_s}= day.strftime("%A %e %B")
+				.day{data: {date:in_s}, class: in_s}
+					%h2= day.strftime("%A %e %B")
 				- events.map(&:dateable).each do |event|
 					- classes = [event.featured? ? "grid-item--width2" : nil]
 					- classes.push(event.location.try(:slug))
 					- classes.push(event.category)
 					- classes.push(day.strftime(date_format))
-					.grid-item{class: classes.join(' '), data: {position: event.position, id: event.id, img: event.main_image.url(event.featured? ? :large : :tile)}, style: "background-image:url(#{event.main_image.url(event.featured? ? :large_blurred : :tile_blurred)})"}
+					.grid-item.not-scroll-revealable{class: classes.join(' '), data: {position: event.position, id: event.id, img: event.main_image.url(event.featured? ? :large : :tile)}, style: "background-image:url(#{event.main_image.url(event.featured? ? :large_blurred : :tile_blurred)})"}
 						- artists = event.artists
 						= image_tag event.main_image.url(event.featured? ? :large_blurred : :tile_blurred), class: 'image'
 						= link_to path_for(event), class: 'tile-link' do

@@ -6,7 +6,7 @@
 
     var options = $.extend({
       maxDistanceToCenter: window.innerHeight*0.2,
-      itemSelector: '.grid-item',
+      itemSelector: '.grid-item:not(.not-scroll-revealable)',
       activeClass: 'sr-active',
       touchOnly: true,
       mCustomScrollbar: {
