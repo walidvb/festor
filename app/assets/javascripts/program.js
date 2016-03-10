@@ -19,6 +19,6 @@ function initProgram(){
       $this.fadeIn();
     }
     $this.animate({top: offset >= minOffset ? offset : minOffset})
-    minOffset += offset + $this.height();
+    minOffset = offset + $this.height();
   }
 }
