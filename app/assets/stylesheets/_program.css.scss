@@ -20,22 +20,16 @@
   }
   @media #{$tablet}{
     position: relative;
-    .grid{
-      padding-left: 20%;
-    }
-    .grid-item{
-      width: 40%!important;
-    }
     .day{
       padding: 0;
       @include lineJump(0);
       border-top: black 1px solid;
       border-bottom: none;
       top: 0;
-      width: 20%;
+      width: 100%;
       min-height: 100%;
       position: absolute;
-      left: 0;
+      left: 14px;
       transition: top 0.3s ease-out;
     }
   }

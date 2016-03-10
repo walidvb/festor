@@ -9,7 +9,6 @@ $(document).on('turbolinks:load', function(){
       var days = _.map(dayElems, function(elem){
         return $(elem).data('date');
       });
-      var minOffset = 0;
       for(var i = 0; i < dayElems.length; i++){
         placeDate(i);
         bindHoverDate(i);
@@ -18,15 +17,14 @@ $(document).on('turbolinks:load', function(){
       function placeDate(i){
         var day = days[i];
         var $this = $(dayElems[i]);
-        var firstVisibleEvent = $this.nextAll('.grid-item.'+day+':visible').first();
-        if(!firstVisibleEvent.length){
+        var dayContainer = $('#events-for-'+day);
+        if(!dayContainer.length){
           $this.fadeOut();
         }
         else{
-          var offset = parseInt(firstVisibleEvent.css('top') + firstVisibleEvent.css('margin-top'));
+          var offset = dayContainer.position().top + parseInt(dayContainer.css('margin-top'));
           $this.fadeIn();
-          $this.css({top: offset >= minOffset ? offset : minOffset})
-          minOffset = offset + $this.find('h2').outerHeight(true);
+          $this.css({top: offset})
         }
       };
 
