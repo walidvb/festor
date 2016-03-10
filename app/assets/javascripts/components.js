@@ -1,10 +1,8 @@
 
 	$(document).on('click', '.header-left', function(e){
 		var header = $('header');
-		if(window.innerWidth < 767){
-			header = $('header');
-			header.toggleClass('open');
-		}
+		header = $('header');
+		header.toggleClass('open');
 	}).on('click', 'main', hideHeader)
 	.on('turbolinks:click turbolinks:visit', hideHeader);
 function hideHeader(e){
@@ -18,7 +16,6 @@ $(document).on('turbolinks:load', function() {
 			img.src = $this.data('img');
 			img.className = 'non-blurred';
 			img.onload = function(){
-				console.log(this.src);
 				$this.find('img').attr('src', this.src);
 			};
 			$this.data('blurred', true);
@@ -35,11 +32,8 @@ $(document).on('turbolinks:load', function() {
 				columnWidth: '.grid-sizer',
 				percentPosition: true
 			}
-		}).on('arrangeComplete', function(){
-			initProgram();
-			console.log('arrangeComplete');
 		});
-		console.log('here');
+
 		var filterInputs = $('.cat-filters input');
 		filterInputs.change(updateList);
 		$(document).on('filter-events', updateList);

@@ -1,21 +1,24 @@
 $(document).on('turbolinks:load', function(){
-  
-
-$('#program').on('arrangeComplete', function(){
-			initProgram();
-			console.log('arrangeComplete');
-		});
+  $('#program').on('arrangeComplete', initProgram);
 })
+$(window).on('resize', initProgram);
 function initProgram(){
-  console.log('initProgram');
   var dayElems = $('.day');
   var days = _.map(dayElems, function(elem){
     return $(elem).data('date');
   });
+  var minOffset = 0;
   for(var i = 0; i < dayElems.length; i++){
     var day = days[i];
-    var offset = $('.grid .'+day).first().css('top');
-    console.log(offset);
-    $(dayElems[i]).animate({top: offset})
+    var $this = $(dayElems[i]);
+    var offset = parseInt($('.grid .'+day+':visible').first().css('top'));
+    if(typeof(offset) != "number"){
+      $this.fadeOut();
+    }
+    else{
+      $this.fadeIn();
+    }
+    $this.animate({top: offset >= minOffset ? offset : minOffset})
+    minOffset += offset + $this.height();
   }
 }

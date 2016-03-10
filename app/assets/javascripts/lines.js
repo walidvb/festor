@@ -185,7 +185,6 @@ $('document').ready(function(){
     	var hidden = document[state] == 'hidden';
       $(document).trigger('visibility', { visibility: hidden });
       hidden ? processingInstance.noLoop() : processingInstance.loop();
-      hidden ? console.log(hidden) : console.log(hidden);
     }, false);
   }
 });
