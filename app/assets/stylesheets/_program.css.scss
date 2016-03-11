@@ -48,7 +48,9 @@
 .dates {
   margin-bottom: 2rem;
   .dates-list{
-    margin-top: -1rem;
+    @media #{$mobile}{
+      margin-top: -1rem;
+    }
   }
   .day:not(.active){
     max-height: 0px;
