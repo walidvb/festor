@@ -278,14 +278,15 @@ $header-padding-vert: 40px;
 		width: calc(60% - 2rem);
 	}
 	.news{
-		@include lineJump(1);
+		display: block;
+		padding-top: 1rem;
 		// to fix weird non-existing margin
-		margin-bottom: calc(1rem - 5px);
+		padding-bottom: calc(1rem - 5px);
 
 		@media #{$tablet}{
-			@include lineJump(2);
+			padding-top: 2rem;
 			// to fix weird non-existing margin
-			margin-bottom: calc(2rem - 5px);
+			padding-bottom: calc(2rem - 5px);
 		}
 	}
 }
