@@ -9,7 +9,7 @@
 		%meta{property:"og:image", content:"#{content_for?(:image) ? yield(:image) : image_url('lines_1.png')}"}
 		%meta{property:"og:url", content: "#{content_for?(:url) ? yield(:url) : request.original_url}"}
 		%meta{property:"og:type", content:"#{content_for?(:type) ? yield(:type) : 'website'}"}
-		%meta{property:"og:title", content:"#{content_for?(:og_title) ? '28.4-7.5 2016 | ' + yield(:og_title) + ' Mapping Festival': '28.4-7.5 2016 | Mapping Festival'}"}
+		%meta{property:"og:title", content:"#{content_for?(:og_title) ? '28.4-7.5 2016 | Mapping Festival | ' + yield(:og_title): '28.4-7.5 2016 | Mapping Festival'}"}
 		%meta{name: "google-site-verification", content:"EiRhKI0cx8Sp3Xikv24icsWpBYEF4lG5LU8nFYaQhQ4"}
 		%title= "#{content_for?(:og_title) ? yield(:og_title)+' | Mapping Festival 2016' : 'Mapping Festival 2016'}"
 
