@@ -79,7 +79,7 @@ class Admin::DataController < ApplicationController
         if model.reflect_on_association :event_dates
 
           done = m.event_dates.each do |ed|
-            row += [ed.start.strftime("%A %e %b"), ed.end.try(:strftime,"%A %e %b - %H:%M")]
+            row += [ed.start.strftime("%A %e %b %Y- %H:%M"), ed.end.try(:strftime,"%A %e %b - %H:%M")]
           end.count
           (5-done).times do |i|
             row += [nil, nil]
