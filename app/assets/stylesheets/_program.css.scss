@@ -65,6 +65,14 @@
 
 
 #date-dropdown-trigger{
+  @media #{$tablet}{
+    padding-top: 1rem;
+    .butt{
+      padding-bottom: 2rem;
+      margin-top: 0;
+
+    }
+  }
   .butt{
     @extend .cat-filters;
     width: 100%;
