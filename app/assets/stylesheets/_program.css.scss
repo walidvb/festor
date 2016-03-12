@@ -42,10 +42,13 @@
   display: none;
 }
 
+// these importants are needed
+// because max-height is set by js
 .dates-list {
   @media #{$mobile}{
     .day{
       height: auto!important;
+      max-height: 3rem!important;
       border: none;
       padding-top: 1rem;
       margin-top: 0;
@@ -53,18 +56,16 @@
     }
   }
   .day:not(.active){
-    max-height: 0px;
-
     overflow: hidden;
-    @media #{$tablet}{
-      max-height: initial;
+    @media #{$mobile}{
+      max-height: 0!important;
     }
   }
   #dates-dropdown-trigger{
     width: 100%;
   }
   #dates:checked ~ .day{
-    max-height: 5.5rem;
+    max-height: 3.5rem!important;
     padding-top: 1rem;
     display: list-item;
   }

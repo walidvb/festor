@@ -5,7 +5,6 @@ $(document).on('turbolinks:load', function(){
     $prog.on('arrangeComplete', initProgram);
     $(window).on('resize', initProgram);
     function initProgram(e){
-      console.log(e);
       var dayElems = $('.day');
       var days = _.map(dayElems, function(elem){
         return $(elem).data('date');
@@ -23,6 +22,7 @@ $(document).on('turbolinks:load', function(){
           }
         }
       };
+
       showDate(closestDateIndex);
       function showDate(i){
         $(dayElems).removeClass('active');
@@ -34,6 +34,11 @@ $(document).on('turbolinks:load', function(){
       function bindClick(i){
         var $this = $(dayElems[i]);
         $this.on('click', function(){
+          var date = $(this).data('date');
+          var trg = $('#events-for-'+date);
+          $('html, body').stop().animate({
+            scrollTop: trg.offset().top
+          }, 300);
           showDate(i);
         });
       };
@@ -56,7 +61,10 @@ $(document).on('turbolinks:load', function(){
           var offset = dayContainer.offset().top + parseInt(dayContainer.css('margin-top'));
           offset = dayContainer.height()+ parseInt(dayContainer.css('margin-bottom'));
           $this.fadeIn();
-          $this.css({height: offset})
+          $this.css({
+            height: offset,
+            maxHeight: offset
+          })
         }
       };
 
