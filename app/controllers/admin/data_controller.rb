@@ -72,8 +72,6 @@ class Admin::DataController < ApplicationController
           locales.each do |l|
             I18n.locale = l
             result = m.send(attr_name).to_s
-
-            p result
             result = result.gsub('&nbsp;', ' ').gsub(/(\[(?:info|image):?\w*\])/, '').gsub(/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/, '')
             row += [result]
           end
