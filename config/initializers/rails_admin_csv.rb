@@ -14,11 +14,7 @@ module RailsAdmin
             associated_objects.collect do |ao|
               result = field.with(object: ao).export_value.presence || @empty
               if result.class == String
-                remove = %w{&nbsp;
-[image]
-[image:flip]
-,[image]
-[info]}
+                remove = %w{&nbsp; [image] [image:flip] ,[image] [info]}
                 ActionView::Base.full_sanitizer.sanitize(result).gsub('&nbsp;', ' ').gsub(/(\[(?:info|image):?\w*\])/, '').gsub(/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/, '')
               else
                 result
