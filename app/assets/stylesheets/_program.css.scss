@@ -1,9 +1,9 @@
 #program{
   overflow: hidden;
   .program-events-grid{
-    padding-top: calc(2rem + 3px);
   }
   .events-list{
+    margin-top: calc(2rem + 3px);
     transition: all 0.5s ease-out;
     overflow: hidden;
     margin-top: 0;
