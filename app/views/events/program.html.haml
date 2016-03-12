@@ -19,26 +19,29 @@
 			- in_s = day.strftime(date_format)
 			.grid.events-list{id: "events-for-#{in_s}"}
 				.grid-sizer.grid-item
+				- passed_event_ids = []
 				- event_dates.map(&:dateable).each do |event, i|
-					- classes = [event.featured? ? "grid-item--width2" : nil]
-					- classes.push(event.location.try(:slug))
-					- classes.push(event.category)
-					- classes.push(day.strftime(date_format))
-					.grid-item.not-scroll-revealable{class: classes.join(' '), data: {position: event.position, id: event.id, img: event.main_image.url(event.featured? ? :large : :tile)}, style: "background-image:url(#{event.main_image.url(event.featured? ? :large_blurred : :tile_blurred)})"}
-						- artists = event.artists
-						= image_tag event.main_image.url(event.featured? ? :large_blurred : :tile_blurred), class: 'image'
-						= link_to path_for(event), class: 'tile-link' do
-							.info
-								- if @category != :exhibition
-									- if !event.category.blank?
-										%h5.type= t("events.categories.#{event.category}")
-								.event-title
-									%h3= event.title
-								.artists
-									- artists.each do |a|
-										%h4.artist-name= a.name
-								.location
-									= day.strftime("%A %e %B")
-									-# if date_ = @event_dates[event.id]
-										-# - dates_formatted = date_.end.nil? ? l(date_.start, format: "%e %B") : "#{l(date_.start, format: "%e %B")} - #{l(date_.end, format: "%e %B")}"
-										-# = event.is_workshop? ? dates_formatted : "#{dates_formatted} &mdash; #{event.location.try(:name)}".html_safe
+					- if !passed_event_ids.include? event.id
+						- passed_event_ids.push event.id
+						- classes = [event.featured? ? "grid-item--width2" : nil]
+						- classes.push(event.location.try(:slug))
+						- classes.push(event.category)
+						- classes.push(day.strftime(date_format))
+						.grid-item.not-scroll-revealable{class: classes.join(' '), data: {position: event.position, id: event.id, img: event.main_image.url(event.featured? ? :large : :tile)}, style: "background-image:url(#{event.main_image.url(event.featured? ? :large_blurred : :tile_blurred)})"}
+							- artists = event.artists
+							= image_tag event.main_image.url(event.featured? ? :large_blurred : :tile_blurred), class: 'image'
+							= link_to path_for(event), class: 'tile-link' do
+								.info
+									- if @category != :exhibition
+										- if !event.category.blank?
+											%h5.type= t("events.categories.#{event.category}")
+									.event-title
+										%h3= event.title
+									.artists
+										- artists.each do |a|
+											%h4.artist-name= a.name
+									.location
+										= day.strftime("%A %e %B")
+										-# if date_ = @event_dates[event.id]
+											-# - dates_formatted = date_.end.nil? ? l(date_.start, format: "%e %B") : "#{l(date_.start, format: "%e %B")} - #{l(date_.end, format: "%e %B")}"
+											-# = event.is_workshop? ? dates_formatted : "#{dates_formatted} &mdash; #{event.location.try(:name)}".html_safe
