@@ -10,6 +10,7 @@ class EventsController < ApplicationController
 		@filters = Event.category_enum
 		@filters.delete(:workshop)
 		@filters.delete(:exhibition)
+		
 		@days = EventDate.where(dateable_type: :event).order('start ASC').includes(:dateable, :artists, :locations)
 		# filter out repeated booking
 		@event_dates = {}

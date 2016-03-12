@@ -37,7 +37,7 @@ $(document).on('turbolinks:load', function(){
           var date = $(this).data('date');
           var trg = $('#events-for-'+date);
           $('html, body').stop().animate({
-            scrollTop: trg.offset().top
+            scrollTop: trg.offset().top-$this.find('h2').outerHeight()-28
           }, 300);
           showDate(i);
         });
