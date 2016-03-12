@@ -6,10 +6,9 @@
     margin-top: calc(2rem + 3px);
     transition: all 0.5s ease-out;
     overflow: hidden;
-    max-height: 0;
-    &.active{
-      max-height: initial;
-    }
+    margin-top: 0;
+    transition: all .2s ease-out;
+    max-height: 1000px;
     @media #{$tablet}{
       max-height: initial;
     }
@@ -26,6 +25,23 @@
     .grid-item{
       position: relative !important;
     }
+    .day{
+      margin-top: 3rem;
+    }
+    &.dates-only{
+      .events-list{
+        max-height: 0px!important;
+      }
+      .day{
+        max-height: 3rem!important;
+        min-height: 3rem;
+        margin-top: 0;
+      }
+    }
+    .location-link{
+      line-height: inherit;
+      border-bottom-color: black;
+    }
   }
   @media #{$tablet}{
     position: relative;
@@ -35,7 +51,6 @@
       transition: all 0.3s ease-out;
     }
     .location-link{
-      border-bottom-color: black;
       transition: all .2s ease-out;
     }
   }
@@ -52,6 +67,7 @@
 #date-dropdown-trigger{
   .butt{
     @extend .cat-filters;
+    width: 100%;
     clear: both;
     &:before{
       border-top: none;
@@ -67,9 +83,11 @@
 .dates-list {
   clear: both;
   @media #{$mobile}{
+    display: none;
     .day{
       height: auto!important;
       max-height: 3rem!important;
+      min-height: 2rem;
       border: none;
       padding-top: 1rem;
       margin-top: 0;

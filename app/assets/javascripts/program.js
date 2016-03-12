@@ -23,12 +23,14 @@ $(document).on('turbolinks:load', function(){
         }
       };
 
-      showDate(closestDateIndex);
+      $('#dates').on('change', function(){
+        $('#program').toggleClass('dates-only', $('#dates').is(':checked'));
+      });
       function showDate(i){
         $(dayElems).removeClass('active');
         $(dayElems[i]).addClass('active');
         $('#dates').prop('checked', false);
-        $('#program .events-list').removeClass('active');
+        $('#program').removeClass('dates-only');
         $('#program .events-list#events-for-'+days[i]).addClass('active');
       }
       function bindClick(i){
@@ -36,9 +38,16 @@ $(document).on('turbolinks:load', function(){
         $this.on('click', function(){
           var date = $(this).data('date');
           var trg = $('#events-for-'+date);
-          $('html, body').stop().animate({
-            scrollTop: trg.offset().top-$this.find('h2').outerHeight()-28
-          }, 300);
+          if(window.innerWidth < 767){
+            setTimeout(scroll, 400);
+          }else{
+            scroll();//!
+          }
+          function scroll(){
+            $('html, body').stop().animate({
+              scrollTop: trg.offset().top-$this.find('h2').outerHeight()-28
+            }, 300);
+          };
           showDate(i);
         });
       };

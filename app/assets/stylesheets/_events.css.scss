@@ -251,7 +251,7 @@ h1{
 
 .show-xs{
 	@media #{$tablet}{
-		display: none;
+		display: none!important;
 	}
 }
 
