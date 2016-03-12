@@ -47,9 +47,8 @@ class Admin::DataController < ApplicationController
       end
 
       if model.reflect_on_association :event_dates
-        5.times do |i|
-          headers += ["start_#{i}", "end_#{i}"]
-        end
+        headers += ["event_dates_start"]
+        headers += ["event_dates_end"]
       end
 
       headers += assocs
@@ -77,13 +76,8 @@ class Admin::DataController < ApplicationController
           end
         end
         if model.reflect_on_association :event_dates
-
-          done = m.event_dates.each do |ed|
-            row += [ed.start.strftime("%A %e %b %Y- %H:%M"), ed.end.try(:strftime,"%A %e %b - %H:%M")]
-          end.count
-          (5-done).times do |i|
-            row += [nil, nil]
-          end
+          row += [m.event_dates.map{|ed|ed.start.strftime("%e %b %Y - %H:%M")}.join(' | ')]
+          row += [m.event_dates.map{|ed|ed.end.try(:strftime, "%e %b %Y - %H:%M")}.join(' | ')]
         end
 
         assocs.each do |asso|
