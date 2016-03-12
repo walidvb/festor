@@ -22,6 +22,8 @@ gem "paperclip", '~> 4.1'
 gem 'paperclip-sftp', '~> 1.0.0'
 gem 'acts_as_list'
 
+gem "rails-erd"
+
 #gem "paperclip-storage-ftp"
 #gem 'paperclip-meta'
 

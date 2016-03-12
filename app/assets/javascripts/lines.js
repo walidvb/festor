@@ -43,7 +43,8 @@ var sketchProc = (function($p) {
         var i = 1;
         for (; i < max_points - 1; i++) {
             $p.randomSeed($p.millis() * 111);
-            coord_y[i] = (coord_y[i] + yDir*(i / 12.0 * speed)) % render_height;            $p.randomSeed($p.millis() * 57);
+            coord_y[i] = (coord_y[i] + yDir*(i / 12.0 * speed)) % render_height;            
+            $p.randomSeed($p.millis() * 57);
             coord_x[i] = (coord_x[i] + xDir*(i / 10.0 * speed)) % render_width;
         }
         coord_x[i] = (coord_x[i] + xDir*(i / 10.0 * speed)) % render_width;

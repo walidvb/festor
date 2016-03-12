@@ -1,5 +1,8 @@
 Festor::Application.routes.draw do
 
+  get "data/events" => 'admin/data#events'
+  get "data/artists" => 'admin/data#artists'
+  get "data/locations" => 'admin/data#locations'
 	get "beta" => "beta#new"
 	match "/upload" => "assets#upload", via: :post
 	scope "(:locale)", locale: /en|fr/, defaults: {locale: 'en'} do

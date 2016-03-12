@@ -13,6 +13,7 @@ class Artist < ActiveRecord::Base
   default_scope { includes(:translations) }
   has_many :bookings, dependent: :delete_all, inverse_of: :artist
   has_many :events, through: :bookings, inverse_of: :artists
+  has_many :event_dates, through: :events, inverse_of: :artists
   has_many :locations, through: :bookings, inverse_of: :artists
   has_many :links, as: :linkable, dependent: :destroy, inverse_of: :linkable
 
