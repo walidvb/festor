@@ -17,9 +17,7 @@
     &:hover, &.focused{
       font-weight: bold;
     }
-    h2{
-      @include lineJump(2);
-    }
+    transition: all 0.3s ease-out;
   }
   @media #{$mobile}{
     .grid-item{
@@ -29,51 +27,46 @@
   @media #{$tablet}{
     position: relative;
     .day{
-      padding: 0;
+      padding-top: 1rem;
       @include lineJump(0);
       border-top: black 1px solid;
       border-bottom: none;
-      top: 0;
-      width: 100%;
-      min-height: 100%;
-      position: absolute;
-      left: 14px;
-      transition: top 0.3s ease-out;
+      transition: all 0.3s ease-out;
     }
   }
 
 
 }
 
-.dates {
-  margin-bottom: 2rem;
-  .dates-list{
-    @media #{$mobile}{
-      margin-top: -1rem;
+#dates{
+  display: none;
+}
+
+.dates-list {
+  @media #{$mobile}{
+    .day{
+      height: auto!important;
+      border: none;
+      padding-top: 1rem;
+      margin-top: 0;
+      padding: 0;
     }
   }
   .day:not(.active){
     max-height: 0px;
-    margin-top: 0;
-    padding: 0;
+
     overflow: hidden;
-    display: none;
     @media #{$tablet}{
-      display: initial;
       max-height: initial;
-    }
-  }
-  #dates{
-    display: none;
-    @media #{$tablet}{
-      display: initial
     }
   }
   #dates-dropdown-trigger{
     width: 100%;
   }
-  #dates:checked ~ ul .day{
-    max-height: 1000px;
+  #dates:checked ~ .day{
+    max-height: 5.5rem;
+    padding-top: 1rem;
     display: list-item;
   }
+
 }

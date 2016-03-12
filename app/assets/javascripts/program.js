@@ -4,7 +4,8 @@ $(document).on('turbolinks:load', function(){
   {
     $prog.on('arrangeComplete', initProgram);
     $(window).on('resize', initProgram);
-    function initProgram(){
+    function initProgram(e){
+      console.log(e);
       var dayElems = $('.day');
       var days = _.map(dayElems, function(elem){
         return $(elem).data('date');
@@ -52,9 +53,10 @@ $(document).on('turbolinks:load', function(){
           $this.fadeOut();
         }
         else{
-          var offset = dayContainer.position().top + parseInt(dayContainer.css('margin-top'));
+          var offset = dayContainer.offset().top + parseInt(dayContainer.css('margin-top'));
+          offset = dayContainer.height()+ parseInt(dayContainer.css('margin-bottom'));
           $this.fadeIn();
-          $this.css({top: offset})
+          $this.css({height: offset})
         }
       };
 
