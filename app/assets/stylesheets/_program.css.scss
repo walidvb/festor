@@ -1,5 +1,8 @@
 #program{
   overflow: hidden;
+  .program-events-grid{
+    padding-top: calc(2rem + 3px);
+  }
   .events-list{
     transition: all 0.5s ease-out;
     overflow: hidden;
@@ -14,6 +17,7 @@
   }
   .day{
     width: 100%;
+    cursor: pointer;
     &:hover, &.focused{
       font-weight: bold;
     }
@@ -29,9 +33,11 @@
     .day{
       padding-top: 1rem;
       @include lineJump(0);
-      border-top: black 1px solid;
-      border-bottom: none;
       transition: all 0.3s ease-out;
+    }
+    .location-link{
+      border-bottom-color: black;
+      transition: all .2s ease-out;
     }
   }
 
@@ -42,9 +48,25 @@
   display: none;
 }
 
+
+
+#date-dropdown-trigger{
+  .butt{
+    @extend .cat-filters;
+    clear: both;
+    &:before{
+      border-top: none;
+      border-left: none;
+      border-right: none;
+    }
+  }
+  padding-top: 2rem;
+}
+
 // these importants are needed
 // because max-height is set by js
 .dates-list {
+  clear: both;
   @media #{$mobile}{
     .day{
       height: auto!important;
@@ -61,13 +83,20 @@
       max-height: 0!important;
     }
   }
-  #dates-dropdown-trigger{
-    width: 100%;
-  }
-  #dates:checked ~ .day{
-    max-height: 3.5rem!important;
-    padding-top: 1rem;
-    display: list-item;
+
+  #dates:checked{
+    & + .day{
+      margin-top: -2rem;
+    }
+    & ~ .day{
+      max-height: 3.5rem!important;
+      padding-top: 1rem;
+      display: list-item;
+
+      .location-link{
+        padding-bottom: 1.2rem;
+      }
+    }
   }
 
 }

@@ -6,15 +6,15 @@
 = render 'layouts/filters'
 - date_format = "%m-%d-%y"
 .row#program
-	%label.col-xs-5.dates#date-dropdown-trigger{for: 'dates'}
-		%h2 Dates
+	.col-sm-1.dates#date-dropdown-trigger
+		%label.butt{for: 'dates'} Dates
 	%ul.col-xs-5.col-sm-1.dates-list
 		%input#dates{type: :checkbox, name: 'dates'}
 		- @days.each do |day, event_dates|
 			- in_s = day.strftime(date_format)
-			%li.location-link.day{data: {date:in_s}, class: in_s}
-				%h2= day.strftime("%A %e %B")
-	.col-xs-5.col-sm-4
+			%li.day{data: {date:in_s}, class: in_s}
+				%h2.location-link= day.strftime("%A %e %B")
+	.col-xs-5.col-sm-4.program-events-grid
 		- @days.each do |day, event_dates|
 			- in_s = day.strftime(date_format)
 			.grid.events-list{id: "events-for-#{in_s}"}
