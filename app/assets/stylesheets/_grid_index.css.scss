@@ -24,6 +24,7 @@
 	@media #{$tablet}{
 		display: block;
 		.cat-filters{
+			padding-left: 0;
 			display: block;
 		}
 		label{

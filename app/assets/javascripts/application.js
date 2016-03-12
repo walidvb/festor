@@ -29,3 +29,9 @@
 //= require logo
 //= require locations
 //= require_tree .
+
+$(document).on('turbolinks:load', function(){
+  $('html, body').animate({
+    scrollTop: $('.news').offset().top - 8
+  })
+});
