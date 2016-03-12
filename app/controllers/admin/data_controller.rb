@@ -13,18 +13,23 @@ class Admin::DataController < ApplicationController
   end
 
   def locations
-    assocs = [:events, :artists]
+    assocs = [:artists, :events]
     locs = Location.all.includes(*assocs)
     csv_export Location, locs, assocs
   end
 
-  def csv_export model, array, assocs
+  def csv_export model, array, assocs = []
     locales = I18n.available_locales
     res = CSV.generate() do |csv|
 
-      attachments = model.attachment_definitions.keys
-      attachments_columns = attachments.map{|att| ["#{att}_file_name", "#{att}_file_size", "#{att}_content_type", "#{att}_updated_at"] }.flatten
-      columns = (model.column_names - attachments_columns)
+      if model.respond_to? :attachment_definitions
+        attachments = model.attachment_definitions.keys
+        attachments_columns = attachments.map{|att| ["#{att}_file_name", "#{att}_file_size", "#{att}_content_type", "#{att}_updated_at"] }.flatten
+        columns = (model.column_names - attachments_columns)
+      else
+        attachments = []
+        columns = model.column_names
+      end
 
       # columns, paperclip, translations, event_dates(up to 5)
       headers = []
@@ -66,13 +71,13 @@ class Admin::DataController < ApplicationController
         model.translated_attribute_names.each do |attr_name|
           locales.each do |l|
             I18n.locale = l
-            result = m.send(attr_name)
-            remove = %w{&nbsp; [image] [image:flip] ,[image] [info]}
-            result = ActionView::Base.full_sanitizer.sanitize(result).gsub('&nbsp;', ' ').gsub(/(\[(?:info|image):?\w*\])/, '').gsub(/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/, '')
+            result = m.send(attr_name).to_s
+
+            p result
+            result = result.gsub('&nbsp;', ' ').gsub(/(\[(?:info|image):?\w*\])/, '').gsub(/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/, '')
             row += [result]
           end
         end
-
         if model.reflect_on_association :event_dates
 
           done = m.event_dates.each do |ed|
