@@ -40,6 +40,11 @@
 			.grid .grid-item .info{
 				top: auto;
 				bottom: 0;
+				transition: none;
+			}
+			.grid-item:hover .info{
+				color: white;
+				mix-blend-mode: difference;
 			}
 	%body{class: ["#{controller.controller_name}-page", "#{controller.action_name}-page", "#{'debug' if Rails.env.development?}", "#{current_user.nil? ? nil : 'admin'}", content_for(:body_class)].join(' ')}
 		#the-content
