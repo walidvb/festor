@@ -2,7 +2,6 @@ class Admin::DataController < ApplicationController
   def events
     assocs = [:artists]
     events = Event.all.includes(:event_dates, *assocs)
-
     csv_export Event, events, assocs
   end
 

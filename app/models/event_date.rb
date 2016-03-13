@@ -1,11 +1,11 @@
 class EventDate < ActiveRecord::Base
-  belongs_to :dateable, inverse_of: :event_dates, class_name: 'Event'#, polymorphic: true
-  has_many :artists, through: :dateable
-  has_many :locations, through: :dateable
-  validates_presence_of :dateable, :start
+  belongs_to :event, inverse_of: :event_dates, class_name: 'Event'
+  has_many :artists, through: :event
+  has_many :locations, through: :event
+  validates_presence_of :event, :start
   before_save :set_event_date_type
 	def set_event_date_type
-		self.dateable_type = dateable.sup_category
+		self.dateable_type = event.sup_category
 	end
   default_scope { order('start') }
 
@@ -19,7 +19,7 @@ class EventDate < ActiveRecord::Base
         # date_format "%d/%m/%Y %H:%M"
       end
       field :end
-      field :dateable do
+      field :event do
         visible false
       end
   end

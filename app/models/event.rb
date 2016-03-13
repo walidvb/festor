@@ -18,7 +18,7 @@ class Event < ActiveRecord::Base
 	scope :other, ->{where.not(category: [:workshop, :conference, :masterclass, :exhibition])}
 
 	scope :featured, -> {where(featured: true)}
-	has_many :event_dates, dependent: :delete_all, inverse_of: :dateable, as: :dateable
+	has_many :event_dates, dependent: :delete_all, inverse_of: :event
 
 	has_many :bookings, dependent: :delete_all, inverse_of: :event
 
@@ -57,13 +57,13 @@ class Event < ActiveRecord::Base
 
 	def next
 		if ed = event_dates.first
-			EventDate.where('dateable_type = ? AND dateable_id != ? AND start > ?', self.sup_category, self.id, ed.start.strftime("%Y-%m-%d %H:%M")).first.try(:event)
+			EventDate.where('dateable_type = ? AND event_id != ? AND start > ?', self.sup_category, self.id, ed.start.strftime("%Y-%m-%d %H:%M")).first.try(:event)
 		end
 	end
 
 	def previous
 		if ed = event_dates.first
-			EventDate.where('dateable_type = ? AND dateable_id != ? AND start < ?', self.sup_category, self.id, ed.start.strftime("%Y-%m-%d %H:%M")).first.try(:event)
+			EventDate.where('dateable_type = ? AND event_id != ? AND start < ?', self.sup_category, self.id, ed.start.strftime("%Y-%m-%d %H:%M")).first.try(:event)
 		end
 	end
 

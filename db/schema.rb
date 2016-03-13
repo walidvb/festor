@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160313125746) do
+ActiveRecord::Schema.define(version: 20160313144244) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(version: 20160313125746) do
   add_index "bookings", ["event_id"], name: "index_bookings_on_event_id", using: :btree
 
   create_table "event_dates", force: true do |t|
-    t.integer  "dateable_id"
+    t.integer  "event_id"
     t.datetime "start"
     t.datetime "end"
     t.datetime "created_at"
@@ -76,7 +76,7 @@ ActiveRecord::Schema.define(version: 20160313125746) do
     t.string   "dateable_type"
   end
 
-  add_index "event_dates", ["dateable_id"], name: "index_event_dates_on_dateable_id", using: :btree
+  add_index "event_dates", ["event_id"], name: "index_event_dates_on_event_id", using: :btree
 
   create_table "event_translations", force: true do |t|
     t.integer  "event_id",     null: false

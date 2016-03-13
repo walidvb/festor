@@ -22,7 +22,7 @@
 			.grid.events-list{id: "events-for-#{in_s}"}
 				.grid-sizer.grid-item
 				- passed_event_ids = []
-				- event_dates.map(&:dateable).each do |event, i|
+				- event_dates.map(&:event).each do |event, i|
 					- if event.published? || user_signed_in?
 						- if !passed_event_ids.include? event.id
 							- passed_event_ids.push event.id

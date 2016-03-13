@@ -11,11 +11,11 @@ class EventsController < ApplicationController
 		@filters.delete(:workshop)
 		@filters.delete(:exhibition)
 
-		@days = EventDate.where(dateable_type: :event).order('start ASC').includes(:dateable, :artists, :locations)
+		@days = EventDate.where(dateable_type: :event).order('start ASC').includes(:event, :artists, :locations)
 		# filter out repeated booking
 		@event_dates = {}
 		@days.each do |ed|
-			@event_dates[ed.dateable_id] = ed
+			@event_dates[ed.event_id] = ed
 		end
 		@days = @days.group_by do |ed|
 				ed.start.to_date
