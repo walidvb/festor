@@ -1,6 +1,12 @@
 - content_for(:og_title, "#{@artist.name}")
 - content_for(:image, @artist.profile_picture.url)
 - content_for(:description, remove_tags(@artist.biography))
+.row.show-xs
+	.col-xs-5.mf-breadcrumb.pull-right
+		= link_to "#{t('shared.all')} #{t('nav.artists')}", artists_path(locale: I18n.locale)
+		.inner-nav
+			= link_to('', artist_path(@artist.previous, locale: I18n.locale), class: 'prev') if !@artist.previous.nil?
+			= link_to('', artist_path(@artist.next, locale: I18n.locale), class: 'next') if !@artist.next.nil?
 .admin-entry
 	- if user_signed_in?
 		= link_to 'edit', "/admin/artist/#{@artist.id}/edit", data: {turbolinks: "false"}
@@ -12,6 +18,10 @@
 				%h6.artist-event-type.sup= event.category
 		%span#back.nav.back{:style => "cursor: pointer;"} [back]
 #main-content
+	.mf-breadcrumb.pull-right
+		.inner-nav
+			= link_to('', artist_path(@artist.previous, locale: I18n.locale), class: 'prev') if !@artist.previous.nil?
+			= link_to('', artist_path(@artist.next, locale: I18n.locale), class: 'next') if !@artist.next.nil?
 	.show-header
 		.single-artist.page-title
 			%h1.artist-name= @artist.name

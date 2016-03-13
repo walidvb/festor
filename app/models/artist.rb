@@ -46,5 +46,11 @@ class Artist < ActiveRecord::Base
     [:vj, :dj, :instructor, :performer, :exhibitor]
   end
 
+  def next
+    Artist.where('id > ? AND type = ?', self.id, self.type).first
+  end
+  def previous
+    Artist.where('id < ? AND type = ?', self.id, self.type).first
+  end
   self.inheritance_column = :fake_column
 end

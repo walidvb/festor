@@ -7,6 +7,8 @@ en:
     motto:  "visual audio + deviant electronics"
     program: "Program"
     switzerland: "Switzerland"
+    all: 'All'
+    all_fem: 'All'
   nav:
     home:        "Home"
     events:      "Program"

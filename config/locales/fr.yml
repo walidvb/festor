@@ -4,6 +4,8 @@ fr:
     switzerland: "Suisse"
     motto:  "visual audio + deviant electronics"
     program: "Programme"
+    all: 'Tous les'
+    all_fem: 'Toutes les'
   nav:
     events:      "Programme"
     artists:     "Artistes"

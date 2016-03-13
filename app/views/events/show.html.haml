@@ -1,6 +1,11 @@
 - content_for(:og_title, @event.title)
 - content_for(:image, @event.main_image.url)
 - content_for(:description, remove_tags(@event.description))
+.mf-breadcrumb.show-xs
+	= link_to "#{t('shared.all')} #{t('nav.events')}", @event.is_workshop? ? workshops_path(locale: I18n.locale) : @event.category == :exhibition ? exhibitions_path(locale: I18n.locale) : events_path(locale: I18n.locale)
+	.inner-nav
+		= link_to('', path_for(@event.previous), class: 'prev') if !@event.previous.nil?
+		= link_to('', path_for(@event.next), class: 'next') if !@event.next.nil?
 .admin-entry
 	- if user_signed_in?
 		= link_to 'edit', "/admin/event/#{@event.id}/edit", data: {turbolinks: "false"}
@@ -24,7 +29,7 @@
 							%h5.price= @event.price
 						- if !@event.finished? && !@event.buy_link.blank?
 							%h5= link_to t('events.ticket'), @event.buy_link, class: "buy-link", target: "_blank" unless @event.buy_link.blank?
-			.inner-nav
+			.inner-nav.hidden-xs
 				= link_to('', path_for(@event.previous), class: 'prev') if !@event.previous.nil?
 				= link_to('', path_for(@event.next), class: 'next') if !@event.next.nil?
 	= render('info_block', event: @event, classes: 'show-xs')

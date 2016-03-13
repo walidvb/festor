@@ -12,7 +12,7 @@ class EventsController < ApplicationController
 		@filters.delete(:exhibition)
 
 		@days = EventDate.where(dateable_type: :event).order('start ASC').includes(:event, :artists, :locations)
-		# filter out repeated booking
+		
 		@event_dates = {}
 		@days.each do |ed|
 			@event_dates[ed.event_id] = ed
