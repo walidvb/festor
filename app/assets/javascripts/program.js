@@ -55,7 +55,9 @@ $(document).on('turbolinks:load', function(){
       // placements
       for(var i = 0; i < dayElems.length; i++){
         bindClick(i);
-        placeDate(i);
+        if(!$(dayElems[i]).hasClass('show-xs')){
+          placeDate(i);
+        }
         bindHoverDate(i);
       };
 

@@ -1,6 +1,9 @@
 #program{
   overflow: hidden;
   .program-events-grid{
+    @media #{$tablet}{
+      padding-top: calc(2rem + 3px);
+    }
   }
   .events-list{
     margin-top: calc(2rem + 3px);
@@ -27,6 +30,7 @@
     }
     .day{
       margin-top: 3rem;
+      margin-bottom: 1rem;
     }
     &.dates-only{
       .events-list{
@@ -36,12 +40,12 @@
         max-height: 3rem!important;
         min-height: 3rem;
         margin-top: 0;
+        margin-bottom: 1rem;
       }
     }
-    .location-link{
-      line-height: inherit;
-      border-bottom-color: black;
-    }
+  }
+  .location-link{
+    border-bottom-color: black;
   }
   @media #{$tablet}{
     position: relative;
@@ -63,11 +67,18 @@
 }
 
 
-
+.dates-only{
+  .day{
+    @media #{$tablet}{
+      padding-bottom: 1.5rem;
+    }
+  }
+}
 #date-dropdown-trigger{
   @media #{$tablet}{
     padding-top: 1rem;
     .butt{
+      cursor:pointer;
       padding-bottom: 2rem;
       margin-top: 0;
 
