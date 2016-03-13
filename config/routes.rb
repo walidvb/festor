@@ -1,5 +1,7 @@
 Festor::Application.routes.draw do
 
+  resources :screenshots
+
   get "data/events" => 'admin/data#events'
   get "data/artists" => 'admin/data#artists'
   get "data/locations" => 'admin/data#locations'

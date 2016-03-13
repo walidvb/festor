@@ -1,0 +1,2 @@
+Fabricator(:screenshot) do
+end

@@ -1,0 +1,5 @@
+.grid
+  .grid-sizer
+  - @screenshots.each do |sc|
+    .grid-item
+      = image_tag sc.screenshot.url
