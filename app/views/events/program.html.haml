@@ -44,8 +44,3 @@
 											.artists
 												- artists.each do |a|
 													%h4.artist-name= a.name
-											.location
-												= l(day, format: "%A %e %B")
-												-# if date_ = @event_dates[event.id]
-													-# - dates_formatted = date_.end.nil? ? l(date_.start, format: "%e %B") : "#{l(date_.start, format: "%e %B")} - #{l(date_.end, format: "%e %B")}"
-													-# = event.is_workshop? ? dates_formatted : "#{dates_formatted} &mdash; #{event.location.try(:name)}".html_safe
