@@ -1,5 +1,16 @@
 #program{
   overflow: hidden;
+  .grid-item{
+    @media #{$tablet}{
+      width: 50%;
+    }
+    @media #{$md}{
+      width: 33%;
+      &.grid-item--width2 {
+        width: 66%;
+      }
+    }
+  }
   .program-events-grid{
     @media #{$tablet}{
       padding-top: calc(2rem + 3px);

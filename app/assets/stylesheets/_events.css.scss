@@ -296,10 +296,12 @@ h1{
 }
 
 .links{
-	width: 33%;
-	display: flex;
-	justify-content: space-between;
-	li{
-		flex: 1 0 20%;
+	@media #{$tablet}{
+		width: 33%;
+		display: flex;
+		justify-content: space-between;
+		li{
+			flex: 0 1 20%;
+		}
 	}
 }

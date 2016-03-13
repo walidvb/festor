@@ -249,7 +249,7 @@ main{
 
 
 /* p5 Lines*/
-#canvas{
+#canvas, #canvas-placeholder{
 	height: 100%;
 	width: 100%;
 	position: fixed;
@@ -275,6 +275,9 @@ main{
 main{
 	opacity: 1;
 	min-height: 600px;
+}
+body{
+	background-position: fixed;
 }
 .imready.transitionning {
 	#main-content, .load-more-container{

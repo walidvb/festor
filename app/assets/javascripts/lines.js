@@ -43,7 +43,7 @@ var sketchProc = (function($p) {
         var i = 1;
         for (; i < max_points - 1; i++) {
             $p.randomSeed($p.millis() * 111);
-            coord_y[i] = (coord_y[i] + yDir*(i / 12.0 * speed)) % render_height;            
+            coord_y[i] = (coord_y[i] + yDir*(i / 12.0 * speed)) % render_height;
             $p.randomSeed($p.millis() * 57);
             coord_x[i] = (coord_x[i] + xDir*(i / 10.0 * speed)) % render_width;
         }
@@ -64,12 +64,15 @@ var sketchProc = (function($p) {
       $('html').addClass('transitionning');
       if(!isPlaying){
         $p.loop();
+        $($p.externals.canvas).show();
+        $('#canvas-placeholder').hide();
       }
     }).on('turbolinks:load', function(e){
       if(!isPlaying){
         random_coords();
         $p.noLoop();
         draw();
+        setBackgroundImage();
       }
       speed = getSpeed();
       if(!firstLoad){
@@ -81,6 +84,12 @@ var sketchProc = (function($p) {
       }
       firstLoad = false;
     });
+
+    function setBackgroundImage(){
+      var img = $p.externals.canvas.toDataURL();
+      $('#canvas-placeholder').css('background-image', 'url(' + img + ')').show();
+      $($p.externals.canvas).hide();
+    }
     function random_coords() {
         yDir = Math.random() > 0.5 ? 1 : -1;
         xDir = Math.random() > 0.5 ? 1 : -1;
