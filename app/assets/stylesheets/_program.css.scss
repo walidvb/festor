@@ -41,11 +41,15 @@
         min-height: 3rem;
         margin-top: 0;
         margin-bottom: 1rem;
+        .location-link{
+          line-height: 3rem;
+        }
       }
     }
   }
   .location-link{
     border-bottom-color: black;
+    transition: all .2s ease-out;
   }
   @media #{$tablet}{
     position: relative;
@@ -53,6 +57,9 @@
       padding-top: 1rem;
       @include lineJump(0);
       transition: all 0.3s ease-out;
+    }
+    &:hover .location-link{
+      font-weight: true;
     }
     .location-link{
       transition: all .2s ease-out;
@@ -75,15 +82,6 @@
   }
 }
 #date-dropdown-trigger{
-  @media #{$tablet}{
-    padding-top: 1rem;
-    .butt{
-      cursor:pointer;
-      padding-bottom: 2rem;
-      margin-top: 0;
-
-    }
-  }
   .butt{
     @extend .cat-filters;
     width: 100%;
@@ -93,8 +91,17 @@
       border-left: none;
       border-right: none;
     }
+    margin-top: 0;
   }
-  padding-top: 2rem;
+  @media #{$tablet}{
+    padding-top: 1rem;
+    .butt{
+      cursor:pointer;
+      padding-bottom: 2rem;
+
+    }
+    padding-top: 2rem;
+  }
 }
 
 // these importants are needed
