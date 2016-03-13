@@ -158,7 +158,7 @@ input[type="checkbox"]:checked + label{
 }
 label{
 	font-weight: normal;
-	&:before{
+	&:before, &.dropdown:after{
 		content: '';
 		display: inline-block;
 		height: 20px;
@@ -168,6 +168,39 @@ label{
 		position: relative;
 		top: 3px;
 		vertical-align: top;
+	}
+
+	&.dropdown{
+		&:before, &:after{
+			border-left: none;
+			border-right: none;
+			width: 10px;
+			height: 0;
+			float: left;
+			top: 1.3rem;
+			margin: 0;
+			transition: all .3s ease-out;
+		}
+		&:before{
+			border-top: none;
+			transform: rotate(15deg);
+			transform-origin: right top;
+		}
+		&:after{
+			content: '';
+			border-bottom: none;
+			transform: rotate(-15deg);
+			transform-origin: left bottom;
+			margin-right: 5px;
+		}
+	}
+}
+label.dropdown.dropdown-active{
+
+	&:before, &:after{
+		height: 20px;
+		width: 10px;
+		border-top: black 1px solid;
 	}
 }
 

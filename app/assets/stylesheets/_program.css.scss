@@ -97,11 +97,6 @@
     @extend .cat-filters;
     width: 100%;
     clear: both;
-    &:before{
-      border-top: none;
-      border-left: none;
-      border-right: none;
-    }
     margin-top: 0;
   }
   @media #{$tablet}{
@@ -109,7 +104,9 @@
     .butt{
       cursor:pointer;
       padding-bottom: 2rem;
-
+      .dates-only &{
+        @extend .dropdown-active;
+      }
     }
     padding-top: 2rem;
   }

@@ -25,6 +25,7 @@ $(document).on('turbolinks:load', function(){
 
       $('#dates').on('change', function(){
         $('#program').toggleClass('dates-only', $('#dates').is(':checked'));
+        $('#date-dropdown-trigger .dropdown').toggleClass('dropdown-active', $('#dates').is(':checked'));
       });
       function showDate(i){
         $(dayElems).removeClass('active');

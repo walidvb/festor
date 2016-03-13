@@ -7,7 +7,7 @@
 - date_format = "%m-%d-%y"
 .row#program
 	.col-sm-1.dates#date-dropdown-trigger
-		%label.butt{for: 'dates'} Date
+		%label.dropdown.butt{for: 'dates'} Date
 	%ul.col-xs-5.col-sm-1.dates-list
 		%input#dates{type: :checkbox, name: 'dates'}
 		- @days.each do |day, event_dates|
