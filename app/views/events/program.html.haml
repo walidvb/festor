@@ -23,7 +23,7 @@
 				.grid-sizer.grid-item
 				- passed_event_ids = []
 				- event_dates.map(&:dateable).each do |event, i|
-					- if !passed_event_ids.include? event.id
+					- if !passed_event_ids.include? event.id && (!user_signed_in? && event.published?)
 						- passed_event_ids.push event.id
 						- classes = [event.featured? ? "grid-item--width2" : nil]
 						- classes.push(event.location.try(:slug))
