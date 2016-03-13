@@ -47,7 +47,7 @@
 				mix-blend-mode: difference;
 			}
 	%body{class: ["#{controller.controller_name}-page", "#{controller.action_name}-page", "#{'debug' if Rails.env.development?}", "#{current_user.nil? ? nil : 'admin'}", content_for(:body_class)].join(' ')}
-		#the-content
+		#the-content{'data-turbolinks' => 'false'}
 			%header.container
 				= render 'layouts/header'
 			= yield

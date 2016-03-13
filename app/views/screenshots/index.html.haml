@@ -6,4 +6,9 @@
       .info
         .artists
           %h4.artist-name= sc.location
-          %h4.artist-name= l(sc.created_at, format: "%A %e %b")
+          - t_ = distance_of_time_in_words_to_now sc.created_at
+          %h4.artist-name
+            - if I18n.locale == :en
+              = t_ + ' ago'
+            - else
+              = 'il y a ' + t_
