@@ -1,0 +1,56 @@
+!!!
+%html{lang: I18n.locale, class: 'first-load imready'}
+	%head
+		%meta{:content => "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no", :name => "viewport"}/
+		%meta{property:"og:site_name", content:"Mapping Festival 2016"}
+		- desc = strip_tags(CGI.unescapeHTML("#{content_for?(:description) ? yield(:description) : 'The Mapping Festival is also a meeting point, a creative and collaborative platform with innovative spirit. Over the course of ten editions the Mapping Festival has grown steadily and emerged as one the most important events of its kind in Europe.'}")).gsub('&nbsp;', ' ')
+		%meta{:name => "description", content: desc}
+		%meta{property:"og:description", content: desc}
+		%meta{property:"og:image", content:"#{content_for?(:image) ? yield(:image) : image_url('lines_1.png')}"}
+		%meta{property:"og:url", content: "#{content_for?(:url) ? yield(:url) : request.original_url}"}
+		%meta{property:"og:type", content:"#{content_for?(:type) ? yield(:type) : 'website'}"}
+		- title = strip_tags(CGI.unescapeHTML("#{content_for?(:og_title) ? '28.4-8.5 2016 | Mapping Festival | ' + yield(:og_title): '28.4-8.5 2016 | Mapping Festival'}"))
+		%meta{property:"og:title", content: title}
+		%meta{name: "google-site-verification", content:"EiRhKI0cx8Sp3Xikv24icsWpBYEF4lG5LU8nFYaQhQ4"}
+		%title= title
+
+		= favicon_link_tag 'favicon.png'
+		= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
+		= javascript_include_tag "application", "data-turbolinks-track" => true
+		= csrf_meta_tags
+		:css
+			header{
+			  position: fixed;
+			  left: 0;
+			  right: 0;
+			  z-index: 10;
+			}
+			.grid{
+				margin-top: 0;
+			}
+			.header-right, .news-banner{
+				display: none;
+			}
+			.grid-item:hover img{
+				opacity: 1;
+			}
+			.grid-item img{
+				opacity: 0.1;
+			}
+	%body{class: ["#{controller.controller_name}-page", "#{controller.action_name}-page", "#{'debug' if Rails.env.development?}", "#{current_user.nil? ? nil : 'admin'}", content_for(:body_class)].join(' ')}
+		#the-content
+			%header.container
+				= render 'layouts/header'
+			= yield
+			= render 'layouts/footer'
+		:plain
+			<script>
+				(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+				(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+				m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+				})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+				ga('create', 'UA-27024782-20', 'auto');
+				ga('send', 'pageview');
+
+			</script>

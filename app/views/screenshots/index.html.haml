@@ -1,5 +1,10 @@
 .grid
-  .grid-sizer
+  .grid-sizer.grid-item
   - @screenshots.each do |sc|
     .grid-item
       = image_tag sc.screenshot.url
+      .tile-link
+        .info
+          .artists
+            %h4.artist-name= sc.location
+            %h4.artist-name= l(sc.created_at, format: "%A %e %b")
