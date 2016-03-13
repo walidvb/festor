@@ -179,29 +179,31 @@ label{
 			float: left;
 			top: 1.3rem;
 			margin: 0;
-			transition: width .2s ease-out, transform .1s .2s ease-out;
+			transition: all .2s 0s ease-out,  border-top 0s .2s ease-out, transform .1s .2s ease-out;
+			border-top: solid black 0px;
 		}
 		&:before{
-			border-top: none;
 			transform: rotate(15deg);
 			transform-origin: right top;
 		}
 		&:after{
 			content: '';
-			border-top: none;
 			transform: rotate(-15deg);
 			transform-origin: left bottom;
 			margin-right: 5px;
 		}
 	}
 }
-label.dropdown.dropdown-active{
-	&:before, &:after{
-		height: 20px;
-		width: 10px;
-		border-top: black 1px solid;
-		transform: rotate(0deg);
-		top: 0;
+label.dropdown{
+	&.dropdown-active, &:hover{
+		&:before, &:after{
+			transition: transform .2s 0s ease-out, all .1s .2s ease-out,  border-top 0s .2s ease-out;
+			height: 10px;
+			width: 10px;
+			border-top: black 1px solid;
+			transform: rotate(0deg);
+			top: 10px;
+		}
 	}
 }
 

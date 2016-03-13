@@ -31,7 +31,9 @@
 //= require_tree .
 
 $(document).on('turbolinks:load', function(){
+  var theTop = window.innerWidth >= 767 ? $('.news').offset().top - 8 : $('.show-header').length? $('.show-header').offset().top : 0;
+  var speed = window.innerWidth >= 767 ? 300 : 0;
   $('html, body').animate({
-    scrollTop: $('.news').offset().top - 8
-  })
+    scrollTop: theTop,
+  }, speed);
 });
