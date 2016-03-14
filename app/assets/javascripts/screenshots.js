@@ -23,7 +23,7 @@
   });
   $('label.yours').on('click', function(){
     if(yourTile.length){
-      $('html, body').stop()animate({
+      $('html, body').stop().animate({
         scrollTop: yourTile.offset().top
       }, 'ease-out');
     }
