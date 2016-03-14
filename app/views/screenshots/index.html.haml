@@ -2,7 +2,7 @@
   .grid-sizer.grid-item.not-scroll-revealable
   - @screenshots.each_with_index do |sc, i|
     - if i == 4
-      .grid-item.explanation.stay{data: {country: 'neverland'}}
+      .grid-item.explanation.stay{data: {country: 'neverland', city: 'the-pirate-boat'}}
         Each visit on the website generates a different pattern. This is a collection of screenshots submitted automatically from around the world.
     - cache(sc.updated_at) do
       .screenshot.grid-item.not-scroll-revealable{data:{id: sc.id, country: sc.country_name, city: sc.city}}
