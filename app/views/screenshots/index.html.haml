@@ -9,7 +9,7 @@
           %br
           Try me:
         %canvas#canvas{style: "width: 100%; height: 8rem;"}
-    - cache(sc.updated_at) do
+    - cache([sc.id, sc.updated_at].join('-')) do
       .screenshot.grid-item.not-scroll-revealable{data:{id: sc.id, country: sc.country_name, city: sc.city}}
         = image_tag sc.screenshot.url
         .info
