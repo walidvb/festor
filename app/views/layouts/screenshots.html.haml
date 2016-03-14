@@ -20,9 +20,9 @@
 		= csrf_meta_tags
 		:css
 			.grid-item.focused img{
-				filter: #{'invert'+'()'};
-				-webkit-filter: #{'invert'+'()'};
-				-moz-filter: #{'invert'+'()'};
+				filter: invert()
+				-webkit-filter: invert();
+				-moz-filter: invert();
 				opacity: 0.3;
 			}
 			.grid-item.focused:hover img{
@@ -30,6 +30,11 @@
 				-webkit-filter: none;
 				-moz-filter: none;
 				opacity: 1;
+			}
+			.grid-item:hover canvas{
+				filter: invert();
+				-webkit-filter: invert();
+				-moz-filter: invert();
 			}
 	%body{class: ["#{controller.controller_name}-page", "#{controller.action_name}-page", "#{'debug' if Rails.env.development?}", "#{current_user.nil? ? nil : 'admin'}", content_for(:body_class)].join(' ')}
 		#the-content{'data-turbolinks' => 'false'}

@@ -11,7 +11,7 @@ var sketchProc = (function($p) {
 
     var random_offset = 250;
     var max_points = 8;
-    var width_base = 16;
+    var width_base = 8;
 
     var coord_x = $p.createJavaArray('float', [max_points]);
     var coord_y = $p.createJavaArray('float', [max_points]);
@@ -146,6 +146,12 @@ $('document').ready(function(){
       processingInstance.random_coords();
     });
     $(document).on('keypress', function(e){
+      processingInstance.random_coords();
+    });
+    $('#canvas').on('click', function(e){
+      processingInstance.random_coords();
+    });
+    $('.screenshots-page .explanation').on('click', function(e){
       processingInstance.random_coords();
     });
     $('.login-form').one('click touchdown', enterSite);
