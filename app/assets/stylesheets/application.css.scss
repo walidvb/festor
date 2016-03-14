@@ -263,6 +263,9 @@ main{
 	.imready.transitionning &{
 		opacity: 1;
 	}
+	&:focus{
+		outline: none;
+	}
 }
 
 .turbolinks-progress-bar {
