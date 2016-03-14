@@ -99,7 +99,10 @@
       vertical-align: top;
     }
     header.grid-item{
-      width: 60%;
+      width: 50%;
+      @media #{$tablet}{
+        width: 60%;
+      }
       opacity: 1!important;
     }
     #logs{

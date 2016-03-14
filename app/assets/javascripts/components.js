@@ -25,7 +25,6 @@ $(document).on('turbolinks:load', function() {
 		}
 	});
 	$('.grid').imagesLoaded( function() {
-		$('.grid').css('opacity', 1);
 		$('body').scrollReveal();
 		var $grid = $('.grid').isotope({
 			// options
@@ -36,6 +35,7 @@ $(document).on('turbolinks:load', function() {
 				percentPosition: true
 			}
 		})
+		$('.grid').addClass('ready');
 
 		var filterInputs = $('.cat-filters input');
 		filterInputs.change(updateList);
