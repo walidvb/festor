@@ -28,6 +28,7 @@
 //= require underscore/underscore-min.js
 //= require logo
 //= require locations
+//= require screenshots
 //= require_tree .
 
 $(document).on('turbolinks:load', function(){
