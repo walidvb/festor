@@ -22,6 +22,9 @@
 	%body{class: ["#{controller.controller_name}-page", "#{controller.action_name}-page", "#{'debug' if Rails.env.development?}", "#{current_user.nil? ? nil : 'admin'}", content_for(:body_class)].join(' ')}
 		%canvas#canvas{"data-turbolinks-permanent" => true}
 		#canvas-placeholder
+		-# #screenshot
+		-# 	%input#name{type: 'text', placeholder: 'Your name'}
+		-# 	%button.submit Go
 		.login-form
 		#the-content
 			%header.container

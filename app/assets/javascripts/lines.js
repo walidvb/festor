@@ -196,31 +196,5 @@ $('document').ready(function(){
       $(document).trigger('visibility', { visibility: hidden });
       hidden ? processingInstance.noLoop() : processingInstance.loop();
     }, false);
-
-    setTimeout(sendScreenshot, 3000);
-    function sendScreenshot(){
-      if(!localStorage.hasTakenScreenshot){
-        var csrf_token = $('meta[name="csrf-token"]').attr('content');
-
-        var img = processingInstance.externals.canvas.toDataURL();
-        $.ajax({
-          url:"/screenshots",
-          data:{
-            screenshot:{
-              screenshot:img,
-            }
-          },
-          headers: {
-            'X-CSRF-Token': csrf_token
-          },
-          success: function(e){
-            localStorage.hasTakenScreenshot = true;
-          },
-          complete: function(e){},
-          type:"POST",
-          contentType:"application/x-www-form-urlencoded",
-        });
-      }
-    };
   }
 });

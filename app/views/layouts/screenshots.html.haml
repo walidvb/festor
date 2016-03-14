@@ -28,14 +28,34 @@
 			.grid{
 				margin-top: 0;
 			}
-			footer, .header-right, .news-banner{
+			footer, .news-banner{
 				display: none;
 			}
-			.grid-item:hover img{
-				opacity: 1;
+			@media (min-width: 900px){
+				.screenshots-page .grid-item{
+					width: 20%;
+					min-width: 20%;
+				}
+				.grid .grid-item.focused{
+					width: 40%;
+				}
+			}
+
+			.grid-item.focused img{
+				filter: invert();
+				-webkit-filter: invert();
+				-moz-filter: invert();
+			}
+			.grid-item.focused:hover img{
+				filter: none;
+				-webkit-filter: none;
+				-moz-filter: none;
 			}
 			.grid-item img{
 				opacity: 0.1;
+			}
+			.grid-item:hover img{
+				opacity: 1;
 			}
 			.grid .grid-item .info{
 				top: auto;
@@ -46,10 +66,35 @@
 				color: white;
 				mix-blend-mode: difference;
 			}
+
+			.sub-list{
+				font-size: 12px;
+			}
+			.sub-list li{
+			margin: 0;
+			padding: 0;
+			line-height: 12px;
+			}
 	%body{class: ["#{controller.controller_name}-page", "#{controller.action_name}-page", "#{'debug' if Rails.env.development?}", "#{current_user.nil? ? nil : 'admin'}", content_for(:body_class)].join(' ')}
 		#the-content{'data-turbolinks' => 'false'}
 			%header.container
-				= render 'layouts/header'
+				%nav.row.body-header
+					.col-xs-5.col-md-2.header-left
+						.link-logo.logo
+							=link_to root_path do
+								= render 'layouts/logo'
+						.logo.not-link-logo= render 'layouts/logo'
+						.motto
+							.statement= t("shared.motto").html_safe
+							.festival-date
+								#{l(Date.parse("28 april"), format: "%e.%-m")} – #{l(Date.parse("8 may"), format: "%e.%-m.%y")}
+							.festival-place #{ t("shared.geneva")}
+						.hamburger
+							.bars
+					.col-xs-5.col-md-3.header-right
+						.row
+							= yield :screenshot_ui
+
 			= yield
 			= render 'layouts/footer'
 		:plain

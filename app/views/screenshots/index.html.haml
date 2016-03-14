@@ -1,14 +1,41 @@
 .grid
   .grid-sizer.grid-item
   - @screenshots.each do |sc|
-    .grid-item
+    .screenshot.grid-item{data:{id: sc.id, country: sc.country_name, city: sc.city}}
       = image_tag sc.screenshot.url
       .info
         .artists
-          %h4.artist-name= sc.location
+
+          %h4.artist-name
+            - if sc.name.blank?
+              taken in:
+            - else
+              taken by
+              = succeed ', ' do
+                %span.name #{sc.name}
+              in:
+            %br
+            = sc.location
           - t_ = distance_of_time_in_words_to_now sc.created_at
           %h4.artist-name
+            %br
             - if I18n.locale == :en
               = t_ + ' ago'
             - else
               = 'il y a ' + t_
+
+- content_for :screenshot_ui do
+  #sc-filters.col-xs-5.col-sm-3
+    .form-group
+      %input.filter#country{type: 'checkbox', data: {filter: 'country'}}
+      %label{for: 'country'} distinct country
+    .form-group
+      %input.filter#city{type: 'checkbox', data: {filter: 'city'}}
+      %label{for: 'city'} distinct city
+  .col-xs-5.col-sm-2
+    .screenshot-title
+      LATEST SUBMISSIONS:
+    %ul.sub-list
+      - (0..5).each do |i|
+        - sc = @screenshots[i]
+        %li= "#{sc.country_name.titleize}: #{distance_of_time_in_words_to_now sc.updated_at} ago"
