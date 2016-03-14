@@ -11,7 +11,7 @@ var sketchProc = (function($p) {
 
     var random_offset = 250;
     var max_points = 8;
-    var width_base = 16;
+    var width_base = $('body').hasClass('screenshots-page') ? 8 : 16;
 
     var coord_x = $p.createJavaArray('float', [max_points]);
     var coord_y = $p.createJavaArray('float', [max_points]);
