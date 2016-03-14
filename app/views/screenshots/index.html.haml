@@ -7,14 +7,13 @@
 
         %h4.artist-name
           - if sc.name.blank?
-            taken in:
+            taken
           - else
             taken by
             = succeed ', ' do
               %span.name #{sc.name}
-            in:
           %br
-          = sc.location
+          %span.location= "in: #{sc.location}"
         - t_ = distance_of_time_in_words_to_now sc.created_at
         %h4.artist-name
           %br
@@ -24,21 +23,22 @@
             = 'il y a ' + t_
 
 - content_for :screenshot_ui do
-  #sc-filters.col-xs-5.col-md-2
+  #sc-filters
     .form-group
       %input.filter#country{type: 'checkbox', data: {filter: 'country'}}
       %label{for: 'country'} distinct countries
     .form-group
       %input.filter#city{type: 'checkbox', data: {filter: 'city'}}
       %label{for: 'city'} distinct cities
-  .col-xs-5.col-md-3
-    %table
+  %table#logs
+    %tr
+      %td.screenshot-title{style: 'vertical-align: top;'}
+        LATEST SUBMISSIONS:
+      %td= "#{distance_of_time_in_words_to_now(@screenshots[0].updated_at)} ago, from #{@screenshots[0].country_name.titleize}"
+    - (1..5).each do |i|
+      - sc = @screenshots[i]
       %tr
-        %td.screenshot-title{style: 'vertical-align: top;'}
-          LATEST SUBMISSIONS:
-        %td= "#{distance_of_time_in_words_to_now(@screenshots[0].updated_at)} ago, from #{@screenshots[0].country_name.titleize}"
-      - (1..5).each do |i|
-        - sc = @screenshots[i]
-        %tr
-          %td
-          %td= "#{distance_of_time_in_words_to_now(sc.updated_at)} ago, from #{sc.country_name.titleize}"
+        %td
+        %td{data: {id: sc.id}}
+          - name = sc.name.blank? ? nil : " by <span class='name'>#{sc.name}</span>".html_safe
+          = "#{distance_of_time_in_words_to_now(sc.updated_at)} ago, from #{sc.country_name.titleize} #{name}"

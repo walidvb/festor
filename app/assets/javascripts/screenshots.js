@@ -13,16 +13,21 @@
 
   // screenshot page
   var seen = [];
-  var mine = $('.screenshot[data-id='+localStorage.screenshotID+']');
+  var mine = $('[data-id='+localStorage.screenshotID+']');
   if(mine.length){
     mine.addClass('focused');
     mine.find('.name').text('you').css('font-weight', 'bold');
+    mine.find('.location').remove();
   }
 
+
+
+
+  console.log('binding', $('#sc-filters .filter').length);
   $('#sc-filters .filter').on('change', function(){
+    console.log('filtering by ', $(this).data('filter'));
     $(this).siblings().prop('checked', false);
     filter($(this).data('filter'), $(this).prop('checked'));
-    console.log('filtering by ', $(this).data('filter'));
   });
   function filter(attr, state){
     console.log(attr, state);

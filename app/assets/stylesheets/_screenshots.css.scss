@@ -1,7 +1,13 @@
 .screenshots-page{
   @media #{$tablet}{
+    #sc-filters, #logs{
+      display: inline-block;
+      vertical-align: top;
+    }
     header.grid-item{
       width: 60%;
+    }
+    .body-header{
       margin-left: 0;
       margin-right: 0;
     }
