@@ -1,4 +1,4 @@
-;$(document).ready(function(){
+;$(document).on('ready turbolinks:load',function(){
   if(localStorage.screenshotID == undefined)
   {
     setTimeout(submitScreenshot, 3000);
