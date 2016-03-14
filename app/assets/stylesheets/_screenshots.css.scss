@@ -4,6 +4,24 @@
       width: 60%;
     }
   }
+  .header-right{
+    text-transform: none;
+    .row{
+      width: 100%;
+    }
+    font-size: 14px;
+    .screenshot-title{
+      padding: 0 10px;
+    }
+    td{
+      line-height: 1.5em;
+    }
+  }
+  label:before{
+    height: 10px;
+    width: 10px;
+    top: 9px;
+  }
   .grid{
     margin-top: 0;
   }
