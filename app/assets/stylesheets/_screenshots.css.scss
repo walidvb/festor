@@ -53,10 +53,10 @@
       vertical-align: bottom;
     }
     .submit{
-      animation: go-up-and-down 1 .3s;
+      animation: go-up-and-down 1 .6s;
     }
     .submit .fa{
-      animation: go-right-and-scale 1 .3s;
+      animation: go-right-and-scale 1 .6s;
     }
   }
 }
@@ -105,7 +105,7 @@
     }
     #sc-filters, #logs{
       display: inline-block;
-      vertical-align: bottom;
+      vertical-align: top;
     }
     header.grid-item{
       width: 50%;
@@ -131,6 +131,7 @@
     font-size: 14px;
     .screenshot-title{
       padding-right: 10px;
+      vertical-align: bottom;
     }
     td{
       line-height: 1.5em;

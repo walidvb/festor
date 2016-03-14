@@ -7,7 +7,7 @@
 			%li= link_to t('nav.archives'), about_path(locale: I18n.locale, anchor: 'previous')
 		%form#screenshot
 			= link_to screenshots_path(locale: I18n.locale), class: 'thanks' do
-				%marquee{scrolldelay: 30, scrollamount: 50}= t('shared.thanks').html_safe
+				%marquee{scrolldelay: 40, scrollamount: 10}= t('shared.thanks').html_safe
 			%button.submit{type: :submit}
 				.fa.fa-camera
 			= link_to '', screenshots_path(locale: I18n.locale), class: 'fa fa-th screenshots-link', target: '_blank'

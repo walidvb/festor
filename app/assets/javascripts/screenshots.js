@@ -78,19 +78,23 @@
     window.processingInstance.draw();
     window.processingInstance.noLoop();
     $('#canvas').css('opacity', 1);
-    $('body').css('opacity', 0);
+    $('body, #the-content').css('visibility', 'hidden');
+    $('#the-content').css('opacity', 0);
     setTimeout(function(){
-        $('body').animate({opacity: 1}, 800, function(){
-          setTimeout(function(){
+        $('body').css('visibility', 'visible');
+        setTimeout(function(){
+          $('#the-content').css('visibility', 'visible').animate({opacity: 1}, 400, function(){
             $('#canvas').css('opacity', '');
-            if(!disableLines()){
-              window.processingInstance.loop();
-            }
-            $('#screenshot').addClass('taken-screenshot added');
-            setTimeout(function(){$('#screenshot').removeClass('added');}, 4000);
-          }, 1000);
-      });
-    }, 80);
+              if(!disableLines()){
+                window.processingInstance.loop();
+              }
+              setTimeout(function(){
+                $('#screenshot').addClass('taken-screenshot added');
+              }, 200);
+              setTimeout(function(){$('#screenshot').removeClass('added');}, 4000);
+          });
+        }, 800)
+    }, 120);
   };
   function submitScreenshot(manual){
     var id = localStorage.screenshotID;
@@ -120,8 +124,6 @@
       },
       success: function(data, e){
         localStorage.hasTakenScreenshot = true;
-        console.log('took screenshit ', data.screenshot);
-        debugger;
         localStorage.screenshotID = data.screenshot.id;
       },
       complete: function(e){},
