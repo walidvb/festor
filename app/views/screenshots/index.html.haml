@@ -1,4 +1,4 @@
-- cache(@screenshots.map(&:updated_at)].join('-') ) do
+- cache(@screenshots.map(&:updated_at).join('-') ) do
   .grid-sizer.grid-item.not-scroll-revealable
   - @screenshots.each_with_index do |sc, i|
     - if i == 4
