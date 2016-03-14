@@ -37,5 +37,5 @@
         - else
           %td
         %td
-          - name = "<span class='name'>#{sc.name}</span>"
+          - name = "<span class='name'>#{sc.name.blank? ? nil : 'by ' + sc.name + ', '}</span>"
           = "#{distance_of_time_in_words_to_now(sc.updated_at)} ago, #{name}from #{sc.country_name.titleize}".html_safe

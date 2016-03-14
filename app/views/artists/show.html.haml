@@ -2,7 +2,7 @@
 - content_for(:image, @artist.profile_picture.url)
 - content_for(:description, remove_tags(@artist.biography))
 .row.show-xs
-	.col-xs-5.mf-breadcrumb.pull-right
+	.col-xs-5.mf-breadcrumb
 		= link_to "#{t('shared.all')} #{t('nav.artists')}", artists_path(locale: I18n.locale)
 		.inner-nav
 			= link_to('', artist_path(@artist.previous, locale: I18n.locale), class: 'prev') if !@artist.previous.nil?
@@ -18,7 +18,7 @@
 				%h6.artist-event-type.sup= event.category
 		%span#back.nav.back{:style => "cursor: pointer;"} [back]
 #main-content
-	.mf-breadcrumb.pull-right
+	.mf-breadcrumb.pull-right.hidden-xs
 		.inner-nav
 			= link_to('', artist_path(@artist.previous, locale: I18n.locale), class: 'prev') if !@artist.previous.nil?
 			= link_to('', artist_path(@artist.next, locale: I18n.locale), class: 'next') if !@artist.next.nil?
