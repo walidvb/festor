@@ -46,11 +46,10 @@
         else{
           var $this = $(this);
           var thisOne = $(this).data(attr);
-          console.log(thisOne, seen);
           if($this.hasClass('focused') || seen.indexOf(thisOne) < 0){
             seen.push(thisOne);
             return true;
-          }else{
+          } else {
             return false
           };
         }

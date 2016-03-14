@@ -82,6 +82,12 @@
 }
 
 .screenshots-page{
+  .explanation{
+    padding: 3rem 1rem 2rem;
+    font-size: 1.5rem;
+    color: $white;
+    background: $black;
+  }
   #screenshot{
     display: none;
   }
@@ -99,7 +105,7 @@
     }
     #sc-filters, #logs{
       display: inline-block;
-      vertical-align: top;
+      vertical-align: bottom;
     }
     header.grid-item{
       width: 50%;
@@ -130,13 +136,13 @@
       line-height: 1.5em;
     }
   }
+  .yours{
+    cursor: pointer;
+  }
   label:before{
     height: 10px;
     width: 10px;
     top: 9px;
-  }
-  label.yours:before{
-    content: none;
   }
   .grid{
     margin-top: 0;

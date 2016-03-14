@@ -1,6 +1,9 @@
-- cache(@screenshots.first.id, @screenshots.first.updated_at).join('--')) do
+- cache([@screenshots.first.id, @screenshots.first.updated_at].join('--') ) do
   .grid-sizer.grid-item.not-scroll-revealable
-  - @screenshots.each do |sc|
+  - @screenshots.each_with_index do |sc, i|
+    - if i == 4
+      .grid-item.explanation.stay{data: {country: 'neverland'}}
+        Each visit on the website generates a different pattern. This is a collection of screenshots submitted automatically from around the world.
     - cache(sc.updated_at) do
       .screenshot.grid-item.not-scroll-revealable{data:{id: sc.id, country: sc.country_name, city: sc.city}}
         = image_tag sc.screenshot.url
@@ -21,14 +24,14 @@
 
 - content_for :screenshot_ui do
   #sc-filters
-    .form-group
+    %div
       %input.filter#country{type: 'checkbox', data: {filter: 'country'}}
       %label{for: 'country'} distinct countries
-    .form-group
+    %div
       %input.filter#city{type: 'checkbox', data: {filter: 'city'}}
       %label{for: 'city'} distinct cities
-    .form-group
-      %label.yours Go to your screenshot
+    %div
+      .yours Go to your screenshot
   %table#logs
     - (0..4).each do |i|
       - sc = @screenshots[i]
