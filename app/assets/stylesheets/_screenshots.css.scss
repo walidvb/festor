@@ -50,9 +50,9 @@
   }
 
   .grid-item.focused img{
-    filter: #{"invert()"};
-    -webkit-filter: #{"invert()"};
-    -moz-filter: #{"invert()"};
+    filter: #{'invert()'};
+    -webkit-filter: #{'invert()'};
+    -moz-filter: #{'invert()'};
   }
   .grid-item.focused:hover img{
     filter: none;
