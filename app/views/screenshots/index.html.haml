@@ -15,12 +15,9 @@
         .info
           .artists
             %h4.artist-name
-              screenshot
               %span.name
-              from:
-              %br
               %span.location= " #{sc.location}"
-            - t_ = distance_of_time_in_words_to_now sc.created_at
+              - t_ = distance_of_time_in_words_to_now sc.created_at
             %h4.artist-name
               - if I18n.locale == :en
                 = t_ + ' ago'
