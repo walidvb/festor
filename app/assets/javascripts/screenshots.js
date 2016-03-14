@@ -21,7 +21,7 @@
     $(this).siblings().prop('checked', false);
     filter($(this).data('filter'), $(this).prop('checked'));
   });
-  $('label.yours').on('click', function(){
+  $('.yours').on('click', function(){
     if(yourTile.length){
       $('html, body').stop().animate({
         scrollTop: yourTile.offset().top - 24
