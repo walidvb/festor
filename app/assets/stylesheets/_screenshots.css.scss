@@ -82,6 +82,9 @@
 }
 
 .screenshots-page{
+  #screenshot{
+    display: none;
+  }
   @media #{$mobile}{
     header.header{
       position: fixed!important;
