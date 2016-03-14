@@ -49,16 +49,6 @@
     }
   }
 
-  .grid-item.focused img{
-    filter: #{'invert'+'()'};
-    -webkit-filter: #{'invert'+'()'};
-    -moz-filter: #{'invert'+'()'};
-  }
-  .grid-item.focused:hover img{
-    filter: none;
-    -webkit-filter: none;
-    -moz-filter: none;
-  }
   .grid-item img{
     opacity: 0.1;
   }
