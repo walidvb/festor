@@ -6,6 +6,7 @@ fr:
     program: "Programme"
     all: 'Tous les'
     all_fem: 'Toutes les'
+    thanks: 'Merci pour votre screenshot, allez voir la gallery! <span class="fa fa-th"></span>'
   nav:
     events:      "Programme"
     artists:     "Artistes"

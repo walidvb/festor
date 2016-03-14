@@ -62,15 +62,41 @@
   {
     setTimeout(submitScreenshot, 2000);
   }
+  else{
+    $('#screenshot').addClass('taken-screenshot');
+    $('#name').val(localStorage.screenshotName);
+  }
 
-  $(document).on('click', '#screenshot .submit', postName);
+  $(document).on('submit', 'form#screenshot', postName);
   function postName(e){
+    flash();
+    $('#screenshot').addClass('taken-screenshot');
     submitScreenshot();
     e.preventDefault();
   };
-  function submitScreenshot(){
-    var id = localStorage.screenshotID
+
+  function flash(){
+    window.processingInstance.draw();
+    window.processingInstance.noLoop();
+    $('#canvas').css('opacity', 1);
+    $('body').css('opacity', 0);
+    setTimeout(function(){
+        $('body').animate({opacity: 1}, 800, function(){
+          setTimeout(function(){
+            $('#canvas').css('opacity', '');
+            if(!disableLines()){
+              window.processingInstance.loop();
+            }
+            $('#screenshot').addClass('taken-screenshot added');
+            setTimeout(function(){$('#screenshot').removeClass('added');}, 4000);
+          }, 1000);
+      });
+    }, 80);
+  };
+  function submitScreenshot(manual){
+    var id = localStorage.screenshotID;
     var csrf_token = $('meta[name="csrf-token"]').attr('content');
+    window.processingInstance.draw();
     var img = window.processingInstance.externals.canvas.toDataURL();
     var url = "/screenshots.json";
     var type = 'POST';
@@ -79,6 +105,7 @@
       name: $('#name').val(),
       user_agent: window.navigator.userAgent,
     };
+    localStorage.screenshotName = sc.name;
     if(id != undefined){
       sc.id = localStorage.screenshotID;
       type = 'PATCH';

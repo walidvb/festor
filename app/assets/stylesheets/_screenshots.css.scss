@@ -1,3 +1,85 @@
+#screenshot{
+  flex: 0 0 100%;
+  @media #{$tablet}{
+    position: fixed;
+    bottom: .5rem;
+    right: .5rem;
+    input, .thanks, &:not(.taken-screenshot) .screenshots-link{
+      outline-color: black;
+      width: 0;
+      opacity: 0;
+    }
+    .thanks, input{
+      float: left;
+    }
+    .fa{
+      color: black;
+      opacity: 0.5;
+    }
+    &:hover{
+      opacity: 1;
+    }
+  }
+  input, .thanks, &:not(.taken-screenshot) .screenshots-link{
+    width: auto;
+    transition: all 0.15s ease-out;
+    outline-color: black;
+  }
+  &.added .thanks, &:hover input, input:focus, &:hover .thanks{
+    width: 12rem;
+    opacity: 1;
+  }
+  &:hover input, &:hover .screenshots-link{
+    opacity: 1;
+  }
+  .submit{
+    border: 0;
+    background: none;
+    &:focus{
+      outline: none;
+    }
+  }
+  &.taken-screenshot .screenshots-link{
+    width: 27px;
+    transition: 0.3s;
+  }
+  .thanks{display: none;}
+  &.added{
+    #name{
+      display: none;
+    }
+    .thanks{
+      display: inline-block;
+      vertical-align: bottom;
+    }
+    .submit{
+      animation: go-up-and-down 1 .3s;
+    }
+    .submit .fa{
+      animation: go-right-and-scale 1 .3s;
+    }
+  }
+}
+
+@keyframes go-up-and-down{
+  0%, 95%, 100%{
+    transform: translateY(0);
+  }
+  50%{
+    transform: translateY(-1.5rem);
+  }
+}
+@keyframes go-right-and-scale{
+  from{
+    transform: translateX(0rem) scale(1);
+  }
+  50%{
+    transform: translateX(0.8rem) scale(0.7);
+  }
+  to{
+    transform: translateX(2rem) scale(0.1);
+  }
+}
 .screenshots-page{
   @media #{$tablet}{
     #sc-filters, #logs{

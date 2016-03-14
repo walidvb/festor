@@ -126,13 +126,13 @@
     position: absolute;
     top: 0;
     left: 0;
-    transition : all 0.2s ease-in;
+    transition : all 0.15s ease-in;
     background: rgba(0,0,0, 0.18);
 		color: $white;
     z-index: 1;
   }
 	.info, .image{
-		transition : all 0.3s ease-in;
+		transition : all 0.15s ease-in;
 	}
   .info{
     position: absolute;

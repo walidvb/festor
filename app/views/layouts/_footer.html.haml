@@ -1,13 +1,20 @@
 %footer#footer
-  .container
-    %ul.footer-links
-      %li= link_to t('nav.about'), about_path(locale: I18n.locale)
-      %li= link_to 'Contact', "mailto:nous@mappingfestival.com"
-      -# %li= link_to t('nav.partners'), partners_path(locale: I18n.locale)
-      %li= link_to t('nav.archives'), about_path(locale: I18n.locale, anchor: 'previous')
-    .address
-      %b Mapping Festival
-      %p Avenue Ernest-Pictet 28 / 30
-      %p 1203 #{t('shared.geneva').titleize} / #{t('shared.switzerland')}
+	.container
+		%ul.footer-links
+			%li= link_to t('nav.about'), about_path(locale: I18n.locale)
+			%li= link_to 'Contact', "mailto:nous@mappingfestival.com"
+			-# %li= link_to t('nav.partners'), partners_path(locale: I18n.locale)
+			%li= link_to t('nav.archives'), about_path(locale: I18n.locale, anchor: 'previous')
+		%form#screenshot
+			= link_to screenshots_path(locale: I18n.locale), class: 'thanks' do
+				%marquee{scrolldelay: 30, scrollamount: 50}= t('shared.thanks').html_safe
+			%button.submit{type: :submit}
+				.fa.fa-camera
+			= link_to '', screenshots_path(locale: I18n.locale), class: 'fa fa-th screenshots-link', target: '_blank'
+			%input#name{type: 'text', placeholder: 'Your name', "max-size" => 13}
+		.address
+			%b Mapping Festival
+			%p Avenue Ernest-Pictet 28 / 30
+			%p 1203 #{t('shared.geneva').titleize} / #{t('shared.switzerland')}
 
 %script{:src => "//app.mailerlite.fr/js/w/button.js", :type => "text/javascript", defer: true}
