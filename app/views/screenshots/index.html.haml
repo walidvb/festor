@@ -1,8 +1,8 @@
-- cache(@screenshots.map(&:updated_at).join('-')) do
-  .grid-sizer.grid-item
+- cache(@screenshots.first.id, @screenshots.first.updated_at).join('--')) do
+  .grid-sizer.grid-item.not-scroll-revealable
   - @screenshots.each do |sc|
     - cache(sc.updated_at) do
-      .screenshot.grid-item{data:{id: sc.id, country: sc.country_name, city: sc.city}}
+      .screenshot.grid-item.not-scroll-revealable{data:{id: sc.id, country: sc.country_name, city: sc.city}}
         = image_tag sc.screenshot.url
         .info
           .artists
