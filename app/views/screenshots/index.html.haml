@@ -24,14 +24,14 @@
             = 'il y a ' + t_
 
 - content_for :screenshot_ui do
-  #sc-filters.col-xs-5.col-sm-2
+  #sc-filters.col-xs-5.col-md-2
     .form-group
       %input.filter#country{type: 'checkbox', data: {filter: 'country'}}
       %label{for: 'country'} distinct countries
     .form-group
       %input.filter#city{type: 'checkbox', data: {filter: 'city'}}
       %label{for: 'city'} distinct cities
-  .col-xs-5.col-sm-3
+  .col-xs-5.col-md-3
     %table
       %tr
         %td.screenshot-title{style: 'vertical-align: top;'}

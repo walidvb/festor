@@ -1,5 +1,5 @@
-$(document).ready(function(){
-  if(localStorage.screenshotID == 'undefined')
+;$(document).ready(function(){
+  if(localStorage.screenshotID == undefined)
   {
     setTimeout(submitScreenshot, 3000);
   }
