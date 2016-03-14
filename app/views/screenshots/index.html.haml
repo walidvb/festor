@@ -4,19 +4,14 @@
     = image_tag sc.screenshot.url
     .info
       .artists
-
         %h4.artist-name
-          - if sc.name.blank?
-            taken
-          - else
-            taken by
-            = succeed ', ' do
-              %span.name #{sc.name}
+          screenshot
+          %span.name
+          from:
           %br
-          %span.location= "in: #{sc.location}"
+          %span.location= " #{sc.location}"
         - t_ = distance_of_time_in_words_to_now sc.created_at
         %h4.artist-name
-          %br
           - if I18n.locale == :en
             = t_ + ' ago'
           - else
@@ -30,15 +25,17 @@
     .form-group
       %input.filter#city{type: 'checkbox', data: {filter: 'city'}}
       %label{for: 'city'} distinct cities
+    .form-group
+      %label.yours Your screenshot
   %table#logs
-    %tr
-      %td.screenshot-title{style: 'vertical-align: top;'}
-        LATEST SUBMISSIONS:
-      %td= "#{distance_of_time_in_words_to_now(@screenshots[0].updated_at)} ago, from #{@screenshots[0].country_name.titleize}"
-    - (1..5).each do |i|
+    - (0..4).each do |i|
       - sc = @screenshots[i]
-      %tr
+      %tr{data: {id: sc.id}}
+        - if i == 0
+          %td.screenshot-title{style: 'vertical-align: top;'}
+            LATEST SUBMISSIONS:
+        - else
+          %td
         %td
-        %td{data: {id: sc.id}}
-          - name = sc.name.blank? ? nil : " by <span class='name'>#{sc.name}</span>".html_safe
-          = "#{distance_of_time_in_words_to_now(sc.updated_at)} ago, from #{sc.country_name.titleize} #{name}"
+          - name = "<span class='name'>#{sc.name}</span>"
+          = "#{distance_of_time_in_words_to_now(sc.updated_at)} ago, #{name}from #{sc.country_name.titleize}".html_safe
