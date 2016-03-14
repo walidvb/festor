@@ -6,11 +6,12 @@
     }
     header.grid-item{
       width: 60%;
+      opacity: 1!important;
     }
-    .body-header{
-      margin-left: 0;
-      margin-right: 0;
-    }
+  }
+  .body-header{
+    margin-left: 0;
+    margin-right: 0;
   }
   .header-right{
     text-transform: none;
