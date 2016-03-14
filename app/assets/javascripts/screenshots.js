@@ -24,7 +24,7 @@
   $('label.yours').on('click', function(){
     if(yourTile.length){
       $('html, body').stop().animate({
-        scrollTop: yourTile.offset().top
+        scrollTop: yourTile.offset().top - 24
       }, 'ease-out');
     }
   });
@@ -111,7 +111,6 @@
       type = 'PATCH';
       url = '/screenshots/' + id + '.json';
     }
-    console.log('posting screenshot: ', sc);
     $.ajax({
       url: url,
       data:{

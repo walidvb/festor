@@ -174,7 +174,13 @@ input[type="checkbox"]:checked + label{
 	&:before{
 		box-shadow: inset 0 0 0px 2px black;
 	}
+	@media #{$mobile}{
+		.light-mobile &:before, &.light-mobile:before{
+			box-shadow: inset 0 0 0px 2px white;
+		}
+	}
 }
+
 label{
 	font-weight: normal;
 	&:before, &.dropdown:after{
@@ -187,6 +193,11 @@ label{
 		position: relative;
 		top: 3px;
 		vertical-align: top;
+	}
+	@media #{$mobile}{
+		.light-mobile &:before, &.light-mobile:before{
+			box-shadow: inset 0 0 0px 1px white;
+		}
 	}
 
 	&.dropdown{

@@ -80,8 +80,20 @@
     transform: translateX(2rem) scale(0.1);
   }
 }
+
 .screenshots-page{
+  @media #{$mobile}{
+    header.header{
+      position: fixed!important;
+      top: auto!important;
+      opacity: 1!important
+    }
+  }
   @media #{$tablet}{
+    .body-header{
+      margin-left: 0;
+      margin-right: 0;
+    }
     #sc-filters, #logs{
       display: inline-block;
       vertical-align: top;
@@ -90,19 +102,23 @@
       width: 60%;
       opacity: 1!important;
     }
-  }
-  .body-header{
-    margin-left: 0;
-    margin-right: 0;
+    #logs{
+      padding-top: 4px;
+    }
   }
   .header-right{
     text-transform: none;
-    .row{
+    > .row{
       width: 100%;
+      @media #{$mobile}{
+        margin-left: 0;
+        margin-right: 0;
+
+      }
     }
     font-size: 14px;
     .screenshot-title{
-      padding: 0 10px;
+      padding-right: 10px;
     }
     td{
       line-height: 1.5em;
