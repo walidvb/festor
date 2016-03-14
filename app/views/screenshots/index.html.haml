@@ -1,41 +1,43 @@
-.grid-sizer.grid-item
-- @screenshots.each do |sc|
-  .screenshot.grid-item{data:{id: sc.id, country: sc.country_name, city: sc.city}}
-    = image_tag sc.screenshot.url
-    .info
-      .artists
-        %h4.artist-name
-          screenshot
-          %span.name
-          from:
-          %br
-          %span.location= " #{sc.location}"
-        - t_ = distance_of_time_in_words_to_now sc.created_at
-        %h4.artist-name
-          - if I18n.locale == :en
-            = t_ + ' ago'
-          - else
-            = 'il y a ' + t_
+- cache(@screenshots.map(&:updated_at).join('-')) do
+  .grid-sizer.grid-item
+  - @screenshots.each do |sc|
+    - cache(sc.updated_at) do
+      .screenshot.grid-item{data:{id: sc.id, country: sc.country_name, city: sc.city}}
+        = image_tag sc.screenshot.url
+        .info
+          .artists
+            %h4.artist-name
+              screenshot
+              %span.name
+              from:
+              %br
+              %span.location= " #{sc.location}"
+            - t_ = distance_of_time_in_words_to_now sc.created_at
+            %h4.artist-name
+              - if I18n.locale == :en
+                = t_ + ' ago'
+              - else
+                = 'il y a ' + t_
 
-- content_for :screenshot_ui do
-  #sc-filters
-    .form-group
-      %input.filter#country{type: 'checkbox', data: {filter: 'country'}}
-      %label{for: 'country'} distinct countries
-    .form-group
-      %input.filter#city{type: 'checkbox', data: {filter: 'city'}}
-      %label{for: 'city'} distinct cities
-    .form-group
-      %label.yours Your screenshot
-  %table#logs
-    - (0..4).each do |i|
-      - sc = @screenshots[i]
-      %tr{data: {id: sc.id}}
-        - if i == 0
-          %td.screenshot-title{style: 'vertical-align: top;'}
-            LATEST SUBMISSIONS:
-        - else
+  - content_for :screenshot_ui do
+    #sc-filters
+      .form-group
+        %input.filter#country{type: 'checkbox', data: {filter: 'country'}}
+        %label{for: 'country'} distinct countries
+      .form-group
+        %input.filter#city{type: 'checkbox', data: {filter: 'city'}}
+        %label{for: 'city'} distinct cities
+      .form-group
+        %label.yours Your screenshot
+    %table#logs
+      - (0..4).each do |i|
+        - sc = @screenshots[i]
+        %tr{data: {id: sc.id}}
+          - if i == 0
+            %td.screenshot-title{style: 'vertical-align: top;'}
+              LATEST SUBMISSIONS:
+          - else
+            %td
           %td
-        %td
-          - name = "<span class='name'>#{sc.name.blank? ? nil : 'by ' + sc.name + ', '}</span>"
-          = "#{distance_of_time_in_words_to_now(sc.updated_at)} ago, #{name}from #{sc.country_name.titleize}".html_safe
+            - name = "<span class='name'>#{sc.name.blank? ? nil : 'by ' + sc.name + ', '}</span>"
+            = "#{distance_of_time_in_words_to_now(sc.updated_at)} ago, #{name}from #{sc.country_name.titleize}".html_safe
