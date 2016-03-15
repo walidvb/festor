@@ -10,8 +10,8 @@
           Try me:
         %canvas#canvas{style: "width: 100%; min-height: 10rem;"}
     - cache([sc.id, sc.updated_at].join('-')) do
-      .screenshot.grid-item.not-scroll-revealable{data:{id: sc.id, country: sc.country_name, city: sc.city, screenshot: sc.screenshot.url}}
-        = image_tag '#'
+      .screenshot.grid-item.not-scroll-revealable{data:{id: sc.id, country: sc.country_name, city: sc.city, screenshot: sc.screenshot.url(:tile)}}
+        = image_tag i < 10 ? sc.screenshot.url(:tile) : ''
         .info
           .artists
             %h4.artist-name
