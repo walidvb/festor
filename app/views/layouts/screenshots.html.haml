@@ -31,10 +31,15 @@
 				-moz-filter: none;
 				opacity: 1;
 			}
-			.grid-item:hover canvas{
+			.grid-item canvas{
 				filter: invert();
 				-webkit-filter: invert();
 				-moz-filter: invert();
+			}
+			.grid-item:hover canvas{
+				filter: none;
+				-webkit-filter: none;
+				-moz-filter: none;
 			}
 	%body{class: ["#{controller.controller_name}-page", "#{controller.action_name}-page", "#{'debug' if Rails.env.development?}", "#{current_user.nil? ? nil : 'admin'}", content_for(:body_class)].join(' ')}
 		#the-content{'data-turbolinks' => 'false'}
