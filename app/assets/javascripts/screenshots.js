@@ -46,7 +46,7 @@
         else{
           var $this = $(this);
           var thisOne = $(this).data(attr);
-          if($this.hasClass('focused') || seen.indexOf(thisOne) < 0){
+          if($this.hasClass('focused') || (seen.indexOf(thisOne) < 0 && thisOne != undefined)){
             seen.push(thisOne);
             return true;
           } else {
