@@ -25,7 +25,6 @@
         img.onload = function(){
           this.elem.find('img').attr('src', this.src);
           $('.grid.ready').isotope('layout');
-          $items.splice(i, 1);
         };
       };
     };
