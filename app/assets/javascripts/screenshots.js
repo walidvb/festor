@@ -62,7 +62,7 @@
         else{
           var $this = $(this);
           var thisOne = $(this).data(attr);
-          if($this.hasClass('focused') || (seen.indexOf(thisOne) < 0 && thisOne != undefined)){
+          if($this.hasClass('focused stay .header') || (seen.indexOf(thisOne) < 0 && thisOne != undefined)){
             seen.push(thisOne);
             return true;
           } else {

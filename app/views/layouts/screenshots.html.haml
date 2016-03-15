@@ -44,7 +44,7 @@
 	%body{class: ["#{controller.controller_name}-page", "#{controller.action_name}-page", "#{'debug' if Rails.env.development?}", "#{current_user.nil? ? nil : 'admin'}", content_for(:body_class)].join(' ')}
 		#the-content{'data-turbolinks' => 'false'}
 			.grid
-				%header.grid-item.header.container.light-mobile
+				%header.grid-item.header.container.light-mobile{data: {country: 'mary-poppins', city: 'gizeh'}}
 					%nav.row.body-header
 						.col-xs-5.col-md-2.header-left
 							.link-logo.logo
