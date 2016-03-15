@@ -8,7 +8,6 @@
     mine.addClass('focused');
     mine.find('.name').text('by you, ').css('font-weight', 'bold');
     mine.find('.location').remove();
-
     yourTile = $('.grid-item.focused');
   }
 
