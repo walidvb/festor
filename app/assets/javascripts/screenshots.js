@@ -106,8 +106,8 @@
               }
               setTimeout(function(){
                 $('#screenshot').addClass('taken-screenshot added');
+                setTimeout(function(){$('#screenshot').removeClass('added');}, 4500);
               }, 200);
-              setTimeout(function(){$('#screenshot').removeClass('added');}, 4000);
           });
         }, 800)
     }, 120);
