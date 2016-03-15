@@ -17,18 +17,17 @@
   function loadImages(){
     for(var i = $items.length - 1; i >= 0; --i){
       var $this = $($items[i]);
-      console.log(i, $this.data('id'));
-      if(window.scrollY - $this.offset().top  <  window.innerHeight + 300){
+      console.log($this.data('id'), $this.offset().top - window.scrollY <  window.innerHeight + 300);
+      if($this.offset().top - window.scrollY <  window.innerHeight + 300){
         var img = new Image();
         img.src = $this.data('screenshot');
         img.elem = $this;
         img.onload = function(){
-          console.log(i, this.elem.data('id'), this.src);
           this.elem.find('img').attr('src', this.src);
           $('.grid.ready').isotope('layout');
+          $items.splice(i, 1);
         };
       };
-      $items.splice(i, 1);
     };
   }
   loadImages();
