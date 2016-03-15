@@ -1,14 +1,14 @@
 - cache(@screenshots.map(&:updated_at).join('-') ) do
   .grid-sizer.grid-item.not-scroll-revealable
   - @screenshots.each_with_index do |sc, i|
-    - if i == 4
+    - if i == 6
       .grid-item.stay{data: {country: 'neverland', city: 'the-pirate-boat'}}
         .explanation
           This is a collection of screenshots submitted automatically from around the world. Every pattern is generated on the spot on every visit.
           %br
           %br
           Try me:
-        %canvas#canvas{style: "width: 100%; height: 8rem;"}
+        %canvas#canvas{style: "width: 100%; min-height: 10rem;"}
     - cache([sc.id, sc.updated_at].join('-')) do
       .screenshot.grid-item.not-scroll-revealable{data:{id: sc.id, country: sc.country_name, city: sc.city, img: sc.screenshot.url}}
         = image_tag '#'
