@@ -83,6 +83,16 @@
     $('#name').val(localStorage.screenshotName);
   }
 
+  $('.screenshots-page .tile-link').each(function(){
+    var $this = $(this);
+    $this.click(function(e){
+      e.preventDefault();
+      $('.map-show').removeClass('grid-item--width2');
+      $this.parent('.grid-item').addClass('map-show grid-item--width2');
+      $this.find('.map').attr('src', $this.attr('href'));
+      setTimeout(function(){$('.grid.ready').isotope('layout');}, 200);
+    });
+  });
   $(document).on('submit', 'form#screenshot', postName);
   function postName(e){
     flash();

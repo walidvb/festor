@@ -170,6 +170,7 @@
   }
   .grid-item:not(.grid-sizer){
     min-height: 7rem;
+    transition: all .15s ease-out;
   }
   @media (min-width: 900px){
     .grid-item{
@@ -178,6 +179,21 @@
     }
     .grid .grid-item.focused{
       width: 40%;
+    }
+  }
+
+  .tile-link{
+    background: none;
+    color: black;
+  }
+  .map{
+    display: none;
+    position: absolute;
+
+  }
+  .map-show {
+    .map{
+      display: block;
     }
   }
 
@@ -193,11 +209,14 @@
     bottom: 0;
     transition: none;
   }
-  .grid-item:hover .info{
+  .grid-item:hover .tile-link{
     color: white;
     mix-blend-mode: difference;
   }
 
+  .grid .grid-item--width2{
+    width: 40%
+  }
   .sub-list{
     font-size: 12px;
   }
