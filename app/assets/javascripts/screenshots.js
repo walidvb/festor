@@ -17,7 +17,6 @@
   function loadImages(){
     for(var i = $items.length - 1; i >= 0; --i){
       var $this = $($items[i]);
-      console.log($this.data('id'), $this.offset().top - window.scrollY <  window.innerHeight + 300);
       if($this.offset().top - window.scrollY <  window.innerHeight + 300){
         var img = new Image();
         img.src = $this.data('screenshot');
@@ -34,7 +33,6 @@
 
 
   $('#sc-filters .filter').on('change', function(){
-    console.log('filtering by ', $(this).data('filter'));
     $(this).siblings().prop('checked', false);
     filter($(this).data('filter'), $(this).prop('checked'));
   });
@@ -46,7 +44,6 @@
     }
   });
   function filter(attr, state){
-    console.log(attr, state);
     seen = [];
     $('.grid').isotope({
       // options
