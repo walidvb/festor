@@ -30,7 +30,7 @@
       };
     };
   }
-  loop();
+  loadImages();
   $(window).on('scroll', loadImages);
 
 
