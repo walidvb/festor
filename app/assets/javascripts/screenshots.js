@@ -14,21 +14,23 @@
 
   var $items = $('.grid-item[data-screenshot]');
 
-  function loadImages(){
+  var loadImages = debounce(loop, 50);
+  function loop(){
     for(var i = $items.length - 1; i >= 0; --i){
       var $this = $($items[i]);
-      if($this.offset().top - window.scrollY <  window.innerHeight + 300){
+      if(!$this.data('done') && $this.offset().top - window.scrollY <  window.innerHeight + 250){
         var img = new Image();
         img.src = $this.data('screenshot');
         img.elem = $this;
         img.onload = function(){
           this.elem.find('img').attr('src', this.src);
+          this.elem.data('done', true);
           $('.grid.ready').isotope('layout');
         };
       };
     };
   }
-  loadImages();
+  loop();
   $(window).on('scroll', loadImages);
 
 
