@@ -88,9 +88,26 @@
     $this.click(function(e){
       e.preventDefault();
       $('.map-show').removeClass('grid-item--width2');
-      $this.parent('.grid-item').addClass('map-show grid-item--width2');
-      $this.find('.map').attr('src', $this.attr('href'));
-      setTimeout(function(){$('.grid.ready').isotope('layout');}, 200);
+      var gridItem = $this.parent('.grid-item');
+      gridItem.addClass('map-show grid-item--width2');
+      $this.find('.map.empty').attr('src', $this.attr('href')).removeClass('empty');
+      setTimeout(layout, 200);
+
+      gridItem.find('.thumb').click(function(e){
+        console.log(e);
+        e.stopPropagation();
+        e.preventDefault();
+        console.log(gridItem);
+        gridItem.removeClass('map-show');
+        if(!$(this).hasClass('featured')){
+          gridItem.removeClass('grid-item--width2');
+        }
+        setTimeout(layout, 200);
+      });
+
+      function layout(){
+        $('.grid.ready').isotope('layout');
+      }
     });
   });
   $(document).on('submit', 'form#screenshot', postName);
