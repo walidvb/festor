@@ -20,6 +20,7 @@ $(document).on('turbolinks:load', function() {
 			img.className = 'non-blurred';
 			img.onload = function(){
 				$this.find('img').attr('src', this.src);
+				$('.grid.ready').isotope('layout');
 			};
 			$this.data('blurred', true);
 		}
@@ -34,7 +35,7 @@ $(document).on('turbolinks:load', function() {
 				columnWidth: '.grid-sizer',
 				percentPosition: true
 			}
-		})
+		});
 		$('.grid').addClass('ready');
 
 		var filterInputs = $('.cat-filters input');

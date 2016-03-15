@@ -164,6 +164,9 @@
   footer, .news-banner{
     display: none;
   }
+  .grid-item{
+    min-height: 7rem;
+  }
   @media (min-width: 900px){
     .grid-item{
       width: 20%;
