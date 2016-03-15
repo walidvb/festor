@@ -242,6 +242,9 @@ label.dropdown{
 .colorbox:focus{
 	outline: none;
 }
+#cboxOverlay{
+	visibility: hidden!important;
+}
 #cboxBottomLeft, #cboxBottomCenter, #cboxBottomRight, #cboxTopLeft, #cboxTopCenter, #cboxTopRight, #cboxMiddleRight, #cboxMiddleLeft, #cboxClose{
 	background: none!important;
 }
