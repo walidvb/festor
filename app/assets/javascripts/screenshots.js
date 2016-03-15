@@ -70,7 +70,8 @@
           };
         }
       }
-    })
+    });
+    loadImages();
   };
 
   if(localStorage.screenshotID == undefined && $('#canvas').length)
