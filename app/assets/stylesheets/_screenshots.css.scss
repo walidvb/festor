@@ -123,10 +123,11 @@
     display: none;
   }
   @media #{$mobile}{
-    header.header{
+    header.header.grid-item{
       position: fixed!important;
       top: auto!important;
       opacity: 1!important
+      width: 100%;
     }
   }
   .stay{
@@ -196,6 +197,7 @@
   }
   .grid-item{
     width: 50%;
+    cursor: pointer;
   }
   .grid-item--width2, .stay{
     width: 100%;
@@ -263,18 +265,16 @@
   }
 
   .grid-item {
-    .placeholder{
-      display: block;
-    }
-    img{
-      opacity: 0.1;
-      width: 100%;
-    }
-    .big{
-      display: none;
-    }
+      .placeholder{
+        display: block;
+      }
+      .big{
+        display: none;
+      }
     &.done{
       .big{
+        opacity: 0.1;
+        width: 100%;
         display: block;
       }
     }
