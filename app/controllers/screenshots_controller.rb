@@ -7,6 +7,7 @@ class ScreenshotsController < ApplicationController
   end
 
   def update
+
     set_screenshot
     if @screenshot.nil?
       create
