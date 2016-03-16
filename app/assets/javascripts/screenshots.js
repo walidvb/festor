@@ -97,7 +97,6 @@
       var gridItem = $this.parent('.grid-item');
       gridItem.addClass('map-show');// grid-item--width2');
       $this.find('.map.empty').attr('src', $this.attr('href')).removeClass('empty');
-      setTimeout(layout, 200);
 
       gridItem.find('.thumb').click(function(e){
         console.log(e);
@@ -108,12 +107,7 @@
         if(!$(this).hasClass('featured')){
           gridItem.removeClass('grid-item--width2');
         }
-        setTimeout(layout, 200);
       });
-
-      function layout(){
-        $('.grid.ready').isotope('layout');
-      }
     });
   });
   $(document).on('submit', 'form#screenshot', postName);
