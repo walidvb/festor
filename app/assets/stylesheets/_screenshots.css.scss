@@ -269,17 +269,12 @@
       display: block;
     }
     .big{
-      display: none;
-    }
-    &.done{
-      .big{
-        opacity: 0.1;
-        width: 100%;
-        display: block;
-      }
+      opacity: 0.1;
+      width: 100%;
+      display: block;
     }
   }
-  .grid-item:hover img{
+  .grid-item:hover .big{
     opacity: 1;
   }
   .grid .grid-item .info{
