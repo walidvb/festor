@@ -8,6 +8,10 @@ class ScreenshotsController < ApplicationController
 
   def update
     set_screenshot
+    if @screenshot.nil?
+      create
+      return
+    end
     respond_to do |format|
       if @screenshot.update(screenshot_params)
         format.html { head :ok }
@@ -45,7 +49,7 @@ class ScreenshotsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_screenshot
-      @screenshot = Screenshot.find(params[:id])
+      @screenshot = Screenshot.find_by_id(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

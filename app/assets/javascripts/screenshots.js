@@ -23,14 +23,15 @@
         img.src = $this.data('screenshot');
         img.elem = $this;
         img.onload = function(){
-          this.elem.find('img').attr('src', this.src);
-          this.elem.data('done', true);
-          $('.grid.ready').isotope('layout');
+          this.elem.find('img').attr('src', this.src)
+          this.elem.data('done', true).addClass('done');
+          this.elem.find('.placeholder').remove();
+          //$('.grid.ready').isotope('layout');
         };
       };
     };
   }
-  loadImages();
+  loop();
   $(window).on('scroll', loadImages);
 
 

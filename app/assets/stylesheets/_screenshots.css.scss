@@ -195,6 +195,7 @@
     transition: all .15s ease-out;
   }
   .grid-item{
+    opacity: 1;
     width: 50%;
   }
   .grid-item--width2, .stay{
@@ -262,10 +263,21 @@
     }
   }
 
-  .grid-item img{
-    opacity: 0.1;
-    width: 100%;
-  }
+  .grid-item {
+      .placeholder{
+        display: block;
+      }
+      img{
+        display: none;
+      }
+    &.done{
+      img{
+        opacity: 0.1;
+        width: 100%;
+        display: block;
+      }
+    }
+}
   .grid-item:hover img{
     opacity: 1;
   }
