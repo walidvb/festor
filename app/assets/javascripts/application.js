@@ -13,11 +13,9 @@
 //= require jquery
 //= require turbolinks
 //= require jquery_ujs
-//= require mixitup/build/jquery.mixitup.min.js
 //= require vendors/imagesloaded.pkgd.min.js
 //= require vendors/isotope.pkgd.min
 //= require vendors/processing.min
-//= require vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar
 //= require vendors/scroll-reveal
 //= require lines.js
 //= require home.js
