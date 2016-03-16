@@ -126,7 +126,7 @@
     header.header.grid-item{
       position: fixed!important;
       top: auto!important;
-      opacity: 1!important
+      opacity: 1!important;
       width: 100%;
     }
   }
@@ -265,12 +265,12 @@
   }
 
   .grid-item {
-      .placeholder{
-        display: block;
-      }
-      .big{
-        display: none;
-      }
+    .placeholder{
+      display: block;
+    }
+    .big{
+      display: none;
+    }
     &.done{
       .big{
         opacity: 0.1;
@@ -278,7 +278,7 @@
         display: block;
       }
     }
-}
+  }
   .grid-item:hover img{
     opacity: 1;
   }
