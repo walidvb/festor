@@ -11,7 +11,7 @@
         %canvas#canvas{style: "width: 100%; min-height: 10rem;"}
     - cache([sc.id, sc.updated_at].join('-')) do
       .screenshot.grid-item.not-scroll-revealable{data:{id: sc.id, country: sc.country_name, city: sc.city, screenshot: sc.screenshot.url(:tile)}}
-        = image_tag i < 10 ? sc.screenshot.url(:tile) : '', class: 'big'
+        = image_tag i < 10 ? sc.screenshot.url(:tile) : '', class: 'big', width: sc.width, height: sc.height
         = image_tag '', class: 'thumb'
         = link_to "https://maps.google.com/maps?q=#{sc.latitude},#{sc.longitude}&hl=es;z=14&output=embed", class: 'tile-link' do
           %iframe.map.empty{width: "100%", height: "100%"}

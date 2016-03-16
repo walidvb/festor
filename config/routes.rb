@@ -9,7 +9,7 @@ Festor::Application.routes.draw do
 	match "/upload" => "assets#upload", via: :post
 	scope "(:locale)", locale: /en|fr/, defaults: {locale: 'en'} do
     get '/where' => 'screenshots#index', as: :where
-    resources :screenshots, only: [:create]
+    resources :screenshots, only: [:create, :update]
 		post "beta" => "beta#create"
 		devise_for :users, skip: :registrations
 		get "home" => 'home#index'
