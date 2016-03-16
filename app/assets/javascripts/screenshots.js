@@ -23,7 +23,10 @@
         img.src = $this.data('screenshot');
         img.elem = $this;
         img.onload = function(){
-          this.elem.find('img').attr('src', this.src)
+          thumb = img.cloneNode();
+          img.className = 'big';
+          thumb.className = 'thumb';
+          this.elem.prepend(img).prepend(img);
           this.elem.data('done', true).addClass('done');
           this.elem.find('.placeholder').remove();
           //$('.grid.ready').isotope('layout');
