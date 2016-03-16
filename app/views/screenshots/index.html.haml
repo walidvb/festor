@@ -41,8 +41,7 @@
     %div
       .yours Go to your screenshot
   %table#logs
-    - (0..0).each do |i|
-      - sc = @screenshots[i]
+    - @screenshots.first(5).each_with_index do |sc, i|
       %tr{data: {id: sc.id}}
         - if i == 0
           %td.screenshot-title{style: 'vertical-align: top;'}

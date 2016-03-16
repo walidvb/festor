@@ -22,14 +22,15 @@
         var img = new Image();
         img.src = $this.data('screenshot');
         img.elem = $this;
+        console.log('bind', $this);
         img.onload = function(){
-          thumb = img.cloneNode();
-          img.className = 'big';
+          console.log('loaded', this.elem);
+          var thumb = this.cloneNode();
+          this.className = 'big';
           thumb.className = 'thumb';
-          this.elem.prepend(img).prepend(img);
+          this.elem.prepend(this).prepend(thumb);
           this.elem.data('done', true).addClass('done');
           this.elem.find('.placeholder').remove();
-          //$('.grid.ready').isotope('layout');
         };
       };
     };
