@@ -87,6 +87,7 @@
     var $this = $(this);
     $this.click(function(e){
       e.preventDefault();
+      $('html, body').animate({scrollTop: $this.offset().top + 7}, 300);
       $('.map-show').removeClass('grid-item--width2');
       var gridItem = $this.parent('.grid-item');
       gridItem.addClass('map-show grid-item--width2');

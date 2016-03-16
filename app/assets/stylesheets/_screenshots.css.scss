@@ -97,6 +97,20 @@
     color: $white;
     background: $black;
   }
+  @media #{$tablet}{
+    .grid .grid-item--width2{
+      width: 40%
+    }
+    .grid .stay{
+      width: 40%;
+    }
+
+  }
+  @media #{$lg}{
+    .grid .stay{
+      width: 20%;
+    }
+  }
   #screenshot{
     display: none;
   }
@@ -172,6 +186,12 @@
     min-height: 7rem;
     transition: all .15s ease-out;
   }
+  .grid-item{
+    width: 50%;
+  }
+  .grid-item--width2, .stay{
+    width: 100%;
+  }
   @media (min-width: 900px){
     .grid-item{
       width: 20%;
@@ -204,6 +224,12 @@
     cursor: pointer;
   }
   .map-show {
+    @media #{$mobile}{
+      max-height: 33vh;
+      .big{
+        visibility: hidden;
+      }
+    }
     .big{
       opacity: 1;
     }
@@ -244,9 +270,6 @@
     mix-blend-mode: difference;
   }
 
-  .grid .grid-item--width2{
-    width: 40%
-  }
   .sub-list{
     font-size: 12px;
   }

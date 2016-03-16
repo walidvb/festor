@@ -5,9 +5,11 @@ Festor::Application.routes.draw do
   get "data/artists" => 'admin/data#artists'
   get "data/locations" => 'admin/data#locations'
 	get "beta" => "beta#new"
+
 	match "/upload" => "assets#upload", via: :post
 	scope "(:locale)", locale: /en|fr/, defaults: {locale: 'en'} do
-    resources :screenshots
+    get '/where' => 'screenshots#index'
+    resources :screenshots, only: [:create]
 		post "beta" => "beta#create"
 		devise_for :users, skip: :registrations
 		get "home" => 'home#index'

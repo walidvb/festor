@@ -27,6 +27,8 @@
                   = t_ + ' ago'
                 - else
                   = 'il y a ' + t_
+                - if sc.created_at != sc.updated_at
+                  updated #{distance_of_time_in_words_to_now sc.updated_at} ago
 
 - content_for :screenshot_ui do
   #sc-filters
