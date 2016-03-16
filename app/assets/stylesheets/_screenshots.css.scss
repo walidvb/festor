@@ -264,16 +264,18 @@
   }
 
   .grid-item {
-      .placeholder{
-        display: block;
-      }
-      img{
-        display: none;
-      }
+    .placeholder{
+      display: block;
+    }
+    img{
+      opacity: 0.1;
+      width: 100%;
+    }
+    .big{
+      display: none;
+    }
     &.done{
-      img{
-        opacity: 0.1;
-        width: 100%;
+      .big{
         display: block;
       }
     }

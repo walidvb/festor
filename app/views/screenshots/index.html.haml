@@ -11,8 +11,8 @@
         %canvas#canvas{style: "width: 100%; min-height: 10rem;"}
     - cache([sc.id, sc.updated_at].join('-')) do
       .screenshot.grid-item.not-scroll-revealable{data:{id: sc.id, country: sc.country_name, city: sc.city, screenshot: sc.screenshot.url(:tile)}}
-        = image_tag i < 0 ? sc.screenshot.url(:tile) : '#', class: 'big', width: sc.width, height: sc.height
-        = image_tag '#', class: 'thumb'
+        = image_tag i < 0 ? sc.screenshot.url(:tile) : 'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=', class: 'big', width: sc.width, height: sc.height
+        = image_tag 'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=', class: 'thumb'
         - ratio = 100.0/(sc.width.to_d/sc.height.to_d)
         .placeholder{style: "display: block; padding-top:#{ratio}%;"}
         = link_to "https://maps.google.com/maps?q=#{sc.latitude},#{sc.longitude}&hl=es;z=14&output=embed", class: 'tile-link' do
@@ -43,14 +43,14 @@
     %div
       .yours Go to your screenshot
   %table#logs
-    -# - (0..4).each do |i|
-    -#   - sc = @screenshots[i]
-    -#   %tr{data: {id: sc.id}}
-    -#     - if i == 0
-    -#       %td.screenshot-title{style: 'vertical-align: top;'}
-    -#         LATEST SUBMISSIONS:
-    -#     - else
-    -#       %td
-    -#     %td
-    -#       - name = sc.name.blank? ? nil : "by #{sc.name}, "
-    -#       = "#{distance_of_time_in_words_to_now(sc.updated_at)} ago <span class='name'>#{name}<span>, #{sc.country_name.titleize}".html_safe
+    - (0..4).each do |i|
+      - sc = @screenshots[i]
+      %tr{data: {id: sc.id}}
+        - if i == 0
+          %td.screenshot-title{style: 'vertical-align: top;'}
+            LATEST SUBMISSIONS:
+        - else
+          %td
+        %td
+          - name = sc.name.blank? ? nil : "by #{sc.name}, "
+          = "#{distance_of_time_in_words_to_now(sc.updated_at)} ago <span class='name'>#{name}<span>, #{sc.country_name.titleize}".html_safe
