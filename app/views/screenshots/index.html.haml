@@ -13,8 +13,7 @@
       .screenshot.grid-item.not-scroll-revealable{data:{id: sc.id, country: sc.country_name, city: sc.city, screenshot: sc.screenshot.url(:tile)}}
         - ratio = 100.0/(sc.width.to_d/sc.height.to_d)
         .placeholder{style: "display: block; padding-top:#{ratio}%;"}
-        .tile-link{href: "https://maps.google.com/maps?q=#{sc.latitude},#{sc.longitude}&hl=es;z=14&output=embed"}
-          %iframe.map.empty{width: "100%", height: "100%"}
+        .tile-link{"map-src"=> "https://maps.google.com/maps?q=#{sc.latitude},#{sc.longitude}&hl=es;z=14&output=embed"}
           .info
             .artists
               %h4.artist-name

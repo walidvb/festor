@@ -96,8 +96,8 @@
       $('.map-show').removeClass('grid-item--width2');
       var gridItem = $this.parent('.grid-item');
       gridItem.addClass('map-show');// grid-item--width2');
-      $this.find('.map.empty').attr('src', $this.attr('href')).removeClass('empty');
-
+      var map = $('<iframe src="' + $this.attr('map-src') + '"class="map" width="100%" height="100%></iframe>')
+      map.prependTo($this);
       gridItem.find('.thumb').click(function(e){
         console.log(e);
         e.stopPropagation();
