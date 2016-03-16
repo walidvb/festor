@@ -101,7 +101,7 @@
         console.log(gridItem);
         gridItem.removeClass('map-show');
         if(!$(this).hasClass('featured')){
-          gridItem.removeClass('grid-item--width2');
+          gridItem.removeClass('agrid-item--width2');
         }
         setTimeout(layout, 200);
       });
