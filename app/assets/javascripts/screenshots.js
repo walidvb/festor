@@ -111,7 +111,7 @@
   });
   $(document).on('submit', 'form#screenshot', postName);
   function postName(e){
-    $('#screenshot').addClass('taken-screenshot');
+    $('#screenshot').addClass('taken-screenshot added');
     $('#screenshot .submit').addClass('on-purpose');
     flash();
     submitScreenshot();
@@ -168,7 +168,6 @@
         localStorage.hasTakenScreenshot = true;
         localStorage.screenshotID = data.screenshot.id;
         submit.addClass('success');
-        $('#screenshot').addClass('taken-screenshot added');
         setTimeout(function(){
           $('#screenshot').removeClass('added');
           submit.removeClass('error success');
