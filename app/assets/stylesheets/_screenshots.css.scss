@@ -123,10 +123,11 @@
     display: none;
   }
   @media #{$mobile}{
-    header.header{
+    header.header.grid-item{
       position: fixed!important;
       top: auto!important;
       opacity: 1!important
+      width: 100%;
     }
   }
   .stay{
