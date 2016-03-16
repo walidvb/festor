@@ -222,6 +222,7 @@
     display: none;
     position: absolute;
   }
+
   .thumb{
     display: none;
     position: absolute;
@@ -233,7 +234,7 @@
     right: 1rem;
     cursor: pointer;
   }
-  .map-show {
+  .map-show.grid-item {
     @media #{$mobile}{
       max-height: 33vh;
       .big{
