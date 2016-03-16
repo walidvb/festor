@@ -134,7 +134,7 @@
               }
               setTimeout(function(){
                 $('#screenshot').addClass('taken-screenshot added');
-                setTimeout(function(){$('#screenshot').removeClass('added');}, 4500);
+                setTimeout(function(){$('#screenshot').removeClass('added');}, 5500);
               }, 200);
           });
         }, 800)
