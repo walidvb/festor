@@ -90,7 +90,7 @@
       $('html, body').animate({scrollTop: $this.offset().top + 14*5}, 300);
       $('.map-show').removeClass('grid-item--width2');
       var gridItem = $this.parent('.grid-item');
-      gridItem.addClass('map-show grid-item--width2');
+      gridItem.addClass('map-show');// grid-item--width2');
       $this.find('.map.empty').attr('src', $this.attr('href')).removeClass('empty');
       setTimeout(layout, 200);
 
@@ -101,7 +101,7 @@
         console.log(gridItem);
         gridItem.removeClass('map-show');
         if(!$(this).hasClass('featured')){
-          gridItem.removeClass('agrid-item--width2');
+          gridItem.removeClass('grid-item--width2');
         }
         setTimeout(layout, 200);
       });
