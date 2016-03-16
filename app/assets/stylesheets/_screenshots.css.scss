@@ -88,6 +88,14 @@
     opacity: 1;
     user-select: none;
   }
+
+  //$w: 10%;
+  //@for $i from 1 through 3 {
+  //  .grid-item:nth-child(3n+#{$i}) {
+  //    width: $w!important;
+  //  }
+  //  $w: $w + 10%;
+  //}
   .stay{
     cursor: pointer;
   }
