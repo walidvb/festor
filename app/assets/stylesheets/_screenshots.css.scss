@@ -268,11 +268,11 @@
       .placeholder{
         display: block;
       }
-      img{
+      .big{
         display: none;
       }
     &.done{
-      img{
+      .big{
         opacity: 0.1;
         width: 100%;
         display: block;
