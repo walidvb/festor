@@ -16,7 +16,6 @@
 
   var loadImages = debounce(loop, 50);
   function loop(){
-    alert('loop');
     for(var i = $items.length - 1; i >= 0; --i){
       var $this = $($items[i]);
       if(!$this.data('done') && $this.offset().top - window.scrollY <  window.innerHeight + 250){
