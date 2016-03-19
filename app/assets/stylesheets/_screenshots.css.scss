@@ -146,6 +146,9 @@
       margin-left: 0;
       margin-right: 0;
     }
+    #sc-filters{
+      margin-right: 1rem;
+    }
     #sc-filters, #logs{
       display: inline-block;
       vertical-align: top;
@@ -183,6 +186,10 @@
     }
     td{
       line-height: 1.5em;
+      display: block;
+      @media (min-width: 1500px){
+        display: table-cell;
+      }
     }
   }
   .yours{
