@@ -200,7 +200,7 @@ label{
 		}
 	}
 
-	&.dropdown{
+	&.dropdown, &.dropdown-active:hover{
 		&:before, &:after{
 			border-left: none;
 			border-right: none;
@@ -213,12 +213,12 @@ label{
 			border-top: solid black 0px;
 		}
 		&:before{
-			transform: rotate(15deg);
+			transform: rotate(35deg);
 			transform-origin: right top;
 		}
 		&:after{
 			content: '';
-			transform: rotate(-15deg);
+			transform: rotate(-35deg);
 			transform-origin: left bottom;
 			margin-right: 5px;
 		}
