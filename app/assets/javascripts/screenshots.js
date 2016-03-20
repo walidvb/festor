@@ -156,7 +156,7 @@
       url = '/screenshots/' + id + '.json';
     }
     submit = $('#screenshot .submit.on-purpose');
-    submit.removeClass('error success');
+    submit.removeClass('error success').addClass('fa-spin');
     $.ajax({
       url: url,
       data:{
@@ -168,7 +168,7 @@
       success: function(data, e){
         localStorage.hasTakenScreenshot = true;
         localStorage.screenshotID = data.screenshot.id;
-        submit.addClass('success');
+        submit.addClass('success').removeClass('fa-spin');
         setTimeout(function(){
           $('#screenshot').removeClass('added');
           submit.removeClass('error success');
