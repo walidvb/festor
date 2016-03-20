@@ -1,5 +1,7 @@
 #screenshot{
   flex: 0 0 100%;
+  margin-top: 60px;
+  margin-left: 5px;
   @media #{$tablet}{
     position: fixed;
     bottom: .5rem;
