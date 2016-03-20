@@ -7,11 +7,9 @@ var sketchProc = (function($p) {
     var render_width = window.innerWidth;
     var render_height = window.innerHeight;
 
-    var spot_diameter = 7;
-
     var random_offset = 250;
     var max_points = 8;
-    var width_base = $('body').hasClass('screenshots-page') ? 8 : 16;
+    $p.width_base = $('body').hasClass('screenshots-page') ? 8 : 16;
 
     var coord_x = $p.createJavaArray('float', [max_points]);
     var coord_y = $p.createJavaArray('float', [max_points]);
@@ -37,8 +35,8 @@ var sketchProc = (function($p) {
     function draw() {
         $p.background(fill_color);
 
-        for (var i = 1; i < width_base; i++) {
-            my_line_3(coord_x, coord_y, (width_base - i) * width_base - (width_base / 2), i % 2 == 0 ? 255 : line_color);
+        for (var i = 1; i < $p.width_base; i++) {
+            my_line_3(coord_x, coord_y, ($p.width_base - i) * $p.width_base - ($p.width_base / 2), i % 2 == 0 ? 255 : line_color);
         }
         var i = 1;
         for (; i < max_points - 1; i++) {
@@ -146,7 +144,17 @@ $('document').ready(function(){
       processingInstance.random_coords();
     });
     $(document).on('keypress', function(e){
-      processingInstance.random_coords();
+      if(e.keyCode == 119){
+        processingInstance.width_base = Math.min(16, processingInstance.width_base+1);
+      }
+      else if(e.keyCode == 115)
+      {
+        processingInstance.width_base = Math.max(8, processingInstance.width_base-1);
+      }
+      else{
+        processingInstance.random_coords();
+      }
+      console.log(processingInstance.width_base);
     });
     $('#canvas').on('click', function(e){
       processingInstance.random_coords();
