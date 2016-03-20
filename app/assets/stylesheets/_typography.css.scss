@@ -155,7 +155,7 @@
 .location-link {
 	@include fontSize(20.9px) ;
 	line-height: 1.23;
-	padding-bottom: 0.45rem;
+	//padding-bottom: 0.45rem;
 	&:not(:first-child){
 		@include lineJump (2);
 	}

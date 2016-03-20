@@ -69,9 +69,7 @@
       @include lineJump(0);
       transition: all 0.3s ease-out;
     }
-    &:hover .location-link{
-      font-weight: true;
-    }
+
     .location-link{
       transition: all .2s ease-out;
     }
@@ -113,7 +111,7 @@
   }
 }
 
-// these importants are needed
+// these !importants are needed
 // because max-height is set by js
 .dates-list {
   clear: both;
@@ -142,11 +140,11 @@
     }
     & ~ .day{
       max-height: 3.5rem!important;
-      padding-top: 1rem;
+      padding-top: 0.8rem;
       display: list-item;
 
       .location-link{
-        padding-bottom: 1.2rem;
+        padding-bottom: .8rem;
       }
     }
   }
