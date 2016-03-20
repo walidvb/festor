@@ -213,12 +213,12 @@ label{
 			border-top: solid black 0px;
 		}
 		&:before{
-			transform: rotate(35deg);
+			transform: rotate(40deg);
 			transform-origin: right top;
 		}
 		&:after{
 			content: '';
-			transform: rotate(-35deg);
+			transform: rotate(-40deg);
 			transform-origin: left bottom;
 			margin-right: 5px;
 		}
