@@ -11,8 +11,6 @@ class StaticController < ApplicationController
 
   def volunteers
     @iframe = Setting.first.volunteers
-    render :coming_soon
-    return
     render :volunteers
   end
 
