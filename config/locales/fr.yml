@@ -35,6 +35,15 @@ fr:
       speaker: 'speaker'
       performer: 'performeur'
       exhibitor: 'exhibiteur'
+    event_type:
+      clubbing:    "Club"
+      performance: "Performance A/V"
+      screening:   "Film"
+      conference:  "Conférence"
+      exhibition:  "Installation"
+      workshop:    "Workshop"
+      masterclass: "Masterclass"
+      specials:    "Spéciaux"
   events:
     ticket: "Billets"
     fields:
@@ -50,13 +59,14 @@ fr:
       single_event: "event"
       all:          'Programme'
     categories:
-      clubbing:    "Clubbing"
-      performance: "Performance"
+      clubbing:    "Club"
+      performance: "Performance A/V"
       screening:   "Film"
       exhibition:  "Installation"
       conference:  "Conférence"
       masterclass: "Masterclass"
       specials:    "Spéciaux"
+      workshop:    "Workshop"
   time:
     to: 'au'
     coming_soon: 'À venir...'

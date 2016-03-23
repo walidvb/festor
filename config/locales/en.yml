@@ -42,8 +42,8 @@ en:
       performer: 'performer'
       exhibitor: 'exhibitor'
     event_type:
-      clubbing:    "Clubbing"
-      performance: "Performance"
+      clubbing:    "Club"
+      performance: "Performance A/V"
       screening:   "Screening"
       conference:  "Conference"
       exhibition:  "Installation"
@@ -65,8 +65,8 @@ en:
       single_event: "Event"
       all:          'Program'
     categories:
-      clubbing:    "Clubbing"
-      performance: "Performance"
+      clubbing:    "Club"
+      performance: "Performance A/V"
       screening:   "Screening"
       conference:  "Conference"
       exhibition:  "Installation"
