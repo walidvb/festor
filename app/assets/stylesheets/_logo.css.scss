@@ -2,7 +2,7 @@
   text-transform: uppercase;
   .letter{
     will-change: true;
-    padding: 0.2rem 0;
+    padding: 0.2rem 0.1rem;
     flex: 0 0 12.5%;
     transition: all 0.3s ease-out;
   }

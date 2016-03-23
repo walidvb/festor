@@ -92,6 +92,9 @@
 }
 
 .screenshots-page{
+  .logo-break{
+    display: block!important;
+  }
   .imready & #canvas{
     position: initial;
     pointer-events: initial;
