@@ -4,7 +4,7 @@
 	@include fontSize(22.8px);
 	@media #{$tablet}{
 		@include fontSize(33px);
-		@include lineHeight(33px);
+		@include lineHeight(42px);
 	}
 }
 
