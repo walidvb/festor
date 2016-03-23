@@ -2,7 +2,7 @@
   text-transform: uppercase;
   .letter{
     will-change: true;
-    padding: 0.2rem 0.1rem;
+    padding: 0.2rem 0;
     flex: 0 0 12.5%;
     transition: all 0.3s ease-out;
   }
@@ -16,7 +16,7 @@
       }
     }
   }
-  @include text-shadow($color1: $black, $color2: $white);
+  @include text-shadow($color1: $black, $color2: $white, $gap: 0.15em);
 	@media #{$tablet} {
     @include text-shadow($color1: $black);
     margin-top: -5px;
