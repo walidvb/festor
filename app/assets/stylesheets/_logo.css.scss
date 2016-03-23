@@ -1,8 +1,9 @@
 .logo{
+  text-transform: uppercase;
   .letter{
     will-change: true;
-    padding: 0.2em 0;
-    flex: 0 0 25%;
+    padding: 0.2rem 0.2rem;
+    flex: 0 0 12.5%;
     transition: all 0.3s ease-out;
   }
   $list: 3n, 2n+1, 2n, 4n+1, 3n+1, 4n;
@@ -20,6 +21,9 @@
     @include text-shadow($color1: $black);
     margin-top: -5px;
 		margin-right: $margin-horizontal-normal;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
 	}
   header:hover &{
     @include text-shadow($color1: $black, $color2: $white, $gap: 0);

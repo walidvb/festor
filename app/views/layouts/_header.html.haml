@@ -1,8 +1,7 @@
 %nav.row.body-header
 	.col-xs-5.col-md-2.header-left
-		.link-logo.logo
-			=link_to root_path do
-				= render 'layouts/logo'
+		= link_to root_path, class: 'link-logo logo' do
+			= render 'layouts/logo'
 		.logo.not-link-logo= render 'layouts/logo'
 		.motto
 			.statement= t("shared.motto").html_safe
