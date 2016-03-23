@@ -17,6 +17,6 @@
 			= image_tag artist.profile_picture.url(artist.featured? ? :large_blurred : :tile_blurred), class: 'image'
 			= link_to path, class: 'tile-link' do
 				.info
-					%h5.artist-event-type= artist.events.first.try:category unless event.blank?
+					%h5.artist-event-type= t("artists.event_type.#{artist.events.first.try:category}") unless event.blank?
 					%h3.artist-name= artist.name
 					%h4.artist-event= event.title unless event.blank?
