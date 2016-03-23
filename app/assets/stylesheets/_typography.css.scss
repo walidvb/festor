@@ -16,7 +16,7 @@
 	@include lineJump (0.7);
 	@media #{$tablet}{
 	@include lineHeight($lineheight-base * 2);
-	@include lineJump (2);
+	@include lineJump (0);
 	}
 }
 
