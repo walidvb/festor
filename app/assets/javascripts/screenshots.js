@@ -175,7 +175,7 @@
         }, 5500);
       },
       error: function(){
-        submit.addClass('error');
+        submit.addClass('error').removeClass('fa-spin');
       },
       complete: function(e){},
       type: type,
