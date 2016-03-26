@@ -16,6 +16,6 @@ class Partner < ActiveRecord::Base
 
     self.inheritance_column = :fake_column
     def self.type_enum
-      [:media, :institutional, :private, :venues]
+      [:institutional, :private, :venues, :media]
     end
 end

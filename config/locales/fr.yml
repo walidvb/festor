@@ -23,10 +23,10 @@ fr:
     about:      'À propos'
     venues:     'Lieux'
   partners:
-    media: 'Partenaires médias'
-    private: 'Partenaires privés'
-    venue: 'Espaces partenaires'
-    institutional: 'Partenaires institutionnels'
+    media: 'Médias'
+    private: 'Privés'
+    venues: 'Lieux'
+    institutional: 'Institutionnels'
   artists:
     types:
       dj: 'dj'
