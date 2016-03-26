@@ -37,7 +37,7 @@ fr:
       exhibitor: 'exhibiteur'
     event_type:
       clubbing:    "Club"
-      performance: "Performance A/V"
+      performance: "Performance a/v"
       screening:   "Film"
       conference:  "Conférence"
       exhibition:  "Installation"
@@ -60,7 +60,7 @@ fr:
       all:          'Programme'
     categories:
       clubbing:    "Club"
-      performance: "Performance A/V"
+      performance: "Performance a/v"
       screening:   "Film"
       exhibition:  "Installation"
       conference:  "Conférence"
