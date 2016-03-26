@@ -290,22 +290,23 @@
       display: block;
     }
     .big{
-      opacity: 0.1;
+      opacity: 1;
       width: 100%;
       display: block;
     }
   }
   .grid-item:hover .big{
-    opacity: 1;
+    opacity: 0.1;
   }
   .grid .grid-item .info{
     top: auto;
     bottom: 0;
     transition: none;
+    opacity: 0;
   }
-  .grid-item:hover .tile-link{
-    color: white;
-    mix-blend-mode: difference;
+  .grid-item:hover .tile-link .info{
+    color: black;
+    opacity: 1;
   }
 
   .sub-list{
