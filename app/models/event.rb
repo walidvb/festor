@@ -80,7 +80,7 @@ class Event < ActiveRecord::Base
 	end
 
 	def sup_category
-		self.is_workshop? ? :workshop :
+		self.category == 'workshop' ? :workshop :
 			self.category == 'exhibition' ? :exhibition : :event
 	end
 
