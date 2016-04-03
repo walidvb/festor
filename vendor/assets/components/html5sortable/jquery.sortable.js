@@ -39,8 +39,11 @@ $.fn.sortable = function(options) {
 			}
 			isHandle = false;
 			var dt = e.originalEvent.dataTransfer;
+			console.log("dragging: ", dragging);
 			dt.effectAllowed = 'move';
+			console.log("dragging: ", dragging);
 			dt.setData('Text', 'dummy');
+			console.log("dragging: ", dragging);
 			dragging = $(this);
 			console.log("dragging: ", dragging);
 			index = dragging.addClass('sortable-dragging').index();
