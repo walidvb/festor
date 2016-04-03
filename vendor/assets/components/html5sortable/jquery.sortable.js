@@ -37,15 +37,14 @@ $.fn.sortable = function(options) {
 			if (options.handle && !isHandle) {
 				return false;
 			}
+			dragging = $(this);
+			console.log(this);
+			console.log($(this));
+			console.log(dragging);
 			isHandle = false;
 			var dt = e.originalEvent.dataTransfer;
-			console.log("dragging: ", dragging);
 			dt.effectAllowed = 'move';
-			console.log("dragging: ", dragging);
 			dt.setData('Text', 'dummy');
-			console.log("dragging: ", dragging);
-			dragging = $(this);
-			console.log("dragging: ", dragging);
 			index = dragging.addClass('sortable-dragging').index();
 		}).on('dragend.h5s', function() {
 			if (!dragging) {
