@@ -68,8 +68,8 @@ var sketchProc = (function($p) {
     }).on('turbolinks:load', function(e){
       if(!isPlaying){
         random_coords();
-        $p.noLoop();
         draw();
+        $p.noLoop();
         setBackgroundImage();
       }
       speed = getSpeed();
@@ -84,6 +84,7 @@ var sketchProc = (function($p) {
     });
 
     function setBackgroundImage(){
+      return;
       var img = $p.externals.canvas.toDataURL();
       $('#canvas-placeholder').css('background-image', 'url(' + img + ')').show();
       $($p.externals.canvas).hide();

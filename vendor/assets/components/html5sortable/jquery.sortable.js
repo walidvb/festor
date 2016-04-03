@@ -53,7 +53,7 @@ $.fn.sortable = function(options) {
 			if (index != dragging.index()) {
 				dragging.parent().trigger('sortupdate', {item: dragging});
 			}
-			//dragging = null;
+			dragging = null;
 		}).not('a[href], img').on('selectstart.h5s', function() {
 			this.dragDrop && this.dragDrop();
 			return false;
