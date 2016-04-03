@@ -1,6 +1,3 @@
-$(function() {
-    FastClick.attach(document.body);
-});
 console.log(Array(16).join("info@vbbros.net" - 1) + " Batman!");
 
 
