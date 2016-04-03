@@ -40,12 +40,11 @@ class EventsController < ApplicationController
 	def show
 		@event = Event.includes(:artists, :location, :event_dates).friendly.find(params[:id])
 		@category = @event.category
-		@dates = @event.event_dates
+		@dates = @event.event_dates.includes(:location)
 		@artists = @event.artists.public
 		@musicians = @event.musicians.public
 		@vjs = @event.vjs.public
 		@instructors = @event.instructors.public
-		@location = @event.location
 		@links = @event.links
 		@assets = @event.assets
 	end
