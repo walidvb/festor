@@ -1,4 +1,4 @@
-#main-content, .load-more-container{
+.nope #main-content, .load-more-container{
   $duration: 0.3s;
   text-shadow: none;
   transition: text-shadow $duration 0.15s, transform $duration 0.2s, height 0s $duration, opacity $duration;

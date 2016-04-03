@@ -296,6 +296,7 @@ h1{
 }
 
 .links{
+	white-space: nowrap;
 	@media #{$tablet}{
 		width: 33%;
 		display: flex;
