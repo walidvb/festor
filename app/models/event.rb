@@ -56,15 +56,19 @@ class Event < ActiveRecord::Base
 	validates_presence_of :category, :title, :location
 
 	def next
-		if ed = event_dates.first
-			EventDate.where('dateable_type = ? AND event_id != ? AND start > ?', self.sup_category, self.id, ed.start.strftime("%Y-%m-%d %H:%M")).first.try(:event)
-		end
+		cat = %w{workshop conference masterclass}.include?(category) ? [:workshop, :conference, :masterclass] : category
+		Event.where(category: cat).where('id > ?', id).first
+		# if ed = event_dates
+		# 	EventDate.where('dateable_type = ? AND event_id != ? AND start > ?', self.sup_category, self.id, ed.start.strftime("%Y-%m-%d")).order(:start).distinct(:event_id).first.try(:event)
+		# end
 	end
 
 	def previous
-		if ed = event_dates.first
-			EventDate.where('dateable_type = ? AND event_id != ? AND start < ?', self.sup_category, self.id, ed.start.strftime("%Y-%m-%d %H:%M")).first.try(:event)
-		end
+		cat = %w{workshop conference masterclass}.include?(category) ? [:workshop, :conference, :masterclass] : category
+		Event.where(category: cat).where('id < ?', id).last
+		# if ed = event_dates.first
+		# 	EventDate.where('dateable_type = ? AND event_id != ? AND start < ?', self.sup_category, self.id, ed.start.strftime("%Y-%m-%d")).distinct(:event_id).order(:start).first.try(:event)
+		# end
 	end
 
 	def self.category_enum
