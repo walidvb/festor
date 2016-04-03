@@ -17,8 +17,10 @@
 	}
 }
 
-.flip{
-	transform: scaleX(-1);
+@media #{$tablet}{
+	.flip{
+		transform: scaleX(-1);
+	}
 }
 
 .slick{
