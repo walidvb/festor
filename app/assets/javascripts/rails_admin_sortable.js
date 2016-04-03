@@ -1,4 +1,4 @@
-//= require html5sortable/jquery.sortable.js
+//= require html.sortable/dist/html.sortable
 $(document).ready(function(){
 	var handleSelector = 'i';
 	$('.admin .sortable').sortable({

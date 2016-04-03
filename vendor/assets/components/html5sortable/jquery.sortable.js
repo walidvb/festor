@@ -38,14 +38,12 @@ $.fn.sortable = function(options) {
 				return false;
 			}
 			dragging = $(this);
-			console.log(this);
-			console.log($(this));
-			console.log(dragging);
 			isHandle = false;
 			var dt = e.originalEvent.dataTransfer;
 			dt.effectAllowed = 'move';
 			dt.setData('Text', 'dummy');
 			index = dragging.addClass('sortable-dragging').index();
+			console.log("index"+indexs);
 		}).on('dragend.h5s', function() {
 			if (!dragging) {
 				return;
