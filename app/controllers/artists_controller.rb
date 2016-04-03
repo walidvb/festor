@@ -16,7 +16,7 @@ class ArtistsController < ApplicationController
 	def sort_update
 		artist = Artist.find(params[:id])
 		artist.insert_at(params[:position].to_i)
-		head :ok
+		render json: artist
 	end
 
 	def show
