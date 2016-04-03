@@ -10,6 +10,7 @@
 .admin-entry
 	- if user_signed_in?
 		= link_to 'edit', "/admin/artist/#{@artist.id}/edit", data: {turbolinks: "false"}
+= @artist.events.count
 - if !@artist.events.empty?
 	.show-header.related
 		- @artist.events.public.each do |event|

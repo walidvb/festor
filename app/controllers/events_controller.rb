@@ -3,16 +3,12 @@ class EventsController < ApplicationController
 	before_filter :require_admin!, only: [:sortable_index, :sort_update]
 
 	def program
-		if !user_signed_in? && params[:test].blank?
-			render 'static/coming_soon'
-			return
-		end
 		@filters = Event.category_enum
 		@filters.delete(:workshop)
 		@filters.delete(:exhibition)
 
 		@days = EventDate.where(dateable_type: :event).order('start ASC').includes(:event, :artists, :locations)
-		
+
 		@event_dates = {}
 		@days.each do |ed|
 			@event_dates[ed.event_id] = ed
@@ -24,10 +20,6 @@ class EventsController < ApplicationController
 	end
 
 	def index
-		if @category != :workshop && !user_signed_in?
-			render 'static/coming_soon'
-			return
-		end
 		@events = Event.order("position ASC").includes(:artists, :location).send(@category.to_sym)
 		@events = @events.public unless user_signed_in?
 		@filters = @category == :workshop ? [:workshop, :conference, :masterclass] : []
