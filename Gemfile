@@ -62,8 +62,8 @@ group :development do
   gem 'rb-inotify', :require=>false
   gem 'pry-rails'
   gem 'letter_opener'
-  gem 'coffee-rails-source-maps'
   gem 'bullet'
+	gem 'meta_request'
 end
 
 # production gems for heroku
