@@ -7,3 +7,9 @@
 		}
 	}
 }
+
+@media #{$tablet}{
+	.static-page iframe{
+		margin-top: 4rem;
+	}
+}
