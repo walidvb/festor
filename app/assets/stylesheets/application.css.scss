@@ -29,6 +29,7 @@
 
 html{
 	font-size: $base-font-size;
+	overflow-x: hidden;
 }
 
 body{
@@ -40,6 +41,7 @@ body{
 		flex-direction: column;
 	}
 	min-height: 100vh;
+	max-width: 100vw;
 }
 
 main{
@@ -73,12 +75,12 @@ a:hover, a:active{
 	padding: 0 14px;
 }
 
-// fix horz scrolling
-@media #{$mobile}{
-	.col-xs-5{
-		padding: 0 10px;
-	}
-}
+//// fix horz scrolling
+//@media #{$mobile}{
+//	.col-xs-5{
+//		padding: 0 10px;
+//	}
+//}
 
 img, canvas, iframe{
 	max-width: 100%;
