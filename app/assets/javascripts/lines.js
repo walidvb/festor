@@ -16,7 +16,7 @@ var sketchProc = (function($p) {
 
     var record = false;
     function setup() {
-        $p.frameRate(30);
+        $p.frameRate(disableLines() ? 3 : 30);
         $p.size(render_width, render_height);
         $p.strokeJoin($p.MITER);
         $p.strokeCap($p.SQUARE);
@@ -51,8 +51,8 @@ var sketchProc = (function($p) {
     draw = draw.bind($p);
     var isPlaying = true;
     if(disableLines()){
-      isPlaying = false;
-      $p.noLoop();
+      //isPlaying = false;
+      //$p.noLoop();
     }
     var firstLoad = true;
     $(document).on('turbolinks:click', function(e){
@@ -84,7 +84,6 @@ var sketchProc = (function($p) {
     });
 
     function setBackgroundImage(){
-      return;
       var img = $p.externals.canvas.toDataURL();
       $('#canvas-placeholder').css('background-image', 'url(' + img + ')').show();
       $($p.externals.canvas).hide();
