@@ -15,7 +15,7 @@ class StaticController < ApplicationController
   end
 
   def tickets
-    @tickets = Setting.first.tickets
+    @tickets = params[:ticket_url].presence || Setting.first.tickets
     render :tickets
   end
 
