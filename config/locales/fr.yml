@@ -4,9 +4,9 @@ fr:
     switzerland: "Suisse"
     motto:  "visual audio + deviant electronics"
     program: "Programme"
-    all: 'Tous les'
-    all_fem: 'Toutes les'
-    thanks: 'Merci pour votre screenshot, allez voir la gallery! <span class="fa fa-th"></span>'
+    all: 'Tous'
+    all_fem: 'Tous'
+    thanks: 'Merci pour votre screenshot, visitez la gallerie! <span class="fa fa-th"></span>'
   nav:
     program:      "Programme"
     artists:     "Artistes"
