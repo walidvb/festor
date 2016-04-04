@@ -63,7 +63,7 @@ a.artist, a.artist-event{
 	transition: all 0.4s ease-out;
 	@media #{$mobile}{
 		width: 100vw;
-		margin-left: -10px;
+		margin-left: -14px;
 	}
 	@media #{$tablet}{
 		.imready &.left{
