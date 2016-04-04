@@ -11,7 +11,7 @@
 		= link_to 'edit', "/admin/event/#{@event.id}/edit", data: {turbolinks: "false"}
 .show-header
 	%span.event-artists.related
-		- @artists.each do |artist|
+		- @artists.order(:updated_at).each do |artist|
 			= render 'artist', artist: artist
 			%span#back.nav.back{:style => "cursor: pointer;"} [back]
 #main-content
