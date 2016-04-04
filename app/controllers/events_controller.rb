@@ -7,7 +7,7 @@ class EventsController < ApplicationController
 		@filters.delete(:workshop)
 		@filters.delete(:exhibition)
 
-		@days = EventDate.where(dateable_type: :event).order('start ASC').includes(:event, :artists, :locations)
+		@days = EventDate.where(dateable_type: :event).order('start ASC').includes(:event, :artists, :location)
 
 		@event_dates = {}
 		@days.each do |ed|

@@ -1,6 +1,6 @@
 class Setting < ActiveRecord::Base
   before_create :unique_setting
-  translates :about, :volunteers
+  translates :about, :volunteers, :tickets
   accepts_nested_attributes_for :translations, allow_destroy: true
 
 
