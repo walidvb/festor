@@ -60,7 +60,7 @@ en:
       notes:        'Notes'
 
     types:
-      workshop:   "Workshop"
+      workshop:   "Workshops & Talks"
       exhibition: "Installation"
       single_event: "Event"
       all:          'Program'

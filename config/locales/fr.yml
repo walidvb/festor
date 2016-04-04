@@ -54,7 +54,7 @@ fr:
       price:        'Prix'
       notes:        'Remarques'
     types:
-      workshop:     "workshop"
+      workshop:     "workshop & talk"
       exhibition:   "installation"
       single_event: "event"
       all:          'Programme'
