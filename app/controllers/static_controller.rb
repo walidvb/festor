@@ -15,8 +15,6 @@ class StaticController < ApplicationController
   end
 
   def tickets
-    render :coming_soon
-    return
     @tickets = Setting.first.tickets
     render :tickets
   end
