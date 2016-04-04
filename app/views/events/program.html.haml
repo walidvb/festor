@@ -31,7 +31,7 @@
 							- classes.push(event.category)
 							- classes.push(day.strftime(date_format))
 							.grid-item.not-scroll-revealable{class: classes.join(' '), data: {position: event.position, id: event.id, img: event.main_image.url(event.featured? ? :large : :tile)}, style: "background-image:url(#{event.main_image.url(event.featured? ? :large_blurred : :tile_blurred)})"}
-								- artists = event.artists.order(:updated_at)
+								- artists = event.artists
 								= link_to path_for(event) do
 									= image_tag event.main_image.url(event.featured? ? :large_blurred : :tile_blurred), class: 'image'
 									.tile-link
@@ -42,5 +42,5 @@
 											.event-title
 												%h3= event.title
 											.artists
-												- artists.each do |a|
+												- artists.order(:updated_at).each do |a|
 													%h4.artist-name= a.name
