@@ -21,26 +21,27 @@
 				%h2.location-link= l(day, format: "%A %e %B")
 			.grid.events-list{id: "events-for-#{in_s}"}
 				.grid-sizer.grid-item
-				- passed_event_ids = []
+				- past_event_ids = []
 				- event_dates.map(&:event).each do |event, i|
 					- if event.published? || user_signed_in?
-						- if !passed_event_ids.include? event.id
-							- passed_event_ids.push event.id
+						- if !past_event_ids.include? event.id
+							- past_event_ids.push event.id
 							- classes = [event.featured? ? "grid-item--width2" : nil]
 							- classes.push(event.location.try(:slug))
 							- classes.push(event.category)
 							- classes.push(day.strftime(date_format))
-							.grid-item.not-scroll-revealable{class: classes.join(' '), data: {position: event.position, id: event.id, img: event.main_image.url(event.featured? ? :large : :tile)}, style: "background-image:url(#{event.main_image.url(event.featured? ? :large_blurred : :tile_blurred)})"}
-								- artists = event.artists
-								= link_to path_for(event) do
-									= image_tag event.main_image.url(event.featured? ? :large_blurred : :tile_blurred), class: 'image'
-									.tile-link
-										.info
-											- if @category != :exhibition
-												- if !event.category.blank?
-													%h5.type= t("events.categories.#{event.category}")
-											.event-title
-												%h3= event.title
-											.artists
-												- artists.order(:updated_at).each do |a|
-													%h4.artist-name= a.name
+							- artists = event.artists
+							- cache(artists.map(&:updated_at).join('-')+artists.map(&:id).join('-') + event.id + event.updated_at)
+								.grid-item.not-scroll-revealable{class: classes.join(' '), data: {position: event.position, id: event.id, img: event.main_image.url(event.featured? ? :large : :tile)}, style: "background-image:url(#{event.main_image.url(event.featured? ? :large_blurred : :tile_blurred)})"}
+									= link_to path_for(event) do
+										= image_tag event.main_image.url(event.featured? ? :large_blurred : :tile_blurred), class: 'image'
+										.tile-link
+											.info
+												- if @category != :exhibition
+													- if !event.category.blank?
+														%h5.type= t("events.categories.#{event.category}")
+												.event-title
+													%h3= event.title
+												.artists
+													- artists.order(:updated_at).each do |a|
+														%h4.artist-name= a.name
