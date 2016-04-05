@@ -60,11 +60,12 @@ class ScreenshotsController < ApplicationController
       puts loc.inspect
       puts loc.country
       puts loc.country_code
+      country_name = ActiveRecord::Base.connection.execute("SELECT country FROM maxmind_geolite_country WHERE country_code = '#{loc.country}'")
       params.require(:screenshot).permit(:ip, :screenshot, :user_agent, :name).merge({
         ip: request.ip,
         city: loc.city,
         location: loc.address,
-        country_name: loc.country,
+        country_name: country_name,
         latitude: loc.latitude,
         longitude: loc.longitude,
         })
