@@ -11,9 +11,9 @@ $(document).on('turbolinks:load', function(){
 
 	$('.news').marquee({
 		pauseOnHover: true,
-		startVisible: true,
+		startVisible: false,
 		pauseOnCycle: true,
-		duration: 5000,
+		duration: 8000,
 	}).bind('finished', function(){
 		var $this = $(this);
 		if($this.is(':visible')){
