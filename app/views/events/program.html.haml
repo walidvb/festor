@@ -26,7 +26,7 @@
 					- if event.published? || user_signed_in?
 						- if !past_event_ids.include? event.id
 							- artists = event.artists
-							- cache(artists.map(&:updated_at).join('-')+artists.map(&:id).join('-') + event.id.to_s + event.updated_at.to_s) do
+							- cache(artists.map(&:updated_at).join('-')+artists.map(&:id).join('-') + event.id.to_s + event.updated_at.to_s+'a') do
 								- past_event_ids.push event.id
 								- classes = [event.featured? ? "grid-item--width2" : nil]
 								- classes.push(event.location.try(:slug))
