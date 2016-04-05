@@ -56,6 +56,7 @@ class ScreenshotsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def screenshot_params
       loc = request.location
+      puts loc.inspect
       params.require(:screenshot).permit(:ip, :screenshot, :user_agent, :name).merge({
         ip: request.ip,
         city: loc.data["city"],
