@@ -6,7 +6,7 @@ class Screenshot < ActiveRecord::Base
 
   has_attached_file :screenshot,
     :styles => {
-      :medium => "350x200>",
+      #:medium => "350x200>",
       :tile => "600x>",
     },
     :default_url => "/images/missing.jpg",
