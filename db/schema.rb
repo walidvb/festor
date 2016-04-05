@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160404092032) do
+ActiveRecord::Schema.define(version: 20160405170136) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -164,6 +164,30 @@ ActiveRecord::Schema.define(version: 20160404092032) do
   end
 
   add_index "locations", ["slug"], name: "index_locations_on_slug", using: :btree
+
+  create_table "maxmind_geolite_city_blocks", id: false, force: true do |t|
+    t.integer "start_ip_num", limit: 8, null: false
+    t.integer "end_ip_num",   limit: 8, null: false
+    t.integer "loc_id",       limit: 8, null: false
+  end
+
+  add_index "maxmind_geolite_city_blocks", ["end_ip_num", "start_ip_num"], name: "index_maxmind_geolite_city_blocks_on_end_ip_num_range", unique: true, using: :btree
+  add_index "maxmind_geolite_city_blocks", ["loc_id"], name: "index_maxmind_geolite_city_blocks_on_loc_id", using: :btree
+  add_index "maxmind_geolite_city_blocks", ["start_ip_num"], name: "index_maxmind_geolite_city_blocks_on_start_ip_num", unique: true, using: :btree
+
+  create_table "maxmind_geolite_city_location", id: false, force: true do |t|
+    t.integer "loc_id",      limit: 8, null: false
+    t.string  "country",               null: false
+    t.string  "region",                null: false
+    t.string  "city"
+    t.string  "postal_code",           null: false
+    t.float   "latitude"
+    t.float   "longitude"
+    t.integer "metro_code"
+    t.integer "area_code"
+  end
+
+  add_index "maxmind_geolite_city_location", ["loc_id"], name: "index_maxmind_geolite_city_location_on_loc_id", unique: true, using: :btree
 
   create_table "message_translations", force: true do |t|
     t.integer  "message_id", null: false
