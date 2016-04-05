@@ -59,7 +59,6 @@ class ScreenshotsController < ApplicationController
       loc = request.location
       puts loc.inspect
       puts loc.country
-      puts loc.country_name
       params.require(:screenshot).permit(:ip, :screenshot, :user_agent, :name).merge({
         ip: request.ip,
         city: loc.city,
