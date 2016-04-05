@@ -15,7 +15,11 @@ class StaticController < ApplicationController
   end
 
   def tickets
-    @tickets = params[:ticket_url].presence || Setting.first.tickets
+    if id = params[:event_id].presence || id = params[:workshop_id].presence || id = params[:exhibition_id].presence
+      @tickets = Event.friendly.find(id).try(:tickets_link)
+    else
+      @tickets = params[:ticket_url].presence || Setting.first.tickets
+    end
     render :tickets
   end
 
