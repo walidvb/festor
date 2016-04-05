@@ -9,12 +9,23 @@ $(document).on('turbolinks:load', function(){
 		$('body').addClass('no-touch');
 	}
 
-  $('.slick').slick({
-    autoplay: true,
-    autoplaySpeed: 3000,
-    arrows: false,
-    cssease: 'cubic-bezier(0, 1.54, 0, 1.16)',
-  });
+	$('.news').marquee({
+		pauseOnHover: true,
+		startVisible: true,
+		pauseOnCycle: true,
+		duration: 5000,
+	}).bind('finished', function(){
+		var $this = $(this);
+		if($this.is(':visible')){
+			var next = $this.next();
+			if(!next.length){
+				next = $this.parents().children().first();
+			}
+			$this.hide();
+			next.css('display', 'inline-block');
+		}
+	}).first().css('display', 'inline-block');
+
   $('.colorbox').colorbox({
     iframe: true,
     innerWidth: 600,

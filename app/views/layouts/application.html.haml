@@ -38,6 +38,8 @@
 			%input#name{type: 'text', placeholder: 'Enter your name', "max-size" => 13}
 			= link_to where_path(locale: I18n.locale), class: 'thanks' do
 				%marquee{scrolldelay: 40, scrollamount: 10}= t('shared.thanks').html_safe
+
+		%script{src:"//cdn.jsdelivr.net/jquery.marquee/1.3.9/jquery.marquee.min.js"}
 		:plain
 			<script>
 				(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

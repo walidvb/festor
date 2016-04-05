@@ -274,7 +274,9 @@ $header-padding-vert: 40px;
 		width: calc(60% - 2rem);
 	}
 	.news{
-		display: inline-block;
+		width: 166.6666%;
+		transform: translateX(-40%);
+		display: none;
 		padding-top: 1rem;
 		// to fix weird non-existing margin
 		padding-bottom: calc(1rem - 5px);
