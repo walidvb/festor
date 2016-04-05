@@ -26,7 +26,7 @@ $(document).on('turbolinks:load', function() {
 		}
 	});
 	$('.grid').imagesLoaded( function() {
-		$('body').scrollReveal();
+		//$('body').scrollReveal();
 		var $grid = $('.grid').isotope({
 			// options
 			itemSelector: '.grid-item',
