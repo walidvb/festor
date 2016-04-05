@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160405170136) do
+ActiveRecord::Schema.define(version: 20160405181344) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -188,6 +188,17 @@ ActiveRecord::Schema.define(version: 20160405170136) do
   end
 
   add_index "maxmind_geolite_city_location", ["loc_id"], name: "index_maxmind_geolite_city_location_on_loc_id", unique: true, using: :btree
+
+  create_table "maxmind_geolite_country", id: false, force: true do |t|
+    t.string  "start_ip"
+    t.string  "end_ip"
+    t.integer "start_ip_num", limit: 8, null: false
+    t.integer "end_ip_num",   limit: 8, null: false
+    t.string  "country_code",           null: false
+    t.string  "country",                null: false
+  end
+
+  add_index "maxmind_geolite_country", ["start_ip_num"], name: "index_maxmind_geolite_country_on_start_ip_num", unique: true, using: :btree
 
   create_table "message_translations", force: true do |t|
     t.integer  "message_id", null: false
