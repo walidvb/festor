@@ -32,6 +32,7 @@ class ScreenshotsController < ApplicationController
   # POST /screenshots.json
   def create
     @screenshot = Screenshot.new(screenshot_params)
+    p "screenshot: #{@screenshot.inspect}"
     respond_to do |format|
       if @screenshot.save
         format.html { head :ok }
@@ -57,6 +58,8 @@ class ScreenshotsController < ApplicationController
     def screenshot_params
       loc = request.location
       puts loc.inspect
+      puts loc.country
+      puts loc.country_name
       params.require(:screenshot).permit(:ip, :screenshot, :user_agent, :name).merge({
         ip: request.ip,
         city: loc.city,
