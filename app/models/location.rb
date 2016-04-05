@@ -1,7 +1,7 @@
 class Location < ActiveRecord::Base
 	geocoded_by :address_with_country   # can also be an IP address
 	after_validation :geocode          # auto-fetch coordinates
-	translates :infos
+	translates :infos, :fallbacks_for_empty_translations => true
 	accepts_nested_attributes_for :translations, allow_destroy: true
 
 	rails_admin do

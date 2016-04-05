@@ -6,7 +6,7 @@ class Artist < ActiveRecord::Base
   acts_as_list
   scope :public, -> {where(published: true)}
   scope :vj, -> {where(vj: true)}
-  translates :biography
+  translates :biography, :fallbacks_for_empty_translations => true
 
 
   validates_presence_of :name, :biography, :type
