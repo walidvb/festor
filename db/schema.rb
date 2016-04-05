@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160405181344) do
+ActiveRecord::Schema.define(version: 20160405221818) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -92,6 +92,7 @@ ActiveRecord::Schema.define(version: 20160405181344) do
     t.text     "material"
     t.text     "notes"
     t.string   "price"
+    t.string   "tickets_link"
   end
 
   add_index "event_translations", ["event_id"], name: "index_event_translations_on_event_id", using: :btree
@@ -106,7 +107,6 @@ ActiveRecord::Schema.define(version: 20160405181344) do
     t.string   "main_image_content_type"
     t.integer  "main_image_file_size"
     t.datetime "main_image_updated_at"
-    t.string   "buy_link"
     t.string   "category"
     t.boolean  "featured"
     t.integer  "position"

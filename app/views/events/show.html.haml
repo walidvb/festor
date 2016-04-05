@@ -14,7 +14,7 @@
 		- @artists.order(:updated_at).each do |artist|
 			= render 'artist', artist: artist
 			%span#back.nav.back{:style => "cursor: pointer;"} [back]
-- cache(I18n.locale.to_s + @dates.map(&:updated_at).join('-') + @event.updated_at.to_s + @event.id.to_s) do 
+- cache(I18n.locale.to_s + @dates.map(&:updated_at).join('-') + @event.updated_at.to_s + @event.id.to_s) do
 	- location = @dates.first.location
 	#main-content
 		.show-header.page-title
@@ -33,8 +33,8 @@
 								%h5.location= link_to date.location.name, venues_path(locale: I18n.locale, anchor: date.location.slug)
 					- if(!@event.is_workshop? && !@event.price.blank?)
 						%h5.price= @event.price
-					- if !@event.finished? && !@event.buy_link.blank?
-						%h5= link_to t('events.ticket'), tickets_path( ticket_url: @event.buy_link), class: "buy-link"
+					- if !@event.finished? && !@event.tickets_link.blank?
+						%h5= link_to t('events.ticket'), tickets_path( ticket_url: @event.tickets_link), class: "buy-link"
 				.inner-nav.hidden-xs
 					= link_to('', path_for(@event.previous), class: 'prev') if !@event.previous.nil?
 					= link_to('', path_for(@event.next), class: 'next') if !@event.next.nil?
