@@ -59,11 +59,11 @@ class ScreenshotsController < ApplicationController
       puts loc.inspect
       params.require(:screenshot).permit(:ip, :screenshot, :user_agent, :name).merge({
         ip: request.ip,
-        city: loc.data["city"],
+        city: loc.city,
         location: loc.address,
-        country_name: loc.data["country_name"],
-        latitude: loc.data["latitude"],
-        longitude: loc.data["longitude"],
+        country_name: loc.country,
+        latitude: loc.latitude,
+        longitude: loc.longitude,
         })
     end
 end
