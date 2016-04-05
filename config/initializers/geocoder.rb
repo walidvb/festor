@@ -2,11 +2,13 @@
 Geocoder.configure(
 
   # geocoding service (see below for supported options):
-  :lookup => :google,
+  :lookup => :geoip2,
 
   # IP address geocoding service (see below for supported options):
-  :ip_lookup => :freegeoip,
-
+  :ip_lookup => :maxmind_local,
+  :geoip2 => {
+    file: File.join('app', 'assets', 'other', 'GeoLite2-City.mmdb')
+  },
   # to use an API key:
   #:api_key => "...",
 
