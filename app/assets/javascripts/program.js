@@ -46,7 +46,7 @@ $(document).on('turbolinks:load', function(){
           }
           function scroll(){
             $('html, body').stop().animate({
-              scrollTop: trg.offset().top-$this.find('h2').outerHeight()-21,
+              scrollTop: trg.offset().top-$this.find('h2').outerHeight()-14,
             }, 300);
           };
           showDate(i);
