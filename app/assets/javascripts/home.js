@@ -11,7 +11,7 @@ $(document).on('turbolinks:load', function(){
 
   $('.slick').slick({
     autoplay: true,
-    autoplaySpeed: 4000,
+    autoplaySpeed: 3000,
     arrows: false,
     cssease: 'cubic-bezier(0, 1.54, 0, 1.16)',
   });

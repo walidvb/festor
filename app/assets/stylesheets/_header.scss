@@ -256,6 +256,7 @@ $header-padding-vert: 40px;
 }
 
 .news-banner{
+	text-align: center;
 	@media #{$sm}{
 		border-top: solid 1px black;
 		&.slick{
