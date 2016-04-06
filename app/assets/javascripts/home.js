@@ -9,22 +9,24 @@ $(document).on('turbolinks:load', function(){
 		$('body').addClass('no-touch');
 	}
 
-	$('.news').marquee({
-		pauseOnHover: true,
-		startVisible: false,
-		pauseOnCycle: true,
-		duration: 8000,
-	}).bind('finished', function(){
-		var $this = $(this);
-		if($this.is(':visible')){
-			var next = $this.next();
-			if(!next.length){
-				next = $this.parents().children().first();
+	if($.fn.marquee){
+		$('.news').marquee({
+			pauseOnHover: true,
+			startVisible: false,
+			pauseOnCycle: true,
+			duration: 8000,
+		}).bind('finished', function(){
+			var $this = $(this);
+			if($this.is(':visible')){
+				var next = $this.next();
+				if(!next.length){
+					next = $this.parents().children().first();
+				}
+				$this.hide();
+				next.css('display', 'inline-block');
 			}
-			$this.hide();
-			next.css('display', 'inline-block');
-		}
-	}).first().css('display', 'inline-block');
+		}).first().css('display', 'inline-block');
+	}
 
   $('.colorbox').colorbox({
     iframe: true,
