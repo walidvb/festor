@@ -2,6 +2,10 @@
 	display:none;
 }
 
+.load-more-container .inner-nav{
+	display: none;
+}
+
 .wrapper.col-sm-2 {
 	@media #{$tablet}{
 		margin-bottom: 2rem;
