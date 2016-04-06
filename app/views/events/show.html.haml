@@ -34,7 +34,7 @@
 					- if(!@event.is_workshop? && !@event.price.blank?)
 						%h5.price= @event.price
 					- if !@event.finished? && !@event.tickets_link.blank?
-						%h5= link_to t('events.ticket'), send("#{@event.sup_category}_tickets_path", "#{@event.sup_category}_id" => @event.slug), class: "buy-link"
+						%h5= link_to t('events.ticket'), send("#{@event.sup_category}_tickets_path", "#{@event.sup_category}_id" => @event.slug, locale: I18n.locale), class: "buy-link"
 				.inner-nav.hidden-xs
 					= link_to('', path_for(@event.previous), class: 'prev') if !@event.previous.nil?
 					= link_to('', path_for(@event.next), class: 'next') if !@event.next.nil?
