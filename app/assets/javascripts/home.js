@@ -11,7 +11,6 @@ $(document).on('turbolinks:load', function(){
 
 	if($.fn.marquee){
 		$('.news').marquee({
-			pauseOnHover: true,
 			startVisible: false,
 			pauseOnCycle: true,
 			duration: 8000,
