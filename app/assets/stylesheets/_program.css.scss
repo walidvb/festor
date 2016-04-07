@@ -58,6 +58,13 @@
         }
       }
     }
+
+    .artist-name{
+      display: inline-block;
+      &:not(:first-child):before{
+        content: '/';
+      }
+    }
   }
   .location-link{
     border-bottom-color: black;
