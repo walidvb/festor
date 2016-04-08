@@ -21,7 +21,6 @@
     overflow: hidden;
     margin-top: 0.5rem;
     transition: all .2s ease-out;
-    max-height: 1000px;
     @media #{$tablet}{
       max-height: initial;
     }
