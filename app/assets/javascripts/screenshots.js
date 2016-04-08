@@ -13,13 +13,12 @@
   }
 
 
-  var $items = $('.grid-item[data-screenshot]');
 
   var loadImages = debounce(loop, 50);
   var fetching = false;
   function loop(){
 
-    if(window.scrollY + window.innerHeight >= $(document).height() - window.innerHeight*0.8){
+    if(window.scrollY + window.innerHeight >= $(document).height() - window.innerHeight*4){
 
     	var addNext = function(){
     		var nextUrl = $('.pagination .next a').attr('href');
@@ -43,6 +42,7 @@
     	}
       addNext();
     }
+    var $items = $('.grid-item[data-screenshot].no-img')
     for(var i = $items.length - 1; i >= 0; --i){
       var $this = $($items[i]);
       if(!$this.data('done') && $this.offset().top - window.scrollY <  window.innerHeight + 250){
