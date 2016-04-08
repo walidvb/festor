@@ -36,7 +36,7 @@ class ScreenshotsController < ApplicationController
   # POST /screenshots.json
   def create
     @screenshot = Screenshot.new(screenshot_params)
-    p "screenshot: #{@screenshot.inspect}"
+    @screenshot.original_filename = "#{DateTime.now.strftime("%e-%b-%Y-%H-%M")}.png"
     respond_to do |format|
       if @screenshot.save
         format.html { head :ok }

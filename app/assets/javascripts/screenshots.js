@@ -154,6 +154,7 @@
     var csrf_token = $('meta[name="csrf-token"]').attr('content');
     window.processingInstance.draw();
     var img = window.processingInstance.externals.canvas.toDataURL();
+    debugger
     var url = "/screenshots.json";
     var type = 'POST';
     var sc = {
