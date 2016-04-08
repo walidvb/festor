@@ -84,8 +84,9 @@
         $('.pagination').replaceWith($('.pagination', data));
         var more = $('.grid .grid-item:not(header, .stay)', data);
         setYours();
-        $('.grid', document).append(more).isotope('appended', more).isotope('layout');
+        $('.grid', document).append(more).isotope('appended', more);
         $($('.grid-item')[5]).after($('.grid-item.stay'));
+        $('.grid').isotope('layout')
       },
     })
     loadImages();
