@@ -87,9 +87,9 @@
         $('.grid', document).append(more).isotope('appended', more);
         $($('.grid-item')[5]).after($('.grid-item.stay'));
         $('.grid').isotope('layout')
+        loadImages()
       },
     })
-    loadImages();
   };
 
   if(localStorage.screenshotID == undefined && $('#canvas').length)
