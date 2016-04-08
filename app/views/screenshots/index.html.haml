@@ -40,7 +40,7 @@
       %input.filter#city{type: 'checkbox', data: {filter: 'city'}}
       %label{for: 'city'} distinct cities
     %div
-      .yours Go to your screenshot
+      %a.yours{href:'#', target: '_blank'} Download yours!
   %table#logs
     - 5.times do |i|
       - sc = @screenshots[i]

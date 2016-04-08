@@ -52,6 +52,11 @@ class ScreenshotsController < ApplicationController
     end
   end
 
+  def show
+    set_screenshot
+    redirect_to @screenshot.screenshot.url
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_screenshot

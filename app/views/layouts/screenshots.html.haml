@@ -46,7 +46,7 @@
 			.grid
 				%header.grid-item.header.container.light-mobile{data: {country: 'mary-poppins', city: 'gizeh'}}
 					%nav.row.body-header
-						.col-xs-5.col-md-2.header-left
+						.col-xs-5.col-md-2.header-left.col-sm-2
 							.link-logo.logo
 								=link_to root_path do
 									= render 'layouts/logo'
@@ -58,7 +58,7 @@
 								.festival-place #{ t("shared.geneva")}
 							.hamburger
 								.bars
-						.col-xs-5.col-md-3.header-right
+						.col-xs-5.col-md-3.header-right.col-sm-3
 							.row
 								= yield :screenshot_ui
 

@@ -106,13 +106,6 @@
     user-select: none;
   }
 
-  //$w: 10%;
-  //@for $i from 1 through 3 {
-  //  .grid-item:nth-child(3n+#{$i}) {
-  //    width: $w!important;
-  //  }
-  //  $w: $w + 10%;
-  //}
   .stay{
     cursor: pointer;
   }
@@ -163,10 +156,10 @@
       vertical-align: top;
     }
     header.grid-item{
-      width: 50%;
+      width: 100%;
       margin-left: 0;
 
-      @media #{$tablet}{
+      @media #{$md}{
         width: 60%;
       }
       opacity: 1!important;

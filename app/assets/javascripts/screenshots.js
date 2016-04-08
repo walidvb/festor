@@ -3,14 +3,17 @@
   // screenshot page
   var seen = [];
   var mine = $('[data-id='+localStorage.screenshotID+']');
-  var yourTile;
-  if(mine.length){
-    mine.addClass('focused');
-    mine.find('.name').text('by you, ').css('font-weight', 'bold');
-    mine.find('.location').remove();
-    yourTile = $('.grid-item.focused');
-    $('.grid').isotope('layout');
+  setYours = function(){
+    var yourTile;
+    if(mine.length){
+      mine.addClass('focused');
+      mine.find('.name').text('by you,').css('font-weight', 'bold');
+      mine.find('.location').remove();
+      yourTile = $('.grid-item.focused');
+      $('.grid').isotope('layout');
+    }
   }
+  localStorage.screenshotID ? $('.yours').attr('href', 'screenshots/'+localStorage.screenshotID) : $('.yours').remove();
 
 
 
@@ -29,10 +32,11 @@
     				url: nextUrl,
     				success: function(data){
     					$('.pagination').replaceWith($('.pagination', data));
-    					var more = $('.grid .grid-item:not(header)', data);
+    					var more = $('.grid .grid-item:not(header, .stay)', data);
 
     					$('.grid', document).append(more).isotope('appended', more).isotope('layout');
     					fetching = false;
+              setYours();
     				},
     				error: function(){
     					fetching = false;
@@ -71,22 +75,16 @@
     $(this).siblings().prop('checked', false);
     filter($(this).data('filter'), $(this).prop('checked'));
   });
-  $('.yours').on('click', function(){
-    if(yourTile.length){
-      $('html, body').stop().animate({
-        scrollTop: yourTile.offset().top - 24
-      }, 'ease-out');
-    }
-  });
   function filter(attr, checked){
     var url = checked ? '/where?filter='+attr : '/where'
     $.ajax({
       url: url,
       success: function(data){
-        $('.grid-item:not(header)').remove();
+        $('.grid-item:not(header, .stay)').remove();
         $('.pagination').replaceWith($('.pagination', data));
         var more = $('.grid .grid-item:not(header)', data);
-
+        more[5].after($('.grid .grid-item.stay'));
+        setYours();
         $('.grid', document).append(more).isotope('appended', more).isotope('layout');
       },
     })
