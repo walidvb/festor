@@ -36,6 +36,7 @@
 
     					$('.grid', document).append(more).isotope('appended', more).isotope('layout');
     					fetching = false;
+              $(more[5]).after($('.grid .grid-item.stay'));
               setYours();
     				},
     				error: function(){
@@ -83,7 +84,7 @@
         $('.grid-item:not(header, .stay)').remove();
         $('.pagination').replaceWith($('.pagination', data));
         var more = $('.grid .grid-item:not(header)', data);
-        more[5].after($('.grid .grid-item.stay'));
+        $(more[5]).after($('.grid .grid-item.stay'));
         setYours();
         $('.grid', document).append(more).isotope('appended', more).isotope('layout');
       },
