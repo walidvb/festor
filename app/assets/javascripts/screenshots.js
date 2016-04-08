@@ -16,7 +16,33 @@
   var $items = $('.grid-item[data-screenshot]');
 
   var loadImages = debounce(loop, 50);
+  var fetching = false;
   function loop(){
+
+    if(window.scrollY + window.innerHeight >= $(document).height() - window.innerHeight*0.8){
+
+    	var addNext = function(){
+    		var nextUrl = $('.pagination .next a').attr('href');
+    		if(nextUrl && !fetching)
+    		{
+    			fetching = true;
+    			$.ajax({
+    				url: nextUrl,
+    				success: function(data){
+    					$('.pagination').replaceWith($('.pagination', data));
+    					var more = $('.grid .grid-item:not(header)', data);
+
+    					$('.grid', document).append(more).isotope('appended', more).isotope('layout');
+    					fetching = false;
+    				},
+    				error: function(){
+    					fetching = false;
+    				}
+    			})
+    		}
+    	}
+      addNext();
+    }
     for(var i = $items.length - 1; i >= 0; --i){
       var $this = $($items[i]);
       if(!$this.data('done') && $this.offset().top - window.scrollY <  window.innerHeight + 250){
@@ -31,6 +57,7 @@
             this.elem.prepend(this).prepend(thumb);
             this.elem.data('done', true).addClass('done');
             this.elem.find('.placeholder').remove();
+            this.elem.removeClass('no-img');
           }
         };
       };
@@ -51,32 +78,18 @@
       }, 'ease-out');
     }
   });
-  function filter(attr, state){
-    seen = [];
-    $('.grid').isotope({
-      // options
-      itemSelector: '.grid-item',
-      layoutMode: 'masonry',
-      masonry: {
-        columnWidth: '.grid-sizer',
-        percentPosition: true
+  function filter(attr, checked){
+    var url = checked ? '/where?filter='+attr : '/where'
+    $.ajax({
+      url: url,
+      success: function(data){
+        $('.grid-item:not(header)').remove();
+        $('.pagination').replaceWith($('.pagination', data));
+        var more = $('.grid .grid-item:not(header)', data);
+
+        $('.grid', document).append(more).isotope('appended', more).isotope('layout');
       },
-      filter: function(){
-        if(!state){
-          return true;
-        }
-        else{
-          var $this = $(this);
-          var thisOne = $(this).data(attr);
-          if($this.hasClass('focused') || (seen.indexOf(thisOne) < 0 && thisOne != undefined)){
-            seen.push(thisOne);
-            return true;
-          } else {
-            return false
-          };
-        }
-      }
-    });
+    })
     loadImages();
   };
 

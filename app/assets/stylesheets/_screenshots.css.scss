@@ -1,5 +1,4 @@
 #screenshot{
-  display: none!important;
   flex: 0 0 100%;
   margin-top: 8rem;
   margin-bottom: 1rem;
@@ -94,6 +93,9 @@
 }
 
 .screenshots-page{
+  .pagination{
+    display: none;
+  }
   .logo-break{
     display: block!important;
   }
@@ -305,8 +307,9 @@
     bottom: 0;
     transition: none;
     opacity: 0;
+    color: black;
   }
-  .grid-item:hover .tile-link .info{
+  .grid-item:hover .tile-link .info,  .grid .grid-item.no-img .info{
     color: black;
     opacity: 1;
   }

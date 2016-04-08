@@ -3,7 +3,11 @@ class ScreenshotsController < ApplicationController
   # GET /screenshots
   # GET /screenshots.json
   def index
-    @screenshots = Screenshot.all.order('created_at DESC')
+    @page = params[:page].presence || 1
+    @screenshots = Screenshot.page(@page).order('created_at DESC')
+    if @filter = params[:filter].presence
+      @screenshots = Screenshot.select(%{ DISTINCT ON (#{@filter}) id, city, country_name, screenshot_file_name, screenshot_content_type, screenshot_updated_at, created_at, updated_at, name, dimensions, latitude, longitude, location })
+    end
   end
 
   def update

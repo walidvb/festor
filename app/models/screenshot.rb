@@ -1,4 +1,5 @@
 class Screenshot < ActiveRecord::Base
+  paginates_per 200
   geocoded_by :ip   # can also be an IP address
   after_validation :geocode, address: :location          # auto-fetch coordinates
   before_save :extract_dimensions
