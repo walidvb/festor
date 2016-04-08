@@ -36,7 +36,7 @@
   }
   @media #{$mobile}{
     .grid-item{
-      position: relative !important;
+      position: initial !important;
       top: 0 !important;
       left: 0 !important;
     }
@@ -65,6 +65,9 @@
         content: '/';
         padding-right: 5px;
       }
+    }
+    .events-list{
+      height: auto!important;
     }
   }
   .location-link{
