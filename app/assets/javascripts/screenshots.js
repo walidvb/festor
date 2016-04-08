@@ -7,7 +7,7 @@
     var yourTile;
     if(mine.length){
       mine.addClass('focused');
-      mine.find('.name').text('by you,').css('font-weight', 'bold');
+      mine.find('.name').text(' by you,').css('font-weight', 'bold');
       mine.find('.location').remove();
       yourTile = $('.grid-item.focused');
       $('.grid').isotope('layout');
@@ -36,7 +36,6 @@
 
     					$('.grid', document).append(more).isotope('appended', more).isotope('layout');
     					fetching = false;
-              $(more[5]).after($('.grid .grid-item.stay'));
               setYours();
     				},
     				error: function(){
@@ -83,10 +82,10 @@
       success: function(data){
         $('.grid-item:not(header, .stay)').remove();
         $('.pagination').replaceWith($('.pagination', data));
-        var more = $('.grid .grid-item:not(header)', data);
-        $(more[5]).after($('.grid .grid-item.stay'));
+        var more = $('.grid .grid-item:not(header, .stay)', data);
         setYours();
         $('.grid', document).append(more).isotope('appended', more).isotope('layout');
+        $($('.grid-item')[5]).after($('.grid-item.stay'));
       },
     })
     loadImages();

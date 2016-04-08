@@ -22,14 +22,12 @@
                 - name = sc.name.blank? ? nil : "by #{sc.name}"
                 %span.name= name
                 %span.location= " #{sc.location}"
-                - t_ = distance_of_time_in_words_to_now sc.created_at
+                - t_ = distance_of_time_in_words_to_now sc.updated_at
               %h4.artist-name
                 - if I18n.locale == :en
                   = t_ + ' ago'
                 - else
                   = 'il y a ' + t_
-                - if sc.created_at != sc.updated_at
-                  updated #{distance_of_time_in_words_to_now sc.updated_at} ago
 
 - content_for :screenshot_ui do
   #sc-filters
@@ -52,4 +50,4 @@
           %td
         %td
           - name = sc.name.blank? ? nil : "by #{sc.name}, "
-          = "#{distance_of_time_in_words_to_now(sc.updated_at)} ago <span class='name'>#{name}<span>, #{sc.country_name.try(:titleize)}".html_safe
+          = "#{distance_of_time_in_words_to_now(sc.updated_at)} ago<span class='name'>#{name}<span>, #{sc.country_name.try(:titleize)}".html_safe
