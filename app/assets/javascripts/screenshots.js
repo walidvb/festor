@@ -101,27 +101,26 @@
     $('#name').val(localStorage.screenshotName);
   }
 
-  $('.screenshots-page .tile-link').each(function(){
-    var $this = $(this);
-    $this.click(function(e){
+  $(document).on('click', '.screenshots-page .tile-link',function(e){
+    var $this = $(e.target);
+    e.preventDefault();
+    $('html, body').animate({scrollTop: $this.offset().top - 14*5}, 300);
+    $('.map-show').removeClass('grid-item--width2');
+    var gridItem = $this.parent('.grid-item');
+    gridItem.addClass('map-show');// grid-item--width2');
+    $('<iframe src="' + $this.data('map-src') + '" class="map" width="100%" height="100%"></iframe>').prependTo($this);
+    gridItem.find('.thumb').click(function(e){
+      console.log(e);
+      e.stopPropagation();
       e.preventDefault();
-      $('html, body').animate({scrollTop: $this.offset().top - 14*5}, 300);
-      $('.map-show').removeClass('grid-item--width2');
-      var gridItem = $this.parent('.grid-item');
-      gridItem.addClass('map-show');// grid-item--width2');
-      $('<iframe src="' + $this.data('map-src') + '" class="map" width="100%" height="100%"></iframe>').prependTo($this);
-      gridItem.find('.thumb').click(function(e){
-        console.log(e);
-        e.stopPropagation();
-        e.preventDefault();
-        console.log(gridItem);
-        gridItem.removeClass('map-show');
-        if(!$(this).hasClass('featured')){
-          gridItem.removeClass('grid-item--width2');
-        }
-      });
+      console.log(gridItem);
+      gridItem.removeClass('map-show');
+      if(!$(this).hasClass('featured')){
+        gridItem.removeClass('grid-item--width2');
+      }
     });
   });
+
   $(document).on('submit', 'form#screenshot', postName);
   function postName(e){
     $('#screenshot').addClass('taken-screenshot added');
