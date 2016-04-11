@@ -5,7 +5,7 @@ $(document).on('turbolinks:load', function(){
     $prog.on('arrangeComplete', initProgram);
     $(window).on('resize', initProgram);
     function initProgram(e){
-      var dayElems = $('.day');
+      var dayElems = $('#program .day');
       var days = _.map(dayElems, function(elem){
         return $(elem).data('date');
       });
@@ -88,9 +88,8 @@ $(document).on('turbolinks:load', function(){
         }
       };
       function focusDate(i){
-        console.log(days[i]);
-        $(':not(.'+days[i]+')').removeClass('focused');
-        $('.'+days[i]).addClass('focused');
+        $('#program  :not(.'+days[i]+')').removeClass('focused');
+        $('#program  .'+days[i]).addClass('focused');
       }
     }
   }
