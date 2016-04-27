@@ -46,7 +46,7 @@
 // WebKit's default styles, but applicable to a wider range of browsers. Its
 // usability and accessibility should be taken into account with any change.
 //
-// Example usage: change the default blue border and shadow to $whitefor better
+// Example usage: change the default blue border and shadow to white for better
 // contrast against a dark gray background.
 @mixin form-control-focus($color: $input-border-focus) {
   $color-rgba: rgba(red($color), green($color), blue($color), .6);
