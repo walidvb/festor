@@ -1,5 +1,7 @@
 $header-height-mobile: 140px;
 @media #{$mobile}{
+	$white: white;
+	$black: black;
 	.link-logo{
 		display: none;
 		.open &{
@@ -41,7 +43,7 @@ $header-height-mobile: 140px;
 		background: $black;
 		color: $white;
 		a{
-			color: $white
+			color: $white;
 		}
 		padding-bottom: 0.5rem;
 		transition: all 0.25s ease-out;
