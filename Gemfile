@@ -31,7 +31,7 @@ gem 'compass-rails', '2.0.0'
 gem 'rails_autolink'
 
 gem 'geocoder'
-
+gem 'iso_country_codes'
 #### UI
 gem 'chosen-rails'
 gem "autoprefixer-rails"
