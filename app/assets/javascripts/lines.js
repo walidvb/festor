@@ -2,8 +2,8 @@
 var sketchProc = (function($p) {
 
     var time = 0;
-    var fill_color = 255;
-    var line_color = 0;
+    var fill_color = 0;
+    var line_color = 255*0.1;
     var render_width = window.innerWidth;
     var render_height = window.innerHeight;
 
@@ -36,7 +36,7 @@ var sketchProc = (function($p) {
         $p.background(fill_color);
 
         for (var i = 1; i < $p.width_base; i++) {
-            my_line_3(coord_x, coord_y, ($p.width_base - i) * $p.width_base - ($p.width_base / 2), i % 2 == 0 ? 255 : line_color);
+            my_line_3(coord_x, coord_y, ($p.width_base - i) * $p.width_base - ($p.width_base / 2), i % 2 == 0 ? fill_color : line_color);
         }
         var i = 1;
         for (; i < max_points - 1; i++) {

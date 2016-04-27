@@ -9,14 +9,21 @@ $md                     : "(min-width: 991px)";
 $lg                     : "(min-width: 1200px)";
 
 // colors
-$brand-color: #000000;
-$black: black;
-$white: #ffffff;
+$black:$black;
+$white: white;
 $dark-grey: rgba(102, 102, 102, 1);
 $light-grey: rgb(178, 178, 178);
+$canvas-opacity: 0.1;
+//invert
+$black: white;
+$white:$black;
+$dark-grey: invert(rgba(102, 102, 102, 1));
+$light-grey: invert(rgb(178, 178, 178));
+$canvas-opacity: 0.9;
 
+$brand-color: $black;
+$background: $white;
 $container-max-width: 960px;
-$background: #ffffff;
 
 // typography
 $body-font						:	Grotesk, Helvetica, Sans-Serif;
