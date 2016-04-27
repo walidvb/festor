@@ -1,7 +1,5 @@
 $header-height-mobile: 140px;
 @media #{$mobile}{
-	$white: white;
-	$black: black;
 	.link-logo{
 		display: none;
 		.open &{
