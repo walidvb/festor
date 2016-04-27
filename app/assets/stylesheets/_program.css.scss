@@ -72,7 +72,7 @@
     }
   }
   .location-link{
-    border-bottom-color: black;
+    border-bottom-color: $black;
     transition: all .2s ease-out;
   }
   @media #{$tablet}{

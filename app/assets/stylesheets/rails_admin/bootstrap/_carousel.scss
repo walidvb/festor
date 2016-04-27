@@ -172,7 +172,7 @@
     // `background-color`. We cannot use `filter` since that's not viewed as a
     // background color by the browser. Thus, a hack is needed.
     //
-    // For IE8, we set solid black as it doesn't support `rgba()`. For IE9, we
+    // For IE8, we set solid $black as it doesn't support `rgba()`. For IE9, we
     // set alpha transparency for the best results possible.
     background-color: #000 \9; // IE8
     background-color: rgba(0,0,0,0); // IE9

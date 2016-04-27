@@ -8,7 +8,7 @@
     bottom: .5rem;
     right: .5rem;
     input, .thanks, &:not(.taken-screenshot) .screenshots-link{
-      outline-color: black;
+      outline-color: $black;
       width: 0;
       opacity: 0;
     }
@@ -16,7 +16,7 @@
       float: left;
     }
     .fa{
-      color: black;
+      color: $black;
       opacity: 0.5;
     }
     &:hover{
@@ -26,7 +26,7 @@
   input, .thanks, &:not(.taken-screenshot) .screenshots-link{
     width: auto;
     transition: all 0.15s ease-out;
-    outline-color: black;
+    outline-color: $black;
   }
   &.added .thanks, &:hover input, input:focus, &:hover .thanks{
     width: 12rem;
@@ -231,7 +231,7 @@
 
   .tile-link{
     background: none;
-    color: black;
+    color: $black;
   }
 
   //map
@@ -300,10 +300,10 @@
     bottom: 0;
     transition: none;
     opacity: 0;
-    color: black;
+    color: $black;
   }
   .grid-item:hover .tile-link .info,  .grid .grid-item.no-img .info{
-    color: black;
+    color: $black;
     opacity: 1;
   }
 

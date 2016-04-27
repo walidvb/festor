@@ -41,7 +41,7 @@ $header-height-mobile: 140px;
 		background: $black;
 		color: $white;
 		a{
-			color: white;
+			color: $white
 		}
 		padding-bottom: 0.5rem;
 		transition: all 0.25s ease-out;
@@ -223,7 +223,7 @@ $header-padding-vert: 40px;
 		&:hover{
 			span{
 				text-shadow: none;
-				color: black;
+				color: $black;
 			}
 			.fa-icon{
 				@include text-shadow($color1: $white, $color2: $white, $gap: 0.4em);
@@ -258,9 +258,9 @@ $header-padding-vert: 40px;
 .news-banner{
 	text-align: center;
 	@media #{$sm}{
-		border-top: solid 1px black;
+		border-top: solid 1px $black;
 		&.slick{
-			border-bottom: solid 1px black;
+			border-bottom: solid 1px $black;
 		}
 		margin-top: 1rem;
 		position: relative;

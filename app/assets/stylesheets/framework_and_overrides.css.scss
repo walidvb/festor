@@ -12,8 +12,8 @@ $brand-danger: #d9534f;
 $brand-info: #5bc0de;
 
 // Body scaffolding
-$body-bg: #fff;
-$text-color: #373737;
+$body-bg: $white;
+$text-color: $black;
 $link-color: $brand-primary;
 $link-hover-color: darken($link-color, 15%);
 
