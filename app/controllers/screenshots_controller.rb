@@ -65,16 +65,19 @@ class ScreenshotsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def screenshot_params
+      puts "================"
       loc = request.location
       puts loc.inspect
       puts loc.country
       puts loc.country_code
-      country_name = ActiveRecord::Base.connection.execute("SELECT country FROM maxmind_geolite_country WHERE country_code = '#{loc.country}'").first["country"]
+      puts loc.inspect
+      puts "================"
+      # country_name = ActiveRecord::Base.connection.execute("SELECT country FROM maxmind_geolite_country WHERE country_code = '#{loc.country}'").first["country"]
       params.require(:screenshot).permit(:ip, :screenshot, :user_agent, :name).merge({
         ip: request.ip,
         city: loc.city,
         location: loc.address,
-        country_name: country_name,
+        country_name: loc.country,
         latitude: loc.latitude,
         longitude: loc.longitude,
         })
