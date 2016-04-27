@@ -185,6 +185,7 @@ $('document').ready(function(){
       processingInstance.random_coords();
     });
     $(document).on('keypress', function(e){
+      console.log(e.keyCode);
       if(e.keyCode == 119){
         processingInstance.width_base = Math.min(16, processingInstance.width_base+1);
       }
@@ -192,11 +193,15 @@ $('document').ready(function(){
       {
         processingInstance.width_base = Math.max(8, processingInstance.width_base-1);
       }
+      else if(e.keyCode == 32){
+        nighter.swap();
+        e.preventDefault();
+      }
       else{
         processingInstance.random_coords();
       }
-      console.log(processingInstance.width_base);
     });
+    $('input').on('keydown keyup', function(e){e.preventDefault();})
     $('#canvas').on('click', function(e){
       processingInstance.random_coords();
     });

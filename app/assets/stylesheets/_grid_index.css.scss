@@ -127,7 +127,8 @@
     left: 0;
     transition : all 0.15s ease-in;
     background: rgba(0,0,0, 0.18);
-		color: $black;
+		$white: white;
+		color: $white;
     z-index: 1;
   }
   .info{
