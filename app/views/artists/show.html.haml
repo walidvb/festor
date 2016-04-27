@@ -10,7 +10,7 @@
 .admin-entry
 	- if user_signed_in?
 		= link_to 'edit', "/admin/artist/#{@artist.id}/edit", data: {turbolinks: "false"}
-- if !@artist.events.empty?
+- if !@artist.events.public.empty?
 	.show-header.related
 		- @artist.events.public.each do |event|
 			= link_to  path_for(event, locale: I18n.locale), class: 'artist-event', data: {'load-more' => path_for(event, locale: I18n.locale)} do
