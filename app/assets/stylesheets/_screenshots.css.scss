@@ -3,6 +3,7 @@
   margin-top: 8rem;
   margin-bottom: 1rem;
   margin-left: 5px;
+  z-index: 1000;
   @media #{$tablet}{
     position: fixed;
     bottom: .5rem;
