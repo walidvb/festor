@@ -26,8 +26,7 @@ function Nighter(){
 
   this.init = function(){
     var now = new Date();
-    that.isNight = ((now.getHours() >= 20 && now.getMinutes >= 38) || now.getHours() > 21) ||
-    (now.getHours() <= 6 && now.getMinutes() < 25);
+    that.isNight = ((now.getHours() >= 20 && now.getMinutes >= 38) || now.getHours() > 21) || ((now.getHours() <= 6 && now.getMinutes() < 25) || now.getHours() < 6);
     that.apply();
     $('head').append(styleTag);
   }
