@@ -10,7 +10,7 @@ function Nighter(){
     if(that.isNight){
       this.mapSettings = {
         white: 0,
-        black: 255*0.1,
+        black: 255,
       }
       currStyles = $('meta[name="styles_night"]').attr('content');
     }
