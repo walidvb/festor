@@ -12,6 +12,7 @@
       outline-color: $black;
       width: 0;
       opacity: 0;
+      color: black;
     }
     .thanks, input{
       float: left;
@@ -28,6 +29,9 @@
     width: auto;
     transition: all 0.15s ease-out;
     outline-color: $black;
+  }
+  input{
+    color: black;
   }
   &.added .thanks, &:hover input, input:focus, &:hover .thanks{
     width: 12rem;
