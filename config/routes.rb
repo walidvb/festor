@@ -38,7 +38,7 @@ Festor::Application.routes.draw do
 		resources :static_pages, only: [:show]
 		resources :news, controller: 'static_pages', only: [:index, :show]
 
-		root "artists#index"
+		root "events#program"
 		get "/gallery" => 'static#gallery', as: :gallery
 		get "/about" => 'static#about', as: :about
 		get "/volunteers" => 'static#volunteers', as: :volunteers
