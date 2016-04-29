@@ -11,7 +11,7 @@ class Event < ActiveRecord::Base
 		[:workshop, :conference, :masterclass]
 	end
 
-	scope :public, -> {where(published: true)}
+	scope :published, -> {where(published: true)}
 
 	scope :workshop, ->{where(category: workshop_cats)}
 	scope :exhibition, ->{where(category: :exhibition)}

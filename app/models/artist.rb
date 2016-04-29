@@ -4,7 +4,7 @@ class Artist < ActiveRecord::Base
 
   friendly_id :name, :use => :slugged
   acts_as_list
-  scope :public, -> {where(published: true)}
+  scope :published, -> {where(published: true)}
   scope :vj, -> {where(vj: true)}
   translates :biography, :fallbacks_for_empty_translations => true
 
