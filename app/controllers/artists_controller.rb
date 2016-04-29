@@ -2,7 +2,7 @@ class ArtistsController < ApplicationController
 	before_filter :require_admin!, only: [:sortable_index, :sort_update]
 
 	def index
-		@artists = Artist.public.includes(:events).order(:position)
+		@artists = Artist.published.includes(:events).order(:position)
 		if user_signed_in?
 			@artists = Artist.all.includes(:events).order(:position)
 		end

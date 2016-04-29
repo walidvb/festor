@@ -21,7 +21,7 @@ class EventsController < ApplicationController
 
 	def index
 		@events = Event.order("position ASC").includes(:artists, :location).send(@category.to_sym)
-		@events = @events.public unless user_signed_in?
+		@events = @events.published unless user_signed_in?
 		@filters = @category == :workshop ? [:workshop, :conference, :masterclass] : []
 		render 'index'
 	end
@@ -41,10 +41,10 @@ class EventsController < ApplicationController
 		@event = Event.includes(:artists, :location, :event_dates).friendly.find(params[:id])
 		@category = @event.category
 		@dates = @event.event_dates.includes(:location)
-		@artists = @event.artists.public.order(:updated_at)
-		@musicians = @event.musicians.public
-		@vjs = @event.vjs.public
-		@instructors = @event.instructors.public
+		@artists = @event.artists.published.order(:updated_at)
+		@musicians = @event.musicians.published
+		@vjs = @event.vjs.published
+		@instructors = @event.instructors.published
 		@links = @event.links
 		@assets = @event.assets
 	end
