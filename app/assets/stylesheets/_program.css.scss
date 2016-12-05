@@ -2,12 +2,12 @@
   overflow: hidden;
   .grid-item{
     @media #{$tablet}{
-      width: 50%;
+      width: 33%;
     }
     @media #{$md}{
-      width: 33%;
+      width: 10%;
       &.grid-item--width2 {
-        width: 66%;
+        width: 15%;
       }
     }
   }

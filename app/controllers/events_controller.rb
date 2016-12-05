@@ -7,8 +7,8 @@ class EventsController < ApplicationController
 		@filters.delete(:workshop)
 		@filters.delete(:exhibition)
 
-		@days = EventDate.where(dateable_type: :event).order('start ASC').includes(:event, :artists, :location)
-
+		@days = EventDate.where(dateable_type: :event).includes(:event, :artists, :location).to_a.shuffle
+		@artists = Artist.all
 		@event_dates = {}
 		@days.each do |ed|
 			@event_dates[ed.event_id] = ed

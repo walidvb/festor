@@ -20,7 +20,6 @@ $(document).on('turbolinks:load', function() {
 			img.className = 'non-blurred';
 			img.onload = function(){
 				$this.find('img').attr('src', this.src);
-				$('.grid.ready').isotope('layout');
 			};
 			$this.data('blurred', true);
 		}

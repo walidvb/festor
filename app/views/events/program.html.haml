@@ -1,11 +1,8 @@
 - content_for(:og_title, "Program")
 - content_for(:image, image_url('lines_3.png'))
 - content_for(:description, "Everything you need to know, day by day")
-.page-title
-	%h1.index-title= t('nav.program')
-= render 'layouts/filters'
 - date_format = "%m-%d-%y"
-.row#program
+.filters
 	.col-sm-1.dates#date-dropdown-trigger
 		%label.dropdown.butt{for: 'dates'} Date
 	%ul.col-xs-5.col-sm-1.dates-list
@@ -13,35 +10,34 @@
 		- @days.each do |day, event_dates|
 			- in_s = day.strftime(date_format)
 			%li.day{data: {date:in_s}, class: in_s}
-				%h2.location-link= l(day, format: "<span class='show-sm hidden-md hidden-lg'>%a</span><span class='hidden-sm hidden-xs'>%A</span> %e %B").html_safe
-	.col-xs-5.col-sm-4.program-events-grid
+				%h2.location-link= in_s
+	%ul.col-sm-1
+		- @artists.each do |ar|
+			%li.artist{data: {artist: ar.slug}}= ar.name
+.row#program
+	.col-xs-5.col-sm-5.program-events-grid
 		- @days.each do |day, event_dates|
 			- in_s = day.strftime(date_format)
-			.day.show-xs{data: {date:in_s}, class: in_s}
-				%h2.location-link= l(day, format: "%A %e %B")
-			.grid.events-list{id: "events-for-#{in_s}"}
-				.grid-sizer.grid-item
-				- past_event_ids = []
-				- event_dates.map(&:event).each do |event, i|
-					- if event.published? || user_signed_in?
-						- if !past_event_ids.include? event.id
-							- artists = event.artists
-							- cache(I18n.locale.to_s + artists.map(&:updated_at).join('-')+artists.map(&:id).join('-') + event.id.to_s + event.updated_at.to_s+'a') do
-								- past_event_ids.push event.id
-								- classes = [event.featured? ? "grid-item--width2" : nil]
-								- classes.push(event.location.try(:slug))
-								- classes.push(event.category)
-								- classes.push(day.strftime(date_format))
-								.grid-item.not-scroll-revealable{class: classes.join(' '), data: {position: event.position, id: event.id, img: event.main_image.url(event.featured? ? :large : :tile)}, style: "background-image:url(#{event.main_image.url(event.featured? ? :large_blurred : :tile_blurred)})"}
-									= link_to path_for(event, locale: I18n.locale) do
-										= image_tag event.main_image.url(event.featured? ? :large_blurred : :tile_blurred), class: 'image'
-										.tile-link
-											.info
-												- if @category != :exhibition
-													- if !event.category.blank?
-														%h5.type= t("events.categories.#{event.category}")
-												.event-title
-													%h3= event.title
-												.artists
-													- artists.order(:updated_at).each do |a|
-														%h4.artist-name= a.name
+			- past_event_ids = []
+			- event_dates.map(&:event).each do |event, i|
+				- if event.published? || user_signed_in?
+					- if !past_event_ids.include? event.id
+						- artists = event.artists
+						- past_event_ids.push event.id
+						- classes = [event.featured? ? "grid-item--width2" : nil]
+						- classes.push(event.location.try(:slug))
+						- classes.push(event.category)
+						- classes.push(day.strftime(date_format))
+						.post{class: classes.join(' '), data: {position: event.position, id: event.id, img: event.main_image.url(event.featured? ? :large : :tile)}, data: { artist: artists.map(&:slug).join('|'), dates: event.event_dates.map(&:start).map{|time| time.strftime(date_format)}.join('|') }}
+							= link_to path_for(event, locale: I18n.locale) do
+								= image_tag event.main_image.url(event.featured? ? :large : :tile), class: 'image'
+								.tile-link
+									.info
+										- if @category != :exhibition
+											- if !event.category.blank?
+												%h5.type= t("events.categories.#{event.category}")
+										.event-title
+											%h3= event.title
+										.artists
+											- artists.order(:updated_at).each do |a|
+												%h4.artist-name= a.name

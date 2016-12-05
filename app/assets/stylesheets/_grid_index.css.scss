@@ -53,17 +53,17 @@
     @media #{$md}{
       width: 25%;
       &.grid-item--width2 {
-        width: 50%;
+        width: 15%;
       }
     }
   }
   &.previous-editions .grid-item{
     width: 100%;
     @media #{$tablet}{
-      width: 33.33333%;
+      width: 10%;
     }
     @media #{$md}{
-      width: 20%;
+      width: 10%;
     }
   }
 }
@@ -86,8 +86,6 @@
 }
 
 .grid-item{
-  min-width: 25%;
-
 	opacity: 0.9;
 	@media #{$tablet}{
 		@include infoOff();

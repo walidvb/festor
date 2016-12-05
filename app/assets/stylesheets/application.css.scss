@@ -28,6 +28,7 @@ $invert: 0;
 @import "about";
 @import "program";
 @import "screenshots";
+@import "dump";
 
 html{
 	font-size: $base-font-size;
@@ -251,10 +252,8 @@ main{
 
 #the-content{
 	z-index: 1;
-	opacity: 0;
 	html:not(.imready) &{
-		z-index: -1;
-		pointer-events: none;
+		z-index: initial;
 	}
 	.imready &{
 		opacity: 1;
@@ -268,7 +267,6 @@ main{
 	width: 100%;
 	position: fixed;
 	top: 0;
-	pointer-events: none;
 	opacity: 1;
 	.loading &, .imready &{
 		opacity: $canvas-opacity;

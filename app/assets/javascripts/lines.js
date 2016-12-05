@@ -214,7 +214,7 @@ $('document').ready(function(){
         opacity: 0.1,
       }, 1000, function(){
         enterSite();
-        setTimeout(function(){$('#canvas').css('opacity', '')}, 1000);
+        setTimeout(function(){$('#canvas').css('opacity', '')}, 10);
       });
     }, 2000);
 
@@ -222,7 +222,7 @@ $('document').ready(function(){
       clearTimeout(autoLogin);
       $('html').addClass('imready');
       setTimeout(function(){$('html').removeClass('transitionning');}, 200);
-      setTimeout(function(){$('html').removeClass('first-load');}, 5000);
+      setTimeout(function(){$('html').removeClass('first-load');}, 100);
     }
     $(window).on('resize', function(){
       processingInstance.resize(canvas.offsetWidth, canvas.offsetHeight);

@@ -1,0 +1,54 @@
+.post{
+  position: relative;
+  display: inline-block;
+  overflow: auto;
+  .grid-item--width2{
+    box-shadow: inset red 0 0 3px;
+  }
+}
+
+.filters{
+  position: fixed;
+  left: 0;
+  top: 0;
+  max-width: 25vw;
+  max-height: 100vh;
+  overflow: auto;
+  color: white;
+}
+
+
+.post{
+  transform: perspective(500px) translateZ(-330px);
+  transition: all .3s ease-in-out;
+  padding: 2rem;
+  .tile-link{
+    display: none;
+  }
+  &.focus, &:hover{
+    transform: perspective(500px) translateZ(50px)!important;
+    padding: 10rem;
+    .tile-link{
+      display: block;
+    }
+  }
+  &:hover{
+    z-index: 1000;
+  }
+}
+
+$transforms:-300px -120px -200px -440px -550px;
+@for $i from 1 through length($transforms) {
+  .post:nth-child(#{length($transforms)}n+#{$i}){
+    $tr: nth($transforms, $i);
+    transform: perspective(500px) translateZ(#{$tr});
+  }
+
+}
+
+body{
+  background-image: url(image-path('3D_background.svg'));
+  background-image: url(http://68.media.tumblr.com/3cbf851f43a0de368798754c400aff74/tumblr_oc7ud7tYBn1slsxfzo1_540.gif);
+  //background-image: url(http://68.media.tumblr.com/3f5f9e1fd6890b42dee5975dcff9a18a/tumblr_oa41uqMzL81slsxfzo1_540.gif);
+  background-size: 100% 100%;
+}

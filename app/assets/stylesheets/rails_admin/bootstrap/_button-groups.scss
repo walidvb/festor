@@ -235,6 +235,6 @@
 [data-toggle="buttons"] > .btn > input[type="radio"],
 [data-toggle="buttons"] > .btn > input[type="checkbox"] {
   position: absolute;
-  z-index: -1;
+  z-index: initial;
   @include opacity(0);
 }
