@@ -16,33 +16,45 @@
 			%li.artist{data: {artist: ar.slug}}= ar.name
 .row#program
 	.col-xs-5.col-sm-5.program-events-grid
-		- @days.each do |day, event_dates|
-			- in_s = day.strftime(date_format)
+		- max_end_time = 0
+		- delay = 0
+		- p @first_start
+		- @event_dates.each do |event_date|
 			- past_event_ids = []
-			- event_dates.each do |event_date, i|
-				- event = event_date.event
-				- if event.published? || user_signed_in?
-					- if !past_event_ids.include? event.id
-						- artists = event.artists
-						- height = event_date.duration
-						- top_pos = (event_date.start - @first_start)/3600*12.5
-						- image = event.main_image.url(event.featured? ? :large : :tile)
-						-# past_event_ids.push event.id
-						.post{data: {id: event.id, |
-							img: event.main_image.url(event.featured? ? :large : :tile), |
-							artist: artists.map(&:slug).join('|'), |
-							dates: event_date.start.strftime(date_format), |
-							category: event.category}, |
-							style: %{height:#{height}rem; background-image: url(#{image}); transform: translateY(#{top_pos}vh)}}
-							= link_to path_for(event, locale: I18n.locale) do
-								-# = image = event.main_image.url(event.featured? ? :large : :tile)
-								.tile-link
-									.info
-										- if @category != :exhibition
-											- if !event.category.blank?
-												%h5.type= t("events.categories.#{event.category}")
-										.event-title
-											%h3= event.title
-										.artists
-											- artists.order(:updated_at).each do |a|
-												%h4.artist-name= a.name
+			- event = event_date.event
+			- if event.published? || user_signed_in?
+				- if !past_event_ids.include? event.id
+					- artists = event.artists
+					- height = event_date.duration
+					- start_hour = (event_date.start - @first_start)/3600
+					- end_hour = (event_date.end - @first_start)/3600
+					- top_pos = [max_end_time, start_hour].min
+					-# - delay += max_end_time < event_date.start ? (max_end_time - event_date.start)/3600 : 0
+					- max_end_time = [max_end_time, end_hour].max
+					- image = event.main_image.url(event.featured? ? :large : :tile)
+					- p event_date.start
+					- p "start_hour #{start_hour}"
+					- p "end_hour #{end_hour}"
+					- p "top_pos #{top_pos}"
+					- p "max_end_time #{max_end_time}"
+					- p "========"
+					-# past_event_ids.push event.id
+					.post{data: {id: event.id, |
+						img: event.main_image.url(event.featured? ? :large : :tile), |
+						artist: artists.map(&:slug).join('|'), |
+						dates: event_date.start.strftime(date_format), |
+						category: event.category, |
+						}, |
+						style: %{height:#{height}rem; background-image: url(#{image}); transform: translateY(#{top_pos}rem)}}
+						= link_to path_for(event, locale: I18n.locale) do
+							-# = image = event.main_image.url(event.featured? ? :large : :tile)
+							.tile-link
+								.info
+									- if @category != :exhibition
+										- if !event.category.blank?
+											%h5.type= t("events.categories.#{event.category}")
+									.event-title
+										%h3= event.title
+									-# .artists
+									-# 	- artists.order(:updated_at).each do |a|
+									-# 		%h4.artist-name= a.name
