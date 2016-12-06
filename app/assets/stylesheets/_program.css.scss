@@ -1,5 +1,4 @@
 #program{
-  overflow: hidden;
   .grid-item{
     @media #{$tablet}{
       width: 33%;
@@ -116,9 +115,6 @@
     .butt{
       cursor:pointer;
       padding-bottom: 2rem;
-      .dates-only &{
-        @extend .dropdown-active;
-      }
     }
     padding-top: 2rem;
   }

@@ -14,6 +14,10 @@ class EventDate < ActiveRecord::Base
     "#{start.strftime("%B %m, %H:%M")}"
   end
 
+  def duration
+    ((self.end - self.start)/3600)
+	end
+
   rails_admin do
       field :start do
         # date_format "%d/%m/%Y %H:%M"

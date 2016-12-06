@@ -13,20 +13,10 @@
 //= require jquery
 //= require turbolinks
 //= require jquery_ujs
-//= require vendors/imagesloaded.pkgd.min.js
-//= require vendors/isotope.pkgd.min
-//= require vendors/processing.min
-//= require vendors/scroll-reveal
-//= require lines.js
 //= require home.js
-//= require slick.min.js
-//= require chosen-jquery
 //= require rails_admin_sortable.js
 //= require colorbox/jquery.colorbox-min.js
-//= require underscore/underscore-min.js
-//= require logo
-//= require locations
-//= require screenshots
+//= require app
 //= require_tree .
 
 $(document).on('turbolinks:load', function(){

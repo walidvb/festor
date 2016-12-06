@@ -7,6 +7,9 @@ class EventsController < ApplicationController
 		@filters.delete(:workshop)
 		@filters.delete(:exhibition)
 
+		@total_duration = ((EventDate.order('"end" DESC').first.end - EventDate.order('start ASC').first.start) / 3600).ceil
+		@first_start = EventDate.order('start ASC').first.start
+
 		@days = EventDate.where(dateable_type: :event).includes(:event, :artists, :location).to_a.shuffle
 		@artists = Artist.all
 		@event_dates = {}

@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 ruby '2.2.5'
 gem 'rails', '4.1.2'
 gem 'pg'
-gem 'sass-rails', '4.0.3'
+gem 'sass-rails'
 gem 'uglifier', '2.5.3'
 gem 'coffee-rails', '4.0.1'
 gem 'jquery-rails', '3.1.2'
@@ -21,14 +21,14 @@ gem 'fog'
 gem "paperclip", '~> 4.1'
 gem 'paperclip-sftp', '~> 1.0.0'
 gem 'acts_as_list'
-
+gem 'sprockets', '>= 3.0.0'
+gem 'sprockets-es6'
 
 gem "rails-erd"
 
 #gem "paperclip-storage-ftp"
 #gem 'paperclip-meta'
 
-gem 'compass-rails', '2.0.0'
 gem 'rails_autolink'
 
 gem 'geocoder'
