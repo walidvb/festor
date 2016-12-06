@@ -35,7 +35,7 @@
   .tile-link{
     display: none;
   }
-  &.focus, &:hover{
+  &.focus{
     transform: perspective(500px) translateZ(50px)!important;
     .tile-link{
       display: block;

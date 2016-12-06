@@ -4,25 +4,15 @@ class EventsController < ApplicationController
 
 	def program
 		@filters = Event.category_enum
-		@filters.delete(:exhibition)
 
-		@total_duration = ((EventDate.order('"end" DESC').first.end - EventDate.order('start ASC').first.start) / 3600).ceil
-
-		@workshop_dates = EventDate.order('start ASC').where(dateable_type: :workshop).includes(:event, :artists, :location)
-		@event_dates = EventDate.order('start ASC').where(dateable_type: :event).includes(:event, :artists, :location)
-		@exhibition_dates = EventDate.order('start ASC').where(dateable_type: :exhibition).includes(:event, :artists, :location)
-
-		@all_dates = {
-			workshop: @workshop_dates,
-			event: @event_dates,
-			exhibition: @exhibition_dates,
-		}
-		@first_start = @event_dates.first.start
+		@all_dates = {}
+		@categories = [:event, :exhibition, :workshop,]
+		@categories.each do |cat|
+			@all_dates[cat] = EventDate.order('start ASC').where(dateable_type: cat).includes(:event, :artists, :location)
+		end
 		@artists = Artist.all
 
-		@days = @event_dates.group_by do |ed|
-				ed.start.to_date
-		end
+		@days = EventDate.all.pluck(:start).map(&:to_date).uniq
 		render 'program'
 	end
 

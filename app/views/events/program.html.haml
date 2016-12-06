@@ -1,56 +1,22 @@
 - content_for(:og_title, "Program")
 - content_for(:image, image_url('lines_3.png'))
 - content_for(:description, "Everything you need to know, day by day")
-- date_format = "%m-%d-%y"
+
 .filters
-	.col-sm-1.dates#date-dropdown-trigger
-		%label.dropdown.butt{for: 'dates'} Date
-	%ul.col-xs-5.col-sm-1.dates-list
+	%ul.col-sm-1
+		- @artists.each do |ar|
+			%li.artist{data: {artist: ar.slug}}= ar.name
+	%ul.col-xs-5.col-sm-1
 		%input#dates{type: :checkbox, name: 'dates'}
 		- @days.each do |day, event_dates|
 			- in_s = day.strftime(date_format)
 			%li.day{data: {date:in_s}, class: in_s}
 				%h2.location-link= in_s
 	%ul.col-sm-1
-		- @artists.each do |ar|
-			%li.artist{data: {artist: ar.slug}}= ar.name
+		- @categories.each do |cat|
+			%li{data:{ target: cat, type: 'category' }}= cat
 .row#program
 	.col-xs-5.col-sm-5.program-events-grid
-		- max_end_time = 0
-		- delay = 0
-		- conflict = 0
-		- @event_dates.each do |event_date|
-			- past_event_ids = []
-			- event = event_date.event
-			- if event.published? || user_signed_in?
-				- if !past_event_ids.include? event.id
-					- artists = event.artists
-					- height = event_date.duration
-					- start_hour = (event_date.start - @first_start)/3600
-					- end_hour = (event_date.end - @first_start)/3600
-					- top_pos = [max_end_time, start_hour].min
-					- conflict = start_hour < max_end_time ? conflict + 1 : 0
-					-# - delay += max_end_time < event_date.start ? (max_end_time - event_date.start)/3600 : 0
-					- max_end_time = [max_end_time, end_hour].max
-					- image = event.main_image.url(event.featured? ? :large : :tile)
-
-					.post{class: conflict ? "one-left" : nil, |
-						data: {id: event.id, |
-						img: event.main_image.url(event.featured? ? :large : :tile), |
-						artist: artists.map(&:slug).join('|'), |
-						dates: event_date.start.strftime(date_format), |
-						category: event.category, |
-						}, |
-						style: %{height:#{height}rem; background-image: url(#{image}); transform: translateY(#{top_pos}rem) translateX(#{15*conflict}rem);}}
-						= link_to path_for(event, locale: I18n.locale) do
-							-# = image = event.main_image.url(event.featured? ? :large : :tile)
-							.tile-link
-								.info
-									- if @category != :exhibition
-										- if !event.category.blank?
-											%h5.type= t("events.categories.#{event.category}")
-									.event-title
-										%h3= event.title
-									-# .artists
-									-# 	- artists.order(:updated_at).each do |a|
-									-# 		%h4.artist-name= a.name
+- @all_dates.keys.each do |key|
+	.event-category-container{data:{category: key}}
+		= render 'events/timeline.html.haml', event_dates: @all_dates[key]

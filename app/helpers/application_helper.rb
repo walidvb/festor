@@ -20,6 +20,10 @@ module ApplicationHelper
   	"%e %B - %H:%M"
   end
 
+  def date_format
+    "%m-%d-%y"
+  end
+
   def active_link_to txt, url
     path_1 = /\/?\w{0,2}?\/((\w*-?_?)+)/.match(url)[1]
     active = !request.fullpath.match(path_1).nil?
