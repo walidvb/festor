@@ -8,7 +8,15 @@ class EventsController < ApplicationController
 
 		@total_duration = ((EventDate.order('"end" DESC').first.end - EventDate.order('start ASC').first.start) / 3600).ceil
 
-		@event_dates = EventDate.order('start ASC').where.not(dateable_type: :exhibition).includes(:event, :artists, :location)
+		@workshop_dates = EventDate.order('start ASC').where(dateable_type: :workshop).includes(:event, :artists, :location)
+		@event_dates = EventDate.order('start ASC').where(dateable_type: :event).includes(:event, :artists, :location)
+		@exhibition_dates = EventDate.order('start ASC').where(dateable_type: :exhibition).includes(:event, :artists, :location)
+
+		@all_dates = {
+			workshop: @workshop_dates,
+			event: @event_dates,
+			exhibition: @exhibition_dates,
+		}
 		@first_start = @event_dates.first.start
 		@artists = Artist.all
 

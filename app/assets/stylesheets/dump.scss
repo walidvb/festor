@@ -5,10 +5,16 @@
   min-width: 200px;
   max-width: 450px;
   background-size: cover;
+  background-position: center;
   margin: auto;
   opacity: .8;
+  background-color: blueviolet;
   .grid-item--width2{
     box-shadow: inset red 0 0 3px;
+  }
+
+  &.one-left{
+    left: 300px;
   }
 }
 
@@ -24,13 +30,13 @@
 
 
 .post{
-  //transform: perspective(500px) translateZ(-330px);
+  transform: perspective(500px) translateZ(-330px);
   transition: all .3s ease-in-out;
   .tile-link{
     display: none;
   }
   &.focus, &:hover{
-    //transform: perspective(500px) translateZ(50px)!important;
+    transform: perspective(500px) translateZ(50px)!important;
     .tile-link{
       display: block;
     }
@@ -55,6 +61,8 @@ body{
   //background-image: url(http://68.media.tumblr.com/3cbf851f43a0de368798754c400aff74/tumblr_oc7ud7tYBn1slsxfzo1_540.gif);
   //background-image: url(http://68.media.tumblr.com/3f5f9e1fd6890b42dee5975dcff9a18a/tumblr_oa41uqMzL81slsxfzo1_540.gif);
   background-size: 100% 100%;
+  overflow-x: auto!important;
+  overflow: auto;
 }
 
 .day-section{
