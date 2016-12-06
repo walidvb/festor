@@ -6,7 +6,7 @@ class EventsController < ApplicationController
 		@filters = Event.category_enum
 
 		@all_dates = {}
-		@categories = [:event, :exhibition, :workshop,]
+		@categories = [ :exhibition, :workshop, :event ]
 		@categories.each do |cat|
 			@all_dates[cat] = EventDate.order('start ASC').where(dateable_type: cat).includes(:event, :artists, :location)
 		end

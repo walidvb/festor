@@ -30,19 +30,20 @@
 
 
 .post{
-  transform: perspective(500px) translateZ(-330px);
   transition: all .3s ease-in-out;
   .tile-link{
     display: none;
   }
-  &.focus{
-    transform: perspective(500px) translateZ(50px)!important;
+  pointer-events: none;
+  &.focus, &:hover{
     .tile-link{
       display: block;
+      z-index: 1000;
     }
+    pointer-events: auto;
   }
   &:hover{
-    z-index: 1000;
+    z-index: 1010!importants;
   }
 }
 
@@ -52,7 +53,17 @@ $transforms:-300px -120px -200px -440px -550px;
     $tr: nth($transforms, $i);
     //transform: perspective(500px) translateZ(#{$tr});
   }
+}
 
+#program{
+  width: 80vw;
+  float: right;
+  perspective: 50px;
+  perspective-origin: 50% 45vh;
+}
+.event-category-container{
+  perspective: 50px;
+  perspective-origin: center;
 }
 
 body{

@@ -5,18 +5,17 @@
 .filters
 	%ul.col-sm-1
 		- @artists.each do |ar|
-			%li.artist{data: {artist: ar.slug}}= ar.name
+			%li.artist{data: {type: 'artist', target: ar.slug}}= ar.name
 	%ul.col-xs-5.col-sm-1
 		%input#dates{type: :checkbox, name: 'dates'}
 		- @days.each do |day, event_dates|
 			- in_s = day.strftime(date_format)
-			%li.day{data: {date:in_s}, class: in_s}
+			%li.day{data: {type: 'date', target:in_s}, class: in_s}
 				%h2.location-link= in_s
 	%ul.col-sm-1
 		- @categories.each do |cat|
 			%li{data:{ target: cat, type: 'category' }}= cat
-.row#program
-	.col-xs-5.col-sm-5.program-events-grid
-- @all_dates.keys.each do |key|
-	.event-category-container{data:{category: key}}
+#program
+	- @all_dates.keys.each do |key|
+		-# .event-category-container{data:{cate: key}}
 		= render 'events/timeline.html.haml', event_dates: @all_dates[key]

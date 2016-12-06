@@ -9,7 +9,7 @@
 		%meta{property:"og:image", content:"#{content_for?(:image) ? yield(:image) : image_url('lines_1.png')}"}
 		%meta{property:"og:url", content: "#{content_for?(:url) ? yield(:url) : request.original_url}"}
 		%meta{property:"og:type", content:"#{content_for?(:type) ? yield(:type) : 'website'}"}
-		- title = strip_tags(CGI.unescapeHTML("#{content_for?(:og_title) ? '28.4-8.5 2016 | Mapping Festival | ' + yield(:og_title): '28.4-8.5 2016 | Mapping Festival'}"))
+		- title = strip_tags(CGI.unescapeHTML("#{content_for?(:og_title) ? '28.4-8.5 2016 | Mapping Festival | ' + yield(:og_title): '2017 | Mapping Festival'}"))
 		%meta{property:"og:title", content: title}
 		%meta{name: "google-site-verification", content:"EiRhKI0cx8Sp3Xikv24icsWpBYEF4lG5LU8nFYaQhQ4"}
 		%title= title
@@ -22,11 +22,8 @@
 		= csrf_meta_tags
 
 	%body.imready{class: ["#{controller.controller_name}-page", "#{controller.action_name}-page", "#{'debug' if Rails.env.development?}", "#{current_user.nil? ? nil : 'admin'}", content_for(:body_class)].join(' ')}
-		#the-content
-			%main.container
-				.row
-					.col-xs-5
-						= yield
+		%main
+			= yield
 
 		:plain
 			<script>
