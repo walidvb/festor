@@ -47,6 +47,8 @@
     transition: opacity .3s ease-in-out;
     color: white;
     padding: 5px;
+    background-size: cover;
+    background-position: center;
   }
   pointer-events: none;
   &.focus{
