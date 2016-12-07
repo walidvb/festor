@@ -56,12 +56,12 @@ $(document).on('turbolinks:load', () => {
         let perspectiveOrigin = `50% ${originY}vh`;
 
         // move with the element
-        originY = scrollTop + $(window).height()*(1-scrollRatio);
+        originY = scrollTop + $(window).height()*(scrollRatio);
         perspectiveOrigin = `50% ${originY}px`;
 
         console.log(scrollRatio);
         $prog.css({perspectiveOrigin});
-        persp.css({top: originY});
+        persp.css({top: Math.min(originY, totalHeight)});
       });
     };
   }

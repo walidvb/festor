@@ -26,7 +26,7 @@
           category: event.sup_category, |
           transform: "translateY(#{top_pos}rem) translateX(#{15*conflict}rem)" |
         }, |
-        style: "min-height:#{height}rem; background-image: url(#{image}); transform: translateY(#{top_pos}rem) translateX(#{15*conflict}rem);") do
+        style: "height: #{height}rem; min-height:#{height}rem; background-image: url(#{image}); transform: translateY(#{top_pos}rem) translateX(#{15*conflict}rem);") do
 
         -# = image = event.main_image.url(event.featured? ? :large : :tile)
         .tile-link{style: "background-image: url(#{event.main_image.url(event.featured? ? :large : :tile)})"}
