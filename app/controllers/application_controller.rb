@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   after_filter :remove_landing
   before_filter :load_message
   before_filter :beta_only
+
   def load_message
     @messages = Message.all.order('created_at DESC').first(3)
   end

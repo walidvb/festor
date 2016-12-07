@@ -31,6 +31,7 @@
 
 .post{
   transition: all .3s ease-in-out;
+  will-change: transform;
   .tile-link{
     display: none;
   }
@@ -59,7 +60,8 @@ $transforms:-300px -120px -200px -440px -550px;
   width: 80vw;
   float: right;
   perspective: 50px;
-  perspective-origin: 50% 45vh;
+  perspective-origin: 50% 25vh;
+  will-change: transform;
 }
 .event-category-container{
   perspective: 50px;
