@@ -45,6 +45,8 @@ $(document).on('turbolinks:load', () => {
         right: 0,
         borderBottom: 'solid 1px blueviolet',
         opacity: 0.3,
+        color: 'blueviolet',
+        textAlign: 'right',
       });
       const scrollable = $('body');
       scrollable.on('scroll', () => {
