@@ -26,6 +26,13 @@
   max-height: 100vh;
   overflow: auto;
   color: white;
+  z-index: 2000;
+  li{
+    cursor: pointer;
+  }
+  .active{
+    font-weight: bold;
+  }
 }
 
 
@@ -33,18 +40,24 @@
   transition: all .3s ease-in-out;
   will-change: transform;
   .tile-link{
-    display: none;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    transition: opacity .3s ease-in-out;
+    color: white;
+    padding: 5px;
   }
   pointer-events: none;
-  &.focus, &:hover{
+  &.focus{
     .tile-link{
-      display: block;
+      opacity: 1;
       z-index: 1000;
     }
     pointer-events: auto;
   }
   &:hover{
-    z-index: 1010!importants;
+    z-index: 1010!important;
   }
 }
 
@@ -59,6 +72,7 @@ $transforms:-300px -120px -200px -440px -550px;
 #program{
   width: 80vw;
   float: right;
+  position: relative;
   perspective: 50px;
   perspective-origin: 50% 25vh;
   will-change: transform;
