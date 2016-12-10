@@ -1,7 +1,7 @@
 !!!
 %html{lang: I18n.locale, class: 'first-load transitionning'}
 	%head
-		%meta{:content => "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no", :name => "viewport"}/
+		%meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
 		%meta{property:"og:site_name", content:"Mapping Festival 2016"}
 		- desc = strip_tags(CGI.unescapeHTML("#{content_for?(:description) ? yield(:description) : 'The Mapping Festival is also a meeting point, a creative and collaborative platform with innovative spirit. Over the course of ten editions the Mapping Festival has grown steadily and emerged as one the most important events of its kind in Europe.'}")).gsub('&nbsp;', ' ')
 		%meta{:name => "description", content: desc}

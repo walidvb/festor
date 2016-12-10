@@ -1,5 +1,6 @@
 .logo{
   text-transform: uppercase;
+  padding-left: 5px;
   .letter{
     will-change: true;
     padding: 0.2rem 0.1rem;
@@ -16,26 +17,20 @@
       }
     }
   }
-  @include text-shadow($color1: $black, $color2: $white, $gap: 0.15em);
+  @include text-shadow($color1: $black, $gap: 0);
+  & .letter:hover{
+    @include text-shadow($color1: $black, $color2: $white);
+    @media #{$tablet} {
+      @include text-shadow();
+    }
+    transition: all 0.2s ease-out;
+  }
 	@media #{$tablet} {
-    @include text-shadow($color1: $black);
-    margin-top: -5px;
-		margin-right: $margin-horizontal-normal;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
 	}
-  header:hover &{
-    @include text-shadow($color1: $black, $color2: $white, $gap: 0);
-			@media #{$tablet} {
-        @include text-shadow($gap: 0);
-			}
-    & .letter:hover{
-      @include text-shadow($color1: $black, $color2: $white);
-			@media #{$tablet} {
-        @include text-shadow();
-			}
-      transition: all 0.2s ease-out;
-    }
+  .filters:hover &{
+    @include text-shadow($color1: $black);
   }
 }

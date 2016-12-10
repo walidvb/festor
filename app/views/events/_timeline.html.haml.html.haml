@@ -2,34 +2,37 @@
 - delay = 0
 - conflict = 0
 - first_start = event_dates.first.start
+- past_days = []
 - event_dates.each do |event_date|
-  - past_event_ids = []
   - event = event_date.event
   - if event.published? || user_signed_in?
-    - if !past_event_ids.include? event.id
-      - artists = event.artists
-      - height = event_date.duration
-      - start_hour = (event_date.start - first_start)/3600
-      - end_hour = (event_date.end - first_start)/3600
-      - top_pos = [max_end_time, start_hour].min
-      - conflict = start_hour < max_end_time ? conflict + 1 : 0
-      -# - delay += max_end_time < event_date.start ? (max_end_time - event_date.start)/3600 : 0
-      - max_end_time = [max_end_time, end_hour].max
-      - image = event.main_image.url(event.featured? ? :large_blurred : :tile_blurred)
+    - artists = event.artists
+    - height = event_date.duration
+    - start_hour = (event_date.start - first_start)/3600
+    - end_hour = (event_date.end - first_start)/3600
+    - top_pos = [max_end_time, start_hour].min
+    - conflict = start_hour < max_end_time ? conflict + 1 : 0
+    -# - delay += max_end_time < event_date.start ? (max_end_time - event_date.start)/3600 : 0
+    - max_end_time = [max_end_time, end_hour].max
+    - image = event.main_image.url(event.featured? ? :large_blurred : :tile_blurred)
 
-      = link_to(path_for(event, locale: I18n.locale), class:'post', |
-        data: { |
-          id: event.id, |
-          img: image, |
-          artist: artists.map(&:slug).join('|'), |
-          date: event_date.start.strftime(date_format), |
-          category: event.sup_category, |
-          transform: "translateY(#{top_pos}rem) translateX(#{15*conflict}rem)" |
-        }, |
-        style: "min-height:#{height}rem; background-image: url(#{image}); transform: translateY(#{top_pos}rem) translateX(#{15*conflict}rem);") do
+    = link_to(path_for(event, locale: I18n.locale), class:'post', |
+      data: { |
+        id: event.id, |
+        img: image, |
+        artist: artists.map(&:slug).join('|'), |
+        date: event_date.start.strftime(date_format), |
+        category: event.sup_category, |
+        transform: "translateY(#{top_pos}rem) translateX(#{15*conflict}rem)" |
+      }, |
+      style: "min-height:#{height}rem; background-image: url(#{image}); transform: translateY(#{top_pos}rem) translateX(#{15*conflict}rem);") do
 
-        -# = image = event.main_image.url(event.featured? ? :large : :tile)
-        .tile-link{style: "background-image: url(#{event.main_image.url(event.featured? ? :large : :tile)}); min-height: #{height}rem;"}
-          .info
-            .event-title
-              %h3= event.title
+      -# = image = event.main_image.url(event.featured? ? :large : :tile)
+      .tile-link{style: "background-image: url(#{event.main_image.url(event.featured? ? :large : :tile)}); min-height: #{height}rem;"}
+        .info
+          .event-title
+            %h3= event.title
+      - if (day = event_date.start.to_date) && !past_days.include?(day)
+        - past_days.push(day)
+        .day-ticker{data: {taransform: "translateY(#{top_pos}rem)"}}
+          = day.strftime("%A %e")
