@@ -43,6 +43,19 @@ RailsAdmin.config do |config|
     ## With an audit adapter, you can add:
     # history_index
     # history_show
+
+    root :sync do
+      controller do
+        proc do
+          begin
+            ZoneFestival.all.map(&:sync)
+            redirect_to '/admin', notice: 'Database successfully synced'
+          rescue => e
+            redirect_to '/admin', alert: "Error when syncing database: #{e}"
+          end
+        end
+      end
+    end
   end
 
   ## == Globalize ==

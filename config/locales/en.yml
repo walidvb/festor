@@ -77,3 +77,7 @@ en:
   time:
     to: 'to'
     coming_soon: 'Coming soon...'
+  admin:
+    actions:
+      sync:
+        menu: 'Sync with Zone Festival'
