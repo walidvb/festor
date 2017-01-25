@@ -1,36 +1,6 @@
 .logo{
-  text-transform: uppercase;
-  padding-left: 5px;
-  .letter{
-    will-change: true;
-    padding: 0.2rem 0.1rem;
-    flex: 0 0 12.5%;
-    transition: all 0.3s ease-out;
-  }
-  $list: 3n, 2n+1, 2n, 4n+1, 3n+1, 4n;
-  $delay: 0.05s;
-  &:not(:hover) .letter{
-    @each $var in $list{
-      &:nth-child(#{$var}){
-        transition-delay: #{$delay};
-        $delay: $delay+0.03;
-      }
-    }
-  }
-  @include text-shadow($color1: $black, $gap: 0);
-  & .letter:hover{
-    @include text-shadow($color1: $black, $color2: $white);
-    @media #{$tablet} {
-      @include text-shadow();
-    }
-    transition: all 0.2s ease-out;
-  }
-	@media #{$tablet} {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
+	width: 20%;
+	.name, .motto, .festival.date, .festival-location{
+		display: block;
 	}
-  .filters:hover &{
-    @include text-shadow($color1: $black);
-  }
 }

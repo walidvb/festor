@@ -6,10 +6,10 @@
 development:
   adapter: postgresql
   host: localhost
-  database: festor
+  database:
   pool: 5
   timeout: 5000
-  username: walid
+  username:
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -17,18 +17,18 @@ development:
 test: &test
   adapter: postgresql
   host: localhost
-  database: festor_test
+  database:
   pool: 5
   timeout: 5000
-  username: walid
+  username:
 
 production:
   adapter: postgresql
   host: localhost
-  database: festor
+  database: 
   pool: 5
   timeout: 5000
-  username: walid
+  username:
 
 cucumber:
   <<: *test

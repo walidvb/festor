@@ -2,30 +2,44 @@
 - content_for(:image, image_url('lines_3.png'))
 - content_for(:description, "Everything you need to know, day by day")
 
-.filters.draggable
-	.logo= render 'layouts/logo'
-	.filters-toolbar
-		%ul.menu
-			%li NEWS
-			%li VOLUNTEERS
-			%li ABOUT
-			%li TICKETS
-
-		.trigger ✕
-	.filters-content
-		%ul.filters-list
-			- @artists.each do |ar|
-				%li.artist{data: {type: 'artist', target: ar.slug}}= ar.name
-		-# %ul.col-xs-5.col-sm-2
-		-# 	%input#dates{type: :checkbox, name: 'dates'}
-		-# 	- @days.each do |day, event_dates|
-		-# 		- in_s = day.strftime(date_format)
-		-# 		%li.day{data: {type: 'date', target:in_s}, class: in_s}
-		-# 			%h2.location-link= in_s
-		%ul.filters-list
-			- @categories.each do |cat|
-				%li{data:{ target: cat, type: 'category' }}= cat
-#program
-	- @all_dates.keys.each do |key|
-		-# .event-category-container{data:{cate: key}}
-		= render 'events/timeline.html.haml', event_dates: @all_dates[key]
+.navigation
+	.header
+		.logo= render 'layouts/logo'
+		.navigation-menu
+			%ul.menu
+				%li TICKETS
+				%li Newsletter
+			%ul.social
+				%li Instagram
+				%li Twitter
+				%li Facebook
+			%ul.languages
+				%li French
+				%li English
+	.trigger ✕
+	.filters
+		%h3 Events by:
+		.filters-content
+			%ul.filters-list
+				- @artists.each do |ar|
+					%li.artist{data: {type: 'artist', target: ar.slug}}= ar.name
+			-# %ul.col-xs-5.col-sm-2
+			-# 	%input#dates{type: :checkbox, name: 'dates'}
+			-# 	- @days.each do |day, event_dates|
+			-# 		- in_s = day.strftime(date_format)
+			-# 		%li.day{data: {type: 'date', target:in_s}, class: in_s}
+			-# 			%h2.location-link= in_s
+			%ul.filters-list
+				- @categories.each do |cat|
+					%li{data:{ target: cat, type: 'category' }}= cat
+	#program
+		- @all_dates.keys.each do |key|
+			-# .event-category-container{data:{cate: key}}
+			= render 'events/timeline.html.haml', event_dates: @all_dates[key]
+	%footer
+		%ul.footer-links
+			%li About
+			%li Contact
+			%li Partners
+			%li Archives
+			%li News

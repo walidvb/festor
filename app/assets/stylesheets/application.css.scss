@@ -19,6 +19,7 @@ $invert: 0;
 @import "partners";
 @import "artists";
 @import "events";
+@import "filters";
 @import "home";
 @import "newsletter";
 @import "grid_index.css.scss";
@@ -38,6 +39,7 @@ html{
 body{
 	font-family: $body-font;
 	overflow-x: hidden;
+	color: $white;
 	@media #{$tablet}{
 		font-size : 14px;
 		display: flex;
@@ -78,13 +80,6 @@ a:hover, a:active{
 	padding: 0 14px;
 }
 
-//// fix horz scrolling
-//@media #{$mobile}{
-//	.col-xs-5{
-//		padding: 0 10px;
-//	}
-//}
-
 img, canvas, iframe{
 	max-width: 100%;
 }
@@ -118,7 +113,14 @@ ul{
 	-webkit-padding-start: 0px;
 }
 
-h1, h2, h3, h4, h5, h6{
+h1, h2{
+	font-family: $body-font;
+	font-weight: bold;
+	font-size: inherit;
+	margin: 0;
+}
+
+h3, h4, h5, h6{
 	font-family: $body-font;
 	font-weight: inherit;
 	font-size: inherit;
@@ -128,11 +130,10 @@ h1, h2, h3, h4, h5, h6{
 main{font-family: $body-font;}
 
 body a{
-	//color: $black;
 	text-decoration: none;
 	&:hover{
-		//color: $white;
-		//background:	$black;
+		color: $black;
+		background:	$white;
 		text-decoration: none;
 	}
 }
@@ -141,40 +142,6 @@ body a{
 	width: 100%;
 }
 #footer{
-
-	width: 100%;
-	z-index: 100;
-	background-color: transparent;
-	color: $dark-grey;
-	padding-top: $lineheight-base;
-	margin-bottom: $lineheight-base*2;
-	.container{
-		display:flex;
-		flex-direction: row;
-		flex-wrap: wrap;
-		justify-content: space-around;
-		align-content: flex-start;
-		align-items: flex-start;
-		margin: 0;
-		padding-top: $margin-vertical-normal;
-		@media #{$tablet}{
-			margin: 0 auto 0 auto;
-			.footer-links li{
-				display: inline-block;
-				&:not(:first-child):before{
-					content: '|';
-					padding-right: 5px;
-				}
-			}
-		}
-	}
-	.footer-links, .address{
-		flex: 1 0 100%;
-		text-transform: capitalize;
-		@media #{$tablet}{
-			flex: 1 0 50%;
-		}
-	}
 }
 
 .address{
@@ -257,25 +224,6 @@ main{
 	}
 	.imready &{
 		opacity: 1;
-	}
-}
-
-
-/* p5 Lines*/
-#canvas, #canvas-placeholder{
-	height: 100%;
-	width: 100%;
-	position: fixed;
-	top: 0;
-	opacity: 1;
-	.loading &, .imready &{
-		opacity: $canvas-opacity;
-	}
-	.imready.transitionning &{
-		opacity: 1;
-	}
-	&:focus{
-		outline: none;
 	}
 }
 
