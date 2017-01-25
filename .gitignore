@@ -70,3 +70,9 @@ notes.txt
 # local environment variables
 config/local_env.yml
 *.dump
+# React on Rails
+npm-debug.log*
+node_modules
+
+# Generated js bundles
+/app/assets/webpack/*

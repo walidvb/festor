@@ -102,3 +102,5 @@ group :test do
   gem 'show_me_the_cookies'
 	gem 'fuubar'
 end
+
+gem 'mini_racer', platforms: :ruby

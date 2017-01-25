@@ -1,6 +1,7 @@
 Festor::Application.routes.draw do
 
 
+  get 'mapping_festival', to: 'mapping_festival#index'
   get "data/events" => 'admin/data#events'
   get "data/artists" => 'admin/data#artists'
   get "data/locations" => 'admin/data#locations'
