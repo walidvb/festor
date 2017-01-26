@@ -3,9 +3,11 @@ import Dates from './Dates';
 import Sections from './Sections';
 
 const SideBar = (props) => (
-  <div>
-    <Dates {...props} />
-    <Sections sections={props.section} />
+  <div className='filters'>
+    <div className='filters-by'>
+      <Dates  {...props} />
+      <Sections  sections={props.sections} />
+    </div>
   </div>
 )
 

@@ -1,11 +1,23 @@
-import React, { PropTypes } from 'react';
+import React, { PropTypes } from 'react'
 
-const Dates = React.createClass({
+const Date = React.createClass({
   render () {
     return (
-      <div>ad</div>
+      <li>
+        {this.props.name_1}
+      </li>
     )
   }
-})
+});
 
-export default Dates;
+
+const Dates = (props) => (
+  <div className='filter-by-type'>
+    <h3 className='filter-by-date'>Events by type</h3>
+    <ul>
+      
+    </ul>
+  </div>
+);
+
+export default Dates

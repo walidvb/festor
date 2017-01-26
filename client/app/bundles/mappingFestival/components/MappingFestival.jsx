@@ -1,16 +1,18 @@
 import React, { PropTypes } from 'react';
-import Program from './Program';
+import Programs from './Programs';
 import SideBar from './SideBar';
 
 const MappingFestival = (props) => (
   <div>
     <SideBar {...props} />
-    <Program {...props} />
+    <Programs {...props} />
   </div>
 );
 
 MappingFestival.propTypes = {
-  program: PropTypes.array.isRequired,
+  programs: PropTypes.array.isRequired,
+  sections: PropTypes.array.isRequired,
+  days: PropTypes.array.isRequired,
 };
 
 export default MappingFestival;

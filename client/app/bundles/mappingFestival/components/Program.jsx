@@ -1,16 +1,44 @@
 import React, { PropTypes } from 'react';
-import ProgramElement from './ProgramElement';
 
-const Program = ( props ) => {
-  return (<div className="program-container" style={{color: 'white'}}>
-    {props.program_show_list.map((program_show, i) =>
-      <ProgramElement key={`prog-${i}`} { ...props } {...program_show} />
-    )}
-  </div>)
-};
+const Program = React.createClass({
+
+  render () {
+    const classes = [
+      this.props.active ? 'active' : 'inactive'
+    ].join(' ');
+    const show = this.props.shows[0];
+    const {
+      art_direction,
+      venue,
+      } = show;
+
+    const {
+      date_start,
+      date_end,
+      sections,
+      name_1,
+    } = this.props;
+
+    return (
+      <div className={classes}>
+        <div className="test">
+          { date_start } – {sections.map(section => section.name_1)}
+        </div>
+        <h3>{art_direction}</h3>
+        <h2>
+          {name_1}
+        </h2>
+      </div>
+    )
+  }
+})
 
 Program.propTypes = {
-  program_show_list: PropTypes.array.isRequired,
+  shows: PropTypes.array.isRequired,
+  date_start: PropTypes.string.isRequired,
+  date_end: PropTypes.array.isRequired,
+  sections: PropTypes.array.isRequired,
+  venue: PropTypes.object,
 };
 
 export default Program;

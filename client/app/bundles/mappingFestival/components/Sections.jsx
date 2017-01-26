@@ -3,17 +3,20 @@ import React, { PropTypes } from 'react'
 const Section = React.createClass({
   render () {
     return (
-      <div>
+      <li>
         {this.props.name_1}
-      </div>
+      </li>
     )
   }
 });
 
 
 const Sections = (props) => (
-  <div>
-    { props.sections.map((elem, i) => <Section key={`section-${i}`} {...elem}/>)}
+  <div className='filter-by-type'>
+    <h3>Events by type</h3>
+    <ul>
+      { props.sections.map((elem, i) => <Section key={`section-${i}`} {...elem}/>)}
+    </ul>
   </div>
 );
 

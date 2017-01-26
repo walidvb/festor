@@ -6,7 +6,7 @@ import * as actions from '../actions/mappingFestivalActionCreators';
 
 // Which part of the Redux global state does our component want to receive as props?
 const mapStateToProps = (state) => {
-  return state
+  return state;
 };
 
 // Don't forget to actually use connect!
