@@ -13,7 +13,7 @@ const Section = React.createClass({
 
 const Sections = (props) => (
   <div>
-    { props.sections.map((elem, i) => <Section {...elem}/>)}
+    { props.sections.map((elem, i) => <Section key={`section-${i}`} {...elem}/>)}
   </div>
 );
 
