@@ -183,6 +183,13 @@ ActiveRecord::Schema.define(version: 20170124122932) do
     t.boolean  "colorbox",   default: false
   end
 
+  create_table "news", force: true do |t|
+    t.string   "link"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "colorbox",   default: false
+  end
+
   create_table "partners", force: true do |t|
     t.string   "name"
     t.string   "link"
