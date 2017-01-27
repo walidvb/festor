@@ -4,7 +4,6 @@ import mappingFestivalReducer from '../reducers/mappingFestivalReducer';
 const configureStore = (railsProps) => {
 
   const propsAsNeeded = normalizeForApp(railsProps);
-  console.log('propsAsNeeded', propsAsNeeded);
   return createStore(mappingFestivalReducer, propsAsNeeded);
 };
 

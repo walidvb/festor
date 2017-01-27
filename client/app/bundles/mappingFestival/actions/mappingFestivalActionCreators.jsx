@@ -1,9 +1,8 @@
 /* eslint-disable import/prefer-default-export */
 
-import { mapping_festival_FILTER_TYPE } from '../constants/mappingFestivalConstants';
+import { mapping_festival_FILTER_SECTION } from '../constants/mappingFestivalConstants';
 
-export const filterPrograms = (filter, filterType) => ({
-  type: mapping_festival_FILTER_TYPE,
+export const filterProgramsBySection = (filter) => ({
+  type: mapping_festival_FILTER_SECTION,
   filter,
-  filterType,
 });

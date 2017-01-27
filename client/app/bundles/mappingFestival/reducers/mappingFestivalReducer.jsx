@@ -1,28 +1,37 @@
 import { combineReducers } from 'redux';
-import { mapping_festival_FILTER_TYPE } from '../constants/mappingFestivalConstants';
+import { mapping_festival_FILTER_SECTION } from '../constants/mappingFestivalConstants';
 
 const programs = (state = [], action) => {
 
   switch (action.type) {
-    case mapping_festival_FILTER_TYPE:
-      return filteredProgramsBy(action.filterType, action.filter);
+    case mapping_festival_FILTER_SECTION:
+      return filteredProgramsBySection(action.filter);
     default:
       return state;
   }
 
-  function filteredProgramsBy(filterType, filter){
-    if(filterType == 'section'){
-      const programs = state;
-      return programs.map((program) => {
+  function filteredProgramsBySection(filter){
+    const programs = state;
+    return programs.map((program) => {
+      if(!filter){
+        program.displayed = true;
+      }
+      else{
         program.displayed = program.sections.find((s) => s.id == filter.id) != undefined
-        return program;
-      });
-    }
+      }
+      return program;
+    });
   }
 };
 
 const sections = (state = [], action) => {
   switch (action.type) {
+    case mapping_festival_FILTER_SECTION:
+      const sections = state;
+      return sections.map((section) => {
+        section.active = action.filter && (section.id == action.filter.id);
+        return section;
+      })
     default:
       return state;
   }
