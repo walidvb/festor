@@ -1,8 +1,9 @@
 /* eslint-disable import/prefer-default-export */
 
-import { mapping_festival_NAME_UPDATE } from '../constants/mappingFestivalConstants';
+import { mapping_festival_FILTER_TYPE } from '../constants/mappingFestivalConstants';
 
-export const updateName = (text) => ({
-  type: mapping_festival_NAME_UPDATE,
-  text,
+export const filterPrograms = (filter, filterType) => ({
+  type: mapping_festival_FILTER_TYPE,
+  filter,
+  filterType,
 });

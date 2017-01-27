@@ -5,8 +5,8 @@ import Sections from './Sections';
 const SideBar = (props) => (
   <div className='filters'>
     <div className='filters-by'>
-      <Dates  {...props} />
-      <Sections  sections={props.sections} />
+      <Dates days={props.days} />
+      <Sections sections={props.sections} {...props}/>
     </div>
   </div>
 )

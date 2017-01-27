@@ -3,10 +3,10 @@ import Programs from './Programs';
 import SideBar from './SideBar';
 
 const MappingFestival = (props) => (
-  <div>
+  <main className="main-container">
     <SideBar {...props} />
     <Programs {...props} />
-  </div>
+  </main>
 );
 
 MappingFestival.propTypes = {

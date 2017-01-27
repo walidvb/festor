@@ -22,6 +22,7 @@ function normalizeForApp(data){
     program.venue = data.venue.find((venue) => venue.id = program.venue_id);
     program.sections = flatten(program.shows.map(sectionsFromShow));
 
+    program.displayed = true;
     console.log(program.shows.map(sectionsFromShow), 'sections');
 
     return program;

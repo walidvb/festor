@@ -4,13 +4,14 @@ const Program = React.createClass({
 
   render () {
     const classes = [
-      this.props.active ? 'active' : 'inactive'
+      'program',
+      this.props.displayed ? 'active' : 'inactive',
     ].join(' ');
-    const show = this.props.shows[0];
+
     const {
       art_direction,
       venue,
-      } = show;
+      } = this.props.shows[0];
 
     const {
       date_start,
@@ -21,7 +22,7 @@ const Program = React.createClass({
 
     return (
       <div className={classes}>
-        <div className="test">
+        <div className="">
           { date_start } – {sections.map(section => section.name_1)}
         </div>
         <h3>{art_direction}</h3>
