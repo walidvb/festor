@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 const moment = require('moment');
-console.log('moment', moment());
+
 const Program = React.createClass({
 
   render () {
@@ -23,18 +23,14 @@ const Program = React.createClass({
       posY,
       posZ,
     } = this.props;
+    const style = {
+      transform: `translate3D(${posX}, ${posY}, ${posZ})`,
+    };
     const dateStartFormatted = moment(date_start).format("h[h]mm");
     return (
       <div className={classes}>
         <div className="program-date">
           { dateStartFormatted } – {sections.map(section => section.name_1)}
-    const style = {
-      transform: `translate3D(${posX}, ${posY}, ${posZ})`,
-    };
-    return (
-      <div className={classes} style={}>
-        <div className="">
-          { date_start } – {sections.map(section => section.name_1)}
         </div>
         <h3 className="program-artists">{art_direction}</h3>
         <h2>

@@ -13,9 +13,9 @@ class Event < ActiveRecord::Base
 
 	scope :published, -> {where(published: true)}
 
-	scope :workshop, ->{where(category: workshop_cats)}
-	scope :exhibition, ->{where(category: :exhibition)}
-	scope :other, ->{where.not(category: [:workshop, :conference, :masterclass, :exhibition])}
+	scope :workshop, ->{where(section: workshop_cats)}
+	scope :exhibition, ->{where(section: :exhibition)}
+	scope :other, ->{where.not(section: [:workshop, :conference, :masterclass, :exhibition])}
 
 	scope :featured, -> {where(featured: true)}
 	has_many :event_dates, dependent: :delete_all, inverse_of: :event
@@ -53,25 +53,25 @@ class Event < ActiveRecord::Base
 
 	validates_attachment_content_type :main_image, :content_type => /\Aimage\/(jpg|jpeg|png|gif)\Z/i
 
-	validates_presence_of :category, :title, :location
+	validates_presence_of :title, :location
 
 	def next
-		cat = %w{workshop conference masterclass}.include?(category) ? [:workshop, :conference, :masterclass] : category
-		Event.where(category: cat).where('id > ?', id).first
+		cat = %w{workshop conference masterclass}.include?(section) ? [:workshop, :conference, :masterclass] : section
+		Event.where(section: cat).where('id > ?', id).first
 		# if ed = event_dates
-		# 	EventDate.where('dateable_type = ? AND event_id != ? AND start > ?', self.sup_category, self.id, ed.start.strftime("%Y-%m-%d")).order(:start).distinct(:event_id).first.try(:event)
+		# 	EventDate.where('dateable_type = ? AND event_id != ? AND start > ?', self.sup_section, self.id, ed.start.strftime("%Y-%m-%d")).order(:start).distinct(:event_id).first.try(:event)
 		# end
 	end
 
 	def previous
-		cat = %w{workshop conference masterclass}.include?(category) ? [:workshop, :conference, :masterclass] : category
-		Event.where(category: cat).where('id < ?', id).last
+		cat = %w{workshop conference masterclass}.include?(section) ? [:workshop, :conference, :masterclass] : section
+		Event.where(section: cat).where('id < ?', id).last
 		# if ed = event_dates.first
-		# 	EventDate.where('dateable_type = ? AND event_id != ? AND start < ?', self.sup_category, self.id, ed.start.strftime("%Y-%m-%d")).distinct(:event_id).order(:start).first.try(:event)
+		# 	EventDate.where('dateable_type = ? AND event_id != ? AND start < ?', self.sup_section, self.id, ed.start.strftime("%Y-%m-%d")).distinct(:event_id).order(:start).first.try(:event)
 		# end
 	end
 
-	def self.category_enum
+	def self.section_enum
 		[:clubbing, :performance, :screening, :exhibition, :conference, :masterclass, :specials, :workshop]
 	end
 
@@ -80,12 +80,12 @@ class Event < ActiveRecord::Base
 	end
 
 	def is_workshop?
-		Event.workshop_cats.include?(category.to_sym)
+		Event.workshop_cats.include?(section.to_sym)
 	end
 
-	def sup_category
-		self.category == 'workshop' ? :workshop :
-			self.category == 'exhibition' ? :exhibition : :event
+	def sup_section
+		self.section == 'workshop' ? :workshop :
+			self.section == 'exhibition' ? :exhibition : :event
 	end
 
 

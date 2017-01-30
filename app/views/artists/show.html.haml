@@ -15,7 +15,7 @@
 		- @artist.events.published.each do |event|
 			= link_to  path_for(event, locale: I18n.locale), class: 'artist-event', data: {'load-more' => path_for(event, locale: I18n.locale)} do
 				%h5.artist-event-name= event.title
-				%h6.artist-event-type.sup= event.category
+				%h6.artist-event-type.sup= event.section
 		%span#back.nav.back{:style => "cursor: pointer;"} [back]
 #main-content
 	.mf-breadcrumb.pull-right.hidden-xs

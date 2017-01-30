@@ -56,7 +56,7 @@ module EventAdmin
         	#  bindings[:view].link_to(bindings[:object].title, edit_path(model_name: bindings[:object].class)) << value
         	# end
         end
-        field :category
+        field :section
         field :featured
       end
     end

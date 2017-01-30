@@ -5,7 +5,7 @@ class EventDate < ActiveRecord::Base
   validates_presence_of :event, :start
   before_save :set_event_date_type
 	def set_event_date_type
-		self.dateable_type = event.sup_category
+		self.dateable_type = event.section
 	end
   default_scope { order('start') }
 

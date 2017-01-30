@@ -3,15 +3,15 @@
 	- events.each do |event|
 		- classes = [event.featured? ? "grid-item--width2" : nil]
 		- classes.push(event.location.try(:slug))
-		- classes.push(event.category)
+		- classes.push(event.section)
 		.grid-item{class: classes.join(' '), data: {position: event.position, id: event.id, img: event.main_image.url(event.featured? ? :large : :tile)}, style: "background-image:url(#{event.main_image.url(event.featured? ? :large_blurred : :tile_blurred)})"}
 			- artists = event.artists
 			= image_tag event.main_image.url(event.featured? ? :large_blurred : :tile_blurred), class: 'image'
 			= link_to path_for(event), class: 'tile-link' do
 				.info
-					- if @category != :exhibition
-						- if !event.category.blank?
-							%h5.type= t("events.categories.#{event.category}")
+					- if @section != :exhibition
+						- if !event.section.blank?
+							%h5.type= t("events.categories.#{event.section}")
 					.event-title
 						%h3= event.title
 					.artists
