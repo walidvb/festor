@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
-
+const moment = require('moment');
+console.log('moment', moment());
 const Program = React.createClass({
 
   render () {
@@ -19,11 +20,11 @@ const Program = React.createClass({
       sections,
       name_1,
     } = this.props;
-
+    const dateStartFormatted = moment(date_start).format("h[h]mm");
     return (
       <div className={classes}>
         <div className="program-date">
-          { date_start } – {sections.map(section => section.name_1)}
+          { dateStartFormatted } – {sections.map(section => section.name_1)}
         </div>
         <h3 className="program-artists">{art_direction}</h3>
         <h2>
