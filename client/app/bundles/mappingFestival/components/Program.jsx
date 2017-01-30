@@ -19,12 +19,22 @@ const Program = React.createClass({
       date_end,
       sections,
       name_1,
+      posX,
+      posY,
+      posZ,
     } = this.props;
     const dateStartFormatted = moment(date_start).format("h[h]mm");
     return (
       <div className={classes}>
         <div className="program-date">
           { dateStartFormatted } – {sections.map(section => section.name_1)}
+    const style = {
+      transform: `translate3D(${posX}, ${posY}, ${posZ})`,
+    };
+    return (
+      <div className={classes} style={}>
+        <div className="">
+          { date_start } – {sections.map(section => section.name_1)}
         </div>
         <h3 className="program-artists">{art_direction}</h3>
         <h2>
@@ -38,7 +48,7 @@ const Program = React.createClass({
 Program.propTypes = {
   shows: PropTypes.array.isRequired,
   date_start: PropTypes.string.isRequired,
-  date_end: PropTypes.array.isRequired,
+  date_end: PropTypes.string.isRequired,
   sections: PropTypes.array.isRequired,
   venue: PropTypes.object,
 };

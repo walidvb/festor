@@ -47,6 +47,10 @@ RailsAdmin.config do |config|
     root :sync do
       controller do
         proc do
+          if ZoneFestival.count != 1
+            ZoneFestival.delete_all
+            ZoneFestival.create!
+          end
           begin
             ZoneFestival.all.map(&:sync)
             redirect_to '/admin', notice: 'Database successfully synced'

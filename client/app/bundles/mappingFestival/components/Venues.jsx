@@ -14,7 +14,6 @@ const Venue = React.createClass({
     return (
       <li onClick={this.onClick} className={active ? 'active' : null}>
         {name_1}
-        {id}
       </li>
     )
   }
