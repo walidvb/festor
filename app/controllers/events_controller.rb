@@ -3,7 +3,7 @@ class EventsController < ApplicationController
 	before_filter :require_admin!, only: [:sortable_index, :sort_update]
 
 	def program
-		@filters = Event.category_enum
+		@filters = Event.section_enum
 
 		@all_dates = {}
 		@categories = [ :exhibition, :workshop, :event ]

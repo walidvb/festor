@@ -6,7 +6,7 @@ class ArtistsController < ApplicationController
 		if user_signed_in?
 			@artists = Artist.all.includes(:events).order(:position)
 		end
-		@filters = Event.category_enum
+		@filters = Event.section_enum
 	end
 
 	def sortable_index

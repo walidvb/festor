@@ -62,6 +62,6 @@ Fabricate(:event_date, start: 2.days.from_now, end: 7.days.from_now, event: ev)
 ev2 = Fabricate :event, type: :performance, title: "Performance", main_image: pic, location: location
 Fabricate(:event_date, start: 2.days.from_now, end: 7.days.from_now, event: ev2)
 
-Event.category_enum.each do |cat|
+Event.section_enum.each do |cat|
 	Fabricate.times(3, :event, type: :single_event, category: cat, location: location, main_image: File.open("#{Rails.root}/app/assets/images/graze.jpg"), featured: true)
 end
