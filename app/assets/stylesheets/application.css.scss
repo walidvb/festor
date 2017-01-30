@@ -34,6 +34,7 @@ $invert: 0;
 html{
 	font-size: $base-font-size;
 	overflow-x: hidden;
+	color: $white;
 }
 
 body{
@@ -72,6 +73,9 @@ h2{
 	clear: both;
 }
 
+a{
+	color: $white;
+}
 a:hover, a:active{
 	text-decoration: none;
 }

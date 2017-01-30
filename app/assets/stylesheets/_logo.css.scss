@@ -1,6 +1,12 @@
 .logo{
 	width: 20%;
-	.name, .motto, .festival.date, .festival-location{
+	.name{
+		min-height: $lineheight-base*3;
+	}
+	.subtitle{
+		@include lineJump(2);
+	}
+ .motto, .festival.date, .festival-location{
 		display: block;
 	}
 }

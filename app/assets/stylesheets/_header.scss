@@ -1,35 +1,55 @@
 .navigation{
 	position: fixed;
 	width: 100%;
-	font-weight: bold;
 	padding: $margin-horizontal-normal;
+	@include lineJump(7);
+	background: rgba(0,0,0,1);
+	font-weight: bold;
 }
+
 .header{
-	margin-top: lineJump(7);
-	background: rgba(0,0,0,.8);
 	width: 100%;
 	height: auto;
 	z-index: 2000;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-around;
+	color: $white;
 }
+
 .logo, .trigger, .filters, #program, footer {
  max-width: 20%;
 }
+
 .navigation-menu{
 	width: 80%;
 	display: flex;
 	flex-wrap: warp;
 	justify-content: flex-start;
+	font-size: $body-size;
+	a{
+		min-width: 100%;
+	}
 	ul{
 		width: 50%;
 	}
+	li{
+		min-width: 100%;
+		line-height: $lineheight-base*2;
+		text-transform: capitalize;
+		&:hover{
+			background: $white;
+		}
+		span{
+			min-width: 100%;
+		}
+	}
 }
+
 .social{
 
 }
-.languages{
+.locales{
 	padding-left: 30%;
 }
 /*.header{
