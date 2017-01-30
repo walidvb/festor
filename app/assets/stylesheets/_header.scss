@@ -2,9 +2,10 @@
 	position: fixed;
 	width: 100%;
 	padding: $margin-horizontal-normal;
-	@include lineJump(7);
-	background: rgba(0,0,0,1);
+	@include lineJump(6);
 	font-weight: bold;
+	min-height: $lineheight-base*14;
+	background-color: $brand-color;
 }
 
 .header{
@@ -52,55 +53,3 @@
 .locales{
 	padding-left: 30%;
 }
-/*.header{
-  background: rgba(0,0,0,.8);
-  position: fixed;
-	margin-top: lineJump(7);
-  overflow: auto;
-  color: white;
-  z-index: 2000;
-  padding: 5px;
-  .navigation-list{
-    max-width: 50%;
-    display: inline-block;
-    vertical-align: top;
-    padding: 5px;;
-  }
-  li{
-    cursor: pointer;
-  }
-  .active{
-    font-weight: bold;
-  }
-}
-.navigation-toolbar{
-  min-width: 20rem;
-      display: flex;
-  .trigger{
-    display: inline;
-    padding: 0 5px;
-    margin-left: 20px;
-    cursor: default;
-    float: right;
-    .closed &{
-      transform: rotate(45deg);
-    }
-  }
-}
-
-.navigation-content{
-  max-height: 60vh;
-  overflow: auto;
-  &.closed{
-    max-height: 0vh;
-  }
-
-}
-.menu{
-  display: flex;
-  justify-content: space-between;
-  display: flex;
-  justify-content: space-between;
-  flex-grow: 1;
-}
-*/

@@ -1,0 +1,40 @@
+.filters{
+    max-width: 20%;
+    display: flex;
+    font-weight: bold;
+    font-size: $body-size;
+}
+.filters-by{
+  padding: 0 $margin-horizontal-normal 0 0;
+  color: $dark-grey;
+  border-right: solid 1px $white;
+  width: 100%;
+  & .active{
+    color: $white;
+  }
+
+  h3.active{
+      border-bottom: solid 1px $white;
+  }
+
+  h3{
+    line-height: ($lineheight-base * 2);
+    margin-bottom: ($lineheight-base * 0.75);
+  }
+  li{
+    display: block;
+    line-height: ($lineheight-base * 2.5);
+    &:last-child{
+      margin-bottom: $lineheight-base * 3;
+    }
+  }
+}
+
+.artist-filter-content{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  & > li{
+    width: 20%;
+  }
+}

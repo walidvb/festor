@@ -22,10 +22,10 @@ const Program = React.createClass({
 
     return (
       <div className={classes}>
-        <div className="">
+        <div className="program-date">
           { date_start } – {sections.map(section => section.name_1)}
         </div>
-        <h3>{art_direction}</h3>
+        <h3 className="program-artists">{art_direction}</h3>
         <h2>
           {name_1}
         </h2>
