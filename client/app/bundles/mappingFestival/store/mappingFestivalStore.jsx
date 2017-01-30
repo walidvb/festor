@@ -3,8 +3,13 @@ import mappingFestivalReducer from '../reducers/mappingFestivalReducer';
 
 const configureStore = (railsProps) => {
 
-  const propsAsNeeded = normalizeForApp(railsProps);
-  return createStore(mappingFestivalReducer, propsAsNeeded);
+  const data = JSON.parse($('[data-component-name=MappingFestivalApp]').get(0).attributes['data-props'].value);
+  console.log('data', data);
+  const normalizedForApp = normalizeForApp(data);
+  const store = createStore(mappingFestivalReducer, normalizedForApp,
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  );
+  return store;
 };
 
 export default configureStore;
@@ -18,11 +23,10 @@ function normalizeForApp(data){
     // add show to program
     program.shows = data.program_show_list.filter((elem) => elem.program_id == program.id)
       .map((program_show) => data.show.find((show) => show.id == program_show.show_id));
-    program.venue = data.venue.find((venue) => venue.id = program.venue_id);
+    program.venue = data.venue.find((venue) => venue.id == program.venue_id);
     program.sections = flatten(program.shows.map(sectionsFromShow));
 
     program.displayed = true;
-    console.log(program.shows.map(sectionsFromShow), 'sections');
 
     return program;
   })
@@ -38,6 +42,7 @@ function normalizeForApp(data){
 
   const sections = data.section;
   const venues = data.venue;
+  console.log('venues', data);
   return {
     programs,
     days,

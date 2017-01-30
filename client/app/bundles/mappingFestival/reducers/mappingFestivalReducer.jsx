@@ -2,19 +2,20 @@ import { combineReducers } from 'redux';
 import { mapping_festival_FILTER_SECTION, mapping_festival_FILTER_VENUE } from '../constants/mappingFestivalConstants';
 
 const programs = (state = [], action) => {
-
+  let programs_;
   switch (action.type) {
     case mapping_festival_FILTER_SECTION:
-      return filteredProgramsBySection(action.filter);
+      programs_ = Object.assign([], state);
+      return filteredProgramsBySection(programs_, action.filter);
     case mapping_festival_FILTER_VENUE:
-      return filteredProgramsBySection(action.filter);
+      programs_ = Object.assign([], state);
+      return filteredProgramsByVenue(programs_, action.filter);
     default:
       return state;
   }
 
-  function filteredProgramsBySection(filter){
-    const programs = state;
-    return programs.map((program) => {
+  function filteredProgramsBySection(programs_, filter){
+    return programs_.map((program) => {
       if(!filter){
         program.displayed = true;
       }
@@ -24,9 +25,8 @@ const programs = (state = [], action) => {
       return program;
     });
   }
-  function filteredProgramsBySection(filter){
-    const programs = state;
-    return programs.map((program) => {
+  function filteredProgramsByVenue(programs_, filter){
+    return programs_.map((program) => {
       if(!filter){
         program.displayed = true;
       }
@@ -41,9 +41,9 @@ const programs = (state = [], action) => {
 const sections = (state = [], action) => {
   switch (action.type) {
     case mapping_festival_FILTER_SECTION:
-      const sections = state;
+      const sections = Object.assign([], state);
       return sections.map((section) => {
-        section.active = action.filter && (section.id == action.filter.id);
+        section.active = (action.filter && (section.id == action.filter.id));
         return section;
       })
     default:
@@ -61,10 +61,9 @@ const days = (state = [], action) => {
 const venues = (state = [], action) => {
   switch (action.type) {
     case mapping_festival_FILTER_VENUE:
-      const venues = state;
+      const venues = Object.assign([], state);
       return venues.map((venue) => {
-        console.log(action.filter.id, venue.id);
-        venue.active = action.filter && (venue.id == action.filter.id);
+        venue.active = (action.filter && (venue.id == action.filter.id));
         return venue;
       })
     default:

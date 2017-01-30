@@ -8,11 +8,13 @@ const Venue = React.createClass({
   render () {
     const {
       name_1,
-      active
+      active,
+      id,
     } = this.props.venue;
     return (
       <li onClick={this.onClick} className={active ? 'active' : null}>
         {name_1}
+        {id}
       </li>
     )
   }
