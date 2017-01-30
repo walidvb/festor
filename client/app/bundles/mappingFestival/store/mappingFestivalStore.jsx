@@ -37,10 +37,12 @@ function normalizeForApp(data){
   });
 
   const sections = data.section;
+  const venues = data.venue;
   return {
     programs,
     days,
     sections,
+    venues,
   };
 
   function sectionsFromShow(show){

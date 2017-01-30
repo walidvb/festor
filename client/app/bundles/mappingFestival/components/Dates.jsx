@@ -1,6 +1,10 @@
 import React, { PropTypes } from 'react'
 import moment from 'moment'
 const Date = React.createClass({
+  onClick(){
+    const filter = this.props.section.active ? null : this.props.section
+    this.props.filterProgramsByDay(filter);
+  },
   render () {
     return (
       <li>
