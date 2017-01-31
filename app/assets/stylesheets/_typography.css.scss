@@ -64,6 +64,9 @@
 	p{
 		@include fontSize($body-size) ;
 		@include lineHeight($lineheight-base * 2) ;
+		&:not(first-child){
+			@include lineJump (2);
+		}
 	}
 	p.fr-tag{
 		@include lineJump (4);

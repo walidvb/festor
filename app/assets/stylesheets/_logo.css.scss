@@ -4,7 +4,7 @@
 		min-height: $lineheight-base*3;
 	}
 	.subtitle{
-		@include lineJump(2);
+		@include lineJump(3);
 	}
  .motto, .festival.date, .festival-location{
 		display: block;

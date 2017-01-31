@@ -25,7 +25,7 @@
 a.artist, a.artist-event{
 	@extend .nav-link;
 	background: transparent;
-	color: $black;
+	color: $white;
 	h5{
 		text-decoration: underline;
 		&:hover{
@@ -39,8 +39,8 @@ a.artist, a.artist-event{
 		font-weight: normal;
 	}
 	&.active{
-		background: $black;
-		color: $black;
+		background: $white;
+		color: $white;
 		@media #{$tablet}{
 			color: transparent;
 		}
@@ -57,7 +57,7 @@ a.artist, a.artist-event{
 	font-weight: normal;
 }
 .show-header{
-	color: $black;
+	color: $white;
 }
 .inline-image{
 	margin-bottom: $lineheight-base * 2;
@@ -188,6 +188,10 @@ h1{
 	}
 }
 .show-desc, .event-artist-bio, .artist-desc, .static-desc{
+	width: 140ch;
+
+	margin-right: auto;
+	font-weight: bold;
 	a{
 		text-decoration: underline;
 	}
@@ -227,7 +231,7 @@ h1{
 	h5{
 		display: block;
 		position: relative;
-		border-bottom: solid 1px $black;
+		border-bottom: solid 1px $white;
 		margin: 2px 0 0 0;
 	}
 	a{
@@ -272,10 +276,10 @@ h1{
 		width: 100%;
 	}
 	tr{
-		border-top: solid 1px $black;
+		border-top: solid 1px $white;
 	}
 	tr:last-child{
-		border-bottom: solid 1px $black;
+		border-bottom: solid 1px $white;
 	}
 	td{
 		vertical-align: top;
@@ -285,7 +289,7 @@ h1{
 		}
 	}
 	.left-info{
-		color: $black;
+		color: $white;
 		@media #{$tablet}{
 			padding-left: 0;
 		}

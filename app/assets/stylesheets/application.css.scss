@@ -51,7 +51,7 @@ body{
 	max-width: 100vw;
 }
 
-main{
+main, #main-content{
 	flex: 1;
 	@media #{$tablet}{
 		@include lineJump(13);
@@ -102,10 +102,6 @@ table{
 canvas{
 	width: 100%;
 	vertical-align: bottom;
-}
-
-#main-content{
-	color: $dark-grey;
 }
 
 ul{
@@ -174,6 +170,12 @@ body a{
 			text-align: center;
 			display: inline-block;
 		}
+	}
+}
+
+#main-content{
+	@media #{$tablet}{
+		margin-left: 20%;
 	}
 }
 

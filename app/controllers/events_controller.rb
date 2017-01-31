@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-	before_filter :get_category, only: [:index]
+	before_filter :get_section, only: [:index]
 	before_filter :require_admin!, only: [:sortable_index, :sort_update]
 
 	def program
@@ -17,9 +17,9 @@ class EventsController < ApplicationController
 	end
 
 	def index
-		@events = Event.order("position ASC").includes(:artists, :location).send(@category.to_sym)
+		@events = Event.order("position ASC").includes(:artists, :location).send(@section.to_sym)
 		@events = @events.published unless user_signed_in?
-		@filters = @category == :workshop ? [:workshop, :conference, :masterclass] : []
+		@filters = @section == :workshop ? [:workshop, :conference, :masterclass] : []
 		render 'index'
 	end
 
@@ -36,7 +36,7 @@ class EventsController < ApplicationController
 
 	def show
 		@event = Event.includes(:artists, :location, :event_dates).friendly.find(params[:id])
-		@category = @event.category
+		@section = @event.section
 		@dates = @event.event_dates.includes(:location)
 		@artists = @event.artists.published.order(:updated_at)
 		@musicians = @event.musicians.published
@@ -48,7 +48,7 @@ class EventsController < ApplicationController
 
 	private
 
-	def get_category
-		@category = params[:category] || :all
+	def get_section
+		@section = params[:section] || :all
 	end
 end

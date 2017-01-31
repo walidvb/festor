@@ -26,11 +26,11 @@
 		.single-artist.page-title
 			%h1.artist-name= @artist.name
 			%h4.labels.sup= @artist.label
-			%h4.origin.sup= @artist.origin
+			//%h4.origin.sup= @artist.origin
 	- if !@links.empty?
 		%ul.links
 			- @links.each do |l|
 				%li= link_to l.text_to_show, l.url, target: "_blank"
-	.show-desc
+	.show-desc.show-artist-desc
 		= interpolate(@artist.biography, image: @artist.profile_picture.url(:large)).html_safe unless @artist.biography.blank?
 .load-more-container
