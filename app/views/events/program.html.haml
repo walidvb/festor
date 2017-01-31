@@ -2,11 +2,14 @@
 - content_for(:image, image_url('lines_3.png'))
 - content_for(:description, "Everything you need to know, day by day")
 
-.filters.draggable
+.filters
 	.filters-content
 		%ul.filters-list
-			- @artists.each do |ar|
-				%li.artist{data: {type: 'artist', target: ar.slug}}= ar.name
+			- @days.each do |day|
+				- in_s = day.strftime(date_format)
+				%li.day{data: {type: 'date', target:in_s}, class: in_s}= in_s
+			- @sections.each do |sec|
+				%li.section{data: {type: 'section', target: sec}}= sec
 		-# %ul.col-xs-5.col-sm-2
 		-# 	%input#dates{type: :checkbox, name: 'dates'}
 		-# 	- @days.each do |day, event_dates|
@@ -16,5 +19,5 @@
 		%ul.filters-list
 			- @sections.each do |cat|
 				%li{data:{ target: cat, type: 'category' }}= cat
-#program
+#program{data: { "date-start" => @event_dates.first.start.strftime("%Y-%m-%d %H:%M") } }
 	= render 'events/timeline.html.haml', event_dates: @event_dates
