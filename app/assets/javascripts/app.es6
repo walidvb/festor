@@ -8,7 +8,6 @@ class Program{
     this.section = section;
     this.duration = this.dateEnd - this.dateStart;
     this.hoursFromStart = (this.dateStart - ABSOLUTE_START)/(1000*60*60);
-    this.position();
   }
   position(){
     const y = this.hoursFromStart*HOUR_IN_REM;
@@ -18,23 +17,30 @@ class Program{
   }
 }
 
-$(document).on('turbolinks:load', () => {
-  const isProgramPage = $('#program').length != 0;
-  ABSOLUTE_START = new Date($('#program').data('date-start'));
-  if(isProgramPage)
-  {
-    const $prog = $('#program .post');
-    let programs = [];
-    for (var i = 0; i < $prog.length; i++) {
-      const elem = $($prog[i]);
+class Programs{
+  constructor(posts){
+    this.programs = [];
+    ABSOLUTE_START = new Date($('#program').data('date-start'));
+    for (var i = 0; i < posts.length; i++) {
+      const elem = $(posts[i]);
       const dateStart = elem.data('date-start'),
         dateEnd = elem.data('date-end'),
         section = elem.data('section');
-
-      programs.push(new Program({ elem, dateStart, dateEnd, section }));
+      this.programs.push(new Program({ elem, dateStart, dateEnd, section }));
     }
-    console.log(programs);
   }
+  positionAll(){
+    this.programs.forEach(prog => prog.position())
+  }
+}
 
-
+$(document).on('turbolinks:load', () => {
+  const isProgramPage = $('#program').length != 0;
+  let programs;
+  if(isProgramPage)
+  {
+    const $prog = $('#program .post');
+    programs = new Programs($prog);
+    programs.positionAll();
+  }
 });

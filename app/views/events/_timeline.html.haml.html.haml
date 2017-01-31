@@ -1,36 +1,17 @@
-- max_end_time = 0
-- delay = 0
-- conflict = 0
-- first_start = event_dates.first.start
-- past_days = []
 - event_dates.each do |event_date|
   - event = event_date.event
   - if event.published? || user_signed_in?
     - artists = event.artists
-    - height = event_date.duration
-    - start_hour = (event_date.start - first_start)/3600
-    - end_hour = (event_date.end - first_start)/3600
-    - top_pos = [max_end_time, start_hour].min
-    - conflict = start_hour < max_end_time ? conflict + 1 : 0
-    -# - delay += max_end_time < event_date.start ? (max_end_time - event_date.start)/3600 : 0
-    - max_end_time = [max_end_time, end_hour].max
-    - image = event.main_image.url(event.featured? ? :large_blurred : :tile_blurred)
     - format_for_js = "%Y-%m-%d %H:%M"
     = link_to(path_for(event, locale: I18n.locale), class:'post', |
       data: { |
         id: event.id, |
-        img: image, |
         artist: artists.map(&:slug).join('|'), |
         "date-start" => event_date.start.strftime(format_for_js), |
         "date-end" => event_date.end.strftime(format_for_js), |
         section: event.sup_section, |
       }) do
-
       .tile-link
         .info
           .event-title
             %h3= event.title
-      - if (day = event_date.start.to_date) && !past_days.include?(day)
-        - past_days.push(day)
-        .day-ticker{data: {taransform: "translateY(#{top_pos}rem)"}}
-          = day.strftime("%A %e")
