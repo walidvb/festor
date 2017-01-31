@@ -4,7 +4,7 @@
 
 .filters
 	.filters-content
-		%ul.filters-list
+		%ul.filters-by
 			- @days.each do |day|
 				- in_s = day.strftime(date_format)
 				%li.day{data: {type: 'date', target:in_s}, class: in_s}= in_s

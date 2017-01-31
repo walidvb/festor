@@ -43,23 +43,22 @@ body{
 	color: $white;
 	background-color: $brand-color;
 	@media #{$tablet}{
-		font-size : 14px;
+		font-size : $body-size;
 		display: flex;
 		flex-direction: column;
+		height: 100vh;
 	}
-	min-height: 100vh;
-	max-width: 100vw;
 }
 
 main, #main-content{
-	flex: 1;
+	display: flex;
+	flex: 0 1 auto;
+	overflow: auto;
 	@media #{$tablet}{
-		@include lineJump(13);
-		padding: $margin-horizontal-normal;
+		@include lineJump(6);
 	}
 	@media #{$md}{
-		@include lineJump(20);
-		padding: $margin-horizontal-normal;
+
 	}
 }
 

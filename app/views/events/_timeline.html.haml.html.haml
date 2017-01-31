@@ -13,5 +13,8 @@
       }) do
       .tile-link
         .info
-          .event-title
-            %h3= event.title
+          .event-date= event_date.start
+          .event-type= event.try(:section)
+          .event-artists
+            %h3= artists.first.try(:name)
+          .event-name= event.title
