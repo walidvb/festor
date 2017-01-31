@@ -33,7 +33,7 @@ const Program = React.createClass({
           { dateStartFormatted } – {sections.map(section => section.name_1)}
         </div>
         <h3 className="program-artists">{art_direction}</h3>
-        <h2>
+        <h2 className="program-name">
           {name_1}
         </h2>
       </div>
