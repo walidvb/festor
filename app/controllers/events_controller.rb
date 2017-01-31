@@ -6,12 +6,10 @@ class EventsController < ApplicationController
 		@filters = Event.section_enum
 
 		@all_dates = {}
-		@categories = [ :exhibition, :workshop, :event ]
-		@categories.each do |cat|
-			@all_dates[cat] = EventDate.order('start ASC').where(dateable_type: cat).includes(:event, :artists, :location)
-		end
+		@sections = Event.pluck(:section).uniq.compact
+		@event_dates = EventDate.order('start ASC').includes(:event, :artists, :location)
 		@artists = Artist.all
-
+		@artists_alphabet =
 		@days = EventDate.all.pluck(:start).map(&:to_date).uniq
 		render 'program'
 	end

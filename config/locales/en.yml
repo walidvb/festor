@@ -64,7 +64,7 @@ en:
       exhibition: "Installation"
       single_event: "Event"
       all:          'Program'
-    categories:
+    sections:
       clubbing:    "Club"
       performance: "Performance a/v"
       screening:   "Screening"

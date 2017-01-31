@@ -11,7 +11,7 @@
 				.info
 					- if @section != :exhibition
 						- if !event.section.blank?
-							%h5.type= t("events.categories.#{event.section}")
+							%h5.type= t("events.sections.#{event.section}")
 					.event-title
 						%h3= event.title
 					.artists

@@ -31,7 +31,7 @@ Build your container:
 	<div class="mix category-2" data-my-order="4"> ... </div>
 </div>
 ```
-> MixItUp targets elements with the class `mix` inside a container. Categories for filtering are added as classes, and sort attributes are added as custom data attributes.
+> MixItUp targets elements with the class `mix` inside a container. sections for filtering are added as classes, and sort attributes are added as custom data attributes.
 
 Build your filter controls:
 

@@ -59,7 +59,7 @@ fr:
       exhibition:   "installation"
       single_event: "event"
       all:          'Programme'
-    categories:
+    sections:
       clubbing:    "Club"
       performance: "Performance a/v"
       screening:   "Film"

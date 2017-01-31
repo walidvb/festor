@@ -1,87 +1,20 @@
 - content_for(:og_title, "Program")
 - content_for(:image, image_url('lines_3.png'))
 - content_for(:description, "Everything you need to know, day by day")
--#
--# .navigation
--# 	.header
--# 		.logo= render 'layouts/logo'
--# 		.navigation-menu
--# 			%ul.menu
--# 				%li TICKETS
--# 				%li Newsletter
--# 			%ul.social
--# 				%li Instagram
--# 				%li Twitter
--# 				%li Facebook
--# 			%ul.languages
--# 				%li French
--# 				%li English
--# 	.filters
--# 		.filters-by
--# 			.filter-by-date
--# 				%h3.active Events by date
--# 				%ul.date-filter-content
--# 					%li.active Day one
--# 					%li Day two
--# 					%li Day three
--# 					%li Day four
--# 					%li Day five
--# 					%li Day six
--# 					%li Day seven
--# 			.filter-by-type
--# 				%h3 Events by type
--# 				%ul.type-filter-content
--# 					%li Clubbing
--# 					%li Performance
--# 					%li Screenings
--# 					%li Exhibition
--# 					%li Conferences
--# 					%li Masterclasss
--# 					%li Specials
--# 					%li Workshops
--# 			.filter-by-venue
--# 				%h3 Events by type
--# 				%ul.venue-filter-content
--# 					%li Alhambra
--# 					%li BAC - Le Commun
--# 					%li HEAD - Genève
--# 					%li Le Zoo / Usine
--# 					%li Bureau culturel
--# 					%li Fonderie Kugler MAH
--# 					%li Centre des Arts
--# 					%li Spoutnik Cinéma
--# 			.filter-by-artists
--# 				%h3 Artists
--# 				%ul.artist-filter-content
--# 					%li A
--# 					%li B
--# 					%li C
--# 					%li D
--# 					%li E
--# 					%li F
--# 					%li G
--# 					%li H
--# 					%li I
--# 					%li J
--# 					%li K
--# 					%li L
--# 					%li M
--# 					%li N
--# 					%li O
--# 					%li P
--# 					%li Q
--# 					%li R
--# 					%li S
--# 					%li T
--# 					%li U
--# 					%li V
--# 					%li X
--# 					%li Y
--# 					%li Z
--# 	%footer
--# 		%ul.footer-links
--# 			%li About
--# 			%li Contact
--# 			%li Partners
--# 			%li Archives
--# 			%li News
+
+.filters.draggable
+	.filters-content
+		%ul.filters-list
+			- @artists.each do |ar|
+				%li.artist{data: {type: 'artist', target: ar.slug}}= ar.name
+		-# %ul.col-xs-5.col-sm-2
+		-# 	%input#dates{type: :checkbox, name: 'dates'}
+		-# 	- @days.each do |day, event_dates|
+		-# 		- in_s = day.strftime(date_format)
+		-# 		%li.day{data: {type: 'date', target:in_s}, class: in_s}
+		-# 			%h2.location-link= in_s
+		%ul.filters-list
+			- @sections.each do |cat|
+				%li{data:{ target: cat, type: 'category' }}= cat
+#program
+	= render 'events/timeline.html.haml', event_dates: @event_dates

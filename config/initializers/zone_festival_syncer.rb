@@ -57,6 +57,13 @@ module ZoneFestivalSyncer
         end
       end
 
+      section = zf['section_show_list'].map do |s_s|
+        if s_s['show_id'].to_i == event.zf_id
+          zf['section'].find{|sect| sect['id'] == s_s['section_id']}['name_1']
+        end
+      end.compact.first
+      event.section = section
+
       programs = zf['program_show_list'].map do |prog_show|
         if prog_show['show_id'] == event.zf_id
           zf['program'].find{|prog| prog['id'] == prog_show['program_id']}
@@ -68,19 +75,17 @@ module ZoneFestivalSyncer
         ed.zf_id = date['id']
         ed.start = date['date_start']
         ed.end = date['date_end']
+
         if event.title.blank?
           event.title = date['name_1']
         end
+        ed.dateable_type = section
         event.event_dates << ed
         event.location = Location.find_by_zf_id(date['venue_id'])
       end
 
-      sections = zf['section_show_list'].map do |s_s|
-        if s_s['show_id'].to_i == event.zf_id
-          zf['section'].find{|sect| sect['id'] == s_s['section_id']}['name_1']
-        end
-      end.compact
-      event.section = sections.first
+
+
       begin
         event.save!
       rescue => e

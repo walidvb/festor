@@ -10,4 +10,4 @@
 		.cat-filters{class: dates_present ? 'col-xs-4' : 'col-xs-5'}
 			- @filters.each do |cat|
 				%input.cat-filter{:type => "checkbox", value: cat, id: "section-#{cat}", checked: false}
-					%label{:for => "section-#{cat}"}= t("events.categories.#{cat}")
+					%label{:for => "section-#{cat}"}= t("events.sections.#{cat}")

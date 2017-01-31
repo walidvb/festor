@@ -1,7 +1,7 @@
 - max_end_time = 0
 - delay = 0
 - conflict = 0
-//- first_start = event_dates.first.start
+- first_start = event_dates.first.start
 - past_days = []
 - event_dates.each do |event_date|
   - event = event_date.event
@@ -15,20 +15,18 @@
     -# - delay += max_end_time < event_date.start ? (max_end_time - event_date.start)/3600 : 0
     - max_end_time = [max_end_time, end_hour].max
     - image = event.main_image.url(event.featured? ? :large_blurred : :tile_blurred)
-
+    - format_for_js = "%Y-%m-%d %H:%M"
     = link_to(path_for(event, locale: I18n.locale), class:'post', |
       data: { |
         id: event.id, |
         img: image, |
         artist: artists.map(&:slug).join('|'), |
-        date: event_date.start.strftime(date_format), |
+        "date-start" => event_date.start.strftime(format_for_js), |
+        "date-end" => event_date.end.strftime(format_for_js), |
         section: event.sup_section, |
-        transform: "translateY(#{top_pos}rem) translateX(#{15*conflict}rem)" |
-      }, |
-      style: "min-height:#{height}rem; background-image: url(#{image}); transform: translateY(#{top_pos}rem) translateX(#{15*conflict}rem);") do
+      }) do
 
-      -# = image = event.main_image.url(event.featured? ? :large : :tile)
-      .tile-link{style: "background-image: url(#{event.main_image.url(event.featured? ? :large : :tile)}); min-height: #{height}rem;"}
+      .tile-link
         .info
           .event-title
             %h3= event.title
