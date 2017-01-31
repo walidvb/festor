@@ -14,4 +14,6 @@
       .tile-link
         .info
           .event-title
+            = event_date.start.strftime(format_for_js)
+            = event_date.id
             %h3= event.title

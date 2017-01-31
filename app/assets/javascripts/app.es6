@@ -1,19 +1,28 @@
 let ABSOLUTE_START;
-const HOUR_IN_REM = 1;
+const HOUR_IN_PX = 18,
+  DAY_GAP = 18*4;
 class Program{
   constructor({ elem, dateStart, dateEnd, section }){
     this.elem = elem;
     this.dateStart = new Date(dateStart);
+    this.day = this.dateStart.getDate();
     this.dateEnd = new Date(dateEnd);
     this.section = section;
     this.duration = this.dateEnd - this.dateStart;
     this.hoursFromStart = (this.dateStart - ABSOLUTE_START)/(1000*60*60);
   }
-  position(){
-    const y = this.hoursFromStart*HOUR_IN_REM;
+  position(maxY){
+    let posY = this.hoursFromStart*HOUR_IN_PX;
+    this.elem.prepend(posY + '-' + maxY)
+    posY = Math.min(posY, maxY);
     this.elem.css({
-      transform: `translateY(${y}rem)`
+      position: 'absolute',
+      transform: `translateY(${posY}px)`
     });
+    return posY;
+  }
+  positionAndReturnNextMaxY(maxY){
+    return this.position(maxY) + this.elem.height();
   }
 }
 
@@ -30,10 +39,18 @@ class Programs{
     }
   }
   positionAll(){
-    this.programs.forEach(prog => prog.position())
+    let maxY = 0;
+    let currDay = this.programs[0].day;
+    let dayStart = 0;
+    this.programs.forEach((prog) => {
+      if(currDay != prog.day){
+        maxY += DAY_GAP;
+      }
+      currDay = prog.day;
+      maxY = prog.positionAndReturnNextMaxY(maxY)
+    });
   }
 }
-
 $(document).on('turbolinks:load', () => {
   const isProgramPage = $('#program').length != 0;
   let programs;
@@ -42,5 +59,6 @@ $(document).on('turbolinks:load', () => {
     const $prog = $('#program .post');
     programs = new Programs($prog);
     programs.positionAll();
+    window.programs = programs;
   }
 });

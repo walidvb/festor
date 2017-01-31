@@ -10,14 +10,5 @@
 				%li.day{data: {type: 'date', target:in_s}, class: in_s}= in_s
 			- @sections.each do |sec|
 				%li.section{data: {type: 'section', target: sec}}= sec
-		-# %ul.col-xs-5.col-sm-2
-		-# 	%input#dates{type: :checkbox, name: 'dates'}
-		-# 	- @days.each do |day, event_dates|
-		-# 		- in_s = day.strftime(date_format)
-		-# 		%li.day{data: {type: 'date', target:in_s}, class: in_s}
-		-# 			%h2.location-link= in_s
-		%ul.filters-list
-			- @sections.each do |cat|
-				%li{data:{ target: cat, type: 'category' }}= cat
 #program{data: { "date-start" => @event_dates.first.start.strftime("%Y-%m-%d %H:%M") } }
 	= render 'events/timeline.html.haml', event_dates: @event_dates

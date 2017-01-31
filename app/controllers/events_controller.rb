@@ -11,6 +11,7 @@ class EventsController < ApplicationController
 		@artists = Artist.all
 		@artists_alphabet =
 		@days = EventDate.all.pluck(:start).map(&:to_date).uniq
+		@venues = Location.all
 		render 'program'
 	end
 
