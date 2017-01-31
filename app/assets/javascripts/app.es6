@@ -9,11 +9,23 @@ class Program{
     this.dateEnd = new Date(dateEnd);
     this.section = section;
     this.duration = this.dateEnd - this.dateStart;
+    this.durationInHour = this.duration/(1000*60*60)
     this.hoursFromStart = (this.dateStart - ABSOLUTE_START)/(1000*60*60);
+  }
+  setTop(posY, skippedHours){
+    // this.elem.prepend($(`<div> ${hour} ${this.hoursFromStart} ${skippedHours}</div>`));
+    // this.elem.find('.event-name').text(`${hour} ${this.hoursFromStart} ${skippedHours}`)
+    this.posY = posY;
+    this.elem.css({
+      position: 'absolute',
+      transform: `translateY(${posY}px)`
+    });
+  }
+  endPos(){
+    return this.elem.outerHeight() + this.posY;
   }
   position(maxY){
     let posY = this.hoursFromStart*HOUR_IN_PX;
-    this.elem.prepend(posY + '-' + maxY)
     posY = Math.min(posY, maxY);
     this.elem.css({
       position: 'absolute',
@@ -21,15 +33,13 @@ class Program{
     });
     return posY;
   }
-  positionAndReturnNextMaxY(maxY){
-    return this.position(maxY) + this.elem.height();
-  }
 }
 
 class Programs{
   constructor(posts){
     this.programs = [];
     ABSOLUTE_START = new Date($('#program').data('date-start'));
+    console.log('ABSOLUTE_START', ABSOLUTE_START);
     for (var i = 0; i < posts.length; i++) {
       const elem = $(posts[i]);
       const dateStart = elem.data('date-start'),
@@ -37,17 +47,19 @@ class Programs{
         section = elem.data('section');
       this.programs.push(new Program({ elem, dateStart, dateEnd, section }));
     }
+
   }
   positionAll(){
-    let maxY = 0;
-    let currDay = this.programs[0].day;
-    let dayStart = 0;
+    let minY = 0,
+      previousHour = 0,
+      lastHourEnd;
     this.programs.forEach((prog) => {
-      if(currDay != prog.day){
-        maxY += DAY_GAP;
-      }
-      currDay = prog.day;
-      maxY = prog.positionAndReturnNextMaxY(maxY)
+      let basePosY = prog.hoursFromStart*HOUR_IN_PX;
+      basePosY = Math.min(minY, basePosY);
+      prog.setTop(basePosY);
+      minY = Math.max(prog.endPos(), minY);
+      console.log(prog.elem[0], minY +" "+ basePosY);
+
     });
   }
 }

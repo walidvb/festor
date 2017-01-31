@@ -5,7 +5,7 @@
     - format_for_js = "%Y-%m-%d %H:%M"
     = link_to(path_for(event, locale: I18n.locale), class:'post', |
       data: { |
-        id: event.id, |
+        id: event_date.id, |
         artist: artists.map(&:slug).join('|'), |
         "date-start" => event_date.start.strftime(format_for_js), |
         "date-end" => event_date.end.strftime(format_for_js), |
@@ -13,7 +13,8 @@
       }) do
       .tile-link
         .info
-          .event-title
-            = event_date.start.strftime(format_for_js)
-            = event_date.id
-            %h3= event.title
+          .event-date= event_date.start.strftime('%d-%m %H:%M')
+          .event-type= event.section
+          .event-artists
+            %h3= artists.first.try(:name)
+          .event-name= event.title

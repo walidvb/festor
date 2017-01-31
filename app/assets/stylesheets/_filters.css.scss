@@ -1,8 +1,12 @@
 .filters{
-    max-width: 20%;
+    min-height: 200vh;
+    overflow: auto;
+    flex: 0 0 20vw;
     display: flex;
     font-weight: bold;
     font-size: $body-size;
+    padding-left: $margin-horizontal-normal;
+
 }
 .filters-by{
   padding: 0 $margin-horizontal-normal 0 0;
