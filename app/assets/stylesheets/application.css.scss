@@ -178,8 +178,6 @@ body a{
 	}
 }
 
-main{
-}
 #footer{
 	border-top: solid 1px $black;
 	display: flex;
@@ -224,48 +222,6 @@ main{
 	}
 }
 
-
-#the-content{
-	z-index: 1;
-	html:not(.imready) &{
-		z-index: initial;
-	}
-	.imready &{
-		opacity: 1;
-	}
-}
-
 .turbolinks-progress-bar {
   height: 0!important;
-}
-
-.imready .login-form{
-	display: none;
-}
-
-main{
-	opacity: 1;
-	min-height: 600px;
-}
-body{
-	background-attachment: fixed;
-}
-.imready.transitionning {
-	#main-content, .load-more-container{
-		opacity: 0;
-	}
-	canvas{
-		opacity: 1;
-	}
-	.no-touch{
-		header *, header:after, p, h1, h2, h3, h4, h5, label, label:before, #filters, .news{
-			$white: white;
-			color: $white!important;
-			mix-blend-mode: $blend-mode;
-			border-color: $white!important;
-		}
-	}
-}
-#the-content, #canvas, main{
-	transition: opacity 0.4s ease-in-out;
 }
