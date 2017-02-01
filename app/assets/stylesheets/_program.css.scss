@@ -14,7 +14,7 @@
 #program .post{
   width: 70%;
   padding: $margin-horizontal-normal;
-  @for $conflict from 1 to 6{
+  @for $conflict from 1 to 10{
     &[data-conflict-count="#{$conflict}"]{
       max-width: 100%/$conflict;
     }
