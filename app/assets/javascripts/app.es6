@@ -13,6 +13,11 @@ class Program{
     this.hoursFromStart = (this.dateStart - ABSOLUTE_START)/(1000*60*60);
     this.conflictCount = 0;
   }
+  activate(active){
+    this.active = true;
+    this.elem.toggleClass('inactive', !active)
+  }
+  // position
   setTop(posY, skippedHours){
     this.posY = posY;
     this.elem.css({
@@ -38,7 +43,6 @@ class Programs{
   constructor(posts){
     this.programs = [];
     ABSOLUTE_START = new Date($('#program').data('date-start'));
-    console.log('ABSOLUTE_START', ABSOLUTE_START);
     for (var i = 0; i < posts.length; i++) {
       const elem = $(posts[i]);
       const dateStart = elem.data('date-start'),
@@ -46,7 +50,22 @@ class Programs{
         section = elem.data('section');
       this.programs.push(new Program({ elem, dateStart, dateEnd, section }));
     }
-
+    this.initFilters();
+  }
+  initFilters(){
+    const filters = $('.filters [data-target]');
+    $(document, '.filters [data-target]').click((e) => {
+      const clicked = $(e.target),
+       key = clicked.data('type'),
+       value = clicked.data('target');
+       console.log(clicked, key, value);
+       this.filterBy({ key, value });
+    });
+  }
+  filterBy({ key, value }){
+    this.activeFilter = { key, value };
+    this.programs.forEach((prog) => prog.activate((prog[key] == value)));
+    this.positionAll();
   }
   positionAll(){
     let minY = 0,
@@ -60,7 +79,7 @@ class Programs{
         basePosY = Math.min(minY, basePosY - oldGap);
       }
       prog.setTop(basePosY);
-      
+
       if(basePosY < minY){
         conflictCount++;
         for (var j = 0; j <= conflictCount; j++)
@@ -84,6 +103,6 @@ $(document).on('turbolinks:load', () => {
     const $prog = $('#program .post');
     programs = new Programs($prog);
     programs.positionAll();
-    window.programs = programs;
+    window.MF.programs = programs;
   }
 });

@@ -23,6 +23,7 @@
 //= require filters
 //= require_tree .
 
+window.MF = {};
 $(document).on('turbolinks:load', function(){
 
 });
