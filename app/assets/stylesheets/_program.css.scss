@@ -1,18 +1,24 @@
 #program{
-  min-height: 200vh;
   overflow: auto;
   flex: 0 1 80vw;
   padding: 0 $margin-horizontal-normal;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  flex-direction: row;
+  position: relative;
+  @media #{$mobile}{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    flex-direction: row;
+  }
 }
 
 #program .post{
-  min-width:25%;
-  max-width: 50%;
+  width: 70%;
   padding: $margin-horizontal-normal;
+  @for $conflict from 1 to 6{
+    &[data-conflict-count="#{$conflict}"]{
+      max-width: 100%/$conflict;
+    }
+  }
 }
 
 .program-artists{

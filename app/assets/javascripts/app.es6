@@ -20,9 +20,14 @@ class Program{
       transform: `translateY(${posY}px)`
     });
   }
-  addConflict(posInConflict){
-    this.conflictCount = posInConflict;
-    this.elem.attr("data-conflict", posInConflict)
+  addConflict(conflictCount, posInConflict){
+    this.conflictCount = conflictCount;
+    this.elem.attr("data-conflict-count", this.conflictCount);
+    this.elem.attr("data-conflict-position", posInConflict);
+    console.log(this.elem, `translateY(${this.posY}px) translateX(${posInConflict*100}%)`);
+    this.elem.css({
+      transform: `translateY(${this.posY}px) translateX(${posInConflict*100}%)`,
+    })
   }
   endPos(){
     return this.elem.outerHeight() + this.posY;
@@ -46,7 +51,7 @@ class Programs{
   positionAll(){
     let minY = 0,
       gap = 0,
-      conflictsCount = 0;
+      conflictCount = 0;
     this.programs.forEach((prog, i) => {
       let basePosY = prog.hoursFromStart*HOUR_IN_PX;
       let oldGap = gap;
@@ -54,23 +59,18 @@ class Programs{
         gap = Math.max(0, oldGap, basePosY - minY);
         basePosY = Math.min(minY, basePosY - oldGap);
       }
+      prog.setTop(basePosY);
+      
       if(basePosY < minY){
-        conflictsCount++;
-        for (var j = 0; j <= conflictsCount; j++)
+        conflictCount++;
+        for (var j = 0; j <= conflictCount; j++)
         {
-          this.programs[i-j].addConflict(j + 1);
+          this.programs[i-j].addConflict(conflictCount+1, conflictCount - j);
         }
       }
       else{
-        conflictsCount = 0;
+        conflictCount = 0;
       }
-      console.log({
-        minY,
-        gap,
-        basePosY,
-        endPos: basePosY + 179,
-      });
-      prog.setTop(basePosY);
 
       minY = Math.max(prog.endPos(), minY);
     });

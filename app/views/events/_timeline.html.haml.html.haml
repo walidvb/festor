@@ -13,8 +13,7 @@
       }) do
       .tile-link
         .info
-          .event-date= event_date.start.strftime('%d-%m %H:%M')
+          .event-date= event_date.start.strftime('%H:%M')
           .event-type= event.section
-          .event-artists
-            %h3= artists.first.try(:name)
+          %h3.event-artists= artists.first.try(:name)
           .event-name= event.title
