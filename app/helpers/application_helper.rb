@@ -75,7 +75,9 @@ module ApplicationHelper
   end
 
   def remove_tags text
-      text.gsub(/\[image:?(\S*)?\]/, '').gsub('[info]', '')
+      if text
+        text.gsub(/\[image:?(\S*)?\]/, '').gsub('[info]', '')
+      end
 
   end
 end
