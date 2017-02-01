@@ -12,11 +12,13 @@
 }
 
 #program .post{
-  width: 70%;
+  max-width: 70%;
   padding: $margin-horizontal-normal;
-
+  transition: all .3s ease-in-out, max-width .3s ease-in-out;
+  will-change: transform;
   &.inactive{
-    opacity: .3;
+    opacity: .15;
+    pointer-events: none;
   }
   @for $conflict from 1 to 10{
     &[data-conflict-count="#{$conflict}"]{

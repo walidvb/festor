@@ -12,37 +12,67 @@ class Program{
     this.durationInHour = this.duration/(1000*60*60)
     this.hoursFromStart = (this.dateStart - ABSOLUTE_START)/(1000*60*60);
     this.conflictCount = 0;
+    this.posX = 0;
+    this.posY = 0;
+    this.posZ = 0;
+    this.active = true;
   }
   activate(active){
-    this.active = true;
-    this.elem.toggleClass('inactive', !active)
+    this.active = active;
+    this.elem.toggleClass('inactive', !active);
+    if(!active){
+
+      this.posZ = rdmZ();
+      console.log(rdmZ());
+    }
+    else{
+      this.posZ = -(Math.floor(Math.random() * 5));
+    }
+    this.setTransform();
+    function rdmZ(){
+      const minZDelta = 50;
+      const minZ = 150;
+      return -(Math.floor(Math.random() * minZDelta) + minZ);
+    }
   }
   // position
-  setTop(posY, skippedHours){
+  position(posY){
     this.posY = posY;
+    this.setTransform({ posY });
     this.elem.css({
       position: 'absolute',
-      transform: `translateY(${posY}px)`
     });
+    this.setTransform();
   }
   addConflict(conflictCount, posInConflict){
     this.conflictCount = conflictCount;
     this.elem.attr("data-conflict-count", this.conflictCount);
     this.elem.attr("data-conflict-position", posInConflict);
-    console.log(this.elem, `translateY(${this.posY}px) translateX(${posInConflict*100}%)`);
+    this.posX = posInConflict*100;
+    this.setTransform();
+  }
+  setTransform(){
     this.elem.css({
-      transform: `translateY(${this.posY}px) translateX(${posInConflict*100}%)`,
+      transform: `translate3D(${this.posX}%, ${this.posY}px, ${this.posZ}px)`
     })
   }
   endPos(){
-    return this.elem.outerHeight() + this.posY;
+    let endPos;
+    if(this.active){
+      endPos = this.elem.outerHeight() + this.posY;
+    }
+    else{
+      endPos = .3*this.elem.outerHeight() + this.posY;
+    }
+    return endPos;
   }
 }
 
 class Programs{
   constructor(posts){
     this.programs = [];
-    ABSOLUTE_START = new Date($('#program').data('date-start'));
+    this.container = $('#program');
+    ABSOLUTE_START = new Date(this.container.data('date-start'));
     for (var i = 0; i < posts.length; i++) {
       const elem = $(posts[i]);
       const dateStart = elem.data('date-start'),
@@ -51,6 +81,9 @@ class Programs{
       this.programs.push(new Program({ elem, dateStart, dateEnd, section }));
     }
     this.initFilters();
+    this.container.css({
+      perspective: '300px',
+    })
   }
   initFilters(){
     const filters = $('.filters [data-target]');
@@ -78,7 +111,7 @@ class Programs{
         gap = Math.max(0, oldGap, basePosY - minY);
         basePosY = Math.min(minY, basePosY - oldGap);
       }
-      prog.setTop(basePosY);
+      prog.position(basePosY);
 
       if(basePosY < minY){
         conflictCount++;
