@@ -11,15 +11,18 @@ class Program{
     this.duration = this.dateEnd - this.dateStart;
     this.durationInHour = this.duration/(1000*60*60)
     this.hoursFromStart = (this.dateStart - ABSOLUTE_START)/(1000*60*60);
+    this.conflictCount = 0;
   }
   setTop(posY, skippedHours){
-    // this.elem.prepend($(`<div> ${hour} ${this.hoursFromStart} ${skippedHours}</div>`));
-    // this.elem.find('.event-name').text(`${hour} ${this.hoursFromStart} ${skippedHours}`)
     this.posY = posY;
     this.elem.css({
       position: 'absolute',
       transform: `translateY(${posY}px)`
     });
+  }
+  addConflict(posInConflict){
+    this.conflictCount = posInConflict;
+    this.elem.attr("data-conflict", posInConflict)
   }
   endPos(){
     return this.elem.outerHeight() + this.posY;
@@ -43,24 +46,32 @@ class Programs{
   positionAll(){
     let minY = 0,
       gap = 0,
-      lastHourEnd;
-    this.programs.forEach((prog) => {
+      conflictsCount = 0;
+    this.programs.forEach((prog, i) => {
       let basePosY = prog.hoursFromStart*HOUR_IN_PX;
       let oldGap = gap;
       if(minY < basePosY){
         gap = Math.max(0, oldGap, basePosY - minY);
         basePosY = Math.min(minY, basePosY - oldGap);
       }
-      const el  = prog.elem[0], normalBasePosY = prog.hoursFromStart*HOUR_IN_PX;
+      if(basePosY < minY){
+        conflictsCount++;
+        for (var j = 0; j <= conflictsCount; j++)
+        {
+          this.programs[i-j].addConflict(j + 1);
+        }
+      }
+      else{
+        conflictsCount = 0;
+      }
       console.log({
         minY,
         gap,
         basePosY,
-        normalBasePosY,
         endPos: basePosY + 179,
-        el,
       });
       prog.setTop(basePosY);
+
       minY = Math.max(prog.endPos(), minY);
     });
   }
