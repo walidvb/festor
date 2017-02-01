@@ -20,7 +20,8 @@
 
 		= javascript_include_tag "application", "data-turbolinks-track" => true
 		= csrf_meta_tags
-
+		:css
+			canvas{min-height: 100vh; min-width: 100vw;}
 	%body{class: ["#{controller.controller_name}-page", "#{controller.action_name}-page", "#{'debug' if Rails.env.development?}", "#{current_user.nil? ? nil : 'admin'}", content_for(:body_class)].join(' ')}
 		%canvas#canvas{"data-turbolinks-permanent" => true}
 		#canvas-placeholder
