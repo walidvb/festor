@@ -1,5 +1,5 @@
 let ABSOLUTE_START;
-const HOUR_IN_PX = 18,
+const HOUR_IN_PX = 36,
   DAY_GAP = 18*4;
 class Program{
   constructor({ elem, dateStart, dateEnd, section }){
@@ -24,15 +24,6 @@ class Program{
   endPos(){
     return this.elem.outerHeight() + this.posY;
   }
-  position(maxY){
-    let posY = this.hoursFromStart*HOUR_IN_PX;
-    posY = Math.min(posY, maxY);
-    this.elem.css({
-      position: 'absolute',
-      transform: `translateY(${posY}px)`
-    });
-    return posY;
-  }
 }
 
 class Programs{
@@ -51,15 +42,26 @@ class Programs{
   }
   positionAll(){
     let minY = 0,
-      previousHour = 0,
+      gap = 0,
       lastHourEnd;
     this.programs.forEach((prog) => {
       let basePosY = prog.hoursFromStart*HOUR_IN_PX;
-      basePosY = Math.min(minY, basePosY);
+      let oldGap = gap;
+      if(minY < basePosY){
+        gap = Math.max(0, oldGap, basePosY - minY);
+        basePosY = Math.min(minY, basePosY - oldGap);
+      }
+      const el  = prog.elem[0], normalBasePosY = prog.hoursFromStart*HOUR_IN_PX;
+      console.log({
+        minY,
+        gap,
+        basePosY,
+        normalBasePosY,
+        endPos: basePosY + 179,
+        el,
+      });
       prog.setTop(basePosY);
       minY = Math.max(prog.endPos(), minY);
-      console.log(prog.elem[0], minY +" "+ basePosY);
-
     });
   }
 }
