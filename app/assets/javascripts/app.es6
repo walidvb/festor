@@ -1,11 +1,17 @@
 let ABSOLUTE_START;
 const HOUR_IN_PX = 36,
-  DAY_GAP = 18*4;
+  DAY_GAP = 18*4,
+  PERSPECTIVE = '20px',
+  NORMAL_Z = 2,
+  MIN_Z = 20,
+  MIN_Z_DELTA = 8;
+
 class Program{
-  constructor({ elem, dateStart, dateEnd, section }){
+  constructor({ elem, dateStart, dateEnd, section, venue }){
     this.elem = elem;
+    this.venue = venue;
     this.dateStart = new Date(dateStart);
-    this.day = this.dateStart.getDate();
+    this.date = this.dateStart.getDate();
     this.dateEnd = new Date(dateEnd);
     this.section = section;
     this.duration = this.dateEnd - this.dateStart;
@@ -23,16 +29,13 @@ class Program{
     if(!active){
 
       this.posZ = rdmZ();
-      console.log(rdmZ());
     }
     else{
-      this.posZ = -(Math.floor(Math.random() * 5));
+      this.posZ = -(Math.floor(Math.random() * NORMAL_Z));
     }
     this.setTransform();
     function rdmZ(){
-      const minZDelta = 50;
-      const minZ = 150;
-      return -(Math.floor(Math.random() * minZDelta) + minZ);
+      return -(Math.floor(Math.random() * MIN_Z_DELTA) + MIN_Z);
     }
   }
   // position
@@ -77,27 +80,27 @@ class Programs{
       const elem = $(posts[i]);
       const dateStart = elem.data('date-start'),
         dateEnd = elem.data('date-end'),
-        section = elem.data('section');
-      this.programs.push(new Program({ elem, dateStart, dateEnd, section }));
+        section = elem.data('section'),
+        venue = elem.data('venue');
+      this.programs.push(new Program({ elem, dateStart, dateEnd, section, venue }));
     }
-    this.initFilters();
     this.container.css({
-      perspective: '300px',
+      perspective: PERSPECTIVE,
+      perspectiveOrigin: `50% ${50}vh`,
     })
-  }
-  initFilters(){
-    const filters = $('.filters [data-target]');
-    $(document, '.filters [data-target]').click((e) => {
-      const clicked = $(e.target),
-       key = clicked.data('type'),
-       value = clicked.data('target');
-       console.log(clicked, key, value);
-       this.filterBy({ key, value });
-    });
   }
   filterBy({ key, value }){
     this.activeFilter = { key, value };
-    this.programs.forEach((prog) => prog.activate((prog[key] == value)));
+    this.programs.forEach((prog) => {
+      let active
+      if(key == 'reset'){
+        active = true;
+      }
+      else{
+         active = (prog[key] == value);
+      }
+      prog.activate(active);
+    });
     this.positionAll();
   }
   positionAll(){
@@ -128,6 +131,8 @@ class Programs{
     });
   }
 }
+
+
 $(document).on('turbolinks:load', () => {
   const isProgramPage = $('#program').length != 0;
   let programs;
@@ -137,5 +142,27 @@ $(document).on('turbolinks:load', () => {
     programs = new Programs($prog);
     programs.positionAll();
     window.MF.programs = programs;
+    initFilters();
+
+    function initFilters(){
+      const filters = $('.filters [data-target]');
+      $('.filters [data-target]').click((e) => {
+        const clicked = $(e.currentTarget),
+         key = clicked.data('type'),
+         value = clicked.data('target');
+         if((key && value) || key == 'reset'){
+           programs.filterBy({ key, value });
+         }
+      });
+
+      $('.filter-title').click( e => {
+        const $this = $(e.currentTarget);
+        const key = $this.data('type');
+        $('.filter-title').removeClass('active');
+        $this.addClass('active');
+        $(`.filter-list:not(.${key})`).addClass('collapsed');
+        $(`.filter-list.${key}`).removeClass('collapsed');
+      });
+    }
   }
 });

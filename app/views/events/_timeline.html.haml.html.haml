@@ -10,6 +10,7 @@
         "date-start" => event_date.start.strftime(format_for_js), |
         "date-end" => event_date.end.strftime(format_for_js), |
         section: event.section, |
+        venue: event.location.try(:name), |
       }) do
       .tile-link
         .info

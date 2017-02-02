@@ -4,11 +4,19 @@
 
 .filters
 	.filters-content
-		%ul.filters-by
-			- @days.each do |day|
-				- in_s = day.strftime(date_format)
-				%li.day{data: {type: 'date', target:in_s}, class: in_s}= in_s
-			- @sections.each do |sec|
-				%li.section{data: {type: 'section', target: sec}}= sec
+		.filters-by
+			.filter-title.active{data: {type: 'date', target: 'reset'} } Events By Day
+			%ul.filter-list.date
+				- @days.each do |day|
+					- in_s = day.strftime(date_format)
+					%li.day{data: {type: 'date', target:day.strftime("%d")}}= in_s
+			.filter-title{data: {type: 'section', target: 'reset'} } Events By Type
+			%ul.filter-list.section.collapsed
+				- @sections.each do |sec|
+					%li.section{data: {type: 'section', target: sec}}= sec
+			.filter-title{data: {type: 'venue', target: 'reset'} } Events By Venue
+			%ul.filter-list.venue.collapsed
+				- @venues.each do |venue|
+					%li.venue{data: {type: 'venue', target: venue.name}}= venue.name
 #program{data: { "date-start" => @event_dates.first.start.strftime("%Y-%m-%d %H:%M") } }
 	= render 'events/timeline.html.haml', event_dates: @event_dates

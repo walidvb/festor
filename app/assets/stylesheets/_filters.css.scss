@@ -33,6 +33,24 @@
   }
 }
 
+.filter-title{
+  padding-bottom: $lineheight-base;
+  &.active{
+    border-bottom: 1px solid $white;
+    color: $white;
+  }
+}
+
+.filter-list{
+  max-height: 50vh;
+  transition: all .3s ease-in-out;
+  overflow: hidden;
+  margin-bottom: $lineheight-base * 2;
+  &.collapsed{
+    max-height: 0;
+  }
+}
+
 .artist-filter-content{
   display: flex;
   flex-wrap: wrap;
