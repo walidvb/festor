@@ -142,7 +142,6 @@ class Programs{
   }
 }
 
-
 $(document).on('turbolinks:load', () => {
   const isProgramPage = $('#program').length != 0;
   let programs;
@@ -151,7 +150,7 @@ $(document).on('turbolinks:load', () => {
     const $prog = $('#program .post');
     programs = new Programs($prog);
     programs.positionAllByTime();
-    window.MF.programs = programs;
+    programs = programs;
     initFilters();
 
     function initFilters(){
