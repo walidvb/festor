@@ -5,8 +5,8 @@
 .filters
 	.filters-content
 		.filters-by
-			.filter-title.active{data: {type: 'date', target: 'reset'} } Events By Day
-			%ul.filter-list.date
+			.filter-title{data: {type: 'date', target: 'reset'} } Events By Day
+			%ul.filter-list.date.collapsed
 				- @days.each do |day|
 					- in_s = day.strftime(date_format)
 					%li.day{data: {type: 'date', target:day.strftime(date_format_for_machine)}}= in_s
@@ -18,6 +18,11 @@
 			%ul.filter-list.venue.collapsed
 				- @venues.each do |venue|
 					%li.venue{data: {type: 'venue', target: venue.name}}= venue.name
+			.filter-title{data: {type: 'artist', target: 'reset'} } Artists
+			%ul.filter-list.artist.collapsed
+				- @artists_alphabet.each do |letter|
+					%li.letter{data: { type: 'letter', target: letter} }= letter
+
 #program{data: { "date-start" => @event_dates.first.start.strftime("%Y-%m-%d %H:%M") } }
 	.legend
 		%ul.date

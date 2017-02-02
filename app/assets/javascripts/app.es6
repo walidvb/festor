@@ -18,13 +18,24 @@ class Program{
     this.durationInHour = this.duration/(1000*60*60)
     this.hoursFromStart = (this.dateStart - ABSOLUTE_START)/(1000*60*60);
     this.conflictCount = 0;
+    this.letters = elem.data('artists').split('|').map(n => n[0]);
     this.posX = 0;
     this.posY = 0;
     this.posZ = 0;
     this.active = true;
-    this.activate(true);
+    this.testAndActivate(true);
   }
-  activate(active){
+  testAndActivate({ key, value }){
+    let active
+    if(value == 'reset'){
+      active = true;
+    }
+    else if(key == 'letter'){
+      active = this.letters.includes(value);
+    }
+    else{
+      active = (this[key] == value);
+    }
     this.active = active;
     this.elem.toggleClass('inactive', !active);
     if(!active){
@@ -90,18 +101,9 @@ class Programs{
       perspectiveOrigin: `50% ${50}vh`,
     })
   }
-  filterBy({ key, value }){
-    this.activeFilter = { key, value };
-    this.programs.forEach((prog) => {
-      let active
-      if(value == 'reset'){
-        active = true;
-      }
-      else{
-         active = (prog[key] == value);
-      }
-      prog.activate(active);
-    });
+  filterBy(keyValue){
+    this.activeFilter = keyValue;
+    this.programs.forEach( prog => prog.testAndActivate(keyValue) );
     this.positionAllByTime();
   }
   positionAllByTime(){

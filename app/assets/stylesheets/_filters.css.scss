@@ -25,7 +25,10 @@
     margin-bottom: ($lineheight-base * 0.75);
   }
   li{
-    display: block;
+    cursor: pointer;
+    &:hover{
+      color: $white;
+    }
     line-height: ($lineheight-base * 2.5);
     &:last-child{
       margin-bottom: $lineheight-base * 3;
@@ -34,7 +37,8 @@
 }
 
 .filter-title{
-  padding-bottom: $lineheight-base;
+  padding-bottom: $lineheight-base * .75;
+  margin-bottom: $lineheight-base * 2;
   &.active{
     border-bottom: 1px solid $white;
     color: $white;
@@ -48,14 +52,16 @@
   margin-bottom: $lineheight-base * 2;
   &.collapsed{
     max-height: 0;
+    margin-bottom: 0;
   }
 }
 
-.artist-filter-content{
+.filter-list.artist{
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  & > li{
+  .letter{
     width: 20%;
+    text-transform: uppercase;
   }
 }

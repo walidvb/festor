@@ -6,7 +6,7 @@
     = link_to(path_for(event, locale: I18n.locale), class:'post active', |
       data: { |
         id: event_date.id, |
-        artist: artists.map(&:slug).join('|'), |
+        artists: artists.map(&:slug).join('|'), |
         "date-start" => event_date.start.strftime(format_for_js), |
         "date-end" => event_date.end.strftime(format_for_js), |
         section: event.section, |

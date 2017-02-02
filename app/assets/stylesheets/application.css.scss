@@ -52,7 +52,7 @@ body{
 
 main, #main-content{
 	display: flex;
-	flex: 0 1 auto;
+	flex: 1 0 auto;
 	overflow: auto;
 	@media #{$tablet}{
 		@include lineJump(6);
