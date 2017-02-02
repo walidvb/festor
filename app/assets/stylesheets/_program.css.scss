@@ -3,18 +3,34 @@
   flex: 0 1 80vw;
   padding: 0 $margin-horizontal-normal;
   position: relative;
+  display: inline-flex;
   @media #{$mobile}{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
     flex-direction: row;
   }
+  .events{
+    border-left: 1px solid $white;
+  }
+}
+
+$transition: .3s ease-in-out;
+.legend{
+  width: $margin-horizontal-normal * 5;
+  position: relative;
+  .day, .letter{
+    transition: all #{$transition};
+    padding-top: 1rem;
+    position: absolute;
+    right: $margin-horizontal-normal;
+  }
 }
 
 #program .post{
   max-width: 70%;
   padding: $margin-horizontal-normal;
-  transition: all .3s ease-in-out, max-width .3s ease-in-out;
+  transition: all #{$transition};
   will-change: transform;
   &.inactive{
     opacity: .15;

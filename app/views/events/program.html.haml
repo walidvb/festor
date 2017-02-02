@@ -1,7 +1,7 @@
 - content_for(:og_title, "Program")
 - content_for(:image, image_url('lines_3.png'))
 - content_for(:description, "Everything you need to know, day by day")
-
+- date_format_for_machine = "%d-%-m"
 .filters
 	.filters-content
 		.filters-by
@@ -9,7 +9,7 @@
 			%ul.filter-list.date
 				- @days.each do |day|
 					- in_s = day.strftime(date_format)
-					%li.day{data: {type: 'date', target:day.strftime("%d")}}= in_s
+					%li.day{data: {type: 'date', target:day.strftime(date_format_for_machine)}}= in_s
 			.filter-title{data: {type: 'section', target: 'reset'} } Events By Type
 			%ul.filter-list.section.collapsed
 				- @sections.each do |sec|
@@ -19,4 +19,9 @@
 				- @venues.each do |venue|
 					%li.venue{data: {type: 'venue', target: venue.name}}= venue.name
 #program{data: { "date-start" => @event_dates.first.start.strftime("%Y-%m-%d %H:%M") } }
-	= render 'events/timeline.html.haml', event_dates: @event_dates
+	.legend
+		%ul.date
+			- @days.each do |day|
+				- in_s = day.strftime("%d.%m")
+				%li.day{ data: { date:day.strftime(date_format_for_machine) }}= in_s
+	.events= render 'events/timeline.html.haml', event_dates: @event_dates

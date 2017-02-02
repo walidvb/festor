@@ -11,7 +11,7 @@ class Program{
     this.elem = elem;
     this.venue = venue;
     this.dateStart = new Date(dateStart);
-    this.date = this.dateStart.getDate();
+    this.date = `${this.dateStart.getDate()}-${this.dateStart.getMonth()+1}`;
     this.dateEnd = new Date(dateEnd);
     this.section = section;
     this.duration = this.dateEnd - this.dateStart;
@@ -22,6 +22,7 @@ class Program{
     this.posY = 0;
     this.posZ = 0;
     this.active = true;
+    this.activate(true);
   }
   activate(active){
     this.active = active;
@@ -93,7 +94,7 @@ class Programs{
     this.activeFilter = { key, value };
     this.programs.forEach((prog) => {
       let active
-      if(key == 'reset'){
+      if(value == 'reset'){
         active = true;
       }
       else{
@@ -101,12 +102,13 @@ class Programs{
       }
       prog.activate(active);
     });
-    this.positionAll();
+    this.positionAllByTime();
   }
-  positionAll(){
+  positionAllByTime(){
     let minY = 0,
       gap = 0,
-      conflictCount = 0;
+      conflictCount = 0,
+      currDate;
     this.programs.forEach((prog, i) => {
       let basePosY = prog.hoursFromStart*HOUR_IN_PX;
       let oldGap = gap;
@@ -114,6 +116,12 @@ class Programs{
         gap = Math.max(0, oldGap, basePosY - minY);
         basePosY = Math.min(minY, basePosY - oldGap);
       }
+      if(currDate != prog.date){
+        $(`.legend .day[data-date="${prog.date}"]`).css({
+          transform: `translateY(${basePosY}px)`,
+        });
+      }
+      currDate = prog.date;
       prog.position(basePosY);
 
       if(basePosY < minY){
@@ -140,7 +148,7 @@ $(document).on('turbolinks:load', () => {
   {
     const $prog = $('#program .post');
     programs = new Programs($prog);
-    programs.positionAll();
+    programs.positionAllByTime();
     window.MF.programs = programs;
     initFilters();
 
