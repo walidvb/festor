@@ -9,6 +9,7 @@ const HOUR_IN_PX = 36,
 class Program{
   constructor({ elem, dateStart, dateEnd, section, venue }){
     this.elem = elem;
+    this.eventID = elem.data('event-id');
     this.venue = venue;
     this.dateStart = new Date(dateStart);
     this.date = `${this.dateStart.getDate()}-${this.dateStart.getMonth()+1}`;
@@ -24,6 +25,26 @@ class Program{
     this.posZ = 0;
     this.active = true;
     this.testAndActivate(true);
+    this._bindHover();
+  }
+  _bindHover(){
+    const thumbnail = $(`.thumbnails [data-event-id="${this.eventID}"]`);
+  this.elem.hover(
+      (ev) => {
+        $('body').addClass('program-hovered');
+        if(thumbnail.hasClass('out')){
+          thumbnail.removeClass('out');
+          thumbnail.addClass('reset');
+          document.body.offsetHeight;
+          thumbnail.removeClass('reset');
+        }
+        thumbnail.addClass('in');
+      },
+      (ev) => {
+        $('body').removeClass('program-hovered');
+        thumbnail.addClass('out').removeClass('in');
+      }
+    )
   }
   testAndActivate({ key, value }){
     let active

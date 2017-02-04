@@ -6,6 +6,7 @@ class EventsController < ApplicationController
 		@filters = Event.section_enum
 
 		@all_dates = {}
+		@events = Event.all
 		@sections = Event.pluck(:section).uniq.compact
 		@event_dates = EventDate.order('start ASC').includes(:event, :artists, :location)
 		@artists = Artist.all

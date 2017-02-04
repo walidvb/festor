@@ -11,6 +11,7 @@
         "date-end" => event_date.end.strftime(format_for_js), |
         section: event.section, |
         venue: event.location.try(:name), |
+        "event-id": event.id, |
       }) do
       .tile-link
         .info

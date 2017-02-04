@@ -30,3 +30,8 @@
 				- in_s = day.strftime("%d.%m")
 				%li.day{ data: { date:day.strftime(date_format_for_machine) }}= in_s
 	.events= render 'events/timeline.html.haml', event_dates: @event_dates
+
+%ul.thumbnails
+	- @events.each do |ev|
+		%li{data: { "event-id" => ev.id }}
+			%img{src: ev.main_image.url}
