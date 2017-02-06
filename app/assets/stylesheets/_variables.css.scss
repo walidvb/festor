@@ -16,6 +16,8 @@ $light-grey: rgb(178, 178, 178);
 $canvas-opacity: 0.1;
 $blend-mode: difference;
 
+$transition-long: cubic-bezier(.19,1,.22,1);
+
 @if $invert == 1{
   //invert
   $black: white;

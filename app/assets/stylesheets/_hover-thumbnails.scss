@@ -1,5 +1,5 @@
 ul.thumbnails{
-  z-index: 2;
+  z-index: -1;
   position: fixed;
   top: 0;
   height: 100%;
@@ -13,7 +13,7 @@ ul.thumbnails{
     left: 50%;
     transform: scale(.8) translateX(-50%) translateY(-70%) ;
     transform-origin: 0 0;
-    transition: all 1000ms cubic-bezier(.19,1,.22,1) 0ms;
+    transition: all 1000ms $transition-long 0ms;
     will-change: transform, opacity;
     &.in{
       transform: scale(1) translateX(-50%) translateY(-50%) ;

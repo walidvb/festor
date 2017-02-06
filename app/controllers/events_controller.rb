@@ -9,8 +9,7 @@ class EventsController < ApplicationController
 		@events = Event.all
 		@sections = Event.pluck(:section).uniq.compact
 		@event_dates = EventDate.order('start ASC').includes(:event, :artists, :location)
-		@artists = Artist.all
-		@artists_alphabet = Artist.all.map{|ar| ar.name[0].downcase}.uniq
+		@artists_by_letter = Artist.all.group_by{|artist| artist.name[0]}
 		@days = EventDate.all.pluck(:start).map(&:to_date).uniq
 		@venues = Location.all
 		render 'program'

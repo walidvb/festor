@@ -157,7 +157,6 @@ class Programs{
       else{
         conflictCount = 0;
       }
-
       minY = Math.max(prog.endPos(), minY);
     });
   }
@@ -166,6 +165,8 @@ class Programs{
 $(document).on('turbolinks:load', () => {
   const isProgramPage = $('#program').length != 0;
   let programs;
+  const programsContainer = $('#program'),
+    artistsContainer = $('#artists');
   if(isProgramPage)
   {
     const $prog = $('#program .post');
@@ -180,7 +181,16 @@ $(document).on('turbolinks:load', () => {
         const clicked = $(e.currentTarget),
          key = clicked.data('type'),
          value = clicked.data('target');
-         if((key && value) || key == 'reset'){
+         if(key == 'artists'){
+          reset(artistsContainer);
+          artistsContainer.addClass('in').removeClass('out');
+          programsContainer.addClass('out');
+          programsContainer.removeClass('in');
+         }
+         else if((key && value) || key == 'reset'){
+           reset(programsContainer);
+           programsContainer.addClass('in');
+           artistsContainer.addClass('out').removeClass('in');
            programs.filterBy({ key, value });
          }
       });
@@ -196,3 +206,9 @@ $(document).on('turbolinks:load', () => {
     }
   }
 });
+
+function reset(_$){
+  _$.addClass('reset').removeClass('out in');
+  document.body.offsetHeight;
+  _$.removeClass('reset');
+}
