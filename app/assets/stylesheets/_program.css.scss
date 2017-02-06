@@ -4,8 +4,7 @@
   position: relative;
 }
 
-#artists, #program{
-  position: absolute;
+#program{
   width: 100%;
   height: 100%;
   overflow: auto;
@@ -15,6 +14,9 @@
   opacity: 1;
   transition: all 1s $transition-long;
   transform: scale(1);
+  flex: 1 0 80vw;
+}
+.post{
   &.resets{
     transition: all 0s $transition-long;
   }
@@ -57,7 +59,7 @@ $transition: .3s ease-in-out;
   }
 }
 
-#program .post{
+.post{
   max-width: 70%;
   padding: $margin-horizontal-normal;
   transition: all #{$transition};

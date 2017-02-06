@@ -165,11 +165,11 @@ class Programs{
 $(document).on('turbolinks:load', () => {
   const isProgramPage = $('#program').length != 0;
   let programs;
-  const programsContainer = $('#program'),
-    artistsContainer = $('#artists');
+  const programsContainer = $('.post.event'),
+    artistsContainer = $('.post.artist');
   if(isProgramPage)
   {
-    const $prog = $('#program .post');
+    const $prog = $('#program .post.event');
     programs = new Programs($prog);
     programs.positionAllByTime();
     programs = programs;

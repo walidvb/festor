@@ -23,24 +23,22 @@
 				- @artists_by_letter.keys.each do |letter|
 					%li.letter{data: { type: 'letter', target: letter} }= letter
 
-.content-container
-	#artists.out
+#program.in{data: { "date-start" => @event_dates.first.start.strftime("%Y-%m-%d %H:%M") } }
+	.legend
+		%ul.date
+			- @days.each do |day|
+				- in_s = day.strftime("%d.%m")
+				%li.day{ data: { date:day.strftime(date_format_for_machine) }}= in_s
 		- @artists_by_letter.each do |key, artists|
 			.letter
 				.legend
 					= key
-				.artists
-				- artists.each do |artist|
-					= link_to "#" do
-						.post.active
-							%h2= artist.name
-	#program.in{data: { "date-start" => @event_dates.first.start.strftime("%Y-%m-%d %H:%M") } }
-		.legend
-			%ul.date
-				- @days.each do |day|
-					- in_s = day.strftime("%d.%m")
-					%li.day{ data: { date:day.strftime(date_format_for_machine) }}= in_s
-		.events= render 'events/timeline.html.haml', event_dates: @event_dates
+	.events
+		= render 'events/timeline.html.haml', event_dates: @event_dates
+		- @artists_by_letter.each do |key, artists|
+			- artists.each do |artist|
+				= link_to "#", class: 'post out artist', id: "artist-#{artist.id}" do
+					%h2= artist.name
 
 %ul.thumbnails
 	- @events.each do |ev|
