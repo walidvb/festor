@@ -17,7 +17,7 @@ ul.thumbnails{
     will-change: transform, opacity;
     &.in{
       transform: scale(1) translateX(-50%) translateY(-50%) ;
-      opacity: .9;
+      opacity: .8;
     }
     &.out{
       transform: scale(1.5) translateX(-50%) translateY(-15%);

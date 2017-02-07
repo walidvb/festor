@@ -10,10 +10,8 @@
   overflow: auto;
   top: 0;
   left: 0;
-  transform: scale(1);
   opacity: 1;
   transition: all 1s $transition-long;
-  transform: scale(1);
   flex: 1 0 80vw;
 }
 .post{
@@ -21,12 +19,12 @@
     transition: all 0s $transition-long;
   }
   &.in{
-    transform: scale(1);
+    transform: translateZ(0px);
     opacity: 1;
   }
   &.out{
     opacity: .2;
-    transform: scale(.3);
+    transform: translateZ(-25px);
     pointer-events: none!important;
   }
 }
@@ -44,6 +42,9 @@
   }
   .events{
     border-left: 1px solid $white;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
   }
 }
 
@@ -61,10 +62,12 @@ $transition: .3s ease-in-out;
 
 .post{
   max-width: 70%;
+  flex: 0 1 20%;
   padding: $margin-horizontal-normal;
   transition: all #{$transition};
   will-change: transform;
-  &.inactive{
+  display: block;
+  &.inactive, &.out{
     opacity: .15;
     pointer-events: none;
   }
@@ -79,6 +82,10 @@ $transition: .3s ease-in-out;
       transition-delay: #{random(300)}ms;
     }
   }
+}
+.line-break{
+  width: 100%;
+  margin-bottom: 5rem;
 }
 
 .program-artists{

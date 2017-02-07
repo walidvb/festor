@@ -33,7 +33,6 @@
 
 .nav-link{
 	$trans: 0.25s cubic-bezier(0, 0.04, 0, 0.96);
-	//background: $black;
 	color: $white;
 	a{
 		display: inline-block;
@@ -43,22 +42,12 @@
 		color: $black;
 		background: transparent;
 		//transition: text-shadow #{$trans}, letter-spacing #{$trans};
-		transition: text-shadow #{$trans}, letter-spacing #{$trans};
 		a{
-			//letter-spacing: 0em;
 			color: $black;
 		}
 	}
 	&.active, .active, &:hover a, &:hover{
 		font-weight: bold;
-		//letter-spacing: 0.3em;
-	}
-	&:hover{
-		@media #{$tablet}{
-			//@include text-shadow($color1: $white, $color2: $white, $gap: 0.3em);
-			//letter-spacing: 0.3em;
-			transition: text-shadow #{$trans}, letter-spacing #{$trans};
-		}
 	}
 }
 .body-header{

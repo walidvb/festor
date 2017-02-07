@@ -5,23 +5,23 @@
 .filters
 	.filters-content
 		.filters-by
-			.filter-title{data: {type: 'date', target: 'reset'} } Events By Day
+			.filter-title{ data: { type: 'event', key: 'date', value: 'reset'} } Events By Day
 			%ul.filter-list.date.collapsed
 				- @days.each do |day|
 					- in_s = day.strftime(date_format)
-					%li.day{data: {type: 'date', target:day.strftime(date_format_for_machine)}}= in_s
-			.filter-title{data: {type: 'section', target: 'reset'} } Events By Type
+					%li.day{ data: { type: 'event', key: 'date', value:day.strftime(date_format_for_machine)}}= in_s
+			.filter-title{ data: { type: 'event', key: 'section', value: 'reset'} } Events By Type
 			%ul.filter-list.section.collapsed
 				- @sections.each do |sec|
-					%li.section{data: {type: 'section', target: sec}}= sec
-			.filter-title{data: {type: 'venue', target: 'reset'} } Events By Venue
+					%li.section{ data: { type: 'event', key: 'section', value: sec}}= sec
+			.filter-title{ data: { type: 'event', key: 'venue', value: 'reset'} } Events By Venue
 			%ul.filter-list.venue.collapsed
 				- @venues.each do |venue|
-					%li.venue{data: {type: 'venue', target: venue.name}}= venue.name
-			.filter-title{data: {type: 'artists', target: 'reset'} } Artists
-			%ul.filter-list.artist.collapsed
+					%li.venue{ data: { type: 'event', key: 'venue', value: venue.name}}= venue.name
+			.filter-title{ data: { type: 'artist', key: 'artists', value: 'reset'} } Artists
+			%ul.filter-list.artists.collapsed
 				- @artists_by_letter.keys.each do |letter|
-					%li.letter{data: { type: 'letter', target: letter} }= letter
+					%li.letter{ data: { type: 'artist',  key: 'letter', value: letter} }= letter
 
 #program.in{data: { "date-start" => @event_dates.first.start.strftime("%Y-%m-%d %H:%M") } }
 	.legend
@@ -35,10 +35,14 @@
 					= key
 	.events
 		= render 'events/timeline.html.haml', event_dates: @event_dates
+		- last_key = @artists_by_letter.keys.first
 		- @artists_by_letter.each do |key, artists|
 			- artists.each do |artist|
+				- if last_key != key
+					.line-break
 				= link_to "#", class: 'post out artist', id: "artist-#{artist.id}" do
 					%h2= artist.name
+				- last_key = key
 
 %ul.thumbnails
 	- @events.each do |ev|
