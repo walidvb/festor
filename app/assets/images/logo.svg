@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="1280px" height="1280px" viewBox="0 0 1280 1280" enable-background="new 0 0 1280 1280" xml:space="preserve">
+<polyline fill="none" stroke="#484847" stroke-width="3.924" points="501.943,999.8 706.872,695.351 706.872,999.8 911.8,695.351 
+	"/>
+<g>
+	<defs>
+		<rect id="SVGID_1_" x="30.941" y="7.2" width="1225.052" height="1264.8"/>
+	</defs>
+	<clipPath id="SVGID_2_">
+		<use xlink:href="#SVGID_1_"  overflow="visible"/>
+	</clipPath>
+	<polyline clip-path="url(#SVGID_2_)" fill="none" stroke="#484847" stroke-width="3.924" points="32.543,581.844 421.652,13.555 
+		421.652,317.292 626.479,13.555 626.479,317.292 831.304,13.555 831.304,317.292 1036.13,13.555 1036.13,317.292 	"/>
+</g>
+<line fill="none" stroke="#484847" stroke-width="3.924" x1="1073.18" y1="253.84" x2="831.816" y2="318.964"/>
+<line fill="none" stroke="#484847" stroke-width="3.924" x1="955.851" y1="485.907" x2="818.29" y2="690.523"/>
+<g>
+	<defs>
+		<rect id="SVGID_3_" x="30.941" y="7.2" width="1225.052" height="1264.8"/>
+	</defs>
+	<clipPath id="SVGID_4_">
+		<use xlink:href="#SVGID_3_"  overflow="visible"/>
+	</clipPath>
+	<polyline clip-path="url(#SVGID_4_)" fill="none" stroke="#484847" stroke-width="3.924" points="996.521,1004.89 
+		816.536,1268.271 733.213,1113.796 1255.991,1114.589 	"/>
+</g>
+<polyline fill="none" stroke="#484847" stroke-width="3.924" points="351.611,775.944 618.271,382.64 822.622,382.64 
+	720.527,533.095 520.178,533.095 "/>
+<polyline fill="none" stroke="#484847" stroke-width="3.924" points="520.271,699.793 680.08,461.919 884.474,461.919 
+	782.357,612.413 580.984,612.413 "/>
+<polygon fill="none" stroke="#484847" stroke-width="3.924" points="894.886,852.429 1099.39,852.429 997.218,1003.026 
+	795.737,1003.026 "/>
+<line fill="none" stroke="#484847" stroke-width="3.924" x1="1019.713" y1="388.755" x2="987.408" y2="437.554"/>
+</svg>

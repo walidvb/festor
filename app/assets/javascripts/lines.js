@@ -21,7 +21,7 @@ function Nighter(){
       }
       currStyles = $('meta[name="styles"]').attr('content');
     }
-    styleTag = $('<link data-turbolinks-track="true" href="'+ currStyles +'" id="styles" media="all" rel="stylesheet">')
+    styleTag = $('<linsk data-turbolinks-track="true" href="'+ currStyles +'" id="styles" media="all" rel="stylesheet">')
   }
 
   this.init = function(){

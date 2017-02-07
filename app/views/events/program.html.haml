@@ -30,9 +30,8 @@
 				- in_s = day.strftime("%d.%m")
 				%li.day{ data: { date:day.strftime(date_format_for_machine) }}= in_s
 		- @artists_by_letter.each do |key, artists|
-			.letter
-				.legend
-					= key
+			.letter{ data: { letter: key } }
+				= key
 	.events
 		= render 'events/timeline.html.haml', event_dates: @event_dates
 		- last_key = @artists_by_letter.keys.first
@@ -40,7 +39,7 @@
 			- artists.each do |artist|
 				- if last_key != key
 					.line-break
-				= link_to "#", class: 'post out artist', id: "artist-#{artist.id}" do
+				= link_to "#", class: 'post out artist', id: "artist-#{artist.id}", data: { letter: artist.name[0].upcase } do
 					%h2= artist.name
 				- last_key = key
 

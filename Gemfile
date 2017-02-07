@@ -23,7 +23,7 @@ gem 'paperclip-sftp', '~> 1.0.0'
 gem 'acts_as_list'
 gem 'sprockets', '>= 3.0.0'
 gem 'sprockets-es6'
-
+gem 'inline_svg'
 gem "rails-erd"
 
 gem "react_on_rails", "~> 6"

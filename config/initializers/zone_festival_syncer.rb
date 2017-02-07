@@ -22,6 +22,17 @@ module ZoneFestivalSyncer
   end
 
   def self.store_locally zf
+
+    # EVENTS <- programs
+    # description: program description, else show description
+    # name: program name, else show name
+    # dates: all programs with same show_id
+
+    # ARTISTS <-
+    # name: artist_name
+    # bio: artist_bio
+
+
     p zf
     zf['venue'].each do |loc|
       location = Location.find_by_zf_id(loc['id'].to_i) || Location.new
@@ -34,13 +45,12 @@ module ZoneFestivalSyncer
     end
 
     zf['show'].each do |ev|
-      # binding.pry
       event = Event.find_by_zf_id(ev['id'].to_i) || Event.new
       event.zf_id = ev['id'].to_i
       event.title = ev['title_selected']
       event.description = ev['description_long_1']
       if img = ev['image'][0]
-        event.image_url = img['url']
+        event.main_image = open(img['url'])
       end
       if artists = ev['artist']
         artists.each do |art|
@@ -49,7 +59,7 @@ module ZoneFestivalSyncer
           artist.country = art['country']
           artist.zf_id = art['id'].to_i
           if img = art['image'][0]
-            artist.image_url = img
+            artist.profile_picture = open(img['url'])
           end
           artist.biography = art['biography_1']
           artist.save!

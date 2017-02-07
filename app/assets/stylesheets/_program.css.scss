@@ -51,18 +51,29 @@
 $transition: .3s ease-in-out;
 .legend{
   width: $margin-horizontal-normal * 5;
+  flex: 1 0 auto;
   position: relative;
   .day, .letter{
     transition: all #{$transition};
-    padding-top: 1rem;
     position: absolute;
     right: $margin-horizontal-normal;
+  }
+
+  [data-current-type="event"] &{
+    .letter{
+      opacity: 0;
+    }
+  }
+  [data-current-type="artist"] &{
+    .day{
+      opacity: 0;
+    }
   }
 }
 
 .post{
-  max-width: 70%;
-  flex: 0 1 20%;
+  max-width: 35%;
+  flex: 1 1 20%;
   padding: $margin-horizontal-normal;
   transition: all #{$transition};
   will-change: transform;
@@ -82,6 +93,12 @@ $transition: .3s ease-in-out;
       transition-delay: #{random(300)}ms;
     }
   }
+
+}
+.post.artist, .legend .letter{
+  min-height: 6rem;
+  display: flex;
+  align-items: center;
 }
 .line-break{
   width: 100%;

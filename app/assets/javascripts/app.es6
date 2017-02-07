@@ -1,11 +1,11 @@
 let ABSOLUTE_START;
 const HOUR_IN_PX = 36,
   DAY_GAP = 18*4,
-  PERSPECTIVE = '20px',
-  NORMAL_Z = 2,
-  MIN_Z = 20,
-  OUT_Z = 55,
-  MIN_Z_DELTA = 8;
+  PERSPECTIVE = '60px',
+  NORMAL_Z = 5,
+  MIN_Z = 15,
+  OUT_Z = 25,
+  MIN_Z_DELTA = 5;
 
 class Program{
   constructor({ elem, dateStart, dateEnd, section, venue }){
@@ -13,6 +13,7 @@ class Program{
     this.type = elem.hasClass('artist') ? 'artist' : 'event';
     this.eventID = elem.data('event-id');
     this.venue = venue;
+    this.letter = elem.data('letter');
     this.dateStart = new Date(dateStart);
     this.date = `${this.dateStart.getDate()}-${this.dateStart.getMonth()+1}`;
     this.dateEnd = new Date(dateEnd);
@@ -139,16 +140,20 @@ class Programs{
   }
   filterBy(keyValue){
     this.activeFilter = keyValue;
-    console.log(keyValue);
-    // if(keyValue.key == 'artists'){
-    //   this.programs.forEach( prog => prog.out(true) );
-    //   this.artists.forEach( art => art.out(false) );
-    // }
-    // else{
-    // }
+    $('body').attr('data-current-type', keyValue.type)
     this.programs.forEach( prog => prog.testAndActivate(keyValue) );
     this.artists.forEach( art =>  art.testAndActivate(keyValue) );
     this.positionAllByTime();
+  }
+  positionArtistLegend(){
+    $('.legend .letter').each(function(e, obj){
+      const letter = $(obj).data('letter');
+      const firstArtist = $(`.post[data-letter="${letter}"]`);
+      let transform = firstArtist.position().top;
+      transform = `translateY(${transform}px)`;
+      console.log(transform);
+      $(obj).css({ transform })
+    });
   }
   positionAllByTime(){
     let minY = 0,
@@ -196,6 +201,7 @@ $(document).on('turbolinks:load', () => {
     const $prog = $('#program .post');
     programs = new Programs($prog);
     programs.positionAllByTime();
+    programs.positionArtistLegend();
     programs = programs;
     initFilters();
 

@@ -29,3 +29,14 @@ ul.thumbnails{
     }
   }
 }
+
+.program-hovered{
+  .post, .header{
+    opacity: .1;
+    z-index: -10;
+    &:hover{
+      opacity: .9;
+      z-index: 10;
+    }
+  }
+}

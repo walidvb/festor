@@ -56,12 +56,12 @@
   }
 }
 
-.filter-list.artist{
+.filter-list.artists{
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-between;
   .letter{
-    width: 20%;
+    flex: 0 0 25%;
     text-transform: uppercase;
   }
 }
