@@ -17,7 +17,7 @@ ul.thumbnails{
     will-change: transform, opacity;
     &.in{
       transform: scale(1) translateX(-50%) translateY(-50%) ;
-      opacity: .9;
+      opacity: .8;
     }
     &.out{
       transform: scale(1.5) translateX(-50%) translateY(-15%);
@@ -26,6 +26,17 @@ ul.thumbnails{
     &.reset{
       transition: all 0ms cubic-bezier(.19,1,.22,1) 0ms;
       opacity: 0;
+    }
+  }
+}
+
+.program-hovered{
+  .post, .header{
+    opacity: .1;
+    z-index: -10;
+    &:hover{
+      opacity: .9;
+      z-index: 10;
     }
   }
 }

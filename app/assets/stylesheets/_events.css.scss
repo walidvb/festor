@@ -23,7 +23,6 @@
 }
 
 a.artist, a.artist-event{
-	@extend .nav-link;
 	background: transparent;
 	color: $white;
 	h5{
@@ -37,17 +36,6 @@ a.artist, a.artist-event{
 		letter-spacing: normal;
 		text-shadow: none;
 		font-weight: normal;
-	}
-	&.active{
-		background: $white;
-		color: $white;
-		@media #{$tablet}{
-			color: transparent;
-		}
-		text-shadow: none;
-		.sup{
-			letter-spacing: normal;
-		}
 	}
 }
 .sup{

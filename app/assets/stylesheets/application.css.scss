@@ -1,13 +1,4 @@
-/*
- * Overwritten by RailsBricks
- *= require_self
- *= require chosen
- * require froala/css/froala_style.min.css
- * require froala/css/froala_content.min.css
- *= require colorbox/example1/colorbox.css
- *= require vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css
- */
-$invert: 0;
+
 @import "variables";
 
 @import "mixins";
@@ -43,11 +34,27 @@ body{
 	overflow-x: hidden;
 	color: $white;
 	background-color: $brand-color;
+	background-image: image-path('logo.svg');
 	@media #{$tablet}{
 		font-size : $body-size;
 		display: flex;
 		flex-direction: column;
 		height: 100vh;
+	}
+}
+
+#background{
+	position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+	text-align: right;
+	z-index: -4;
+	svg{
+		width: auto;
+		height: 90%;
+		min-height: 450px;
 	}
 }
 
