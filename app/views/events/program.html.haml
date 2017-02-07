@@ -45,4 +45,4 @@
 %ul.thumbnails
 	- @events.each do |ev|
 		%li{data: { "event-id" => ev.id }}
-			%img{'data-lazy-load' => ev.main_image.url}
+			%img{'data-lazy-load' => ev.main_image.url(:tile)}
