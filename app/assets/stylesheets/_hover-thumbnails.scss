@@ -11,7 +11,7 @@ ul.thumbnails{
     opacity: 0;
     top: 50%;
     left: 50%;
-    transform: scale(.8) translateX(-50%) translateY(-70%) ;
+    transform: scale(.8) translateX(-50%) translateY(-30%) ;
     transform-origin: 0 0;
     transition: all 1000ms $transition-long 0ms;
     will-change: transform, opacity;
