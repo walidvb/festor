@@ -20,3 +20,19 @@
 		}
 	}
 }
+
+nav{
+	font-weight: bold;
+	padding: 5rem 1rem 0;
+	//padding: 0 1rem;
+	.gap-before{
+		margin-top: 2rem;
+	}
+	.nav li a{
+		padding: 0;
+	}
+}
+
+footer{
+	font-size: 1rem;
+}

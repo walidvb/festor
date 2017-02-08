@@ -59,11 +59,6 @@ p{
 	margin-bottom: 0 !important;
 }
 
-footer{
-	@include lineJump(4);
-	align-self: flex-end;
-}
-
 h2{
 	clear: both;
 }
@@ -128,18 +123,11 @@ main{font-family: $body-font;}
 .page-title{
 	width: 100%;
 }
-#footer{
-}
 
 a:hover{
 	color: inherit;
 }
 
-.address{
-	@media #{$tablet}{
-		text-align: right;
-	}
-}
 
 .social{
 	.fa-icon{
@@ -161,30 +149,19 @@ a:hover{
 	}
 }
 
-#main-content{
-	@media #{$tablet}{
-		margin-left: 20%;
-	}
-}
-
-#footer{
-	border-top: solid 1px $black;
-	display: flex;
-}
-
 .map iframe {
   min-height: 480px;
 }
 
 /* Works in Safari */
 ::selection {
-	background-color: darken($brand-color, 0%);
-	color: $white
+	background-color: darken($white, 0%);
+	color: $black;
 }
 /* Mozilla based browsers */
 ::-moz-selection {
-	background-color: $brand-color;
-	color: $white
+	background-color: $white;
+	color: $black;
 }
 
 .admin .sortable-list li{

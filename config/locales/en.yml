@@ -22,10 +22,11 @@ en:
     more:        "More"
     next:        "next"
     previous:    "previous"
-    gallery:    "gallery"
-    about:      'about'
-    partners:   'partners'
-    archives:   'archives'
+    gallery:    "Gallery"
+    about:      'About'
+    contact:    'Contact'
+    partners:   'Partners'
+    archives:   'Archives'
     volunteers: 'Volunteers'
     venus:      'Venues'
   partners:
