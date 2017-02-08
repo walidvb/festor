@@ -20,11 +20,18 @@
 		= stylesheet_link_tag 'application_day'
 		= javascript_include_tag "application", "data-turbolinks-track" => true
 		= csrf_meta_tags
-
-	.navigation= render 'layouts/navigation'
-
 	%body.imready{class: ["#{controller.controller_name}-page", "#{controller.action_name}-page", "#{'debug' if Rails.env.development?}", "#{current_user.nil? ? nil : 'admin'}", content_for(:body_class)].join(' ')}
 		#background= inline_svg('logo.svg')
+		%header
+			.logo= render 'layouts/logo'
+			= render 'layouts/navigation'
+		%nav
+			= yield :nav
+			%ul.nav
+				%li= link_to t('nav.about'), about_path
+				%li= link_to t('nav.contact'), 'mailto:nous@mappingfestival.com'
+				%li= link_to t('nav.partners'), partners_path
+				%li= link_to t('nav.archives'), about_path(anchor: 'archives')
 		%main
 			= yield
 			:plain

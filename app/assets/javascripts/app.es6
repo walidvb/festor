@@ -67,6 +67,7 @@ class Program{
       position: 'absolute',
     });
     this.setTransform();
+    this.elem.addClass('ready');
   }
   addConflict(conflictCount, posInConflict){
     this.conflictCount = conflictCount;
@@ -132,9 +133,10 @@ class Programs{
       }
       else{
         this.artists.push(new Program({ elem }))
+        elem.addClass('ready')
       }
     }
-    this.container.css({
+    $('main').css({
       perspective: PERSPECTIVE,
       perspectiveOrigin: `50% ${50}vh`,
     })
@@ -145,11 +147,16 @@ class Programs{
     this.programs.forEach( prog => prog.testAndActivate(keyValue) );
     this.artists.forEach( art =>  art.testAndActivate(keyValue) );
     this.positionAllByTime();
+    this.positionArtistLegend();
+  }
+  positionAll(){
+    this.positionArtistLegend();
+    this.positionAllByTime();
   }
   positionArtistLegend(){
     $('.legend .letter').each(function(e, obj){
       const letter = $(obj).data('letter');
-      const firstArtist = $(`.post[data-letter="${letter}"]`);
+      const firstArtist = $(`.post[data-letter="${letter}"]`).first();
       let transform = firstArtist.position().top;
       transform = `translateY(${transform}px)`;
       console.log(transform);
@@ -191,48 +198,52 @@ class Programs{
   }
 }
 
-$(document).on('turbolinks:load', () => {
-  const isProgramPage = $('#program').length != 0;
+(() => {
+
   let programs;
-  window.programs = programs;
-  const programsContainer = $('.post.event'),
-    artistsContainer = $('.post.artist');
-  if(isProgramPage)
-  {
-    const $prog = $('#program .post');
-    programs = new Programs($prog);
-    programs.positionAllByTime();
-    programs.positionArtistLegend();
-    programs.filterBy({ type: 'event', value: 'reset'})
-    initFilters();
+  $(document).on('turbolinks:load', () => {
+    const isProgramPage = $('#program').length != 0;
+    window.programs = programs;
+    const programsContainer = $('.post.event'),
+      artistsContainer = $('.post.artist');
+    if(isProgramPage)
+    {
+      const $prog = $('#program .post');
+      programs = new Programs($prog);
+      programs.positionAllByTime();
+      programs.positionArtistLegend();
+      programs.filterBy({ type: 'event', value: 'reset'})
+      initFilters();
 
-    function initFilters(){
-      const filters = $('.filters [data-type]');
-      $('.filters [data-type]').click((e) => {
-        const clicked = $(e.currentTarget),
-         value = clicked.data('value'),
-         key = clicked.data('key'),
-         type = clicked.data('type');
-         console.log(type, key, value);
-         if((key && value) || key == 'reset'){
-           programs.filterBy({ type, key, value });
-         }
-      });
+      function initFilters(){
+        const filters = $('.filters [data-type]');
+        $('.filters [data-type]').click((e) => {
+          const clicked = $(e.currentTarget),
+           value = clicked.data('value'),
+           key = clicked.data('key'),
+           type = clicked.data('type');
+           console.log(type, key, value);
+           if((key && value) || key == 'reset'){
+             programs.filterBy({ type, key, value });
+           }
+        });
 
-      $('.filter-title').click( e => {
-        const $this = $(e.currentTarget);
-        const key = $this.data('key');
-        $('.filter-title').removeClass('active');
-        $this.addClass('active');
-        $(`.filter-list:not(.${key})`).addClass('collapsed');
-        $(`.filter-list.${key}`).removeClass('collapsed');
-      });
+        $('.filter-title').click( e => {
+          const $this = $(e.currentTarget);
+          const key = $this.data('key');
+          $('.filter-title').removeClass('active');
+          $this.addClass('active');
+          $(`.filter-list:not(.${key})`).addClass('collapsed');
+          $(`.filter-list.${key}`).removeClass('collapsed');
+        });
+      }
     }
-  }
-});
+  });
 
-function reset(_$){
-  _$.addClass('reset').removeClass('out in');
-  document.body.offsetHeight;
-  _$.removeClass('reset');
-}
+  $(window).on('resize', () => programs.positionAll() );
+  function reset(_$){
+    _$.addClass('reset').removeClass('out in');
+    document.body.offsetHeight;
+    _$.removeClass('reset');
+  }
+})();

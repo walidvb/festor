@@ -2,26 +2,34 @@
 - content_for(:image, image_url('lines_3.png'))
 - content_for(:description, "Everything you need to know, day by day")
 - date_format_for_machine = "%-d-%-m"
-.filters
-	.filters-content
-		.filters-by
-			.filter-title{ data: { type: 'event', key: 'date', value: 'reset'} } Events By Day
-			%ul.filter-list.date.collapsed
-				- @days.each do |day|
-					- in_s = day.strftime(date_format)
-					%li.day{ data: { type: 'event', key: 'date', value:day.strftime(date_format_for_machine)}}= in_s
-			.filter-title{ data: { type: 'event', key: 'section', value: 'reset'} } Events By Type
-			%ul.filter-list.section.collapsed
-				- @sections.each do |sec|
-					%li.section{ data: { type: 'event', key: 'section', value: sec}}= sec
-			.filter-title{ data: { type: 'event', key: 'venue', value: 'reset'} } Events By Venue
-			%ul.filter-list.venue.collapsed
-				- @venues.each do |venue|
-					%li.venue{ data: { type: 'event', key: 'venue', value: venue.name}}= venue.name
-			.filter-title{ data: { type: 'artist', key: 'artists', value: 'reset'} } Artists
-			%ul.filter-list.artists.collapsed
-				- @artists_by_letter.keys.each do |letter|
-					%li.letter{ data: { type: 'artist',  key: 'letter', value: letter} }= letter
+- content_for :nav do
+	.filters
+		.filters-content
+			.filters-by
+				.filter-title{ data: { type: 'event', key: 'date', value: 'reset'} } Events By Day
+				%ul.filter-list.date.collapsed
+					- @days.each do |day|
+						- in_s = day.strftime(date_format)
+						%li.day{ data: { type: 'event', key: 'date', value:day.strftime(date_format_for_machine)}}= in_s
+				.filter-title{ data: { type: 'event', key: 'section', value: 'reset'} } Events By Type
+				%ul.filter-list.section.collapsed
+					- @sections.each do |sec|
+						%li.section{ data: { type: 'event', key: 'section', value: sec}}= sec
+				.filter-title{ data: { type: 'event', key: 'venue', value: 'reset'} } Events By Venue
+				%ul.filter-list.venue.collapsed
+					- @venues.each do |venue|
+						%li.venue{ data: { type: 'event', key: 'venue', value: venue.name}}= venue.name
+				.filter-title{ data: { type: 'artist', key: 'artists', value: 'reset'} } Artists
+				%ul.filter-list.artists.collapsed
+					- @artists_by_letter.keys.each do |letter|
+						%li.letter{ data: { type: 'artist',  key: 'letter', value: letter} }= letter
+	%ul.thumbnails
+		- @events.each do |ev|
+			%li{data: { "event-id" => ev.id }}
+				%img{'data-lazy-load' => ev.main_image.url(:tile)}
+		- @artists.each do |art|
+			%li{data: { "artist-id" => art.id }}
+				%img{'data-lazy-load' => art.profile_picture.url(:tile)}
 
 #program.in{data: { "date-start" => @event_dates.first.start.strftime("%Y-%m-%d %H:%M") } }
 	.legend
@@ -40,13 +48,5 @@
 				- if last_key != key
 					.line-break
 				= link_to "#", class: 'post out artist', id: "artist-#{artist.id}", data: { letter: artist.name[0].upcase, "artist-id": artist.id } do
-					%h2= artist.name
+					%h3.event-artist= artist.name
 				- last_key = key
-
-%ul.thumbnails
-	- @events.each do |ev|
-		%li{data: { "event-id" => ev.id }}
-			%img{'data-lazy-load' => ev.main_image.url(:tile)}
-	- @artists.each do |art|
-		%li{data: { "artist-id" => art.id }}
-			%img{'data-lazy-load' => art.profile_picture.url(:tile)}

@@ -1,0 +1,34 @@
+$header-height: 196px + 84px;
+$nav-width: 20vw;
+body{
+
+}
+header{
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+	padding: $margin-horizontal-normal;
+	@include lineJump(6);
+	font-weight: bold;
+	min-height: $lineheight-base*7;
+}
+.navigation-menu{
+	flex: 1 0 auto;
+	display: inline-flex;
+}
+nav{
+	position: fixed;
+	height: calc(100vh - #{$header-height});
+	bottom: 0;
+	width: $nav-width;
+	overflow: auto;
+}
+main{
+	margin-left: $nav-width;
+	overflow: auto;
+	padding-top: $header-height;
+}

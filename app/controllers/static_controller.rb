@@ -5,7 +5,7 @@ class StaticController < ApplicationController
   end
 
   def about
-    @text = Setting.first.about
+    @text = Setting.first.try(:about) || "Add a setting in the admin"
     @previous_editions = PreviousEdition.all.order("edition DESC")
     render :about
   end

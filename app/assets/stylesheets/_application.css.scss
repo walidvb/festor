@@ -4,6 +4,7 @@
 @import "mixins";
 @import "typography";
 @import "framework_and_overrides";
+@import "layout";
 @import "ui_components";
 @import "transitions";
 @import "header";
@@ -35,12 +36,7 @@ body{
 	color: $white;
 	background-color: $brand-color;
 	background-image: image-path('logo.svg');
-	@media #{$tablet}{
-		font-size : $body-size;
-		display: flex;
-		flex-direction: column;
-		height: 100vh;
-	}
+	font-size: 22px;
 }
 
 #background{
@@ -56,18 +52,6 @@ body{
 		width: auto;
 		height: 85%;
 		min-height: 450px;
-	}
-}
-
-main, #main-content{
-	display: flex;
-	flex: 1 0 auto;
-	overflow: auto;
-	@media #{$tablet}{
-		@include lineJump(6);
-	}
-	@media #{$md}{
-
 	}
 }
 

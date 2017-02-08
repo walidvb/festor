@@ -2,8 +2,9 @@ ul.thumbnails{
   z-index: -1;
   position: fixed;
   top: 0;
+  right: 0;
   height: 100%;
-  width: 100%;
+  width: calc(100% - #{$nav-width});
   pointer-events: none;
   li {
     position: absolute;
