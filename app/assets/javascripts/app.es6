@@ -11,7 +11,7 @@ class Program{
   constructor({ elem, dateStart, dateEnd, section, venue }){
     this.elem = elem;
     this.type = elem.hasClass('artist') ? 'artist' : 'event';
-    this.eventID = elem.data('event-id');
+    this.postID = elem.data(this.type+'-id');
     this.venue = venue;
     this.letter = elem.data('letter');
     this.dateStart = new Date(dateStart);
@@ -32,7 +32,8 @@ class Program{
     this._bindHover();
   }
   _bindHover(){
-    const thumbnail = $(`.thumbnails [data-event-id="${this.eventID}"]`);
+    const thumbnail = $(`.thumbnails [data-${this.type}-id="${this.postID}"]`);
+    console.log(`.thumbnails [data-${this.type}-id="${this.postID}"]`);
     this.elem.hover(
       (ev) => {
         $('body').addClass('program-hovered');
@@ -202,7 +203,7 @@ $(document).on('turbolinks:load', () => {
     programs = new Programs($prog);
     programs.positionAllByTime();
     programs.positionArtistLegend();
-    programs = programs;
+    programs.filterBy({ type: 'event', value: 'reset'})
     initFilters();
 
     function initFilters(){

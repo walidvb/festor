@@ -39,7 +39,7 @@
 			- artists.each do |artist|
 				- if last_key != key
 					.line-break
-				= link_to "#", class: 'post out artist', id: "artist-#{artist.id}", data: { letter: artist.name[0].upcase } do
+				= link_to "#", class: 'post out artist', id: "artist-#{artist.id}", data: { letter: artist.name[0].upcase, "artist-id": artist.id } do
 					%h2= artist.name
 				- last_key = key
 
@@ -47,3 +47,6 @@
 	- @events.each do |ev|
 		%li{data: { "event-id" => ev.id }}
 			%img{'data-lazy-load' => ev.main_image.url(:tile)}
+	- @artists.each do |art|
+		%li{data: { "artist-id" => art.id }}
+			%img{'data-lazy-load' => art.profile_picture.url(:tile)}
