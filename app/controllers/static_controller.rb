@@ -1,4 +1,5 @@
 class StaticController < ApplicationController
+  skip_before_filter :beta_only, only: [:tmp]
   def gallery
   	@galleries = Asset.gallery.includes(:assetable).group_by(&:assetable_id)
   end
@@ -23,4 +24,6 @@ class StaticController < ApplicationController
     render :tickets
   end
 
+  def tmp
+  end
 end
