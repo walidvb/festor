@@ -4,15 +4,10 @@ body{
 
 }
 header{
-	position: fixed;
-	top: 0;
-	left: 0;
-	right: 0;
 	display: flex;
 	flex-flow: row wrap;
 	justify-content: space-between;
 	padding: $margin-horizontal-normal;
-	@include lineJump(6);
 	font-weight: bold;
 	min-height: $lineheight-base*7;
 	z-index: 100;
@@ -22,23 +17,63 @@ header{
 	display: inline-flex;
 }
 nav{
-	position: fixed;
-	height: calc(100vh - #{$header-height});
-	bottom: 0;
-	width: $nav-width;
-	overflow: auto;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
 }
+
 main{
-	margin-left: $nav-width - 2vw;
-	overflow: auto;
-	padding-top: $header-height;
+	padding: 0 1rem;
+}
+@media #{$tablet}{
+	header{
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		@include lineJump(6);
+	}
+	main{
+		margin-left: $nav-width - 2vw;
+		overflow: auto;
+		padding-top: $header-height;
+	}
+	nav{
+		position: fixed;
+		height: calc(100vh - #{$header-height});
+		bottom: 0;
+		width: $nav-width;
+		overflow: auto;
+		/* REMOVE ONCE LIVE */
+		padding-top: 5rem;
+	}
 }
 
-
-/* REMOVE ONCE LIVE */
-nav{
-	padding-top: 5rem;
+@media #{$mobile}{
+	nav{
+		max-height: 0vh;
+		transition: max-height .4s $transition-long;
+		overflow: auto;
+		border-top: 1px solid transparent;
+	}
+	.nav{
+		margin-top: 2rem;
+		display: flex;
+		flex-flow: row wrap;
+		justify-content: space-between;
+		align-content: flex-end;
+		align-items: flex-end;
+		li{
+			flex: 0 0 50%;
+		}
+	}
+	.address{
+		margin-top: 5rem;
+	}
+	body.open{
+		nav{
+			max-height: 100vh;
+			border-top: 1px solid $white;
+		}
+	}
 }

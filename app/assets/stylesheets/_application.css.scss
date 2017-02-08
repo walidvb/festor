@@ -42,16 +42,24 @@ body{
 #background{
 	position: fixed;
   top: 0;
-  bottom: 0;
   left: 0;
   right: 0;
 	text-align: right;
 	z-index: -4;
 	opacity: .4;
 	svg{
-		width: auto;
-		height: 85%;
-		min-height: 450px;
+		width: 120vw;
+		transform: translateX(3vw);
+		height: auto;
+	}
+	@media #{$tablet}{
+		bottom: 0;
+		svg{
+			width: auto;
+			height: 100%;
+			min-height: 450px;
+			transform: translateY(-5px);
+		}
 	}
 }
 
@@ -105,7 +113,6 @@ ul{
 
 h1, h2{
 	font-family: $body-font;
-	font-weight: bold;
 	font-size: inherit;
 	margin: 0;
 }

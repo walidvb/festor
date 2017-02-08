@@ -22,9 +22,11 @@
 }
 
 nav{
-	font-weight: bold;
-	padding: 5rem 1rem 0;
-	//padding: 0 1rem;
+	@media #{$tablet}{
+		padding: 5rem 1rem 0;
+		//padding: 0 1rem;
+	}
+	padding: 0 1rem;
 	.gap-before{
 		margin-top: 2rem;
 	}
@@ -35,4 +37,63 @@ nav{
 
 footer{
 	font-size: 1rem;
+}
+
+.hamburger {
+	display: flex;
+	align-items: center;
+	width: 100px;
+	height: 100px;
+	margin: 0 auto;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	@media #{$tablet}{
+		display: none;
+	}
+}
+
+.bars,
+.bars:before,
+.bars:after {
+	position: relative;
+	width: 33px;
+	height: 3px;
+	margin: 0 auto;
+	background: #ffffff;
+	border-radius: 0px;
+	transition: top .2s .2s, transform .2s;
+}
+
+.bars:before,
+.bars:after {
+	content: "";
+	display: block;
+	position: absolute;
+}
+
+.bars:before {
+	top: -10px;
+}
+
+.bars:after {
+	top: 10px;
+}
+
+.open .bars:before,
+.open .bars:after {
+	transition: top .2s, transform .2s .2s;
+	top: 0;
+}
+
+.open .bars {
+	background: transparent;
+}
+
+.open .bars:before {
+	transform: rotate(45deg);
+}
+
+.open .bars:after {
+	transform: rotate(-45deg);
 }
