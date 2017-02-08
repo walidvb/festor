@@ -26,9 +26,9 @@ Festor::Application.routes.draw do
       get 'tickets' => 'static#tickets', as: :tickets
     end
 
-		resources :venues, controller: 'locations', only: [:index]
+		# resources :venues, controller: 'locations', only: [:index]
 
-		resources :artists, only: [:index, :show]
+		# resources :artists, only: [:index, :show]
 
     resources :partners, only: [:index]
 		get "admin/artists/sort" => 'artists#sortable_index'

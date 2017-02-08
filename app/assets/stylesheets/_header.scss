@@ -32,6 +32,10 @@ nav{
 	}
 	.nav li a{
 		padding: 0;
+		&:hover{
+			text-decoration: underline;
+			background: transparent;
+		}
 	}
 }
 
