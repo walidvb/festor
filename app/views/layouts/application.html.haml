@@ -15,8 +15,8 @@
 		%title= title
 
 		= favicon_link_tag 'favicon.png'
-		%meta{name:'styles', content: stylesheet_path("application_day", id: 'styles')}
-		%meta{name:'styles_night', content: stylesheet_path("application_night", id: 'styles')}
+		%meta{name:'styles', content: stylesheet_path("application_day")}
+		%meta{name:'styles_night', content: stylesheet_path("application_night")}
 		= stylesheet_link_tag 'application_day'
 		= javascript_include_tag "application", "data-turbolinks-track" => true
 		= csrf_meta_tags

@@ -26,7 +26,7 @@ gem 'sprockets-es6'
 gem 'inline_svg'
 gem "rails-erd"
 
-gem "react_on_rails", "~> 6"
+# gem "react_on_rails", "~> 6"
 
 #gem "paperclip-storage-ftp"
 #gem 'paperclip-meta'
