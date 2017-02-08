@@ -51,9 +51,10 @@ body{
   right: 0;
 	text-align: right;
 	z-index: -4;
+	opacity: .4;
 	svg{
 		width: auto;
-		height: 90%;
+		height: 85%;
 		min-height: 450px;
 	}
 }
@@ -139,19 +140,15 @@ h3, h4, h5, h6{
 
 main{font-family: $body-font;}
 
-body a{
-	text-decoration: none;
-	&:hover{
-		color: $black;
-		background:	$white;
-		text-decoration: none;
-	}
-}
 
 .page-title{
 	width: 100%;
 }
 #footer{
+}
+
+a:hover{
+	color: inherit;
 }
 
 .address{

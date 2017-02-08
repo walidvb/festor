@@ -13,6 +13,8 @@
   opacity: 1;
   transition: all 1s $transition-long;
   flex: 1 0 80vw;
+  position: relative;
+  display: inline-flex;
 }
 .post{
   &.resets{
@@ -30,10 +32,6 @@
 }
 
 #program{
-  height: 100%;
-  overflow: auto;
-  position: relative;
-  display: inline-flex;
   @media #{$mobile}{
     display: flex;
     flex-wrap: wrap;
@@ -48,7 +46,7 @@
   }
 }
 
-$transition: .3s ease-in-out;
+$transition: ease-in-out;
 .legend{
   width: $margin-horizontal-normal * 5;
   flex: 1 0 auto;
@@ -75,7 +73,7 @@ $transition: .3s ease-in-out;
   max-width: 35%;
   flex: 1 1 20%;
   padding: $margin-horizontal-normal;
-  transition: all #{$transition};
+  transition: all 1s #{$transition-long}, transform 1s #{$transition-long}, opacity .2s #{$transition-long} .15s;
   will-change: transform;
   display: block;
   &.inactive, &.out{

@@ -30,11 +30,13 @@ ul.thumbnails{
   }
 }
 
-.program-hovered{
-  .post, .header{
+.post, .header{
+  .program-hovered &{
     opacity: .1;
     z-index: -10;
+    transition: opacity .15s ease-out 0s;
     &:hover{
+      transition: opacity .1s ease-out 0s;
       opacity: .9;
       z-index: 10;
     }
