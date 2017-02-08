@@ -1,0 +1,232 @@
+
+@import "variables";
+
+@import "mixins";
+@import "typography";
+@import "framework_and_overrides";
+@import "ui_components";
+@import "transitions";
+@import "header";
+@import "partners";
+@import "artists";
+@import "events";
+@import "filters";
+@import "home";
+@import "newsletter";
+@import "grid_index.css.scss";
+@import "logo";
+@import "locations";
+@import "landing";
+@import "about";
+@import "program";
+@import "screenshots";
+@import "dump";
+@import "hover-thumbnails";
+
+html{
+	font-size: $base-font-size;
+	overflow-x: hidden;
+	color: $white;
+}
+
+body{
+	font-family: $body-font;
+	overflow-x: hidden;
+	color: $white;
+	background-color: $brand-color;
+	background-image: image-path('logo.svg');
+	@media #{$tablet}{
+		font-size : $body-size;
+		display: flex;
+		flex-direction: column;
+		height: 100vh;
+	}
+}
+
+#background{
+	position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+	text-align: right;
+	z-index: -4;
+	opacity: .4;
+	svg{
+		width: auto;
+		height: 85%;
+		min-height: 450px;
+	}
+}
+
+main, #main-content{
+	display: flex;
+	flex: 1 0 auto;
+	overflow: auto;
+	@media #{$tablet}{
+		@include lineJump(6);
+	}
+	@media #{$md}{
+
+	}
+}
+
+p{
+	margin-bottom: 0 !important;
+}
+
+footer{
+	@include lineJump(4);
+	align-self: flex-end;
+}
+
+h2{
+	clear: both;
+}
+
+a{
+	color: $white;
+}
+a:hover, a:active{
+	text-decoration: none;
+}
+
+.container{
+	padding: 0 14px;
+}
+
+img, canvas, iframe{
+	max-width: 100%;
+}
+iframe{
+	border: none;
+	display: block;
+	margin: auto;
+}
+
+table{
+	background: transparent;
+}
+canvas{
+	width: 100%;
+	vertical-align: bottom;
+}
+
+ul{
+	li{
+		list-style: none;
+	}
+	padding-left: 0;
+	-webkit-margin-before: 0em;
+	-webkit-margin-after: 0em;
+	-webkit-margin-start: 0px;
+	-webkit-margin-end: 0px;
+	-webkit-padding-start: 0px;
+}
+
+h1, h2{
+	font-family: $body-font;
+	font-weight: bold;
+	font-size: inherit;
+	margin: 0;
+}
+
+h3, h4, h5, h6{
+	font-family: $body-font;
+	font-weight: inherit;
+	font-size: inherit;
+	margin: 0;
+}
+
+main{font-family: $body-font;}
+
+
+.page-title{
+	width: 100%;
+}
+#footer{
+}
+
+a:hover{
+	color: inherit;
+}
+
+.address{
+	@media #{$tablet}{
+		text-align: right;
+	}
+}
+
+.social{
+	.fa-icon{
+		margin-right: 5px;
+		a:hover{
+			background: $white;
+		}
+		//&:hover:before{
+		//	border-color: $dark-grey;
+		//	box-shadow: inset	0	10px	0 $black;
+		//}
+		&:before{
+	    width: 1.3em;
+	    height: 1.3em;
+	    line-height: 1.15em;
+			text-align: center;
+			display: inline-block;
+		}
+	}
+}
+
+#main-content{
+	@media #{$tablet}{
+		margin-left: 20%;
+	}
+}
+
+#footer{
+	border-top: solid 1px $black;
+	display: flex;
+}
+
+.map iframe {
+  min-height: 480px;
+}
+
+/* Works in Safari */
+::selection {
+	background-color: darken($brand-color, 0%);
+	color: $white
+}
+/* Mozilla based browsers */
+::-moz-selection {
+	background-color: $brand-color;
+	color: $white
+}
+
+.admin .sortable-list li{
+	&.ui-sortable-placeholder, &.sortable-placeholder{
+		min-height: 40px;
+		@extend .list-group-item;
+		margin-bottom: 5px;
+	}
+}
+.admin .sortable li{
+	&.ui-sortable-placeholder, &.sortable-placeholder{
+		visibility: visible!important;
+		display: inline-block;
+	}
+	cursor: grab;
+	&.ui-sortable-helper{
+		cursor: grabbing;
+	}
+	i{
+		visibility: hidden;
+	}
+	&:hover i{
+		visibility: visible;
+	}
+}
+
+.turbolinks-progress-bar {
+  height: 0!important;
+}
