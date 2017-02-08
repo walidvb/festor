@@ -71,15 +71,15 @@ h2{
 	clear: both;
 }
 
+h1, h2{
+	font-weight: normal;
+}
+
 a{
 	color: $white;
 }
 a:hover, a:active{
-	text-decoration: none;
-}
-
-.container{
-	padding: 0 14px;
+	text-decoration: underline;
 }
 
 img, canvas, iframe{

@@ -77,7 +77,7 @@ en:
     ticket: "Tickets"
   time:
     to: 'to'
-    coming_soon: 'Coming soon...'
+    coming_soon: 'Programmation in process'
   admin:
     actions:
       sync:

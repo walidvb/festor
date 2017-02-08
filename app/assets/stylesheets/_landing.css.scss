@@ -8,3 +8,34 @@
   z-index: 1000;
   cursor: pointer;
 }
+
+.volets{
+  display: flex;
+  flex-direction: column;
+  .volet, .in-construction{
+    margin: 2rem 0;
+  }
+  .volet:nth-child(1){
+    align-self: flex-end;
+  }
+  .volet:nth-child(2){
+    align-self: flex-start;
+  }
+  .volet:nth-child(3){
+    align-self: center;
+  }
+  .in-construction{
+    align-self: center;
+    text-decoration: underline;
+  }
+  @media #{$tablet}{
+    width: 80%;
+    margin: auto;
+    .in-construction{
+      align-self: flex-end
+    }
+    .volet:nth-child(1){
+      margin-left: 8vw;
+    }
+  }
+}
