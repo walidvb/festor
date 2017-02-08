@@ -238,9 +238,12 @@ class Programs{
         });
       }
     }
+
+    $('nav').on('scroll', e => e.preventDefault() )
   });
 
   $(window).on('resize', () => programs.positionAll() );
+
   function reset(_$){
     _$.addClass('reset').removeClass('out in');
     document.body.offsetHeight;

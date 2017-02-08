@@ -14,7 +14,7 @@
 *= require_tree ../../../../../vendor/assets/components/froala/css/
 */
 
-
+@import '../../../../../vendor/assets/components/froala/css/froala_editor.min';
 // reomve the unlicenced warning from froala
 [href="http://editor.froala.com"] {
 	display: none!important;
@@ -24,4 +24,8 @@
 	.ui-datepicker, .ui-timepicker{
 		z-index: 1051 !important;
 	}
+}
+
+.page-header h1{
+	color: red!important;
 }

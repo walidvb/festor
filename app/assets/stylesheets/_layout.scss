@@ -15,6 +15,7 @@ header{
 	@include lineJump(6);
 	font-weight: bold;
 	min-height: $lineheight-base*7;
+	z-index: 100;
 }
 .navigation-menu{
 	flex: 1 0 auto;
