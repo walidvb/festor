@@ -12,4 +12,11 @@
 	.static-page iframe{
 		margin-top: 4rem;
 	}
+	#archives{
+		display: flex;
+		flex-flow: row wrap;
+		.grid-item{
+			flex: 0 0 25%;
+		}
+	}
 }

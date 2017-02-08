@@ -33,40 +33,40 @@
 	}
 }
 /* isotope requirements*/
-.grid{
-	margin-left: -$grid-gutter-width/2;
-	margin-right: -$grid-gutter-width/2;
-	@media #{$tablet}{
-		margin-left: inherit;
-		margin-right: inherit;
-		margin-bottom: $lineheight-base * 4;
-	}
-	&.ready .grid-item{
-		opacity: 0.83;
-	}
-  .grid-item{
-		opacity: 0;
-    width: 100%;
-    @media #{$tablet}{
-      width: 50%;
-    }
-    @media #{$md}{
-      width: 25%;
-      &.grid-item--width2 {
-        width: 15%;
-      }
-    }
-  }
-  &.previous-editions .grid-item{
-    width: 100%;
-    @media #{$tablet}{
-      width: 10%;
-    }
-    @media #{$md}{
-      width: 10%;
-    }
-  }
-}
+//.grid{
+//	margin-left: -$grid-gutter-width/2;
+//	margin-right: -$grid-gutter-width/2;
+//	@media #{$tablet}{
+//		margin-left: inherit;
+//		margin-right: inherit;
+//		margin-bottom: $lineheight-base * 4;
+//	}
+//	&.ready .grid-item{
+//		opacity: 0.83;
+//	}
+//  .grid-item{
+//		opacity: 0;
+//    width: 100%;
+//    @media #{$tablet}{
+//      width: 50%;
+//    }
+//    @media #{$md}{
+//      width: 25%;
+//      &.grid-item--width2 {
+//        width: 15%;
+//      }
+//    }
+//  }
+//  &.previous-editions .grid-item{
+//    width: 100%;
+//    @media #{$tablet}{
+//      width: 10%;
+//    }
+//    @media #{$md}{
+//      width: 10%;
+//    }
+//  }
+//}
 
 @mixin infoOn(){
 	.tile-link, .image{

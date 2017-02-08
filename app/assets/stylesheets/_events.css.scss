@@ -178,6 +178,7 @@ h1{
 .show-desc, .event-artist-bio, .artist-desc, .static-desc{
 	margin-right: auto;
 	font-weight: bold;
+	max-width: 70ch;
 	a{
 		text-decoration: underline;
 	}

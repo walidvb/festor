@@ -29,7 +29,7 @@ nav{
 	overflow: auto;
 }
 main{
-	margin-left: $nav-width;
+	margin-left: $nav-width - 2vw;
 	overflow: auto;
 	padding-top: $header-height;
 }

@@ -5,8 +5,7 @@
 	= @text.try(:html_safe) || 'Coming soon...'
 .previous-title.page-title
 	%h1= t("nav.archives")
-.previous-editions.grid#previous
-	.grid-item.grid-sizer
+.previous-editions#archives
 	- @previous_editions.each do |prev|
 		.grid-item
 			= image_tag prev.thumbnail(:cropped)
