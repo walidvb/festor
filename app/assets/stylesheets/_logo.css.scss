@@ -5,9 +5,16 @@
 	.name{
 		min-height: $lineheight-base*3;
 		font-size: 3rem;
+		margin-top: 1.5rem;
+		@media #{$tablet}{
+			margin-top: 0;
+		}
 	}
 	.subtitle{
-		@include lineJump(3);
+		@include lineJump(1);
+		@media #{$tablet}{
+			@include lineJump(3);
+		}
 	}
  .motto, .festival.date, .festival-location{
 		display: block;
