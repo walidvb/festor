@@ -12,6 +12,7 @@
 .volets{
   display: flex;
   flex-direction: column;
+  font-size: 1.2em;
   .volet, .in-construction{
     margin: 2rem 0;
   }
@@ -35,7 +36,7 @@
       align-self: flex-end
     }
     .volet:nth-child(1){
-      margin-left: 8vw;
+      margin-right: 8vw;
     }
   }
 }

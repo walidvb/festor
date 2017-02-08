@@ -63,7 +63,7 @@ class ApplicationController < ActionController::Base
   end
 
   def beta_only
-    redirect_to beta_path if !cookies[:beta].present? && /sessions|confirmation/.match(params[:controller]).nil?# && Rails.env.production?
+    redirect_to beta_path if !cookies[:beta].present? && /sessions|confirmation/.match(params[:controller]).nil? && Rails.env.production?
   end
 
 

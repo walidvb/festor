@@ -34,8 +34,8 @@
 				%li= link_to t('nav.contact'), 'mailto:nous@mappingfestival.com'
 				%script{:src => "//app.mailerlite.fr/js/w/button.js", :type => "text/javascript", defer: true}
 
-				%li.gap-before= link_to t('nav.partners'), partners_path(locale: I18n.locale)
-				%li= link_to t('nav.archives'), about_path(anchor: 'archives', locale: I18n.locale)
+				-# %li.gap-before= link_to t('nav.partners'), partners_path(locale: I18n.locale)
+				%li.gap-before= link_to t('nav.archives'), about_path(anchor: 'archives', locale: I18n.locale)
 
 				%li.gap-before
 					= link_to("http://www.instagram.com/mappingfestival", target: '_blank') do
@@ -59,12 +59,12 @@
 			= yield
 			:plain
 				<script>
-					-# (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-					-# (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-					-# m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-					-# })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-					-#
-					-# ga('create', 'UA-27024782-20', 'auto');
-					-# ga('send', 'pageview');
+					(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+					(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+					m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+					})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+					ga('create', 'UA-27024782-20', 'auto');
+					ga('send', 'pageview');
 
 				</script>
