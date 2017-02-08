@@ -17,6 +17,7 @@
 		flex-flow: row wrap;
 		.grid-item{
 			flex: 0 0 25%;
+			position: relative;
 		}
 	}
 }
