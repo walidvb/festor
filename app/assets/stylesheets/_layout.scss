@@ -20,6 +20,7 @@ nav{
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+
 }
 
 main{
@@ -44,6 +45,7 @@ main{
 		bottom: 0;
 		width: $nav-width;
 		overflow: auto;
+		border-right: solid 1px $white;
 		/* REMOVE ONCE LIVE */
 		padding-top: 5rem;
 	}
@@ -60,7 +62,6 @@ main{
 		margin-top: 2rem;
 		display: flex;
 		flex-flow: row wrap;
-		justify-content: space-between;
 		align-content: flex-end;
 		align-items: flex-end;
 		li{

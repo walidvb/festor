@@ -35,7 +35,7 @@ body{
 	overflow-x: hidden;
 	color: $white;
 	background-color: $brand-color;
-	background-image: image-path('logo.svg');
+	background-image: url(image-path('logo.svg'));
 	font-size: 22px;
 }
 
@@ -47,6 +47,7 @@ body{
 	text-align: right;
 	z-index: -4;
 	opacity: .4;
+	display: none;
 	svg{
 		width: 120vw;
 		transform: translateX(3vw);

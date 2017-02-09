@@ -31,13 +31,13 @@
 			= yield :nav
 			%ul.nav
 				%li= link_to t('nav.about'), about_path(locale: I18n.locale)
-				%li= link_to t('nav.contact'), 'mailto:nous@mappingfestival.com'
+				%li.gap-after= link_to t('nav.contact'), 'mailto:nous@mappingfestival.com'
 				%script{:src => "//app.mailerlite.fr/js/w/button.js", :type => "text/javascript", defer: true}
 
 				-# %li.gap-before= link_to t('nav.partners'), partners_path(locale: I18n.locale)
-				%li.gap-before= link_to t('nav.archives'), about_path(anchor: 'archives', locale: I18n.locale)
+				%li.gap-after= link_to t('nav.archives'), about_path(anchor: 'archives', locale: I18n.locale)
 
-				%li.gap-before
+				%li
 					= link_to("http://www.instagram.com/mappingfestival", target: '_blank') do
 						%span Instagram
 						.fa.fa-icon.fa-instagram
@@ -45,7 +45,7 @@
 					= link_to("http://www.twitter.com/mappingfestival", target: '_blank') do
 						%span	Twitter
 						.fa.fa-icon.fa-twitter
-				%li
+				%li.gap-after
 					= link_to("https://www.facebook.com/pages/Mapping-Festival/162958139889", target: '_blank') do
 						%span Facebook
 						.fa.fa-icon.fa-facebook
