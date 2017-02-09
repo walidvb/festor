@@ -36,6 +36,14 @@ body{
 	color: $white;
 	background-color: $brand-color;
 	background-image: url(image-path('logo.svg'));
+	background-repeat: no-repeat;
+	background-position: 5vw top;
+	background-size: 120% auto;
+	background-attachment: fixed;
+	@media #{$tablet}{
+		background-size: auto 100%;
+		background-position: top right;
+	}
 	font-size: 22px;
 }
 
