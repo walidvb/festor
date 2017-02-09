@@ -50,8 +50,8 @@ footer{
 	height: 100px;
 	margin: 0 auto;
 	position: absolute;
-	top: 0px;
-	right: 0px;
+	top: -10px;
+	right: -15px;
 	@media #{$tablet}{
 		display: none;
 	}
