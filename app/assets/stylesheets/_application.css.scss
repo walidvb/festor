@@ -23,11 +23,18 @@
 @import "screenshots";
 @import "dump";
 @import "hover-thumbnails";
+@import "nav_drawer";
 
 html{
 	font-size: $base-font-size;
 	overflow-x: hidden;
 	color: $white;
+}
+
+.message{
+	font-size: .7em;
+border-bottom: solid white 1px;
+
 }
 
 body{
@@ -102,10 +109,6 @@ iframe{
 
 table{
 	background: transparent;
-}
-canvas{
-	width: 100%;
-	vertical-align: bottom;
 }
 
 ul{

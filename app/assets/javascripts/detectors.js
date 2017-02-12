@@ -7,8 +7,3 @@ function iOSVersion() {
   }
   else return -1;
 }
-
-function disableLines(){
-  return (iOSVersion() > 0 && iOSVersion() < 9) ||
-    (window.screen.availWidth < 375) || window.hasOwnProperty('ontouchstart');
-}

@@ -1,0 +1,42 @@
+$drawer-opening-time: .5s;
+$drawer-side-padding: 1rem;
+.nav > li{
+  position: static;
+}
+
+.drawer-container{
+  transition: all .5s ease-in-out;
+  transform: translateX(0%);
+  padding: 5rem $drawer-side-padding 0;
+  &.drawer-open{
+    transform: translateX(-100%);
+  }
+}
+
+.drawer{
+  position: absolute;
+  left: 100%;
+  padding: 5rem $drawer-side-padding 0;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  opacity: 0;
+  transition: all $drawer-opening-time ease-in-out;
+  pointer-events: none;
+  transform: translateX(1rem);
+  &.open{
+    transform: translateX(0rem);
+    //transition: all 0s ease-in-out;
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+
+[data-drawer]{
+  &:after{
+    content: '>';
+    display: inline-block;
+    float: right;
+  }
+}

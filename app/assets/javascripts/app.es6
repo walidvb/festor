@@ -33,7 +33,6 @@ class Program{
   }
   _bindHover(){
     const thumbnail = $(`.thumbnails [data-${this.type}-id="${this.postID}"]`);
-    console.log(`.thumbnails [data-${this.type}-id="${this.postID}"]`);
     this.elem.hover(
       (ev) => {
         $('body').addClass('program-hovered');
