@@ -6,9 +6,9 @@ class EventsController < ApplicationController
 		@filters = Event.section_enum
 
 		@all_dates = {}
-		@events = Event.all
+		@events = Event.where.not(section: 'Exposition')
 		@sections = Event.pluck(:section).uniq.compact
-		@event_dates = EventDate.order('start ASC').includes(:event, :artists, :location)
+		@event_dates = EventDate.where(event_id: @events.map(&:id)).order('start ASC').includes(:event, :artists, :location)
 		@artists = Artist.all.order(:name)
 		@artists_by_letter = @artists.group_by{|artist| artist.name[0].upcase}
 		@days = EventDate.all.pluck(:start).map(&:to_date).uniq

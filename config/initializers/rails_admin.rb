@@ -49,7 +49,7 @@ RailsAdmin.config do |config|
         proc do
           begin
             ZoneFestivalSyncer.sync!
-            redirect_to '/admin', notice: 'Database successfully synced'
+            redirect_to '/admin', notice: 'Database successfully synced. Please wait a moment for the images to syncronise as well.'
           rescue => e
             redirect_to '/admin', alert: "Error when syncing database: #{e}"
           end
