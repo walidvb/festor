@@ -25,6 +25,7 @@ gem 'sprockets', '>= 3.0.0'
 gem 'sprockets-es6'
 gem 'inline_svg'
 gem "rails-erd"
+gem 'delayed_job_active_record'
 
 # gem "react_on_rails", "~> 6"
 

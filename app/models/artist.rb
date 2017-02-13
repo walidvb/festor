@@ -42,6 +42,11 @@ class Artist < ActiveRecord::Base
   	Booking.create! event: event, artist: self
   end
 
+  def set_image_from_url url
+    self.profile_picture = open(url)
+    self.save!
+  end
+
   def self.type_enum
     [:vj, :dj, :instructor, :performer, :exhibitor]
   end
