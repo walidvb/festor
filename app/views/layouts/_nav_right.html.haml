@@ -32,7 +32,7 @@
 		%ul
 			- @messages.each do |message|
 				%li.message
-				= message.message.html_safe
+					= message.message.html_safe
 				=# link_to message.link, class: [message.colorbox? ? 'colorbox' : nil].join(' ') do
 	.drawer#nav-program
 		.back <
