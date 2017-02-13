@@ -44,7 +44,7 @@ main{
 		height: calc(100vh - #{$header-height});
 		bottom: 0;
 		width: $nav-width;
-		overflow: auto;
+		overflow-y: auto;
 		border-right: solid 1px $white;
 	}
 }

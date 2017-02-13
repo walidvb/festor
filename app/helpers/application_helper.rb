@@ -21,7 +21,7 @@ module ApplicationHelper
   end
 
   def date_format
-    "%m-%d-%y"
+    "%e %B"
   end
 
   def active_link_to txt, url
