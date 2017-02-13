@@ -32,8 +32,8 @@
 		%ul
 			- @messages.each do |message|
 				%li.message
-					= link_to message.link, class: [message.colorbox? ? 'colorbox' : nil].join(' ') do
-						= message.message
+				= message.message.html_safe
+				=# link_to message.link, class: [message.colorbox? ? 'colorbox' : nil].join(' ') do
 	.drawer#nav-program
 		.back <
 		= yield :nav
