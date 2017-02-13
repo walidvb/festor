@@ -8,6 +8,7 @@ $drawer-side-padding: 1rem;
   transition: all .5s ease-in-out;
   transform: translateX(0%);
   padding: 5rem $drawer-side-padding 0;
+  overflow-x: hidden;
   &.drawer-open{
     transform: translateX(-100%);
   }
