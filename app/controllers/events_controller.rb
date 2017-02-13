@@ -4,7 +4,6 @@ class EventsController < ApplicationController
 
 	def program
 		@filters = Event.section_enum
-
 		@all_dates = {}
 		@events = Event.where.not(section: 'Exposition')
 		@sections = Event.pluck(:section).uniq.compact

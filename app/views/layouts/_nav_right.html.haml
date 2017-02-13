@@ -1,8 +1,11 @@
 .drawer-container
 	%ul.nav
-		- if content_for? :nav
+		- if user_signed_in?
 			%li.gap-after
 				= link_to t('nav.program'), program_path(locale: I18n.locale), data: { drawer: '#nav-program' }
+		- if user_signed_in?
+			%li.gap-after
+				= link_to t('nav.exhibition'), event_path(@exhib, locale: I18n.locale), data: { drawer: '#nav-exhib' }
 		- if !@messages.empty?
 			%li.gap-after
 				%a{href: '#', "data-drawer" => '#nav-news'}= t('nav.news')
@@ -27,6 +30,10 @@
 				%span Facebook
 				.fa.fa-icon.fa-facebook
 
+	.drawer#nav-exhib
+		.back <
+		%p= @exhib.short_description.try(:html_safe)
+		.more-info= link_to t('shared.more_info'), event_path(@exhib, locale: I18n.locale)
 	.drawer#nav-news
 		.back <
 		%ul

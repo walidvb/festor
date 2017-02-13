@@ -63,6 +63,7 @@ module ZoneFestivalSyncer
         event.description = first_show['description_long_1']
         event.title = first_show['title_selected']
       end
+      event.short_description = first_show['description_short_1']
 
       event.location = Location.find_by_zf_id(date['venue_id'])
       section_from_show = self.section_for_show(event.zf_id, zf)
