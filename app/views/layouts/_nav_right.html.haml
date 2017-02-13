@@ -1,7 +1,8 @@
 .drawer-container
 	%ul.nav
-		%li.gap-after
-			= link_to t('nav.program'), program_path(locale: I18n.locale), data: { drawer: '#nav-program' }
+		- if content_for? :nav
+			%li.gap-after
+				= link_to t('nav.program'), program_path(locale: I18n.locale), data: { drawer: '#nav-program' }
 		%li.gap-after
 			%a{href: '#', "data-drawer" => '#nav-news'}= t('nav.news')
 
@@ -28,8 +29,10 @@
 	.drawer#nav-news
 		.back <
 		%ul
-			- @messages.each do |mess|
-				%li.message= mess.message.try(:html_safe)
+			- @messages.each do |message|
+				%li.message
+					= link_to message.link, class: [message.colorbox? ? 'colorbox' : nil].join(' ') do
+						= message.message
 	.drawer#nav-program
 		.back <
 		= yield :nav

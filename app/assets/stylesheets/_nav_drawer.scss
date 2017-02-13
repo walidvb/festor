@@ -16,22 +16,26 @@ $drawer-side-padding: 1rem;
 .drawer{
   position: absolute;
   left: 100%;
-  padding: 5rem $drawer-side-padding 0;
+  padding: 1rem $drawer-side-padding 0;
   top: 0;
   bottom: 0;
   width: 100%;
   opacity: 0;
-  transition: all $drawer-opening-time ease-in-out;
+  transition: all 0s ease-in-out $drawer-opening-time;
   pointer-events: none;
-  transform: translateX(1rem);
+  transform: translateX(2rem);
+  background: black;
   &.open{
     transform: translateX(0rem);
-    //transition: all 0s ease-in-out;
+    transition: all $drawer-opening-time ease-in-out;
     opacity: 1;
     pointer-events: auto;
   }
 }
 
+.drawer .back{
+  cursor: pointer;
+}
 
 [data-drawer]{
   &:after{

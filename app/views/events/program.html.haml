@@ -23,6 +23,7 @@
 				%ul.filter-list.artists.collapsed
 					- @artists_by_letter.keys.each do |letter|
 						%li.letter{ data: { type: 'artist',  key: 'letter', value: letter} }= letter
+- content_for :thumbnails do
 	%ul.thumbnails
 		- @events.each do |ev|
 			%li{data: { "event-id" => ev.id }}
