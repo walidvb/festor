@@ -66,7 +66,10 @@ module ZoneFestivalSyncer
       end
 
       event.location = Location.find_by_zf_id(date['venue_id'])
-      event.section = self.sections_for_show(event.zf_id, zf).first
+      section_from_show = self.section_for_show(event.zf_id, zf)
+      section_from_program = self.section_for_program(date, zf)
+      section = section_from_show || section_from_program
+      event.section = section['name_1']
       event.save!
       if img = first_show['image'][0]
         event.delay.set_image_from_url(img['url'])
@@ -91,6 +94,9 @@ module ZoneFestivalSyncer
           artist.country = art['country']
           artist.zf_id = art['id'].to_i
           artist.biography = art['biography_1']
+          art['website'].each do |web|
+            artist.links << Link.create!(text_to_show: web['type_1'], url: web['website'])
+          end
           artist.save!
           if img = art['image'][0]
             artist.delay.set_image_from_url(img['url'])
@@ -100,6 +106,7 @@ module ZoneFestivalSyncer
       end
     end
   end
+
   def self.store_venues zf
     Rails.logger.info "processing venues"
     zf['venue'].each do |loc|
@@ -118,11 +125,16 @@ module ZoneFestivalSyncer
     zf['show'].select{|show| show_ids.include?(show['id'])}
   end
 
-  def self.sections_for_show show_id, zf
+  def self.section_for_show show_id, zf
     zf['section_show_list'].map do |s_s|
       if s_s['show_id'].to_i == show_id
         zf['section'].find{|sect| sect['id'] == s_s['section_id']}['name_1']
       end
-    end.compact
+    end.compact.first
+  end
+
+  def self.section_for_program(date, zf)
+    section_id = date['section_id']
+    zf['section'].find{|sec| sec['id'] == section_id}
   end
 end

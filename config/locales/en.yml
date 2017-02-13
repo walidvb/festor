@@ -82,3 +82,5 @@ en:
     actions:
       sync:
         menu: 'Sync with Zone Festival'
+      reset_and_sync:
+        menu: 'Reset all data and sync with Zone Festival'

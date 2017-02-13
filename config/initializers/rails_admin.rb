@@ -47,8 +47,20 @@ RailsAdmin.config do |config|
     root :sync do
       controller do
         proc do
-          ZoneFestivalSyncer.sync!
           begin
+            ZoneFestivalSyncer.sync!
+            redirect_to '/admin', notice: 'Database successfully synced'
+          rescue => e
+            redirect_to '/admin', alert: "Error when syncing database: #{e}"
+          end
+        end
+      end
+    end
+    root :reset_and_sync do
+      controller do
+        proc do
+          begin
+            ZoneFestivalSyncer.reset_and_sync!
             redirect_to '/admin', notice: 'Database successfully synced'
           rescue => e
             redirect_to '/admin', alert: "Error when syncing database: #{e}"
