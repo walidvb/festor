@@ -6,15 +6,15 @@
 	.filters
 		.filters-content
 			.filters-by
+				.filter-title.active{ data: { type: 'event', key: 'section', value: 'reset'} } Events By Type
+				%ul.filter-list.section
+					- @sections.each do |sec|
+						%li.section{ data: { type: 'event', key: 'section', value: sec}}= sec
 				.filter-title{ data: { type: 'event', key: 'date', value: 'reset'} } Events By Day
 				%ul.filter-list.date.collapsed
 					- @days.each do |day|
 						- in_s = day.strftime(date_format)
 						%li.day{ data: { type: 'event', key: 'date', value:day.strftime(date_format_for_machine)}}= in_s
-				.filter-title{ data: { type: 'event', key: 'section', value: 'reset'} } Events By Type
-				%ul.filter-list.section.collapsed
-					- @sections.each do |sec|
-						%li.section{ data: { type: 'event', key: 'section', value: sec}}= sec
 				.filter-title{ data: { type: 'event', key: 'venue', value: 'reset'} } Events By Venue
 				%ul.filter-list.venue.collapsed
 					- @venues.each do |venue|
