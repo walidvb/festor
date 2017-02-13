@@ -6,10 +6,8 @@ module ZoneFestivalSyncer
 
   def self.reset_and_sync!
     Artist.destroy_all
-    EventDate.destroy_all
     Event.destroy_all
     Location.destroy_all
-    Booking.destroy_all
     self.sync!
   end
 
