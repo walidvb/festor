@@ -3,8 +3,9 @@
 		- if content_for? :nav
 			%li.gap-after
 				= link_to t('nav.program'), program_path(locale: I18n.locale), data: { drawer: '#nav-program' }
-		%li.gap-after
-			%a{href: '#', "data-drawer" => '#nav-news'}= t('nav.news')
+		- if !@messages.empty?
+			%li.gap-after
+				%a{href: '#', "data-drawer" => '#nav-news'}= t('nav.news')
 
 		%li= link_to t('nav.contact'), 'mailto:nous@mappingfestival.com'
 		%li= link_to t('nav.about'), about_path(locale: I18n.locale)
