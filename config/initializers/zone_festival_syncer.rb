@@ -9,6 +9,7 @@ module ZoneFestivalSyncer
     EventDate.destroy_all
     Event.destroy_all
     Location.destroy_all
+    Booking.destroy_all
     self.sync!
   end
 
@@ -69,6 +70,7 @@ module ZoneFestivalSyncer
       section_from_show = self.section_for_show(event.zf_id, zf)
       section_from_program = self.section_for_program(date, zf)
       section = section_from_show || section_from_program
+      puts section
       event.section = section['name_1']
       event.save!
       if img = first_show['image'][0]
@@ -101,7 +103,9 @@ module ZoneFestivalSyncer
           if img = art['image'][0]
             artist.delay.set_image_from_url(img['url'])
           end
-          event.artists << artist
+          if !event.artists.map(&:id).include?(artist.id)
+            event.artists << artist
+          end
         end
       end
     end
@@ -128,7 +132,7 @@ module ZoneFestivalSyncer
   def self.section_for_show show_id, zf
     zf['section_show_list'].map do |s_s|
       if s_s['show_id'].to_i == show_id
-        zf['section'].find{|sect| sect['id'] == s_s['section_id']}['name_1']
+        zf['section'].find{|sect| sect['id'] == s_s['section_id']}
       end
     end.compact.first
   end

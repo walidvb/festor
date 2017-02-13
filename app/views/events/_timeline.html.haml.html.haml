@@ -17,5 +17,5 @@
         .info
           .event-date= event_date.start.strftime('%H:%M')
           .event-type= event.section
-          %h3.event-artists= artists.first.try(:name)
+          %h3.event-artists= artists.map(&:name).join(', ')
           .event-name= event.title
