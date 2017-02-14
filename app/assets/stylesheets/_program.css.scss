@@ -1,3 +1,9 @@
+.program-page{
+  main{
+    padding: 1rem 0 1rem 2rem;
+  }
+}
+
 #program{
   transition: all 1s $transition-long;
   flex: 1 0 80vw;
@@ -38,22 +44,45 @@ $transition: ease-in-out;
 .legend{
   width: $margin-horizontal-normal * 5;
   flex: 0 0 auto;
-  position: relative;
   .day, .letter{
     transition: all #{$transition};
     position: absolute;
-    right: $margin-horizontal-normal;
-    padding: 1rem 5px;
+    left: -6.7rem;
+    transform-origin: top right;
+    right: auto;
+
+    &:after{
+      content: '';
+      display: inline-block;
+      height: 100vw;
+      border-right: solid 1px white;
+      vertical-align: top;
+      z-index: 100000;
+      position: relative;
+      padding-right: 1rem;
+    }
+  }
+    @media #{$tablet}{
+      position: static;
+      .day, .letter{
+        right: $margin-horizontal-normal;
+        padding: 1rem 5px;
+        &:after{
+          content: none;
+        }
+    }
   }
 
   [data-current-type="event"] &{
     .letter{
       opacity: 0;
+      pointer-events: none;
     }
   }
   [data-current-type="artist"] &{
     .day{
       opacity: 0;
+      pointer-events: none;
     }
   }
 }
@@ -67,16 +96,21 @@ $transition: ease-in-out;
   &.inactive, &.out{
     opacity: .15;
     pointer-events: none;
+    max-height: 0rem;
+    padding: 0 $margin-horizontal-normal;
   }
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
   @media #{$tablet}{
     max-width: 35%;
+    max-height: auto;
     @for $conflict from 1 to 10{
       &[data-conflict-count="#{$conflict}"]{
         max-width: 100%/$conflict;
       }
     }
   }
-
   @for $i from 1 to 15{
     &:nth-child(#{$i}n){
       transition-delay: #{random(300)}ms;
@@ -96,12 +130,6 @@ $transition: ease-in-out;
   margin-bottom: 5rem;
 }
 
-.program-artists{
-  display: block;
-  font-size: $body-size*1.2;
-  @include lineHeight($body-size*1.2);
-}
-
 .event-date, .event-type{
   display: inline-block;
 }
@@ -109,167 +137,3 @@ $transition: ease-in-out;
   font-size: $body-size*0.8;
   margin-bottom: $lineheight-base*1;
 }
-
-
-// #program{
-//   margin-top: lineJump(3);
-//   .grid-item{
-//     @media #{$tablet}{
-//       width: 33%;
-//     }
-//     @media #{$md}{
-//       width: 10%;
-//       &.grid-item--width2 {
-//         width: 15%;
-//       }
-//     }
-//   }
-//   .program-events-grid{
-//     @media #{$tablet}{
-//       padding-top: calc(2rem + 3px);
-//     }
-//   }
-//   .events-list{
-//     transition: all 0.5s ease-out;
-//     overflow: hidden;
-//     margin-top: 0.5rem;
-//     transition: all .2s ease-out;
-//     @media #{$tablet}{
-//       max-height: initial;
-//     }
-//   }
-//   .day{
-//     width: 100%;
-//     cursor: pointer;
-//     &:hover, &.focused{
-//       font-weight: bold;
-//     }
-//     transition: all 0.3s ease-out;
-//   }
-//   @media #{$mobile}{
-//     .grid-item{
-//       position: relative !important;
-//       top: 0 !important;
-//       left: 0 !important;
-//       margin-top: 0 !important;
-//       margin-bottom: 0 !important;
-//     }
-//     .day{
-//       margin-top: 3rem;
-//       margin-bottom: 1rem;
-//     }
-//     &.dates-only{
-//       .events-list{
-//         max-height: 0px!important;
-//       }
-//       .day{
-//         max-height: 3rem!important;
-//         min-height: 3rem;
-//         margin-top: 0;
-//         margin-bottom: 0;
-//         .location-link{
-//           line-height: 3rem;
-//         }
-//       }
-//     }
-//
-//     .artist-name{
-//       display: inline-block;
-//       &:not(:first-child):before{
-//         content: '/';
-//         padding-right: 5px;
-//       }
-//     }
-//     .events-list{
-//       height: auto!important;
-//     }
-//   }
-//   .location-link{
-//     border-bottom-color: $black;
-//     transition: all .2s ease-out;
-//   }
-//   @media #{$tablet}{
-//     position: relative;
-//     .day{
-//       padding-top: 1rem;
-//       @include lineJump(0);
-//       transition: all 0.3s ease-out;
-//     }
-//
-//     .location-link{
-//       transition: all .2s ease-out;
-//     }
-//   }
-//
-//
-// }
-//
-// #dates{
-//   display: none;
-// }
-//
-//
-// .dates-only{
-//   .day{
-//     @media #{$tablet}{
-//       padding-bottom: 1.5rem;
-//     }
-//   }
-// }
-// #date-dropdown-trigger{
-//   .butt{
-//     @extend .cat-filters;
-//     width: 100%;
-//     clear: both;
-//     margin-top: 0;
-//     padding-bottom: 0;
-//   }
-//   @media #{$tablet}{
-//     padding-top: 1rem;
-//     .butt{
-//       cursor:pointer;
-//       padding-bottom: 2rem;
-//     }
-//     padding-top: 2rem;
-//   }
-// }
-//
-// // these !importants are needed
-// // because max-height is set by js
-// .dates-list {
-//   clear: both;
-//   @media #{$mobile}{
-//     display: none;
-//     .day{
-//       height: auto!important;
-//       max-height: 3rem!important;
-//       min-height: 2rem;
-//       border: none;
-//       padding-top: 1rem;
-//       margin-top: 0;
-//       padding: 0;
-//     }
-//   }
-//   .day:not(.active){
-//     overflow: hidden;
-//     @media #{$mobile}{
-//       max-height: 0!important;
-//     }
-//   }
-//
-//   #dates:checked{
-//     & + .day{
-//       margin-top: -2rem;
-//     }
-//     & ~ .day{
-//       max-height: 3.5rem!important;
-//       padding-top: 0.8rem;
-//       display: list-item;
-//
-//       .location-link{
-//         padding-bottom: .8rem;
-//       }
-//     }
-//   }
-//
-// }

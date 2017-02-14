@@ -92,11 +92,14 @@ class Program{
       this.elem.removeClass('out active').addClass('inactive');
     }
 
-    const posY = smallScreen() ? 0 : this.posY;
-    const posX = smallScreen() ? 0 : this.posX;
-    this.elem.css({
-      transform: `translate3D(${posX}%, ${posY}px, ${posZ}px)`
-    })
+    let transform
+    if(!smallScreen()){
+      transform = `translate3D(${this.posX}%, ${this.posY}px, ${posZ}px)`;
+    }
+    else{
+      transform = `translate3D(0%, 0px, 0px)`;
+    }
+    this.elem.css({ transform });
   }
   endPos(){
     let endPos;
@@ -140,10 +143,7 @@ class Programs{
         elem.addClass('ready')
       }
     }
-    $('main').css({
-      perspective: PERSPECTIVE,
-      perspectiveOrigin: `50% ${50}vh`,
-    })
+
   }
   filterBy(keyValue){
     this.activeFilter = keyValue;
@@ -154,6 +154,11 @@ class Programs{
     this.positionArtistLegend();
   }
   positionAll(){
+    const perspective = smallScreen() ? 'auto' : PERSPECTIVE;
+    $('main').css({
+      perspective,
+      perspectiveOrigin: `50% ${50}vh`,
+    });
     this.positionArtistLegend();
     this.positionAllByTime();
   }
@@ -180,8 +185,10 @@ class Programs{
         basePosY = Math.min(minY, basePosY - oldGap);
       }
       if(currDate != prog.date){
+        const rotate = smallScreen() ? 'rotateZ(-90deg)' : null;
+        const posY = smallScreen() ? prog.elem.position().top : basePosY;
         $(`.legend .day[data-date="${prog.date}"]`).css({
-          transform: `translateY(${basePosY}px)`,
+          transform: `translateY(${posY}px) ${rotate}`,
         });
       }
       currDate = prog.date;
