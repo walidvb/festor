@@ -1,4 +1,15 @@
+header{
+	transition: all .4s $transition-long;
+	transform-origin: top;
+	&:hover{
+		opacity: 1!important;
+		transform: perspective(60px) translateZ(0px)!important;
+	}
+}
+
 .logo{
+	$shadow: 3px;
+	text-shadow: #{$shadow} -$shadow $black, $shadow $shadow $black, -$shadow $shadow $black, -$shadow -#{$shadow} $black;
 	a:hover{
 		text-decoration: none;
 	}

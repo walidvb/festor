@@ -32,7 +32,6 @@ main{
 		position: fixed;
 		top: 0;
 		left: 0;
-		right: 0;
 		@include lineJump(6);
 	}
 	main{
@@ -42,6 +41,11 @@ main{
 	}
 	nav{
 		height: calc(100vh - #{$header-height});
+		transition: all .4s $transition-long;
+		header:hover + &{
+			height: calc(100vh - #{$header-height})!important;
+
+		}
 		bottom: 0;
 		width: $nav-width;
 		overflow-y: auto;

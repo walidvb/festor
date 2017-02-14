@@ -28,6 +28,7 @@ nav{
 	background: transparentize($black, .5);
 	z-index: 1000;
 	@media #{$tablet}{
+		background: none;
 		padding: 0 0;
 	}
 	.nav{
