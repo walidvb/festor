@@ -17,7 +17,7 @@ class Program{
     this.venue = venue;
     this.letter = elem.data('letter');
     this.dateStart = new Date(dateStart);
-    this.date = `${this.dateStart.getDate()}-${this.dateStart.getMonth()+1}`;
+    this.elem.attr('data-date', `${this.dateStart.getDate()}-${this.dateStart.getMonth()+1}`);
     this.dateEnd = new Date(dateEnd);
     this.section = section;
     this.duration = this.dateEnd - this.dateStart;
@@ -66,6 +66,10 @@ class Program{
   // position
   position(posY){
     this.posY = posY;
+    if(!(this.conflictCount > 0)){
+      const maxTransform = $('main').width()*.7 - this.elem.outerWidth();
+      this.posX = (Math.floor(Math.random() * maxTransform)) + 'px';
+    }
     const position = smallScreen() ? '' : 'absolute'
     this.elem.css({ position });
     this.setTransform();
@@ -75,7 +79,7 @@ class Program{
     this.conflictCount = conflictCount;
     this.elem.attr("data-conflict-count", this.conflictCount);
     this.elem.attr("data-conflict-position", posInConflict);
-    this.posX = posInConflict*100;
+    this.posX = posInConflict*100 + '%';
     this.setTransform();
   }
   setTransform(){
@@ -95,15 +99,13 @@ class Program{
 
     let transform
     if(!smallScreen()){
-      transform = `translate3D(${this.posX}%, ${this.posY}px, ${posZ}px)`;
+      transform = `translate3D(${this.posX}, ${this.posY}px, ${posZ}px)`;
     }
     else{
       transform = `translate3D(0%, 0px, 0px)`;
     }
 
-    this.elem.css({
-      transform: transform,
-    });
+    this.elem.css({ transform });
   }
   endPos(){
     let endPos;
@@ -174,11 +176,26 @@ class Programs{
       $(obj).css({ transform })
     });
   }
+  positionDatesLegend(){
+    $('.legend .day[data-date]').each((i, elem) => {
+      const $this = $(elem);
+      const date = $this.data('date');
+      const firstPost = $('.post.active[data-date="'+date+'"]');
+      if(!firstPost.length){
+        $this.hide();
+      }
+      else{
+        const top = firstPost.position().top;
+        $this.show().css({ top });
+      }
+
+    })
+  }
   positionAllByTime(){
     let minY = 0,
       gap = 0,
-      conflictCount = 0,
-      currDate;
+      conflictCount = 0;
+
     const rotate = smallScreen() ? ' rotateZ(-90deg)' : '';
     this.programs.forEach((prog, i) => {
       let basePosY = prog.hoursFromStart*HOUR_IN_PX;
@@ -188,16 +205,6 @@ class Programs{
         basePosY = Math.min(minY, basePosY - oldGap);
       }
 
-      if(currDate != prog.date){
-        const posY = smallScreen() ? prog.elem.position().top : basePosY;
-        $(`.legend .day[data-date="${prog.date}"]`).css({
-          transform: `translateY(${posY}px)${rotate}`,
-          '-webkit-transform': `translateY(${posY}px)${rotate}`,
-          '-moz-transform': `translateY(${posY}px)${rotate}`,
-        });
-      }
-      currDate = prog.date;
-      prog.position(basePosY);
 
       if(basePosY < minY){
         conflictCount++;
@@ -209,8 +216,12 @@ class Programs{
       else{
         conflictCount = 0;
       }
+
+      prog.position(basePosY);
       minY = Math.max(prog.endPos(), minY);
     });
+    setTimeout(this.positionDatesLegend, 800);
+
   }
 };
 (() => {

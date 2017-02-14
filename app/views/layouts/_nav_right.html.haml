@@ -41,6 +41,7 @@
 				%li.message
 					= message.message.html_safe
 				=# link_to message.link, class: [message.colorbox? ? 'colorbox' : nil].join(' ') do
-	.drawer#nav-program
-		.back <
-		= yield :nav
+	- if content_for? :nav
+		.drawer#nav-program
+			.back <
+			= yield :nav

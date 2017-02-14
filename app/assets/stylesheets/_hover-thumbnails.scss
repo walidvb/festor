@@ -34,7 +34,7 @@ ul.thumbnails{
 .post, .header{
   .program-hovered &{
     opacity: .1;
-    z-index: -10;
+    z-index: 0;
     transition: opacity .15s ease-out 0s;
     &:hover{
       transition: opacity .1s ease-out 0s;

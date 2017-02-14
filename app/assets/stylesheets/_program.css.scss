@@ -116,7 +116,7 @@ $transition: ease-in-out;
     transition: all 1s #{$transition-long}, transform 1s #{$transition-long}, opacity .2s #{$transition-long} .15s;
     @for $conflict from 1 to 10{
       &[data-conflict-count="#{$conflict}"]{
-        max-width: 100%/$conflict;
+        width: 100%/$conflict;
       }
     }
     @for $i from 1 to 15{
