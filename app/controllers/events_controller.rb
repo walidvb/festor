@@ -11,6 +11,7 @@ class EventsController < ApplicationController
 		@artists = Artist.all.order(:name)
 		@artists_by_letter = @artists.group_by{|artist| artist.name[0].upcase}
 		@days = EventDate.all.pluck(:start).map(&:to_date).uniq
+		@days_range = (@days.first.strftime("%-d")..@days.last.strftime("%-d"))
 		@venues = Location.all
 		render 'program'
 	end

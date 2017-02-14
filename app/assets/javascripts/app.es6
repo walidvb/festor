@@ -17,7 +17,9 @@ class Program{
     this.venue = venue;
     this.letter = elem.data('letter');
     this.dateStart = new Date(dateStart);
-    this.elem.attr('data-date', `${this.dateStart.getDate()}-${this.dateStart.getMonth()+1}`);
+    const date = `${this.dateStart.getDate()}-${this.dateStart.getMonth()+1}`
+    this.elem.attr('data-date', date);
+    this.date = date;
     this.dateEnd = new Date(dateEnd);
     this.section = section;
     this.duration = this.dateEnd - this.dateStart;

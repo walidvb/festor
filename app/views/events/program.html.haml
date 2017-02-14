@@ -12,9 +12,8 @@
 		.filters-by
 			.filter-title{ data: { type: 'event', key: 'date', value: 'reset'} } Events By Day
 			%ul.filter-list.date.collapsed
-				- @days.each do |day|
-					- in_s = day.strftime(date_format)
-					%li.day{ data: { type: 'event', key: 'date', value:day.strftime(date_format_for_machine)}}= in_s
+				- @days_range.each do |day|
+					%li.day{ data: { type: 'event', key: 'date', value: "#{day}-5"}}= day
 		.filters-by
 			.filter-title{ data: { type: 'event', key: 'venue', value: 'reset'} } Events By Venue
 			%ul.filter-list.venue.collapsed
