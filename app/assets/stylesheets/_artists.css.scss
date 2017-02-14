@@ -3,6 +3,9 @@
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   transform: translateX(-1rem);
+  @media #{$tablet}{
+    transform: none;
+  }
 }
 .artist-single{
   flex: 0 0 40%;

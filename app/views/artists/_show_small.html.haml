@@ -13,4 +13,4 @@
 	- if !links.empty?
 		%ul.links
 			- links.each do |l|
-				%li= link_to l.text_to_show, l.url, target: "_blank"
+				%li.link= link_to l.text_to_show, l.url, target: "_blank"
