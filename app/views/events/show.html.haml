@@ -13,7 +13,8 @@
 	- location = @dates.first.location
 	#main-content.main
 		.show-header.page-title
-			%h1.event-name= @event.title
+			%h1.event-name= @artists.map(&:name).join(', ')
+			%h2= @event.title
 			.event-infos
 				.event-dates
 					- @dates.each_with_index do |date, i|
