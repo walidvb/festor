@@ -123,7 +123,7 @@ $transition: ease-in-out;
       }
     }
     @for $i from 1 to 15{
-      &:nath-child(#{$i}n){
+      &:nth-child(#{$i}n){
         transition-delay: #{random(300)}ms;
       }
     }
