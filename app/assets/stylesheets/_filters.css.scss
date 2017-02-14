@@ -33,7 +33,6 @@
 .filters{
     overflow: auto;
     display: flex;
-    flex-flow: column;
     font-weight: bold;
     font-size: $body-size;
 }
@@ -72,6 +71,9 @@
 }
 
 @media #{$tablet}{
+  .filters{
+    flex-flow: column;
+  }
   .filter-list{
     max-height: 50vh;
     transition: all .3s ease-in-out;
