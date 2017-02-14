@@ -46,7 +46,7 @@
 
 $transition: ease-in-out;
 .legend{
-  width: $margin-horizontal-normal * 5;
+  width: $margin-horizontal-normal * 6;
   flex: 0 0 auto;
   .day, .letter{
     transition: all #{$transition};
@@ -69,7 +69,7 @@ $transition: ease-in-out;
     @media #{$tablet}{
       position: relative;
       .day, .letter{
-        right: $margin-horizontal-normal;
+        right: $margin-horizontal-normal/2;
         left: auto;
         padding: 1rem 5px;
         &:after{
@@ -98,6 +98,7 @@ $transition: ease-in-out;
   transition: all .6s #{$transition-long};
   will-change: transform;
   display: block;
+
   &.inactive, &.out{
     opacity: 0;
     pointer-events: none;
@@ -115,20 +116,31 @@ $transition: ease-in-out;
     max-width: 35%;
     max-height: auto;
     background-image: none!important;
-    transition: all 1s #{$transition-long}, transform 1s #{$transition-long}, opacity .2s #{$transition-long} .15s;
+    transition: transform 1s #{$transition-long} 0s, opacity .2s #{$transition-long} .15s;
     @for $conflict from 1 to 10{
       &[data-conflict-count="#{$conflict}"]{
         width: 100%/$conflict;
       }
     }
     @for $i from 1 to 15{
-      &:nth-child(#{$i}n){
+      &:nath-child(#{$i}n){
         transition-delay: #{random(300)}ms;
       }
     }
   }
   &:not(.ready){
     opacity: 0;
+  }
+
+  $shadow: 2px;
+  .info{
+    text-shadow: #{$shadow} -$shadow $black, $shadow $shadow $black, -$shadow $shadow $black, -$shadow -#{$shadow} $black;
+    transition: all 0s .5s;
+    .program-hovered &{
+      transition: all 0s 0s;
+      $black: transparent;
+      text-shadow: none;//#{$shadow} -$shadow $black, $shadow $shadow $black, -$shadow $shadow $black, -$shadow -#{$shadow} $black;
+    }
   }
 }
 .post.artist, .legend .letter{
