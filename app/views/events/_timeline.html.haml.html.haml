@@ -12,6 +12,7 @@
         section: event.section, |
         venue: event.location.try(:name), |
         "event-id": event.id, |
+        image: event.main_image.url(:tile), |
       }) do
       .tile-link
         .info

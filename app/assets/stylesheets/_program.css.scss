@@ -59,8 +59,7 @@ $transition: ease-in-out;
 }
 
 .post{
-  max-width: 35%;
-  flex: 1 1 20%;
+  flex: 1 0 100%;
   padding: $margin-horizontal-normal;
   transition: all 1s #{$transition-long}, transform 1s #{$transition-long}, opacity .2s #{$transition-long} .15s;
   will-change: transform;
@@ -69,9 +68,12 @@ $transition: ease-in-out;
     opacity: .15;
     pointer-events: none;
   }
-  @for $conflict from 1 to 10{
-    &[data-conflict-count="#{$conflict}"]{
-      max-width: 100%/$conflict;
+  @media #{$tablet}{
+    max-width: 35%;
+    @for $conflict from 1 to 10{
+      &[data-conflict-count="#{$conflict}"]{
+        max-width: 100%/$conflict;
+      }
     }
   }
 

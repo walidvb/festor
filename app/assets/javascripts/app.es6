@@ -7,6 +7,8 @@ const HOUR_IN_PX = 36,
   OUT_Z = 25,
   MIN_Z_DELTA = 5;
 
+const smallScreen = () => (window.innerWidth <= 767);
+
 class Program{
   constructor({ elem, dateStart, dateEnd, section, venue }){
     this.elem = elem;
@@ -30,6 +32,11 @@ class Program{
     this.elem.get(0).program = this;
     this.elem.data('program', this);
     this._bindHover();
+    if(smallScreen()){
+      const backgroundImage = this.elem.data('image');
+      console.log(backgroundImage);
+      this.elem.css({ backgroundImage: `url(${backgroundImage})` });
+    }
   }
   _bindHover(){
     const thumbnail = $(`.thumbnails [data-${this.type}-id="${this.postID}"]`);
@@ -52,19 +59,14 @@ class Program{
   }
   testAndActivate({ type, key, value }){
     this.isOut = (this.type != type);
-    console.log({ type, key, value });
-    if(!this.isOut){
-      console.log(this.section, this.type, this[key] == value);
-    }
     this.active = ((value == 'reset') || (this[key] == value));
     this.setTransform();
   }
   // position
   position(posY){
     this.posY = posY;
-    this.elem.css({
-      position: 'absolute',
-    });
+    const position = smallScreen() ? '' : 'absolute'
+    this.elem.css({ position });
     this.setTransform();
     this.elem.addClass('ready');
   }
@@ -89,8 +91,11 @@ class Program{
       posZ = rdmZBack();
       this.elem.removeClass('out active').addClass('inactive');
     }
+
+    const posY = smallScreen() ? 0 : this.posY;
+    const posX = smallScreen() ? 0 : this.posX;
     this.elem.css({
-      transform: `translate3D(${this.posX}%, ${this.posY}px, ${posZ}px)`
+      transform: `translate3D(${posX}%, ${posY}px, ${posZ}px)`
     })
   }
   endPos(){
