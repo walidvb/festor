@@ -43,7 +43,6 @@ $(document).on('turbolinks:load', function(){
 				translateZ = 10;
 				top = $logoHeight*3/4;
 			}
-			console.log('asd');
 			setPropertyWithoutTransition($logo, {
 				transform: `perspective(60px) translateZ(${-translateZ}px)`,
 				opacity,
@@ -61,7 +60,7 @@ $(document).on('turbolinks:load', function(){
 				})
 			}
 		}
-		$('main').on('scroll', handleScrollHeader);//debounce(, 20, true));
+		$('main').on('scroll', debounce(handleScrollHeader, 20, true));
 	}
 })
 

@@ -266,9 +266,9 @@ class Programs{
     }
 
     $('nav').on('scroll', e => e.preventDefault() )
+    $(window).on('resize', debounce(programs.positionAll.bind(programs), 800));
   });
 
-  $(window).on('resize', () => programs.positionAll() );
 
   function reset(_$){
     _$.addClass('reset').removeClass('out in');
