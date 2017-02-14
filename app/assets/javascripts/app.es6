@@ -37,7 +37,6 @@ class Program{
     this._bindHover();
     if(smallScreen()){
       const backgroundImage = this.elem.data('image');
-
       this.elem.css({ backgroundImage: `url(${backgroundImage})` });
     }
   }
@@ -137,6 +136,12 @@ class Programs{
     this.artists = [];
     this.container = $('#program');
     ABSOLUTE_START = new Date(this.container.data('date-start'));
+    const perspective = smallScreen() ? 'auto' : PERSPECTIVE;
+    console.log(perspective);
+    $('main').css({
+      perspective,
+      perspectiveOrigin: `50% ${50}vh`,
+    });
     for (var i = 0; i < posts.length; i++) {
       const elem = $(posts[i]);
       if(elem.hasClass('event')){
@@ -161,11 +166,6 @@ class Programs{
     this.positionArtistLegend();
   }
   positionAll(){
-    const perspective = smallScreen() ? 'auto' : PERSPECTIVE;
-    $('main').css({
-      perspective,
-      perspectiveOrigin: `50% ${50}vh`,
-    });
     this.positionArtistLegend();
     this.positionAllByTime();
   }
@@ -187,7 +187,7 @@ class Programs{
         $this.hide();
       }
       else{
-        const top = firstPost.position().top;
+        const top = firstPost.data('program').posY;
         $this.show().css({ top });
       }
 
@@ -222,7 +222,7 @@ class Programs{
       prog.position(basePosY);
       minY = Math.max(prog.endPos(), minY);
     });
-    setTimeout(this.positionDatesLegend, 800);
+    this.positionDatesLegend();
 
   }
 };
@@ -238,8 +238,7 @@ class Programs{
     {
       const $prog = $('#program .post');
       programs = new Programs($prog);
-      programs.positionAllByTime();
-      programs.positionArtistLegend();
+      programs.positionAll();
       programs.filterBy({ type: 'event', value: 'reset'})
       initFilters();
 
