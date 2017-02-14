@@ -1,10 +1,39 @@
+@mixin title-active(){
+  border-bottom: 1px solid $white;
+  color: $white;
+}
+
+@media #{$mobile}{
+  .filters{
+    flex-flow: row;
+  }
+  .filters-by{
+    flex: 0 0 80vw;
+    padding: 0 1rem;
+  }
+  .filter-title{
+    @include title-active;
+  }
+  .filter-list{
+    display: flex;
+    flex-flow: row wrap;
+    li{
+      padding-right: 1rem;
+    }
+  }
+  #nav-program{
+    padding: 0;
+    .back{
+      padding-left: 1rem;
+    }
+  }
+}
+
 .filters{
     overflow: auto;
-    flex: 0 0 20vw;
     display: flex;
     font-weight: bold;
     font-size: $body-size;
-
 }
 .filters-by{
   color: $dark-grey;
@@ -12,7 +41,6 @@
   & .active{
     color: $white;
   }
-
   h3.active{
       border-bottom: solid 1px $white;
   }
@@ -37,26 +65,27 @@
   padding-bottom: $lineheight-base * .75;
   margin-bottom: $lineheight-base * 2;
   &.active{
-    border-bottom: 1px solid $white;
-    color: $white;
+    @include title-active();
   }
 }
 
-.filter-list{
-  max-height: 50vh;
-  transition: all .3s ease-in-out;
-  overflow: hidden;
-  margin-bottom: $lineheight-base * 2;
-  &.collapsed{
-    max-height: 0;
-    margin-bottom: 0;
+@media #{tablet}{
+  .filter-list{
+    max-height: 50vh;
+    transition: all .3s ease-in-out;
+    overflow: hidden;
+    margin-bottom: $lineheight-base * 2;
+    &.collapsed{
+      max-height: 0;
+      margin-bottom: 0;
+    }
   }
 }
 
 .filter-list.artists{
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: flex-start;
   .letter{
     flex: 0 0 25%;
     text-transform: uppercase;
