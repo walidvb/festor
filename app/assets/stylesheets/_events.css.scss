@@ -241,8 +241,11 @@ h1{
 	width: 100%;
 	@media #{$tablet}{
 		z-index: 100;
-		max-width: 60%;
 		min-width: 50%;
+		margin-left: -45px;
+		float: left;
+		max-width: 40%;
+		margin-right: 1rem;
 	}
 }
 
