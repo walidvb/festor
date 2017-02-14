@@ -63,10 +63,9 @@ nav{
 
 [data-drawer]{
   &:after{
-    content: 'v';
+    content: '>';
     padding-left: 1rem;
     @media #{$tablet}{
-      content: '>';
       float: right;
     }
     display: inline-block;

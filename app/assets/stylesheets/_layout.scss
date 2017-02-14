@@ -20,10 +20,12 @@ nav{
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+	position: fixed;
 }
 
 main{
-	padding: 0 1rem;
+	padding-left: 1rem;
+	padding-right: 1rem;
 }
 @media #{$tablet}{
 	header{
@@ -39,7 +41,6 @@ main{
 		padding-top: $header-height;
 	}
 	nav{
-		position: fixed;
 		height: calc(100vh - #{$header-height});
 		bottom: 0;
 		width: $nav-width;

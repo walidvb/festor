@@ -6,6 +6,7 @@
 @media #{$mobile}{
   .filters{
     flex-flow: row;
+    -webkit-overflow-scrolling: touch;
   }
   .filters-by{
     flex: 0 0 80vw;

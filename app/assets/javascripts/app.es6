@@ -23,6 +23,7 @@ class Program{
     this.duration = this.dateEnd - this.dateStart;
     this.durationInHour = this.duration/(1000*60*60)
     this.hoursFromStart = (this.dateStart - ABSOLUTE_START)/(1000*60*60);
+
     this.conflictCount = 0;
     this.posX = 0;
     this.posY = 0;
@@ -34,7 +35,7 @@ class Program{
     this._bindHover();
     if(smallScreen()){
       const backgroundImage = this.elem.data('image');
-      console.log(backgroundImage);
+
       this.elem.css({ backgroundImage: `url(${backgroundImage})` });
     }
   }
@@ -99,7 +100,10 @@ class Program{
     else{
       transform = `translate3D(0%, 0px, 0px)`;
     }
-    this.elem.css({ transform });
+
+    this.elem.css({
+      transform: transform,
+    });
   }
   endPos(){
     let endPos;
@@ -111,18 +115,18 @@ class Program{
     }
     return endPos;
   }
-}
+};
 
 
 function rdmZBack(){
   return -(Math.floor(Math.random() * MIN_Z_DELTA) + MIN_Z);
-}
+};
 function rdmZFront(){
   return -(Math.floor(Math.random() * NORMAL_Z));
-}
+};
 function rdmZOut(){
   return -(Math.floor(Math.random())*MIN_Z_DELTA/2 + OUT_Z);
-}
+};
 class Programs{
   constructor(posts){
     this.programs = [];
@@ -143,7 +147,6 @@ class Programs{
         elem.addClass('ready')
       }
     }
-
   }
   filterBy(keyValue){
     this.activeFilter = keyValue;
@@ -168,7 +171,6 @@ class Programs{
       const firstArtist = $(`.post[data-letter="${letter}"]`).first();
       let transform = firstArtist.position().top;
       transform = `translateY(${transform}px)`;
-      console.log(transform);
       $(obj).css({ transform })
     });
   }
@@ -177,6 +179,7 @@ class Programs{
       gap = 0,
       conflictCount = 0,
       currDate;
+    const rotate = smallScreen() ? ' rotateZ(-90deg)' : '';
     this.programs.forEach((prog, i) => {
       let basePosY = prog.hoursFromStart*HOUR_IN_PX;
       let oldGap = gap;
@@ -184,11 +187,13 @@ class Programs{
         gap = Math.max(0, oldGap, basePosY - minY);
         basePosY = Math.min(minY, basePosY - oldGap);
       }
+
       if(currDate != prog.date){
-        const rotate = smallScreen() ? 'rotateZ(-90deg)' : null;
         const posY = smallScreen() ? prog.elem.position().top : basePosY;
         $(`.legend .day[data-date="${prog.date}"]`).css({
-          transform: `translateY(${posY}px) ${rotate}`,
+          transform: `translateY(${posY}px)${rotate}`,
+          '-webkit-transform': `translateY(${posY}px)${rotate}`,
+          '-moz-transform': `translateY(${posY}px)${rotate}`,
         });
       }
       currDate = prog.date;
@@ -207,12 +212,11 @@ class Programs{
       minY = Math.max(prog.endPos(), minY);
     });
   }
-}
-
+};
 (() => {
 
   let programs;
-  $(document).on('turbolinks:load', () => {
+  $(document).on('turbolinks:load ready', () => {
     const isProgramPage = $('#program').length != 0;
     window.programs = programs;
     const programsContainer = $('.post.event'),
@@ -233,7 +237,6 @@ class Programs{
            value = clicked.data('value'),
            key = clicked.data('key'),
            type = clicked.data('type');
-           console.log(type, key, value);
            if((key && value) || key == 'reset'){
              programs.filterBy({ type, key, value });
            }

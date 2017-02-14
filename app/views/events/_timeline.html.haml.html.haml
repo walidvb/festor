@@ -1,8 +1,8 @@
 - event_dates.each do |event_date|
   - event = event_date.event
-  - if event.published? || user_signed_in?
+  - if event.published? || user_signed_in? || !Rails.env.prod?
     - artists = event.artists
-    - format_for_js = "%Y-%m-%d %H:%M"
+    - format_for_js = "%Y/%m/%d %H:%M"
     = link_to(path_for(event, locale: I18n.locale), class:'post active in event', |
       data: { |
         id: event_date.id, |

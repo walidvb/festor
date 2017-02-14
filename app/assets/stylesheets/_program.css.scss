@@ -1,6 +1,8 @@
 .program-page{
   main{
-    padding: 1rem 0 1rem 2rem;
+    @media #{$mobile}{
+      padding: 1rem 0 1rem 2rem;
+    }
   }
 }
 
@@ -63,9 +65,10 @@ $transition: ease-in-out;
     }
   }
     @media #{$tablet}{
-      position: static;
+      position: relative;
       .day, .letter{
         right: $margin-horizontal-normal;
+        left: auto;
         padding: 1rem 5px;
         &:after{
           content: none;
@@ -90,30 +93,36 @@ $transition: ease-in-out;
 .post{
   flex: 1 0 100%;
   padding: $margin-horizontal-normal;
-  transition: all 1s #{$transition-long}, transform 1s #{$transition-long}, opacity .2s #{$transition-long} .15s;
+  transition: all .6s #{$transition-long};
   will-change: transform;
   display: block;
   &.inactive, &.out{
-    opacity: .15;
+    opacity: 0;
     pointer-events: none;
     max-height: 0rem;
     padding: 0 $margin-horizontal-normal;
+    display: none;
+    @media #{$tablet}{
+      opacity: .15;
+      display: inline-block;
+    }
   }
-  background-size: cover;
+  background-size: 100% auto;
   background-position: center;
-  background-attachment: fixed;
   @media #{$tablet}{
     max-width: 35%;
     max-height: auto;
+    background-image: none!important;
+    transition: all 1s #{$transition-long}, transform 1s #{$transition-long}, opacity .2s #{$transition-long} .15s;
     @for $conflict from 1 to 10{
       &[data-conflict-count="#{$conflict}"]{
         max-width: 100%/$conflict;
       }
     }
-  }
-  @for $i from 1 to 15{
-    &:nth-child(#{$i}n){
-      transition-delay: #{random(300)}ms;
+    @for $i from 1 to 15{
+      &:nth-child(#{$i}n){
+        transition-delay: #{random(300)}ms;
+      }
     }
   }
   &:not(.ready){

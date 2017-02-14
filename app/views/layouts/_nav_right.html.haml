@@ -1,9 +1,9 @@
 .drawer-container
 	%ul.nav
-		- if user_signed_in?
+		- if user_signed_in? || !Rails.env.prod?
 			%li.gap-after
 				= link_to t('nav.program'), program_path(locale: I18n.locale), data: { drawer: '#nav-program' }
-		- if user_signed_in?
+		- if user_signed_in? || !Rails.env.prod?
 			%li.gap-after
 				= link_to t('nav.exhibition'), event_path(@exhib, locale: I18n.locale), data: { drawer: '#nav-exhib' }
 		- if !@messages.empty?
