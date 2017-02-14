@@ -35,7 +35,7 @@ main{
 		@include lineJump(6);
 	}
 	main{
-		margin-left: $nav-width - 2vw;
+		margin-left: $nav-width;
 		overflow: auto;
 		padding-top: $header-height;
 	}
