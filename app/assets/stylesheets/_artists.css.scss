@@ -1,0 +1,26 @@
+.artists{
+  display: flex;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  transform: translateX(-1rem);
+}
+.artist-single{
+  flex: 0 0 40%;
+  min-width: 80vw;
+  @media #{$tablet}{
+    min-width: 400px;
+  }
+  padding: 0 1em;
+  .links{
+    margin-top: $margin-vertical-large;
+  }
+  .link{
+    margin-right: $margin-horizontal-normal;
+  }
+}
+.artist-name{
+  font-size: $large;
+  margin-top: $margin-vertical-large;
+  margin-bottom: $margin-vertical-larger;
+  text-decoration: underline;
+}

@@ -38,7 +38,7 @@ class EventsController < ApplicationController
 		@event = Event.includes(:artists, :location, :event_dates).friendly.find(params[:id])
 		@section = @event.section
 		@dates = @event.event_dates.includes(:location)
-		@artists = @event.artists.published.order(:updated_at)
+		@artists = @event.artists.order(:updated_at)
 		@musicians = @event.musicians.published
 		@vjs = @event.vjs.published
 		@instructors = @event.instructors.published

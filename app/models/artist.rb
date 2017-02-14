@@ -23,15 +23,9 @@ class Artist < ActiveRecord::Base
 	has_attached_file :profile_picture,
 		:styles => {
 			:thumb => "100x100#",
-			:medium => "350x200#",
+			:medium => "600x250#",
       :tile => "600x>",
 			:large => "800x>",
-      :tile_blurred => "600x>",
-			:large_blurred => "800x>"
-		},
-		:convert_options => {
-			:large_blurred => '-blur 0x8',
-			:tile_blurred => '-blur 0x8'
 		},
 		:default_url => "/images/missing.jpg",
 		:use_timestamp => false

@@ -1,0 +1,16 @@
+.admin-entry
+	- if user_signed_in?
+		= link_to 'edit', "/admin/artist/#{artist.id}/edit", data: {turbolinks: "false"}
+- links = artist.links
+.single-artist
+	.artist-profile
+		= image_tag(artist.profile_picture.url(:medium))
+	%h1.artist-name= artist.name
+	%h4.labels.sup= artist.label
+	-# %h4.origin.sup= artist.origin
+.biography
+	= interpolate(artist.biography, image: artist.profile_picture.url(:large)).html_safe unless artist.biography.blank?
+	- if !links.empty?
+		%ul.links
+			- links.each do |l|
+				%li= link_to l.text_to_show, l.url, target: "_blank"
