@@ -144,15 +144,12 @@ a:hover{
 
 
 .social{
+	margin-bottom: .5rem;
+	li{
+		display: inline-block;
+
+	}
 	.fa-icon{
-		margin-right: 5px;
-		a:hover{
-			background: $white;
-		}
-		//&:hover:before{
-		//	border-color: $dark-grey;
-		//	box-shadow: inset	0	10px	0 $black;
-		//}
 		&:before{
 	    width: 1.3em;
 	    height: 1.3em;

@@ -17,19 +17,6 @@
 
 		-# %li.gap-before= link_to t('nav.partners'), partners_path(locale: I18n.locale)
 
-		%li
-			= link_to("http://www.instagram.com/mappingfestival", target: '_blank') do
-				%span Instagram
-				.fa.fa-icon.fa-instagram
-		%li
-			= link_to("http://www.twitter.com/mappingfestival", target: '_blank') do
-				%span	Twitter
-				.fa.fa-icon.fa-twitter
-		%li.gap-after
-			= link_to("https://www.facebook.com/pages/Mapping-Festival/162958139889", target: '_blank') do
-				%span Facebook
-				.fa.fa-icon.fa-facebook
-
 		%li= render 'layouts/locales'
 	.drawer#nav-exhib
 		.back <
