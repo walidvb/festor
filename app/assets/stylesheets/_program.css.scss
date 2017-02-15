@@ -48,6 +48,7 @@
 .favourite-trigger{
   @extend .fa;
   @extend .fa-star-o;
+  will-change: transform opacity;
   position: absolute;
   top: -1rem;
   width: 100%;
@@ -78,6 +79,7 @@ $transition: ease-in-out;
   width: $margin-horizontal-normal * 6;
   flex: 0 0 auto;
   .day, .letter{
+    will-change: transform;
     transition: all #{$transition};
     position: absolute;
     left: -6.7rem;
@@ -127,7 +129,7 @@ $transition: ease-in-out;
   transition: all .6s #{$transition-long};
   will-change: transform opacity;
   display: block;
-
+  will-change: transform opacity;
   &.in{
     z-index: 1000;
   }
@@ -174,6 +176,7 @@ $transition: ease-in-out;
   @media #{$tablet}{
     $shadow: 2px;
     .all-on .info{
+      will-change: transform opacity;
       text-shadow: #{$shadow} -$shadow $black, $shadow $shadow $black, -$shadow $shadow $black, -$shadow -#{$shadow} $black;
       transition: all 0s .5s;
       .program-hovered &{
