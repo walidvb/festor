@@ -31,9 +31,6 @@ nav{
 		background: none;
 		padding: 0 0;
 	}
-	.nav{
-		padding: 0 1rem;
-	}
 	.gap-after{
 		margin-bottom: 2rem;
 	}
@@ -47,7 +44,7 @@ nav{
 }
 
 footer{
-	font-size: 1rem;
+	font-size: $small;
 }
 
 .hamburger {
