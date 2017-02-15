@@ -169,11 +169,7 @@ h1{
 		}
 	}
 }
-#main-content{
-	@media #{$tablet}{
-		margin-bottom: $lineheight-base * 4;
-	}
-}
+
 .show-desc, .event-artist-bio, .artist-desc, .static-desc, .previous-editions{
 	margin-right: auto;
 	max-width: 75ch;

@@ -70,4 +70,22 @@
       });
     };
   });
+
+  $(window).on('scroll.handleTranslateZonEnter', debounce(handleTranslateZonEnter, 50, false));
+  function handleTranslateZonEnter(e){
+    const $artistContainer = $('.artists'),
+      $artists = $('.artist-single');
+    if($artistContainer.length){
+      if(window.scrollY+window.innerHeight-250 > $artistContainer.offset().top  ){
+        $artists.each((i, elem) => {
+          const translateZ = $(elem).data('translateZ') || Math.floor(Math.random()*50) + 5;
+          $(elem).data('translateZ', translateZ);
+          $(elem).css({
+            transform: `translateZ(-${translateZ}px)`,
+            opacity: 1,
+          });
+        });
+      }
+    }
+  }
 })();
