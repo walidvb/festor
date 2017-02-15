@@ -13,7 +13,7 @@ class Program{
   constructor({ elem, dateStart, dateEnd, section, venue }){
     this.elem = elem;
     this.type = elem.hasClass('artist') ? 'artist' : 'event';
-    this.postID = elem.data(this.type+'-id');
+    this.id = elem.data(this.type+'-id');
     this.venue = venue;
     this.letter = elem.data('letter');
     this.dateStart = new Date(dateStart);
@@ -41,7 +41,7 @@ class Program{
     }
   }
   _bindHover(){
-    const thumbnail = $(`.thumbnails [data-${this.type}-id="${this.postID}"]`);
+    const thumbnail = $(`.thumbnails [data-${this.type}-id="${this.id}"]`);
     this.elem.hover(
       (ev) => {
         $('body').addClass('program-hovered');
@@ -61,7 +61,7 @@ class Program{
   }
   testAndActivate({ type, key, value }){
     this.isOut = (this.type != type);
-    this.active = ((value == 'reset') || (this[key] == value));
+    this.active = ((value == 'reset') || value.includes(this[key]));
     this.setTransform();
   }
   // position

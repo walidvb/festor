@@ -3,20 +3,21 @@
   - if event.published? || user_signed_in? || !Rails.env.prod?
     - artists = event.artists
     - format_for_js = "%Y/%m/%d %H:%M"
-    = link_to(path_for(event, locale: I18n.locale), class:'post active in event', |
-      data: { |
-        id: event_date.id, |
-        artists: artists.map(&:slug).join('|'), |
-        "date-start" => event_date.start.strftime(format_for_js), |
-        "date-end" => event_date.end.strftime(format_for_js), |
-        section: event.section, |
-        venue: event.location.try(:name), |
-        "event-id": event.id, |
-        image: event.main_image.url(:tile), |
-      }) do
-      .tile-link
-        .info
-          .event-date= event_date.start.strftime('%H:%M')
-          .event-type= event.section
-          %h3.event-artists= artists.map(&:name).join(', ')
-          .event-name= event.title
+    .post.active.in.event{ data: { |
+      id: event.id, |
+      artists: artists.map(&:slug).join('|'), |
+      "date-start" => event_date.start.strftime(format_for_js), |
+      "date-end" => event_date.end.strftime(format_for_js), |
+      section: event.section, |
+      venue: event.location.try(:name), |
+      "event-id": event.id, |
+      image: event.main_image.url(:tile), |
+    }}
+      .favourite-trigger
+      = link_to(path_for(event, locale: I18n.locale)) do
+        .tile-link
+          .info
+            .event-date= event_date.start.strftime('%H:%M')
+            .event-type= event.section
+            %h3.event-artists= artists.map(&:name).join(', ')
+            .event-name= event.title

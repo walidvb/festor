@@ -44,6 +44,34 @@
   }
 }
 
+.favourite-trigger{
+  @extend .fa;
+  @extend .fa-star-o;
+  position: absolute;
+  top: -1rem;
+  width: 100%;
+  opacity: 0;
+  transform: rotateY(0deg);
+  transform-origin: 10px 0px;
+  transition: opacity .1s ease-in-out 0s, transform .5s ease-in-out;
+  &:hover{
+    transition: opacity .1s ease-in-out 0s, transform .5s ease-in-out .3s;
+    transform: rotateY(-45deg);
+  }
+  .post:hover &{
+    opacity: .3;
+    transition: opacity .1s ease-in-out 0s, transform .5s ease-in-out;
+  }
+  .fav &{
+    transform: rotateY(360deg);
+    opacity: .2;
+    @extend .fa-star;
+    &:hover{
+      transform: rotateY(315deg);
+    }
+  }
+}
+
 $transition: ease-in-out;
 .legend{
   width: $margin-horizontal-normal * 6;

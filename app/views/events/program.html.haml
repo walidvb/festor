@@ -5,6 +5,7 @@
 - content_for :nav do
 	.filters
 		.filters-by
+			.filter-title.favourite{ data: { type: 'event', key: 'id' } }= fa_icon('star')
 			.filter-title.active{ data: { type: 'event', key: 'section', value: 'reset'} } Events By Type
 			%ul.filter-list.section
 				- @sections.each do |sec|
