@@ -165,7 +165,7 @@ class Programs{
   }
   filterBy(keyValue){
     this.activeFilter = keyValue;
-    $('body').attr('data-current-type', keyValue.type)
+    $('body').attr('data-current-type', keyValue.type);
     this.programs.forEach( prog => prog.testAndActivate(keyValue) );
     this.artists.forEach( art =>  art.testAndActivate(keyValue) );
     this.positionAllByTime();
@@ -255,6 +255,9 @@ class Programs{
            value = clicked.data('value'),
            key = clicked.data('key'),
            type = clicked.data('type');
+           console.log(key == 'reset', key);
+           $(`.filters li[data-value]`).toggleClass('active', value == 'reset');
+           clicked.addClass('active');
            if((key && value) || key == 'reset'){
              programs.filterBy({ type, key, value });
            }

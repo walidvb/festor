@@ -9,22 +9,22 @@
 			.filter-title.active{ data: { type: 'event', key: 'section', value: 'reset'} } Events By Type
 			%ul.filter-list.section
 				- @sections.each do |sec|
-					%li.section{ data: { type: 'event', key: 'section', value: sec}}= sec
+					%li.section.active{ data: { type: 'event', key: 'section', value: sec}}= sec
 		.filters-by
 			.filter-title{ data: { type: 'event', key: 'date', value: 'reset'} } Events By Day
 			%ul.filter-list.date.collapsed
 				- @days_range.each do |day|
-					%li.day{ data: { type: 'event', key: 'date', value: "#{day}-5"}}= day
+					%li.day.active{ data: { type: 'event', key: 'date', value: "#{day}-5"}}= day
 		.filters-by
 			.filter-title{ data: { type: 'event', key: 'venue', value: 'reset'} } Events By Venue
 			%ul.filter-list.venue.collapsed
 				- @venues.each do |venue|
-					%li.venue{ data: { type: 'event', key: 'venue', value: venue.name}}= venue.name
+					%li.venue.active{ data: { type: 'event', key: 'venue', value: venue.name}}= venue.name
 		.filters-by
 			.filter-title{ data: { type: 'artist', key: 'artists', value: 'reset'} } Artists
 			%ul.filter-list.artists.collapsed
 				- @artists_by_letter.keys.each do |letter|
-					%li.letter{ data: { type: 'artist',  key: 'letter', value: letter} }= letter
+					%li.letter.active{ data: { type: 'artist',  key: 'letter', value: letter} }= letter
 - content_for :thumbnails do
 	%ul.thumbnails
 		- @events.each do |ev|
