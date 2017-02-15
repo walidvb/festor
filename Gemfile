@@ -74,6 +74,7 @@ group :production do
 	gem 'newrelic_rpm'
 	gem 'rubyzip'
 	gem 'heroku-deflater'
+	gem 'rack-zippy'
 end
 
 group :development, :test do
