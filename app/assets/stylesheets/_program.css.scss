@@ -168,14 +168,16 @@ $transition: ease-in-out;
     opacity: 0;
   }
 
-  $shadow: 2px;
-  .info{
-    text-shadow: #{$shadow} -$shadow $black, $shadow $shadow $black, -$shadow $shadow $black, -$shadow -#{$shadow} $black;
-    transition: all 0s .5s;
-    .program-hovered &{
-      transition: all 0s 0s;
-      $black: transparent;
-      text-shadow: none;//#{$shadow} -$shadow $black, $shadow $shadow $black, -$shadow $shadow $black, -$shadow -#{$shadow} $black;
+  @media #{$tablet}{
+    $shadow: 2px;
+    .info{
+      text-shadow: #{$shadow} -$shadow $black, $shadow $shadow $black, -$shadow $shadow $black, -$shadow -#{$shadow} $black;
+      transition: all 0s .5s;
+      .program-hovered &{
+        transition: all 0s 0s;
+        $black: transparent;
+        text-shadow: none;//#{$shadow} -$shadow $black, $shadow $shadow $black, -$shadow $shadow $black, -$shadow -#{$shadow} $black;
+      }
     }
   }
 }
