@@ -73,8 +73,8 @@ group :production do
   gem 'rails_12factor'
 	gem 'newrelic_rpm'
 	gem 'rubyzip'
-	gem 'heroku-deflater'
 	gem 'rack-zippy'
+	# gem 'heroku-deflater'
 end
 
 group :development, :test do
