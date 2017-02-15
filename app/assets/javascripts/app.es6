@@ -10,16 +10,6 @@ const HOUR_IN_PX = 36,
 
 const smallScreen = () => (window.innerWidth <= 767);
 
-let scrollTimeout;
-$('main').on('scroll', () => {
-  SCROLLING = true;
-  clearTimeout(scrollTimeout);
-  scrollTimeout = setTimeout(() => {
-    $('body').removeClass('program-hovered');
-    $('.thumbnails .in').addClass('out').removeClass('in');
-    SCROLLING = false;
-  }, 500);
-});
 class Program{
   constructor({ elem, dateStart, dateEnd, section, venue }){
     this.elem = elem;
@@ -53,19 +43,20 @@ class Program{
   }
   _bindHover(){
     const thumbnail = $(`.thumbnails [data-${this.type}-id="${this.id}"]`);
-    this.elem.hover(
-      (ev) => {
-        if(!SCROLLING){
-          $('body').addClass('program-hovered');
-          if(thumbnail.hasClass('out')){
-            thumbnail.removeClass('out');
-            thumbnail.addClass('reset');
-            document.body.offsetHeight;
-            thumbnail.removeClass('reset');
-          }
-          thumbnail.addClass('in');
+    const showImg = () => {
+      if(!SCROLLING){
+        $('body').addClass('program-hovered');
+        if(thumbnail.hasClass('out')){
+          thumbnail.removeClass('out');
+          thumbnail.addClass('reset');
+          document.body.offsetHeight;
+          thumbnail.removeClass('reset');
         }
-      },
+        thumbnail.addClass('in');
+      }
+    }
+    this.elem.on('mousemove', showImg);
+    this.elem.hover( showImg ,
       (ev) => {
         if(!SCROLLING){
           $('body').removeClass('program-hovered');
