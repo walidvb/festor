@@ -15,14 +15,5 @@
 			= link_to("https://www.facebook.com/pages/Mapping-Festival/162958139889", target: '_blank') do
 				%span facebook
 				.fa.fa-icon.fa-facebook
-	%ul.locales
-		- if I18n.locale == :fr
-			%li.locale
-				#{link_to("EN", url_for(locale: :en), class: "en nav-link")}
-				%span.current-locale= "/ FR"
-		- else
-			%li.locale
-				%span.current-locale EN
-				= "/"
-				#{link_to("FR", url_for(locale: :fr), class: "fr nav-link")}
+	= render 'layouts/locales'
 		%li.nav-link= link_to t('nav.gallery'), 'http://mappingfestival.tumblr.com/', target: '_blank'

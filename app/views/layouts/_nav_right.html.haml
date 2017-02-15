@@ -30,6 +30,7 @@
 				%span Facebook
 				.fa.fa-icon.fa-facebook
 
+		%li= render 'layouts/locales'
 	.drawer#nav-exhib
 		.back <
 		%p= @exhib.short_description.try(:html_safe)

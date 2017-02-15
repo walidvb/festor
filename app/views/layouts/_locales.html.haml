@@ -1,0 +1,10 @@
+%ul.locales
+	- if I18n.locale == :fr
+		%li.locale
+			#{link_to("EN", url_for(locale: :en), class: "en")}
+			%span.current-locale= "/ FR"
+	- else
+		%li.locale
+			%span.current-locale EN
+			= "/"
+			#{link_to("FR", url_for(locale: :fr), class: "fr")}
