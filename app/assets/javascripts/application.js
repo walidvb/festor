@@ -15,8 +15,6 @@
 //= require jquery_ujs
 //= require home.js
 //= require rails_admin_sortable.js
-//= require colorbox/jquery.colorbox-min.js
-//= require vendors/draggabilly.pckgd.min
 //= require_tree .
 
 window.MF = {};

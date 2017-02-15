@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 ruby '2.2.5'
-gem 'rails', '4.1.2'
+gem 'rails', '4.1'
 gem 'pg'
 gem 'sass-rails'
 gem 'uglifier', '2.5.3'
@@ -37,9 +37,7 @@ gem 'rails_autolink'
 gem 'geocoder'
 gem 'iso_country_codes'
 #### UI
-gem 'chosen-rails'
 gem "autoprefixer-rails"
-gem 'colorbox-rails'
 
 gem "rails_admin", github: 'sferik/rails_admin', ref: '0eaaac5'
 gem "auto_html", '~> 1.6.4'
