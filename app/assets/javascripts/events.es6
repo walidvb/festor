@@ -72,6 +72,7 @@
   });
 
   $(window).on('scroll.handleTranslateZonEnter', debounce(handleTranslateZonEnter, 50, false));
+  $(document).on('turbolinks:load ready', handleTranslateZonEnter);
   function handleTranslateZonEnter(e){
     const $artistContainer = $('.artists'),
       $artists = $('.artist-single');
