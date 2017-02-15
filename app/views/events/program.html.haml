@@ -50,6 +50,7 @@
 			- artists.each do |artist|
 				- if last_key != key
 					.line-break
-				= link_to "#", class: 'post out artist', id: "artist-#{artist.id}", data: { letter: artist.name[0].upcase, "artist-id": artist.id } do
-					%h3.event-artist= artist.name
 				- last_key = key
+				= link_to "#", class: 'post out artist', id: "artist-#{artist.id}", data: { letter: artist.name[0].upcase, "artist-id": artist.id } do
+					.info
+						%h3.event-artist= artist.name

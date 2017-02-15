@@ -1,5 +1,6 @@
 .program-page{
   main{
+    padding-top: 0;
     @media #{$mobile}{
       padding: 1rem 0 1rem 2rem;
       perspective: initial!important;
@@ -12,6 +13,22 @@
   flex: 1 0 80vw;
   display: inline-flex;
   position: relative;
+  @media #{$mobile}{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    flex-direction: row;
+  }
+  @media #{$tablet}{
+    padding-top: $header-height;
+  }
+  .events{
+    border-left: 1px solid $white;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    position: relative;
+  }
 }
 .post{
   &.resets{
@@ -25,22 +42,6 @@
     opacity: .2;
     transform: translateZ(-25px);
     pointer-events: none!important;
-  }
-}
-
-#program{
-  @media #{$mobile}{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    flex-direction: row;
-  }
-  .events{
-    border-left: 1px solid $white;
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: flex-start;
-    position: relative;
   }
 }
 
@@ -124,9 +125,12 @@ $transition: ease-in-out;
   flex: 1 0 100%;
   padding: $margin-horizontal-normal;
   transition: all .6s #{$transition-long};
-  will-change: transform;
+  will-change: transform opacity;
   display: block;
 
+  &.in{
+    z-index: 1000;
+  }
   &.inactive, &.out{
     opacity: 0;
     pointer-events: none;
@@ -134,8 +138,12 @@ $transition: ease-in-out;
     padding: 0 $margin-horizontal-normal;
     display: none;
     @media #{$tablet}{
-      opacity: .15;
+      opacity: .5;
       display: inline-block;
+      .info{
+        filter: blur(2px);
+      }
+      z-index: 1;
     }
   }
   background-size: 100% auto;
