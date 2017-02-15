@@ -158,6 +158,9 @@ $transition: ease-in-out;
         width: 100%/$conflict;
       }
     }
+     &{
+      transition-delay: 0s!important;
+    }
     @for $i from 1 to 15{
       &:nth-child(#{$i}n){
         transition-delay: #{random(300)}ms;
@@ -170,7 +173,7 @@ $transition: ease-in-out;
 
   @media #{$tablet}{
     $shadow: 2px;
-    .info{
+    .all-on .info{
       text-shadow: #{$shadow} -$shadow $black, $shadow $shadow $black, -$shadow $shadow $black, -$shadow -#{$shadow} $black;
       transition: all 0s .5s;
       .program-hovered &{

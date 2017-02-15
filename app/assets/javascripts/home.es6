@@ -60,7 +60,7 @@ $(document).on('turbolinks:load', function(){
 				})
 			}
 		}
-		$('main').on('scroll', debounce(handleScrollHeader, 20, true));
+		// $('main').on('scroll', debounce(handleScrollHeader, 20, true));
 	}
 })
 
