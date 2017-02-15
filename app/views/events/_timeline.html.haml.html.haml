@@ -1,6 +1,6 @@
 - event_dates.each do |event_date|
   - event = event_date.event
-  - if event.published? || user_signed_in? || !Rails.env.prod?
+  - if event.published? || user_signed_in? || !Rails.env.prod? || cookies[:beta].present?
     - artists = event.artists
     - format_for_js = "%Y/%m/%d %H:%M"
     .post.active.in.event{ data: { |
