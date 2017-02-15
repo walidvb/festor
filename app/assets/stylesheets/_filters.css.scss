@@ -75,13 +75,13 @@
     flex-flow: column;
   }
   .filter-list{
-    max-height: 50vh;
     transition: all .3s ease-in-out;
     overflow: hidden;
-    margin-bottom: $lineheight-base * 2;
-    &.collapsed{
-      max-height: 0;
-      margin-bottom: 0;
+    max-height: 0;
+    margin-bottom: 0;
+    .filter-title + &{
+      max-height: 50vh;
+      margin-bottom: $lineheight-base * 2;
     }
   }
 }

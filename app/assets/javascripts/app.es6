@@ -255,7 +255,6 @@ class Programs{
            value = clicked.data('value'),
            key = clicked.data('key'),
            type = clicked.data('type');
-           console.log(key == 'reset', key);
            $(`.filters li[data-value]`).toggleClass('active', value == 'reset');
            clicked.addClass('active');
            if((key && value) || key == 'reset'){
@@ -268,8 +267,6 @@ class Programs{
           const key = $this.data('key');
           $('.filter-title').removeClass('active');
           $this.addClass('active');
-          $(`.filter-list:not(.${key})`).addClass('collapsed');
-          $(`.filter-list.${key}`).removeClass('collapsed');
         });
       }
     }
