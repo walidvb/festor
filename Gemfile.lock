@@ -349,6 +349,8 @@ GEM
       haml (>= 4.0.6, < 5.0)
       html2haml (>= 1.0.1)
       railties (>= 4.0.1)
+    heroku-deflater (0.6.3)
+      rack (>= 1.4.5)
     hirb (0.7.3)
     html2haml (2.1.0)
       erubis (~> 2.7.0)
@@ -639,6 +641,7 @@ DEPENDENCIES
   guard-rails
   guard-rspec
   haml-rails
+  heroku-deflater
   html2haml
   inline_svg
   iso_country_codes
