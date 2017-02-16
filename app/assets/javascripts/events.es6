@@ -1,4 +1,4 @@
-(function(){
+(() => {
 
   var moreContainer, main, html, nav;
   $(document).on('turbolinks:load', function(){
@@ -25,13 +25,13 @@
 
   });
 
-  $(window).on('scroll.handleTranslateZonEnter', debounce(handleTranslateZonEnter, 50, false));
-  $(document).on('turbolinks:load ready', handleTranslateZonEnter);
+  $(window).on('scroll.handleTranslateZonEnter', debounce(handleTranslateZonEnter, 20, true));
+  $(document).on('turbolinks:render', handleTranslateZonEnter);
   function handleTranslateZonEnter(e){
     const $artistContainer = $('.artists'),
       $artists = $('.artist-single');
     if($artistContainer.length){
-      if(window.scrollY+window.innerHeight - 10 > $artistContainer.offset().top  ){
+      if(window.scrollY+window.innerHeight - 10 > $artistContainer.position().top  ){
         $artists.each((i, elem) => {
           const translateZ = $(elem).data('translateZ') || Math.floor(Math.random()*50) + 5;
           $(elem).data('translateZ', translateZ);
