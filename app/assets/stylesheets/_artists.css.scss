@@ -25,10 +25,6 @@
   }
   opacity: .2;
   transform: translateZ(-200px);
-  &:hover{
-    transition-delay: .5s;
-    transform: translateZ(0px)!important;
-  }
   padding: 0 1em;
   .links{
     margin-top: $margin-vertical-large;
