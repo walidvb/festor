@@ -1,6 +1,6 @@
 RailsAdmin.config do |config|
 
-  config.main_app_name = ["Mapping 2016"]
+  config.main_app_name = ["Mapping 2017"]
 
   ### Popular gems integration
   I18n.default_locale = :en
@@ -49,7 +49,7 @@ RailsAdmin.config do |config|
         proc do
           begin
             ZoneFestivalSyncer.sync!
-            redirect_to '/admin', notice: 'Database successfully synced. Please wait a moment for the images to syncronise as well.'
+            redirect_to '/admin', notice: 'Database sync in progress. Please wait a moment for the images to syncronise as well.'
           rescue => e
             redirect_to '/admin', alert: "Error when syncing database: #{e}"
           end
@@ -61,7 +61,7 @@ RailsAdmin.config do |config|
         proc do
           begin
             ZoneFestivalSyncer.reset_and_sync!
-            redirect_to '/admin', notice: 'Database successfully synced'
+            redirect_to '/admin', notice: 'Database sync in progress. Please wait a moment for the images to syncronise as well.'
           rescue => e
             raise e unless Rails.env.prod?
             redirect_to '/admin', alert: "Error when syncing database: #{e}"

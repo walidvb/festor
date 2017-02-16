@@ -67,21 +67,21 @@ module ZoneFestivalSyncer
       event.zf_id = first_show['id'].to_i
 
       if has_multiple_shows_for_single_program
-        event.title = date['name_1']
+        self.store_translations(event, :title, date, :name)
         p "Multiple Performances detected for #{date['name_1']}"
-        event.description = date['description_1']
+        store_translations event, :description,  date, :description
       else
-        event.description = first_show['description_long_1']
+        store_translations event, :description,  first_show, :description_long
         event.title = first_show['title_selected']
       end
-      event.short_description = first_show['description_short_1']
+      store_translations event, :short_description,  first_show, :description_short
 
       event.location = Location.find_by_zf_id(date['venue_id'])
       section_from_show = self.section_for_show(event.zf_id, zf)
       section_from_program = self.section_for_program(date, zf)
       section = section_from_show || section_from_program
       puts section
-      event.section = section['name_1']
+      store_translations event, :section,  section, :name
       event.save!
       if img = first_show['image'][0]
         event.delay.set_image_from_url(img['url'])
@@ -105,7 +105,7 @@ module ZoneFestivalSyncer
           artist.name = art['name']
           artist.country = art['country']
           artist.zf_id = art['id'].to_i
-          artist.biography = art['biography_1']
+          self.store_translations artist, :biography, art, :biography
           art['website'].each do |web|
             artist.links << Link.create!(text_to_show: web['type_1'], url: web['website'])
           end
@@ -126,7 +126,7 @@ module ZoneFestivalSyncer
     zf['venue'].each do |loc|
       location = Location.find_by_zf_id(loc['id'].to_i) || Location.new
       location.zf_id = loc['id'].to_i
-      location.name = loc['name_1']
+      store_translations location, :name,  loc, :name
       location.address = loc['address']
       location.latitude = loc['latitude']
       location.longitude = loc['longitude']
@@ -150,5 +150,14 @@ module ZoneFestivalSyncer
   def self.section_for_program(date, zf)
     section_id = date['section_id']
     zf['section'].find{|sec| sec['id'] == section_id}
+  end
+
+  def self.store_translations object, object_column, source_object, source_column
+    old_locale = I18n.locale
+    I18n.locale = :fr
+    object.send("#{object_column}=", source_object["#{source_column}_1"])
+    I18n.locale = :en
+    object.send("#{object_column}=", source_object["#{source_column}_2"])
+    I18n.locale = old_locale
   end
 end

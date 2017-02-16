@@ -53,7 +53,7 @@ class Event < ActiveRecord::Base
 
 	validates_attachment_content_type :main_image, :content_type => /\Aimage\/(jpg|jpeg|png|gif)\Z/i
 
-	validates_presence_of :title
+	#validates_presence_of :title
 
 	def next
 		cat = %w{workshop conference masterclass}.include?(section) ? [:workshop, :conference, :masterclass] : section

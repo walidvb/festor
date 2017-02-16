@@ -54,7 +54,7 @@ main{
     animation: float 16s infinite ease-in-out ;
   }
   &:nth-child(2n){
-    animation: float 24s infinite ease-in-out ;
+    animation: float 24s infinite ease-in-out reverse;
   }
   &:nth-child(3n){
     animation: float 20s infinite ease-in-out ;
