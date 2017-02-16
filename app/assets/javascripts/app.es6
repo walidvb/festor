@@ -221,7 +221,6 @@ class Programs{
     this.programs.forEach( prog => prog.sendIn() );
     this.artists.forEach( art =>  art.sendIn() );
     $('.legend .day, .legend .letter').addClass('ready');
-    console.log('sendAllIn');
   }
   sendAllOut(){
     this.container.addClass('exit');
@@ -276,7 +275,6 @@ class Programs{
       if(!$prog.data('progs')){
         programs = new Programs($prog);
         !$prog.data('progs', programs)
-        console.log('initializing');
       }
       else{
         window.programs.filterByActiveFilters();
@@ -316,7 +314,7 @@ class Programs{
       if(programs){
         const except = $(e.target).data('id');
         programs.sendAllOut({ except });
-        console.log(e);
+        console.log('just sent all out', e);
         if(!/program/.test(e.originalEvent.data.url)){
           $(document).trigger('close-drawer');
         }
