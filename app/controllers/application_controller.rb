@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   before_filter :beta_only
 
   def load_navbar
-    @exhib = Event.where("section = ? OR section = ?", 'Exposition', 'Exhibition').first
+    @exhib = Event.exhibition.first
     @messages = Message.all.order('created_at DESC').first(3)
   end
   # Prevent CSRF attacks by raising an exception.
