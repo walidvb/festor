@@ -63,6 +63,7 @@ RailsAdmin.config do |config|
             ZoneFestivalSyncer.reset_and_sync!
             redirect_to '/admin', notice: 'Database successfully synced'
           rescue => e
+            raise e unless Rails.env.prod?
             redirect_to '/admin', alert: "Error when syncing database: #{e}"
           end
         end

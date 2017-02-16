@@ -6,7 +6,6 @@ class ZoneFestival < ActiveRecord::Base
   end
 
   def store_locally!
-    zf = self.data
-
+    ZoneFestivalSyncer.store_locally data
   end
 end

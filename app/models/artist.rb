@@ -9,7 +9,7 @@ class Artist < ActiveRecord::Base
   translates :biography, :fallbacks_for_empty_translations => true
 
 
-  validates_presence_of :name
+  #validates_presence_of :name
   default_scope { includes(:translations) }
   has_many :bookings, dependent: :delete_all, inverse_of: :artist
   has_many :events, through: :bookings, inverse_of: :artists

@@ -5,14 +5,24 @@ module ZoneFestivalSyncer
   end
 
   def self.reset_and_sync!
-    Artist.destroy_all
-    Event.destroy_all
-    Location.destroy_all
+    Artist.delete_all
+    Event.delete_all
+    Location.delete_all
+    Link.delete_all
+    EventDate.delete_all
+
     self.sync!
   end
 
   def self.sync!
-    self.store_locally JSON.parse(self.get_data)
+    zf = ZoneFestival.first || ZoneFestival.new
+    zf.data = self.get_data
+    zf.save!
+    if Rails.env.development?
+      zf.store_locally!
+    else
+      zf.delay.store_locally!
+    end
   end
   private
 
@@ -29,6 +39,7 @@ module ZoneFestivalSyncer
   end
 
   def self.store_locally zf
+    Rails.logger.info "processing venues"
     self.store_venues zf
 
     # EVENTS <- programs
@@ -44,9 +55,9 @@ module ZoneFestivalSyncer
       Rails.logger.info "processing #{date['title']}: #{date['date_start']}"
       event_date = EventDate.find_by_zf_id(date['id']) || EventDate.new
       event_date.zf_id = date['id']
-      event_date.start = date['date_start']
-      event_date.end = date['date_end']
-
+      event_date.start = DateTime.parse(date['date_start'])
+      event_date.end = DateTime.parse(date['date_end'])
+      Rails.logger.info "Fetching shows"
       shows = self.shows_for_program(date, zf)
       has_multiple_shows_for_single_program = shows.count > 1
 
@@ -103,7 +114,7 @@ module ZoneFestivalSyncer
             artist.delay.set_image_from_url(img['url'])
           end
           if !event.artists.map(&:id).include?(artist.id)
-            event.artists << artist
+            artist.book_for event
           end
         end
       end
