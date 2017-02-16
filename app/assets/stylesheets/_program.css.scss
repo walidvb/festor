@@ -31,6 +31,9 @@
   }
 }
 .post{
+  #program.exit &{
+    transition-duration: 1.5s!important;
+  }
   &.resets{
     transition: all 0s $transition-long;
   }
@@ -82,6 +85,10 @@ $transition: ease-in-out;
   width: $margin-horizontal-normal * 6;
   flex: 0 0 auto;
   .day, .letter{
+    opacity: 0;
+    &.ready{
+      opacity: 1;
+    }
     will-change: transform;
     transition: all #{$transition};
     position: absolute;
@@ -166,12 +173,8 @@ $transition: ease-in-out;
      &{
       transition-delay: 0s!important;
     }
-    @for $i from 1 to 15{
-      &:nth-child(#{$i}n){
-        transition-delay: #{random(300)}ms;
-      }
-    }
   }
+
   &:not(.ready){
     opacity: 0;
   }
@@ -190,6 +193,7 @@ $transition: ease-in-out;
     }
   }
 }
+
 .post.artist, .legend .letter{
   min-height: 6rem;
   display: flex;

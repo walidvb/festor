@@ -1,7 +1,6 @@
 (() => {
   $(document).on('touch click', '.hamburger',(e) => {
     $('body').toggleClass('open');
-    console.log('test');
   });
 
   const $menu = '.drawer-container';
@@ -13,8 +12,14 @@
     drawer.addClass('open');
     e.preventDefault();
   });
-  $(document).on('touch click', '.drawer .back', (e) => {
+
+  const closeDrawer = (e) => {
     $('.drawer').removeClass('open');
     $($menu).removeClass('drawer-open');
-  })
+  }
+  $(document).on('touch click', '.drawer .back', closeDrawer);
+  $(document).on('close-drawer', closeDrawer);
+
+  $(document).on('turbolinks:visit', e => $('.full-content').addClass('exit'));
+  $(document).on('turbolinks:load', e => $('.exit').removeClass('exit'));
 })();

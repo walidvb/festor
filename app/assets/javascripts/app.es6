@@ -34,7 +34,11 @@ class Program{
     this.active = true;
     this.isOut = false;
     this.elem.get(0).program = this;
+    this.elem.css({'transition-duration': '0s'});
     this.elem.data('program', this);
+
+    this.isSentOut = false;
+    this.isEntering = true;
     this._bindHover();
     if(smallScreen()){
       const backgroundImage = this.elem.data('image');
@@ -90,8 +94,16 @@ class Program{
     this.setTransform();
   }
   setTransform(){
-    let posZ;
-    if(this.isOut){
+    let posZ, opacity = 1;
+    if(this.isEntering){
+      posZ    = -Math.floor(Math.random()*5 + OUT_Z*2);
+      opacity = .5;
+    }
+    else if(this.isSentOut){
+      posZ    = Math.floor(Math.random()*5 + OUT_Z);
+      opacity = 0;
+    }
+    else if(this.isOut){
       posZ = rdmZOut();
       this.elem.removeClass('inactive active in').addClass('out');
     }
@@ -111,8 +123,19 @@ class Program{
     else{
       transform = `translate3D(0%, 0px, 0px)`;
     }
-
-    this.elem.css({ transform });
+    this.elem.css({ transform, opacity });
+  }
+  sendIn(){
+    this.isEntering = false;
+    this.elem.css({ transitionDuration: '', opacity: 1, "pointer-events": '' })
+    this.setTransform();
+  }
+  sendOut(){
+    this.isSentOut = true;
+    this.elem.css({ transitionDuration: '1.5s', opacity: 0, "pointer-events": 'none' })
+    this.setTransform();
+    this.isEntering = true;
+    this.isSentOut = false;
   }
   endPos(){
     let endPos;
@@ -143,11 +166,6 @@ class Programs{
     this.container = $('#program');
     ABSOLUTE_START = new Date(this.container.data('date-start'));
     const perspective = smallScreen() ? 'auto' : PERSPECTIVE;
-    console.log(perspective);
-    $('main').css({
-      perspective,
-      perspectiveOrigin: `50% ${50}vh`,
-    });
     for (var i = 0; i < posts.length; i++) {
       const elem = $(posts[i]);
       if(elem.hasClass('event')){
@@ -168,8 +186,7 @@ class Programs{
     $('body').attr('data-current-type', keyValue.type);
     this.programs.forEach( prog => prog.testAndActivate(keyValue) );
     this.artists.forEach( art =>  art.testAndActivate(keyValue) );
-    this.positionAllByTime();
-    this.positionArtistLegend();
+    this.positionAll();
   }
   positionAll(){
     this.positionArtistLegend();
@@ -196,8 +213,19 @@ class Programs{
         const top = firstPost.data('program').posY;
         $this.show().css({ top });
       }
-
     })
+  }
+  sendAllIn(){
+    this.programs.forEach( prog => prog.sendIn() );
+    this.artists.forEach( art =>  art.sendIn() );
+    $('.legend .day, .legend .letter').addClass('ready');
+    console.log('sendAllIn');
+  }
+  sendAllOut(){
+    this.container.addClass('exit');
+    $('.legend').addClass('exit');
+    this.programs.forEach( prog => prog.sendOut() );
+    this.artists.forEach( art =>  art.sendOut() );
   }
   positionAllByTime(){
     let minY = 0,
@@ -235,17 +263,26 @@ class Programs{
 (() => {
 
   let programs;
-  $(document).on('turbolinks:load ready', () => {
+  $(document).on('turbolinks:load', () => {
     const isProgramPage = $('#program').length != 0;
-    window.programs = programs;
     const programsContainer = $('.post.event'),
       artistsContainer = $('.post.artist');
     if(isProgramPage)
     {
       const $prog = $('#program .post');
-      programs = new Programs($prog);
-      programs.positionAll();
-      programs.filterBy({ type: 'event', value: 'reset'})
+      if(!$prog.data('progs')){
+        programs = new Programs($prog);
+        !$prog.data('progs', programs)
+        console.log('initializing');
+      }
+      else{
+        window.programs.filterBy({ type: 'event', value: 'reset'});
+        window.programs.sendAllIn();
+      }
+      window.programs = programs;
+      console.log('running');
+      programs.filterBy({ type: 'event', value: 'reset'});
+      programs.sendAllIn();
       initFilters();
 
       function initFilters(){
@@ -273,6 +310,16 @@ class Programs{
 
     $('nav').on('scroll', e => e.preventDefault() )
     $(window).on('resize', debounce(programs.positionAll.bind(programs), 800));
+    $(document).on('turbolinks:before-visit', (e) => {
+      if(programs){
+        const except = $(e.target).data('id');
+        programs.sendAllOut({ except });
+        $(document).trigger('close-drawer');
+      }
+    });
+    $(document).on('turbolinks:visit', (e) => {
+      $(document).trigger('close-drawer');;
+    });
   });
 
 

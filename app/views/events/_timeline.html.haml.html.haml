@@ -3,7 +3,7 @@
   - if event.published? || user_signed_in? || !Rails.env.prod? || cookies[:beta].present?
     - artists = event.artists
     - format_for_js = "%Y/%m/%d %H:%M"
-    .post.active.in.event{ data: { |
+    .post.stagger.active.in.event{ data: { |
       id: event.id, |
       artists: artists.map(&:slug).join('|'), |
       "date-start" => event_date.start.strftime(format_for_js), |

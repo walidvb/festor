@@ -10,7 +10,7 @@
 			%li.gap-after= link_to t('nav.archives'), about_path(anchor: 'archives', locale: I18n.locale)
 			%script{:src => "//app.mailerlite.fr/js/w/button.js", :type => "text/javascript", defer: true}
 			%li= render 'layouts/locales'
-			
+
 			%li
 				%footer
 					%ul.social
@@ -43,8 +43,12 @@
 - else
 	.drawer-container
 		%ul.nav
-			%li.gap-after
-				= link_to t('nav.program'), program_path(locale: I18n.locale), data: { drawer: '#nav-program' }
+			- if content_for? :nav
+				%li.gap-after
+					= link_to t('nav.filters'), program_path(locale: I18n.locale), data: { drawer: '#nav-program' }
+			- else
+				%li.gap-after
+					= link_to t('nav.program'), program_path(locale: I18n.locale)
 			%li.gap-after
 				= link_to t('nav.exhibition'), event_path(@exhib, locale: I18n.locale), data: { drawer: '#nav-exhib' }
 			- if !@messages.empty?

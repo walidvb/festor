@@ -35,7 +35,7 @@
 				%img{'data-lazy-load' => art.profile_picture.url(:tile)}
 
 #program.in{data: { "date-start" => @event_dates.first.start.strftime("%Y/%m/%d %H:%M") } }
-	.legend
+	.legend.full-content
 		%ul.date
 			- @days.each do |day|
 				- in_s = day.strftime("%d.%m")
@@ -51,6 +51,6 @@
 				- if last_key != key
 					.line-break
 				- last_key = key
-				= link_to "#", class: 'post out artist', id: "artist-#{artist.id}", data: { letter: artist.name[0].upcase, "artist-id": artist.id } do
+				= link_to "#", class: 'post out artist stagger', id: "artist-#{artist.id}", data: { letter: artist.name[0].upcase, "artist-id": artist.id } do
 					.info
 						%h3.event-artist= artist.name

@@ -42,7 +42,7 @@ main{
 		@include lineJump(6);
 	}
 	main{
-		margin-left: $nav-width;
+		padding-left: $nav-width;
 		overflow: auto;
 		padding-top: $header-height;
 	}

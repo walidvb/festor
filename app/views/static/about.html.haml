@@ -1,14 +1,16 @@
 - content_for(:og_title, t("nav.about"))
-.page-title
-	%h1= t("nav.about")
-.static-desc
-	= @text.try(:html_safe) || 'Coming soon...'
-.previous-title.page-title
-	%h1= t("nav.archives")
-.previous-editions#archives
-	- @previous_editions.each do |prev|
-		.grid-item
-			= image_tag prev.thumbnail(:cropped)
-			= link_to prev.url, class: 'tile-link', target: '_blank' do
-				.info
-					%h3= prev.edition
+- cache(@text) do
+	.full-content
+		.page-title
+			%h1= t("nav.about")
+		.static-desc
+			= @text.try(:html_safe) || 'Coming soon...'
+		.previous-title.page-title
+			%h1= t("nav.archives")
+		.previous-editions#archives
+			- @previous_editions.each do |prev|
+				.grid-item
+					= image_tag prev.thumbnail(:cropped)
+					= link_to prev.url, class: 'tile-link', target: '_blank' do
+						.info
+							%h3= prev.edition

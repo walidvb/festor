@@ -9,11 +9,11 @@ $(document).on('turbolinks:load', function(){
 		$('body').addClass('no-touch');
 	}
 
-  $('.colorbox').colorbox({
-    iframe: true,
-    innerWidth: 600,
-    innerHeight: 281 * (600/500),
-  })
+  // $('.colorbox').colorbox({
+  //   iframe: true,
+  //   innerWidth: 600,
+  //   innerHeight: 281 * (600/500),
+  // })
 });
 $(document).on('turbolinks:load', function(){
 	if(!smallScreen()){
