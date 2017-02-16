@@ -8,8 +8,6 @@ header{
 }
 
 .logo{
-	$shadow: 3px;
-	text-shadow: #{$shadow} -$shadow $black, $shadow $shadow $black, -$shadow $shadow $black, -$shadow -#{$shadow} $black;
 	a:hover{
 		text-decoration: none;
 	}
