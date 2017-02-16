@@ -10,6 +10,7 @@ module ZoneFestivalSyncer
     Location.delete_all
     Link.delete_all
     EventDate.delete_all
+    Booking.delete_all
 
     self.sync!
   end
