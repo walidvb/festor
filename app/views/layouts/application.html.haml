@@ -1,5 +1,5 @@
 !!!
-%html{lang: I18n.locale, class: 'first-load transitionning'}
+%html{lang: I18n.locale}
 	%head
 		%meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
 		%meta{property:"og:site_name", content:"Mapping Festival 2016"}
@@ -17,12 +17,48 @@
 		%title= title
 
 		= favicon_link_tag 'favicon.png'
-		%meta{name:'styles', content: stylesheet_path("application_day")}
+		%meta{name:'styles_day', content: stylesheet_path("application_day")}
 		%meta{name:'styles_night', content: stylesheet_path("application_night")}
-		= stylesheet_link_tag 'application_day'
+		%noscript
+			= stylesheet_link_tag 'application_day', id: 'all-styles', "data-turbolinks-track" => "true"
 		= javascript_include_tag "application", "data-turbolinks-track" => true
 		= csrf_meta_tags
-	%body.imready{class: ["#{controller.controller_name}-page", "#{controller.action_name}-page", "#{'debug' if Rails.env.development?}", "#{current_user.nil? ? nil : 'admin'}", content_for(:body_class)].join(' ')}
+	%body{class: ["#{controller.controller_name}-page", "#{controller.action_name}-page", "#{'debug' if Rails.env.development?}", "#{current_user.nil? ? nil : 'admin'}", content_for(:body_class)].join(' '), style: 'display: none;'}
+		:javascript
+			(function(){
+				var invert = false,
+					styleDay = "#{stylesheet_path('application_day')}",
+					styleNight = '#{stylesheet_path("application_night")}';
+				const getStylesheetHref = (invert) => {
+					var now = new Date();
+					var isNight = ((now.getHours() >= 20 && now.getMinutes >= 38) || now.getHours() > 21) || ((now.getHours() <= 6 && now.getMinutes() < 25) || now.getHours() < 6);
+					if(invert){ isNight = !isNight };
+					if(isNight){
+						document.body.classList.remove('night');
+					}
+					else{
+						document.body.classList.add('night');
+					}
+					return isNight ? styleNight : styleDay
+				}
+				var $link = document.createElement('link');
+				$link.href = getStylesheetHref();
+				$link.type = 'text/css'
+				$link.rel = 'stylesheet'
+				document.head.prepend($link);
+
+				document.addEventListener('keydown', function(e){
+					console.log(e.metaKey, e, e.key)
+					if(!e.metaKey &&
+						e.key != 'Control' &&
+						e.key != 'Tab' &&
+						e.key != 'Alt' &&
+						e.key != 'Shift'){
+						invert = !invert;
+						$link.href = getStylesheetHref(invert);
+					}
+				});
+			})();
 		#background{"data-turbolinks-permanent" => true}= inline_svg('logo.svg')
 		%header#turbo-header{"data-turbolinks-permanent" => true}
 			.logo= render 'layouts/logo'

@@ -32,10 +32,29 @@ html{
 }
 
 body{
+	display: initial!important;
 	font-family: $body-font;
 	overflow-x: hidden;
 	color: $white;
-	background-color: $brand-color;
+	background-color: $black;
+
+	font-size: 22px;
+}
+
+#background{
+	position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+	bottom: 0;
+	text-align: right;
+	z-index: -4;
+	opacity: .15;
+	.night &{
+		opacity: .4;
+	}
+	transition: opacity 1s ease-in-out;
+	background-color: $black;
 	background-image: url(image-path('logo.svg'));
 	background-repeat: no-repeat;
 	background-position: 5vw top;
@@ -45,19 +64,8 @@ body{
 		background-size: auto 100%;
 		background-position: top right;
 	}
-	font-size: 22px;
-}
-
-#background{
-	position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-	text-align: right;
-	z-index: -4;
-	opacity: .4;
-	display: none;
 	svg{
+		display: none;
 		width: 120vw;
 		transform: translateX(3vw);
 		height: auto;
