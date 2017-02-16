@@ -46,8 +46,8 @@ class Program{
     }
   }
   _bindHover(){
-    const thumbnail = $(`.thumbnails [data-${this.type}-id="${this.id}"]`);
     const showImg = () => {
+      const thumbnail = $(`.thumbnails [data-${this.type}-id="${this.id}"]`);
       if(!SCROLLING){
         $('body').addClass('program-hovered');
         if(thumbnail.hasClass('out')){
