@@ -1,13 +1,23 @@
-- if !@filters.empty?
-	- dates_present = !@dates.nil?
-	#filters.row
-		- if dates_present
-			.date-filter.col-xs-1
-				%select#date-filter{"data-placeholder" => "date"}
-					%option{:value => "empty"}
-					- @dates.each do |d|
-						%option{:value => d.strftime("%d-%m-%y")}= l(d, format: "%A %e")
-		.cat-filters{class: dates_present ? 'col-xs-4' : 'col-xs-5'}
-			- @filters.each do |cat|
-				%input.cat-filter{:type => "checkbox", value: cat, id: "section-#{cat}", checked: false}
-					%label{:for => "section-#{cat}"}= t("events.sections.#{cat}")
+- cache([@sections, @venues, @days_range, @artists_by_letter]) do
+	.filters
+		.filters-by
+			.filter-title.favourite{ data: { type: 'event', key: 'id' } }= fa_icon('star')
+			.filter-title.active{ data: { type: 'event', key: 'section', value: 'reset'} } Events By Type
+			%ul.filter-list.section
+				- @sections.each do |sec|
+					%li.section.active{ data: { type: 'event', key: 'section', value: sec}}= sec
+		.filters-by
+			.filter-title{ data: { type: 'event', key: 'date', value: 'reset'} } Events By Day
+			%ul.filter-list.date.collapsed
+				- @days_range.each do |day|
+					%li.day.active{ data: { type: 'event', key: 'date', value: "#{day}-5"}}= day
+		.filters-by
+			.filter-title{ data: { type: 'event', key: 'venue', value: 'reset'} } Events By Venue
+			%ul.filter-list.venue.collapsed
+				- @venues.each do |venue|
+					%li.venue.active{ data: { type: 'event', key: 'venue', value: venue.name}}= venue.name
+		.filters-by
+			.filter-title{ data: { type: 'artist', key: 'artists', value: 'reset'} } Artists
+			%ul.filter-list.artists.collapsed
+				- @artists_by_letter.each do |letter|
+					%li.letter.active{ data: { type: 'artist',  key: 'letter', value: letter} }= letter

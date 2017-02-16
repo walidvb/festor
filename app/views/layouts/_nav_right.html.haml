@@ -43,12 +43,8 @@
 - else
 	.drawer-container
 		%ul.nav
-			- if content_for? :nav
-				%li.gap-after
-					= link_to t('nav.filters'), program_path(locale: I18n.locale), data: { drawer: '#nav-program' }
-			- else
-				%li.gap-after
-					= link_to t('nav.program'), program_path(locale: I18n.locale)
+			%li.gap-after
+				= link_to t('nav.program'), program_path(locale: I18n.locale), data: { drawer: '#nav-program', "direct-link" => true }
 			%li.gap-after
 				= link_to t('nav.exhibition'), event_path(@exhib, locale: I18n.locale), data: { drawer: '#nav-exhib' }
 			- if !@messages.empty?
@@ -93,7 +89,6 @@
 					%li.message
 						= message.message.html_safe
 					=# link_to message.link, class: [message.colorbox? ? 'colorbox' : nil].join(' ') do
-		- if content_for? :nav
-			.drawer#nav-program
-				.back <
-				= yield :nav
+		.drawer#nav-program
+			.back <
+			= render 'layouts/filters'

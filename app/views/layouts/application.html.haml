@@ -23,13 +23,13 @@
 		= javascript_include_tag "application", "data-turbolinks-track" => true
 		= csrf_meta_tags
 	%body.imready{class: ["#{controller.controller_name}-page", "#{controller.action_name}-page", "#{'debug' if Rails.env.development?}", "#{current_user.nil? ? nil : 'admin'}", content_for(:body_class)].join(' ')}
-		#background= inline_svg('logo.svg')
-		%header
+		#background{"data-turbolinks-permanent" => true}= inline_svg('logo.svg')
+		%header#turbo-header{"data-turbolinks-permanent" => true}
 			.logo= render 'layouts/logo'
 			=# render 'layouts/navigation'
 			.hamburger
 				.bars
-		%nav
+		%nav#turbo-nav{"data-turbolinks-permanent" => true}
 			= render 'layouts/nav_right'
 		%main
 			= yield

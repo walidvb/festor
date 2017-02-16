@@ -7,6 +7,12 @@ class ApplicationController < ActionController::Base
   def load_navbar
     @exhib = Event.exhibition.first
     @messages = Message.all.order('created_at DESC').first(3)
+
+    @filters = Event.section_enum
+    @artists_by_letter = Artist.pluck(:name).map{|name| name[0].upcase}
+    @sections = Event.pluck(:section).uniq.compact.reject!{ |section| section == 'Exposition' || section == 'Exhibition'}.to_a
+    @days_range = (11..23)
+    @venues = Location.all
   end
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.

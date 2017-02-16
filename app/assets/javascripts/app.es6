@@ -46,9 +46,10 @@ class Program{
     }
   }
   _bindHover(){
+    const thumbnailSelector = `.thumbnails [data-${this.type}-id="${this.id}"]`;
     const showImg = () => {
-      const thumbnail = $(`.thumbnails [data-${this.type}-id="${this.id}"]`);
       if(!SCROLLING){
+        const thumbnail = $(thumbnailSelector);
         $('body').addClass('program-hovered');
         if(thumbnail.hasClass('out')){
           thumbnail.removeClass('out');
@@ -63,6 +64,7 @@ class Program{
     this.elem.hover( showImg ,
       (ev) => {
         if(!SCROLLING){
+          const thumbnail = $(thumbnailSelector);
           $('body').removeClass('program-hovered');
           thumbnail.addClass('out').removeClass('in');
         }
@@ -263,6 +265,7 @@ class Programs{
 (() => {
 
   let programs;
+  let activeFilters = { type: 'event', value: 'reset' };
   $(document).on('turbolinks:load', () => {
     const isProgramPage = $('#program').length != 0;
     const programsContainer = $('.post.event'),
@@ -276,12 +279,10 @@ class Programs{
         console.log('initializing');
       }
       else{
-        window.programs.filterBy({ type: 'event', value: 'reset'});
+        window.programs.filterByActiveFilters();
         window.programs.sendAllIn();
       }
-      window.programs = programs;
-      console.log('running');
-      programs.filterBy({ type: 'event', value: 'reset'});
+      programs.filterBy(activeFilters);
       programs.sendAllIn();
       initFilters();
 
@@ -295,7 +296,8 @@ class Programs{
            $(`.filters li[data-value]`).toggleClass('active', value == 'reset');
            clicked.addClass('active');
            if((key && value) || key == 'reset'){
-             programs.filterBy({ type, key, value });
+             activeFilters = { type, key, value };
+             programs.filterBy(activeFilters);
            }
         });
 
@@ -314,11 +316,11 @@ class Programs{
       if(programs){
         const except = $(e.target).data('id');
         programs.sendAllOut({ except });
-        $(document).trigger('close-drawer');
+        console.log(e);
+        if(!/program/.test(e.originalEvent.data.url)){
+          $(document).trigger('close-drawer');
+        }
       }
-    });
-    $(document).on('turbolinks:visit', (e) => {
-      $(document).trigger('close-drawer');;
     });
   });
 

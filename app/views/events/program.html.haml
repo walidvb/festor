@@ -2,29 +2,6 @@
 - content_for(:image, image_url('lines_3.png'))
 - content_for(:description, "Everything you need to know, day by day")
 - date_format_for_machine = "%-d-%-m"
-- content_for :nav do
-	.filters
-		.filters-by
-			.filter-title.favourite{ data: { type: 'event', key: 'id' } }= fa_icon('star')
-			.filter-title.active{ data: { type: 'event', key: 'section', value: 'reset'} } Events By Type
-			%ul.filter-list.section
-				- @sections.each do |sec|
-					%li.section.active{ data: { type: 'event', key: 'section', value: sec}}= sec
-		.filters-by
-			.filter-title{ data: { type: 'event', key: 'date', value: 'reset'} } Events By Day
-			%ul.filter-list.date.collapsed
-				- @days_range.each do |day|
-					%li.day.active{ data: { type: 'event', key: 'date', value: "#{day}-5"}}= day
-		.filters-by
-			.filter-title{ data: { type: 'event', key: 'venue', value: 'reset'} } Events By Venue
-			%ul.filter-list.venue.collapsed
-				- @venues.each do |venue|
-					%li.venue.active{ data: { type: 'event', key: 'venue', value: venue.name}}= venue.name
-		.filters-by
-			.filter-title{ data: { type: 'artist', key: 'artists', value: 'reset'} } Artists
-			%ul.filter-list.artists.collapsed
-				- @artists_by_letter.keys.each do |letter|
-					%li.letter.active{ data: { type: 'artist',  key: 'letter', value: letter} }= letter
 - content_for :thumbnails do
 	%ul.thumbnails
 		- @events.each do |ev|
@@ -40,17 +17,17 @@
 			- @days.each do |day|
 				- in_s = day.strftime("%d.%m")
 				%li.day{ data: { date:day.strftime(date_format_for_machine) }}= in_s
-		- @artists_by_letter.each do |key, artists|
-			.letter{ data: { letter: key } }
-				= key
+		- @artists_by_letter.each do |letter|
+			.letter{ data: { letter: letter } }
+				= letter
 	.events
 		= render 'events/timeline.html.haml', event_dates: @event_dates
-		- last_key = @artists_by_letter.keys.first
-		- @artists_by_letter.each do |key, artists|
-			- artists.each do |artist|
-				- if last_key != key
-					.line-break
-				- last_key = key
-				= link_to "#", class: 'post out artist stagger', id: "artist-#{artist.id}", data: { letter: artist.name[0].upcase, "artist-id": artist.id } do
-					.info
-						%h3.event-artist= artist.name
+		- last_key = @artists.first.name[0].upcase
+		- @artists.each do |artist|
+			- curr_key = artist.name[0].upcase
+			- if last_key != curr_key
+				.line-break
+			- last_key = curr_key
+			= link_to "#", class: 'post out artist stagger', id: "artist-#{artist.id}", data: { letter: curr_key, "artist-id": artist.id } do
+				.info
+					%h3.event-artist= artist.name
