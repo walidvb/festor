@@ -108,6 +108,7 @@ class Program{
     else if(this.isOut){
       posZ = rdmZOut();
       this.elem.removeClass('inactive active in').addClass('out');
+      opacity = .5;
     }
     else if(this.active){
       posZ = rdmZFront();
@@ -115,6 +116,7 @@ class Program{
     }
     else{
       posZ = rdmZBack();
+      opacity = .7;
       this.elem.removeClass('out active').addClass('inactive');
     }
 
