@@ -79,7 +79,7 @@
     overflow: hidden;
     max-height: 0;
     margin-bottom: 0;
-    .filter-title + &{
+    .filter-title.active + &{
       max-height: 50vh;
       margin-bottom: $lineheight-base * 2;
     }
