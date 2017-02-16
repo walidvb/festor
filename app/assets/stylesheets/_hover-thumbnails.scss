@@ -34,11 +34,11 @@ ul.thumbnails{
 .post, .header{
   .program-hovered &{
     opacity: .1;
-    z-index: 0;
+    z-index: 0!important;
     transition: opacity .15s ease-out 0s;
     &:hover{
       transition: opacity .1s ease-out 0s;
-      opacity: .9;
+      opacity: .9!important;
       z-index: 10;
     }
   }
