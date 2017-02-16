@@ -41,23 +41,23 @@ main{
 
 @keyframes float{
   0%, 100% {
-    transform: translateZ(-12px);
+    transform: translateZ(-5px);
   }
   50% {
-    transform: translateZ(14px);
+    transform: translateZ(10px);
   }
 }
 .full-content.volet{
   opacity: 1;
   will-change: transform;
   &:nth-child(1n){
-    animation: float 8s infinite ease-in-out ;
+    animation: float 16s infinite ease-in-out ;
   }
   &:nth-child(2n){
-    animation: float 12s infinite ease-in-out ;
+    animation: float 24s infinite ease-in-out ;
   }
   &:nth-child(3n){
-    animation: float 10s infinite ease-in-out ;
+    animation: float 20s infinite ease-in-out ;
   }
 
 }
