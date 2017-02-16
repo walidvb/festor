@@ -86,6 +86,9 @@
   }
 }
 
+[data-type]{
+  cursor: pointer;
+}
 .filter-list.date{
   display: flex;
   flex-flow: row wrap;
