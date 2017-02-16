@@ -310,16 +310,17 @@ class Programs{
 
     $('nav').on('scroll', e => e.preventDefault() )
     $(window).on('resize', debounce(programs.positionAll.bind(programs), 800));
-    $(document).on('turbolinks:before-visit', (e) => {
-      if(programs){
-        const except = $(e.target).data('id');
-        programs.sendAllOut({ except });
-        console.log('just sent all out', e);
-        if(!/program/.test(e.originalEvent.data.url)){
-          $(document).trigger('close-drawer');
-        }
+  });
+
+  $(document).on('turbolinks:before-visit', (e) => {
+    const goingToProgramPage = /program/.test(e.originalEvent.data.url);
+    if(!goingToProgramPage){
+      const except = $(e.target).data('id');
+      programs.sendAllOut({ except });
+      if(!goingToProgramPage){
+        $(document).trigger('close-drawer');
       }
-    });
+    }
   });
 
 

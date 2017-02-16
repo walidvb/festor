@@ -14,7 +14,6 @@
       $($menu).addClass('drawer-open');
       $('.drawer').removeClass('open');
       drawer.addClass('open');
-      console.log($this);
     }
     e.preventDefault();
     // if program, trigger the visit anyways
@@ -26,14 +25,12 @@
   const closeDrawer = (e) => {
     $('.drawer').removeClass('open');
     $($menu).removeClass('drawer-open');
-    console.log('closing drawer', e);
   }
   $(document).on('touch click', '.drawer .back', closeDrawer);
   $(document).on('close-drawer', () => {
-    console.log('close-drawer');
     closeDrawer();
   });
 
   $(document).on('turbolinks:before-visit', e => $('.full-content').addClass('exit'));
-  $(document).on('turbolinks:load', e => $('.exit').removeClass('exit'));
+  $(document).on('turbolinks:before-render', e => $('.exit').removeClass('exit'));
 })();
