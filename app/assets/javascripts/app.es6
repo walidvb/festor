@@ -214,8 +214,8 @@ class Programs{
         $this.hide();
       }
       else{
-        const top = firstPost.data('program').posY;
-        $this.show().css({ top });
+        const transform = firstPost.data('program').posY;
+        $this.show().css({ transform: `translateY(${transform}px)` });
       }
     })
   }
