@@ -172,6 +172,7 @@ h1{
 
 .show-desc, .event-artist-bio, .artist-desc, .static-desc, .previous-editions{
 	margin-right: auto;
+	padding-left: 10%;
 	max-width: 75ch;
 	a{
 		text-decoration: underline;
@@ -180,23 +181,12 @@ h1{
 	img.fr-tag{
 		width: auto!important;
 	}
-	@media #{$tablet}{
-
-		.imready &{
-			animation: padding-left 1s 1;
-			animation-fill-mode: forwards;
-		}
-	}
 	iframe, .left, .right{
 		@media #{$mobile}{
 			padding-left: 0;
 			padding-right: 0;
 		}
 	}
-}
-@keyframes padding-left{
-	from{padding-left: 0%;}
-	to{padding-left: 10%;}
 }
 .event-infos{
 	margin-left: 1px;
