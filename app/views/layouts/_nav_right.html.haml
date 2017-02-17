@@ -1,4 +1,4 @@
-- if !user_signed_in? && Rails.env.prod?
+- if Rails.env.production? && !(user_signed_in? || cookies[:beta].present?)
 	.drawer-container
 		%ul.nav
 			- if !@messages.empty?
