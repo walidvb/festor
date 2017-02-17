@@ -11,6 +11,8 @@
 #program{
   transition: all 1s $transition-long;
   flex: 1 0 80vw;
+  padding-right: 20vw;
+  min-width: 100vw;
   display: inline-flex;
   position: relative;
   @media #{$mobile}{
