@@ -1,6 +1,11 @@
-main{
+//req in cross-browser-shit
+@mixin perspective(){
   perspective: 60px;
   perspective-origin: 50% 50%;
+}
+
+main{
+  @include perspective();
 }
 
 .full-content{

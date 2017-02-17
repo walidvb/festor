@@ -7,3 +7,12 @@ function iOSVersion() {
   }
   else return -1;
 }
+
+$(document).on('ready', () => {
+  if(/webkit/i.test(navigator.userAgent)){
+    $('html').addClass('webkit');
+  }
+  else{
+    $('html').addClass('firefox');
+  }
+})

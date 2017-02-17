@@ -1,0 +1,33 @@
+.firefox{
+  .program-page main , .tmp-page main{
+    perspective: none;
+    overflow: visible;
+  }
+  .events, .legend{
+    @include perspective();
+    padding-top: $header-height;
+    overflow: auto;
+  }
+  .volets{
+    @include perspective();
+  }
+  .legend{
+    overflow: -moz-scrollbars-none;
+  }
+  #program{
+    padding-top: 0;
+  }
+}
+
+
+.firefox{
+  .webkit-only{
+    display: none!important;
+  }
+}
+
+.webkit{
+  .firefox-only{
+    display: none!important;
+  }
+}

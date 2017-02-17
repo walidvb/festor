@@ -68,8 +68,9 @@
 		%nav#turbo-nav{"data-turbolinks-permanent" => true}
 			= render 'layouts/nav_right'
 		%main
+			.firefox-only= yield :thumbnails
 			= yield
-		= yield :thumbnails
+		.webkit-only= yield :thumbnails
 		- if Rails.env.prod?
 			:plain
 				<script>
