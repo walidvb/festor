@@ -13,9 +13,11 @@
 	- cache(I18n.locale.to_s + @dates.map(&:updated_at).join('-') + @event.updated_at.to_s + @event.id.to_s) do
 		- location = @dates.first.location
 		#main-content.main
+			- large = @event.is_workshop? ? @event.title : @artists.map(&:name).join(', ')
+			- small = !@event.is_workshop? ? @event.title : @artists.map(&:name).join(', ')
 			.show-header.page-title
-				%h1.event-name= @artists.map(&:name).join(', ')
-				%h2= @event.title
+				%h1.event-name= large
+				%h2= small
 				.event-infos
 					.event-dates
 						- @dates.each_with_index do |date, i|

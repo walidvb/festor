@@ -8,7 +8,7 @@ class Event < ActiveRecord::Base
 	default_scope { includes(:translations) }
 
 	def self.workshop_cats
-		[:workshop, :conference, :masterclass]
+		[:workshop, :conference, :masterclass, :talk, :specials]
 	end
 
 	scope :published, -> {where(published: true)}
