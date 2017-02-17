@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
     @messages = Message.all.order('created_at DESC').first(3)
 
     @filters = Event.section_enum
-    @artists_by_letter = Artist.pluck(:name).map{|name| name[0].upcase}
+    @artists_by_letter = Artist.order("name ASC").pluck(:name).map{|name| name[0].upcase}.uniq
     @sections = Event.pluck(:section).uniq.compact.reject!{ |section| section == 'Exposition' || section == 'Exhibition'}.to_a
     @days_range = (11..23)
     @venues = Location.all
