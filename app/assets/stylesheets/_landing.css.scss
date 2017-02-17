@@ -13,6 +13,8 @@
   display: flex;
   flex-direction: column;
   font-size: 1.2em;
+  justify-content: space-between;
+  height: 100%;
   .volet, .in-construction{
     margin: 2rem 0;
   }
