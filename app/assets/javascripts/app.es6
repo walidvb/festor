@@ -1,7 +1,7 @@
 let ABSOLUTE_START,
   SCROLLING = false;
 const HOUR_IN_PX = 18*2,
-  DAY_GAP = 18*10,
+  DAY_GAP = 18*15,
   PERSPECTIVE = '60px',
   NORMAL_Z = 5,
   MIN_Z = 15,
@@ -257,12 +257,12 @@ class Programs{
       else{
         conflictCount = 0;
       }
-      if(prog.date != currDay){
-        basePosY += DAY_GAP;
-        currDay = prog.date;
-      }
       prog.position(basePosY);
       minY = Math.max(prog.endPos(), minY);
+      if(prog.date != currDay){
+        minY += DAY_GAP;
+        currDay = prog.date;
+      }
     });
     this.positionDatesLegend();
 
