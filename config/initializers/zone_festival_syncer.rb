@@ -70,8 +70,7 @@ module ZoneFestivalSyncer
       if has_multiple_shows_for_single_program
         self.store_translations(event, :title, date, :name)
         Rails.logger.info "Multiple Performances detected for #{date['name_1']}"
-        store_translations event, :r s
-        ,  date, :description
+        store_translations event, :description,  date, :description
       else
         store_translations event, :description,  first_show, :description_long
         event.title = first_show['title_selected']
