@@ -1,7 +1,7 @@
 let ABSOLUTE_START,
   SCROLLING = false;
-const HOUR_IN_PX = 36,
-  DAY_GAP = 18*4,
+const HOUR_IN_PX = 18*2,
+  DAY_GAP = 18*10,
   PERSPECTIVE = '60px',
   NORMAL_Z = 5,
   MIN_Z = 15,
@@ -233,12 +233,14 @@ class Programs{
   positionAllByTime(){
     let minY = 0,
       gap = 0,
-      conflictCount = 0;
+      conflictCount = 0,
+      currDay;
 
     const rotate = smallScreen() ? ' rotateZ(-90deg)' : '';
     this.programs.forEach((prog, i) => {
       let basePosY = prog.hoursFromStart*HOUR_IN_PX;
       let oldGap = gap;
+      currDay = currDay || prog.date;
       if(minY < basePosY){
         gap = Math.max(0, oldGap, basePosY - minY);
         basePosY = Math.min(minY, basePosY - oldGap);
@@ -255,7 +257,10 @@ class Programs{
       else{
         conflictCount = 0;
       }
-
+      if(prog.date != currDay){
+        basePosY += DAY_GAP;
+        currDay = prog.date;
+      }
       prog.position(basePosY);
       minY = Math.max(prog.endPos(), minY);
     });
