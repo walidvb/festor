@@ -61,30 +61,39 @@ module ZoneFestivalSyncer
       Rails.logger.info "Fetching shows"
       shows = self.shows_for_program(date, zf)
       has_multiple_shows_for_single_program = shows.count > 1
+      has_show = !shows.empty?
+      section_from_show = nil
 
-      first_show = shows.first
-      #store zf_id as the first show of the list
-      event = Event.find_by_zf_id(first_show['id'].to_i) || Event.new
-      event.zf_id = first_show['id'].to_i
+      if(has_show)
+        first_show = shows.first
+        #store zf_id as the first show of the list
+        event = Event.find_by_zf_id(first_show['id'].to_i) || Event.new
+        event.zf_id = first_show['id'].to_i
 
-      if has_multiple_shows_for_single_program
-        self.store_translations(event, :title, date, :name)
-        Rails.logger.info "Multiple Performances detected for #{date['name_1']}"
-        store_translations event, :description,  date, :description
+        if has_multiple_shows_for_single_program
+          self.store_translations(event, :title, date, :name)
+          Rails.logger.info "Multiple Performances detected for #{date['name_1']}"
+          store_translations event, :description,  date, :description
+        else
+          store_translations event, :description,  first_show, :description_long
+          store_translations event, :title, first_show, :title_selected
+        end
+        store_translations event, :short_description,  first_show, :description_short
+        section_from_show = self.section_for_show(event.zf_id, zf)
       else
-        store_translations event, :description,  first_show, :description_long
-        event.title = first_show['title_selected']
+        Rails.logger.info "No Performance detected for #{date['name_1']}"
+        event = Event.find_by_zf_id(date['id'].to_i) || Event.new
+        store_translations event, :title,  date, :title
+        store_translations event, :description,  date, :description
       end
-      store_translations event, :short_description,  first_show, :description_short
 
       event.location = Location.find_by_zf_id(date['venue_id'])
-      section_from_show = self.section_for_show(event.zf_id, zf)
       section_from_program = self.section_for_program(date, zf)
       section = section_from_show || section_from_program
       puts section
       store_translations event, :section,  section, :name
       event.save!
-      if img = first_show['image'][0]
+      if has_show && img = first_show['image'][0]
         event.delay.set_image_from_url(img['url'])
       end
       event_date.event = event
