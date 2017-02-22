@@ -14,6 +14,9 @@
 		%meta{name: "google-site-verification", content:"EiRhKI0cx8Sp3Xikv24icsWpBYEF4lG5LU8nFYaQhQ4"}
 
 		%meta{name:"turbolinks-cache-control", content:"no-cache"}
+
+		%link{rel: 'alternate', hreflang: 'fr', href: url_for(locale: :fr), title: content_for(:title)}
+		%link{rel: 'alternate', hreflang: 'en', href: url_for(locale: :en), title: content_for(:title)}
 		%title= title
 
 		= favicon_link_tag 'favicon.png'
