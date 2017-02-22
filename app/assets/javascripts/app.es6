@@ -1,7 +1,7 @@
 let ABSOLUTE_START,
   SCROLLING = false;
 const HOUR_IN_PX = 18*2,
-  DAY_GAP = 18*15,
+  DAY_GAP = 18*10,
   PERSPECTIVE = '60px',
   NORMAL_Z = 5,
   MIN_Z = 15,
@@ -81,7 +81,9 @@ class Program{
     this.posY = posY;
     if(!(this.conflictCount > 0)){
       const maxTransform = $('main').width()*.7 - this.elem.outerWidth();
-      this.posX = (Math.floor(Math.random() * maxTransform)) + 'px';
+      this.posX = 0;
+      // position horizontally randomly
+      // this.posX = (Math.floor(Math.random() * maxTransform)) + 'px';
     }
     const position = smallScreen() ? '' : 'absolute'
     this.elem.css({ position });
@@ -111,7 +113,7 @@ class Program{
       opacity = .5;
     }
     else if(this.active){
-      posZ = rdmZFront();
+      posZ = 0;// rdmZFront();
       this.elem.removeClass('out inactive').addClass('active');
     }
     else{
