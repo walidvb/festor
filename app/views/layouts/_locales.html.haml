@@ -1,4 +1,5 @@
-%ul.locales
+%ul.locales{"data-turbolinks" => "false"}
+	= I18n.locale
 	- if I18n.locale == :fr
 		%li.locale
 			#{link_to("EN", url_for(locale: :en), class: "en")}

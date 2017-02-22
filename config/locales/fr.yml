@@ -12,14 +12,12 @@ fr:
     artists:     "Artistes"
     gallery:     "Galerie"
     workshops:   "Workshops++"
-    exhibitions_menu: "Exposition"
-    exhibitions: "Installation"
+    exhibition: "Exposition"
     all:          'Programme'
     venues:      "Lieux"
     tickets:     "Billetterie"
-    about:      'à propos'
-    partners:   'partenaires'
-    archives:   'archives'
+    partners:   'Partenaires'
+    archives:   'Archives'
     volunteers: 'Bénévoles'
     about:      'À propos'
     venues:     'Lieux'
@@ -29,6 +27,11 @@ fr:
     private: 'Privés'
     venues: 'Lieux'
     institutional: 'Institutionnels'
+  filters:
+    by_type: 'Évènements par type'
+    by_day: 'Évènements par jour'
+    by_venue: 'Évènements par lieu'
+    artists: 'Artistes'
   artists:
     types:
       dj: 'dj'
