@@ -41,8 +41,9 @@
 		%ul.nav
 			%li.gap-after
 				= link_to t('nav.program'), program_path(locale: I18n.locale), data: { drawer: '#nav-program', "direct-link" => true }
-			%li.gap-after
-				= link_to t('nav.exhibition'), event_path(@exhib, locale: I18n.locale), data: { drawer: '#nav-exhib' }
+			- if @exhib
+				%li.gap-after
+					= link_to t('nav.exhibition'), event_path(@exhib, locale: I18n.locale), data: { drawer: '#nav-exhib' }
 			- if !@messages.empty?
 				%li
 					%a{href: '#', "data-drawer" => '#nav-news'}= t('nav.news')
@@ -73,18 +74,19 @@
 						%p Avenue Ernest-Pictet 28/30
 						%p 1203 #{t('shared.geneva').titleize}
 						%p #{t('shared.switzerland')}
-
-		.drawer#nav-exhib
-			.back <
-			%p= @exhib.short_description.try(:html_safe)
-			.more-info= link_to t('shared.more_info'), event_path(@exhib, locale: I18n.locale)
-		.drawer#nav-news
-			.back <
-			%ul
-				- @messages.each do |message|
-					%li.message
-						= message.message.html_safe
-					=# link_to message.link, class: [message.colorbox? ? 'colorbox' : nil].join(' ') do
+		- if @exhib
+			.drawer#nav-exhib
+				.back <
+				%p= @exhib.short_description.try(:html_safe)
+				.more-info= link_to t('shared.more_info'), event_path(@exhib, locale: I18n.locale)
+		- if !@messages.empty?
+			.drawer#nav-news
+				.back <
+				%ul
+					- @messages.each do |message|
+						%li.message
+							= message.message.html_safe
+						=# link_to message.link, class: [message.colorbox? ? 'colorbox' : nil].join(' ') do
 		.drawer#nav-program
 			.back <
 			= render 'layouts/filters'
