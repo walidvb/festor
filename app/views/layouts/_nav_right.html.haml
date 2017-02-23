@@ -28,10 +28,6 @@
 						%p Avenue Ernest-Pictet 28/30
 						%p 1203 #{t('shared.geneva').titleize}
 						%p #{t('shared.switzerland')}
-		.drawer#nav-exhib
-			.back <
-			%p= @exhib.short_description.try(:html_safe)
-			.more-info= link_to t('shared.more_info'), event_path(@exhib, locale: I18n.locale)
 		.drawer#nav-news
 			.back <
 			%ul
