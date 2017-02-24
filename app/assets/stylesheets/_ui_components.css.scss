@@ -249,7 +249,7 @@ body #cboxLoadedContent{
 
 
 img:after {
-  content: "\f1c5" " " attr(alt);
+  //content: attr(alt);
 
   font-size: 16px;
   font-family: FontAwesome;
