@@ -248,9 +248,11 @@ body #cboxLoadedContent{
 }
 
 
+img{
+	position: relative;
+}
 img:after {
-  //content: attr(alt);
-
+  content: attr(alt);
   font-size: 16px;
   font-family: FontAwesome;
   color: rgb(100, 100, 100);
