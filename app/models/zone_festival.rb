@@ -20,7 +20,7 @@ class ZoneFestival < ActiveRecord::Base
     EventDate.delete_all
     Booking.delete_all
     zf = ZoneFestival.first || ZoneFestival.new
-    zf.sync!
+    ZoneFestival.sync!
   end
 
   def store_locally!
@@ -80,6 +80,12 @@ class ZoneFestival < ActiveRecord::Base
 
       if sub_section = sub_section_for_program(date, zf)
         store_translations event, :sub_section,  sub_section, :name
+      end
+
+      if (informations = date['information']) && !informations.empty?
+        Event.extra_fields.each do |key|
+          store_information_for event, informations, key
+        end
       end
 
       event.save!
@@ -160,6 +166,11 @@ class ZoneFestival < ActiveRecord::Base
   def sub_section_for_program(date, zf)
     section_sub_id = date['section_sub_id']
     zf['section_sub'].find{|sec| sec['id'] == section_sub_id}
+  end
+
+  def store_information_for target, informations, key
+    info = informations.find{|ques| ques['question_1'].downcase == "#{key}_1".downcase}
+    store_translations target, key.downcase, info, 'answer'
   end
 
   def store_translations object, object_column, source_object, source_column
