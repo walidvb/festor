@@ -48,7 +48,7 @@ RailsAdmin.config do |config|
       controller do
         proc do
           begin
-            ZoneFestivalSyncer.sync!
+            ZoneFestival.sync!
             redirect_to '/admin', notice: 'Database sync in progress. Please wait a moment for the images to syncronise as well.'
           rescue => e
             redirect_to '/admin', alert: "Error when syncing database: #{e}"
@@ -60,7 +60,7 @@ RailsAdmin.config do |config|
       controller do
         proc do
           begin
-            ZoneFestivalSyncer.reset_and_sync!
+            ZoneFestival.reset_and_sync!
             redirect_to '/admin', notice: 'Database sync in progress. Please wait a moment for the images to syncronise as well.'
           rescue => e
             raise e unless Rails.env.prod?
