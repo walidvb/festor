@@ -74,7 +74,7 @@
   .filters{
     flex-flow: column;
   }
-  .filter-list{
+  .filter-list.collapsible{
     transition: all .3s ease-in-out;
     overflow: hidden;
     max-height: 0;

@@ -71,12 +71,17 @@ class ZoneFestival < ActiveRecord::Base
         store_translations event, :title,  date, :title
         store_translations event, :description,  date, :description
       end
-
       event.location = Location.find_by_zf_id(date['venue_id'])
       section_from_program = section_for_program(date, zf)
-      section = section_from_show || section_from_program
-      puts section
-      store_translations event, :section,  section, :name
+
+      if section = section_from_show || section_from_program
+        store_translations event, :section,  section, :name
+      end
+
+      if sub_section = sub_section_for_program(date, zf)
+        store_translations event, :sub_section,  sub_section, :name
+      end
+
       event.save!
       if has_show && img = first_show['image'][0]
         if (imgs = first_show['image']) && imgs.count > 0
@@ -150,6 +155,11 @@ class ZoneFestival < ActiveRecord::Base
   def section_for_program(date, zf)
     section_id = date['section_id']
     zf['section'].find{|sec| sec['id'] == section_id}
+  end
+
+  def sub_section_for_program(date, zf)
+    section_sub_id = date['section_sub_id']
+    zf['section_sub'].find{|sec| sec['id'] == section_sub_id}
   end
 
   def store_translations object, object_column, source_object, source_column

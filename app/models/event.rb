@@ -2,7 +2,7 @@
 class Event < ActiveRecord::Base
 
 	attr_accessor :artist_ids
-	translates :title, :description, :participants, :languages, :requirements, :material, :notes, :price, :tickets_link, :short_description, :fallbacks_for_empty_translations => true
+	translates :title, :description, :participants, :languages, :requirements, :material, :notes, :price, :tickets_link, :short_description, :sub_section, :fallbacks_for_empty_translations => true
 	extend FriendlyId
   friendly_id :title, :use => [:globalize, :slugged]
 	default_scope { includes(:translations) }

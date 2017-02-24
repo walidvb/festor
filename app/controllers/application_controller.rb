@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
 
     @filters = Event.section_enum
     @artists_by_letter = Artist.order("name ASC").pluck(:name).map{|name| name[0].upcase}.uniq
-    @sections = Event.pluck(:section).uniq.compact.reject!{ |section| section == 'Exposition' || section == 'Exhibition'}.to_a
+    @sections = Event.pluck(:section).uniq.compact
     @days_range = (11..28)
     @venues = Location.all
   end
