@@ -14,7 +14,7 @@
       image: event.main_image.url(:tile), |
     }}
       .favourite-trigger
-      - _switch = event.section != 'Workshop'
+      - _switch = event.artists_as_title?
       - large = _switch ? artists.map(&:name).join(', ') : event.title
       - small = !_switch ? artists.map(&:name).join(', ') : event.title
       = link_to(path_for(event, locale: I18n.locale)) do

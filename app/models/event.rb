@@ -75,27 +75,17 @@ class Event < ActiveRecord::Base
 	#validates_presence_of :title
 
 	def next
-		cat = %w{workshop conference masterclass}.include?(section) ? [:workshop, :conference, :masterclass] : section
-		Event.where(section: cat).where('id > ?', id).first
-		# if ed = event_dates
-		# 	EventDate.where('dateable_type = ? AND event_id != ? AND start > ?', self.sup_section, self.id, ed.start.strftime("%Y-%m-%d")).order(:start).distinct(:event_id).first.try(:event)
-		# end
 	end
 
 	def previous
-		cat = %w{workshop conference masterclass}.include?(section) ? [:workshop, :conference, :masterclass] : section
-		Event.where(section: cat).where('id < ?', id).last
-		# if ed = event_dates.first
-		# 	EventDate.where('dateable_type = ? AND event_id != ? AND start < ?', self.sup_section, self.id, ed.start.strftime("%Y-%m-%d")).distinct(:event_id).order(:start).first.try(:event)
-		# end
-	end
-
-	def self.section_enum
-		[:clubbing, :performance, :screening, :exhibition, :conference, :masterclass, :specials, :workshop]
 	end
 
 	def finished?
 	  false
+	end
+
+	def artists_as_title?
+		/club|perfo|exp|exhi/i.match(sub_section)
 	end
 
 	def is_workshop?

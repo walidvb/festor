@@ -13,8 +13,9 @@
 	- cache(I18n.locale.to_s + @dates.map(&:updated_at).join('-') + @event.updated_at.to_s + @event.id.to_s) do
 		- location = @dates.first.location
 		#main-content.main{ data: { id: @event.id }}
-			- large = @event.is_workshop? ? @event.title : @artists.map(&:name).join(', ')
-			- small = !@event.is_workshop? ? @event.title : @artists.map(&:name).join(', ')
+			- _switch = @evnet.artists_as_title?
+			- large = _switch ? @event.title : @artists.map(&:name).join(', ')
+			- small = !_switch ? @event.title : @artists.map(&:name).join(', ')
 			.show-header.page-title
 				.favourite-trigger
 				%h1.event-name= large
