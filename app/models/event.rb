@@ -85,7 +85,7 @@ class Event < ActiveRecord::Base
 	end
 
 	def artists_as_title?
-		/club|perfo|exp|exhi/i.match(sub_section)
+		/club|perfo/i.match(sub_section)
 	end
 
 	def is_workshop?

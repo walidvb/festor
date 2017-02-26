@@ -19,7 +19,6 @@ class ZoneFestival < ActiveRecord::Base
     Link.delete_all
     EventDate.delete_all
     Booking.delete_all
-    zf = ZoneFestival.first || ZoneFestival.new
     ZoneFestival.sync!
   end
 
@@ -48,7 +47,6 @@ class ZoneFestival < ActiveRecord::Base
       has_multiple_shows_for_single_program = shows.count > 1
       has_show = !shows.empty?
       section_from_show = nil
-
       if(has_show)
         first_show = shows.first
         #store zf_id as the first show of the list
@@ -60,15 +58,16 @@ class ZoneFestival < ActiveRecord::Base
           Rails.logger.info "Multiple Performances detected for #{date['name_1']}"
           store_translations event, :description,  date, :description
         else
+          Rails.logger.info "Single Performances detected for #{date['name_1']}"
           store_translations event, :description,  first_show, :description_long
-          store_translations event, :title, first_show, :title_selected
+          store_translations event, :title, first_show, :title
         end
         store_translations event, :short_description,  first_show, :description_short
         section_from_show = section_for_show(event.zf_id, zf)
       else
         Rails.logger.info "No Performance detected for #{date['name_1']}"
         event = Event.find_by_zf_id(date['id'].to_i) || Event.new
-        store_translations event, :title,  date, :title
+        store_translations event, :title,  date, :name
         store_translations event, :description,  date, :description
       end
       event.location = Location.find_by_zf_id(date['venue_id'])
