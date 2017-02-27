@@ -46,7 +46,7 @@ class ZoneFestival < ActiveRecord::Base
       shows = shows_for_program(date, zf)
       has_multiple_shows_for_single_program = shows.count > 1
       has_show = !shows.empty?
-      group_shows = has_multiple_shows && !date['description'].empty?
+      # group_shows = has_multiple_shows_for_single_program && !date['description'].empty?
 
       section_from_show = nil
       if(has_show)
