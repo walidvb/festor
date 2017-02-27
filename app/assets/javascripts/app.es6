@@ -73,7 +73,8 @@ class Program{
   }
   testAndActivate({ type, key, value }){
     this.isOut = (this.type != type);
-    this.active = ((value == 'reset') || value.includes(this[key]));
+    const keyTest = value.includes(this[key]) && (this[key] != undefined && this[key].length > 0);
+    this.active = ((value == 'reset') || keyTest);
     this.setTransform();
   }
   // position
