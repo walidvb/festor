@@ -3,7 +3,7 @@
 - content_for(:description, remove_tags(@event.description))
 .full-content
 	.mf-breadcrumb.show-xs
-		= link_to "#{t('shared.all')}", @event.is_workshop? ? workshops_path(locale: I18n.locale) : @event.section == :exhibition ? exhibitions_path(locale: I18n.locale) : events_path(locale: I18n.locale)
+		= link_to "#{t('shared.all')}", program_path(locale: I18n.locale)
 		.inner-nav
 			= link_to('', path_for(@event.previous), class: 'prev') if !@event.previous.nil?
 			= link_to('', path_for(@event.next), class: 'next') if !@event.next.nil?
@@ -35,7 +35,7 @@
 						- if(!@event.is_workshop? && !@event.price.blank?)
 							%h5.price= @event.price
 						- if !@event.finished? && !@event.tickets_link.blank?
-							%h5= link_to t('events.ticket'), send("#{@event.sup_section}_tickets_path", "#{@event.sup_section}_id" => @event.slug, locale: I18n.locale), class: "buy-link"
+							%h5= link_to(t('events.ticket'), event_tickets_path(@event.slug, locale: I18n.locale), class: "buy-link")
 					.inner-nav.hidden-xs
 						= link_to('', path_for(@event.previous), class: 'prev') if !@event.previous.nil?
 						= link_to('', path_for(@event.next), class: 'next') if !@event.next.nil?

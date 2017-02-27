@@ -16,13 +16,7 @@ Festor::Application.routes.draw do
 		get "home" => 'home#index'
 		get "program" => 'events#program', as: :program
 		#get "events/:id" => "events#show", as: :event
-		resources :events, controller: "events", only: [:show, :index], category: :all, as: :events do
-      get 'tickets' => 'static#tickets', as: :tickets
-    end
-		resources :workshops, controller: "events", only: [:show, :index], category: :workshop do
-      get 'tickets' => 'static#tickets', as: :tickets
-    end
-		resources :exhibitions, controller: "events", only: [:show, :index], category: :exhibition do
+		resources :events, controller: "events", only: [:show], as: :events do
       get 'tickets' => 'static#tickets', as: :tickets
     end
 

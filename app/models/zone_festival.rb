@@ -73,6 +73,7 @@ class ZoneFestival < ActiveRecord::Base
         store_translations event, :description,  date, :description
       end
       event.location = Location.find_by_zf_id(date['venue_id'])
+      store_translations event, :tickets_link, date, :ticket_url
       section_from_program = section_for_program(date, zf)
 
       if section = section_from_show || section_from_program
