@@ -48,7 +48,7 @@
 				$link.href = getStylesheetHref();
 				$link.type = 'text/css'
 				$link.rel = 'stylesheet'
-				document.head.prepend($link);
+				document.head.appendChild($link);
 
 				document.addEventListener('keydown', function(e){
 					if(!e.metaKey &&
