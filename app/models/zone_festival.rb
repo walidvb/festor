@@ -92,7 +92,7 @@ class ZoneFestival < ActiveRecord::Base
       event.save!
       if has_show && img = first_show['image'][0]
         if (imgs = first_show['image']) && imgs.count > 0
-          if img = imgs.first{ |_img| _img['principal'].nil? || _img['principal'] == 1 }
+          if img = imgs.find{ |_img| _img['principal'].nil? || _img['principal'] == 1 }
             event.delay.set_image_from_url(img['url'])
           end
         end
