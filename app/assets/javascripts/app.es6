@@ -26,7 +26,7 @@ class Program{
     this.duration = this.dateEnd - this.dateStart;
     this.durationInHour = this.duration/(1000*60*60)
     this.hoursFromStart = (this.dateStart - ABSOLUTE_START)/(1000*60*60);
-
+    this.artists = this.elem.data('artists');
     this.conflictCount = 0;
     this.posX = 0;
     this.posY = 0;
