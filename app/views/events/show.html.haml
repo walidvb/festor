@@ -14,8 +14,8 @@
 		- location = @dates.first.location
 		#main-content.main{ data: { id: @event.id }}
 			- _switch = @event.artists_as_title?
-			- large = _switch ? @event.title : @artists.map(&:name).join(', ')
-			- small = !_switch ? @event.title : @artists.map(&:name).join(', ')
+			- large = !_switch ? @event.title : @artists.map(&:name).join(', ')
+			- small = _switch ? @event.title : @artists.map(&:name).join(', ')
 			.show-header.page-title
 				.favourite-trigger
 				%h1.event-name= large
