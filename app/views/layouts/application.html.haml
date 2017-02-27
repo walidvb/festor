@@ -32,7 +32,7 @@
 				var invert = false,
 					styleDay = "#{stylesheet_path('application_day')}",
 					styleNight = '#{stylesheet_path("application_night")}';
-				const getStylesheetHref = (invert) => {
+				const getStylesheetHref = function(invert){
 					var now = new Date();
 					var isNight = ((now.getHours() >= 20 && now.getMinutes >= 38) || now.getHours() > 21) || ((now.getHours() <= 6 && now.getMinutes() < 25) || now.getHours() < 6);
 					if(invert){ isNight = !isNight };
