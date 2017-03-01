@@ -63,6 +63,7 @@ class ZoneFestival < ActiveRecord::Base
         elsif has_multiple_shows_for_single_program && !group_shows
           Rails.logger.info "Multiple Performances detected for #{date['name_1']}"
           shows.each do |show|
+            Rails.logger.info "Show #{show['title_1']}(#{show['title_1']})"
             event = Event.find_by_zf_id(show['id']) || Event.new
             store_translations_for(event, :title, show, :title)
             store_translations_for(event, :description, show, :description_long)
@@ -92,12 +93,12 @@ class ZoneFestival < ActiveRecord::Base
                 end
               end
             end
+          store_artists_from_shows [show], event, zf
           end
 
           event_date.event = event
           event_date.save!
-          store_artists_from_shows shows, event, zf
-          Rails.logger.info "returning from "
+          return
         else
           Rails.logger.info "Single Performances detected for #{date['name_1']}"
           store_translations_for event, :description,  first_show, :description_long
