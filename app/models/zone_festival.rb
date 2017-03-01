@@ -36,8 +36,16 @@ class ZoneFestival < ActiveRecord::Base
     # name: artist_name
     # bio: artist_bio
 
-    zf['program'].each do |date|
-      Rails.logger.info "Processing #{date['title']}: #{date['date_start']}"
+    programs = zf['program'].select{|pr|       
+      pr['id'] == 42 ||      
+      pr['id'] == 23 ||      
+      pr['id'] == 27 ||      
+      pr['id'] == 54 ||      
+      pr['id'] == 41 ||    
+      true
+    }
+     programs.each do |date|
+      Rails.logger.info "Processing #{date['name_1']}: #{date['date_start']}"
       event_date = EventDate.find_by_zf_id(date['id']) || EventDate.new
       event_date.zf_id = date['id']
       event_date.start = DateTime.parse(date['date_start'])
@@ -50,6 +58,7 @@ class ZoneFestival < ActiveRecord::Base
       group_shows = has_multiple_shows_for_single_program && !desc_empty
 
       section_from_show = nil
+
       if(has_show)
         first_show = shows.first
         #store zf_id as the first show of the list
@@ -98,7 +107,7 @@ class ZoneFestival < ActiveRecord::Base
 
           event_date.event = event
           event_date.save!
-          return
+          next
         else
           Rails.logger.info "Single Performances detected for #{date['name_1']}"
           store_translations_for event, :description,  first_show, :description_long
