@@ -33,7 +33,7 @@ class Artist < ActiveRecord::Base
 	validates_attachment_content_type :profile_picture, :content_type => /\Aimage\/(jpg|jpeg|png|gif)\Z/i
 
   def book_for event
-  	Booking.create! event: event, artist: self
+  	Booking.find_or_create_by! event: event, artist: self
   end
 
   def set_image_from_url url
