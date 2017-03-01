@@ -37,7 +37,7 @@ class ZoneFestival < ActiveRecord::Base
     # bio: artist_bio
 
     zf['program'].each do |date|
-      Rails.logger.info "processing #{date['title']}: #{date['date_start']}"
+      Rails.logger.info "Processing #{date['title']}: #{date['date_start']}"
       event_date = EventDate.find_by_zf_id(date['id']) || EventDate.new
       event_date.zf_id = date['id']
       event_date.start = DateTime.parse(date['date_start'])
@@ -46,7 +46,8 @@ class ZoneFestival < ActiveRecord::Base
       shows = shows_for_program(date, zf)
       has_multiple_shows_for_single_program = shows.count > 1
       has_show = !shows.empty?
-      # group_shows = has_multiple_shows_for_single_program && !date['description'].empty?
+      desc_empty = date['description_1'].empty? && date['description_2'].empty?
+      group_shows = has_multiple_shows_for_single_program && !desc_empty
 
       section_from_show = nil
       if(has_show)
@@ -55,33 +56,82 @@ class ZoneFestival < ActiveRecord::Base
         event = Event.find_by_zf_id(first_show['id'].to_i) || Event.new
         event.zf_id = first_show['id'].to_i
 
-        if has_multiple_shows_for_single_program
-          store_translations(event, :title, date, :name)
+        if has_multiple_shows_for_single_program && group_shows
+          Rails.logger.info "Group Performances detected for #{date['name_1']}"
+          store_translations_for(event, :title, date, :name)
+          store_translations_for event, :description,  date, :description
+        elsif has_multiple_shows_for_single_program && !group_shows
           Rails.logger.info "Multiple Performances detected for #{date['name_1']}"
-          store_translations event, :description,  date, :description
+          shows.each do |show|
+            event = Event.find_by_zf_id(show['id']) || Event.new
+            store_translations_for(event, :title, show, :title)
+            store_translations_for(event, :description, show, :description_long)
+            section_from_show = section_for_show(event.zf_id, zf)
+            section_from_program = section_for_program(date, zf)
+            event.location = Location.find_by_zf_id(date['venue_id'])
+            store_translations_for event, :tickets_link, date, :ticket_url
+            if section = section_from_show || section_from_program
+              store_translations_for event, :section,  section, :name
+            end
+            if sub_section = sub_section_for_program(date, zf)
+              store_translations_for event, :sub_section,  sub_section, :name
+            end
+
+            if (informations = date['information']) && !informations.empty?
+              Event.extra_fields.each do |key|
+                store_information_for event, informations, key
+              end
+            end
+
+
+            event.save!
+            if has_show && img = show['image'][0]
+              if (imgs = show['image']) && imgs.count > 0
+                if img = imgs.find{ |_img| _img['principal'].nil? || _img['principal'] == 1 }
+                  event.delay.set_image_from_url(img['url'])
+                end
+              end
+            end
+          end
+
+          event_date.event = event
+          event_date.save!
+          store_artists_from_shows shows, event, zf
+          Rails.logger.info "returning from "
         else
           Rails.logger.info "Single Performances detected for #{date['name_1']}"
-          store_translations event, :description,  first_show, :description_long
-          store_translations event, :title, first_show, :title
+          store_translations_for event, :description,  first_show, :description_long
+          store_translations_for event, :title, first_show, :title
         end
-        store_translations event, :short_description,  first_show, :description_short
+
+        store_translations_for event, :short_description,  first_show, :description_short
         section_from_show = section_for_show(event.zf_id, zf)
       else
         Rails.logger.info "No Performance detected for #{date['name_1']}"
         event = Event.find_by_zf_id(date['id'].to_i) || Event.new
-        store_translations event, :title,  date, :name
-        store_translations event, :description,  date, :description
+        store_translations_for event, :title,  date, :name
+        store_translations_for event, :description,  date, :description
+        event.save!
+        if has_show && img = show['image'][0]
+          if (imgs = show['image']) && imgs.count > 0
+            if img = imgs.find{ |_img| _img['principal'].nil? || _img['principal'] == 1 }
+              event.delay.set_image_from_url(img['url'])
+            end
+          end
+        end
+        store_artists_from_shows shows, event, zf
       end
+      Rails.logger.info "Storing location to #{event.title}"
       event.location = Location.find_by_zf_id(date['venue_id'])
-      store_translations event, :tickets_link, date, :ticket_url
+      store_translations_for event, :tickets_link, date, :ticket_url
       section_from_program = section_for_program(date, zf)
 
       if section = section_from_show || section_from_program
-        store_translations event, :section,  section, :name
+        store_translations_for event, :section,  section, :name
       end
 
       if sub_section = sub_section_for_program(date, zf)
-        store_translations event, :sub_section,  sub_section, :name
+        store_translations_for event, :sub_section,  sub_section, :name
       end
 
       if (informations = date['information']) && !informations.empty?
@@ -89,7 +139,7 @@ class ZoneFestival < ActiveRecord::Base
           store_information_for event, informations, key
         end
       end
-
+      Rails.logger.info "Saving event"
       event.save!
       if has_show && img = first_show['image'][0]
         if (imgs = first_show['image']) && imgs.count > 0
@@ -107,6 +157,7 @@ class ZoneFestival < ActiveRecord::Base
   private
 
   def store_artists_from_shows shows, event, zf
+    Rails.logger.info "Storing artists from #{shows.count} into #{event.title}"
     shows.each do |ev|
       if artists = ev['artist']
         artists.each do |art|
@@ -115,7 +166,7 @@ class ZoneFestival < ActiveRecord::Base
           artist.name = art['name']
           artist.country = art['country']
           artist.zf_id = art['id'].to_i
-          store_translations artist, :biography, art, :biography
+          store_translations_for artist, :biography, art, :biography
           art['website'].each do |web|
             artist.links << Link.find_or_create_by!(text_to_show: web['type_1'], url: web['website'])
           end
@@ -125,10 +176,7 @@ class ZoneFestival < ActiveRecord::Base
               artist.delay.set_image_from_url(img['url'])
             end
           end
-
-          if !event.artists.map(&:id).include?(artist.id)
-            artist.book_for event
-          end
+          artist.book_for event
         end
       end
     end
@@ -139,7 +187,7 @@ class ZoneFestival < ActiveRecord::Base
     zf['venue'].each do |loc|
       location = Location.find_by_zf_id(loc['id'].to_i) || Location.new
       location.zf_id = loc['id'].to_i
-      store_translations location, :name,  loc, :name
+      store_translations_for location, :name,  loc, :name
       location.address = loc['address']
       location.latitude = loc['latitude']
       location.longitude = loc['longitude']
@@ -172,10 +220,10 @@ class ZoneFestival < ActiveRecord::Base
 
   def store_information_for target, informations, key
     info = informations.find{|ques| ques['question_1'].downcase == "#{key}_1".downcase}
-    store_translations target, key.downcase, info, 'answer'
+    store_translations_for target, key.downcase, info, 'answer'
   end
 
-  def store_translations object, object_column, source_object, source_column
+  def store_translations_for object, object_column, source_object, source_column
     old_locale = I18n.locale
     I18n.locale = :fr
     object.send("#{object_column}=", source_object["#{source_column}_1"])
