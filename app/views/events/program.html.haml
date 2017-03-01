@@ -28,6 +28,6 @@
 			- if last_key != curr_key
 				.line-break
 			- last_key = curr_key
-			= link_to "#", class: 'post out artist stagger', id: "artist-#{artist.id}", data: { letter: curr_key, "artist-id": artist.id } do
-				.info
+			.post.out.artist.stagger{ id: "artist-#{artist.id}", data: { letter: curr_key, "artist-id": artist.id, type: 'event', key: 'artists', value: artist.slug  } }
+				.info{data: {}}
 					%h3.event-artist= artist.name

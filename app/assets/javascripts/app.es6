@@ -73,8 +73,11 @@ class Program{
   }
   testAndActivate({ type, key, value }){
     this.isOut = (this.type != type);
-    const keyTest = value.includes(this[key]) && (this[key] != undefined && this[key].length > 0);
-    this.active = ((value == 'reset') || keyTest);
+    const hasKey = (this[key] != undefined && this[key].length > 0);
+    const isReset = (value == 'reset');
+    const valueMatch = hasKey && (value.includes(this[key]) ||
+      this[key].split('|').includes(value));
+    this.active = isReset || (hasKey && valueMatch);
     this.setTransform();
   }
   // position
@@ -295,8 +298,8 @@ class Programs{
       initFilters();
 
       function initFilters(){
-        const filters = $('.filters [data-type]');
-        $('.filters [data-type]').click((e) => {
+        const filters = $('[data-type][data-value]');
+        $('[data-type]').click((e) => {
           const clicked = $(e.currentTarget),
            value = clicked.data('value'),
            key = clicked.data('key'),
@@ -306,6 +309,11 @@ class Programs{
            if((key && value) || key == 'reset'){
              activeFilters = { type, key, value };
              programs.filterBy(activeFilters);
+
+             if(key == 'artists'){
+               $('.filters [data-type]').removeClass('active')
+               $('.filters .section').addClass('active');
+             }
            }
         });
 

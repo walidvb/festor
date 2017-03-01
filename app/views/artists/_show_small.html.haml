@@ -7,7 +7,7 @@
 		= image_tag(artist.profile_picture.url(:medium))
 	%h1.artist-name= artist.name
 	%h4.labels.sup= artist.label
-	-# %h4.origin.sup= artist.origin
+	%h4.origin.sup= artist.country
 .biography
 	= interpolate(artist.biography, image: artist.profile_picture.url(:large)).html_safe unless artist.biography.blank?
 	- if !links.empty?
