@@ -1,18 +1,26 @@
 - content_for(:og_title, "Venues")
 - content_for(:image, image_url('lines_3.png'))
 - content_for(:description, "Distributed around Geneva, find out where the festival is taking place")
-.page-title
-	%h1.index-title= t('nav.venues')
-.location-main
-	.location-list{'data-turbolinks' => 'false'}
-		- @locations.each do |loc|
-			= link_to loc.name,	"##{loc.slug}", class: 'location-link', data: { title: loc.slug}
-	#google-map-wrapper{ data: { "marker-url" => image_url("google-map-marker.png")}}
-		#google-map-loader
-		#google-map{ data: {"adresse" => @locations.map(&:address).join('*'), "latitude" => @locations.map(&:latitude).join('-'), "longitude" => @locations.map(&:longitude).join('-'), "title" => @locations.map(&:name).join('*'),		"url" => @locations.map{|l| "##{l.slug}"}.join('*'), "zoom" => "14", "infos" => @locations.map(&:infos).join('|')}}
-.location-events#location-events
+.full-content
 	.page-title
-		%h2.sub-title
-			Events @
-			%span#location-title
-		= render 'events/event_grid', events: @events
+		%h1.index-title= t('nav.venues')
+	.location-main.static-desc
+		.location-list{'data-turbolinks' => 'false'}
+			- @locations.each do |loc|
+				= link_to loc.name,	"##{loc.slug}", class: 'location-link', data: { title: loc.slug}
+		#google-map-wrapper{ data: { "marker-url" => image_url("google-map-marker.png")}}
+			#google-map-loader
+			#google-map{ data: { |
+				"adresse" => @locations.map(&:address).join('*'), |
+				"latitude" => @locations.map(&:latitude).join('-'), |
+				"longitude" => @locations.map(&:longitude).join('-'), |
+				"title" => @locations.map(&:name).join('*'), |		
+				"url" => @locations.map{|l| "##{l.slug}"}.join('*'), |
+				"zoom" => "14", |
+				"infos" => @locations.map(&:infos).join('|')}}
+	/ .location-events#location-events
+	/ 	.page-title
+	/ 		%h2.sub-title
+	/ 			Events @
+	/ 			%span#location-title
+	/ 		= render 'events/event_grid', events: @events

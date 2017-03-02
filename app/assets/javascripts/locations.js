@@ -145,7 +145,7 @@ function openInfoWindow(map, index, latitude, longitude, title, adresse, infos, 
 	newInfoWindow = new google.maps.InfoWindow({
 		content: loading
 	});
-	newInfoWindow.setContent('<div class="marker-content"><h5 class="marker-title">' + title[index] + '</h5><p>' + infos[index] + '</p><p data-turbolinks=false><a href="' + url[index] + '" class="marker-link" title=' + seeProg + '>' + seeProg + '</a></p></div>');
+	newInfoWindow.setContent('<div class="marker-content"><h5 class="marker-title">' + title[index] + '</h5><p class="address">' + adresse[index] + '</p></div>');
 	markerArray[index].setZIndex(300);
 	newInfoWindow.open(map, markerArray[index]);
 	map.panTo(newCenter);
@@ -166,22 +166,25 @@ function renderGoogleMap() {
 	var styledMap = new google.maps.StyledMapType(styles,
 	{name: "Styled Map"});
 
+	var dataContainer = document.getElementById('google-map');
+	if(!dataContainer){return;}
 	// Create a map object, and include the MapTypeId to add
 	// to the map type control.
-	var latitude = document.getElementById('google-map').getAttribute('data-latitude');
-	var longitude = document.getElementById('google-map').getAttribute('data-longitude');
-	var title = document.getElementById('google-map').getAttribute('data-title');
-	var dataZoom = document.getElementById('google-map').getAttribute('data-zoom');
-	var dataCenter = document.getElementById('google-map').getAttribute('data-center');
-	var url = document.getElementById('google-map').getAttribute('data-url');
-	var adresse = document.getElementById('google-map').getAttribute('data-adresse');
-	var infos = document.getElementById('google-map').getAttribute('data-infos');
+	var latitude = dataContainer.getAttribute('data-latitude');
+	var longitude = dataContainer.getAttribute('data-longitude');
+	var title = dataContainer.getAttribute('data-title');
+	var dataZoom = dataContainer.getAttribute('data-zoom');
+	var dataCenter = dataContainer.getAttribute('data-center');
+	var url = dataContainer.getAttribute('data-url');
+	var adresse = dataContainer.getAttribute('data-adresse');
+	var infos = dataContainer.getAttribute('data-infos');
 	// split latitude and longitude
 	latitude = latitude.split('-');
 	longitude = longitude.split('-');
 	title = title.split('*');
 	infos = infos.split('|');
 	url = url.split('*');
+	dataContainer.getAttribute('data-adresse')
 	adresse = adresse.split('*');
 
 	// define center
@@ -260,10 +263,7 @@ function renderGoogleMap() {
 	function openFromHash(){
 		var pageHash = window.location.hash;
 		pageHash = pageHash.substring(1);
-		$('.location-event').hide();
 		if(pageHash.length){
-			$('#location-events').show();
-			$('.location-event.'+pageHash).show();
 			$('.location-link.active').removeClass('active');
 
 			$('.location-link').each(function(i) {
@@ -277,24 +277,35 @@ function renderGoogleMap() {
 	}
 }
 
-function loadScript() {
-  var script = document.createElement('script');
-  script.type = 'text/javascript';
-  script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyBcuM3OXda6dyrsN4OKZulTznEW6DgTRk8&sensor=false&' +
-      'callback=renderGoogleMap';
-  document.body.appendChild(script);
-}
+var scriptLoaded = false;
+function loadScript(cb) {
+	console.log("loading script", !scriptLoaded);
+	if(!scriptLoaded){
+	  var script = document.createElement('script');
+	  script.type = 'text/javascript';
+	  script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyBcuM3OXda6dyrsN4OKZulTznEW6DgTRk8&sensor=false&' +
+	      'callback=renderGoogleMap';
+	  document.body.appendChild(script);
+	  scriptLoaded = true;
+	}
+	else{
+		cb();
+	}
+};
 
-var gmapsLoaded = false;
-$(document).on('turbolinks:load',function(){
+$(document).on('turbolinks:load', function(){
+	var gmapsLoaded = false;
 	if($('#google-map-wrapper').length){
+		console.log("turbolinks:load");
 		if(!gmapsLoaded){
 			gmapsLoaded = true;
+			loadScript(renderGoogleMap);
 			console.log("Thank you mirage for this code, couldn't be bothered to write it myself – the vbbros");
-			loadScript();
 		}
-		else if(typeof(google) != 'undefined'){
+		if(typeof(google) != 'undefined'){
 			renderGoogleMap();
+		}
+		else{
 		}
 	}
 });

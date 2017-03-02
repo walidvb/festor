@@ -41,6 +41,8 @@
 		%ul.nav
 			%li.gap-after
 				= link_to t('nav.program'), program_path(locale: I18n.locale), data: { drawer: '#nav-program', "direct-link" => true }
+			%li.gap-after
+				= link_to t('nav.venues'), venues_path(locale: I18n.locale)
 			- if @exhib
 				%li.gap-after
 					= link_to t('nav.exhibition'), event_path(@exhib, locale: I18n.locale), data: { drawer: '#nav-exhib' }

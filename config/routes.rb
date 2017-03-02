@@ -20,7 +20,7 @@ Festor::Application.routes.draw do
       get 'tickets' => 'static#tickets', as: :tickets
     end
 
-		# resources :venues, controller: 'locations', only: [:index]
+		resources :venues, controller: 'locations', only: [:index]
 
 		# resources :artists, only: [:index, :show]
 

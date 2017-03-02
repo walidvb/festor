@@ -31,7 +31,7 @@
 									%h5.time= [date.start, date.end].compact.map{|d| l(d, format: "%H:%M")}.uniq.join(' – ')
 								- if !date.location.nil? && (location != date.location || i == @dates.count-1)
 									- location = date.location
-									%h5.location= date.location.name
+									%h5.location= link_to date.location.name, venues_path(anchor: date.location.slug)
 						- if(!@event.is_workshop? && !@event.price.blank?)
 							%h5.price= @event.price
 						- if !@event.finished? && !@event.tickets_link.blank?

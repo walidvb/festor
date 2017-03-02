@@ -326,13 +326,17 @@ class Programs{
       }
     }
 
-    $('nav').on('scroll', e => e.preventDefault() )
-    $(window).on('resize', debounce(programs.positionAll.bind(programs), 800));
+    $('nav').on('scroll', e => e.stopPropagation() )
+    $(window).on('resize', debounce(() => {
+      if(programs){
+        programs.positionAll.bind(programs)(); 
+      } 
+    }, 800));
   });
 
   $(document).on('turbolinks:before-visit', (e) => {
     const goingToProgramPage = /program/.test(e.originalEvent.data.url);
-    if(!goingToProgramPage){
+    if(!goingToProgramPage && programs){
       const except = $(e.target).data('id');
       programs.sendAllOut({ except });
       if(!goingToProgramPage){
