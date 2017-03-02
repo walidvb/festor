@@ -5,7 +5,9 @@
 				%ul.filter-list
 					%li.section.favourite{ data: { type: 'event', key: 'id' } }= fa_icon('star')
 					- @sections.each do |sec|
-						%li.section.active{ data: { type: 'event', key: 'section', value: sec}}= sec
+						%li.section
+							%span.active{ data: { type: 'event', key: 'section', value: sec}}= sec
+							%span.fa.fa-times{ data: { type: 'event', key: 'section', value: 'reset'}}
 			.filters-by
 				.filter-title.active{ data: { type: 'event', key: 'date', value: 'reset'} }= t('filters.by_day')
 				%ul.filter-list.date.collapsible
