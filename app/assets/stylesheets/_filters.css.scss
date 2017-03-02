@@ -89,6 +89,13 @@
 [data-type]{
   cursor: pointer;
 }
+
+.resetter{
+  display: none;
+  .active .active + &{
+    display: inline-block;
+  }
+}
 .filter-list.date{
   display: flex;
   flex-flow: row wrap;

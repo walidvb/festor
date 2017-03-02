@@ -7,7 +7,7 @@
 					- @sections.each do |sec|
 						%li.section
 							%span.active{ data: { type: 'event', key: 'section', value: sec}}= sec
-							%span.fa.fa-times{ data: { type: 'event', key: 'section', value: 'reset'}}
+							%span.resetter.fa.fa-times{ data: { type: 'event', key: 'section', value: 'reset'}}
 			.filters-by
 				.filter-title.active{ data: { type: 'event', key: 'date', value: 'reset'} }= t('filters.by_day')
 				%ul.filter-list.date.collapsible
