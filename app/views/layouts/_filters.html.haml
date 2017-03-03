@@ -1,16 +1,17 @@
 - cache([@sections, @venues, @days_range, @artists_by_letter]) do
 	.filters
 		.filters-by
-			.filters-by
-				%ul.filter-list
-					%li.section.favourite{ data: { type: 'event', key: 'id' } }= fa_icon('star')
-					- @sections.each do |sec|
-						%li.section.active{ data: { type: 'event', key: 'section', value: sec}}= sec
-			.filters-by
-				.filter-title.active{ data: { type: 'event', key: 'date', value: 'reset'} }= t('filters.by_day')
-				%ul.filter-list.date.collapsible
-					- @days_range.each do |day|
-						%li.day.active{ data: { type: 'event', key: 'date', value: "#{day}-5"}}= day
+			%ul.filter-list
+				%li.section.favourite{ data: { type: 'event', key: 'id' } }= fa_icon('star')
+				- @sections.each do |sec|
+					%li.section
+						%span.active{ data: { type: 'event', key: 'section', value: sec}}= sec
+						%span.resetter.fa.fa-times{ data: { type: 'event', key: 'section', value: 'reset'}}
+		.filters-by
+			.filter-title.active{ data: { type: 'event', key: 'date', value: 'reset'} }= t('filters.by_day')
+			%ul.filter-list.date.collapsible
+				- @days_range.each do |day|
+					%li.day.active{ data: { type: 'event', key: 'date', value: "#{day}-5"}}= day
 
 		.filters-by
 			.filter-title{ data: { type: 'event', key: 'venue', value: 'reset' } }= t('filters.by_venue')
