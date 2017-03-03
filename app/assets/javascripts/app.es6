@@ -26,6 +26,7 @@ class Program{
     this.duration = this.dateEnd - this.dateStart;
     this.durationInHour = this.duration/(1000*60*60)
     this.hoursFromStart = (this.dateStart - ABSOLUTE_START)/(1000*60*60);
+    this.daysFromStart = this.hoursFromStart/24;
     this.artists = this.elem.data('artists');
     this.conflictCount = 0;
     this.posX = 0;
@@ -79,6 +80,7 @@ class Program{
       this[key].split('|').includes(value));
     this.active = isReset || (hasKey && valueMatch);
     this.setTransform();
+    return this.active;
   }
   // position
   position(posY){
@@ -153,7 +155,7 @@ class Program{
       endPos = this.elem.outerHeight() + this.posY;
     }
     else{
-      endPos = .3*this.elem.outerHeight() + this.posY;
+      endPos = 1*this.elem.outerHeight() + this.posY;
     }
     return endPos;
   }
@@ -172,6 +174,8 @@ function rdmZOut(){
 class Programs{
   constructor(posts){
     this.programs = [];
+    this.activePrograms = [];
+    this.inactivePrograms = [];
     this.artists = [];
     this.container = $('#program');
     ABSOLUTE_START = new Date(this.container.data('date-start'));
@@ -192,9 +196,11 @@ class Programs{
     }
   }
   filterBy(keyValue){
+    this.activePrograms = [];
+    this.inactivePrograms = [];
     this.activeFilter = keyValue;
     $('body').attr('data-current-type', keyValue.type);
-    this.programs.forEach( prog => prog.testAndActivate(keyValue) );
+    this.programs.forEach( prog => prog.testAndActivate(keyValue) ? this.activePrograms.push(prog) : this.inactivePrograms.push(prog));
     this.artists.forEach( art =>  art.testAndActivate(keyValue) );
     this.positionAll();
   }
@@ -237,13 +243,27 @@ class Programs{
     this.artists.forEach( art =>  art.sendOut() );
   }
   positionAllByTime(){
-    let minY = 0,
+
+    const daysFromStartActive = this.activePrograms[0].daysFromStart;
+    const hoursFromStartInactive = this.inactivePrograms.length ? this.inactivePrograms[0].hoursFromStart : 0;
+
+    const yOffsetActive = daysFromStartActive*HOUR_IN_PX;
+    const yOffsetInactive = daysFromStartActive*HOUR_IN_PX;
+    let activeHeight = this.createTimeline(this.activePrograms, 0);
+    let inactiveHeight = this.createTimeline(this.inactivePrograms, -yOffsetActive);
+
+
+    console.log("activeHeight, inactiveHeight:", activeHeight, inactiveHeight);
+    $('main').css('max-height', activeHeight);
+  }
+  createTimeline(programs, defaultMinY){
+    let minY = defaultMinY || 0,
       gap = 0,
       conflictCount = 0,
       currDay;
 
     const rotate = smallScreen() ? ' rotateZ(-90deg)' : '';
-    this.programs.forEach((prog, i) => {
+    programs.forEach((prog, i) => {
       let basePosY = prog.hoursFromStart*HOUR_IN_PX;
       let oldGap = gap;
       currDay = currDay || prog.date;
@@ -257,7 +277,8 @@ class Programs{
         conflictCount++;
         for (var j = 0; j <= conflictCount; j++)
         {
-          this.programs[i-j].addConflict(conflictCount+1, conflictCount - j);
+          if(i-j < 0){ continue}
+          programs[i-j].addConflict(conflictCount+1, conflictCount - j);
         }
       }
       else{
@@ -271,7 +292,7 @@ class Programs{
       }
     });
     this.positionDatesLegend();
-
+    return minY;
   }
 };
 (() => {
