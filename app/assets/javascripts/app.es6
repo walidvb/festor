@@ -304,8 +304,12 @@ class Programs{
            value = clicked.data('value'),
            key = clicked.data('key'),
            type = clicked.data('type');
-           $(`.filters [data-value]`).toggleClass('active', value == 'reset');
-           clicked.addClass('active');
+           $(`.filters [data-value]:not(.resetter)`).toggleClass('active', value == 'reset');
+           
+           const thisResetter = clicked.siblings('.resetter');
+           const thisTitle = clicked.parent().siblings('.filter-title');
+           clicked.add(thisResetter).add(thisTitle).addClass('active');
+           $('.resetter').not(thisResetter).not(thisTitle).removeClass('active');
            if((key && value) || key == 'reset'){
              activeFilters = { type, key, value };
              programs.filterBy(activeFilters);

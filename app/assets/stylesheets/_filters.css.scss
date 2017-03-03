@@ -92,7 +92,8 @@
 
 .resetter{
   display: none;
-  .active .active + &{
+  float: right;
+  &.active{
     display: inline-block;
   }
 }
