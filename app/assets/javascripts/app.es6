@@ -116,7 +116,7 @@ class Program{
     else if(this.isOut){
       posZ = rdmZOut();
       this.elem.removeClass('inactive active in').addClass('out');
-      opacity = .5;
+      opacity = .45;
     }
     else if(this.active){
       posZ = 0;// rdmZFront();
@@ -124,7 +124,7 @@ class Program{
     }
     else{
       posZ = rdmZBack();
-      opacity = .7;
+      opacity = .6;
       this.elem.removeClass('out active').addClass('inactive');
     }
 
@@ -203,6 +203,7 @@ class Programs{
     this.programs.forEach( prog => prog.testAndActivate(keyValue) ? this.activePrograms.push(prog) : this.inactivePrograms.push(prog));
     this.artists.forEach( art =>  art.testAndActivate(keyValue) );
     this.positionAll();
+    $('main').animate({ 'scrollTop': 0 });
   }
   positionAll(){
     this.positionArtistLegend();
@@ -250,11 +251,10 @@ class Programs{
     const yOffsetActive = daysFromStartActive*HOUR_IN_PX;
     const yOffsetInactive = daysFromStartActive*HOUR_IN_PX;
     let activeHeight = this.createTimeline(this.activePrograms, 0);
-    let inactiveHeight = this.createTimeline(this.inactivePrograms, -yOffsetActive);
+    this.createTimeline(this.inactivePrograms, -yOffsetActive);
 
-
-    console.log("activeHeight, inactiveHeight:", activeHeight, inactiveHeight);
-    $('main').css('max-height', activeHeight);
+    activeHeight = Math.max(activeHeight, window.innerHeight);
+    $('.events, .legend').css('height', activeHeight);
   }
   createTimeline(programs, defaultMinY){
     let minY = defaultMinY || 0,

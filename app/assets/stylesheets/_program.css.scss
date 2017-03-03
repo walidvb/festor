@@ -1,8 +1,17 @@
+// main{
+//   background-color: rgba(220, 0, 0, .3);
+// }
+// .events{
+//   background-color: rgba(0, 0, 230, .4)
+// }
+
 .program-page{
   main{
     padding-top: 0;
+    max-height: 100vh;
     @media #{$mobile}{
       padding: 1rem 0 1rem 2rem;
+      max-height: auto;
       perspective: initial!important;
     }
   }

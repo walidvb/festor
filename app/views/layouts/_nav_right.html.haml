@@ -5,6 +5,7 @@
 				%li.gap-after
 					%a{href: '#', "data-drawer" => '#nav-news'}= t('nav.news')
 
+			%li= render 'newsletter_button'
 			%li= link_to t('nav.contact'), 'mailto:nous@mappingfestival.com'
 			%li= link_to t('nav.about'), about_path(locale: I18n.locale)
 			%li.gap-after= link_to t('nav.archives'), about_path(anchor: 'archives', locale: I18n.locale)
@@ -57,14 +58,7 @@
 			%li= link_to t('nav.archives'), about_path(anchor: 'archives', locale: I18n.locale)
 			%li= link_to t('nav.partners'), partners_path(locale: I18n.locale)
 			%li= link_to t('nav.contact'), 'mailto:nous@mappingfestival.com'
-			%li
-				- if I18n.locale == :fr
-					%form#mlb2-4334015{:action => "//app.mailerlite.com/webforms/popup/u3e4a4", "data-code" => "u3e4a4", "data-id" => "321815", :target => "_blank"}
-						%button.ml-subscribe-button{:type => "submit"} Newsletter
-				- else
-					%form#mlb2-4334069{:action => "//app.mailerlite.com/webforms/popup/u7s6x1", "data-code" => "u7s6x1", "data-id" => "321825", :target => "_blank"}
-						%button.ml-subscribe-button{:type => "submit"} Newsletter
-			%script{:src => "//static.mailerlite.com/js/w/button.min.js?v246990c948af1d93353a970fddff05fc", :type => "text/javascript"}
+			%li= render 'layouts/newsletter_button'
 
 
 			%li.gap-before= render 'layouts/locales'
