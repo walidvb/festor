@@ -73,6 +73,7 @@ main{
 		flex-flow: row;
 		overflow: auto;
 		width: 100vw;
+		-webkit-overflow-scrolling: touch;
 		li{
 			padding: 0 1rem;
 			flex: 1 1 50%;

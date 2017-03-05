@@ -5,7 +5,7 @@
 				%li.gap-after
 					%a{href: '#', "data-drawer" => '#nav-news'}= t('nav.news')
 
-			%li= render 'newsletter_button'
+			%li= render 'layouts/newsletter_button'
 			%li= link_to t('nav.contact'), 'mailto:nous@mappingfestival.com'
 			%li= link_to t('nav.about'), about_path(locale: I18n.locale)
 			%li.gap-after= link_to t('nav.archives'), about_path(anchor: 'archives', locale: I18n.locale)
