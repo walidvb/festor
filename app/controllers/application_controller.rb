@@ -5,7 +5,9 @@ class ApplicationController < ActionController::Base
   before_filter :beta_only
 
   def load_navbar
-    @exhib = Event.exhibition.first
+    if params[:exhib].present?
+      @exhib = Event.exhibition.first
+    end
     @messages = Message.all.order('created_at DESC').first(3)
 
     @artists_by_letter = Artist.order("name ASC").pluck(:name).map{|name| name[0].upcase}.uniq

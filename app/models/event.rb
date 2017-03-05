@@ -31,8 +31,8 @@ class Event < ActiveRecord::Base
 	scope :published, -> {where(published: true)}
 
 	scope :workshop, ->{where(section: workshop_cats)}
-	scope :exhibition, ->{where(section: ['Exposition', 'Exhibition'])}
-	scope :not_exhibition, ->{where.not(section: ['Exposition', 'Exhibition'])}
+	scope :exhibition, ->{where(section: ['Mapping EXPO', 'Exhibition'])}
+	scope :not_exhibition, ->{where.not(section: ['Mapping EXPO', 'Exhibition'])}
 
 	scope :other, ->{where.not(section: [:workshop, :conference, :masterclass, :exhibition])}
 

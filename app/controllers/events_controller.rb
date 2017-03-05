@@ -4,7 +4,11 @@ class EventsController < ApplicationController
 
 	def program
 		@all_dates = {}
-		@events = Event.not_exhibition
+		if params[:exhib].present?
+			@events = Event.not_exhibition
+		else
+			@events = Event.all
+		end
 		@event_dates = EventDate.where(event_id: @events.map(&:id)).order('start ASC').includes(:event, :artists, :location)
 		@artists = Artist.all.order(:name)
 		@days = EventDate.all.pluck(:start).map(&:to_date).uniq
