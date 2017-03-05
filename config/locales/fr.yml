@@ -8,20 +8,21 @@ fr:
     all_fem: 'Tous'
     thanks: 'Merci pour votre screenshot, visitez la gallerie! <span class="fa fa-th"></span>'
   nav:
-    program:      "Programme"
+    program:     "Programme"
     artists:     "Artistes"
     gallery:     "Galerie"
     workshops:   "Workshops++"
-    exhibition: "Exposition"
-    all:          'Programme'
+    exhibition:  "Exposition"
+    all:         'Programme'
     venues:      "Lieux"
     tickets:     "Billetterie"
-    partners:   'Partenaires'
-    archives:   'Archives'
-    volunteers: 'Bénévoles'
-    about:      'À propos'
-    venues:     'Lieux'
-    contact:    'Contact'
+    partners:    'Partenaires'
+    archives:    'Archives'
+    volunteers:  'Bénévoles'
+    about:       'À propos'
+    venues:      'Lieux'
+    contact:     'Contact'
+    filters:     'Filtres'
   partners:
     media: 'Médias'
     private: 'Privés'

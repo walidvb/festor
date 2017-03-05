@@ -240,7 +240,11 @@ h1{
 		display: none!important;
 	}
 }
-
+.hidden-xs{
+	@media #{$mobile}{
+		display: none!important;
+	}
+}
 .iframe{
 }
 

@@ -62,28 +62,40 @@ main{
 
 @media #{$mobile}{
 	nav{
-		max-height: 0vh;
-		transition: max-height .4s $transition-long;
-		overflow: auto;
 		border-top: 1px solid transparent;
+		position: sticky;
+	}
+	.social{
+		margin-top: .5rem;
 	}
 	.nav{
-		margin-top: 2rem;
 		display: flex;
-		flex-flow: row wrap;
-		align-content: flex-end;
-		align-items: flex-end;
+		flex-flow: row;
+		overflow: auto;
+		width: 100vw;
 		li{
-			flex: 0 0 50%;
+			padding: 0 1rem;
+			flex: 1 1 50%;
 		}
 	}
+	.nav .gap-after{
+		border-right: 1px solid $white;
+		margin-right: 1rem;
+		padding-right: 2rem;
+	}
+	.nav .gap-before{
+		border-left: 1px solid $white;
+		margin-left: 1rem;
+		padding-left: 2rem;
+	}
+	.nav .gap-before, .nav .gap-after{
+		margin-top: 0;
+		margin-bottom: 0;
+	}
+
 	.address{
+		display: none;
 		margin-top: 5rem;
 	}
-	body.open{
-		nav{
-			max-height: 100vh;
-			border-top: 1px solid $white;
-		}
-	}
+
 }

@@ -4,8 +4,10 @@ $drawer-side-padding: 1rem;
   position: static;
 }
 
-nav{
-  overflow-x: hidden;
+@media #{$tablet}{
+  nav{
+    overflow-x: hidden;
+  }
 }
 
 .drawer-container{
@@ -21,38 +23,53 @@ nav{
   }
 }
 
+@mixin arrow-rotate(){
+  transform: rotate(90deg) translateY(-50%);
+  transform-origin: center;
+}
 @media #{$mobile}{
   .nav{
     opacity: 1;
-    transform: translateY(0rem);
+    transition: all $drawer-opening-time ease-out;
     .drawer-open &{
-      transform: translateY(2rem);
       opacity: 0;
+      margin-top: -2.5rem;
     }
+  }
+  .back{
+    display: inline-block;
+  }
+  [data-drawer]:after, .rotate-mobile{
+    @include arrow-rotate();
+    padding-left: 0;
+    padding-bottom: 0rem;
   }
 }
 
 .drawer{
-  position: absolute;
-  left: 0;
   padding: 0 1rem;
-  @media #{$tablet}{
-    left: 100%;
-    padding: 1rem $drawer-side-padding 0;
-  }
-  top: 0;
-  bottom: 0;
-  width: 100%;
   opacity: 0;
   pointer-events: none;
-  transform: translateX(2rem);
+  transition: all $drawer-opening-time ease-in-out;
+  max-height: 0;
   &.open{
-    transform: translateX(0rem);
     opacity: 1;
     pointer-events: auto;
-    transition: all $drawer-opening-time ease-in-out;
+    max-height: 60vh;
   }
   @media #{$tablet}{
+    left: 0;
+    position: absolute;
+    left: 100%;
+    padding: 1rem $drawer-side-padding 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    transform: translateX(2rem);
+    &.open{
+      transform: translateX(0rem);
+      transition: all $drawer-opening-time ease-in-out;
+    }
     transition: all 0s ease-in-out $drawer-opening-time;
   }
 }
@@ -61,10 +78,14 @@ nav{
   cursor: pointer;
 }
 
-[data-drawer]{
+.nav li a[data-drawer]{
+  display: flex;
+  justify-content: space-between;
+  &:hover:after{
+    text-decoration: none;
+  }
   &:after{
     content: '>';
-    padding-left: 1rem;
     @media #{$tablet}{
       float: right;
     }

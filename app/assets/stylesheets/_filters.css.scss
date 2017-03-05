@@ -3,13 +3,25 @@
   color: $white;
 }
 
+#filter{
+  display: none;
+}
+.program-page{
+  #filter{
+    display: inline;
+  }
+  #non-filter{
+    display: none;
+  }
+}
+
 @media #{$mobile}{
   .filters{
     flex-flow: row;
     -webkit-overflow-scrolling: touch;
   }
   .filters-by{
-    flex: 0 0 80vw;
+    flex: 1 0 80vw;
     padding: 0 1rem;
   }
   .filter-title{
@@ -17,16 +29,18 @@
   }
   .filter-list{
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: column;
+    &.artists, &.venue{
+      flex-flow: row wrap;
+      transform: none;
+      justify-content: space-between;
+    }
     li{
       padding-right: 1rem;
     }
   }
   #nav-program{
     padding: 0;
-    .back{
-      padding-left: 1rem;
-    }
   }
 }
 
@@ -107,6 +121,8 @@
     &:first-child{
       margin-left: 3*$day-width;
     }
+    @media #{$tablet}{
+    }
   }
 }
 .filter-list.artists{
@@ -118,3 +134,6 @@
     text-transform: uppercase;
   }
 }
+.filter-list.date, .filter-list.artists{
+  text-align: center;
+} 

@@ -63,10 +63,12 @@
 			})();
 		#background{"data-turbolinks-permanent" => true}= inline_svg('logo.svg')
 		%header#turbo-header{"data-turbolinks-permanent" => true}
-			.logo= render 'layouts/logo'
+			.logo
+				= render 'layouts/logo'
+				.xs-only= render 'layouts/social_links'
 			=# render 'layouts/navigation'
-			.hamburger
-				.bars
+			/ .hamburger
+			/ 	.bars
 		%nav#turbo-nav{"data-turbolinks-permanent" => true}
 			= render 'layouts/nav_right'
 		%main

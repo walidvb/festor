@@ -41,7 +41,9 @@
 	.drawer-container
 		%ul.nav
 			%li.gap-after
-				= link_to t('nav.program'), program_path(locale: I18n.locale), data: { drawer: '#nav-program', "direct-link" => true }
+				= link_to program_path(locale: I18n.locale), data: { drawer: '#nav-program', "direct-link" => true } do 
+					%span#filter= t('nav.filters')
+					%span#non-filter= t('nav.program')
 			%li.gap-after
 				= link_to t('nav.venues'), venues_path(locale: I18n.locale)
 			- if @exhib
@@ -61,19 +63,10 @@
 			%li= render 'layouts/newsletter_button'
 
 
-			%li.gap-before= render 'layouts/locales'
+			%li.hidden-xs.gap-before= render 'layouts/locales'
 			%li.gap-before
 				%footer
-					%ul.social
-						%li
-							= link_to("http://www.instagram.com/mappingfestival", target: '_blank') do
-								.fa.fa-icon.fa-instagram
-						%li
-							= link_to("http://www.twitter.com/mappingfestival", target: '_blank') do
-								.fa.fa-icon.fa-twitter
-						%li
-							= link_to("https://www.facebook.com/pages/Mapping-Festival/162958139889", target: '_blank') do
-								.fa.fa-icon.fa-facebook
+					.hidden-xs= render 'layouts/social_links'
 					.address
 						%b Mapping Festival
 						%p Avenue Ernest-Pictet 28/30
@@ -81,17 +74,17 @@
 						%p #{t('shared.switzerland')}
 		- if @exhib
 			.drawer#nav-exhib
-				.back <
+				.back.rotate-mobile <
 				%p= @exhib.short_description.try(:html_safe)
 				.more-info= link_to t('shared.more_info'), event_path(@exhib, locale: I18n.locale)
 		- if !@messages.empty?
 			.drawer#nav-news
-				.back <
+				.back.rotate-mobile <
 				%ul
 					- @messages.each do |message|
 						%li.message
 							= message.message.html_safe
 						=# link_to message.link, class: [message.colorbox? ? 'colorbox' : nil].join(' ') do
 		.drawer#nav-program
-			.back <
+			.back.rotate-mobile <
 			= render 'layouts/filters'
