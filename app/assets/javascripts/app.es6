@@ -254,7 +254,9 @@ class Programs{
     this.createTimeline(this.inactivePrograms, -yOffsetActive);
 
     activeHeight = Math.max(activeHeight, window.innerHeight);
-    $('.events, .legend').css('height', activeHeight);
+    $('.events, .legend').css({
+      'height': activeHeight,
+    });
   }
   createTimeline(programs, defaultMinY){
     let minY = defaultMinY || 0,
@@ -262,6 +264,7 @@ class Programs{
       conflictCount = 0,
       currDay;
 
+    let conflictingMinY = minY;
     const rotate = smallScreen() ? ' rotateZ(-90deg)' : '';
     programs.forEach((prog, i) => {
       let basePosY = prog.hoursFromStart*HOUR_IN_PX;
@@ -280,6 +283,7 @@ class Programs{
           if(i-j < 0){ continue}
           programs[i-j].addConflict(conflictCount+1, conflictCount - j);
         }
+        conflictingMinY = minY;
       }
       else{
         conflictCount = 0;

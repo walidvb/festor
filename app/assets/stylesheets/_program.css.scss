@@ -24,6 +24,7 @@
   min-width: 100vw;
   display: inline-flex;
   position: relative;
+  overflow: hidden;
   @media #{$mobile}{
     display: flex;
     flex-wrap: wrap;

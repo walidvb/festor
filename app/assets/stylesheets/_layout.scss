@@ -48,10 +48,9 @@ main{
 	}
 	nav{
 		height: calc(100vh - #{$header-height});
-		transition: all .4s $transition-long;
+		transition: all .2s $transition-long;
 		header:hover + &{
 			height: calc(100vh - #{$header-height})!important;
-
 		}
 		bottom: 0;
 		width: $nav-width;
