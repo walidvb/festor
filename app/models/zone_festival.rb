@@ -55,7 +55,7 @@ class ZoneFestival < ActiveRecord::Base
       has_multiple_shows_for_single_program = shows.count > 1
       has_show = !shows.empty?
       desc_empty = date['description_1'].empty? && date['description_2'].empty?
-      group_shows = true # && has_multiple_shows_for_single_program && !desc_empty
+      group_shows = has_multiple_shows_for_single_program && !desc_empty
 
       section_from_show = nil
 
@@ -65,11 +65,15 @@ class ZoneFestival < ActiveRecord::Base
         event = Event.find_by_zf_id(first_show['id'].to_i) || Event.new
         event.zf_id = first_show['id'].to_i
 
-        if has_multiple_shows_for_single_program && group_shows
+        if has_multiple_shows_for_single_program
           Rails.logger.info "Group Performances detected for #{date['name_1']}"
           store_translations_for(event, :title, date, :name)
           store_translations_for event, :description,  date, :description
-        elsif has_multiple_shows_for_single_program && !group_shows
+          if !group_shows
+            Rails.logger.info "Grouping Performances descriptions for #{date['name_1']}"
+            create_description_from shows, event
+          end
+        elsif has_multiple_shows_for_single_program
           Rails.logger.info "Multiple Performances detected for #{date['name_1']}"
           shows.each do |show|
             Rails.logger.info "Show #{show['title_1']}(#{show['title_1']})"
@@ -248,6 +252,20 @@ class ZoneFestival < ActiveRecord::Base
       email: ENV['ZONE_FESTIVAL_EMAIL'],
       password: ENV['ZONE_FESTIVAL_PASSWORD'])
     res.body
+  end
+
+  def create_description_from shows, event
+    {fr: '1', en: '2'}.each do |locale, value|
+      I18n.locale = locale
+      description = shows.map do |show|
+        t = show["title_#{value}"]
+        d = show['description_long_1']
+        "<div class='show'> <h1 class='show-title'>#{t}</h1> <div class='show-description'>#{d}</div></div>"
+      end.join(" ||| ")
+      event.description = description
+      Rails.logger.info "==========="
+    end
+    event.save!
   end
 
 end
