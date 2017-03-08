@@ -3,6 +3,7 @@
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   transform: translateX(-1rem);
+  clear: both;
   perspective: 400px;
   perspective-origin: 50% 10%;
   @media #{$tablet}{

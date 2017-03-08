@@ -166,11 +166,15 @@ h1{
 		transition: margin .2s ease-out;
 		img{
 			max-width: 800px;
+			max-height: 650px;
 		}
 	}
 }
 
 .multiple-shows{
+	.show-single{
+		clear: both;
+	}
 	.show-single:not(:last-child){
 		margin-bottom: 2*$margin-vertical-largest;
 	}
@@ -179,6 +183,7 @@ h1{
 	}
 	.show-title{
 		margin-bottom: $margin-vertical-large;
+		font-size: $larger;
 	}
 }
 
