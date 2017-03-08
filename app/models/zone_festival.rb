@@ -260,9 +260,12 @@ class ZoneFestival < ActiveRecord::Base
       description = shows.map do |show|
         t = show["title_#{value}"]
         d = show['description_long_1']
-        "<div class='show'> <h1 class='show-title'>#{t}</h1> <div class='show-description'>#{d}</div></div>"
-      end.join(" ||| ")
-      event.description = description
+        "<div class='show-single'> \
+          <h1 class='show-title'>#{t}</h1> \
+          <div class='show-description'>#{d}</div> \
+        </div>"
+      end.join("")
+      event.description = "<div class='multiple-shows'>#{description}</div>"
       Rails.logger.info "==========="
     end
     event.save!

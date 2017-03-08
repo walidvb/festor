@@ -1,7 +1,6 @@
 @mixin fontSize($size) {
 	$remSize: $size / $base-size;
 	$calculatedRemSize: #{$remSize}rem;
-  font-size: $size; //Fallback in px
   font-size: $calculatedRemSize;
 }
 
@@ -14,7 +13,6 @@
 
 @mixin lineJump($linesToJump) {
 	$remSize: $linesToJump * $lineheight-base;
-  margin-top: $remSize; //Fallback in px
   margin-top: $linesToJump + rem;
 }
 

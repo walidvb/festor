@@ -170,6 +170,18 @@ h1{
 	}
 }
 
+.multiple-shows{
+	.show-single:not(:last-child){
+		margin-bottom: 2*$margin-vertical-largest;
+	}
+	.show-single:nth-child(2n){
+		margin-left: -10%;
+	}
+	.show-title{
+		margin-bottom: $margin-vertical-large;
+	}
+}
+
 .show-desc, .event-artist-bio, .artist-desc, .static-desc, .previous-editions{
 	margin-right: auto;
 	padding-left: 10%;
