@@ -8,7 +8,10 @@ $(document).on('turbolinks:load', function(){
 	else{
 		$('body').addClass('no-touch');
 	}
+
 	dragscroll.reset()
+	$('.dragscroll').on('mousedown', e => $(e.currentTarget).addClass('grabbed'))
+		.on('mouseup', e => $(e.currentTarget).removeClass('grabbed'))
   // $('.colorbox').colorbox({
   //   iframe: true,
   //   innerWidth: 600,

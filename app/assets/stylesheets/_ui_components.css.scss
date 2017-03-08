@@ -1,7 +1,7 @@
 .dragscroll{
 	cursor: grab;
-	&:active{
-		cursor: grabbed;
+	&.grabbed{
+		cursor: grabbing;
 	}
 }
 
