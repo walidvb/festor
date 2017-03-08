@@ -50,6 +50,6 @@
 							%li
 								.right=extra.body
 	- if !@artists.empty?
-		.artists
+		.artists.dragscroll
 			- @artists.each do |artist|
 				.artist-single= render 'artists/show_small', artist: artist

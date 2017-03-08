@@ -8,7 +8,7 @@ $(document).on('turbolinks:load', function(){
 	else{
 		$('body').addClass('no-touch');
 	}
-
+	dragscroll.reset()
   // $('.colorbox').colorbox({
   //   iframe: true,
   //   innerWidth: 600,

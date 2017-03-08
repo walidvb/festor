@@ -14,6 +14,7 @@
 //= require turbolinks
 //= require jquery_ujs
 //= require vendors/imagesloaded.pkgd.min
+//= require vendors/dragscroll/dragscroll
 //= require home.js
 //= require rails_admin_sortable.js
 //= require_tree .
