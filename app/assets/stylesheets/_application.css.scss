@@ -191,7 +191,11 @@ a:hover{
 		margin-bottom: 5px;
 	}
 }
+.admin .sortable .list-group-item{
+	background: $white;
+}
 .admin .sortable li{
+	color: $black;
 	&.ui-sortable-placeholder, &.sortable-placeholder{
 		visibility: visible!important;
 		display: inline-block;
