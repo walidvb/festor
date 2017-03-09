@@ -127,7 +127,7 @@ $transition: ease-in-out;
     }
   }
   @media #{$tablet}{
-    display: auto;
+    display: initial;
     position: relative;
     .day, .letter{
       right: $margin-horizontal-normal/2;
