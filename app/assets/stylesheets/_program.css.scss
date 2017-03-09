@@ -10,7 +10,7 @@
     padding-top: 0;
     max-height: 100vh;
     @media #{$mobile}{
-      padding: 1rem 0 1rem 2rem;
+      padding: 0;
       max-height: auto;
       perspective: initial!important;
     }
@@ -20,7 +20,6 @@
 #program{
   transition: all 1s $transition-long;
   flex: 1 0 80vw;
-  padding-right: 20vw;
   min-width: 100vw;
   display: inline-flex;
   position: relative;
@@ -32,6 +31,7 @@
     flex-direction: row;
   }
   @media #{$tablet}{
+    padding-right: 20vw;
     padding-top: $header-height;
   }
   .events{
@@ -97,6 +97,7 @@
 
 $transition: ease-in-out;
 .legend{
+  display: none;
   width: $margin-horizontal-normal * 6;
   flex: 0 0 auto;
   .day, .letter{
@@ -134,23 +135,37 @@ $transition: ease-in-out;
     }
   }
 
-  [data-current-type="event"] &{
-    .letter{
-      opacity: 0;
-      pointer-events: none;
-    }
+}
+[data-current-type="event"]{
+  .legend .letter{
+    opacity: 0;
+    pointer-events: none;
   }
-  [data-current-type="artist"] &{
-    .day{
-      opacity: 0;
-      pointer-events: none;
-    }
+  .events .letter{
+    display: none;
   }
+}
+[data-current-type="artist"]{
+  .legend .day{
+    opacity: 0;
+    pointer-events: none;
+  }
+  .events .day{
+    display: none;
+  }
+}
+
+.events .day, .events .letter{
+  transform: none!important;
+  padding: 5px $margin-horizontal-normal;
+  border-bottom: 1px solid $white;
+  margin: $margin-horizontal-normal 0;
+  width: 100%;
 }
 
 .post{
   flex: 1 0 100%;
-  padding: $margin-horizontal-normal;
+  padding: 0 $margin-horizontal-normal;
   transition: all .6s #{$transition-long};
   will-change: transform opacity;
   display: block;

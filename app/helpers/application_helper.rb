@@ -78,6 +78,9 @@ module ApplicationHelper
       if text
         text.gsub(/\[image:?(\S*)?\]/, '').gsub('[info]', '')
       end
+  end
 
+  def date_format_for_machine
+     "%-d-%-m"
   end
 end

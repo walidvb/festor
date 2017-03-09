@@ -25,7 +25,6 @@
 	font-size: .8em;
 }
 nav{
-	background: transparentize($black, .5);
 	z-index: 1000;
 	@media #{$tablet}{
 		background: none;
@@ -37,8 +36,8 @@ nav{
 	.gap-after{
 		margin-bottom: 2rem;
 	}
-	.nav li a{
-		padding: 0;
+	.nav li a, .nav li button{
+		padding: 5px 0;
 		&:hover{
 			text-decoration: underline;
 			background: transparent;

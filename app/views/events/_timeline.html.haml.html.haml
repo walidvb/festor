@@ -1,8 +1,12 @@
+- day = nil
+- format_for_js = "%Y/%m/%d %H:%M"
 - event_dates.each do |event_date|
+  - if day != event_date.start.to_date
+    - day = event_date.start.to_date
+    .day{"data-date" => day.strftime(date_format_for_machine)}= l(day, format: "%A %e %B")
   - event = event_date.event
   - if event.published? || user_signed_in? || cookies[:beta].present?
     - artists = event.artists.order(:position)
-    - format_for_js = "%Y/%m/%d %H:%M"
     .post.stagger.active.in.event{ data: { |
       id: event.id, |
       artists: artists.map(&:slug).join('|'), |

@@ -224,7 +224,7 @@ class Programs{
     });
   }
   positionDatesLegend(){
-    $('.legend .day[data-date]').each((i, elem) => {
+    $('.day[data-date]').each((i, elem) => {
       const $this = $(elem);
       const date = $this.data('date');
       const firstPost = $('.post.active[data-date="'+date+'"]');
