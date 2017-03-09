@@ -197,6 +197,14 @@ class Programs{
         elem.addClass('ready')
       }
     }
+    let timer;
+    $('main').on('scroll', (e) => {
+      SCROLLING = true;
+      clearTimeout(timer);
+      $('body').removeClass('program-hovered');
+      $('.thumbnails li').addClass('out').removeClass('in');
+      timer = setTimeout( () => SCROLLING = false, 200);
+    });
   }
   filterBy(keyValue){
     this.activePrograms = [];
