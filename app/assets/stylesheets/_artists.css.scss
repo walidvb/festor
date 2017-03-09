@@ -2,7 +2,6 @@
   display: flex;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
-  transform: translateX(-1rem);
   clear: both;
   perspective: 400px;
   perspective-origin: 50% 10%;
@@ -13,9 +12,13 @@
 }
 .artist-single{
   flex: 0 0 45%;
-  min-width: 80vw;
+  min-width: 95vw;
   max-width: 70ch;
+  @media #{$mobile}{
+    transform: none!important;
+  }
   @media #{$tablet}{
+    min-width: 80vw;
     min-width: 400px;
   }
   transition: all 1s $transition-long;
@@ -26,7 +29,7 @@
   }
   opacity: .2;
   transform: translateZ(-200px);
-  padding: 0 1em;
+  padding: 0 $margin-horizontal-normal;
   .links{
     margin-top: $margin-vertical-large;
   }

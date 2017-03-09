@@ -29,6 +29,9 @@
     flex-wrap: wrap;
     justify-content: space-around;
     flex-direction: row;
+    .events{
+      height: auto!important;
+    }
   }
   @media #{$tablet}{
     padding-right: 20vw;
@@ -137,6 +140,9 @@ $transition: ease-in-out;
 
 }
 [data-current-type="event"]{
+  .post.artist{
+    display: none;
+  }
   .legend .letter{
     opacity: 0;
     pointer-events: none;
@@ -146,6 +152,9 @@ $transition: ease-in-out;
   }
 }
 [data-current-type="artist"]{
+  .post.event{
+    display: none;
+  }
   .legend .day{
     opacity: 0;
     pointer-events: none;
@@ -161,6 +170,9 @@ $transition: ease-in-out;
   border-bottom: 1px solid $white;
   margin: $margin-horizontal-normal 0;
   width: 100%;
+  @media #{$tablet}{
+    display: none!important;
+  }
 }
 
 .post{
@@ -230,8 +242,11 @@ $transition: ease-in-out;
   align-items: center;
 }
 .line-break{
-  width: 100%;
-  margin-bottom: 5rem;
+  display: none;
+  @media #{$tablet}{
+    width: 100%;
+    margin-bottom: 5rem;
+  }
 }
 
 .event-date, .event-type{

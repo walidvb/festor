@@ -178,8 +178,10 @@ h1{
 	.show-single:not(:last-child){
 		margin-bottom: 2*$margin-vertical-largest;
 	}
-	.show-single:nth-child(2n){
-		margin-left: -10%;
+	@media #{$tablet}{
+		.show-single:nth-child(2n){
+			margin-left: -10%;
+		}
 	}
 	.show-title{
 		margin-bottom: $margin-vertical-large;
@@ -189,8 +191,10 @@ h1{
 
 .show-desc, .event-artist-bio, .artist-desc, .static-desc, .previous-editions{
 	margin-right: auto;
-	padding-left: 10%;
 	max-width: 75ch;
+	@media #{$tablet}{
+		padding-left: 10%;
+	}
 	a{
 		text-decoration: underline;
 	}

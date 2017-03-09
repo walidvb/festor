@@ -38,8 +38,11 @@ $drawer-side-padding: 1rem;
   }
   .back{
     display: inline-block;
+    padding: 0 10px;
+    margin-left: -10px;
+    @include arrow-rotate();
   }
-  [data-drawer]:after, .rotate-mobile{
+  [data-drawer]:after{
     @include arrow-rotate();
     padding-left: 0;
     padding-bottom: 0rem;
