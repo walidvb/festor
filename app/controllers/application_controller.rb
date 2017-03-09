@@ -1,5 +1,13 @@
 class ApplicationController < ActionController::Base
   before_filter :set_locale
+  before_filter :set_background
+  
+  def set_background
+    rdm = Random.rand([ENV['BACKGROUND_IMAGES_COUNT'].to_i, 1].max)
+    image = "mapping_#{rdm}.png"
+    @background = "/backgrounds/#{image}"
+  end
+
   after_filter :remove_landing
   before_filter :load_navbar
 
