@@ -8,6 +8,9 @@ const HOUR_IN_PX = 18*2,
   OUT_Z = 25,
   MIN_Z_DELTA = 5;
 
+const OPACITY_BACK = .13,
+  OPACITY_OUT = .1;
+
 const smallScreen = () => (window.innerWidth <= 767);
 
 class Program{
@@ -116,7 +119,7 @@ class Program{
     else if(this.isOut){
       posZ = rdmZOut();
       this.elem.removeClass('inactive active in').addClass('out');
-      opacity = .45;
+      opacity = OPACITY_OUT;
     }
     else if(this.active){
       posZ = 0;// rdmZFront();
@@ -124,7 +127,7 @@ class Program{
     }
     else{
       posZ = rdmZBack();
-      opacity = .6;
+      opacity = OPACITY_BACK;
       this.elem.removeClass('out active').addClass('inactive');
     }
 
