@@ -372,7 +372,7 @@ class Programs{
     const goingToProgramPage = /program/.test(e.originalEvent.data.url);
     if(!goingToProgramPage && programs){
       const except = $(e.target).data('id');
-      programs.sendAllOut({ except });
+      // programs.sendAllOut({ except });
       if(!goingToProgramPage){
         $(document).trigger('close-drawer');
       }
