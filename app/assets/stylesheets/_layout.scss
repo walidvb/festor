@@ -41,7 +41,7 @@ main, .main{
 		position: fixed;
 		top: 0;
 		left: 0;
-		@include lineJump(6);
+		@include lineJump(3);
 	}
 	main{
 		padding-left: $nav-width;

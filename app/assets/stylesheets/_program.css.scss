@@ -126,22 +126,26 @@ $transition: ease-in-out;
       padding-right: 1rem;
     }
   }
-    @media #{$tablet}{
-      position: relative;
-      .day, .letter{
-        right: $margin-horizontal-normal/2;
-        left: auto;
-        padding: 1rem 5px;
-        &:after{
-          content: none;
-        }
+  @media #{$tablet}{
+    display: auto;
+    position: relative;
+    .day, .letter{
+      right: $margin-horizontal-normal/2;
+      left: auto;
+      padding: 1rem 5px;
+      &:after{
+        content: none;
+      }
     }
   }
 
 }
+
 [data-current-type="event"]{
-  .post.artist{
-    display: none;
+  @media #{$mobile}{
+    .post.artist{
+      display: none;
+    }
   }
   .legend .letter{
     opacity: 0;
@@ -152,8 +156,10 @@ $transition: ease-in-out;
   }
 }
 [data-current-type="artist"]{
-  .post.event{
-    display: none;
+  @media #{$mobile}{
+    .post.event{
+      display: none;
+    }
   }
   .legend .day{
     opacity: 0;
