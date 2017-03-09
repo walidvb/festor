@@ -18,6 +18,14 @@ $(document).on('turbolinks:load', function(){
   //   innerHeight: 281 * (600/500),
   // })
 });
+
+$(document).on('click', '.volet', (e) => {
+  const clicked = $(e.currentTarget),
+   value = clicked.data('value'),
+   key = clicked.data('key'),
+   type = clicked.data('type');
+   window.activeFilters = { key, value, type };
+})
 $(document).on('turbolinks:load', function(){
 	if(!smallScreen()){
 		const $logo = $('header'),

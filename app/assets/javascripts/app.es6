@@ -307,7 +307,7 @@ class Programs{
 (() => {
 
   let programs;
-  window.activeFilters = { type: 'event', value: 'reset' };
+  window.activeFilters = window.activeFilters || { type: 'event', value: 'reset' };
   $(document).on('turbolinks:load', () => {
     const isProgramPage = $('#program').length != 0;
     const programsContainer = $('.post.event'),

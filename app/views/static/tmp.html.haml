@@ -3,16 +3,16 @@
   height: 100vh;
   }
 .volets
-  .volet.full-content.stagger
+  = link_to program_path(locale: I18n.locale), class: "volet full-content stagger", data: { type: 'event',  key: 'section' , value: 'Mapping EXPO' } do
     %h2 Mapping Expo
     .dates 11 – 28.5.2017
 
-  .volet.full-content.stagger
+  = link_to program_path(locale: I18n.locale), class: "volet full-content stagger", data: { type: 'event', key: 'section' , value: 'Mapping LAB' } do
     %h2 Mapping Lab
     .dates 18 – 28.5.2017
 
-  .volet.full-content.stagger
+  = link_to program_path(locale: I18n.locale), class: "volet full-content stagger", data: { type: 'event', key: 'section' , value: 'Mapping LIVE' } do
     %h2 Mapping Live
     .dates 24 – 28.5.2017
 
-  .in-construction= t('time.coming_soon')
+  .in-construction.full-content= t('time.coming_soon')
