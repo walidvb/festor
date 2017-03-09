@@ -6,7 +6,7 @@
 		- desc = strip_tags(CGI.unescapeHTML("#{content_for?(:description) ? yield(:description) : 'The Mapping Festival is also a meeting point, a creative and collaborative platform with innovative spirit. Over the course of ten editions the Mapping Festival has grown steadily and emerged as one the most important events of its kind in Europe.'}")).gsub('&nbsp;', ' ')
 		%meta{:name => "description", content: desc}
 		%meta{property:"og:description", content: desc}
-		%meta{property:"og:image", content:"#{content_for?(:image) ? yield(:image) : image_url('lines_1.png')}"}
+		%meta{property:"og:image", content:"#{content_for?(:image) ? yield(:image) : image_url('back_1.png')}"}
 		%meta{property:"og:url", content: "#{content_for?(:url) ? yield(:url) : request.original_url}"}
 		%meta{property:"og:type", content:"#{content_for?(:type) ? yield(:type) : 'website'}"}
 		- title = strip_tags(CGI.unescapeHTML("#{content_for?(:og_title) ? '11-28.5 2017 | Mapping Festival | ' + yield(:og_title): '11-28.5 2017 | Mapping Festival'}"))
