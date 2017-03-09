@@ -15,7 +15,7 @@
 				%li{data: { "artist-id" => art.id }}
 					%img{'data-lazy-load' => art.profile_picture.url(:tile)}
 
-	#program.in.full-content{data: { "date-start" => @event_dates.first.start.strftime("%Y/%m/%d %H:%M") } }
+	#program.in{data: { "date-start" => @event_dates.first.start.strftime("%Y/%m/%d %H:%M") } }
 		.legend.full-content
 			%ul.date
 				- @days.each do |day|
