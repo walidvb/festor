@@ -2,32 +2,36 @@
 - content_for(:image, image_url('lines_3.png'))
 - content_for(:description, "Everything you need to know, day by day")
 - date_format_for_machine = "%-d-%-m"
-- content_for :thumbnails do
-	%ul.thumbnails
-		- @events.each do |ev|
-			%li{data: { "event-id" => ev.id }}
-				%img{'data-lazy-load' => ev.main_image.url(:tile)}
-		- @artists.each do |art|
-			%li{data: { "artist-id" => art.id }}
-				%img{'data-lazy-load' => art.profile_picture.url(:tile)}
+- if @event_dates.empty?
+	.full-content
+		%h1 No event published
+- else
+	- content_for :thumbnails do
+		%ul.thumbnails
+			- @events.each do |ev|
+				%li{data: { "event-id" => ev.id }}
+					%img{'data-lazy-load' => ev.main_image.url(:tile)}
+			- @artists.each do |art|
+				%li{data: { "artist-id" => art.id }}
+					%img{'data-lazy-load' => art.profile_picture.url(:tile)}
 
-#program.in{data: { "date-start" => @event_dates.first.start.strftime("%Y/%m/%d %H:%M") } }
-	.legend.full-content
-		%ul.date
-			- @days.each do |day|
-				- in_s = day.strftime("%d.%m")
-				%li.day{ data: { date:day.strftime(date_format_for_machine) }}= in_s
-		- @artists_by_letter.each do |letter|
-			.letter{ data: { letter: letter } }
-				= letter
-	.events
-		= render 'events/timeline.html.haml', event_dates: @event_dates
-		- last_key = @artists.first.name[0].upcase
-		- @artists.each do |artist|
-			- curr_key = artist.name[0].upcase
-			- if last_key != curr_key
-				.line-break
-			- last_key = curr_key
-			.post.out.artist.stagger{ id: "artist-#{artist.id}", data: { letter: curr_key, "artist-id": artist.id, type: 'event', key: 'artists', value: artist.slug  } }
-				.info{data: {}}
-					%h3.event-artist= artist.name
+	#program.in{data: { "date-start" => @event_dates.first.start.strftime("%Y/%m/%d %H:%M") } }
+		.legend.full-content
+			%ul.date
+				- @days.each do |day|
+					- in_s = day.strftime("%d.%m")
+					%li.day{ data: { date:day.strftime(date_format_for_machine) }}= in_s
+			- @artists_by_letter.each do |letter|
+				.letter{ data: { letter: letter } }
+					= letter
+		.events
+			= render 'events/timeline.html.haml', event_dates: @event_dates
+			- last_key = @artists.first.name[0].upcase
+			- @artists.each do |artist|
+				- curr_key = artist.name[0].upcase
+				- if last_key != curr_key
+					.line-break
+				- last_key = curr_key
+				.post.out.artist.stagger{ id: "artist-#{artist.id}", data: { letter: curr_key, "artist-id": artist.id, type: 'event', key: 'artists', value: artist.slug  } }
+					.info{data: {}}
+						%h3.event-artist= artist.name

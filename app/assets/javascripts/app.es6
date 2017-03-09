@@ -213,9 +213,14 @@ class Programs{
     $('.legend .letter').each(function(e, obj){
       const letter = $(obj).data('letter');
       const firstArtist = $(`.post[data-letter="${letter}"]`).first();
-      let transform = firstArtist.position().top;
-      transform = `translateY(${transform}px)`;
-      $(obj).css({ transform })
+      if(firstArtist){
+        let transform = firstArtist.position().top;
+        transform = `translateY(${transform}px)`;
+        $(obj).css({ transform })
+      }
+      else{
+        $(obj).hide();
+      }
     });
   }
   positionDatesLegend(){

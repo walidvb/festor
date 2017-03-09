@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   before_filter :set_locale
   after_filter :remove_landing
   before_filter :load_navbar
-  before_filter :beta_only
+
 
   def load_navbar
     if params[:exhib].present?
@@ -10,8 +10,8 @@ class ApplicationController < ActionController::Base
     end
     @messages = Message.all.order('created_at DESC').first(3)
 
-    @artists_by_letter = Artist.order("name ASC").pluck(:name).map{|name| name[0].upcase}.uniq
-    @sections = Event.pluck(:section).uniq.compact
+    @artists_by_letter = Event.published.map(&:artists).flatten.sort_by(&:name).map(&:name).map{|name| name[0].upcase}.uniq
+    @sections = Event.published.pluck(:section).uniq.compact
     @days_range = (11..28)
     @venues = Location.all
   end

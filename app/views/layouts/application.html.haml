@@ -18,7 +18,10 @@
 		%link{rel: 'alternate', hreflang: 'fr', href: url_for(locale: :fr), title: content_for(:title)}
 		%link{rel: 'alternate', hreflang: 'en', href: url_for(locale: :en), title: content_for(:title)}
 		%title= title
-
+		:css
+			#background{
+				background-image: url('#{@background}');
+			}
 		= favicon_link_tag 'favicon.png'
 		%meta{name:'styles_day', content: stylesheet_path("application_day")}
 		%meta{name:'styles_night', content: stylesheet_path("application_night")}
@@ -61,7 +64,7 @@
 					}
 				});
 			})();
-		#background{"data-turbolinks-permanent" => true}= inline_svg('logo.svg')
+		#background{"data-turbolinks-permanent" => true}
 		%header#turbo-header{"data-turbolinks-permanent" => true}
 			.logo
 				= render 'layouts/logo'

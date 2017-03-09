@@ -4,9 +4,6 @@
 .full-content
 	.mf-breadcrumb.show-xs
 		= link_to "#{t('shared.all')}", program_path(locale: I18n.locale)
-		.inner-nav
-			= link_to('', path_for(@event.previous), class: 'prev') if !@event.previous.nil?
-			= link_to('', path_for(@event.next), class: 'next') if !@event.next.nil?
 	.admin-entry
 		- if user_signed_in?
 			= link_to 'edit', "/admin/event/#{@event.id}/edit", data: {turbolinks: "false"}
@@ -22,23 +19,28 @@
 				%h2= small
 				.event-infos
 					.event-dates
-						- @dates.each_with_index do |date, i|
-							.date-details
-								- if date.end.blank?
-									%h5.day= l(date.start, format: "%A %e %b – %H:%M")
-								- else
-									%h5.day= [date.start, date.end].compact.map{|d| l(d, format: "%A %e %b")}.uniq.join(' – ')
-									%h5.time= [date.start, date.end].compact.map{|d| l(d, format: "%H:%M")}.uniq.join(' – ')
-								- if !date.location.nil? && (location != date.location || i == @dates.count-1)
-									- location = date.location
-									%h5.location= link_to date.location.name, venues_path(anchor: date.location.slug)
+						- if @event.all_day?
+							- start = @dates.first
+							- last = @dates.last
+							%h5.day
+								= [start.start, last.end].map{|d| l(d, format: "%A %e")}.join(' – ')
+								= l(last.start, format: "%b")
+							%h5.time= [start.start, last.end].map{|d| l(d, format: "%H:%M")}.join(' – ')
+						- else
+							- @dates.each_with_index do |date, i|
+								.date-details
+									- if date.end.blank?
+										%h5.day= l(date.start, format: "%A %e %b – %H:%M")
+									- else
+										%h5.day= [date.start, date.end].compact.map{|d| l(d, format: "%A %e %b")}.uniq.join(' – ')
+										%h5.time= [date.start, date.end].compact.map{|d| l(d, format: "%H:%M")}.uniq.join(' – ')
+									- if !date.location.nil? && (location != date.location || i == @dates.count-1)
+										- location = date.location
+										%h5.location= link_to date.location.name, venues_path(anchor: date.location.slug)
 						- if(!@event.is_workshop? && !@event.price.blank?)
 							%h5.price= @event.price
 						- if !@event.finished? && !@event.tickets_link.blank?
 							%h5= link_to(t('events.ticket'), event_tickets_path(@event.slug, locale: I18n.locale), class: "buy-link")
-					.inner-nav.hidden-xs
-						= link_to('', path_for(@event.previous), class: 'prev') if !@event.previous.nil?
-						= link_to('', path_for(@event.next), class: 'next') if !@event.next.nil?
 			= render('info_block', event: @event, classes: 'show-xs')
 			.show-desc= interpolate(@event.description, image: @event.main_image.url(:large), infos: render('info_block', event: @event, classes: 'hidden-xs')).html_safe unless @event.description.blank?
 			- unless @event.extra_infos.empty?

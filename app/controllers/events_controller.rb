@@ -5,12 +5,17 @@ class EventsController < ApplicationController
 	def program
 		@all_dates = {}
 		if params[:exhib].present?
-			@events = Event.not_exhibition
+			@events = Event.published.not_exhibition
 		else
+			@events = Event.published
+		end
+		
+		if user_signed_in?
 			@events = Event.all
 		end
+
 		@event_dates = EventDate.where(event_id: @events.map(&:id)).order('start ASC').includes(:event, :artists, :location)
-		@artists = Artist.all.order(:name)
+		@artists = @events.map(&:artists).flatten.sort_by(&:name)
 		@days = EventDate.all.pluck(:start).map(&:to_date).uniq
 		render 'program'
 	end

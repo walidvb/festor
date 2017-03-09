@@ -74,10 +74,8 @@ class Event < ActiveRecord::Base
 
 	#validates_presence_of :title
 
-	def next
-	end
-
-	def previous
+	def all_day?
+		!/workshop|exhib|expo/i.match(self.sub_section).nil?
 	end
 
 	def finished?
