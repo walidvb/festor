@@ -44,7 +44,7 @@ class ZoneFestival < ActiveRecord::Base
       pr['id'] == 41 ||    
       true
     }
-     programs.each do |date|
+    programs.each do |date|
       Rails.logger.info "Processing #{date['name_1']}: #{date['date_start']}"
       event_date = EventDate.find_by_zf_id(date['id']) || EventDate.new
       event_date.zf_id = date['id']
@@ -54,13 +54,13 @@ class ZoneFestival < ActiveRecord::Base
       shows = shows_for_program(date, zf)
       has_multiple_shows_for_single_program = shows.count > 1
       has_show = !shows.empty?
-      desc_empty = date['description_1'].empty? && date['description_2'].empty?
-      group_shows = has_multiple_shows_for_single_program && !desc_empty
 
       section_from_show = nil
+      section_from_program = section_for_program(date, zf)
+      sub_section = sub_section_for_program(date, zf)
 
-      if(has_show)
-        first_show = shows.first
+        if(has_show)
+          first_show = shows.first
         #store zf_id as the first show of the list
         event = Event.find_by_zf_id(first_show['id'].to_i) || Event.new
         event.zf_id = first_show['id'].to_i
@@ -69,9 +69,12 @@ class ZoneFestival < ActiveRecord::Base
           Rails.logger.info "Group Performances detected for #{date['name_1']}"
           store_translations_for(event, :title, date, :name)
           store_translations_for event, :description,  date, :description
-          if !group_shows
+          
+          desc_empty = date['description_1'].empty? && date['description_2'].empty?
+          group_descriptions = /conf|perf/i.match(sub_section["name_1"])
+          if group_descriptions
             Rails.logger.info "Grouping Performances descriptions for #{date['name_1']}"
-            create_description_from shows, event
+            create_description_from shows, date, event
           end
         elsif has_multiple_shows_for_single_program
           Rails.logger.info "Multiple Performances detected for #{date['name_1']}"
@@ -87,7 +90,7 @@ class ZoneFestival < ActiveRecord::Base
             if section = section_from_show || section_from_program
               store_translations_for event, :section,  section, :name
             end
-            if sub_section = sub_section_for_program(date, zf)
+            if sub_section
               store_translations_for event, :sub_section,  sub_section, :name
             end
 
@@ -106,7 +109,7 @@ class ZoneFestival < ActiveRecord::Base
                 end
               end
             end
-          store_artists_from_shows [show], event, zf
+            store_artists_from_shows [show], event, zf
           end
 
           event_date.event = event
@@ -126,19 +129,12 @@ class ZoneFestival < ActiveRecord::Base
         store_translations_for event, :title,  date, :name
         store_translations_for event, :description,  date, :description
         event.save!
-        if has_show && img = show['image'][0]
-          if (imgs = show['image']) && imgs.count > 0
-            if img = imgs.find{ |_img| _img['principal'].nil? || _img['principal'] == 1 }
-              event.delay.set_image_from_url(img['url'])
-            end
-          end
-        end
         store_artists_from_shows shows, event, zf
       end
       Rails.logger.info "Storing location to #{event.title}"
       event.location = Location.find_by_zf_id(date['venue_id'])
       store_translations_for event, :tickets_link, date, :ticket_url
-      section_from_program = section_for_program(date, zf)
+      
 
       if section = section_from_show || section_from_program
         store_translations_for event, :section,  section, :name
@@ -233,8 +229,9 @@ class ZoneFestival < ActiveRecord::Base
   end
 
   def store_information_for target, informations, key
-    info = informations.find{|ques| ques['question_1'].downcase == "#{key}_1".downcase}
-    store_translations_for target, key.downcase, info, 'answer'
+    if info = informations.find{|ques| ques['question_1'].downcase == "#{key}_1".downcase}
+      store_translations_for target, key.downcase, info, 'answer'
+    end
   end
 
   def store_translations_for object, object_column, source_object, source_column
@@ -254,18 +251,21 @@ class ZoneFestival < ActiveRecord::Base
     res.body
   end
 
-  def create_description_from shows, event
+  def create_description_from shows, date, event
     {fr: '1', en: '2'}.each do |locale, value|
       I18n.locale = locale
       description = shows.map do |show|
         t = show["title_#{value}"]
-        d = show['description_long_1']
+        d = show["description_long_#{value}"]
         "<div class='show-single'> \
-          <h1 class='show-title'>#{t}</h1> \
-          <div class='show-description'>#{d}</div> \
+        <h1 class='show-title'>#{t}</h1> \
+        <div class='show-description'>#{d}</div> \
         </div>"
       end.join("")
-      event.description = "<div class='multiple-shows'>#{description}</div>"
+      global_desc = date["description_#{value}"]
+      event.description = "<div class='global-desc'>#{global_desc}</div><div class='multiple-shows'>#{description}</div>"
+      Rails.logger.info global_desc
+      Rails.logger.info description
       Rails.logger.info "==========="
     end
     event.save!

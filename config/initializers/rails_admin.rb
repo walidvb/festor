@@ -51,6 +51,7 @@ RailsAdmin.config do |config|
             ZoneFestival.sync!
             redirect_to '/admin', notice: 'Database sync in progress. Please wait a moment for the images to syncronise as well.'
           rescue => e
+            raise e unless Rails.env.prod?
             redirect_to '/admin', alert: "Error when syncing database: #{e}"
           end
         end
