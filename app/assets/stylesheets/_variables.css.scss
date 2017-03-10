@@ -35,7 +35,7 @@ $background: $white;
 $container-max-width: 960px;
 
 // typography
-$body-font						:	Grotesk, Helvetica, Sans-Serif;
+$body-font						:	Graphik Web, Helvetica, Sans-Serif;
 $info-font						:	$body-font;
 
 //applied to body so as to define root em
@@ -43,14 +43,14 @@ $base-size						:	14px;
 $base-font-size				:	$base-size;
 
 
-$body-size    				:   22px;
-$main-size   				 	:   1.25em;
-$smaller							:		0.65em;
-$small								:		0.8em;
-$large								: 	1.4em;
-$larger 							: 	2.25em;
-$largest							:		2.8em;
-$tile-title-size 			:		0.8em;
+$body-size    				:   16px;
+$main-size   				 	:   1.25rem;
+$smaller							:		0.65rem;
+$small								:		0.8rem;
+$large								: 	1.4rem;
+$larger 							: 	2.25rem;
+$largest							:		2.8rem;
+$tile-title-size 			:		0.8rem;
 
 // defines line-height for all texts
 $lineheight-variable	: 	1;
@@ -64,26 +64,23 @@ $margin-vertical-largest 	: 4rem;
 $margin-horizontal-normal : 1rem;
 
 @font-face {
-    font-family: 'Grotesk';
-    src: font-url('scangraphic_digital_type_collection_-_groteskssb-bold-webfont.eot');
-    src: font-url('scangraphic_digital_type_collection_-_groteskssb-bold-webfont.eot?#iefix') format('embedded-opentype'),
-         font-url('scangraphic_digital_type_collection_-_groteskssb-bold-webfont.woff2') format('woff2'),
-         font-url('scangraphic_digital_type_collection_-_groteskssb-bold-webfont.woff') format('woff'),
-         font-url('scangraphic_digital_type_collection_-_groteskssb-bold-webfont.ttf') format('truetype'),
-         font-url('scangraphic_digital_type_collection_-_groteskssb-bold-webfont.svg#groteskssb-boldregular') format('svg');
-    font-weight: bold;
-    font-style: normal;
+  font-family: 'Graphik Web';
+  src: url('Graphik-Medium-Web.eot');
+  src: url('Graphik-Medium-Web.eot?#iefix') format('embedded-opentype'),
+  url('Graphik-Medium-Web.woff2') format('woff2'),
+  url('Graphik-Medium-Web.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
 }
 
 @font-face {
-    font-family: 'Grotesk';
-    src: font-url('scangraphic_digital_type_collection_-_groteskssb-book-webfont.eot');
-    src: font-url('scangraphic_digital_type_collection_-_groteskssb-book-webfont.eot?#iefix') format('embedded-opentype'),
-         font-url('scangraphic_digital_type_collection_-_groteskssb-book-webfont.woff2') format('woff2'),
-         font-url('scangraphic_digital_type_collection_-_groteskssb-book-webfont.woff') format('woff'),
-         font-url('scangraphic_digital_type_collection_-_groteskssb-book-webfont.ttf') format('truetype'),
-         font-url('scangraphic_digital_type_collection_-_groteskssb-book-webfont.svg#groteskssb-bookregular') format('svg');
-    font-weight: normal;
-    font-style: normal;
-
+  font-family: 'Graphik Web';
+  src: url('Graphik-Regular-Web.eot');
+  src: url('Graphik-Regular-Web.eot?#iefix') format('embedded-opentype'),
+  url('Graphik-Regular-Web.woff2') format('woff2'),
+  url('Graphik-Regular-Web.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-stretch: normal;
 }

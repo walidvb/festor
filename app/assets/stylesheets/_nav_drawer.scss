@@ -14,7 +14,7 @@ $drawer-side-padding: 1rem;
   transition: all .5s ease-in-out;
   transform: translateY(0);
   @media #{$tablet}{
-    padding: 5rem $drawer-side-padding 0;
+    padding: 2rem 2rem 0;
     transform: translateX(0%);
     &.drawer-open{
       transform: translateX(-100%);

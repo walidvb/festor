@@ -38,7 +38,6 @@
     padding-top: $header-height;
   }
   .events{
-    border-left: 1px solid $white;
     display: flex;
     flex-flow: row wrap;
     justify-content: flex-start;
@@ -164,6 +163,7 @@ $transition: ease-in-out;
   .legend .day{
     opacity: 0;
     pointer-events: none;
+    border-top: solid 1px $white;
   }
   .events .day{
     display: none;
@@ -181,6 +181,9 @@ $transition: ease-in-out;
   }
 }
 
+.date li.day{
+  border-top: solid 1px $white;
+}
 .post{
   flex: 1 0 100%;
   padding: 0 $margin-horizontal-normal;
@@ -188,6 +191,7 @@ $transition: ease-in-out;
   will-change: transform opacity;
   display: block;
   will-change: transform opacity;
+  border-left: solid 1px $white;
   &.in{
     z-index: 1000;
   }
@@ -260,5 +264,4 @@ $transition: ease-in-out;
 }
 .event-date, .event-type, .event-name{
   font-size: $body-size*0.8;
-  margin-bottom: $lineheight-base*1;
 }

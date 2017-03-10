@@ -36,12 +36,12 @@ class ZoneFestival < ActiveRecord::Base
     # name: artist_name
     # bio: artist_bio
 
-    programs = zf['program'].select{|pr|       
-      pr['id'] == 42 ||      
-      pr['id'] == 23 ||      
-      pr['id'] == 27 ||      
-      pr['id'] == 54 ||      
-      pr['id'] == 41 ||    
+    programs = zf['program'].select{|pr|
+      pr['id'] == 42 ||
+      pr['id'] == 23 ||
+      pr['id'] == 27 ||
+      pr['id'] == 54 ||
+      pr['id'] == 41 ||
       true
     }
      programs.each do |date|
@@ -234,7 +234,7 @@ class ZoneFestival < ActiveRecord::Base
 
   def store_information_for target, informations, key
     info = informations.find{|ques| ques['question_1'].downcase == "#{key}_1".downcase}
-    store_translations_for target, key.downcase, info, 'answer'
+    # store_translations_for target, key.downcase, info, 'answer'
   end
 
   def store_translations_for object, object_column, source_object, source_column

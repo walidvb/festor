@@ -41,7 +41,7 @@
 	.drawer-container
 		%ul.nav
 			%li.gap-after
-				= link_to program_path(locale: I18n.locale), data: { drawer: '#nav-program', "direct-link" => true } do 
+				= link_to program_path(locale: I18n.locale), data: { drawer: '#nav-program', "direct-link" => true } do
 					%span#filter= t('nav.filters')
 					%span#non-filter= t('nav.program')
 			%li.gap-after

@@ -22,7 +22,7 @@ header{
 	.subtitle{
 		@include lineJump(1);
 		@media #{$tablet}{
-			@include lineJump(3);
+			@include lineJump(1.5);
 		}
 	}
  .motto, .festival.date, .festival-location{

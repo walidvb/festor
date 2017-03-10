@@ -37,9 +37,9 @@ body{
 	font-family: $body-font;
 	overflow-x: hidden;
 	color: $white;
-	background-color: $black;
-
+	background-color: black;
 	font-size: 22px;
+	font-variant-numeric: tabular-nums;
 }
 
 #background{
@@ -50,12 +50,6 @@ body{
 	bottom: 0;
 	text-align: right;
 	z-index: -4;
-	opacity: .15;
-	.night &{
-		opacity: .4;
-	}
-	transition: opacity 1s ease-in-out;
-	background-color: $black;
 
 	background-repeat: no-repeat;
 	background-position: 5vw top;

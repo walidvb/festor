@@ -6,6 +6,7 @@
 		@include fontSize(33px);
 		@include lineHeight(42px);
 	}
+	font-weight: 500;
 }
 
 // ----- 2 - Baseline ----- //
@@ -15,11 +16,14 @@
 	@include lineHeight($lineheight-base * 1.2);
 	@include lineJump (0.7);
 	@media #{$tablet}{
-	@include lineHeight($lineheight-base * 2);
+	@include lineHeight($lineheight-base * 1.5);
 	@include lineJump (0);
 	}
 }
 
+.festival-date{
+	@include lineJump (0.7);
+}
 
 // ----- 3 - Menu ----- //
 
@@ -132,7 +136,6 @@
 	h3{
 		@include fontSize(26.6px) ;
 		@include lineHeight($lineheight-base * 2) ;
-		@include lineJump (0.9);
 	}
 	// ----- 16 - Progr. Artiste ----- //
 	h4{
