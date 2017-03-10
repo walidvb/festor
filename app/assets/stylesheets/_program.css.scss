@@ -250,6 +250,7 @@ $transition: ease-in-out;
 .line-break{
   display: none;
   @media #{$tablet}{
+    display: initial;
     width: 100%;
     margin-bottom: 5rem;
   }
