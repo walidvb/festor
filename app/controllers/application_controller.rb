@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   def set_background
     rdm = Random.rand([ENV['BACKGROUND_IMAGES_COUNT'].to_i, 1].max)
     image = "mapping_#{rdm}.png"
-    @background = "/backgrounds/#{image}"
+    @background = "http://www.mappingfestival.com/2017/assets/backgrounds/#{image}"
   end
 
   after_filter :remove_landing
