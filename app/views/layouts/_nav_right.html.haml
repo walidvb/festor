@@ -12,7 +12,7 @@
 			%script{:src => "//app.mailerlite.fr/js/w/button.js", :type => "text/javascript", defer: true}
 			%li= render 'layouts/locales'
 
-			%li
+			%li.hidden-xs
 				%footer
 					%ul.social
 						%li
@@ -42,8 +42,7 @@
 		%ul.nav
 			%li.gap-after
 				= link_to program_path(locale: I18n.locale), data: { drawer: '#nav-program', "direct-link" => true } do
-					%span#filter= t('nav.filters')
-					%span#non-filter= t('nav.program')
+					%span= t('nav.program')
 			%li.gap-after
 				= link_to t('nav.venues'), venues_path(locale: I18n.locale)
 			- if @exhib

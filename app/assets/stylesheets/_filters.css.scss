@@ -3,18 +3,6 @@
   color: $white;
 }
 
-#filter{
-  display: none;
-}
-.program-page{
-  #filter{
-    display: inline;
-  }
-  #non-filter{
-    display: none;
-  }
-}
-
 @media #{$mobile}{
   .filters{
     flex-flow: row;
