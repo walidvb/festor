@@ -1,7 +1,7 @@
 let ABSOLUTE_START,
   SCROLLING = false;
 const HOUR_IN_PX = 18*2,
-  DAY_GAP = 18*10,
+  DAY_GAP = 18*7,
   PERSPECTIVE = '60px',
   NORMAL_Z = 5,
   MIN_Z = 15,
@@ -153,14 +153,7 @@ class Program{
     this.isSentOut = false;
   }
   endPos(){
-    let endPos;
-    if(this.active){
-      endPos = this.elem.outerHeight() + this.posY;
-    }
-    else{
-      endPos = 1*this.elem.outerHeight() + this.posY;
-    }
-    return endPos;
+    return  this.elem.outerHeight(true) + this.posY;
   }
 };
 
@@ -306,9 +299,9 @@ class Programs{
       }
       prog.position(basePosY);
       minY = Math.max(prog.endPos(), minY);
-      if(prog.date != currDay){
+      if(programs[i+1] && programs[i+1].date != prog.date){
+        console.log("prog, prog.date:", prog.elem, prog.date);
         minY += DAY_GAP;
-        currDay = prog.date;
       }
     });
     this.positionDatesLegend();
