@@ -28,7 +28,7 @@ class Event < ActiveRecord::Base
 		[:workshop, :conference, :masterclass, :talk, :specials]
 	end
 
-	scope :published, -> {where(published: true)}
+	scope :published, -> {Rails.env.production? ? where(published: true) : all}
 
 	scope :workshop, ->{where(section: workshop_cats)}
 	scope :exhibition, ->{where(section: ['Mapping EXPO', 'Exhibition'])}
