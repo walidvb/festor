@@ -20,6 +20,10 @@
       %tr.material
         %td.left-info= t('events.fields.material')
         %td.right-info= event.material
+    - unless event.registration.blank?
+      %tr.registration
+        %td.left-info= t('events.fields.registration')
+        %td.right-info= event.registration.html_safe
     - unless event.notes.blank?
       %tr.notes
         %td.left-info= t('events.fields.notes')

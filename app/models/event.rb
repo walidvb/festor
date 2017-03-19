@@ -6,7 +6,8 @@ class Event < ActiveRecord::Base
 		:requirements,
 		:material,
 		:notes,
-		:price]
+		:price,
+		:registration]
 	end
 
 	attr_accessor :artist_ids
