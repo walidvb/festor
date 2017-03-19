@@ -229,8 +229,11 @@ class ZoneFestival < ActiveRecord::Base
   end
 
   def store_information_for target, informations, key
-    if info = informations.find{|ques| ques['question_1'].downcase == "#{key}_1".downcase}
-      store_translations_for target, key.downcase, info, 'answer'
+    {fr: '1', en: '2'}.each do |locale, locale_key|
+      I18n.locale = locale
+      if info = informations.find{|ques| ques["question_#{locale_key}"].downcase == "#{key}_#{locale_key}".downcase}
+        target.send("#{key}=", info["answer_1"])
+      end
     end
   end
 
