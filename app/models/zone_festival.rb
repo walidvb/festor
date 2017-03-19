@@ -174,7 +174,7 @@ class ZoneFestival < ActiveRecord::Base
           Rails.logger.info "processing #{art['name']}"
           artist = Artist.find_by_zf_id(art['id']) || Artist.new
           artist.name = art['name']
-          artist.country = art['country']
+          artist.country = IsoCountryCodes.search_by_name(art['country_2']).map(&:iban).join(', ')
           artist.zf_id = art['id'].to_i
           store_translations_for artist, :biography, art, :biography
           art['website'].each do |web|
