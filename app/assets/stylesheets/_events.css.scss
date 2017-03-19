@@ -284,7 +284,7 @@ h1{
 		vertical-align: top;
 		display:block;
 		@media #{$tablet}{
-			display: inline-block;
+			display: table-cell;
 		}
 	}
 	.left-info{
