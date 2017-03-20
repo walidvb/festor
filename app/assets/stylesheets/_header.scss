@@ -56,14 +56,14 @@ nav{
 	footer, .locales{
 		text-align: right;
 		position: fixed;
-		right: .5rem;	
+		right: 2rem;
 	}
 	footer{
-		bottom: .5rem;
+		bottom: 2rem;
 	}
 	.locales{
 		font-size: smaller;
-		top: .5rem;
+		top: 1.5rem;
 		@include lineJump(1);
 		cursor: pointer;
 	}
