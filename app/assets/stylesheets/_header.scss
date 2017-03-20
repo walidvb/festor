@@ -35,6 +35,7 @@ nav{
 		border-bottom: none;
 		background: none;
 		padding: 0 0;
+		overflow-y: auto;
 	}
 	.gap-before{
 		margin-top: 2rem;
@@ -51,67 +52,19 @@ nav{
 	}
 }
 
-footer{
-	font-size: $small;
-}
-
-.hamburger {
-	display: flex;
-	align-items: center;
-	width: 50px;
-	height: 50px;
-	margin: 0 auto;
-	position: fixed;
-	z-index: 1000;
-	top: 0px;
-	right: 5px;
-	cursor: pointer;
-	@media #{$tablet}{
-		display: none;
+@media #{$tablet}{
+	footer, .locales{
+		text-align: right;
+		position: fixed;
+		right: .5rem;	
 	}
-}
-
-.bars,
-.bars:before,
-.bars:after {
-	position: relative;
-	width: 33px;
-	height: 3px;
-	margin: 0 auto;
-	background: #ffffff;
-	border-radius: 0px;
-	transition: top .2s .2s, transform .2s;
-}
-
-.bars:before,
-.bars:after {
-	content: "";
-	display: block;
-	position: absolute;
-}
-
-.bars:before {
-	top: -10px;
-}
-
-.bars:after {
-	top: 10px;
-}
-
-.open .bars:before,
-.open .bars:after {
-	transition: top .2s, transform .2s .2s;
-	top: 0;
-}
-
-.open .bars {
-	background: transparent;
-}
-
-.open .bars:before {
-	transform: rotate(45deg);
-}
-
-.open .bars:after {
-	transform: rotate(-45deg);
+	footer{
+		bottom: .5rem;
+	}
+	.locales{
+		font-size: smaller;
+		top: .5rem;
+		@include lineJump(1);
+		cursor: pointer;
+	}
 }

@@ -12,23 +12,6 @@
 			%script{:src => "//app.mailerlite.fr/js/w/button.js", :type => "text/javascript", defer: true}
 			%li= render 'layouts/locales'
 
-			%li.hidden-xs
-				%footer
-					%ul.social
-						%li
-							= link_to("http://www.instagram.com/mappingfestival", target: '_blank') do
-								.fa.fa-icon.fa-instagram
-						%li
-							= link_to("http://www.twitter.com/mappingfestival", target: '_blank') do
-								.fa.fa-icon.fa-twitter
-						%li
-							= link_to("https://www.facebook.com/pages/Mapping-Festival/162958139889", target: '_blank') do
-								.fa.fa-icon.fa-facebook
-					.address
-						%b Mapping Festival
-						%p Avenue Ernest-Pictet 28/30
-						%p 1203 #{t('shared.geneva').titleize}
-						%p #{t('shared.switzerland')}
 		.drawer#nav-news
 			.back <
 			%ul
@@ -60,17 +43,6 @@
 			%li= link_to t('nav.partners'), partners_path(locale: I18n.locale)
 			%li= link_to t('nav.contact'), 'mailto:nous@mappingfestival.com'
 			%li= render 'layouts/newsletter_button'
-
-
-			%li.hidden-xs.gap-before= render 'layouts/locales'
-			%li.gap-before
-				%footer
-					.hidden-xs= render 'layouts/social_links'
-					.address
-						%b Mapping Festival
-						%p Avenue Ernest-Pictet 28/30
-						%p 1203 #{t('shared.geneva').titleize}
-						%p #{t('shared.switzerland')}
 		- if @exhib
 			.drawer#nav-exhib
 				.back.rotate-mobile <

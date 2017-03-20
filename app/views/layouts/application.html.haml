@@ -50,6 +50,23 @@
 		%main
 			.firefox-only= yield :thumbnails
 			= yield
+		.hidden-xs.gap-before= render 'layouts/locales'
+		%footer
+			%ul.social
+				%li
+					= link_to("http://www.instagram.com/mappingfestival", target: '_blank') do
+						.fa.fa-icon.fa-instagram
+				%li
+					= link_to("http://www.twitter.com/mappingfestival", target: '_blank') do
+						.fa.fa-icon.fa-twitter
+				%li
+					= link_to("https://www.facebook.com/pages/Mapping-Festival/162958139889", target: '_blank') do
+						.fa.fa-icon.fa-facebook
+			.address
+				%b Mapping Festival
+				%p Avenue Ernest-Pictet 28/30
+				%p 1203 #{t('shared.geneva').titleize}
+				%p #{t('shared.switzerland')}
 		.webkit-only= yield :thumbnails
 		- if Rails.env.prod? && !current_user.nil?
 			:plain
