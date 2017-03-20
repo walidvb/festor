@@ -260,16 +260,17 @@ class Programs{
     const hoursFromStartInactive = this.inactivePrograms.length ? this.inactivePrograms[0].hoursFromStart : 0;
 
     const yOffsetActive = daysFromStartActive*HOUR_IN_PX;
-    const yOffsetInactive = daysFromStartActive*HOUR_IN_PX;
     let activeHeight = this.createTimeline(this.activePrograms, 0);
+    console.log("activeTimeline");
     this.createTimeline(this.inactivePrograms, -yOffsetActive);
-
+    console.log("inactiveTimeline: ", daysFromStartActive, daysFromStartActive*HOUR_IN_PX);
     activeHeight = Math.max(activeHeight, window.innerHeight);
     $('.events, .legend').css({
       'height': activeHeight,
     });
   }
   createTimeline(programs, defaultMinY){
+    console.log("defaultMinY:", defaultMinY);
     let minY = defaultMinY || 0,
       gap = 0,
       conflictCount = 0,
@@ -302,7 +303,6 @@ class Programs{
       prog.position(basePosY);
       minY = Math.max(prog.endPos(), minY);
       if(programs[i+1] && programs[i+1].date != prog.date){
-        console.log("prog, prog.date:", prog.elem, prog.date);
         minY += DAY_GAP;
       }
     });
