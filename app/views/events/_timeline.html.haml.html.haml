@@ -17,7 +17,6 @@
       "event-id": event.id, |
       image: event.main_image.url(:tile), |
     }}
-      .favourite-trigger
       - _switch = event.artists_as_title?
       - large = _switch ? artists.map(&:name).join(', ') : event.title
       - small = !_switch ? artists.map(&:name).join(', ') : event.title
@@ -26,5 +25,6 @@
           .info
             .event-date= event_date.start.strftime('%H:%M')
             .event-type= event.sub_section
+            .favourite-trigger
             %h3.event-artists= large
             .event-name= small

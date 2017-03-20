@@ -11,7 +11,7 @@
     max-height: 100vh;
     @media #{$mobile}{
       padding: 0;
-      max-height: auto;
+      max-height: initial;
       perspective: initial!important;
     }
   }
@@ -67,28 +67,38 @@
   @extend .fa;
   @extend .fa-star-o;
   will-change: transform opacity;
-  position: absolute;
-  top: -1rem;
-  width: 100%;
   transform: scale(.9);
-  transform-origin: 10px 50%;
+  transform-origin: center;
   transition: opacity .1s ease-in-out 0s, transform .15s ease-in-out;
+  text-decoration: none!important;
   .post &{
-    opacity: 0;
+    font-size: smaller;
+    float: right;
+    margin-right: 1rem;
+    @media #{$tablet}{
+      margin-left: 1rem;
+      margin-right: 0;
+      float: none;
+      opacity: 0;
+    }
   }
   &:hover{
     transition: opacity .1s ease-in-out 0s, transform .15s ease-in-out .3s;
     transform: scale(1);
   }
   .post:hover &{
-    opacity: .3;
+    opacity: 1;
     transition: opacity .1s ease-in-out 0s, transform .5s ease-in-out;
   }
   .fav &{
     transform: scale(1);
-    opacity: .2;
+    opacity: .5;
     @extend .fa-star;
     animation: pulse 1 .2s ease-in-out;
+  }
+  .show-page &{
+    position: absolute;
+    right: 2rem;
   }
 }
 
@@ -204,7 +214,7 @@ $transition: ease-in-out;
       opacity: .5;
       display: inline-block;
       .info{
-        // filter: blur(2px);
+        margin-top: -10px;
       }
       z-index: 1;
     }
@@ -217,7 +227,7 @@ $transition: ease-in-out;
     margin-bottom: 1rem;
     background-image: none!important;
     transition: transform 1s #{$transition-long} 0s, opacity .2s #{$transition-long} .15s;
-    @for $conflict from 1 to 10{
+    @for $conflict from 1 to 15{
       &[data-conflict-count="#{$conflict}"]{
         width: 100%/$conflict;
       }

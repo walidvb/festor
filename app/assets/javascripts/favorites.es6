@@ -11,6 +11,7 @@ function getLocalStorage(key){
   let favourites = getLocalStorage('favourites') || [];
   $(document).on('click touch', '.favourite-trigger', (e) => {
     console.log(e);
+    e.preventDefault();
     const id = $(e.target).parents('[data-id]').data('id');
     toggleFav(id);
   });
