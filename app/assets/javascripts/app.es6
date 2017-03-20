@@ -8,8 +8,8 @@ const HOUR_IN_PX = 18*2,
   OUT_Z = 25,
   MIN_Z_DELTA = 5;
 
-const OPACITY_BACK = .13,
-  OPACITY_OUT = .1;
+const OPACITY_BACK = .23,
+  OPACITY_OUT = .2;
 
 const smallScreen = () => (window.innerWidth <= 767);
 
