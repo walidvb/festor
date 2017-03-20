@@ -1,7 +1,38 @@
 #back{
 	display:none;
 }
+.favourite-holder{
+	&:before{
+		content: '';
+		font-family: inherit;
+	}
+  position: absolute;
+  right: 2rem;
+  .tip{
+  	visibility: hidden;
+  	font-size: $small;
+  	display: inline-block;
+  	vertical-align: middle;
+  }
+  &:hover{
+  	.tip{
+  		visibility: visible;
+  		transition: all 0s 1s;
+  	}
+  }
 
+  .fav &{
+  	.add{
+  		display: none;
+  	}
+  	.rm{
+  		display: inline-block;
+  	}
+  }
+  .rm{
+  	display: none;
+  }
+}
 .load-more-container .inner-nav{
 	display: none;
 }

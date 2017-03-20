@@ -10,6 +10,8 @@ en:
     all: 'All'
     all_fem: 'All'
     thanks: 'Thank you for submitting your screenshot, visit the gallery! <span class="fa fa-th"></span>'
+    add_to_fav: 'Add to my favourites'
+    rm_from_fav: 'Remove from my favourites'
   nav:
     home:        "Home"
     events:      "Program"

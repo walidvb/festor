@@ -14,7 +14,10 @@
 			- large = !_switch ? @event.title : @artists.map(&:name).join(', ')
 			- small = _switch ? @event.title : @artists.map(&:name).join(', ')
 			.show-header.page-title
-				.favourite-trigger
+				.favourite-holder
+					.tip.add= t('shared.add_to_fav')
+					.tip.rm= t('shared.rm_from_fav')
+					.favourite-trigger
 				%h1.event-name= large
 				%h2= small
 				.event-infos
