@@ -8,7 +8,7 @@
 	%h1.artist-name= artist.name
 	%h4.labels.sup= artist.label
 	%h4.origin.sup= artist.country
-.biography
+.biography.artist-desc
 	= interpolate(artist.biography, image: artist.profile_picture.url(:large)).html_safe unless artist.biography.blank?
 	- if !links.empty?
 		%ul.links
