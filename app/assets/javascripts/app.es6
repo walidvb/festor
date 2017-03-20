@@ -77,10 +77,12 @@ class Program{
   }
   testAndActivate({ type, key, value }){
     this.isOut = (this.type != type);
-    const hasKey = (this[key] != undefined && this[key].length > 0);
+    const hasKey = (this[key] != undefined && (this[key] > 0 || this[key].length > 0));
     const isReset = (value == 'reset');
-    const valueMatch = hasKey && (value.includes(this[key]) ||
-      this[key].split('|').includes(value));
+    const valueMatch = hasKey && (
+      (value.includes(this[key]) ||
+      (this[key].length && this[key].split('|').includes(value))
+    ));
     this.active = isReset || (hasKey && valueMatch);
     this.setTransform();
     return this.active;
