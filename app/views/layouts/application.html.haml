@@ -20,60 +20,31 @@
 		%title= title
 		
 		= favicon_link_tag 'favicon.png'
-		%meta{name:'styles_day', content: stylesheet_path("application_day")}
-		%meta{name:'styles_night', content: stylesheet_path("application_night")}
-		%noscript
-			= stylesheet_link_tag 'application_day', id: 'all-styles', "data-turbolinks-track" => "true"
+		= stylesheet_link_tag 'application_day', id: 'all-styles', "data-turbolinks-track" => "true"
 		= javascript_include_tag "application", "data-turbolinks-track" => true
 		= csrf_meta_tags
-	%body{class: ["#{controller.controller_name}-page", "#{controller.action_name}-page", "#{'debug' if Rails.env.development?}", "#{current_user.nil? ? nil : 'admin'}", content_for(:body_class)].join(' '), style: 'display: none;'}
-		%style{id: 'backround-css', "data-turbolinks-permanent" => true}
-			:plain
-				#background{
-					background-image: url('#{@background}');
-				}
+	%body{class: ["#{controller.controller_name}-page", "#{controller.action_name}-page", "#{'debug' if Rails.env.development?}", "#{current_user.nil? ? nil : 'admin'}", content_for(:body_class)].join(' ')}
 		:javascript
 			(function(){
-				var invert = false,
-					styleDay = "#{stylesheet_path('application_day')}",
-					styleNight = '#{stylesheet_path("application_night")}';
-				const getStylesheetHref = function(invert){
-					var now = new Date();
-					var isNight = ((now.getHours() >= 20 && now.getMinutes >= 38) || now.getHours() > 21) || ((now.getHours() <= 6 && now.getMinutes() < 25) || now.getHours() < 6);
-					if(invert){ isNight = !isNight };
-					if(isNight){
-						document.body.classList.remove('night');
-					}
-					else{
-						document.body.classList.add('night');
-					}
-					return isNight ? styleNight : styleDay
-				}
-				var $link = document.createElement('link');
-				$link.href = getStylesheetHref();
-				$link.type = 'text/css'
-				$link.rel = 'stylesheet'
-				document.head.appendChild($link);
-
 				document.addEventListener('keydown', function(e){
 					if(!e.metaKey &&
 						e.key != 'Control' &&
 						e.key != 'Tab' &&
 						e.key != 'Alt' &&
 						e.key != 'Shift'){
-						invert = !invert;
-						$link.href = getStylesheetHref(invert);
+						var bckElem = document.getElementById('background');
+						var bck = bckElem.style.backgroundImage;
+						var rdm = Math.ceil(Math.random()*#{ENV['BACKGROUND_IMAGES_COUNT']});
+						var newBck = bck.replace(/mapping_(\d+)/, 'mapping_'+rdm);
+						bckElem.style.backgroundImage = newBck;
 					}
 				});
 			})();
-		#background{"data-turbolinks-permanent" => true}
+		#background{"data-turbolinks-permanent" => true, style: "background-image:url(#{@background})"}
 		%header#turbo-header{"data-turbolinks-permanent" => true}
 			.logo
 				= render 'layouts/logo'
 				.show-xs= render 'layouts/social_links'
-			=# render 'layouts/navigation'
-			/ .hamburger
-			/ 	.bars
 		%nav#turbo-nav{"data-turbolinks-permanent" => true}
 			= render 'layouts/nav_right'
 		%main
