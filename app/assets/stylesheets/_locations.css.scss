@@ -38,9 +38,7 @@
 }
 
 .location-link{
-	border-bottom: solid 1px transparent;
 	&:hover, &.active{
-		border-bottom: solid 1px $black;
 		font-weight: bold;
 	}
 }
