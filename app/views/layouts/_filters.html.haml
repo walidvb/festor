@@ -2,7 +2,7 @@
 	.filters
 		.filters-by
 			%ul.filter-list
-				%li.section.favourite{ data: { type: 'event', key: 'id' } }= fa_icon('star')
+				%li.section.favourite{ data: { type: 'event', key: 'id' } } #{fa_icon('star')} #{t('filters.favourites')}
 				- @sections.each do |sec|
 					%li.section
 						%span.active{ data: { type: 'event', key: 'section', value: sec}}= sec

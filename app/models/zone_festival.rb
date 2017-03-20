@@ -172,7 +172,7 @@ class ZoneFestival < ActiveRecord::Base
       if artists = ev['artist']
         artists.each do |art|
           Rails.logger.info "processing #{art['name']}"
-          artist = Artist.find_by_zf_id(art['id']) || Artist.new
+          artist = Artist.find_or_create_by!(name: art['name'])
           artist.name = art['name']
           artist.country = IsoCountryCodes.search_by_name(art['country_2']).map(&:iban).join(', ')
           artist.zf_id = art['id'].to_i

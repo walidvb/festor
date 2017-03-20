@@ -23,6 +23,7 @@ fr:
     venues:      'Lieux'
     contact:     'Contact'
     filters:     'Filtres'
+    favourites: 'Favoris'
   partners:
     media: 'Médias'
     private: 'Privés'
