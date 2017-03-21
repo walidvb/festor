@@ -31,6 +31,6 @@
     closeDrawer();
   });
 
-  $(document).on('turbolinks:before-visit', e => $('.full-content, .in').addClass('exit'));
+  $(document).on('turbolinks:before-visit', e => $('.full-content, #program.in').addClass('exit'));
   $(document).on('turbolinks:before-render', e => $('.exit').removeClass('exit'));
 })();

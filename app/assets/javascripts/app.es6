@@ -378,6 +378,7 @@ class Programs{
   });
 
   $(document).on('turbolinks:before-visit', (e) => {
+    $('body').removeClass('program-hovered');
     const goingToProgramPage = /program/.test(e.originalEvent.data.url);
     if(!goingToProgramPage && programs){
       const except = $(e.target).data('id');

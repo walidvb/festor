@@ -16,7 +16,7 @@ ul.thumbnails{
     transform-origin: 0 0;
     transition: all 1000ms $transition-long 0ms;
     will-change: transform, opacity;
-    &.in{
+    .program-hovered &.in{
       transform: scale(1) translateX(-50%) translateY(-50%) ;
       opacity: .8;
     }

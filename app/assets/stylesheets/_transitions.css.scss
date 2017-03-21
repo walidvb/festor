@@ -11,11 +11,10 @@ main{
 .full-content{
   transform: translateZ(-60px);
   opacity: 0;
-  animation: enter 1 1s $transition-long forwards;;
+  animation: enter 1 1s $transition-long forwards;
 }
-.exit{
-  animation: exit 1 1.5s $transition-long!important;
-  animation-fill-mode: forwards;
+.exit, .full-content.exit{
+  animation: exit 1 1.5s $transition-long forwards;
 }
 @for $i from 1 to 15{
   .stagger:nth-child(#{$i}n){
@@ -35,11 +34,11 @@ main{
 }
 
 @keyframes exit{
-  from {
+  0% {
     transform: translateZ(0px);
     opacity: 1;
   }
-  to {
+  100%{
     transform: translateZ(60px);
     opacity: 0;
   }
