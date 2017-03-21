@@ -57,7 +57,8 @@ body{
 	background-attachment: fixed;
 	@media #{$tablet}{
 		background-size: cover;
-		background-position: top right;
+		background-position-x: right;
+		background-position-y: 0%;
 	}
 	svg{
 		display: none;
