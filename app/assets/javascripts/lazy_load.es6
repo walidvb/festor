@@ -3,8 +3,8 @@ $(document).on('ready turbolinks:load', () => {
     const img = new Image();
     const $this = $(elem);
     img.src = $this.data('lazy-load');
-    elem.srcset = $this.data('srcset');
     img.onload = function(){
+    	elem.srcset = $this.data('srcset');
       elem.src = img.src;
     };
   });
