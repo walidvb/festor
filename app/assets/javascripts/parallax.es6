@@ -94,6 +94,8 @@
 			clearInterval(rdmer);
 		}
 		$('body').addClass('loading');
-		img.src = newBck;
+		setTimeout(() => {
+			img.src = newBck;
+		}, 500);
 	}
 })();
