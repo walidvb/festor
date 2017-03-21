@@ -49,4 +49,24 @@
 		const fn = animate ? 'animate' : 'css';
 		$back[fn]({ transform })
 	}
+
+	document.addEventListener('keydown', function(e){
+		if(!e.metaKey &&
+			e.key != 'Control' &&
+			e.key != 'Tab' &&
+			e.key != 'Alt' &&
+			e.key != 'Shift'){
+			var bckElem = $('#background img');
+			var bck = bckElem.attr('src');
+			var rdm = Math.ceil(Math.random()*BACKGROUND_IMAGES_COUNT);
+			var newBck = bck.replace(/mapping_(\d+)/, 'mapping_'+rdm);
+			var img = new Image();
+			img.onload = () => {
+				bckElem.attr('src', newBck);
+				$('body').removeClass('loading');
+			}
+			$('body').addClass('loading');
+			img.src = newBck;
+		}
+	});
 })();

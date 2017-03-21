@@ -71,7 +71,7 @@ main{
 
 
 // blink on load
-.turbolinks-progress-bar + body .blink-on-load{
+.turbolinks-progress-bar + body .blink-on-load, body.loading .blink-on-load{
   animation: blink 1s step-start 0s infinite;
 }
 

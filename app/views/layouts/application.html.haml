@@ -41,6 +41,7 @@
 				});
 			})();
 		#background{"data-turbolinks-permanent" => true, style: "background-image:url(#{@background})"}
+			BACKGROUND_IMAGES_COUNT = #{ENV['BACKGROUND_IMAGES_COUNT']};
 		%header#turbo-header{"data-turbolinks-permanent" => true}
 			.logo
 				= render 'layouts/logo'
