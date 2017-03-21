@@ -52,6 +52,7 @@ main{
     transform: translateZ(10px);
   }
 }
+
 .full-content.volet{
   opacity: 1;
   will-change: transform;
@@ -65,4 +66,16 @@ main{
     animation: float 20s infinite ease-in-out ;
   }
 
+}
+
+
+// blink on load
+.turbolinks-progress-bar + body .blink-on-load{
+  animation: blink 1s step-start 0s infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
 }
