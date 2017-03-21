@@ -49,6 +49,7 @@
 		$back[fn]({ transform })
 	}
 
+	let changing = false;
 	$(document).on('click', '.background-changer', changeBack);
 	document.addEventListener('keydown', function(e){
 		if(!e.metaKey &&
@@ -59,16 +60,24 @@
 			changeBack();
 		}
 	});
+	let rdms = [];
 	function changeBack(){
+		if(changing){ return; };
+		changing = true;
 		var bckElem = $('#background img');
 		var bck = bckElem.attr('src');
-		var rdm = Math.ceil(Math.random()*BACKGROUND_IMAGES_COUNT);
+		let rdm = Math.ceil(Math.random()*BACKGROUND_IMAGES_COUNT);
+		while(rdms.includes(rdm)){
+			rdm = Math.ceil(Math.random()*BACKGROUND_IMAGES_COUNT);
+		}
+		rdms.push(rdm);
 		var newBck = bck.replace(/mapping_(\d+)/, 'mapping_'+rdm);
 		var img = new Image();
 		img.onload = () => {
 			bckElem.attr('src', newBck);
 			$('body').removeClass('loading');
-			$('#rdm').text(rdm)
+			$('#rdm').text(rdm);
+			changing = false;
 		}
 		$('body').addClass('loading');
 		img.src = newBck;
