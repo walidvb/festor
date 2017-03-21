@@ -350,7 +350,7 @@ class Programs{
            value = clicked.data('value'),
            key = clicked.data('key'),
            type = clicked.data('type');
-           $(`.filters [data-value]:not(.resetter)`).toggleClass('active', value == 'reset');
+           $(`.filters [data-value]:not(.resetter):not(.filter-title)`).toggleClass('active', value == 'reset');
            
            const thisResetter = clicked.siblings('.resetter');
            const thisTitle = clicked.parent().siblings('.filter-title');

@@ -105,13 +105,14 @@
   flex-flow: row wrap;
   justify-content: space-between;
   $day-width: 100%/7;
+  [data-key="date"].filter-title{
+    flex: 0 0 3*$day-width;
+    margin-bottom: 0;
+    border: none;
+    text-align: left;
+  }
   .day{
     flex: 0 0 $day-width;
-    &:first-child{
-      margin-left: 3*$day-width;
-    }
-    @media #{$tablet}{
-    }
   }
   [data-value="15-5"], [data-value="22-5"]{
     text-decoration: line-through;

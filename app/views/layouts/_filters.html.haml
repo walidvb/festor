@@ -8,8 +8,8 @@
 						%span.active{ data: { type: 'event', key: 'section', value: sec}}= sec.gsub(/Mapping /i, '')
 						%span.resetter.fa.fa-times{ data: { type: 'event', key: 'section', value: 'reset'}}
 		.filters-by
-			.filter-title.active{ data: { type: 'event', key: 'date', value: 'reset'} }= t('filters.by_day')
-			%ul.filter-list.date.collapsible
+			%ul.filter-list.date
+				%li.filter-title.active{ data: { type: 'event', key: 'date', value: 'reset'} }= t('filters.by_day')
 				- @days_range.each do |day|
 					%li.day.active{ data: { type: 'event', key: 'date', value: "#{day}-5"}}= day
 
