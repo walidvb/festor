@@ -25,23 +25,9 @@
 		= csrf_meta_tags
 	%body{class: ["#{controller.controller_name}-page", "#{controller.action_name}-page", "#{'debug' if Rails.env.development?}", "#{current_user.nil? ? nil : 'admin'}", content_for(:body_class)].join(' ')}
 		:javascript
-			(function(){
-				document.addEventListener('keydown', function(e){
-					if(!e.metaKey &&
-						e.key != 'Control' &&
-						e.key != 'Tab' &&
-						e.key != 'Alt' &&
-						e.key != 'Shift'){
-						var bckElem = document.getElementById('background');
-						var bck = bckElem.style.backgroundImage;
-						var rdm = Math.ceil(Math.random()*#{ENV['BACKGROUND_IMAGES_COUNT']});
-						var newBck = bck.replace(/mapping_(\d+)/, 'mapping_'+rdm);
-						bckElem.style.backgroundImage = newBck;
-					}
-				});
-			})();
-		#background{"data-turbolinks-permanent" => true, style: "background-image:url(#{@background})"}
 			BACKGROUND_IMAGES_COUNT = #{ENV['BACKGROUND_IMAGES_COUNT']};
+		#background{"data-turbolinks-permanent" => true} 
+			=image_tag @background
 		%header#turbo-header{"data-turbolinks-permanent" => true}
 			.logo
 				= render 'layouts/logo'

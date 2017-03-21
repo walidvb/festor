@@ -46,35 +46,9 @@ body{
 	position: fixed;
   top: 0;
   left: 0;
-  right: 0;
-	bottom: 0;
 	text-align: right;
 	z-index: -4;
-
-	background-repeat: no-repeat;
-	background-position: top;
-	background-size: cover;
-	background-attachment: fixed;
-	@media #{$tablet}{
-		background-size: cover;
-		background-position-x: right;
-		background-position-y: 0%;
-	}
-	svg{
-		display: none;
-		width: 120vw;
-		transform: translateX(3vw);
-		height: auto;
-	}
-	@media #{$tablet}{
-		bottom: 0;
-		svg{
-			width: auto;
-			height: 100%;
-			min-height: 450px;
-			transform: translateY(-5px);
-		}
-	}
+	will-change: transform;
 }
 
 p{

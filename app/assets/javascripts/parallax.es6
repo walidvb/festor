@@ -1,45 +1,44 @@
 (() => {
 	let $back;
 	let sizes;
-
+	const scrollSelector = 'main, .events, .legends';
 	$(document).on('turbolinks:load', () => {
-		$('main').on('scroll', handleParallax);
+		$(scrollSelector).on('scroll', handleParallax);
 		$back = $('#background');
-		const imgSrc = /url\(\"?([^\"\)"]+)\"?\)/.exec($back.css('background-image'))[1];
+		const imgSrc = $back.find('img').attr('src');
 		const backImg = new Image();
 		backImg.onload = (e) => {
 			sizes = {
-				width: e.path[0].width,
-				height: e.path[0].height,
+				width: $back.width(),
+				height: $back.height(),
 			}
 			console.log("sizes:", sizes);
 		}
 		backImg.src = imgSrc;
 	})
-	$(document).on('turbolinks:before-visit, turbolinks:before-render', () => setBackPosition('0%', true));
+	$(document).on('turbolinks:before-visit turbolinks:before-render', () => setBackPosition('translateY(0px)', true));
 	$(window).on('scroll', handleParallax);
 
 	function handleParallax(e){
 		const $this = $(e.currentTarget);
 		let height;
-		if($this.is('main')){
+		if($this.is(scrollSelector)){
 			const heights = $this.children().map((i,elem) => $(elem).outerHeight(true));
 			height = Math.max(...heights);
 		}
 		else{
-			height = $('main').outerHeight(true);
+			height = $(scrollSelector).outerHeight(true);
 		}
 		// don't exagerate it...
-		//height = Math.max(height, 2*window.innerHeight);
-		$back.css({ height: $('main').outerHeight(true) + $('main').offset().top });
+		height = Math.max(height, 3*window.innerHeight);
+
 		let percentageScrolled = ($this.scrollTop() / (height - window.innerHeight));
 		percentageScrolled = Math.min(Math.max(0, percentageScrolled), 100);
 		percentageScrolled = +percentageScrolled.toFixed(2);
-		console.log("percentageScrolled:", percentageScrolled);
 
 
-		let transform = percentageScrolled*sizes.height;
-		console.log("`translateY(-${percentageScrolled}px)`:", transform);
+		let transform = Math.ceil(percentageScrolled*(sizes.height - window.innerHeight));
+		console.log("`translateY, sizes`:", transform, sizes);
 		transform = `translateY(-${transform}px)`;
 
 		window.requestAnimationFrame(() => setBackPosition(transform));
