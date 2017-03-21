@@ -115,22 +115,11 @@ $transition: ease-in-out;
       opacity: 1;
     }
     will-change: transform;
-    transition: all #{$transition};
+    transition: all .6s #{$transition-long};
     position: absolute;
     left: -6.7rem;
     transform-origin: top right;
     right: auto;
-
-    &:after{
-      content: '';
-      display: inline-block;
-      height: 100vw;
-      border-right: solid 1px white;
-      vertical-align: top;
-      z-index: 100000;
-      position: relative;
-      padding-right: 1rem;
-    }
   }
   @media #{$tablet}{
     display: initial;
@@ -139,9 +128,6 @@ $transition: ease-in-out;
       right: $margin-horizontal-normal/2;
       left: auto;
       padding: 1rem 5px;
-      &:after{
-        content: none;
-      }
     }
   }
 
