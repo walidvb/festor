@@ -235,11 +235,14 @@ class Programs{
       const date = $this.data('date');
       const firstPost = $('.post.active[data-date="'+date+'"]');
       if(!firstPost.length){
-        $this.hide();
+        $this.css('opacity', 0);
       }
       else{
         const transform = firstPost.data('program').posY;
-        $this.show().css({ transform: `translateY(${transform}px)` });
+        $this.show().css({ 
+          transform: `translateY(${transform}px)`,
+          'opacity': 1,
+        });
       }
     })
   }
