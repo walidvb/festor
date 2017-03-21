@@ -61,9 +61,15 @@
 		}
 	});
 	let rdms = [];
+
+	function setRandomNumber(){
+		$('#rdm').text(Math.ceil(Math.random()*BACKGROUND_IMAGES_COUNT));
+	}
+	let rdmer;
 	function changeBack(){
 		if(changing){ return; };
 		changing = true;
+		rdmer = setInterval(setRandomNumber, 50);
 		var bckElem = $('#background img');
 		var bck = bckElem.attr('src');
 		let rdm = Math.ceil(Math.random()*BACKGROUND_IMAGES_COUNT);
@@ -78,6 +84,7 @@
 			$('body').removeClass('loading');
 			$('#rdm').text(rdm);
 			changing = false;
+			clearInterval(rdmer);
 		}
 		$('body').addClass('loading');
 		img.src = newBck;

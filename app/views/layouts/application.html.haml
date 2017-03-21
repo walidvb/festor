@@ -56,7 +56,7 @@
 				%p #{t('shared.switzerland')}
 			.background-changer 
 				%span#rdm #{@rdm}
-				%span.blink-on-load / 
+				%span / 
 				%span #{ENV['BACKGROUND_IMAGES_COUNT']}
 		.webkit-only= yield :thumbnails
 		- if Rails.env.prod? && !user_signed_in? && cookies[:beta].present?
