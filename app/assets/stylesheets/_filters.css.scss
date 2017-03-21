@@ -113,6 +113,10 @@
     @media #{$tablet}{
     }
   }
+  [data-value="15-5"], [data-value="22-5"]{
+    text-decoration: line-through;
+    pointer-events: none;
+  }
 }
 .filter-list.artists{
   display: flex;
