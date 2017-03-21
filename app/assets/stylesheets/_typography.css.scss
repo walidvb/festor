@@ -4,7 +4,7 @@
 	@include fontSize(18.24px);
 	@media #{$tablet}{
 		@include fontSize(33px);
-		@include lineHeight(42px);
+		//@include lineHeight(42px);
 	}
 	font-weight: 500;
 }
@@ -13,10 +13,10 @@
 
 .motto, .festival-date, .festival-location {
 	@include fontSize($body-size);
-	@include lineHeight($lineheight-base * 1.2);
+	//@include lineHeight($lineheight-base * 1.2);
 	@include lineJump (0.7);
 	@media #{$tablet}{
-	@include lineHeight($lineheight-base * 1.5);
+	//@include lineHeight($lineheight-base * 1.5);
 	@include lineJump (0);
 	}
 }
@@ -29,7 +29,7 @@
 
 .header-right, .news-banner {
 	@include fontSize($body-size);
-	@include lineHeight($lineheight-base * 2);
+	//@include lineHeight($lineheight-base * 2);
 }
 
 
@@ -37,7 +37,7 @@
 
 .artist-name, .artist-event-name {
 	@include fontSize(20.8px) ;
-	@include lineHeight($lineheight-base * 2);
+	//@include lineHeight($lineheight-base * 2);
 }
 
 
@@ -45,7 +45,7 @@
 
 .page-title h1{
 	@include fontSize(46.4px) ;
-	@include lineHeight($lineheight-base * 4.14);
+	//@include lineHeight($lineheight-base * 4.14);
 	@include lineJump (1);
 }
 
@@ -59,7 +59,7 @@
 
 .event-infos {
 	@include fontSize($body-size) ;
-	@include lineHeight($lineheight-base * 2);
+	//@include lineHeight($lineheight-base * 2);
 	@include lineJump (4);
 }
 
@@ -67,7 +67,7 @@
 	// ----- 7 - Texte Courant ----- //
 	p{
 		@include fontSize($body-size) ;
-		@include lineHeight($lineheight-base * 2) ;
+		//@include lineHeight($lineheight-base * 2) ;
 		&:not(first-child){
 			@include lineJump (2);
 		}
@@ -78,13 +78,13 @@
 	// ----- 8 - Sous -Titres ----- //
 	h1{
 		@include fontSize(25px) ;
-		@include lineHeight($lineheight-base * 2) ;
+		//@include lineHeight($lineheight-base * 2) ;
 		@include lineJump (3);
 	}
 	// ----- 9 - Sous-Sous Titres ----- //
 	h2{
 		@include fontSize(20px);
-		@include lineHeight($lineheight-base * 2) ;
+		//@include lineHeight($lineheight-base * 2) ;
 		@include lineJump (6);
 	}
 }
@@ -93,7 +93,7 @@
 
 .show-info, .notes p{
 	@include fontSize(12px) ;
-	@include lineHeight($lineheight-base * 1.57) ;
+	//@include lineHeight($lineheight-base * 1.57) ;
 	@include lineJump (3.2);
 }
 
@@ -102,7 +102,7 @@
 
 #footer {
 	@include fontSize(12px) ;
-	@include lineHeight($lineheight-base * 1.57) ;
+	//@include lineHeight($lineheight-base * 1.57) ;
 }
 
 
@@ -110,7 +110,7 @@
 
 .announcement {
 	@include fontSize(16.8px) ;
-	@include lineHeight($lineheight-base * 2) ;
+	//@include lineHeight($lineheight-base * 2) ;
 }
 
 
@@ -118,7 +118,7 @@
 
 .cat-filters {
 	@include fontSize($body-size) ;
-	@include lineHeight($lineheight-base * 2) ;
+	//@include lineHeight($lineheight-base * 2) ;
 	@include lineJump (2);
 	padding-bottom : $lineheight-base;
 	@media #{$tablet}{
@@ -135,12 +135,12 @@
 	// ----- 15 - Progr Titre ----- //
 	h3{
 		@include fontSize(21px) ;
-		@include lineHeight($lineheight-base * 2) ;
+		//@include lineHeight($lineheight-base * 2) ;
 	}
 	// ----- 16 - Progr. Artiste ----- //
 	h4{
 		@include fontSize(12px) ;
-		@include lineHeight($lineheight-base * 1.29) ;
+		//@include lineHeight($lineheight-base * 1.29) ;
 		@include lineJump (0.9);
 	}
 	// ----- 14 - Progr Type ----- //
@@ -148,7 +148,7 @@
 
 	.date, .location{
 		@include fontSize(12px) ;
-		@include lineHeight($lineheight-base * 1.29) ;
+		//@include lineHeight($lineheight-base * 1.29) ;
 		@include lineJump (0.9);
 	}
 	.date, .location{
@@ -172,7 +172,7 @@
 
 .venue-title {
 	@include fontSize(16.72px);
-	@include lineHeight($lineheight-base * 2) ;
+	//@include lineHeight($lineheight-base * 2) ;
 	@include lineJump (2);
 }
 
@@ -180,7 +180,7 @@
 
 .venue-artist {
 	@include fontSize(12px) ;
-	@include lineHeight($lineheight-base * 1.57) ;
+	//@include lineHeight($lineheight-base * 1.57) ;
 }
 
 
@@ -188,11 +188,11 @@
 
 .venue-date {
 	@include fontSize(12px) ;
-	@include lineHeight($lineheight-base * 1.29) ;
+	//@include lineHeight($lineheight-base * 1.29) ;
 }
 
 h2.sub-title {
-	@include fontSize(25px) ;
-	@include lineHeight($lineheight-base * 2) ;
+	@include fontSize(2px) ;
+	//@include lineHeight($lineheight-base * 2) ;
 	@include lineJump(6);
 }

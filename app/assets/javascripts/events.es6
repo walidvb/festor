@@ -36,7 +36,7 @@
           const translateZ = $(elem).data('translateZ') || Math.floor(Math.random()*50) + 5;
           $(elem).data('translateZ', translateZ);
           $(elem).css({
-            transform: `translateZ(-${translateZ}px)`,
+            transform: `translateZ(-${0}px)`,
             opacity: 1,
           });
         });

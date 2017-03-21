@@ -207,7 +207,7 @@ h1{
 		clear: both;
 	}
 	.show-single:not(:last-child){
-		margin-bottom: 2*$margin-vertical-largest;
+		margin-bottom: $margin-vertical-largest;
 	}
 	@media #{$tablet}{
 		.show-single:nth-child(2n){
@@ -222,14 +222,16 @@ h1{
 
 .show-desc, .event-artist-bio, .artist-desc, .static-desc, .previous-editions{
 	margin-right: auto;
-	max-width: 125ch;
+	max-width: 70ch;
 	@media #{$tablet}{
 		padding-left: 10%;
 	}
 	a{
 		text-decoration: underline;
 	}
-
+	br{
+		line-height: 2rem;
+	}
 	img.fr-tag{
 		width: auto!important;
 	}
@@ -255,7 +257,7 @@ h1{
 		display: block;
 		position: relative;
 		border-bottom: solid 1px $white;
-		margin: 2px 0 0 0;
+		line-height: 2rem;
 	}
 	a{
 		text-decoration: none;
