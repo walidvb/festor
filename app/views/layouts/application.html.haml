@@ -37,7 +37,8 @@
 		%main
 			.firefox-only= yield :thumbnails
 			= yield
-		.hidden-xs.gap-before= render 'layouts/locales'
+		.hidden-xs.gap-before
+			= render 'layouts/locales'
 		%footer
 			%ul.social
 				%li
@@ -54,10 +55,6 @@
 				%p Avenue Ernest-Pictet 28/30
 				%p 1203 #{t('shared.geneva').titleize}
 				%p #{t('shared.switzerland')}
-			.background-changer 
-				%span#rdm #{@rdm}
-				%span / 
-				%span #{ENV['BACKGROUND_IMAGES_COUNT']}
 		.webkit-only= yield :thumbnails
 		- if Rails.env.prod? && !user_signed_in? && cookies[:beta].present?
 			:plain
