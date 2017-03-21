@@ -4,6 +4,10 @@
 	const scrollSelector = 'main';
 	$(document).on('turbolinks:load', () => {
 		$(scrollSelector).on('scroll', handleParallax);
+		setSize();
+		setBackPosition('translateY(0px)', true)
+	})
+	function setSize(){
 		$back = $('#background');
 		const imgSrc = $back.find('img').attr('src');
 		const backImg = new Image();
@@ -12,14 +16,15 @@
 				width: $back.width(),
 				height: $back.height(),
 			}
+			handleParallax(e, true);
 		}
 		backImg.src = imgSrc;
-		setBackPosition('translateY(0px)', true)
-	})
+	}
+	$(window).resize(setSize);
 	$(document).on('turbolinks:before-visit', () => setBackPosition('translateY(0px)', true));
 	$(window).on('scroll', handleParallax);
 
-	function handleParallax(e){
+	function handleParallax(e, animate = false){
 		const $this = $(e.currentTarget);
 		let height;
 		if($this.is(scrollSelector)){
@@ -40,7 +45,7 @@
 		let transform = Math.ceil(percentageScrolled*(sizes.height - window.innerHeight));
 		transform = `translateY(-${transform}px)`;
 
-		window.requestAnimationFrame(() => setBackPosition(transform));
+		window.requestAnimationFrame(() => setBackPosition(transform, animate));
 	}
 
 	function setBackPosition(transform, animate = false){
