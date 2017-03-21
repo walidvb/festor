@@ -222,14 +222,16 @@ h1{
 
 .show-desc, .event-artist-bio, .artist-desc, .static-desc, .previous-editions{
 	margin-right: auto;
-	max-width: 80ch;
+	max-width: 70ch;
 	@media #{$tablet}{
 		padding-left: 10%;
 	}
 	a{
 		text-decoration: underline;
 	}
-
+	br{
+		line-height: 2rem;
+	}
 	img.fr-tag{
 		width: auto!important;
 	}
