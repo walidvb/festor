@@ -264,16 +264,13 @@ class Programs{
 
     const yOffsetActive = daysFromStartActive*HOUR_IN_PX;
     let activeHeight = this.createTimeline(this.activePrograms, 0);
-    console.log("activeTimeline");
     this.createTimeline(this.inactivePrograms, -yOffsetActive);
-    console.log("inactiveTimeline: ", daysFromStartActive, daysFromStartActive*HOUR_IN_PX);
     activeHeight = Math.max(activeHeight, window.innerHeight);
     $('.events, .legend').css({
       'height': activeHeight,
     });
   }
   createTimeline(programs, defaultMinY){
-    console.log("defaultMinY:", defaultMinY);
     let minY = defaultMinY || 0,
       gap = 0,
       conflictCount = 0,
@@ -379,7 +376,7 @@ class Programs{
 
   $(document).on('turbolinks:before-visit', (e) => {
     $('body').removeClass('program-hovered');
-    const goingToProgramPage = /program/.test(e.originalEvent.data.url);
+    const goingToProgramPage = /program|venue/.test(e.originalEvent.data.url);
     if(!goingToProgramPage && programs){
       const except = $(e.target).data('id');
       // programs.sendAllOut({ except });

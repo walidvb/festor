@@ -22,6 +22,7 @@ class ApplicationController < ActionController::Base
     @sections = Event.published.pluck(:section).uniq.compact
     @days_range = (11..28)
     @venues = Location.all
+    @locations = @venues
   end
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
