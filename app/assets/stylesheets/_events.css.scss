@@ -222,7 +222,7 @@ h1{
 
 .show-desc, .event-artist-bio, .artist-desc, .static-desc, .previous-editions{
 	margin-right: auto;
-	max-width: 125ch;
+	max-width: 80ch;
 	@media #{$tablet}{
 		padding-left: 10%;
 	}
@@ -255,7 +255,7 @@ h1{
 		display: block;
 		position: relative;
 		border-bottom: solid 1px $white;
-		margin: 2px 0 0 0;
+		line-height: 2rem;
 	}
 	a{
 		text-decoration: none;
