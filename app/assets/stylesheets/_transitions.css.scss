@@ -14,6 +14,7 @@ main{
   animation: enter 1 1s $transition-long forwards;
 }
 .exit, .full-content.exit{
+  pointer-events: none!important;
   animation: exit 1 1.5s $transition-long forwards;
 }
 @for $i from 1 to 15{
