@@ -4,12 +4,12 @@
 - links = artist.links
 .single-artist
 	.artist-profile
-		= image_tag(artist.profile_picture.url(:medium))
+		= image_tag(artist.profile_picture.url(:banner))
 	%h1.artist-name= artist.name
 	%h4.labels.sup= artist.label
 	%h4.origin.sup= artist.country
 .biography.artist-desc
-	= interpolate(artist.biography, image: artist.profile_picture.url(:large)).html_safe unless artist.biography.blank?
+	= interpolate(artist.biography, image: artist.profile_picture.url(:banner)).html_safe unless artist.biography.blank?
 	- if !links.empty?
 		%ul.links
 			- links.each do |l|
