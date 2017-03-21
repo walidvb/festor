@@ -125,7 +125,7 @@ class Program{
       opacity = OPACITY_OUT;
     }
     else if(this.active){
-      posZ = 0;// rdmZFront();
+      posZ = rdmZFront();
       this.elem.removeClass('out inactive').addClass('active');
     }
     else{
