@@ -38,7 +38,7 @@ class Artist < ActiveRecord::Base
   end
 
   def set_image_from_url url
-    self.profile_picture = open(url)
+    self.profile_picture = URI.parse(url)
     self.save!
   end
 

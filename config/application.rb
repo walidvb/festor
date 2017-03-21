@@ -56,13 +56,15 @@ module Festor
         :storage => :fog,
         :fog_credentials => {:provider => "Local", :local_root => "#{Rails.root}/public"},
         :fog_directory => "",
-        :fog_host => ''
+        :fog_host => '',
+        :path => "assets/:attachment/:id/:style_:filename",
+        :url => "#{ENV['ASSET_HOST']}assets/:attachment/:id/:style_:filename",
       }
     else
      config.paperclip_defaults = {
       :storage => :sftp,
-      :path => "/assets/:attachment/:id/:style/:filename",
-      :url => "#{ENV['ASSET_HOST']}/assets/:attachment/:id/:style/:filename",
+      :path => "/assets/:attachment/:id/:style_:filename",
+      :url => "#{ENV['ASSET_HOST']}/assets/:attachment/:id/:style_:filename",
       :sftp_options => {
         :host     => ENV['SFTP_SERVER'],
         :user     => ENV['SFTP_USERNAME'],

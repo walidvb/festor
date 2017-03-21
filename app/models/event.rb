@@ -92,7 +92,7 @@ class Event < ActiveRecord::Base
 	end
 
 	def set_image_from_url url
-    self.main_image = open(url)
+    self.main_image = URI.parse(url)
     self.save!
 	end
 
