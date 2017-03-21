@@ -1,7 +1,4 @@
 (() => {
-  $(document).on('touch click', '.hamburger',(e) => {
-    $('body').toggleClass('open');
-  });
 
   const $menu = '.drawer-container';
   $(document).on('touch click', '[data-drawer]', (e) => {
