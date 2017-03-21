@@ -10,7 +10,6 @@
 			%li= link_to t('nav.about'), about_path(locale: I18n.locale)
 			%li.gap-after= link_to t('nav.archives'), about_path(anchor: 'archives', locale: I18n.locale)
 			%script{:src => "//app.mailerlite.fr/js/w/button.js", :type => "text/javascript", defer: true}
-			%li= render 'layouts/locales'
 
 		.drawer#nav-news
 			.back <
