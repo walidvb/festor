@@ -275,9 +275,9 @@ class Programs{
     let minY = defaultMinY || 0,
       gap = 0,
       conflictCount = 0,
-      currDay;
+      currDay,
+      firstConflictY = 0;
 
-    let conflictingMinY = minY;
     const rotate = smallScreen() ? ' rotateZ(-90deg)' : '';
     programs.forEach((prog, i) => {
       let basePosY = prog.hoursFromStart*HOUR_IN_PX;
@@ -289,19 +289,29 @@ class Programs{
       }
 
       if(basePosY < minY){
-        conflictCount++;
-        for (var j = 0; j <= conflictCount; j++)
-        {
-          if(i-j < 0){ continue}
-          programs[i-j].addConflict(conflictCount+1, conflictCount - j);
+        if(basePosY >= firstConflictY){
+          conflictCount = 0;
+          basePosY = minY;
         }
-        conflictingMinY = minY;
+        else{
+          conflictCount++;
+          for (var j = 0; j <= conflictCount; j++)
+          {
+            if(i-j < 0){ continue}
+            programs[i-j].addConflict(conflictCount+1, conflictCount - j);
+          }
+        }
       }
       else{
         conflictCount = 0;
       }
       prog.position(basePosY);
       minY = Math.max(prog.endPos(), minY);
+
+      if(conflictCount == 0){
+        firstConflictY = minY;
+      }
+
       if(programs[i+1] && programs[i+1].date != prog.date){
         minY += DAY_GAP;
       }
