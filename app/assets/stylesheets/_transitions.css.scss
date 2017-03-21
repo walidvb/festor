@@ -54,7 +54,7 @@ main{
   }
 }
 
-.full-content.volet{
+.full-content.volet:not(.exit){
   opacity: 1;
   will-change: transform;
   &:nth-child(1n){
