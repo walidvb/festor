@@ -136,7 +136,7 @@ $transition: ease-in-out;
 [data-current-type="event"]{
   @media #{$mobile}{
     .post.artist{
-      display: none;
+      display: none!important;
     }
   }
   .legend .letter{
@@ -144,13 +144,13 @@ $transition: ease-in-out;
     pointer-events: none;
   }
   .events .letter{
-    display: none;
+    display: none!important;
   }
 }
 [data-current-type="artist"]{
   @media #{$mobile}{
     .post.event{
-      display: none;
+      display: none!important;
     }
   }
   .legend .day{
@@ -159,7 +159,7 @@ $transition: ease-in-out;
     border-top: solid 1px $white;
   }
   .events .day{
-    display: none;
+    display: none!important;
   }
 }
 
