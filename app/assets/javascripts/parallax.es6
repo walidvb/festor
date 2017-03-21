@@ -1,6 +1,8 @@
 (() => {
 	let $back;
-	let sizes;
+	let sizes = {
+		width: 1678, height: 2481
+	};
 	const scrollSelector = 'main';
 	$(document).on('turbolinks:load', () => {
 		$(scrollSelector).on('scroll', handleParallax);
