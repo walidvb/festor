@@ -198,6 +198,7 @@ $transition: ease-in-out;
       display: inline-block;
       .info{
         margin-top: -10px;
+        max-width: 30ch;
       }
       z-index: 1;
     }
@@ -257,5 +258,5 @@ $transition: ease-in-out;
   display: inline-block;
 }
 .event-date, .event-type, .event-name{
-  font-size: $body-size*0.8;
+  font-size: 0.8rem;
 }

@@ -36,7 +36,7 @@
     overflow: auto;
     display: flex;
     font-weight: bold;
-    font-size: $body-size;
+    font-size: 1rem;
 }
 .filters-by{
   color: $dark-grey;
@@ -95,7 +95,7 @@
 .resetter{
   display: none;
   float: right;
-  margin-top: 10px;
+  margin-top: 1rem;
   &.active{
     display: inline-block;
   }
@@ -129,4 +129,4 @@
 }
 .filter-list.date, .filter-list.artists{
   text-align: center;
-} 
+}
