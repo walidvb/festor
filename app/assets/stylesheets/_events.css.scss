@@ -207,7 +207,7 @@ h1{
 		clear: both;
 	}
 	.show-single:not(:last-child){
-		margin-bottom: 2*$margin-vertical-largest;
+		margin-bottom: $margin-vertical-largest;
 	}
 	@media #{$tablet}{
 		.show-single:nth-child(2n){
