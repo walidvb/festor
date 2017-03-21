@@ -70,7 +70,7 @@ $drawer-side-padding: 1rem;
     width: 100%;
     transform: translateX(2rem);
     &.open{
-      transform: translateX(0rem);
+      transform: translateX(1rem);
       transition: all $drawer-opening-time ease-in-out;
     }
     transition: all 0s ease-in-out $drawer-opening-time;
