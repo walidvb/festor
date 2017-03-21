@@ -23,9 +23,10 @@ class Artist < ActiveRecord::Base
 	has_attached_file :profile_picture,
 		:styles => {
 			:thumb => "100x100#",
-			:medium => "600x250#",
+      :banner => "600x250#",
       :tile => "600x>",
-			:large => "800x>",
+      :medium => "800x>"
+			:large => "1200x>",
 		},
 		:default_url => "/images/missing.jpg",
 		:use_timestamp => false

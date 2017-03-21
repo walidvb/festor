@@ -10,10 +10,12 @@
 		%ul.thumbnails
 			- @events.each do |ev|
 				%li{data: { "event-id" => ev.id }}
-					%img{'data-lazy-load' => ev.main_image.url(:tile)}
+					- img = ev.main_image
+					%img{'data-lazy-load' => img.url(:tile), "data-srcset" => "#{img.url(:medium)} 800w, #{img.url(:large)} 1200w"}
 			- @artists.each do |art|
 				%li{data: { "artist-id" => art.id }}
-					%img{'data-lazy-load' => art.profile_picture.url(:tile)}
+					- img = art.profile_picture
+					%img{'data-lazy-load' => img.url(:tile), "data-srcset" => "#{img.url(:medium)} 800w, #{img.url(:large)} 1200w"}
 
 	#program.in{data: { "date-start" => @event_dates.first.start.strftime("%Y/%m/%d %H:%M") } }
 		.legend.full-content
