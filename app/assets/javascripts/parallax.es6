@@ -1,7 +1,7 @@
 (() => {
 	let $back;
 	let sizes;
-	const scrollSelector = 'main, .events, .legends';
+	const scrollSelector = 'main';
 	$(document).on('turbolinks:load', () => {
 		$(scrollSelector).on('scroll', handleParallax);
 		$back = $('#background');
@@ -12,11 +12,11 @@
 				width: $back.width(),
 				height: $back.height(),
 			}
-			console.log("sizes:", sizes);
 		}
 		backImg.src = imgSrc;
+		setBackPosition('translateY(0px)', true)
 	})
-	$(document).on('turbolinks:before-visit turbolinks:before-render', () => setBackPosition('translateY(0px)', true));
+	$(document).on('turbolinks:before-render', () => setBackPosition('translateY(0px)', true));
 	$(window).on('scroll', handleParallax);
 
 	function handleParallax(e){
@@ -46,6 +46,7 @@
 
 	function setBackPosition(transform, animate = false){
 		const fn = animate ? 'animate' : 'css';
+		console.log("transform:", transform);
 		$back[fn]({ transform })
 	}
 
