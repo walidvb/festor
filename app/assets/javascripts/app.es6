@@ -94,7 +94,8 @@ class Program{
       const maxTransform = $('main').width()*.7 - this.elem.outerWidth();
       this.posX = 0;
       // position horizontally randomly
-      // this.posX = (Math.floor(Math.random() * maxTransform)) + 'px';
+      //this.posX = (Math.floor(Math.random() * maxTransform)) + 'px';
+      this.posX = (Math.floor(Math.random() * 2))*100 + '%';
     }
     const position = smallScreen() ? '' : 'absolute'
     this.elem.css({ position });
@@ -286,7 +287,6 @@ class Programs{
         gap = Math.max(0, oldGap, basePosY - minY);
         basePosY = Math.min(minY, basePosY - oldGap);
       }
-
 
       if(basePosY < minY){
         conflictCount++;
