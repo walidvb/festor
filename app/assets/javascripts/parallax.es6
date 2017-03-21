@@ -49,23 +49,28 @@
 		$back[fn]({ transform })
 	}
 
+	$(document).on('click', '.background-changer', changeBack);
 	document.addEventListener('keydown', function(e){
 		if(!e.metaKey &&
 			e.key != 'Control' &&
 			e.key != 'Tab' &&
 			e.key != 'Alt' &&
 			e.key != 'Shift'){
-			var bckElem = $('#background img');
-			var bck = bckElem.attr('src');
-			var rdm = Math.ceil(Math.random()*BACKGROUND_IMAGES_COUNT);
-			var newBck = bck.replace(/mapping_(\d+)/, 'mapping_'+rdm);
-			var img = new Image();
-			img.onload = () => {
-				bckElem.attr('src', newBck);
-				$('body').removeClass('loading');
-			}
-			$('body').addClass('loading');
-			img.src = newBck;
+			changeBack();
 		}
 	});
+	function changeBack(){
+		var bckElem = $('#background img');
+		var bck = bckElem.attr('src');
+		var rdm = Math.ceil(Math.random()*BACKGROUND_IMAGES_COUNT);
+		var newBck = bck.replace(/mapping_(\d+)/, 'mapping_'+rdm);
+		var img = new Image();
+		img.onload = () => {
+			bckElem.attr('src', newBck);
+			$('body').removeClass('loading');
+			$('#rdm').text(rdm)
+		}
+		$('body').addClass('loading');
+		img.src = newBck;
+	}
 })();

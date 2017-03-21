@@ -49,8 +49,13 @@ body{
 	text-align: right;
 	z-index: -4;
 	will-change: transform;
+	img{
+		width: 100%;
+	}
 }
-
+.background-changer{
+	cursor: pointer;
+}
 p{
 	margin-bottom: 0 !important;
 }

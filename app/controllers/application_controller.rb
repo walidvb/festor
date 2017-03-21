@@ -3,8 +3,8 @@ class ApplicationController < ActionController::Base
   before_filter :set_background
   
   def set_background
-    rdm = Random.rand([ENV['BACKGROUND_IMAGES_COUNT'].to_i, 1].max)
-    image = "mapping_#{rdm}.png"
+    @rdm = Random.rand([ENV['BACKGROUND_IMAGES_COUNT'].to_i, 1].max)
+    image = "mapping_#{@rdm}.png"
     @background = "http://www.mappingfestival.com/2017/assets/backgrounds/#{image}"
   end
 
