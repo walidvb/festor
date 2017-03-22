@@ -32,9 +32,9 @@ fr:
     venues: 'Lieux'
     institutional: 'Institutionnels'
   filters:
-    by_type: 'Évènements par type'
-    by_day: 'Évènements par jour'
-    by_venue: 'Évènements par lieu'
+    by_type: 'Type'
+    by_day: 'Mai'
+    by_venue: 'Lieu'
     artists: 'Artistes'
   artists:
     types:

@@ -1,12 +1,13 @@
 - cache([@sections, @venues, @days_range, @artists_by_letter]) do
 	.filters
 		.filters-by
+			.filter-title Section
 			%ul.filter-list
-				%li.section.favourite{ data: { type: 'event', key: 'id' } } #{t('filters.favourites')} #{fa_icon('star')} 
 				- @sections.each do |sec|
 					%li.section
 						%span.active{ data: { type: 'event', key: 'section', value: sec}}= sec.gsub(/Mapping /i, '')
 						%span.resetter.fa.fa-times{ data: { type: 'event', key: 'section', value: 'reset'}}
+				%li.favourite{ data: { type: 'event', key: 'id' } } #{t('filters.favourites')} #{fa_icon('star')}
 		.filters-by
 			%ul.filter-list.date
 				%li.filter-title.active{ data: { type: 'event', key: 'date', value: 'reset'} }= t('filters.by_day')

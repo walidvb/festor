@@ -20,7 +20,7 @@
 #program{
   transition: all 1s $transition-long;
   flex: 1 0 80vw;
-  min-width: 100vw;
+  min-width: 80%;
   display: inline-flex;
   position: relative;
   overflow: hidden;
@@ -34,7 +34,6 @@
     }
   }
   @media #{$tablet}{
-    padding-right: 20vw;
     padding-top: $header-height;
   }
   .events{
@@ -44,7 +43,11 @@
     position: relative;
     flex-grow: 1;
   }
+  .tile-link {
+    max-width: 19ch;
+  }
 }
+
 .post{
   #program.exit &{
     transition-duration: 1.5s!important;
@@ -156,7 +159,6 @@ $transition: ease-in-out;
   .legend .day{
     opacity: 0;
     pointer-events: none;
-    border-top: solid 1px $white;
   }
   .events .day{
     display: none!important;
@@ -174,9 +176,7 @@ $transition: ease-in-out;
   }
 }
 
-.date li.day{
-  border-top: solid 1px $white;
-}
+
 .post{
   flex: 1 0 100%;
   padding-left: $margin-horizontal-normal;

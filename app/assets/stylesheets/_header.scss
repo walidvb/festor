@@ -67,4 +67,10 @@ nav{
 		@include lineJump(1);
 		cursor: pointer;
 	}
+	.background-changer{
+		margin-right: 3rem;
+	}
+	.background-changer, .locale{
+		display: inline-block;
+	}
 }

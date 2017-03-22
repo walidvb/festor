@@ -1,6 +1,5 @@
 @mixin title-active(){
-  border-bottom: 1px solid $white;
-  color: $white;
+  opacity: 1;
 }
 
 @media #{$mobile}{
@@ -35,11 +34,10 @@
 .filters{
     overflow: auto;
     display: flex;
-    font-weight: bold;
-    font-size: 1rem;
+    font-weight: 400;
 }
 .filters-by{
-  color: $dark-grey;
+  //color: $dark-grey;
   width: 100%;
   & .active{
     color: $white;
@@ -57,16 +55,33 @@
     &:hover{
       color: $white;
     }
-    line-height: ($lineheight-base * 2.5);
     &:last-child{
       margin-bottom: $lineheight-base * 3;
     }
   }
 }
 
+.section{
+  display: inline-block;
+  opacity: 0.4;
+  &:after{
+    content: '/';
+  }
+  &.active{
+    @include title-active();
+  }
+}
+
 .filter-title{
-  padding-bottom: $lineheight-base * .75;
-  margin-bottom: $lineheight-base * 2;
+  font-weight: 500;
+  opacity: 0.4;
+  &.active{
+    @include title-active();
+  }
+}
+.filter-title, .filter-list.date{
+    margin-bottom: 0.5rem;
+    border-top: solid 1px white;
   &.active{
     @include title-active();
   }
