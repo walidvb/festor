@@ -41,8 +41,6 @@
 
 		let percentageScrolled = ($this.scrollTop() / (height - window.innerHeight));
 		percentageScrolled = Math.min(Math.max(0, percentageScrolled), 100);
-		percentageScrolled = +percentageScrolled.toFixed(2);
-
 
 		let transform = Math.ceil(percentageScrolled*(sizes.height - window.innerHeight));
 		transform = `translateY(-${transform}px)`;
@@ -51,7 +49,6 @@
 	}
 
 	function setBackPosition(transform, animate = false){
-
 		const fn = animate ? 'transition' : 'css';
 		$back[fn]({ transform })
 	}
