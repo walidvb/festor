@@ -124,7 +124,7 @@
   flex-flow: row wrap;
   justify-content: space-between;
   $day-width: 100%/7;
-  [data-key="date"].filter-title{
+  [data-key="date"].month{
     flex: 0 0 3*$day-width;
     margin-bottom: 0;
     border: none;
