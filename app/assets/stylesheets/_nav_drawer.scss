@@ -26,6 +26,7 @@ $drawer-side-padding: 1rem;
 .drawer-title{
   @media #{$tablet}{
 	   @include lineJump(1);
+     margin-bottom: 0.5rem;
   }
 }
 
