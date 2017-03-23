@@ -81,7 +81,7 @@
 .filter-title, .filter-list.date{
     @include lineJump(2);
     margin-bottom: 0.5rem;
-    padding-top: $margin-vertical-normal;
+    padding-top: 0.5rem;
     border-top: solid 1px white;
   &.active{
     @include title-active();

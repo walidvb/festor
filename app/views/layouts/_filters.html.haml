@@ -16,7 +16,7 @@
 
 		.filters-by
 			%ul.filter-list.date
-				%li.active{ data: { type: 'event', key: 'date', value: 'reset'} }= t('filters.by_day')
+				%li.month.active{ data: { type: 'event', key: 'date', value: 'reset'} }= t('filters.by_day')
 				- @days_range.each do |day|
 					%li.day.active{ data: { type: 'event', key: 'date', value: "#{day}-5"}}= day
 
