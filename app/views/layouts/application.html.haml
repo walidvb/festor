@@ -53,8 +53,7 @@
 			.address
 				%b Mapping Festival
 				%p Avenue Ernest-Pictet 28/30
-				%p 1203 #{t('shared.geneva').titleize}
-				%p #{t('shared.switzerland')}
+				%p 1203 #{t('shared.geneva').titleize} #{t('shared.switzerland')}
 		.webkit-only= yield :thumbnails
 		- if Rails.env.prod? && !user_signed_in? && cookies[:beta].present?
 			:plain
