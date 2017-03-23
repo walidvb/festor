@@ -291,7 +291,6 @@ class Programs{
       }
 
       const isOtherHalfDay = programs[i-1] && programs[i-1].isMorning && !prog.isMorning;
-
       if(basePosY < minY){
         if(basePosY >= firstConflictY || isOtherHalfDay ){
           conflictCount = 0;

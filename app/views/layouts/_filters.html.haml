@@ -1,16 +1,22 @@
 - cache([@sections, @venues, @days_range, @artists_by_letter]) do
 	.filters
+		.drawer-title
+			#{t('nav.filters')}
+
 		.filters-by
 			.filter-title Section
-			%ul.filter-list
+			%ul.filter-list.type
 				- @sections.each do |sec|
 					%li.section
 						%span.active{ data: { type: 'event', key: 'section', value: sec}}= sec.gsub(/Mapping /i, '')
 						%span.resetter.fa.fa-times{ data: { type: 'event', key: 'section', value: 'reset'}}
-				%li.favourite{ data: { type: 'event', key: 'id' } } #{t('filters.favourites')} #{fa_icon('star')}
+
+		.filters-by
+			.filter-title.favourite{ data: { type: 'event', key: 'id' } } #{t('filters.favourites')} #{fa_icon('star')}
+
 		.filters-by
 			%ul.filter-list.date
-				%li.filter-title.active{ data: { type: 'event', key: 'date', value: 'reset'} }= t('filters.by_day')
+				%li.active{ data: { type: 'event', key: 'date', value: 'reset'} }= t('filters.by_day')
 				- @days_range.each do |day|
 					%li.day.active{ data: { type: 'event', key: 'date', value: "#{day}-5"}}= day
 
@@ -19,6 +25,7 @@
 			%ul.filter-list.venue.collapsed.collapsible
 				- @venues.each do |venue|
 					%li.venue.active{ data: { type: 'event', key: 'venue', value: venue.name}}= venue.name
+
 		.filters-by
 			.filter-title{ data: { type: 'artist', key: 'artists', value: 'reset'} }= t('filters.artists')
 			%ul.filter-list.artists.collapsed.collapsible

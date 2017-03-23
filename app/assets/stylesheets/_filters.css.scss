@@ -55,17 +55,16 @@
     &:hover{
       color: $white;
     }
-    &:last-child{
-      margin-bottom: $lineheight-base * 3;
-    }
   }
 }
 
 .section{
   display: inline-block;
   opacity: 0.4;
+  margin-right: 1rem;
   &:after{
     content: '/';
+    margin: auto;
   }
   &.active{
     @include title-active();
@@ -80,10 +79,15 @@
   }
 }
 .filter-title, .filter-list.date{
+    @include lineJump(2);
     margin-bottom: 0.5rem;
+    padding-top: $margin-vertical-normal;
     border-top: solid 1px white;
   &.active{
     @include title-active();
+  }
+  .month{
+    width: 14%;
   }
 }
 
@@ -145,4 +149,12 @@
 }
 .filter-list.date, .filter-list.artists{
   text-align: center;
+}
+
+.filter-list.type{
+  display: flex;
+  justify-content: space-around;
+  .section{
+    width: 33%;
+  }
 }
