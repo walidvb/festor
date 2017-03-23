@@ -25,22 +25,26 @@ main{
 
 @keyframes enter{
   from {
-    //transform: translateZ(-60px);
+    transform: translateZ(-60px);
     opacity: 0;
   }
   to {
-    //transform: translateZ(0px);
+    transform: translateZ(0px);
     opacity: 1;
   }
 }
 
 @keyframes exit{
   0% {
-    //transform: translateZ(0px);
+    transform: translateZ(0px);
     opacity: 1;
   }
+  99%{
+    transform: translateZ(60px);
+    opacity: 0;
+  }
   100%{
-    //transform: translateZ(60px);
+    transform: translateZ(0px);
     opacity: 0;
   }
 }
