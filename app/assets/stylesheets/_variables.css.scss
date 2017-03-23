@@ -7,6 +7,8 @@ $tablet                 : "(min-width: 767px)";
 $sm                     : $tablet;
 $md                     : "(min-width: 991px)";
 $lg                     : "(min-width: 1200px)";
+$xlg                     : "(min-width: 1500px)";
+
 
 // colors
 $black: black;
@@ -18,7 +20,7 @@ $blend-mode: difference;
 
 $transition-long: cubic-bezier(.19,1,.22,1);
 
-$header-height: 196px + 42px;
+$header-height: 16rem;
 $nav-width: 20vw;
 
 @if $invert == 1{

@@ -28,6 +28,12 @@
 
 html{
 	font-size: $base-font-size;
+	@media #{$lg}{
+		font-size: 1.4vw;
+	}
+	@media #{$xlg}{
+		font-size: 21px;
+	}
 	overflow-x: hidden;
 	color: $white;
 }
@@ -39,9 +45,6 @@ body{
 	color: $white;
 	background-color: black;
 	font-size: 1rem;
-	@media #{$lg}{
-		font-size: 1.4vw;
-	}
 	line-height: 1.5rem;
 	font-variant-numeric: tabular-nums;
 }
