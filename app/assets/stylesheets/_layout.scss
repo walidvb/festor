@@ -47,9 +47,12 @@ main, .main{
 		@include lineJump(1);
 	}
 	main{
-		padding-left: $nav-width;
 		overflow: auto;
 		padding-top: $header-height;
+		padding-left: $nav-width;
+		@media #{$md}{
+			padding-left: $nav-width-md;
+		}
 	}
 	nav{
 		height: calc(100vh - #{$header-height});
@@ -59,6 +62,9 @@ main, .main{
 		}
 		bottom: 0;
 		width: $nav-width;
+		@media #{$md}{
+			width: $nav-width-md;
+		}
 		overflow-y: auto;
 	}
 	header, nav{

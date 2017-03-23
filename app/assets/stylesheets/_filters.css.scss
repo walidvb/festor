@@ -69,7 +69,10 @@
       vertical-align: middle;
     }
   }
-  &:not(:first-child):baefore{
+  li:not(.active) ~ .resetter{
+    opacity: 1;
+  }
+  li:nth-child(1n):after, li:nth-child(2):after{
     content: '/';
     margin: auto;
   }

@@ -21,7 +21,8 @@ $blend-mode: difference;
 $transition-long: cubic-bezier(.19,1,.22,1);
 
 $header-height: 16rem;
-$nav-width: 20vw;
+$nav-width-md: 20vw;
+$nav-width: 25vw;
 
 @if $invert == 1{
   //invert
