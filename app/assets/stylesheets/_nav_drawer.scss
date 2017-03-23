@@ -14,12 +14,18 @@ $drawer-side-padding: 1rem;
   transition: all .5s ease-in-out;
   transform: translateY(0);
   @media #{$tablet}{
-    padding: 2rem 2rem 0;
+    padding: 0rem 2rem 0;
     transform: translateX(0%);
     &.drawer-open{
       transform: translateX(-100%);
       opacity: 1;
     }
+  }
+}
+
+.drawer-title{
+  @media #{$tablet}{
+	   @include lineJump(1);
   }
 }
 
@@ -47,10 +53,17 @@ $drawer-side-padding: 1rem;
     padding-left: 0;
     padding-bottom: 0rem;
   }
+
 }
 
+.back{
+  @media #{$tablet}{
+    text-align: right;
+    margin-right: 3rem;
+  }
+}
 .drawer{
-  padding: 0 1rem;
+  padding: 0rem 1rem 0 1rem;
   opacity: 0;
   pointer-events: none;
   transition: all $drawer-opening-time ease-in-out;
