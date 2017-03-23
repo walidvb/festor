@@ -25,6 +25,7 @@ class Program{
     this.elem.attr('data-date', date);
     this.date = date;
     this.dateEnd = new Date(dateEnd);
+    this.isMorning = this.dateStart.getHours() < 12;
     this.section = section;
     this.duration = this.dateEnd - this.dateStart;
     this.durationInHour = this.duration/(1000*60*60)
@@ -276,7 +277,8 @@ class Programs{
       gap = 0,
       conflictCount = 0,
       currDay,
-      firstConflictY = 0;
+      firstConflictY = 0,
+      isMorning;
 
     const rotate = smallScreen() ? ' rotateZ(-90deg)' : '';
     programs.forEach((prog, i) => {
@@ -288,8 +290,10 @@ class Programs{
         basePosY = Math.min(minY, basePosY - oldGap);
       }
 
+      const isOtherHalfDay = programs[i-1] && programs[i-1].isMorning && !prog.isMorning;
+
       if(basePosY < minY){
-        if(basePosY >= firstConflictY){
+        if(basePosY >= firstConflictY || isOtherHalfDay ){
           conflictCount = 0;
           basePosY = minY;
         }
@@ -314,6 +318,9 @@ class Programs{
 
       if(programs[i+1] && programs[i+1].date != prog.date){
         minY += DAY_GAP;
+      }
+      else if(isOtherHalfDay){
+        minY += DAY_GAP*.5;
       }
     });
     this.positionDatesLegend();
