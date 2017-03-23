@@ -356,20 +356,26 @@ class Programs{
            value = clicked.data('value'),
            key = clicked.data('key'),
            type = clicked.data('type');
-           $(`.filters [data-value]:not(.resetter):not(.filter-title)`).toggleClass('active', value == 'reset');
-           
-           const thisResetter = clicked.siblings('.resetter');
-           const thisTitle = clicked.parent().siblings('.filter-title');
-           clicked.add(thisResetter).add(thisTitle).addClass('active');
-           $('.resetter').not(thisResetter).not(thisTitle).removeClass('active');
+ 
+          const thisContainer = $(`.filters .${key}`);
+
+          if(value == 'reset'){
+            $('.filters [data-value!="reset"]').add(`[data-key=${key}]`).addClass('active')
+            $('.resetter').removeClass('active');
+          }
+          else{
+            $('.filters [data-value!="reset"]').addClass('active')
+            thisContainer.find('[data-value]').removeClass('active');
+          } 
+          clicked.addClass('active');
+
+          $('.collapsible').addClass('collapsed');
+          if(clicked.data('collapse')){
+            $(clicked.data('collapse')).removeClass('collapsed');
+          }
            if((key && value) || key == 'reset'){
              activeFilters = { type, key, value };
              programs.filterBy(activeFilters);
-
-             if(key == 'artists'){
-               $('.filters [data-type]').removeClass('active')
-               $('.filters .section').addClass('active');
-             }
            }
         });
 

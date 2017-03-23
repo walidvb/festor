@@ -58,11 +58,18 @@
   }
 }
 
-.section{
-  display: inline-block;
-  opacity: 0.4;
-  margin-right: 1rem;
-  &:after{
+.section .filter-list{
+  display: flex;
+  li{
+    flex: 1 1 33%;
+  }
+  .resetter{
+    flex-basis: auto;
+    &:before{
+      vertical-align: middle;
+    }
+  }
+  &:not(:first-child):baefore{
     content: '/';
     margin: auto;
   }
@@ -71,6 +78,15 @@
   }
 }
 
+.filters{
+  [data-value]{
+    opacity: .4;
+    &.active, &:hover{
+      opacity: 1;
+    }
+  }
+  
+}
 .filter-title{
   font-weight: 500;
   opacity: 0.4;
@@ -98,11 +114,11 @@
   .filter-list.collapsible{
     transition: all .3s ease-in-out;
     overflow: hidden;
-    max-height: 0;
-    margin-bottom: 0;
-    .filter-title.active + &{
-      max-height: 50vh;
-      margin-bottom: $lineheight-base * 2;
+    max-height: 50vh;
+    margin-bottom: $lineheight-base * 2;
+    &.collapsed{
+      margin-bottom: 0;
+      max-height: 0;
     }
   }
 }
@@ -111,15 +127,14 @@
   cursor: pointer;
 }
 
-.resetter{
-  display: none;
+.filters .resetter{
+  opacity: 0;
   float: right;
-  margin-top: 1rem;
   &.active{
-    display: inline-block;
+    opacity: 1;
   }
 }
-.filter-list.date{
+.filter-list.calendar{
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
@@ -132,13 +147,14 @@
   }
   .day{
     flex: 0 0 $day-width;
+    display: inline-block;
   }
   [data-value="15-5"], [data-value="22-5"]{
     text-decoration: line-through;
     pointer-events: none;
   }
 }
-.filter-list.artists{
+.artists .filter-list{
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
@@ -147,14 +163,14 @@
     text-transform: uppercase;
   }
 }
-.filter-list.date, .filter-list.artists{
+.date .filter-list, .artists .filter-list{
   text-align: center;
 }
 
 .filter-list.type{
   display: flex;
   justify-content: space-around;
-  .section{
-    width: 33%;
+  .filters-section{
+    flex: 1 1 33%;
   }
 }

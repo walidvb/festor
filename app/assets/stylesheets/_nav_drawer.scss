@@ -59,7 +59,6 @@ $drawer-side-padding: 1rem;
 .back{
   @media #{$tablet}{
     text-align: right;
-    margin-right: 3rem;
   }
 }
 .drawer{
@@ -94,11 +93,6 @@ $drawer-side-padding: 1rem;
   cursor: pointer;
 }
 
-.nav, .filters {
-  @media #{$tablet}{
-    padding-right: 3rem;
-  }
-}
 .nav li a[data-drawer]{
   display: flex;
   justify-content: space-between;
