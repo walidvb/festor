@@ -211,7 +211,7 @@ class Programs{
     this.programs.forEach( prog => prog.testAndActivate(keyValue) ? this.activePrograms.push(prog) : this.inactivePrograms.push(prog));
     this.artists.forEach( art =>  art.testAndActivate(keyValue) );
     this.positionAll();
-    $('main').animate({ 'scrollTop': 0 });
+    $('main').stop().animate({ 'scrollTop': 0 });
   }
   positionAll(){
     this.positionArtistLegend();
