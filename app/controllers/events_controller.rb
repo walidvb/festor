@@ -17,7 +17,9 @@ class EventsController < ApplicationController
 		@event_dates = EventDate.where(event_id: @events.map(&:id)).order('start ASC').includes(:event, :artists, :location)
 		@artists = @events.map(&:artists).flatten.uniq.sort_by(&:name)
 		@days = EventDate.all.pluck(:start).map(&:to_date).uniq
-		render 'program'
+		if stale?(etag: [@event_dates.map(&:updated_at), @events.map(&:updated_at), @artists.map(&:updated_at)].join(''))
+			render 'program'
+		end
 	end
 
 	def index
