@@ -56,6 +56,9 @@
       color: $white;
     }
   }
+  @media #{$tablet}{
+    margin-bottom: 1.5rem;
+  }
 }
 
 .section .filter-list{
@@ -88,7 +91,7 @@
       opacity: 1;
     }
   }
-  
+
 }
 .filter-title{
   font-weight: 500;
