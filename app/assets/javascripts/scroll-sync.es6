@@ -6,7 +6,7 @@ $(document).on('turbolinks:load', function(){
       }
     });
   }
-  var ev = $('.events'), leg = $('.legend');
+  const ev = $('.events'), leg = $('.legend');
   sync(ev, leg);
   sync(leg, ev);
 });
