@@ -13,10 +13,8 @@
 }
 
 @media #{$tablet}{
-	.static-page iframe{
-		margin-top: 4rem;
-		height: calc(100vh - #{$header-height} - 10rem);
-		margin-bottom: 10rem;
+	.static-page .full-frame{
+		height: calc(100vh - #{$header-height});
 	}
 	#archives{
 		display: flex;
@@ -26,4 +24,8 @@
 			position: relative;
 		}
 	}
+}
+
+.full-frame{
+	
 }

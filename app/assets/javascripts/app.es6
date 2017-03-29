@@ -211,7 +211,7 @@ class Programs{
     this.programs.forEach( prog => prog.testAndActivate(keyValue) ? this.activePrograms.push(prog) : this.inactivePrograms.push(prog));
     this.artists.forEach( art =>  art.testAndActivate(keyValue) );
     this.positionAll();
-    $('main').animate({ 'scrollTop': 0 });
+    $('main').stop().animate({ 'scrollTop': 0 });
   }
   positionAll(){
     this.positionArtistLegend();
@@ -291,7 +291,6 @@ class Programs{
       }
 
       const isOtherHalfDay = programs[i-1] && programs[i-1].isMorning && !prog.isMorning;
-      if(isOtherHalfDay) debugger;
       if(basePosY < minY){
         if(basePosY >= firstConflictY || isOtherHalfDay ){
           conflictCount = 0;
@@ -357,20 +356,26 @@ class Programs{
            value = clicked.data('value'),
            key = clicked.data('key'),
            type = clicked.data('type');
-           $(`.filters [data-value]:not(.resetter):not(.filter-title)`).toggleClass('active', value == 'reset');
-           
-           const thisResetter = clicked.siblings('.resetter');
-           const thisTitle = clicked.parent().siblings('.filter-title');
-           clicked.add(thisResetter).add(thisTitle).addClass('active');
-           $('.resetter').not(thisResetter).not(thisTitle).removeClass('active');
+ 
+          const thisContainer = $(`.filters .${key}`);
+
+          if(value == 'reset'){
+            $('.filters [data-value!="reset"]').add(`[data-key=${key}]`).addClass('active')
+            $('.resetter').removeClass('active');
+          }
+          else{
+            $('.filters [data-value!="reset"]').addClass('active')
+            thisContainer.find('[data-value]').removeClass('active');
+          } 
+          clicked.addClass('active');
+
+          $('.collapsible').addClass('collapsed');
+          if(clicked.data('collapse')){
+            $(clicked.data('collapse')).removeClass('collapsed');
+          }
            if((key && value) || key == 'reset'){
              activeFilters = { type, key, value };
              programs.filterBy(activeFilters);
-
-             if(key == 'artists'){
-               $('.filters [data-type]').removeClass('active')
-               $('.filters .section').addClass('active');
-             }
            }
         });
 
