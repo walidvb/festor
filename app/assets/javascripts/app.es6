@@ -65,8 +65,8 @@ class Program{
         thumbnail.addClass('in');
       }
     }
-    this.elem.find('a').on('mousemove', showImg);
-    this.elem.find('a').hover( showImg ,
+    this.elem.find('.tile-link').on('mousemove', showImg);
+    this.elem.find('.tile-link').hover( showImg ,
       (ev) => {
         if(!SCROLLING){
           const thumbnail = $(thumbnailSelector);
