@@ -216,6 +216,11 @@ $transition: ease-in-out;
         width: 100%/$conflict;
       }
     }
+    @for $conflict from 4 to 10{
+      #program &[data-conflict-count="#{$conflict}"] .tile-link{
+        word-wrap: break;
+      }
+    }
      &{
       transition-delay: 0s!important;
     }
