@@ -280,17 +280,27 @@ class Programs{
       firstConflictY = 0,
       isMorning;
 
-    const rotate = smallScreen() ? ' rotateZ(-90deg)' : '';
     programs.forEach((prog, i) => {
       let basePosY = prog.hoursFromStart*HOUR_IN_PX;
       let oldGap = gap;
       currDay = currDay || prog.date;
+      const isOtherHalfDay = programs[i-1] && programs[i-1].isMorning && !prog.isMorning;
+      if(prog.id == 2322){
+        debugger;
+        console.log("prog:", prog);
+      }
       if(minY < basePosY){
-        gap = Math.max(0, oldGap, basePosY - minY);
+        gap = Math.max(oldGap, basePosY - minY);
         basePosY = Math.min(minY, basePosY - oldGap);
       }
 
-      const isOtherHalfDay = programs[i-1] && programs[i-1].isMorning && !prog.isMorning;
+      if(isOtherHalfDay){
+        // add some more space
+        basePosY += DAY_GAP*.5;
+        // remember that space for next post
+        gap -= DAY_GAP*.5;
+      }
+
       if(basePosY < minY){
         if(basePosY >= firstConflictY || isOtherHalfDay ){
           conflictCount = 0;
@@ -308,6 +318,7 @@ class Programs{
       else{
         conflictCount = 0;
       }
+
       prog.position(basePosY);
       minY = Math.max(prog.endPos(), minY);
 
@@ -317,9 +328,6 @@ class Programs{
 
       if(programs[i+1] && programs[i+1].date != prog.date){
         minY += DAY_GAP;
-      }
-      else if(isOtherHalfDay){
-        minY += DAY_GAP*.5;
       }
     });
     this.positionDatesLegend();
