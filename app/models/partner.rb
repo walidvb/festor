@@ -5,6 +5,7 @@ class Partner < ActiveRecord::Base
     :styles => {
       :thumb => "100x100#",
       :tile => "x80",
+      :tile_colored => "x80",
     },
     :convert_options => {
       :thumb => '-type Grayscale',
