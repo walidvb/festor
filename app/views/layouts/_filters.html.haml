@@ -21,11 +21,11 @@
 				- @days_range.each do |day|
 					%li.day.active{ data: { type: 'event', key: 'date', value: "#{day}-5"}}= day
 
-		.filters-by.venue
-			.filter-title{ data: { type: 'event', key: 'venue', value: 'reset', collapse: '.venue .collapsible' } }= t('filters.by_venue')
-			%ul.filter-list.collapsed.collapsible
-				- @venues.each do |venue|
-					%li.venue.active{ data: { type: 'event', key: 'venue', value: venue.name, collapse: '.venue .collapsible' } }= venue.name
+		-# .filters-by.venue
+		-# 	.filter-title{ data: { type: 'event', key: 'venue', value: 'reset', collapse: '.venue .collapsible' } }= t('filters.by_venue')
+		-# 	%ul.filter-list.collapsed.collapsible
+		-# 		- @venues.each do |venue|
+		-# 			%li.venue.active{ data: { type: 'event', key: 'venue', value: venue.name, collapse: '.venue .collapsible' } }= venue.name
 
 		.filters-by.artists.letter
 			.filter-title{ data: { type: 'artist', key: 'artists', value: 'reset', collapse: '.artists .collapsible' } }= t('filters.artists')

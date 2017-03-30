@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   before_filter :set_locale
   before_filter :set_background
-  
+
   def set_background
     @rdm = Random.rand([ENV['BACKGROUND_IMAGES_COUNT'].to_i, 1].max)
     image = "mapping_#{@rdm}.png"
@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
     @artists_by_letter = Event.published.map(&:artists).flatten.sort_by(&:name).map(&:name).map{|name| name[0].upcase}.uniq
     @sections = Event.published.pluck(:section).uniq.compact
     @days_range = (11..28)
-    @venues = Location.all
+    @venues = Location.all.order('name ASC')
     @locations = @venues
   end
   # Prevent CSRF attacks by raising an exception.

@@ -56,6 +56,9 @@
       color: $white;
     }
   }
+  @media #{$tablet}{
+    margin-bottom: 1.5rem;
+  }
 }
 
 .section .filter-list{
@@ -88,7 +91,7 @@
       opacity: 1;
     }
   }
-  
+
 }
 .filter-title{
   font-weight: 500;
@@ -97,10 +100,13 @@
     @include title-active();
   }
 }
+
 .filter-title, .filter-list.date{
-    @include lineJump(2);
+  &:not(:first-child){
+      @include lineJump(2);
+    }
     margin-bottom: 0.5rem;
-    padding-top: $margin-vertical-normal;
+    padding-top: 0.5rem;
     border-top: solid 1px white;
   &.active{
     @include title-active();

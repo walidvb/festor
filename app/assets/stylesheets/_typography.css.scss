@@ -156,17 +156,6 @@
 	}
 }
 
-// ----- 18 - Venue Place ----- //
-
-.location-link {
-	@include fontSize(16.72px) ;
-	line-height: 1.23;
-	//padding-bottom: 0.45rem;
-	&:not(:first-child){
-		@include lineJump (2);
-	}
-}
-
 
 // ----- 19 - Venue Titre ----- //
 

@@ -7,7 +7,7 @@
 		"adresse" => @locations.map(&:address).join('*'), |
 		"latitude" => @locations.map(&:latitude).join('-'), |
 		"longitude" => @locations.map(&:longitude).join('-'), |
-		"title" => @locations.map(&:name).join('*'), |		
+		"title" => @locations.map(&:name).join('*'), |
 		"url" => @locations.map{|l| "##{l.slug}"}.join('*'), |
 		"zoom" => "14", |
 		"infos" => @locations.map(&:infos).join('|')}}
