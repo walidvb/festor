@@ -3,23 +3,31 @@ class ZoneFestival < ActiveRecord::Base
 
   def self.sync!
     zf = ZoneFestival.first || ZoneFestival.new
-    zf.data = self.get_data()
-    zf.save!
-    if Rails.env.development?
-      zf.store_locally!
+    if !zf.syncing?
+      zf.syncing = true
+      zf.data = self.get_data()
+      zf.save!
+      if Rails.env.development?
+        zf.store_locally!
+      else
+        zf.delay.store_locally!
+      end
+      return 'Database sync in progress. Please wait a moment for the images to syncronise as well.'
     else
-      zf.delay.store_locally!
+      return 'Sync already running.'
     end
   end
 
   def self.reset_and_sync!
-    Artist.delete_all
-    Event.delete_all
-    Location.delete_all
-    Link.delete_all
-    EventDate.delete_all
-    Booking.delete_all
-    ZoneFestival.sync!
+    if !zf.syncing?
+      Artist.delete_all
+      Event.delete_all
+      Location.delete_all
+      Link.delete_all
+      EventDate.delete_all
+      Booking.delete_all
+    end
+    return ZoneFestival.sync!
   end
 
   def store_locally!
@@ -163,6 +171,8 @@ class ZoneFestival < ActiveRecord::Base
       event_date.save!
       store_artists_from_shows shows, event, zf
     end
+    # zf.syncing = false
+    zf.save!
   end
 
   private
