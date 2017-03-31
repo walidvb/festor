@@ -1,7 +1,7 @@
 class ZoneFestival < ActiveRecord::Base
 
 
-  def self.sync!
+  def self.sync! zf = nil
     zf = ZoneFestival.first || ZoneFestival.new
     if !zf.syncing?
       zf.syncing = true
@@ -28,7 +28,7 @@ class ZoneFestival < ActiveRecord::Base
       EventDate.delete_all
       Booking.delete_all
     end
-    return ZoneFestival.sync!
+    return ZoneFestival.sync! zf
   end
 
   def store_locally!
@@ -178,7 +178,7 @@ class ZoneFestival < ActiveRecord::Base
       event_date.save!
       store_artists_from_shows shows, event, zf
     end
-    # zf.syncing = false
+    zf.syncing = false
     zf.save!
   end
 

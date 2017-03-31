@@ -61,7 +61,8 @@ RailsAdmin.config do |config|
       controller do
         proc do
           begin
-            ZoneFestival.reset_and_sync!
+            notice = ZoneFestival.reset_and_sync!
+            redirect_to '/admin', notice: notice
             redirect_to '/admin', notice: 'Database sync in progress. Please wait a moment for the images to syncronise as well.'
           rescue => e
             raise e unless Rails.env.prod?
