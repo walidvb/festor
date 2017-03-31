@@ -286,9 +286,6 @@ class ZoneFestival < ActiveRecord::Base
       end.join("")
       global_desc = date["description_#{value}"]
       event.description = "<div class='global-desc'>#{global_desc}</div><div class='multiple-shows'>#{description}</div>"
-      Rails.logger.info global_desc
-      Rails.logger.info description
-      Rails.logger.info "==========="
     end
     event.save!
   end
