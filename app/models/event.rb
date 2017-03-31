@@ -34,18 +34,13 @@ class Event < ActiveRecord::Base
 	scope :workshop, ->{where(section: workshop_cats)}
 	scope :exhibition, ->{where(section: ['Mapping EXPO', 'Exhibition'])}
 	scope :not_exhibition, ->{where.not(section: ['Mapping EXPO', 'Exhibition'])}
+	Event.all.pluck(:section).uniq.each do |sec|
+		scope sec, ->{where(section: sec)}
+	end
 
-	scope :other, ->{where.not(section: [:workshop, :conference, :masterclass, :exhibition])}
-
-	scope :featured, -> {where(featured: true)}
 	has_many :event_dates, dependent: :delete_all, inverse_of: :event
-
 	has_many :bookings, dependent: :delete_all, inverse_of: :event
-
 	has_many :artists, through: :bookings, inverse_of: :events
-	has_many :musicians, -> {where type: :dj}, through: :bookings, source: :artist, inverse_of: :events
-	has_many :vjs,  -> {where type: :vj}, through: :bookings, source: :artist, inverse_of: :events
-	has_many :instructors,  -> {where type: :instructor}, through: :bookings, source: :artist, inverse_of: :events
 
 	has_many :assets, as: :assetable
 	belongs_to :location, inverse_of: :events

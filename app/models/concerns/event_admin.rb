@@ -50,14 +50,14 @@ module EventAdmin
         end
       end
       list do
-      	scopes [:workshop, :exhibition, :other, :all]
+      	scopes Event.all.pluck(:section).uniq
         field :title do
         	# pretty_value do
         	#  bindings[:view].link_to(bindings[:object].title, edit_path(model_name: bindings[:object].class)) << value
         	# end
         end
+        field :event_dates
         field :section
-        field :featured
       end
     end
   end
