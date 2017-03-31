@@ -19,6 +19,7 @@ class ZoneFestival < ActiveRecord::Base
   end
 
   def self.reset_and_sync!
+    zf = ZoneFestival.first || ZoneFestival.new
     if !zf.syncing?
       Artist.delete_all
       Event.delete_all
