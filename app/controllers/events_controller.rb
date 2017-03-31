@@ -45,9 +45,6 @@ class EventsController < ApplicationController
 		@section = @event.section
 		@dates = @event.event_dates.includes(:location)
 		@artists = @event.artists.order(:position)
-		@musicians = @event.musicians.published
-		@vjs = @event.vjs.published
-		@instructors = @event.instructors.published
 		@links = @event.links
 		@assets = @event.assets
 	end
