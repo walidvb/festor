@@ -58,6 +58,7 @@ module EventAdmin
         end
         field :event_dates
         field :section
+        field :sub_section
         field :locked
       end
     end
