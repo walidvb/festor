@@ -1,5 +1,5 @@
 -# Mapping Festival
-= link_to root_path(locale: I18n.locale) do
+= link_to root_path(locale: I18n.locale), data: { type: 'event', key: 'section' , value: 'reset' } do
   %h1.name 
     Mapping 
     %span.blink-on-load _ 
