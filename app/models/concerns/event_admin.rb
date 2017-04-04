@@ -60,6 +60,7 @@ module EventAdmin
         field :section
         field :sub_section
         field :locked
+        field :published
       end
     end
   end
