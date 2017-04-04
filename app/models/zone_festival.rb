@@ -178,8 +178,8 @@ class ZoneFestival < ActiveRecord::Base
       event_date.save!
       store_artists_from_shows shows, event, zf
     end
-    zf.syncing = false
-    zf.save!
+    self.syncing = false
+    self.save!
   end
 
   private
