@@ -53,6 +53,7 @@ class ZoneFestival < ActiveRecord::Base
       pr['id'] == 41 ||
       true
     }
+    processed_events = []
     programs.each do |date|
       Rails.logger.info "Processing #{date['name_1']}: #{date['date_start']}"
       event_date = EventDate.find_by_zf_id(date['id']) || EventDate.new
@@ -72,9 +73,13 @@ class ZoneFestival < ActiveRecord::Base
         first_show = shows.first
         #store zf_id as the first show of the list
         event = Event.find_by_zf_id(first_show['id'].to_i) || Event.new
-        if event.locked?
+        if event.locked? || processed_events.include?(event)
+          Rails.logger.info "skipping #{event.title} because processed: #{processed_events.include?(event)}"
+          event_date.event = event
+          event_date.save!
           next
         end
+        processed_events << event
         event.zf_id = first_show['id'].to_i
 
         if has_multiple_shows_for_single_program
@@ -138,9 +143,13 @@ class ZoneFestival < ActiveRecord::Base
       else
         Rails.logger.info "No Performance detected for #{date['name_1']}"
         event = Event.find_by_zf_id(date['id'].to_i) || Event.new
-        if event.locked?
+        if event.locked? || processed_events.include?(event)
+          event_date.event = event
+          Rails.logger.info "skipping #{event.title} because processed: #{processed_events.include?(event)} 2"
+          event_date.save!
           next
         end
+        processed_events << event
         event.zf_id = date['id'].to_i;
         store_translations_for event, :title,  date, :name
         store_translations_for event, :description,  date, :description
