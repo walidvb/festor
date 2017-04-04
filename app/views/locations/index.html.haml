@@ -1,6 +1,7 @@
 - content_for(:og_title, "Venues")
 - content_for(:image, image_url('lines_3.png'))
 - content_for(:description, "Distributed around Geneva, find out where the festival is taking place")
+- content_for :body_class, 'iframe-page'
 #google-map-wrapper.full-content{ data: { "marker-url" => image_url("google-map-marker.png")}}
 	#google-map-loader
 	#google-map{ data: { |

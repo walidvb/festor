@@ -8,13 +8,14 @@
 	}
 }
 
+$title-height: 5.5rem;
 #archives{
 	min-height: 80vh;	
 }
 
 @media #{$tablet}{
-	.static-page .full-frame{
-		height: calc(100vh - #{$header-height});
+	.static-page .full-frame, .iframe-page #google-map-wrapper{
+		height: calc(100vh - #{$title-height});
 	}
 	#archives{
 		display: flex;
@@ -28,4 +29,13 @@
 
 .full-frame{
 	
+}
+
+.iframe-page{
+	main{
+		padding-top: $title-height;
+	}
+	footer{
+		display: none;
+	}
 }
