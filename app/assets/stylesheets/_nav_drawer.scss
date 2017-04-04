@@ -31,8 +31,9 @@ $drawer-side-padding: 1rem;
 }
 
 @mixin arrow-rotate(){
-  transform: rotate(90deg) translateY(-50%);
+  transform: rotate(90deg);
   transform-origin: center;
+  display: inline-block;
 }
 @media #{$mobile}{
   .nav{
@@ -40,21 +41,22 @@ $drawer-side-padding: 1rem;
     transition: all $drawer-opening-time ease-out;
     .drawer-open &{
       opacity: 0;
-      margin-top: -2.5rem;
+      margin-top: -1.5rem;
     }
   }
   .back{
     display: inline-block;
     padding: 0 10px;
     margin-left: -10px;
-    @include arrow-rotate();
   }
   [data-drawer]:after{
     @include arrow-rotate();
     padding-left: 0;
     padding-bottom: 0rem;
   }
-
+  .rotate-mobile{
+    @include arrow-rotate();
+  }
 }
 
 .drawer{

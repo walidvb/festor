@@ -238,14 +238,14 @@ class Programs{
       const date = $this.data('date');
       const firstPost = $('.post.active[data-date="'+date+'"]');
       if(!firstPost.length){
-        $this.css('opacity', 0);
+        $this.css('opacity', 0).addClass('hidden');
       }
       else{
         const transform = firstPost.data('program').posY;
         $this.show().css({ 
           transform: `translateY(${transform}px)`,
           'opacity': 1,
-        });
+        }).removeClass('hidden');
       }
     })
   }

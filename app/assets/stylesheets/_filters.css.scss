@@ -4,12 +4,12 @@
 
 @media #{$mobile}{
   .filters{
-    flex-flow: row;
+    flex-flow: column wrap;
     -webkit-overflow-scrolling: touch;
   }
   .filters-by{
-    flex: 1 0 80vw;
     padding: 0 1rem;
+    margin-bottom: 2rem;
   }
   .filter-title{
     @include title-active;
@@ -17,7 +17,7 @@
   .filter-list{
     display: flex;
     flex-flow: column;
-    &.artists, &.venue{
+    .artists &, .venue &{
       flex-flow: row wrap;
       transform: none;
       justify-content: space-between;
@@ -26,8 +26,10 @@
       padding-right: 1rem;
     }
   }
-  #nav-program{
-    padding: 0;
+  .resetter{
+    position: absolute;
+    top: 0;
+    right: 1rem;
   }
 }
 

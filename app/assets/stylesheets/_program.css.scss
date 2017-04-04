@@ -172,6 +172,9 @@ $transition: ease-in-out;
   border-bottom: 1px solid $white;
   margin: $margin-horizontal-normal 0;
   width: 100%;
+  &.hidden{
+    display: none!important;
+  }
   @media #{$tablet}{
     display: none!important;
   }

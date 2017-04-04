@@ -21,22 +21,30 @@
 		%li= render 'layouts/newsletter_button'
 	- if @exhib
 		.drawer#nav-exhib
-			.back.rotate-mobile <
+			.back
+				%span.rotate-mobile <
+				Menu
 			%p= @exhib.short_description.try(:html_safe)
 			.more-info= link_to t('shared.more_info'), event_path(@exhib, locale: I18n.locale)
 	- if !@messages.empty?
 		.drawer#nav-news
-			.back.rotate-mobile < Menu
+			.back
+				%span.rotate-mobile < 
+				Menu
 			%ul
 				- @messages.each do |message|
 					%li.message
 						= message.message.html_safe
 					=# link_to message.link, class: [message.colorbox? ? 'colorbox' : nil].join(' ') do
 	.drawer#nav-program
-		.back.rotate-mobile < Menu
+		.back
+			%span.rotate-mobile < 
+			Menu
 		= render 'layouts/filters'
 	.drawer#nav-venues
-		.back.rotate-mobile < Menu
+		.back
+			%span.rotate-mobile < 
+			Menu
 		.location-list{'data-turbolinks' => 'false'}
 			- @locations.each do |loc|
 				= link_to loc.name,	"##{loc.slug}", class: 'location-link', data: { title: loc.slug}
