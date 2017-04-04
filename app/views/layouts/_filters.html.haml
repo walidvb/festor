@@ -1,19 +1,16 @@
 - cache([@sections, @venues, @days_range, @artists_by_letter]) do
 	.filters
-		.drawer-title
-			#{t('nav.filters')}
-
+		.resetter{ data: { type: 'event', key: 'section', value: 'reset'}}
+			%span.fa.fa-times 
+			Reset filters
 		.filters-by.section
-			.filter-title.active{data: { type: 'event', key: 'section', value: 'reset'}} Section
+			/ .filter-title.active{data: { type: 'event', key: 'section', value: 'reset'}} Section
 			%ul.filter-list
 				- @sections.each_with_index do |sec, index|
 					%li.active{ data: { type: 'event', key: 'section', value: sec}}
 						= sec.gsub(/Mapping /i, '')
 
-				%li.resetter.fa.fa-times{ data: { type: 'event', key: 'section', value: 'reset'}}
-
-		.filters-by
-			.filter-title.favourite{ data: { type: 'event', key: 'id', value: 'reset' } } #{t('filters.favourites')} #{fa_icon('star')}
+		.filter-title.favourite.filters-by{ data: { type: 'event', key: 'id', value: 'reset' } } #{t('filters.favourites')} #{fa_icon('star')}
 
 		.filters-by
 			%ul.filter-list.calendar.date

@@ -369,13 +369,16 @@ class Programs{
 
           if(value == 'reset'){
             $('.filters [data-value!="reset"]').add(`[data-key=${key}]`).addClass('active')
-            $('.resetter').removeClass('active');
+            $('.resetter').add('.filters .favourite').removeClass('active');
           }
           else{
             $('.filters [data-value!="reset"]').addClass('active')
-            thisContainer.find('[data-value]').removeClass('active');
+            $('.resetter').addClass('active');
+            thisContainer.find('[data-value]').add('.filters .favourite').removeClass('active');
+
+            clicked.addClass('active');
           } 
-          clicked.addClass('active');
+          
 
           $('.collapsible').addClass('collapsed');
           if(clicked.data('collapse')){

@@ -19,10 +19,10 @@ function getLocalStorage(key){
     favouriteFilter = $('.filters .favourite');
     favouriteFilter.data('value', favourites);
     favourites.forEach((elem) => $(`[data-id="${elem}"]`).addClass('fav'))
+    $('.filters .favourite').toggleClass('no-favourites', !favourites.length);
   });
 
   function toggleFav(id){
-    console.log(id);
     if(!favourites.includes(id)){
       favourites.push(id);
     }
@@ -30,8 +30,10 @@ function getLocalStorage(key){
       const index = favourites.indexOf(id);
       favourites.splice(index, 1);
     }
+
     $(`[data-id="${id}"]`).toggleClass('fav');
     favouriteFilter.data('value', favourites)
     setLocalStorage('favourites', favourites);
+    $('.filters .favourite').toggleClass('no-favourites', !favourites.length);
   }
 })();

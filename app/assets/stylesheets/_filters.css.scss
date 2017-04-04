@@ -64,7 +64,7 @@
 .section .filter-list{
   display: flex;
   justify-content: space-between;
-  li:not(:last-child){
+  li{
     &:before{
       content: 'Mapping';
       font-size: $small;
@@ -75,15 +75,6 @@
         line-height: 1.5rem;
     }
   }
-  .resetter{
-    flex-basis: auto;
-    &:before{
-      vertical-align: middle;
-    }
-  }
-  li:not(.active) ~ .resetter{
-    opacity: 1;
-  }
 
   &.active{
     @include title-active();
@@ -93,7 +84,7 @@
 .filters{
   [data-value]{
     opacity: .4;
-    &.active, &:hover{
+    &.active, &:hover:not(.resetter){
       opacity: 1;
     }
   }
@@ -133,8 +124,24 @@
     margin-bottom: $lineheight-base * 2;
     &.collapsed{
       margin-bottom: 0;
+      margin-top: 0;
       max-height: 0;
     }
+  }
+}
+
+.favourite{
+  max-height: 3rem;
+  transition: all ease-in-out .3s;
+  opacity: 1;
+  pointer-events: auto;
+  margin-bottom: 1rem;
+  &.no-favourites{
+    max-height: 0rem;
+    opacity: 0;
+    pointer-events: none;
+    margin-bottom: 0rem;
+    padding-top: 0;
   }
 }
 
@@ -144,9 +151,11 @@
 
 .filters .resetter{
   opacity: 0;
-  float: right;
+  margin-bottom: 1rem;
+  pointer-events: none;
   &.active{
     opacity: 1;
+    pointer-events: auto;
   }
 }
 .filter-list.calendar{
