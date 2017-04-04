@@ -226,6 +226,7 @@ class ZoneFestival < ActiveRecord::Base
       location = Location.find_by_zf_id(loc['id'].to_i) || Location.new
       location.zf_id = loc['id'].to_i
       store_translations_for location, :name,  loc, :name
+      store_translations_for location, :infos,  loc, :description
       location.address = loc['address']
       location.latitude = loc['latitude']
       location.longitude = loc['longitude']
