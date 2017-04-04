@@ -34,8 +34,8 @@
 				.show-xs= render 'layouts/social_links'
 		%nav#turbo-nav{"data-turbolinks-permanent" => true}
 			= render 'layouts/nav_right'
+		.firefox-only= yield :thumbnails
 		%main
-			.firefox-only= yield :thumbnails
 			= yield
 		.hidden-xs.gap-before
 			= render 'layouts/locales'
