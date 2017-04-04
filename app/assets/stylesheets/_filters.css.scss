@@ -63,8 +63,14 @@
 
 .section .filter-list{
   display: flex;
-  li{
-    flex: 1 1 33%;
+  justify-content: space-between;
+  li:not(:last-child){
+    &:before{
+      content: 'Mapping';
+      font-size: $smaller;
+      vertical-align: super;
+      line-height: 1.5rem;
+    }
   }
   .resetter{
     flex-basis: auto;
@@ -75,10 +81,7 @@
   li:not(.active) ~ .resetter{
     opacity: 1;
   }
-  li:nth-child(1n):after, li:nth-child(2):after{
-    content: '/';
-    margin: auto;
-  }
+
   &.active{
     @include title-active();
   }
