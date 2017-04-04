@@ -135,10 +135,11 @@
   transition: all ease-in-out .3s;
   opacity: 1;
   pointer-events: auto;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  margin-top: 0;
   &.no-favourites{
     max-height: 0rem;
-    opacity: 0;
+    opacity: 0!important;
     pointer-events: none;
     margin-bottom: 0rem;
     padding-top: 0;
