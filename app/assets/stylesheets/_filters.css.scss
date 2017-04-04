@@ -67,9 +67,12 @@
   li:not(:last-child){
     &:before{
       content: 'Mapping';
-      font-size: $smaller;
-      vertical-align: super;
-      line-height: 1.5rem;
+      font-size: $small;
+      @media #{$tablet}{
+        font-size: $smaller;
+      }
+        vertical-align: super;
+        line-height: 1.5rem;
     }
   }
   .resetter{
