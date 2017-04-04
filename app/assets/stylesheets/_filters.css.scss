@@ -35,9 +35,11 @@
     overflow: auto;
     display: flex;
     font-weight: 400;
+    padding-top: $margin-vertical-large;
 }
 .filters-by{
   //color: $dark-grey;
+  border-top: 1px solid $white;
   width: 100%;
   & .active{
     color: $white;
@@ -99,12 +101,6 @@
 }
 
 .filter-title, .filter-list.date{
-  &:not(:first-child){
-      @include lineJump(2);
-    }
-    margin-bottom: 0.5rem;
-    padding-top: 0.5rem;
-    border-top: solid 1px white;
   &.active{
     @include title-active();
   }
@@ -158,17 +154,38 @@
     opacity: 1;
     pointer-events: auto;
   }
+  @media #{$tablet}{
+    position: absolute;
+    top: 0;
+    right: 1rem;
+  }
 }
+
+@mixin filter-list-title--inline($width){
+  flex: 0 0 3*$width;
+  margin-bottom: 0;
+  border: none;
+  text-align: left;
+}
+.filter-list-title--inline{
+  $w: 100%/7;
+  @include filter-list-title--inline($width: $w);
+  & ~ li{
+    flex: 0 0 $w!important;
+  }
+}
+
 .filter-list.calendar{
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
   $day-width: 100%/7;
-  [data-key="date"].month{
-    flex: 0 0 3*$day-width;
-    margin-bottom: 0;
-    border: none;
-    text-align: left;
+  .month{
+  flex: 0 0 3*$day-width;
+  @include filter-list-title--inline($width: 100%/7);
+  margin-bottom: 0;
+  border: none;
+  text-align: left;
   }
   .day{
     flex: 0 0 $day-width;
@@ -184,12 +201,10 @@
   flex-wrap: wrap;
   justify-content: flex-start;
   .letter{
-    flex: 0 0 25%;
     text-transform: uppercase;
   }
 }
 .date .filter-list, .artists .filter-list{
-  text-align: center;
 }
 
 .filter-list.type{

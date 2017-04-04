@@ -14,7 +14,7 @@
 
 		.filters-by
 			%ul.filter-list.calendar.date
-				%li.active.month.date{ data: { type: 'event', key: 'date', value: 'reset'} }= t('filters.by_day')
+				%li.active.month.date.filter-list-title--inline{ data: { type: 'event', key: 'date', value: 'reset'} }= t('filters.by_day')
 				- @days_range.each do |day|
 					%li.day.active{ data: { type: 'event', key: 'date', value: "#{day}-5"}}= day
 
@@ -25,7 +25,7 @@
 		-# 			%li.venue.active{ data: { type: 'event', key: 'venue', value: venue.name, collapse: '.venue .collapsible' } }= venue.name
 
 		.filters-by.artists.letter
-			.filter-title{ data: { type: 'artist', key: 'artists', value: 'reset', collapse: '.artists .collapsible' } }= t('filters.artists')
-			%ul.filter-list.collapsed.collapsible
+			%ul.filter-list
+				%li.filter-list-title--inline{ data: { type: 'artist', key: 'artists', value: 'reset', collapse: '.artists .collapsible' } }= t('filters.artists')
 				- @artists_by_letter.each do |letter|
 					%li.letter.active{ data: { type: 'artist',  key: 'letter', value: letter, collapse: '.artists .collapsible' } }= letter
