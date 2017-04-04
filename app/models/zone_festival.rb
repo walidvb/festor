@@ -73,7 +73,7 @@ class ZoneFestival < ActiveRecord::Base
         #store zf_id as the first show of the list
         event = Event.find_by_zf_id(first_show['id'].to_i) || Event.new
         if event.locked?
-          break
+          next
         end
         event.zf_id = first_show['id'].to_i
 
@@ -139,7 +139,7 @@ class ZoneFestival < ActiveRecord::Base
         Rails.logger.info "No Performance detected for #{date['name_1']}"
         event = Event.find_by_zf_id(date['id'].to_i) || Event.new
         if event.locked?
-          break
+          next
         end
         event.zf_id = date['id'].to_i;
         store_translations_for event, :title,  date, :name
