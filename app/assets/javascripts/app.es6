@@ -211,7 +211,8 @@ class Programs{
     this.programs.forEach( prog => prog.testAndActivate(keyValue) ? this.activePrograms.push(prog) : this.inactivePrograms.push(prog));
     this.artists.forEach( art =>  art.testAndActivate(keyValue) );
     this.positionAll();
-    $('main').stop().animate({ 'scrollTop': 11*14 });
+    const scrollTop = keyValue.type == 'artist' ? $('.post.active').position().top - 16*14 : 11*14;
+    $('main').stop().animate({ scrollTop }, 'ease-out');
   }
   positionAll(){
     this.positionArtistLegend();
@@ -260,6 +261,7 @@ class Programs{
     this.artists.forEach( art =>  art.sendOut() );
   }
   positionAllByTime(){
+    if(!this.activePrograms.length){return}
 
     const daysFromStartActive = this.activePrograms[0].daysFromStart;
     const hoursFromStartInactive = this.inactivePrograms.length ? this.inactivePrograms[0].hoursFromStart : 0;
