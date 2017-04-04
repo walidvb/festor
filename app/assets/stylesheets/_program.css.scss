@@ -143,7 +143,7 @@ $transition: ease-in-out;
     }
   }
   .legend .letter{
-    opacity: 0;
+    opacity: 0!important;
     pointer-events: none;
   }
   .events .letter{
@@ -157,7 +157,7 @@ $transition: ease-in-out;
     }
   }
   .legend .day{
-    opacity: 0;
+    opacity: 0!important;
     pointer-events: none;
   }
   .events .day{
