@@ -256,7 +256,11 @@ $transition: ease-in-out;
     display: initial;
     width: 100%;
     margin-bottom: 5rem;
+    flex: 1 0 100%;
   }
+}
+.post.artist{
+  flex: 1 0 50%;
 }
 
 .event-date, .event-type{
