@@ -41,7 +41,7 @@
 										- location = date.location
 										%h5.location= link_to date.location.name, venues_path(anchor: date.location.slug)
 						- if(!@event.is_workshop? && !@event.price.blank?)
-							%h5.price= @event.price
+							%h5.price= @event.price.html_safe
 						- if !@event.finished? && !@event.tickets_link.blank?
 							%h5= link_to(t('events.ticket'), event_tickets_path(@event.slug, locale: I18n.locale), class: "buy-link")
 			= render('info_block', event: @event, classes: 'show-xs')
