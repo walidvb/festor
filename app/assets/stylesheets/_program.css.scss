@@ -45,6 +45,7 @@
   }
   .tile-link {
     max-width: 19ch;
+    padding: 2rem 1rem;
   }
 }
 
@@ -211,6 +212,9 @@ $transition: ease-in-out;
     margin-bottom: 1rem;
     background-image: none!important;
     transition: transform 1s #{$transition-long} 0s, opacity .2s #{$transition-long} .15s;
+    .tile-link{
+      padding: 0;
+    }
     @for $conflict from 1 to 15{
       &[data-conflict-count="#{$conflict}"]{
         width: 100%/$conflict;

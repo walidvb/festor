@@ -4,7 +4,7 @@ ul.thumbnails{
   top: 0;
   right: 0;
   height: 100%;
-  width: calc(100% - #{$nav-width});
+  width: calc(100vw - #{$nav-width});
   pointer-events: none;
   li {
     position: absolute;
