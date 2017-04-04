@@ -1,64 +1,42 @@
-- if Rails.env.production? && !(user_signed_in? || cookies[:beta].present?)
-	.drawer-container
-		%ul.nav
-			- if !@messages.empty?
-				%li.gap-after
-					%a{href: '#', "data-drawer" => '#nav-news'}= t('nav.news')
-
-			%li= render 'layouts/newsletter_button'
-			%li= link_to t('nav.contact'), 'mailto:nous@mappingfestival.com'
-			%li= link_to t('nav.about'), about_path(locale: I18n.locale)
-			%li.gap-after= link_to t('nav.archives'), about_path(anchor: 'archives', locale: I18n.locale)
-			%script{:src => "//app.mailerlite.fr/js/w/button.js", :type => "text/javascript", defer: true}
-
+.drawer-container
+	%ul.nav
+		%li.gap-after
+			= link_to t('nav.program'), program_path(locale: I18n.locale), data: { drawer: '#nav-program', "direct-link" => true }
+		%li.gap-after
+			= link_to t('nav.venues'), venues_path(locale: I18n.locale), data: { drawer: '#nav-venues' , "direct-link" => true }
+		- if @exhib
+			%li.gap-after
+				= link_to t('nav.exhibition'), event_path(@exhib, locale: I18n.locale), data: { drawer: '#nav-exhib' }
+		- if !@messages.empty?
+			%li
+				%a{href: '#', "data-drawer" => '#nav-news'}= t('nav.news')
+		- if @settings.tickets
+			%li= link_to t('nav.tickets'), tickets_path(locale: I18n.locale)
+		- if @settings.volunteers
+			%li= link_to t('nav.volunteers'), volunteers_path(locale: I18n.locale)
+		%li.gap-before= link_to t('nav.about'), about_path(locale: I18n.locale)
+		%li= link_to t('nav.archives'), about_path(anchor: 'archives', locale: I18n.locale)
+		%li= link_to t('nav.partners'), partners_path(locale: I18n.locale)
+		%li= link_to t('nav.contact'), 'mailto:nous@mappingfestival.com'
+		%li= render 'layouts/newsletter_button'
+	- if @exhib
+		.drawer#nav-exhib
+			.back.rotate-mobile <
+			%p= @exhib.short_description.try(:html_safe)
+			.more-info= link_to t('shared.more_info'), event_path(@exhib, locale: I18n.locale)
+	- if !@messages.empty?
 		.drawer#nav-news
-			.back <
+			.back.rotate-mobile < Menu
 			%ul
 				- @messages.each do |message|
 					%li.message
 						= message.message.html_safe
 					=# link_to message.link, class: [message.colorbox? ? 'colorbox' : nil].join(' ') do
-
-- else
-	.drawer-container
-		%ul.nav
-			%li.gap-after
-				= link_to t('nav.program'), program_path(locale: I18n.locale), data: { drawer: '#nav-program', "direct-link" => true }
-			%li.gap-after
-				= link_to t('nav.venues'), venues_path(locale: I18n.locale), data: { drawer: '#nav-venues' , "direct-link" => true }
-			- if @exhib
-				%li.gap-after
-					= link_to t('nav.exhibition'), event_path(@exhib, locale: I18n.locale), data: { drawer: '#nav-exhib' }
-			- if !@messages.empty?
-				%li
-					%a{href: '#', "data-drawer" => '#nav-news'}= t('nav.news')
-			- if @settings.tickets
-				%li= link_to t('nav.tickets'), tickets_path(locale: I18n.locale)
-			- if @settings.volunteers
-				%li= link_to t('nav.volunteers'), volunteers_path(locale: I18n.locale)
-			%li.gap-before= link_to t('nav.about'), about_path(locale: I18n.locale)
-			%li= link_to t('nav.archives'), about_path(anchor: 'archives', locale: I18n.locale)
-			%li= link_to t('nav.partners'), partners_path(locale: I18n.locale)
-			%li= link_to t('nav.contact'), 'mailto:nous@mappingfestival.com'
-			%li= render 'layouts/newsletter_button'
-		- if @exhib
-			.drawer#nav-exhib
-				.back.rotate-mobile <
-				%p= @exhib.short_description.try(:html_safe)
-				.more-info= link_to t('shared.more_info'), event_path(@exhib, locale: I18n.locale)
-		- if !@messages.empty?
-			.drawer#nav-news
-				.back.rotate-mobile < Menu
-				%ul
-					- @messages.each do |message|
-						%li.message
-							= message.message.html_safe
-						=# link_to message.link, class: [message.colorbox? ? 'colorbox' : nil].join(' ') do
-		.drawer#nav-program
-			.back.rotate-mobile < Menu
-			= render 'layouts/filters'
-		.drawer#nav-venues
-			.back.rotate-mobile < Menu
-			.location-list{'data-turbolinks' => 'false'}
-				- @locations.each do |loc|
-					= link_to loc.name,	"##{loc.slug}", class: 'location-link', data: { title: loc.slug}
+	.drawer#nav-program
+		.back.rotate-mobile < Menu
+		= render 'layouts/filters'
+	.drawer#nav-venues
+		.back.rotate-mobile < Menu
+		.location-list{'data-turbolinks' => 'false'}
+			- @locations.each do |loc|
+				= link_to loc.name,	"##{loc.slug}", class: 'location-link', data: { title: loc.slug}
