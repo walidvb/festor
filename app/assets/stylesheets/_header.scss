@@ -53,6 +53,15 @@ nav{
 }
 
 @media #{$tablet}{
+	.logo{
+		max-width: 20vw;
+		a{
+	    display: inline-block;
+	    max-width: 100%;
+	    white-space: nowrap;
+		}
+	}
+
 	footer, .locales{
 		text-align: right;
 		position: fixed;
