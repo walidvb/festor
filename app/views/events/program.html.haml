@@ -3,8 +3,9 @@
 - content_for(:description, "Everything you need to know, day by day")
 
 - if @event_dates.empty?
-	.full-content
-		%h1 No event published
+	.full-content{style: "margin-top: 16rem"}
+		%h1 Program coming soon!
+	}
 - else
 	- content_for :thumbnails do
 		%ul.thumbnails
