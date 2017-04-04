@@ -24,9 +24,7 @@
     $($menu).removeClass('drawer-open');
   }
   $(document).on('touch click', '.drawer .back', closeDrawer);
-  $(document).on('close-drawer', () => {
-    closeDrawer();
-  });
+  $(document).on('close-drawer', closeDrawer );
 
   $(document).on('turbolinks:before-visit', e => $('.full-content, #program.in').addClass('exit'));
   $(document).on('turbolinks:before-render', e => $('.exit').removeClass('exit'));
