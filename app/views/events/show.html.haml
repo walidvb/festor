@@ -22,7 +22,10 @@
 				%h2= small
 				.event-infos
 					.event-dates
-						- if @event.all_day?
+						- if /disno/i.match(@event.title)
+							%h5.day
+								= link_to @event.location.name, venues_path(anchor: @event.location.slug)
+						- elsif @event.all_day?
 							- start = @dates.first
 							- last = @dates.last
 							%h5.day
