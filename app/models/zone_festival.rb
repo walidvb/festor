@@ -285,6 +285,14 @@ class ZoneFestival < ActiveRecord::Base
   def create_description_from shows, date, event
     {fr: '1', en: '2'}.each do |locale, value|
       I18n.locale = locale
+      ordered_shows = shows.sort_by do |show|
+        show_id = show['id']
+        date_id = date['id']
+        time = data['program_show_list'].find{|ps| ps['show_id'] == show_id && ps['program_id'] == date_id}
+        time['time']
+
+      end
+
       description = shows.map do |show|
         t = show["title_#{value}"]
         d = show["description_long_#{value}"]
