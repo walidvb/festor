@@ -35,5 +35,5 @@
 					.line-break
 				- last_key = curr_key
 				.post.out.artist.stagger{ id: "artist-#{artist.id}", data: { letter: curr_key, "artist-id": artist.id, type: 'event', key: 'artists', value: artist.slug  } }
-					.info{data: {}}
+					.info.artist-info{data: {}}
 						%h3.event-artist= artist.name

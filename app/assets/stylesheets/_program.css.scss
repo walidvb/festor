@@ -272,6 +272,12 @@ $transition: ease-in-out;
   flex: 1 0 50%;
 }
 
+.artist-info{
+  width: 80%;
+  height: 80%;
+  display: table;
+}
+
 .event-date, .event-type{
   display: inline-block;
 }
