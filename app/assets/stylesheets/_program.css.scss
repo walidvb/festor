@@ -45,7 +45,6 @@
   }
   .tile-link {
     max-width: 19ch;
-    padding: 2rem 1rem;
   }
 }
 
@@ -209,6 +208,9 @@ $transition: ease-in-out;
   }
   background-size: 100% auto;
   background-position: center;
+  .tile-link{
+    padding: 2rem 1rem;
+  }
   @media #{$tablet}{
     max-width: 50%;
     max-height: auto;
