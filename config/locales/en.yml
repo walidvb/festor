@@ -43,6 +43,7 @@ en:
     by_day: 'May'
     by_venue: 'Location'
     artists: 'Artists'
+    all: 'See all'
   artists:
     types:
       dj: 'dj'
