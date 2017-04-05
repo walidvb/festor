@@ -65,7 +65,7 @@ class Program{
         thumbnail.addClass('in');
       }
     }
-    const trigger = this.type == artist ? this.elem : this.elem.find('.tile-link, .artist-info')
+    const trigger = this.type == 'artist' ? this.elem : this.elem.find('.tile-link, .artist-info')
     trigger.on('mousemove', showImg)
       .hover( showImg ,
       (ev) => {
