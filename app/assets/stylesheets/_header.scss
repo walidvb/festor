@@ -25,11 +25,16 @@
 	font-size: .8em;
 }
 nav{
-	z-index: 1000;
+	background: rgba(0,0,0,.7);
+	z-index: 1010;
 	border-top: solid 1px $white;
 	border-bottom: solid 1px $white;
 	padding: 5px 0;
 	overflow-y: hidden;
+	@media #{$mobile}{
+		position: sticky;
+		top: 1rem;
+	}
 	@media #{$tablet}{
 		border-top: none;
 		border-bottom: none;

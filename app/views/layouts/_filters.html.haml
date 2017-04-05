@@ -10,7 +10,7 @@
 					%li.active{ data: { type: 'event', key: 'section', value: sec}}
 						= sec.gsub(/Mapping /i, '')
 
-		.filter-title.favourite.filters-by{ data: { type: 'event', key: 'id', value: 'reset' } } #{t('filters.favourites')} #{fa_icon('star')}
+		.favourite.filters-by{ data: { type: 'event', key: 'id', value: 'reset' } } #{t('filters.favourites')} #{fa_icon('star')}
 
 		.filters-by
 			%ul.filter-list.calendar.date

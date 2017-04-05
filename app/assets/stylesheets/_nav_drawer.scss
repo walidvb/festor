@@ -99,8 +99,12 @@ $drawer-side-padding: 1rem;
   }
   &:after{
     content: '>';
+    margin-left: 0.5rem;
+    margin-top: 0.1rem;
     @media #{$tablet}{
       float: right;
+      margin-left: 0;
+      margin-top: 0;
     }
     display: inline-block;
   }
