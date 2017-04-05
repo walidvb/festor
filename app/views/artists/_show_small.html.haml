@@ -13,4 +13,4 @@
 	- if !links.empty?
 		%ul.links
 			- links.each do |l|
-				%li.link= link_to image_tag("social_icons/#{l.text_to_show.parameterize}"), l.url, target: "_blank", class: [l.text_to_show.parameterize, 'social-icon'].join(' ')
+				%li.link= link_to image_tag(image_path("social_icons/#{l.text_to_show.parameterize}.png")), l.url, target: "_blank", class: [l.text_to_show.parameterize, 'social-icon'].join(' ')

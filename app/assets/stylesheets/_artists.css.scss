@@ -8,6 +8,8 @@
   @media #{$tablet}{
     margin-top: $lineheight-base * 4;
     transform: none;
+    margin-left: -20vw;
+    padding-left: 20vw;
   }
 }
 .artist-single{
