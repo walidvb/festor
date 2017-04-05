@@ -88,8 +88,7 @@ class ZoneFestival < ActiveRecord::Base
           store_translations_for event, :description,  date, :description
 
           desc_empty = date['description_1'].empty? && date['description_2'].empty?
-          group_descriptions = /conf|perf/i.match(sub_section["name_1"])
-          if group_descriptions
+          if sub_section && group_descriptions = /conf|perf/i.match(sub_section["name_1"])
             Rails.logger.info "Grouping Performances descriptions for #{date['name_1']}"
             create_description_from shows, date, event
           end
