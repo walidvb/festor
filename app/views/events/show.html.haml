@@ -29,6 +29,8 @@
 							- start = @dates.first
 							- last = @dates.last
 							%h5.day
+								= link_to @event.location.name, venues_path(anchor: @event.location.slug)
+							%h5.day
 								= [start.start, last.end].map{|d| l(d, format: "%A %e")}.join(' – ')
 								= l(last.start, format: "%b")
 							%h5.time= [start.start, last.end].map{|d| l(d, format: "%H:%M")}.join(' – ')
