@@ -145,7 +145,7 @@ function openInfoWindow(map, index, latitude, longitude, title, adresse, infos, 
 	newInfoWindow = new google.maps.InfoWindow({
 		content: loading
 	});
-	newInfoWindow.setContent('<div class="marker-content"><h5 class="marker-title">' + title[index] + '</h5><p class="address">' + adresse[index] + '</p></div>');
+	newInfoWindow.setContent('<div class="marker-content"><h5 class="marker-title">' + title[index] + '</h5><p class="address">' + infos[index] + '</p></div>');
 	markerArray[index].setZIndex(300);
 	newInfoWindow.open(map, markerArray[index]);
 	map.panTo(newCenter);
