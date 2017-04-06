@@ -69,7 +69,7 @@ en:
       material:     'Required material'
       price:        'Price'
       notes:        'Notes'
-
+      registration: 'Registration'
     types:
       workshop:   "Workshops & Talks"
       exhibition: "Installation"

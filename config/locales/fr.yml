@@ -63,6 +63,7 @@ fr:
       material:     'Matériel à fournir'
       price:        'Prix'
       notes:        'Remarques'
+      registration: 'Inscription'
     types:
       workshop:     "workshop & talk"
       exhibition:   "installation"
