@@ -3,23 +3,23 @@
     - if !event.price.blank? && event.is_workshop?
       %tr.price
         %td.left-info= t('events.fields.price')
-        %td.right-info= event.price
+        %td.right-info= event.price.html_safe
     - unless event.participants.blank?
       %tr.participants
         %td.left-info= t('events.fields.participants')
-        %td.right-info= event.participants
+        %td.right-info= event.participants.html_safe
     - unless event.languages.blank?
       %tr.languages
         %td.left-info= t('events.fields.languages')
-        %td.right-info= event.languages
+        %td.right-info= event.languages.html_safe
     - unless event.requirements.blank?
       %tr.requirements
         %td.left-info= t('events.fields.requirements')
-        %td.right-info= event.requirements
+        %td.right-info= event.requirements.html_safe
     - unless event.material.blank?
       %tr.material
         %td.left-info= t('events.fields.material')
-        %td.right-info= event.material
+        %td.right-info= event.material.html_safe
     - unless event.registration.blank?
       %tr.registration
         %td.left-info= t('events.fields.registration')
