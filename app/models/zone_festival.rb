@@ -31,6 +31,11 @@ class ZoneFestival < ActiveRecord::Base
     return ZoneFestival.sync! zf
   end
 
+  def unset_sync
+    self.syncing = false
+    self.save!
+  end
+
   def store_locally!
     zf = self.data
     Rails.logger.info "processing venues"
@@ -127,7 +132,6 @@ class ZoneFestival < ActiveRecord::Base
             end
             store_artists_from_shows [show], event, zf
           end
-
           event_date.event = event
           event_date.save!
           next
@@ -186,8 +190,7 @@ class ZoneFestival < ActiveRecord::Base
       event_date.save!
       store_artists_from_shows shows, event, zf
     end
-    self.syncing = false
-    self.save!
+    self.delay.unset_sync
   end
 
   private
@@ -199,6 +202,9 @@ class ZoneFestival < ActiveRecord::Base
         artists.each do |art|
           Rails.logger.info "processing #{art['name']}"
           artist = Artist.find_or_create_by!(name: art['name'])
+          if artist.locked?
+            next
+          end
           artist.name = art['name']
           artist.label = ev['art_direction']
           artist.country = IsoCountryCodes.search_by_name(art['country_2']).map(&:iban).join(', ')
@@ -217,6 +223,7 @@ class ZoneFestival < ActiveRecord::Base
         end
       end
     end
+    Rails.logger.info "Finished storing artists from #{shows.count} into #{event.title}"
   end
 
   def store_venues zf
