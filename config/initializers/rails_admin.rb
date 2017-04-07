@@ -24,8 +24,8 @@ RailsAdmin.config do |config|
     dashboard do
       except nested_only
     end
+    toggle
     index do
-      toggle
     end
     new do
       except ['Settings']

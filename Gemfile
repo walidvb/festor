@@ -40,10 +40,11 @@ gem 'iso_country_codes'
 gem "autoprefixer-rails"
 
 gem 'rails_admin', '~> 1.1.1'
+# gem "rails_admin", github: 'sferik/rails_admin', ref: '0eaaac5'
 gem 'rails_admin_toggleable'
 
 
-#gem "rails_admin", github: 'sferik/rails_admin', ref: '0eaaac5'
+
 gem "auto_html", '~> 1.6.4'
 #### I18
 gem 'rails-i18n'
