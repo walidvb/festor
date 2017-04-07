@@ -8,7 +8,7 @@
       %tr.participants
         %td.left-info= t('events.fields.participants')
         %td.right-info= event.participants.html_safe
-    - unless event.languages.blank?
+    - unless strip_tags(event.languages).blank?
       %tr.languages
         %td.left-info= t('events.fields.languages')
         %td.right-info= event.languages.html_safe
@@ -16,7 +16,7 @@
       %tr.requirements
         %td.left-info= t('events.fields.requirements')
         %td.right-info= event.requirements.html_safe
-    - unless event.material.blank?
+    - unless strip_tags(event.material).blank?
       %tr.material
         %td.left-info= t('events.fields.material')
         %td.right-info= event.material.html_safe
@@ -24,7 +24,7 @@
       %tr.registration
         %td.left-info= t('events.fields.registration')
         %td.right-info= event.registration.html_safe
-    - unless event.notes.blank?
+    - unless strip_tags(event.notes).blank?
       %tr.notes
         %td.left-info= t('events.fields.notes')
         %td.right-info= event.notes.html_safe
