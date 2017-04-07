@@ -4,7 +4,9 @@
 */
 
 body.rails_admin {
-
+  .tab-content > .active{
+    display: inline-block;
+  }
   .thumbnail {
     display:inline-block;
   }
