@@ -7,7 +7,7 @@ class Booking < ActiveRecord::Base
 	#validates :artist, presence: true
 
 	def title
-		"#{artist.try(:name)} - #{event.title}"
+		"#{artist.try(:name)} - #{event.try(:title)}"
 	end
 	rails_admin do
 		list do
