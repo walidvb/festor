@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 ruby '2.2.5'
-gem 'rails', '4.1'
+gem 'rails', '4.2'
 gem 'pg'
 gem 'sass-rails'
 gem 'uglifier', '2.5.3'
@@ -13,7 +13,7 @@ gem 'jbuilder', '2.1.3'
 gem 'haml-rails'
 gem 'bcrypt', '3.1.7'
 gem 'puma'
-gem 'devise', '3.3.0'
+gem 'devise'#, '3.3.0'
 gem 'bootstrap-sass', '3.2.0.2'
 gem 'kaminari', '0.16.1'
 gem 'font-awesome-sass', '4.2.0'
@@ -39,10 +39,12 @@ gem 'iso_country_codes'
 #### UI
 gem "autoprefixer-rails"
 
-gem "rails_admin", github: 'sferik/rails_admin', ref: '0eaaac5'
+gem 'rails_admin', '~> 1.1.1'
+
+#gem "rails_admin", github: 'sferik/rails_admin', ref: '0eaaac5'
 gem "auto_html", '~> 1.6.4'
 #### I18
-gem 'rails-i18n', '~> 4.0.0'
+gem 'rails-i18n'
 gem 'globalize'
 gem 'rails_admin_globalize_field'
 gem 'friendly_id', '5.0.4'

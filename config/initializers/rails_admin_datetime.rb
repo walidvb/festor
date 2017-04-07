@@ -1,5 +1,5 @@
 require 'rails_admin/config/fields/base'
-require 'rails_admin/i18n_support'
+# require 'rails_admin/i18n_support'
 
 module RailsAdmin
   module Config
