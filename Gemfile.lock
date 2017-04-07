@@ -520,6 +520,8 @@ GEM
       globalize (>= 5.0)
       rails (>= 4.2)
       rails_admin (>= 0.6.2)
+    rails_admin_toggleable (0.7.1)
+      rails_admin
     rails_autolink (1.1.6)
       rails (> 3.1)
     rails_layout (1.0.21)
@@ -689,6 +691,7 @@ DEPENDENCIES
   rails_12factor
   rails_admin (~> 1.1.1)
   rails_admin_globalize_field
+  rails_admin_toggleable
   rails_autolink
   rails_layout (= 1.0.21)
   rb-fchange
