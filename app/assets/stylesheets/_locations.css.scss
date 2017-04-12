@@ -2,6 +2,7 @@
 	max-width: auto;
 }
 
+
 @media #{$tablet}{
 	.location-main{
 		display: flex;
@@ -30,6 +31,13 @@
 		width: auto;
 		#google-map{
 			flex: 1 0 100%;
+		}
+	}
+	a{
+		color: $black;
+		text-decoration: underline;
+		&:hover{
+			text-decoration: none;
 		}
 	}
 }
