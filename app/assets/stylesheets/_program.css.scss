@@ -182,12 +182,12 @@ $transition: ease-in-out;
 
 .post{
   flex: 1 0 100%;
-  padding-left: $margin-horizontal-normal;
+  
   transition: all .6s #{$transition-long};
   will-change: transform opacity;
   display: block;
   will-change: transform opacity;
-  border-left: solid 1px $white;
+  
   &.in{
     z-index: 1000;
   }
@@ -216,6 +216,8 @@ $transition: ease-in-out;
     max-height: auto;
     margin-bottom: 1rem;
     background-image: none!important;
+    border-left: solid 1px $white;
+    padding-left: $margin-horizontal-normal;
     transition: transform 1s #{$transition-long} 0s, opacity .2s #{$transition-long} .15s;
     .tile-link{
       padding: 0;
