@@ -11,7 +11,11 @@ class EventDate < ActiveRecord::Base
 
 
   def title
-    "#{start.strftime("%B %m, %H:%M")}"
+    if start.nil?
+      "No start"
+    else
+      "#{start.strftime("%B %m, %H:%M")}"
+    end
   end
 
   def duration
