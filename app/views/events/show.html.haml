@@ -7,7 +7,7 @@
 	.admin-entry
 		- if user_signed_in?
 			= link_to 'edit', "/admin/event/#{@event.id}/edit", data: {turbolinks: "false"}
-	- cache(I18n.locale.to_s + @dates.map(&:updated_at).join('-') + @event.updated_at.to_s + @event.id.to_s) do
+	- cache(I18n.locale.to_s + @dates.map(&:updated_at).join('-') + @event.updated_at.to_s + @event.id.to_s + @artists.map(&:updated_at).join('-').to_s) do
 		- location = @dates.first.location
 		#main-content.main{ data: { id: @event.id }}
 			- _switch = @event.artists_as_title?

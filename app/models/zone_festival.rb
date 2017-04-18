@@ -190,7 +190,11 @@ class ZoneFestival < ActiveRecord::Base
       event_date.save!
       store_artists_from_shows shows, event, zf
     end
-    self.delay.unset_sync
+    if Rails.env.production? 
+      self.delay.unset_sync
+    else
+      self.unset_sync
+    end
   end
 
   private
@@ -207,7 +211,7 @@ class ZoneFestival < ActiveRecord::Base
           end
           artist.name = art['name']
           artist.label = ev['art_direction']
-          artist.country = IsoCountryCodes.search_by_name(art['country_2']).map(&:iban).join(', ')
+          artist.country = IsoCountryCodes.search_by_name(art['country_2']).map(&:alpha2).join(', ') if artist.country.blank?
           artist.zf_id = art['id'].to_i
           store_translations_for artist, :biography, art, :biography
           art['website'].each do |web|
