@@ -15,6 +15,7 @@
 //= require jquery_ujs
 //= require vendors/imagesloaded.pkgd.min
 //= require vendors/dragscroll/dragscroll
+//= require vendors/shake
 //= require home.js
 //= require rails_admin_sortable.js
 //= require_tree .

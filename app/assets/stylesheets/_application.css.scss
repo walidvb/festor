@@ -66,6 +66,15 @@ body{
 			height: auto;
 		}
 	}
+	@media #{$mobile}{
+		transform: none!important;
+		height: 100vh;
+		background-size: cover;
+		background-position: right;
+		img{
+			display: none!important;
+		}
+	}
 }
 
 .background-changer{

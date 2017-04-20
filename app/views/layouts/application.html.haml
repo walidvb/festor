@@ -26,6 +26,10 @@
 	%body{class: ["#{controller.controller_name}-page", "#{controller.action_name}-page", "#{'debug' if Rails.env.development?}", "#{current_user.nil? ? nil : 'admin'}", content_for(:body_class)].join(' ')}
 		:javascript
 			BACKGROUND_IMAGES_COUNT = #{ENV['BACKGROUND_IMAGES_COUNT']};
+		:css
+			#background{
+				background-image: url(#{@background});
+			}
 		#background{"data-turbolinks-permanent" => true} 
 			=image_tag @background, width: 1678, height: 2481
 		%header#turbo-header{"data-turbolinks-permanent" => true}

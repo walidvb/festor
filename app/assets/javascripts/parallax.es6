@@ -64,6 +64,8 @@
 			changeBack();
 		}
 	});
+	attachShake(changeBack);
+
 	let rdms = [];
 
 	function setRandomNumber(){
@@ -85,6 +87,9 @@
 		var img = new Image();
 		img.onload = () => {
 			bckElem.attr('src', newBck);
+			$back.css({
+				backgroundImage: `url(${newBck})`
+			})
 			$('body').removeClass('loading');
 			$('#rdm').text(rdm);
 			changing = false;
@@ -94,5 +99,15 @@
 		setTimeout(() => {
 			img.src = newBck;
 		}, 500);
+	}
+
+	function attachShake(cb){
+		var myShakeEvent = new Shake({
+	    threshold: 15, // optional shake strength threshold
+	    timeout: 1000 // optional, determines the frequency of event generation
+		});
+		myShakeEvent.start();
+		window.addEventListener('shake', cb, false);
+
 	}
 })();
