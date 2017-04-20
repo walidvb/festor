@@ -12,7 +12,7 @@
     @media #{$mobile}{
       padding: 0;
       max-height: initial;
-      perspective: initial!important;
+
     }
   }
 }
@@ -252,6 +252,13 @@ $transition: ease-in-out;
         $black: transparent;
         text-shadow: none;//#{$shadow} -$shadow $black, $shadow $shadow $black, -$shadow $shadow $black, -$shadow -#{$shadow} $black;
       }
+    }
+  }
+
+  @media #{$mobile}{
+    a{
+      background: rgba(0,0,0,.2);
+      display: block;
     }
   }
 }

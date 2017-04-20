@@ -44,10 +44,12 @@ class Program{
 
     this.isSentOut = false;
     this.isEntering = true;
-    this._bindHover();
     if(smallScreen()){
       const backgroundImage = this.elem.data('image');
       this.elem.css({ backgroundImage: `url(${backgroundImage})` });
+    }
+    else{
+      this._bindHover();
     }
   }
   _bindHover(){

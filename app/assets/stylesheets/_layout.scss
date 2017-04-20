@@ -72,6 +72,9 @@ main, .main{
 }
 
 @media #{$mobile}{
+	header{
+		padding: 0 10px;
+	}
 	nav{
 		border-top: 1px solid transparent;
 		position: sticky;
