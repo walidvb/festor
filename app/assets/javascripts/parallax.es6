@@ -7,7 +7,8 @@
 	$(document).on('turbolinks:load', () => {
 		$(scrollSelector).on('scroll', handleParallax);
 		setSize();
-		setBackPosition('translateY(0px)', true)
+		// setBackPosition('translateY(0px)', true)
+		$(scrollSelector).stop().animate({scrollTop: 0});
 	})
 	function setSize(){
 		$back = $('#background');
@@ -49,8 +50,11 @@
 	}
 
 	function setBackPosition(transform, animate = false){
-		const fn = animate ? 'transition' : 'css';
-		$back[fn]({ transform })
+		if(animate){
+			console.log("$back:", $back);
+			// $(scrollSelector).stop().animate({scrollTop: 0});
+		}
+		$back.css({ transform });
 	}
 
 	let changing = false;
