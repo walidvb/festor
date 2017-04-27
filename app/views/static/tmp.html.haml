@@ -2,21 +2,6 @@
   main{
   height: 100vh;
   }
-- if !user_signed_in?
-  .volets
-    = link_to program_path(locale: I18n.locale), class: "volet full-content stagger", data: { type: 'event',  key: 'section' , value: 'Mapping EXPO' } do
-      %h2 Mapping Expo
-      .dates 11 – 28.5.2017
-
-    .volet.full-content.stagger
-      %h2 Mapping Lab
-      .dates 18 – 28.5.2017
-
-    .volet.full-content.stagger
-      %h2 Mapping Live
-      .dates 24 – 28.5.2017
-
-- else
   .volets
     = link_to program_path(locale: I18n.locale), class: "volet full-content stagger", data: { type: 'event',  key: 'section' , value: 'Mapping EXPO' } do
       %h2 Mapping Expo
