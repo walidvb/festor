@@ -37,6 +37,10 @@
 	display: none;
 }
 
+.show-desc img{
+	float: left;
+}
+
 .wrapper.col-sm-2 {
 	@media #{$tablet}{
 		margin-bottom: 2rem;
