@@ -29,3 +29,4 @@
 				%li.filter-list-title--inline{ data: { type: 'artist', key: 'artists', value: 'reset', collapse: '.artists .collapsible' } }= t('filters.artists')
 				- @artists_by_letter.each do |letter|
 					%li.letter.active{ data: { type: 'artist',  key: 'letter', value: letter, collapse: '.artists .collapsible' } }= letter
+		= link_to 'PDF', image_path('program.pdf'), download: true, target: '_blank'

@@ -4,6 +4,8 @@
 		%span#rdm #{@rdm}
 		%span /
 		%span #{ENV['BACKGROUND_IMAGES_COUNT']}
+	%span.program
+		= link_to 'Program PDF', image_path('program.pdf'), download: 'program.pdf', target: '_blank'
 	- if I18n.locale == :fr
 		%li.locale
 			#{link_to("EN", url_for(locale: :en), class: "en", "data-lang" => :en)}

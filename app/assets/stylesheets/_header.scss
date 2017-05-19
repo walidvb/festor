@@ -20,7 +20,11 @@
 		}
 	}
 }
-
+.nav .gap-after.program-gap{
+	border-right: none!important;
+	margin-right: 0;
+	padding-right: 1em;
+}
 .more-info{
 	font-size: .8em;
 }
@@ -75,12 +79,13 @@ nav{
 	footer{
 		bottom: 2rem;
 	}
+
 	.locales{
 		font-size: smaller;
 		top: 1.5rem;
 		cursor: pointer;
 	}
-	.background-changer{
+	.background-changer, .program{
 		margin-right: 3rem;
 	}
 	.background-changer, .locale{
