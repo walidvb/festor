@@ -130,7 +130,9 @@ $transition: ease-in-out;
     .day, .letter{
       right: $margin-horizontal-normal/2;
       left: auto;
-      padding: 1rem 5px;
+      padding: 0rem 5px 1rem;
+      font-size: 1.5rem;
+      font-weight: bold;
     }
   }
 
@@ -166,7 +168,9 @@ $transition: ease-in-out;
 }
 
 .events .day, .events .letter{
-  transform: none!important;
+  @media #{$mobile}{
+    transform: none!important;
+  }
   padding: 5px $margin-horizontal-normal;
   border-bottom: 1px solid $white;
   margin: $margin-horizontal-normal 0;
@@ -174,19 +178,29 @@ $transition: ease-in-out;
   &.hidden{
     display: none!important;
   }
+}
+.events .day{
   @media #{$tablet}{
-    display: none!important;
+    padding: 0!important;
+    border-top: 1px solid $white;
+    border-bottom: none;
+    pointer-events: none;
+    margin: 0;
+    position: absolute;
+    margin-top: -$margin-horizontal-normal;
+    margin-left: -5rem;
+    width: calc(100% + 5rem);
+    span{
+      display: none;
+    }
   }
 }
 
-
 .post{
   flex: 1 0 100%;
-  
   transition: all .6s #{$transition-long};
   will-change: transform opacity;
   display: block;
-  will-change: transform opacity;
   
   &.in{
     z-index: 1000;

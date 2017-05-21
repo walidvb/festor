@@ -3,7 +3,8 @@
 - event_dates.each do |event_date|
   - if day != event_date.start.to_date
     - day = event_date.start.to_date
-    .day{"data-date" => day.strftime(date_format_for_machine)}= l(day, format: "%A %e %B")
+    .day{"data-date" => day.strftime(date_format_for_machine)}
+      %span= l(day, format: "%A %e %B")
   - event = event_date.event
   - if event.published? || user_signed_in? || cookies[:beta].present?
     - artists = event.artists.order(:position)
