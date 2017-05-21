@@ -1,17 +1,20 @@
-:css
-  main{
-    height: 100vh;
-    padding-bottom: 10vh;
-  }
-.volets
-  = link_to program_path(locale: I18n.locale), class: "volet full-content stagger", data: { type: 'event',  key: 'section' , value: 'Mapping EXPO' } do
-    %h2 Mapping Expo
-    .dates 11 – 28.5.2017
+.row
+  .volets.col-xs-5.col-sm-2.col-md-1
+    = link_to program_path(locale: I18n.locale), class: "volet stagger", data: { type: 'event',  key: 'section' , value: 'Mapping EXPO' } do
+      %h2 Mapping Expo
+      .dates 11 – 28.5.2017
 
-  = link_to program_path(locale: I18n.locale), class: "volet full-content stagger", data: { type: 'event', key: 'section' , value: 'Mapping LAB' } do
-    %h2 Mapping Lab
-    .dates 18 – 28.5.2017
+    = link_to program_path(locale: I18n.locale), class: "volet stagger", data: { type: 'event', key: 'section' , value: 'Mapping LAB' } do
+      %h2 Mapping Lab
+      .dates 18 – 28.5.2017
 
-  = link_to program_path(locale: I18n.locale), class: "volet full-content stagger", data: { type: 'event', key: 'section' , value: 'Mapping LIVE' } do
-    %h2 Mapping Live
-    .dates 24 – 28.5.2017
+    = link_to program_path(locale: I18n.locale), class: "volet stagger", data: { type: 'event', key: 'section' , value: 'Mapping LIVE' } do
+      %h2 Mapping Live
+      .dates 24 – 28.5.2017
+
+  .col-xs-5.col-sm-3.col-md-4.news-container
+    %h1 News
+    %ul
+      - @messages.each do |message|
+        %li.message
+          = message.message.html_safe

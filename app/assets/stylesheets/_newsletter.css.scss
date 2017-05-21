@@ -22,8 +22,10 @@
   padding: 0;
 }
 
-.message{
+body .message{
 	font-size: .8em;
-	border-bottom: solid $white 1px;
+	border-top: solid $white 1px;
+  border-bottom: none;
   padding: 1rem 0;
+  max-width: 56ch;
 }
