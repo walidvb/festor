@@ -24,13 +24,16 @@
   .volet{
     margin-bottom: $margin-vertical-largest;
     display: inline-block;
+    &:hover{
+      text-decoration: none;
+    }
     @media #{$tablet}{
       display: block;
     }
   }
   h2{
     margin-bottom: $margin-vertical-normal;
-    font-size: 1.2em;
+    font-size: 1.2rem;
     font-weight: bold;
     border-bottom: 1px solid $white;
     padding-bottom: 1rem;
@@ -45,20 +48,16 @@
       padding-top: 3rem;
     }
   }
-  @media #{$sm}{
-    main{
-      padding-top: 10rem;
-    }
-    .volets{
-      padding-top: 6rem;
-    }
-  }
   .news-container{
+    @media #{$sm}{
+      padding-left: 3rem;
+    }
+    padding-top: calc(2.2rem + 1px);
     h1{
       font-size: 36px;
-      padding-bottom: calc(6rem - 7px);
-      @media #{$md}{
-        padding-bottom: 6rem;
+      @media #{$sm}{
+        position: absolute;
+        top: -8rem;
       }
     }
   }
