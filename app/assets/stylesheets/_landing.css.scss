@@ -59,6 +59,9 @@
         position: absolute;
         top: -7rem;
       }
+      @media #{$md}{
+        top: -6.2rem;
+      }
     }
   }
 }

@@ -8,9 +8,6 @@
 		- if @exhib
 			%li.gap-after
 				= link_to t('nav.exhibition'), event_path(@exhib, locale: I18n.locale), data: { drawer: '#nav-exhib' }
-		- if !@messages.empty?
-			%li
-				%a{href: '#', "data-drawer" => '#nav-news'}= t('nav.news')
 		- if @settings.tickets
 			%li= link_to t('nav.tickets'), tickets_path(locale: I18n.locale)
 		- if @settings.volunteers
@@ -27,16 +24,6 @@
 				Menu
 			%p= @exhib.short_description.try(:html_safe)
 			.more-info= link_to t('shared.more_info'), event_path(@exhib, locale: I18n.locale)
-	- if !@messages.empty?
-		.drawer#nav-news
-			.back
-				%span.rotate-mobile < 
-				Menu
-			%ul
-				- @messages.each do |message|
-					%li.message
-						= message.message.html_safe
-					=# link_to message.link, class: [message.colorbox? ? 'colorbox' : nil].join(' ') do
 	.drawer#nav-program
 		.back
 			%span.rotate-mobile < 
