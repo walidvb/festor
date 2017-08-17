@@ -8,10 +8,10 @@
 		- if @exhib
 			%li.gap-after
 				= link_to t('nav.exhibition'), event_path(@exhib, locale: I18n.locale), data: { drawer: '#nav-exhib' }
-		- if @settings.tickets
-			%li= link_to t('nav.tickets'), tickets_path(locale: I18n.locale)
-		- if @settings.volunteers
-			%li= link_to t('nav.volunteers'), volunteers_path(locale: I18n.locale)
+		-# - if @settings.tickets
+		-# 	%li= link_to t('nav.tickets'), tickets_path(locale: I18n.locale)
+		-# - if @settings.volunteers
+		-# 	%li= link_to t('nav.volunteers'), volunteers_path(locale: I18n.locale)
 		%li.gap-before= link_to t('nav.about'), about_path(locale: I18n.locale)
 		%li= link_to t('nav.archives'), about_path(anchor: 'archives', locale: I18n.locale)
 		%li= link_to t('nav.partners'), partners_path(locale: I18n.locale)
