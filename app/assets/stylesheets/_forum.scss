@@ -1,0 +1,45 @@
+.static-page .download-link{
+    margin-top: 2rem;
+    display: inline-block;
+    text-decoration: none;
+    font-size: $font-size-large;
+}
+
+.on{
+    display: block;
+}
+.off{
+    display: none;
+}
+.toggler{
+    display: none;
+     @for $i from 1 through 1{
+        &:nth-child(#{$i}){
+            &:not(:checked){
+                & ~ .togglables > *:nth-child(#{$i}){
+                    @extend .off;
+                }
+                & ~ .togglables > *:not(:nth-child(#{$i})){
+                    @extend .on;
+                }   
+            }
+            &:checked{
+                & ~ .togglables > *:nth-child(#{$i}){
+                    @extend .on;
+                }
+                & ~ .togglables > *:not(:nth-child(#{$i})){
+                    @extend .off;
+                }
+            }
+        }
+     }
+     & ~ label{
+        &[data-text]:before{
+            border: none;
+            content: attr(data-text);
+            text-transform: uppercase;
+            width: auto;
+
+        }             
+     }
+}

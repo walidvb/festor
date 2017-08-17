@@ -3,6 +3,14 @@ class ApplicationController < ActionController::Base
   before_filter :set_background
 
   def set_background
+
+    if !session['forum']
+      session['forum'] = params['forum'] == '1'
+    end
+    @forum = session['forum']
+
+    
+
     @rdm = Random.rand([ENV['BACKGROUND_IMAGES_COUNT'].to_i, 1].max)
     image = "mapping_#{@rdm}.png"
     @background = "http://www.mappingfestival.com/2017/assets/backgrounds/#{image}"

@@ -4,6 +4,7 @@
 @import "mixins";
 @import "typography";
 @import "framework_and_overrides";
+@import "forum";
 @import "social";
 @import "layout";
 @import "ui_components";
@@ -215,4 +216,14 @@ a:hover{
 
 .turbolinks-progress-bar {
   height: 0!important;
+}
+
+// flip program on events-pages
+.events-page [data-drawer="#nav-program"]{
+	flex-direction: row-reverse;
+	justify-content: flex-end!important;
+	&:after{
+		transform: rotate(180deg);
+		padding-left: .5rem;
+	}
 }

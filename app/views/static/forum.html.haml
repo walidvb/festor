@@ -1,0 +1,23 @@
+-# .toggle-wrapper
+-#     %input{type: :radio, class: 'toggler', "data-lang": "fr-toggle", name: :lang, checked: 1, id: :fr}
+-#     %input{type: :radio, class: 'toggler', "data-lang": "en-toggle", name: :lang, id: :en}
+-#     %label{for: :fr, "data-text": :fr}
+-#     %label{for: :en, "data-text": :en}
+.full-content
+    .page-title
+        %h1= t("nav.forum")
+    .static-desc
+        - if I18n.locale == :fr
+            %div
+                %p En mai 2017, a eu lieu la toute première édition de Paradigm Shift, un forum international organisé dans le cadre de Mapping_Digital Shifts. Rassemblant sur deux journées artistes, créatifs, curateurs, journalistes, décisionnaires et chercheurs triés sur le volet il avait pour but de faire naître une réflexion critique, de soulever des questions et d'esquisser un état des lieux de la culture et de la société dans un monde désormais régi par la technologie.
+                %p À travers une série de conférences, présentations, discussions et projections, chaque session était l'occasion d'explorer plus avant le thème de cette première édition: Technology Now, Society Tomorrow, and the Religion for a Brave New World.
+                %p Avec le soutien de l’Office Fédéral de la Culture
+        - else
+            %div
+                %p The very first edition of Paradigm Shift took place in May 2017. Organized by Mapping _ Digital Shifts, this two-day international forum gathered inspiring artists, designers, curators, journalists, decision makers and researchers to critically reflect, raise questions and discuss the state of culture and society in today’s technology driven world.
+                %p Through a series of talks, presentations, discussions and screenings, each session further explored this first edition’s theme: Technology Now, Society Tomorrow, and the Religion for a Brave New World.
+                %p Supported by the Federal Office of Culture
+
+        %a.download-link{href: image_path('2017-Mapping-CRParadigmShift.pdf'), download: true} 
+            .fa.fa-download
+            Télécharger

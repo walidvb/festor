@@ -38,6 +38,7 @@ en:
     private:        'Private Partners'
     venue:          'Venue Partners'
     institutional:  'Institutional Partners'
+    program: Program
   filters:
     by_type: 'Type'
     by_day: 'May'

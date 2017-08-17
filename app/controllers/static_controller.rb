@@ -26,4 +26,8 @@ class StaticController < ApplicationController
 
   def tmp
   end
+
+  def forum
+    redirect_to root_path unless @forum
+  end
 end
