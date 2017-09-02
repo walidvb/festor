@@ -18,7 +18,8 @@
                 %p Through a series of talks, presentations, discussions and screenings, each session further explored this first edition’s theme: Technology Now, Society Tomorrow, and the Religion for a Brave New World.
                 %p Supported by the Federal Office of Culture
         .videos-container
-            %iframe{allowfullscreen: true, frameborder: 0, src: "https://www.youtube.com/embed/#{@videos[0]}"}
+            .embed-container
+                %iframe{allowfullscreen: true, frameborder: 0, src: "https://www.youtube.com/embed/#{@videos[0]}"}
             .links
                 - @videos.each_with_index do |vid, i|
                     %a.dot{href: vid, "data-url": vid, class: (i==0 ? 'active' : nil)}= i+1
