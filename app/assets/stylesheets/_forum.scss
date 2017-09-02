@@ -2,6 +2,8 @@
     margin-top: 2rem;
     .dot{
         text-decoration: none;
+        margin: 0 5px;
+        padding: 0 5px;
         &.active{
             font-weight: bolder;
         }

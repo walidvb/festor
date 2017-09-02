@@ -1,7 +1,6 @@
 .drawer-container
 	%ul.nav
-		- if @forum
-			%li.gap-after= link_to t('nav.forum'), forum_path(locale: I18n.locale)
+		%li.gap-after= link_to t('nav.forum'), forum_path(locale: I18n.locale)
 		%li.gap-after.program-gap
 			= link_to t('nav.program'), program_path(locale: I18n.locale), data: { drawer: '#nav-program', "direct-link" => true }
 		-# %li.gap-after.visible-xs= link_to 'PDF', image_path('program.pdf'), download: 'program.pdf', target: '_blank'

@@ -40,6 +40,5 @@ class StaticController < ApplicationController
       "xLVyxr3O3XI",
       "YBHsqJ8jPdw",
     ]
-    redirect_to root_path unless @forum
   end
 end
