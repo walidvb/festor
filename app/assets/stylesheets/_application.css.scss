@@ -218,12 +218,15 @@ a:hover{
   height: 0!important;
 }
 
-// flip program on events-pages
-.events-page [data-drawer="#nav-program"]{
-	flex-direction: row-reverse;
-	justify-content: flex-end!important;
-	&:after{
-		transform: rotate(180deg);
-		padding-left: .5rem;
+@media #{$tablet}{
+
+	// flip program on events-pages
+	.events-page [data-drawer="#nav-program"]{
+		flex-direction: row-reverse;
+		justify-content: flex-end!important;
+		&:after{
+			transform: rotate(180deg);
+			padding-left: .5rem;
+		}
 	}
 }

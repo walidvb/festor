@@ -17,7 +17,14 @@
                 %p The very first edition of Paradigm Shift took place in May 2017. Organized by Mapping _ Digital Shifts, this two-day international forum gathered inspiring artists, designers, curators, journalists, decision makers and researchers to critically reflect, raise questions and discuss the state of culture and society in today’s technology driven world.
                 %p Through a series of talks, presentations, discussions and screenings, each session further explored this first edition’s theme: Technology Now, Society Tomorrow, and the Religion for a Brave New World.
                 %p Supported by the Federal Office of Culture
-
+        .videos-container
+            %iframe{allowfullscreen: true, frameborder: 0, src: "https://www.youtube.com/embed/#{@videos[0]}"}
+            .links
+                - @videos.each_with_index do |vid, i|
+                    %a.dot{href: vid, "data-url": vid, class: (i==0 ? 'active' : nil)}= i+1
         %a.download-link{href: image_path('2017-Mapping-CRParadigmShift.pdf'), download: true} 
             .fa.fa-download
-            = t('shared.download')
+            #{t('shared.download')} (FR)
+        %a.download-link{href: image_path('2017-Mapping-CRParadigmShift.pdf'), download: true} 
+            .fa.fa-download
+            #{t('shared.download')} (DE)

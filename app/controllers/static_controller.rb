@@ -28,6 +28,18 @@ class StaticController < ApplicationController
   end
 
   def forum
+    @videos = [
+      "PYs_IeM1FD0",
+      "zGN4dEq3O4c",
+      "8JfX2Q51DWw",
+      "H_MDSh1XQEM",
+      "sIsJN5VtG8A",
+      "DUVvXDPoulQ",
+      "TQkMvguIrlU",
+      "P6dw9Xj3mO0",
+      "xLVyxr3O3XI",
+      "YBHsqJ8jPdw",
+    ]
     redirect_to root_path unless @forum
   end
 end
