@@ -8,9 +8,9 @@ Festor::Application.routes.draw do
 	get "beta" => "beta#new"
 
 	match "/upload" => "assets#upload", via: :post
-	get "forum" => "static#forum", as: :forum
 	devise_for :users, skip: :registrations
 	scope "(:locale)", locale: /en|fr/, defaults: {locale: 'en'} do
+		get "forum" => "static#forum", as: :forum
     get '/where' => 'screenshots#index', as: :where
     resources :screenshots, only: [:create, :update, :show]
 		post "beta" => "beta#create"
