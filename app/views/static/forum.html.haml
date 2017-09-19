@@ -3,6 +3,7 @@
 -#     %input{type: :radio, class: 'toggler', "data-lang": "en-toggle", name: :lang, id: :en}
 -#     %label{for: :fr, "data-text": :fr}
 -#     %label{for: :en, "data-text": :en}
+= content_for :title, t("nav.forum")
 .full-content
     .page-title
         %h1= t("nav.forum")
@@ -23,8 +24,10 @@
             .links
                 - @videos.each_with_index do |vid, i|
                     %a.dot{href: vid, "data-url": vid, class: (i==0 ? 'active' : nil)}= i+1
-        %a.download-link{href: image_path('2017-Mapping-CRParadigmShift.pdf'), download: true} 
-            .fa.fa-download
-            #{t('shared.download')} (FR
-        \/
-        %a.download-link{href: image_path('2017-Mapping-CRParadigmShift.pdf'), download: true}  DE)
+        %div
+            #{t('shared.download')}:
+            %a.download-link{href: image_path('2017-Mapping-CRParadigmShift.pdf'), download: true} 
+                .fa.fa-download
+                FR
+            \/
+            %a.download-link{href: image_path('2017-Mapping-CRParadigmShift.pdf-DE'), download: true}  DE

@@ -12,7 +12,7 @@ en:
     thanks: 'Thank you for submitting your screenshot, visit the gallery! <span class="fa fa-th"></span>'
     add_to_fav: 'Add to my favourites'
     rm_from_fav: 'Remove from my favourites'
-    download: Download
+    download: download written report here(available in French and German only)
   nav:
     home:        "Home"
     events:      "Program"
@@ -40,6 +40,7 @@ en:
     venue:          'Venue Partners'
     institutional:  'Institutional Partners'
     program: Program
+    forum: Paradigm Shift Forum
   filters:
     by_type: 'Type'
     by_day: 'May'

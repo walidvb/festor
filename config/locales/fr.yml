@@ -9,7 +9,7 @@ fr:
     thanks: 'Merci pour votre screenshot, visitez la gallerie! <span class="fa fa-th"></span>'
     add_to_fav: 'Ajouter à mes favoris'
     rm_from_fav: 'Retirer de mes favoris'
-    download: Télécharger
+    download: Télécharger le compte-rendu ici
   nav:
     program:     "Programme"
     artists:     "Artistes"
@@ -27,6 +27,7 @@ fr:
     contact:     'Contact'
     filters:     'Filtres'
     favourites: 'Favoris'
+    forum: 'Paradigm Shift Forum'
   partners:
     media: 'Médias'
     private: 'Privés'
