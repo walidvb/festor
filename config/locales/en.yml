@@ -12,7 +12,8 @@ en:
     thanks: 'Thank you for submitting your screenshot, visit the gallery! <span class="fa fa-th"></span>'
     add_to_fav: 'Add to my favourites'
     rm_from_fav: 'Remove from my favourites'
-    download: download written report here(available in French and German only)
+    download: download written report here
+    download_program: You can also downlod the full forum program here
   nav:
     home:        "Home"
     events:      "Program"

@@ -12,11 +12,10 @@
 	}
 	li{
 		line-height: $lineheight-base*2;
+		white-space: nowrap;
 		text-transform: capitalize;
 		&:hover{
 			background: $white;
-		}
-		span{
 		}
 	}
 }

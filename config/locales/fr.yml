@@ -10,6 +10,7 @@ fr:
     add_to_fav: 'Ajouter à mes favoris'
     rm_from_fav: 'Retirer de mes favoris'
     download: Télécharger le compte-rendu ici
+    download_program: Vous pouvez aussi télécharger le programme complet ici
   nav:
     program:     "Programme"
     artists:     "Artistes"
