@@ -61,15 +61,18 @@ nav{
 			background: transparent;
 		}
 	}
+	a{
+		white-space: nowrap;
+	}
 }
 
 @media #{$tablet}{
 	.logo{
 		max-width: 20vw;
 		a{
-	    display: inline-block;
-	    max-width: 100%;
-	    white-space: nowrap;
+			display: inline-block;
+			max-width: 100%;
+			white-space: nowrap;
 		}
 	}
 
